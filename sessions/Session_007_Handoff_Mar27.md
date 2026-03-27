@@ -57,6 +57,25 @@ PIVOT 2 — Brain model over hierarchy. The Chairman's profile is not a document
 
 Alexander: Active. Jiang: Active, AgentEcosystemReality delivered. Trey: Active, deep research tokens hit, resets next session. Susan: Active, PostHog install pending. Todd/Tim: Deferred.
 
+---
+
+## WORKING THEORY — END OF SESSION NOTE
+NOT AN INSTRUCTION. Needs to be expanded, stress-tested, and formally decided next session.
+
+The idea: Alexander is the only agent who boots from GitHub. Every web-based agent (Jiang, Trey, others) boots from a single Drive doc written fresh by Alexander at session start. Not a folder. Not a boot sequence. One doc per agent, written specifically for that session, containing exactly what that agent needs to be operational — who they are, current company state, their mandate, relevant context from prior session, what to deliver and where to file it.
+
+Drive docs are working memory, written fresh each session. GitHub is the brain — the permanent record. Alexander is the only system that reads GitHub directly. Web agents receive a targeted signal, not a boot protocol.
+
+This maps naturally to the brain model: Alexander holds the full substrate and writes only what each region needs to activate. Web agents don't run a boot sequence — they receive a pre-digested session context from the central system. Clean. No folder permissions. No EOF confirmation loops. No catalog operations.
+
+Open questions to resolve:
+- What is the minimum viable content for each agent's session doc?
+- How does Alexander know which agents are active and what their mandate is for the session?
+- How does this interact with the brain model — is Alexander the brain stem, or is the Chairman's profile the brain stem and Alexander the first cortical layer?
+- Does this change the role of the velorin-system repo structure, or does GitHub remain the long-term truth and Drive docs just become the session activation signal?
+
+Status: working theory. Do not implement until formally decided.
+
 [VELORIN.EOF]
 
 Session 007 Handoff | Alexander, CEO | Velorin | March 27, 2026
