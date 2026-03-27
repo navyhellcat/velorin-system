@@ -59,6 +59,31 @@ Alexander: Active. Jiang: Active, AgentEcosystemReality delivered. Trey: Active,
 
 ---
 
+## TURING VAULT — AFFILIATE MONETIZATION TO-DO
+Owner: Susan (build) | Priority: next Susan session
+
+Affiliate links on the Turing Vault results page. Passive revenue, zero marginal cost after setup. Segment by score band — high score results page shows different recommendations than mid-range. Framing: "People who score in the 95th percentile tend to use..." converts better than generic recommendations.
+
+TO-DO LIST:
+1. Sign up for Impact.com or ShareASale — aggregators that give access to multiple programs through one account
+2. Apply to the following affiliate programs:
+   - Brilliant.org — 25% recurring, strongest fit for IQ test audience (learning platform)
+   - Notion — 50% first payment, 25% recurring, productivity fit
+   - Grammarly — 20% recurring, high conversion rates, broad audience
+   - Zapier — up to 25% recurring, automation/productivity angle
+   - NordVPN or ExpressVPN — $50-100 per conversion, highest payouts in the space, tech audience
+   - Coursera — education angle off IQ results
+   - Audible (Amazon) — books angle, easy approval
+   - Jasper AI or Copy.ai — AI writing tools, fits the audience
+   - ClickUp — productivity fit
+3. Build affiliate link blocks into results page — Susan task, low build effort
+4. Segment links by score band on results page
+5. Track conversions via PostHog once install is live
+
+Note: Anthropic (Claude) and OpenAI (ChatGPT) do not have public affiliate programs. Skip those.
+
+---
+
 ## WORKING THEORY — END OF SESSION NOTE
 NOT AN INSTRUCTION. Needs to be expanded, stress-tested, and formally decided next session.
 
