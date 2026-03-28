@@ -1,12 +1,12 @@
 # Neuron: ClaudeBot
 
 Claude Code CLI bot. Runs in terminal.
+Master instructions: `/Users/lbhunt/CLAUDE.md` — read every session, overrides default memory.
 Local memory: `~/.claude/projects/-Users-lbhunt/memory/MEMORY.md`
 Startup doc: `velorin-system/BOT.ClaudeBot/STARTUP.md`
 Settings: `~/.claude/settings.local.json`
 
 Permissions: `Bash(*)` wildcard — all commands except rm/sudo.
-Has direct filesystem access. Handles code, git, file ops.
 
 ## Pointers
 - [1] `./memory-protocol.md` — MUST follow before creating any neuron
