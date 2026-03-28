@@ -89,6 +89,16 @@ git pull --rebase origin main
 | bash | `npx mcp-shell` | On-demand, allowlisted commands |
 | claude-code | `claude mcp serve` | Claude Code CLI as MCP |
 
+## Permissions Policy
+- **All tools allowed** — Read, Write, Edit, Glob, Grep, WebFetch, WebSearch, NotebookEdit, Agent
+- **All bash commands allowed** — full CLI access (120+ commands including node, npm, git, gh, python3, curl, brew, jq, ssh, rsync, openssl, launchctl, crontab, etc.)
+- **Deny list:** `rm`, `rmdir`, `trash`, `rm -rf`, `sudo` — these always prompt
+- **Manual confirmation required before:**
+  - Large code rewrites (rewriting whole files or major refactors)
+  - Large concept or architectural changes
+  - Deleting any tool, MCP server, or major component
+- Settings file: `~/.claude/settings.local.json`
+
 ## Session Recovery Log
 ### 2026-03-28 — First Recovery
 - Terminal had closed, all context lost, no memory existed
