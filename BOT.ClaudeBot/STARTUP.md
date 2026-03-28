@@ -90,14 +90,24 @@ git pull --rebase origin main
 | claude-code | `claude mcp serve` | Claude Code CLI as MCP |
 
 ## Permissions Policy
+**These are PERMANENT. Do not reduce or reset.**
+
 - **All tools allowed** — Read, Write, Edit, Glob, Grep, WebFetch, WebSearch, NotebookEdit, Agent
-- **All bash commands allowed** — full CLI access (120+ commands including node, npm, git, gh, python3, curl, brew, jq, ssh, rsync, openssl, launchctl, crontab, etc.)
-- **Deny list:** `rm`, `rmdir`, `trash`, `rm -rf`, `sudo` — these always prompt
+- **All bash commands allowed** — `Bash(*)` wildcard covers everything:
+  - Compound commands (`&&`, `||`, pipes `|`, `;`)
+  - `cd && command` chains
+  - Commands with `#` comments
+  - `screencapture` for screen recording
+  - `open` for browser/URLs
+  - All CLI tools: node, npm, git, gh, python3, curl, brew, jq, ssh, etc.
+  - Any new command — no need to add individually
+- **Deny list (always prompts):** `rm`, `rmdir`, `trash`, `rm -rf`, `sudo`
 - **Manual confirmation required before:**
   - Large code rewrites (rewriting whole files or major refactors)
   - Large concept or architectural changes
   - Deleting any tool, MCP server, or major component
 - Settings file: `~/.claude/settings.local.json`
+- **If permissions get reset after a crash, restore from this file — do not rebuild from scratch**
 
 ## Session Recovery Log
 ### 2026-03-28 — First Recovery
