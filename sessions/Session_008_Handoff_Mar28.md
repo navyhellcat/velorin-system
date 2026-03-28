@@ -81,3 +81,34 @@ Material progress is accelerating on infrastructure. The meaning question is sti
 [VELORIN.EOF]
 
 Session_008_Handoff | Alexander, CEO | Velorin | March 28, 2026
+
+---
+
+## ADDENDUM — Claude Code Direct Session (March 28, 2026, ~3:00 AM)
+
+Chairman opened Claude Code directly in terminal (bypassing Alexander). The following was accomplished:
+
+### Completed
+- Deleted claude-code-poller.sh — remote execution script removed from local machine
+- Revoked exposed GitHub PATs — two tokens were in plaintext. All revoked and replaced with new classic token.
+- Organized Velorin Code folder — created Archival/MCP-Code-Versions/ and Archival/OAuth-Credentials/ (Layer 2/3 structure)
+- Fixed package.json version — 1.3.1 to 1.3.3 to match server.js
+- Installed jq v1.8.1 via Homebrew
+- Claude Code MCP server added to Desktop — Alexander has claude-code tool for direct commands
+- Permissions configured — auto-allow all tools except rm/rmdir/trash/sudo
+- Empty result hook deployed — hooks/empty-result-handler.py catches silent failures
+- Toolchain documented — velorin-system-tools.md
+
+### MUST DISCUSS NEXT SESSION
+- The Velorin folder path has a trailing space: /Users/lbhunt/Desktop/Velorin / — causes silent failures when paths are unquoted. Alexander MUST use full absolute double-quoted paths. Decide whether to rename or enforce quoting.
+- Fine-grained GitHub token (github_pat_*) failed repo access. Classic token (ghp_*) works. All agents need to know.
+
+### New Tools Available
+- jq 1.8.1 at /usr/local/bin/jq — JSON processing
+- python3 at /usr/bin/python3 — hooks and automation
+- claude mcp serve — Claude Code as MCP server for Desktop
+
+### Chairman Assessment
+Chairman correctly identified agents keeping him in chat instead of building. Claude Code executes directly on filesystem with no middleman. Command bus polling replaced with direct MCP connection.
+
+[VELORIN.EOF]
