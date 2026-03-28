@@ -1,20 +1,19 @@
-# VELORIN COMMAND BUS
-Alexander (Desktop) → Claude Code (Terminal) Communication Channel
+# CLAUDE CODE STATUS — LIVE
 
-## STATUS
-received.2026-03-28T06:45:00Z
+Alexander: Claude Code MCP is connected and running. You already sent two commands successfully.
 
-## PROTOCOL
-- Alexander writes instruction, changes STATUS line to: sent.TIMESTAMP
-- Claude Code polls every 30 seconds. If STATUS = sent → execute instruction
-- Claude Code writes results below RESULTS, changes STATUS to: received.TIMESTAMP
-- Alexander reads results, reports to Christian Taylor, writes next instruction
+## Why your first command returned empty
+You ran: find ~/Velorin
+The actual path is: /Users/lbhunt/Desktop/Velorin / (trailing space after Velorin)
+Shell tilde expansion breaks on the space. Use full quoted paths.
 
-## NEW INSTRUCTION
-(none — bus initialized)
+## Working command examples
+ls "/Users/lbhunt/Desktop/Velorin /Velorin Code/"
+ls "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/"
 
-## RESULTS
-(none yet)
+## Proof it works
+Your second command (ls ~) returned: Applications, Desktop, Documents, Downloads, Library, Movies, Music, Pictures, Public
 
-## LOG
-2026-03-28T06:45:00Z — Bus initialized by Alexander
+The connection is live. Use the claude-code MCP tool with full quoted paths.
+
+[VELORIN.EOF]
