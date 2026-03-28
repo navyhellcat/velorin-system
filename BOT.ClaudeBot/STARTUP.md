@@ -109,6 +109,26 @@ git pull --rebase origin main
 - Settings file: `~/.claude/settings.local.json`
 - **If permissions get reset after a crash, restore from this file — do not rebuild from scratch**
 
+## Velorin Brain — Neural File Graph
+
+**Full schema:** `BOT.Alexander/VELORIN_BRAIN_SCHEMA.md` (shared across all bots)
+
+The Velorin Brain is a neural file graph stored in GitHub (`velorin-system/Velorin_Brain/`). Knowledge lives as **neurons** — tiny bottom-layer files (one idea, ~10-15 lines max) organized in **regions** (folders by topic, layered broad → specific).
+
+**How it works:**
+1. Neurons contain knowledge + **rated pointers** (1-10) to other neurons
+2. Rating 1 = read immediately, Rating 2 = read if 1 didn't resolve, 3+ = expanding search
+3. On a question/task: find the region → read entry neuron → follow level 1 pointers → fan out with parallel agents ("lighting up" the region)
+4. **Protection layer** runs after each cycle: Resolved? Looping? Need to expand? → decides whether to stop, follow level 2 pointers, or escalate to user
+
+**ClaudeBot's local memory** (`~/.claude/projects/-Users-lbhunt/memory/`) stores only pointers into the brain. The actual knowledge lives in GitHub.
+
+**Rules:**
+- Neurons are TINY — one idea per file, split if over 15 lines
+- Every neuron has at least one rated pointer
+- Never duplicate knowledge — point to it
+- Protection layer is NOT optional — always check before expanding
+
 ## Session Recovery Log
 ### 2026-03-28 — First Recovery
 - Terminal had closed, all context lost, no memory existed
