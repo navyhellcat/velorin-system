@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velorin Architecture Map</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;background:#0d1117;color:#e6edf3;min-height:100vh;padding:24px}
+h1{font-size:18px;font-weight:600;color:#e6edf3;margin-bottom:4px}
+.subtitle{font-size:12px;color:#7d8590;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:#161b22;border:1px solid #30363d;border-radius:8px;overflow:hidden}
+.panel-head{font-size:13px;font-weight:600;color:#e6edf3;padding:12px 16px;background:#1c2128;border-bottom:1px solid #30363d;display:flex;align-items:center;gap:8px}
+.panel-body{padding:12px}
+.folder{margin:2px 0}
+.folder-label{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:5px;cursor:default;color:#e6edf3;font-weight:600;font-size:12px}
+.folder-label:hover{background:#1c2128}
+.children{padding-left:18px;border-left:1px solid #30363d;margin-left:11px;margin-top:2px;margin-bottom:4px}
+.file{display:flex;align-items:center;gap:7px;padding:3px 8px;border-radius:4px;color:#8b949e;font-size:11px}
+.file:hover{background:#1c2128;color:#e6edf3}
+.gap{height:8px}
+.badge{font-size:10px;padding:1px 6px;border-radius:10px;font-weight:600;margin-left:auto;flex-shrink:0;white-space:nowrap}
+.warn{background:#3d2e0a;color:#d29922;border:1px solid #6e3e0a}
+.miss{background:#2d1519;color:#f85149;border:1px solid #6e1a1a}
+.info{background:#0d2035;color:#58a6ff;border:1px solid #1158a7}
+.leg{display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#8b949e}
+svg.icon{width:14px;height:14px;flex-shrink:0}
+svg.ficon{width:14px;height:14px;flex-shrink:0}
+.updated{font-size:10px;color:#7d8590;margin-top:20px;text-align:right}
+</style>
+</head>
+<body>
+
+<h1>Velorin — Architecture Map</h1>
+<p class="subtitle">Last updated: March 27, 2026 — Session 008 | Refresh after each Alexander commit</p>
+
+<div class="leg">
+  <div class="leg-item"><span class="badge warn">misplaced</span> File is in wrong folder</div>
+  <div class="leg-item"><span class="badge warn">duplicate</span> Multiple copies exist</div>
+  <div class="leg-item"><span class="badge miss">missing</span> Should exist, does not</div>
+</div>
+
+<div class="grid">
+
+<div class="panel">
+  <div class="panel-head">
+    <svg class="icon" viewBox="0 0 16 16" fill="#4285f4"><path d="M8 0C5.8 0 4 1.8 4 4c0 1.4.7 2.6 1.8 3.3C3.1 8 1.5 9.8 1.5 12H3c0-2.2 1.8-4 5-4s5 1.8 5 4h1.5c0-2.2-1.6-4-4.3-4.7C11.3 6.6 12 5.4 12 4c0-2.2-1.8-4-4-4z"/></svg>
+    Google Drive — Claude.AI Root
+  </div>
+  <div class="panel-body">
+
+    <div class="folder">
+      <div class="folder-label">
+        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#EF9F27" stroke="#BA7517" stroke-width="0.5"/></svg>
+        Root (Layer 0)
+      </div>
+      <div class="children">
+        <div class="file">📄 BOT.README.FIRST.BOOTUP</div>
+        <div class="file">📄 Bot.Registry</div>
+        <div class="file">📄 Claude_Context_Profile_v1.2</div>
+        <div class="file">📄 Velorin.Company.DNA</div>
+        <div class="file">📄 Velorin.Company.Operating.Standards</div>
+        <div class="file">📄 Velorin.EndOfDay.Protocol</div>
+        <div class="file">📄 Velorin.Tools.And.URLs</div>
+        <div class="file">📄 topline_profile</div>
+        <div class="file">📄 Alexander.DailyLog <span class="badge warn">misplaced</span></div>
+        <div class="file">📄 Jiang.Corner <span class="badge warn">misplaced</span></div>
+        <div class="file">📄 Turing_Vault_Pointer <span class="badge warn">duplicate ×2</span></div>
+      </div>
+    </div>
+
+    <div class="gap"></div>
+
+    <div class="folder">
+      <div class="folder-label">
+        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.5"/></svg>
+        Bot.Alexander
+      </div>
+      <div class="children">
+        <div class="file">📄 Alexander.ReadMe.First</div>
+        <div class="file">📄 Alexander.AgentRegister</div>
+        <div class="file">📄 MasterBot_System_Instruction</div>
+        <div class="file">📄 Alexander.Topic.AgentEcosystemReality</div>
+        <div class="file">📄 Operational Personality Profile</div>
+        <div class="file">📄 Andrew_Camardella_DISC_Profile</div>
+        <div class="file">📄 Andrew_Camardella_ENTP_Profile</div>
+        <div class="file">📄 Camfil_AI_Platform_Architecture_v0.1</div>
+        <div class="file">📄 Velorin_Session_Handoff_Mar27</div>
+        <div class="file">📄 Velorin_Session_Handoff_March26</div>
+        <div class="file">📄 Velorin.ApprovalLog</div>
+        <div class="file">📄 Velorin_MCP_desktop_github_structure_build_logs</div>
+        <div class="file">📄 Velorin Multi Desktop Logs</div>
+        <div class="file">📄 De-AI Writing Voice</div>
+        <div class="file">📄 Negative Contrast</div>
+        <div class="file">📁 retired handoffs/</div>
+      </div>
+    </div>
+
+    <div class="gap"></div>
+
+    <div class="folder">
+      <div class="folder-label">
+        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/></svg>
+        Bot.Jiang
+      </div>
+      <div class="children">
+        <div class="file">📄 Jiang.ReadMe.First</div>
+        <div class="file">📄 Jiang.Claude.Profile</div>
+        <div class="file">📄 Jiang.CodingStandards</div>
+        <div class="file">📄 Jiang.KnowledgeIndex</div>
+        <div class="file">📄 Jiang.ResearchLog</div>
+        <div class="file">📄 Jiang.ResearchRequest.AgentOrchestration</div>
+        <div class="file">📄 Jiang.ResearchRequest.PathThree</div>
+        <div class="file">📄 Jiang.Topic.AgentOrchestration</div>
+        <div class="file">📄 Jiang.Topic.AgentEcosystemReality</div>
+        <div class="file">📄 Jiang_Topic_AnthropicEcosystem</div>
+        <div class="file">📄 Velorin_Session_Handoff_Mar26 <span class="badge warn">misplaced</span></div>
+        <div class="file">📁 MCP - Desktop Code/</div>
+      </div>
+    </div>
+
+    <div class="gap"></div>
+
+    <div class="folder">
+      <div class="folder-label">
+        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#F4C0D1" stroke="#993556" stroke-width="0.5"/></svg>
+        Bot.Replit (Susan)
+      </div>
+      <div class="children">
+        <div class="file">📄 THE TURING VAULT — PROJECT BRIEF</div>
+        <div class="file">📄 TURING_VAULT_BRIEF <span class="badge warn">duplicate</span></div>
+        <div class="file">📄 Turing_Vault_Cycle_Audit</div>
+        <div class="file">📄 Turing_Vault_Cycle_Audit.v2 <span class="badge warn">duplicate</span></div>
+        <div class="file">📄 Turing_Vault_Execution_Stack</div>
+        <div class="file">📄 Turing_Vault_Growth_Architecture</div>
+        <div class="file">📄 Turing_Vault_Strategic_Report</div>
+        <div class="file">📄 Turing_Vault.Phase2.Architecture</div>
+        <div class="file">📄 TuringVault_ResultsSystem_v2</div>
+        <div class="file">📄 Trey.Topic.Section4.2.ResourceLinks <span class="badge warn">misplaced</span></div>
+      </div>
+    </div>
+
+    <div class="gap"></div>
+
+    <div class="folder">
+      <div class="folder-label">
+        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.5"/></svg>
+        Bot.Trey
+      </div>
+      <div class="children">
+        <div class="file">📄 Trey.OutputStandards</div>
+        <div class="file">📄 Trey.ProjectInstructions</div>
+        <div class="file">📄 Trey.Topic.OpenAIEcosystem</div>
+        <div class="file">📁 Assessments/</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">
+    <svg class="icon" viewBox="0 0 16 16" fill="#e6edf3"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub — navyhellcat/velorin-system
+  </div>
+  <div class="panel-body">
+
+    <div class="folder">
+      <div class="folder-label">
+        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#EF9F27" stroke="#BA7517" stroke-width="0.5"/></svg>
+        / (root)
+      </div>
+      <div class="children">
+        <div class="file">📄 CLAUDE.md <span class="badge miss">missing</span></div>
+
+        <div class="gap"></div>
+
+        <div class="folder">
+          <div class="folder-label" style="font-weight:400;color:#8b949e">
+            <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#AFA9EC" stroke="#534AB7" stroke-width="0.5"/></svg>
+            /architecture
+          </div>
+          <div class="children">
+            <div class="file">📄 ArchitecturalPivot_Mar27.md</div>
+          </div>
+        </div>
+
+        <div class="gap"></div>
+
+        <div class="folder">
+          <div class="folder-label" style="font-weight:400;color:#8b949e">
+            <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#AFA9EC" stroke="#534AB7" stroke-width="0.5"/></svg>
+            /sessions
+          </div>
+          <div class="children">
+            <div class="file">📄 Session_007_Handoff_Mar27.md</div>
+            <div class="file">📄 DailyLog_Entry006_Mar27.md</div>
+          </div>
+        </div>
+
+        <div class="gap"></div>
+
+        <div class="folder">
+          <div class="folder-label" style="font-weight:400;color:#8b949e">
+            <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#AFA9EC" stroke="#534AB7" stroke-width="0.5"/></svg>
+            /tools
+          </div>
+          <div class="children">
+            <div class="file">📄 architecture-map.html ← you are here</div>
+          </div>
+        </div>
+
+        <div class="gap"></div>
+
+        <div class="folder">
+          <div class="folder-label" style="font-weight:400;color:#8b949e">
+            <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#AFA9EC" stroke="#534AB7" stroke-width="0.5"/></svg>
+            /Velorin_Mainframe
+          </div>
+          <div class="children">
+            <div class="file">📄 01_machine1_mac_mini.md</div>
+            <div class="file">📄 02_machine2_hardware.md</div>
+            <div class="file">📄 03_networking.md</div>
+            <div class="file">📄 04_peripherals_machine1.md</div>
+            <div class="file">📄 05_peripherals_machine2.md</div>
+            <div class="file">📄 06_software_machine1.md</div>
+            <div class="file">📄 07_software_machine2.md</div>
+            <div class="file">📄 08_local_models.md</div>
+            <div class="file">📄 09_external_apis.md</div>
+            <div class="file">📄 10_storage_architecture.md</div>
+            <div class="file">📄 11_machine_to_machine.md</div>
+          </div>
+        </div>
+
+        <div class="gap"></div>
+
+        <div class="file" style="padding-left:8px">📁 /root <span class="badge miss">missing</span></div>
+        <div class="file" style="padding-left:8px">📁 /agents <span class="badge miss">missing</span></div>
+        <div class="file" style="padding-left:8px">📁 /intelligence <span class="badge miss">missing</span></div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<p class="updated">Alexander updates this file via GitHub MCP. Refresh browser to see latest state.</p>
+
+</body>
+</html>
