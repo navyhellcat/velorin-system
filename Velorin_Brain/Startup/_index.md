@@ -12,3 +12,4 @@ Boot process, recovery, and session initialization.
 | Permissions Restore | `neurons/permissions-restore.md` | How to restore if settings.local.json gets wiped |
 | Memory Load | `neurons/memory-load.md` | Read local memory index on startup |
 | Version Check | `neurons/version-check.md` | Check and update Claude Code CLI |
+| Gatekeeper Health | `neurons/gatekeeper-health.md` | Verify Gatekeeper MCP is running |

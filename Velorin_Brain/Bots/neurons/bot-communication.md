@@ -12,3 +12,4 @@ ClaudeBot also has local memory at `~/.claude/projects/-Users-lbhunt/memory/`.
 - [1] `../../MCP/neurons/claude-code-mcp.md` — the bridge between bots
 - [2] `./claudebot.md` — ClaudeBot's capabilities
 - [2] `./alexander.md` — Alexander's capabilities
+- [3] `./gatekeeper.md` — parallel watcher, any bot can ask it for help

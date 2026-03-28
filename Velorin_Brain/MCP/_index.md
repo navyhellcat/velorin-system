@@ -1,6 +1,6 @@
 # MCP Region
 
-All MCP server knowledge — config, startup, troubleshooting.
+All MCP server knowledge — config, startup, troubleshooting. 5 servers total.
 
 ## Neurons
 
@@ -10,4 +10,5 @@ All MCP server knowledge — config, startup, troubleshooting.
 | GitHub MCP | `neurons/github-mcp.md` | GitHub MCP via npx |
 | Bash MCP | `neurons/bash-mcp.md` | Shell access MCP via npx |
 | Claude Code MCP | `neurons/claude-code-mcp.md` | Claude CLI running as MCP |
+| Gatekeeper MCP | `neurons/gatekeeper-mcp.md` | Parallel watcher — path resolution, health, brain lookup, logs |
 | MCP Config Location | `neurons/mcp-config-location.md` | Where MCP servers are configured |
