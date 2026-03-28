@@ -10,3 +10,4 @@ Master index of all brain regions. Start here.
 | Architecture | `../Architecture/_index.md` | Paths, machines, folder structure, trailing space |
 | Tools | `../Tools/_index.md` | CLI tools, brew, node, npm, installed software |
 | Bots | `../Bots/_index.md` | ClaudeBot, Alexander, how they connect, roles |
+| Principles | `../Principles/_index.md` | Governing behavioral principles — reward alignment, sacrifice, agent morality |

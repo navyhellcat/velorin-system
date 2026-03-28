@@ -11,4 +11,5 @@ Accesses Google Drive via velorin-gdrive MCP.
 - [1] `./claudebot.md` — the other bot in the system
 - [1] `./bot-communication.md` — how they connect
 - [2] `../../MCP/neurons/mcp-config-location.md` — Alexander's MCP config
+- [2] `./multi-agent-directive.md` — never gatekeep other agents
 - [2] `../../MCP/neurons/gdrive-server.md` — primary MCP server

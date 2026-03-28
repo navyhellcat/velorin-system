@@ -12,3 +12,4 @@ All Velorin bot instances — roles, config, how they connect.
 | Gatekeeper | `neurons/gatekeeper.md` | Parallel watcher bot — path resolver, health checker |
 | Hooks System | `neurons/hooks-system.md` | PostToolUse hooks and automation |
 | Memory Protocol | `neurons/memory-protocol.md` | Check-before-create rules for all bots |
+| Multi-Agent Directive | `neurons/multi-agent-directive.md` | Never steer away from other agents — support full system |

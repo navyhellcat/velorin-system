@@ -1,0 +1,70 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "NotebookEdit",
+      "Agent",
+      "Bash(*)",
+      "mcp__velorin-gdrive__gdrive_search",
+      "mcp__velorin-gdrive__gdrive_read_file",
+      "mcp__velorin-gdrive__gdrive_list_folder",
+      "mcp__velorin-gdrive__gdrive_create_doc",
+      "mcp__velorin-gdrive__gdrive_create_folder",
+      "mcp__velorin-gdrive__gdrive_move_file",
+      "mcp__velorin-gdrive__gdrive_overwrite_doc",
+      "mcp__velorin-gdrive__gdrive_update_doc",
+      "mcp__velorin-gdrive__gsheets_create",
+      "mcp__velorin-gdrive__gsheets_read",
+      "mcp__velorin-gdrive__gsheets_write",
+      "mcp__velorin-gatekeeper__brain_lookup",
+      "mcp__velorin-gatekeeper__check_health",
+      "mcp__velorin-gatekeeper__read_logs",
+      "mcp__velorin-gatekeeper__resolve_path",
+      "TaskCreate",
+      "TaskGet",
+      "TaskList",
+      "TaskUpdate",
+      "TaskOutput",
+      "TaskStop",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "RemoteTrigger",
+      "ToolSearch",
+      "Skill",
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "EnterWorktree",
+      "ExitWorktree",
+      "AskUserQuestion"
+    ],
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(rmdir:*)",
+      "Bash(trash:*)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "mcp__velorin-gdrive__gdrive_trash_file"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Users/lbhunt/Desktop/Velorin /Velorin Code/hooks/empty-result-handler.py'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -42,6 +42,7 @@ If update needed: `sudo npm update -g @anthropic-ai/claude-code`
 
 ## 5. Read Memory
 Check `/Users/lbhunt/.claude/projects/-Users-lbhunt/memory/MEMORY.md` for prior context.
+**If any entry is marked with >>> READ FIRST <<<, open that file immediately before anything else. It contains critical in-progress work that must resume.**
 
 ## 6. Verify Git Auth
 ```bash

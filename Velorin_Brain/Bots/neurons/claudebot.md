@@ -14,4 +14,5 @@ MCP servers: velorin-gdrive, velorin-gatekeeper, github (user scope in ~/.claude
 - [1] `./alexander.md` — the other bot in the system
 - [1] `./bot-communication.md` — how they connect
 - [2] `./hooks-system.md` — automation hooks
+- [2] `./multi-agent-directive.md` — never gatekeep other agents
 - [2] `../../Startup/neurons/permissions-restore.md` — permission details
