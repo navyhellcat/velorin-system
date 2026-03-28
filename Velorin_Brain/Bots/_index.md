@@ -10,3 +10,4 @@ All Velorin bot instances — roles, config, how they connect.
 | Alexander | `neurons/alexander.md` | Claude Desktop bot — role and config |
 | Bot Communication | `neurons/bot-communication.md` | How bots talk to each other |
 | Hooks System | `neurons/hooks-system.md` | PostToolUse hooks and automation |
+| Memory Protocol | `neurons/memory-protocol.md` | Check-before-create rules for all bots |

@@ -7,7 +7,8 @@ Accesses GitHub via github MCP.
 Accesses Google Drive via velorin-gdrive MCP.
 
 ## Pointers
+- [1] `./memory-protocol.md` — MUST follow before creating any neuron
 - [1] `./claudebot.md` — the other bot in the system
 - [1] `./bot-communication.md` — how they connect
-- [1] `../../MCP/neurons/mcp-config-location.md` — Alexander's MCP config
+- [2] `../../MCP/neurons/mcp-config-location.md` — Alexander's MCP config
 - [2] `../../MCP/neurons/gdrive-server.md` — primary MCP server
