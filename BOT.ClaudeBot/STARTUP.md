@@ -43,14 +43,62 @@ If update needed: `sudo npm update -g @anthropic-ai/claude-code`
 ## 5. Read Memory
 Check `/Users/lbhunt/.claude/projects/-Users-lbhunt/memory/MEMORY.md` for prior context.
 
+## 6. Verify Git Auth
+```bash
+cd "/Users/lbhunt/Desktop/velorin-system" && git remote -v
+cd "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp" && git remote -v
+```
+- Credential helper is set to `osxkeychain` (global)
+- If push fails with auth error, the PAT is stored in Claude Desktop config under the github MCP server env
+- Temporary fix: embed PAT in remote URL to push, then immediately reset URL back to clean HTTPS
+- GitHub account: **navyhellcat**
+
+## 7. Verify Repos Are in Sync
+```bash
+cd "/Users/lbhunt/Desktop/velorin-system" && git fetch origin && git status
+cd "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp" && git fetch origin && git status
+```
+If behind remote, pull before making changes:
+```bash
+git pull --rebase origin main
+```
+
 ---
 
 ## Critical Path Reminders
 - The "Velorin " folder has a **trailing space** — always double-quote paths
 - Config: `/Users/lbhunt/Library/Application Support/Claude/claude_desktop_config.json`
 - Hooks: `/Users/lbhunt/Desktop/Velorin /Velorin Code/hooks/`
-- Architecture repo: `/Users/lbhunt/Desktop/velorin-system/`
-- MCP code repo: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/`
+- Hook scripts: `empty-result-handler.py` — PostToolUse on Bash, catches empty output
+- Settings: `~/.claude/settings.local.json` — permissions, hooks config
+- Architecture repo: `/Users/lbhunt/Desktop/velorin-system/` (GitHub: navyhellcat/velorin-system)
+- MCP code repo: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/` (GitHub: navyhellcat/velorin-gdrive-mcp)
+- This file: `/Users/lbhunt/Desktop/velorin-system/BOT.ClaudeBot/STARTUP.md`
+
+## GitHub Repos
+| Repo | Local Path | Purpose |
+|------|-----------|---------|
+| navyhellcat/velorin-system | `/Users/lbhunt/Desktop/velorin-system/` | Architecture, docs, BOT.ClaudeBot, sessions, tools |
+| navyhellcat/velorin-gdrive-mcp | `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/` | Google Drive MCP server (v1.3.3) |
+
+## MCP Server Config (Claude Desktop)
+| Server | Command | Notes |
+|--------|---------|-------|
+| velorin-gdrive | `node .../server.js` | Custom GDrive MCP, OAuth auto-refresh |
+| github | `npx @modelcontextprotocol/server-github` | On-demand, uses PAT |
+| bash | `npx mcp-shell` | On-demand, allowlisted commands |
+| claude-code | `claude mcp serve` | Claude Code CLI as MCP |
+
+## Session Recovery Log
+### 2026-03-28 — First Recovery
+- Terminal had closed, all context lost, no memory existed
+- Ran caffeinate, verified all 4 MCP servers running
+- GDrive tokens valid and auto-refreshing
+- Claude Code v2.1.84 — autoupdate failed (needs `sudo`)
+- Created this BOT.ClaudeBot folder and STARTUP.md
+- Set git credential helper to osxkeychain
+- Pulled remote changes (rebase), pushed BOT.ClaudeBot to GitHub
+- Created memory system at `~/.claude/projects/-Users-lbhunt/memory/`
 
 ---
 
