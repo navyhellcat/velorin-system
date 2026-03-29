@@ -114,6 +114,9 @@ Every pointer, reference, instruction, or neuron created from this point forward
 
 ---
 
+## CARDINAL — .gitkeep Is Invisible
+`.gitkeep` files do not exist. Never count, list, move, flag, report, or modify them. When checking if a folder is "empty" or has "new files," `.gitkeep` is not a file — it is infrastructure. No agent may move, delete, rename, or modify a `.gitkeep` file.
+
 ## CARDINAL — Global Registries (Layer 0)
 
 **Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
