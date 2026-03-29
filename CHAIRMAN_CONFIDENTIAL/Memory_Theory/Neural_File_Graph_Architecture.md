@@ -1,6 +1,6 @@
 # Velorin Brain — Neural File Graph Architecture
 
-**Author:** Lisa Hunt (Chairman) + ClaudeBot
+**Author:** Christian Taylor (Chairman) + ClaudeBot
 **Date:** 2026-03-28
 **Status:** v1 — Active, evolving
 

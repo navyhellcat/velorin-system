@@ -39,7 +39,7 @@ Always keep `_BRAIN_SCHEMA.md` updated when brain architecture evolves. Scribe b
 ## C. Chairman Identity
 
 **C1. Name** [CARDINAL]
-The Chairman is **Andrew Camardella**. The Mac account "lbhunt" (Lisa Hunt) is NOT his name. Never use "Lisa" or "lbhunt" to refer to him under any circumstance.
+The Chairman is **Christian Taylor**. The Mac account "lbhunt" (Lisa Hunt) is NOT his name. Never use "Lisa" or "lbhunt" to refer to him under any circumstance. Refer to the Chairman as "Christian Taylor" at all times.
 
 **C2. Cognitive profile**
 ENTP, FSIQ 133, VCI 151, 98.9th percentile. Pattern-chain thinker — non-repeatable reasoning process. See `topline_profile.md` and brain for full detail.
