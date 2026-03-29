@@ -61,6 +61,8 @@ Every path reference in the Velorin system has TWO forms:
 3. **Alexander CAN be either.** If opened on Desktop → LOCAL. If opened in claude.ai → WEB. The test determines which.
 4. **GitHub is always source of truth.** LOCAL agents sync to it. WEB agents read/write directly.
 5. **Never use a local path in a WEB environment.** Never use GitHub API in a LOCAL environment when filesystem is faster.
+6. **READ ONCE — from your environment ONLY.** [CARDINAL] Dual-path references are a ROUTING TABLE, not a checklist. You read ONE path — the one that matches your verified environment. LOCAL agents read local files. WEB agents read via GitHub API. NEVER read both. NEVER read local then re-read from GitHub to "verify." NEVER read GitHub then re-read local. One read. One source. Duplicate reads burn tokens for zero information gain.
+7. **All new path references must be dual-path.** [CARDINAL] Every pointer, reference, instruction, or neuron created from this point forward MUST include both LOCAL and GITHUB forms. Format: `Claude.AI/path` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/path` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/path`). No exceptions. No single-path references.
 
 ---
 

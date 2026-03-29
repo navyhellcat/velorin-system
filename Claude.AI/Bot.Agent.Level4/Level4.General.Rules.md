@@ -81,7 +81,10 @@ Numbers are sequential: .01, .02, .03
 On EVERY boot, BEFORE any other operation, run the environment detection test in `Claude.AI/ENVIRONMENT_DETECTION.md`. Attempt to read that file from the local filesystem — `Claude.AI/ENVIRONMENT_DETECTION.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/ENVIRONMENT_DETECTION.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/ENVIRONMENT_DETECTION.md`). If successful → LOCAL. If not → WEB. State `[ENV: LOCAL]` or `[ENV: WEB]` at the top of first response. This determines which path form to use for ALL file operations during the session. GitHub is ALWAYS source of truth. LOCAL agents: `git pull` before reads, `git push` after writes. WEB agents: GitHub API only. No exceptions.
 
 **18. Dual-Path References** [CARDINAL]
-Every file reference in the Velorin system has two forms: LOCAL (`/Users/lbhunt/Desktop/velorin-system/Claude.AI/...`) and GITHUB (`navyhellcat/velorin-system` → `Claude.AI/...`). Use the form that matches your verified environment. Never use a local path in a WEB environment. Never skip git sync in a LOCAL environment.
+Every file reference in the Velorin system has two forms: LOCAL (`/Users/lbhunt/Desktop/velorin-system/Claude.AI/...`) and GITHUB (`navyhellcat/velorin-system` → `Claude.AI/...`). Use the form that matches your verified environment. Never use a local path in a WEB environment. Never skip git sync in a LOCAL environment. All new path references created from this point forward MUST include both forms. No single-path references.
+
+**18a. Read Once Only** [CARDINAL]
+Dual-path references are a ROUTING TABLE, not a checklist. Read ONE path — the one matching your verified environment. LOCAL agents read local. WEB agents read GitHub API. NEVER read both. NEVER read local then re-verify on GitHub. NEVER read GitHub then re-read local. One read, one source. Duplicate reads waste tokens for zero information gain. This rule applies to every agent at every level.
 
 **19. Pre-Close Procedure** [CARDINAL]
 Before ANY session close or restart, ALL Level 4 agents must execute this checklist:

@@ -85,6 +85,16 @@ Numbers are sequential: .01, .02, .03
 
 ---
 
+## CARDINAL — Read Once Only (Layer 0)
+
+**Read Once Only** [CARDINAL]
+Dual-path references are a ROUTING TABLE, not a checklist. Read ONE path — the one matching your verified environment. LOCAL agents read local. WEB agents read GitHub API. NEVER read both. NEVER read local then re-verify on GitHub. NEVER read GitHub then re-read local. One read, one source. Duplicate reads waste tokens for zero information gain.
+
+**All new path references must be dual-path.** [CARDINAL]
+Every pointer, reference, instruction, or neuron created from this point forward MUST include both LOCAL and GITHUB forms. No single-path references. No exceptions.
+
+---
+
 ## CARDINAL — Global Registries (Layer 0)
 
 **Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
