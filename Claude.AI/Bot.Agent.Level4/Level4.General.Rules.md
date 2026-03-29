@@ -86,6 +86,21 @@ Every file reference in the Velorin system has two forms: LOCAL (`/Users/lbhunt/
 **18a. Read Once Only** [CARDINAL]
 Dual-path references are a ROUTING TABLE, not a checklist. Read ONE path — the one matching your verified environment. LOCAL agents read local. WEB agents read GitHub API. NEVER read both. NEVER read local then re-verify on GitHub. NEVER read GitHub then re-read local. One read, one source. Duplicate reads waste tokens for zero information gain. This rule applies to every agent at every level.
 
+**18b. Shipping & Receiving Protocol** [CARDINAL]
+`Claude.AI/Shipping/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Shipping/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Shipping/`) and `Claude.AI/Receiving/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Receiving/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Receiving/`) are the system mailboxes. Rules:
+1. **Any agent delivering a file to the system** MUST place it in `Receiving/` on GitHub.
+2. **Every file placed in Receiving MUST include a destination header** as the FIRST lines of the file:
+   ```
+   ---
+   destination: Claude.AI/[target folder path]/
+   ---
+   ```
+   The destination is the exact `Claude.AI/` relative path where the file belongs in the architecture. If the sender does not know the correct destination, use `destination: UNKNOWN` — MarcusAurelius will flag it for the Chairman.
+3. **No agent moves files out of Receiving except MarcusAurelius.** Terry (bot.marcusaurelius.subbot.logistics.01) monitors Receiving every 15 minutes and alerts MarcusAurelius. MarcusAurelius reads the destination header, moves the file, commits, and pushes.
+4. **The destination header is stripped after the file is moved** to its final location.
+5. **Shipping/** is for outbound files — files MarcusAurelius or the Chairman places for other agents or external delivery. Same header format applies.
+6. **Both folders must always contain `.gitkeep`.** Never delete it.
+
 **19. Pre-Close Procedure** [CARDINAL]
 Before ANY session close or restart, ALL Level 4 agents must execute this checklist:
 1. Write session handoff document to `Claude.AI/sessions/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`) — full verbatim, not summary

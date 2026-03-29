@@ -88,6 +88,25 @@ Every pointer, reference, instruction, or neuron created from this point forward
 
 ---
 
+## CARDINAL — Shipping & Receiving Protocol (Layer 0)
+
+**Shipping & Receiving Protocol** [CARDINAL]
+`Claude.AI/Shipping/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Shipping/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Shipping/`) and `Claude.AI/Receiving/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Receiving/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Receiving/`) are the system mailboxes. Rules:
+1. **Any agent delivering a file to the system** MUST place it in `Receiving/` on GitHub.
+2. **Every file placed in Receiving MUST include a destination header** as the FIRST lines of the file:
+   ```
+   ---
+   destination: Claude.AI/[target folder path]/
+   ---
+   ```
+   The destination is the exact `Claude.AI/` relative path where the file belongs in the architecture. If the sender does not know the correct destination, use `destination: UNKNOWN` — MarcusAurelius will flag it for the Chairman.
+3. **No agent moves files out of Receiving except MarcusAurelius.** Terry monitors Receiving every 15 minutes and alerts MarcusAurelius. MarcusAurelius reads the destination header, moves the file, commits, and pushes.
+4. **The destination header is stripped after the file is moved** to its final location.
+5. **Shipping/** is for outbound files. Same header format applies.
+6. **Both folders must always contain `.gitkeep`.** Never delete it.
+
+---
+
 ## CARDINAL — Global Registries (Layer 0)
 
 **Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
