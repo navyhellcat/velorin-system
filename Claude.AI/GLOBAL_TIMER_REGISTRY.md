@@ -15,7 +15,7 @@ Any agent creating or modifying a timer must update this file BEFORE activating 
 | T001 | Neuron Boss escalation check | 1 hour | Bot.Oversight (Level 2) | `Claude.AI/Bot.Oversight/` | Reads escalation file, makes final decisions, pushes commands or deletes neurons | 2026-03-29 | DESIGNED — not yet deployed |
 | T002 | Level 1 agent escalation check | 30 minutes | Bot.Custodian (Level 2) | `Claude.AI/Bot.Custodian/` | Reads escalation file, processes entries, escalates or commands down | 2026-03-29 | DESIGNED — not yet deployed |
 | T003 | Level 1 agent escalation check | 30 minutes | Bot.Mobility (Level 2) | `Claude.AI/Bot.Mobility/` | Reads escalation file, processes entries, escalates or commands down | 2026-03-29 | DESIGNED — not yet deployed |
-| T004 | Scribe daily clean | 24 hours | Bot.Scribe (Level 2) | `Claude.AI/Bot.Scribe/scribe-daily-clean.sh` | Scans ClaudeBot memory, verifies neurons, deletes regular memories, consolidates rules | 2026-03-28 | DESIGNED — hook wired, needs restart |
+| T004 | Scribe daily clean | 24 hours | Bot.Scribe (Level 2) | `Claude.AI/Bot.Scribe/scribe-daily-clean.sh` | Scans MarcusAurelius memory, verifies neurons, deletes regular memories, consolidates rules | 2026-03-28 | DESIGNED — hook wired, needs restart |
 | T005 | GDrive token auto-refresh | On expiry (~1 hour) | velorin-gdrive-mcp | `Velorin Code/velorin-gdrive-mcp/server.js` | Refreshes OAuth access token before expiry | 2026-03-26 | ACTIVE |
 | T006 | Resend storage monitor | 6 hours | Turing Vault backend | `turingvault.replit.app` | Monitors session count, sends warning at 300K, critical at 370K | 2026-03-26 | ACTIVE |
 

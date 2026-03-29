@@ -3,7 +3,7 @@
 ## A. Governance
 
 ### A1. Bot Communication
-Alexander (Claude Desktop) delegates to ClaudeBot (Claude Code) via claude-code MCP server (`claude mcp serve`). Both bots share the Velorin Brain (GitHub) as common knowledge. ClaudeBot also has local memory.
+Alexander (Claude Desktop) delegates to MarcusAurelius (Claude Code) via claude-code MCP server (`claude mcp serve`). Both bots share the Velorin Brain (GitHub) as common knowledge. MarcusAurelius also has local memory.
 last-touched: 2026-03-28
 Pointers: [1] neurons.connectivity.mcp.A2 | [2] neurons.agents.roster.A2 | [2] neurons.agents.roster.A1 | [3] neurons.agents.roster.A3
 

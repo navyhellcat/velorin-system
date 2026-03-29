@@ -1,6 +1,6 @@
 # Velorin Brain — Neural File Graph Schema
 
-**What this is:** The Velorin Brain is a neural file graph — a memory architecture shared across all Velorin bots (ClaudeBot, Alexander, and any future agents). Knowledge is stored as tiny atomic files (neurons) organized in regions (folders), connected by rated pointers (synapses).
+**What this is:** The Velorin Brain is a neural file graph — a memory architecture shared across all Velorin bots (MarcusAurelius, Alexander, and any future agents). Knowledge is stored as tiny atomic files (neurons) organized in regions (folders), connected by rated pointers (synapses).
 
 ---
 
@@ -80,7 +80,7 @@ velorin-system/
 
 ## Where Each Bot Stores Local Pointers
 
-- **ClaudeBot** (Claude Code CLI): `~/.claude/projects/-Users-lbhunt/memory/` — local MEMORY.md points into Velorin_Brain on GitHub
+- **MarcusAurelius** (Claude Code CLI): `~/.claude/projects/-Users-lbhunt/memory/` — local MEMORY.md points into Velorin_Brain on GitHub
 - **Alexander** (Claude Desktop): Reads Velorin_Brain directly via GitHub MCP or bash MCP
 
 ## Rules

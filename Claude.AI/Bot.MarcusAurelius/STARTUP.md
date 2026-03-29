@@ -1,4 +1,4 @@
-# BOT.ClaudeBot — Startup Process
+# BOT.MarcusAurelius — Startup Process
 
 **Run this checklist every time Claude Code starts a new conversation.**
 This is the living startup sequence. We add to it as the system grows.
@@ -45,7 +45,7 @@ Check `/Users/lbhunt/.claude/projects/-Users-lbhunt/memory/MEMORY.md` for prior 
 **If any entry is marked with >>> READ FIRST <<<, open that file immediately before anything else. It contains critical in-progress work that must resume.**
 
 ## 5.1 Read Rules File
-Read `/Users/lbhunt/.claude/projects/-Users-lbhunt/rules/ClaudeBot.Rules.md` — consolidated behavioral rules, permissions, and instructions. This is authoritative. GitHub mirror: `BOT.ClaudeBot/rules/ClaudeBot.Rules.md`.
+Read `/Users/lbhunt/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md` — consolidated behavioral rules, permissions, and instructions. This is authoritative. GitHub mirror: `BOT.MarcusAurelius/rules/MarcusAurelius.Rules.md`.
 
 ## 6. Verify Git Auth
 ```bash
@@ -77,12 +77,12 @@ git pull --rebase origin main
 - Settings: `~/.claude/settings.local.json` — permissions, hooks config
 - Architecture repo: `/Users/lbhunt/Desktop/velorin-system/` (GitHub: navyhellcat/velorin-system)
 - MCP code repo: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/` (GitHub: navyhellcat/velorin-gdrive-mcp)
-- This file: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.ClaudeBot/STARTUP.md`
+- This file: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/STARTUP.md`
 
 ## GitHub Repos
 | Repo | Local Path | Purpose |
 |------|-----------|---------|
-| navyhellcat/velorin-system | `/Users/lbhunt/Desktop/velorin-system/` | Architecture, docs, BOT.ClaudeBot, sessions, tools |
+| navyhellcat/velorin-system | `/Users/lbhunt/Desktop/velorin-system/` | Architecture, docs, BOT.MarcusAurelius, sessions, tools |
 | navyhellcat/velorin-gdrive-mcp | `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/` | Google Drive MCP server (v1.3.3) |
 
 ## MCP Server Config (Claude Desktop)
@@ -125,7 +125,7 @@ The Velorin Brain is a neural file graph stored in GitHub (`velorin-system/Claud
 3. On a question/task: find the region → read entry neuron → follow level 1 pointers → fan out with parallel agents ("lighting up" the region)
 4. **Protection layer** runs after each cycle: Resolved? Looping? Need to expand? → decides whether to stop, follow level 2 pointers, or escalate to user
 
-**ClaudeBot's local memory** (`~/.claude/projects/-Users-lbhunt/memory/`) stores only pointers into the brain. The actual knowledge lives in GitHub.
+**MarcusAurelius's local memory** (`~/.claude/projects/-Users-lbhunt/memory/`) stores only pointers into the brain. The actual knowledge lives in GitHub.
 
 **Rules:**
 - Neurons are TINY — one idea per file, split if over 15 lines
@@ -139,9 +139,9 @@ The Velorin Brain is a neural file graph stored in GitHub (`velorin-system/Claud
 - Ran caffeinate, verified all 4 MCP servers running
 - GDrive tokens valid and auto-refreshing
 - Claude Code v2.1.84 — autoupdate failed (needs `sudo`)
-- Created this BOT.ClaudeBot folder and STARTUP.md
+- Created this BOT.MarcusAurelius folder and STARTUP.md
 - Set git credential helper to osxkeychain
-- Pulled remote changes (rebase), pushed BOT.ClaudeBot to GitHub
+- Pulled remote changes (rebase), pushed BOT.MarcusAurelius to GitHub
 - Created memory system at `~/.claude/projects/-Users-lbhunt/memory/`
 
 ---

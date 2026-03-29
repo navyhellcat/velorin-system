@@ -24,8 +24,8 @@ Theresa executes ALL agent creation and termination. Other bots REQUEST through 
 
 | ID | Requester Name | Level | Location | Can Request | Constraints | Authorized Date |
 |----|---------------|-------|----------|-------------|-------------|-----------------|
-| S001 | Christian Taylor (Chairman) | Level 5 | — | Any agent at any level | None — ClaudeBot executes L4 builds | 2026-03-29 |
-| S002 | ClaudeBot | Level 4 | `Claude.AI/Bot.ClaudeBot/` | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
+| S001 | Christian Taylor (Chairman) | Level 5 | — | Any agent at any level | None — MarcusAurelius executes L4 builds | 2026-03-29 |
+| S002 | MarcusAurelius | Level 4 | `Claude.AI/Bot.MarcusAurelius/` | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
 | S003 | Alexander | Level 4 | `Claude.AI/Bot.Alexander/` | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
 | S004 | Jiang | Level 4 | `Claude.AI/Bot.Jiang/` | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
 | S005 | Bot.Editor | Level 3 | `Claude.AI/Bot.Editor/` | Level 1 Sub-Agents via Theresa | Brain fortress rules apply | 2026-03-29 |

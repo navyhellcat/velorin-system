@@ -3,7 +3,7 @@
 ## A. Level General Rules
 
 ### A1. Level 4 General Rules
-All Level 4 agents (ClaudeBot, Alexander, Jiang) read `Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md` FIRST on every boot. Contains: Chairman identity, communication style, confirmation rules, verbatim save protocol, memory protocol, spawning authority, technology agnosticism. Only Chairman (Level 5) can create Level 4 agents.
+All Level 4 agents (MarcusAurelius, Alexander, Jiang) read `Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md` FIRST on every boot. Contains: Chairman identity, communication style, confirmation rules, verbatim save protocol, memory protocol, spawning authority, technology agnosticism. Only Chairman (Level 5) can create Level 4 agents.
 last-touched: 2026-03-29
 Pointers: [1] neurons.agents.roster.A1 | [1] neurons.agents.roster.A2 | [2] neurons.agents.protocols.A4
 

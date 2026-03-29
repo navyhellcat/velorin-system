@@ -1,15 +1,15 @@
 #!/bin/bash
 # Bot.Scribe.Neuron — Daily Clean Trigger
 # Run manually via "scribe clean" or on a cron schedule.
-# Scans ClaudeBot's memory, verifies neurons exist, deletes regular memories,
+# Scans MarcusAurelius's memory, verifies neurons exist, deletes regular memories,
 # consolidates the rules file.
 
 MEMORY_DIR="/Users/lbhunt/.claude/projects/-Users-lbhunt/memory"
 SCRIBE_SPEC="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/SCRIBE.md"
 BRAIN_SCHEMA="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md"
 REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_index.md"
-RULES_GITHUB="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.ClaudeBot/rules/ClaudeBot.Rules.md"
-RULES_LOCAL="/Users/lbhunt/.claude/projects/-Users-lbhunt/rules/ClaudeBot.Rules.md"
+RULES_GITHUB="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md"
+RULES_LOCAL="/Users/lbhunt/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md"
 LOG_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/error_log.md"
 
 echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ') | DAILY CLEAN START" >> "$LOG_FILE"
@@ -38,7 +38,7 @@ STEP 3 — Skip c-memories
 For each file with class: c-memory: do NOTHING. Do not delete. Do not modify. Skip entirely.
 
 STEP 4 — Skip files without class label
-If a memory file has no class label: log a warning to $LOG_FILE. Do NOT delete it. Flag it for ClaudeBot to fix.
+If a memory file has no class label: log a warning to $LOG_FILE. Do NOT delete it. Flag it for MarcusAurelius to fix.
 
 STEP 5 — Consolidate rules file
 Read $RULES_GITHUB. Check for:

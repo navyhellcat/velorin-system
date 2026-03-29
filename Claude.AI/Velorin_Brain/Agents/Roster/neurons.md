@@ -7,8 +7,8 @@ Claude Desktop app bot. GUI-based. Manages MCP servers (start/stop with app). Ac
 last-touched: 2026-03-28
 Pointers: [1] neurons.agents.protocols.A4 | [1] A2 | [1] neurons.agents.protocols.A1 | [2] neurons.connectivity.mcp.A6 | [2] neurons.agents.protocols.A2 | [2] neurons.connectivity.mcp.A4
 
-### A2. ClaudeBot
-Claude Code CLI bot. Runs in terminal. Master instructions: `/Users/lbhunt/CLAUDE.md`. Local memory: `~/.claude/projects/-Users-lbhunt/memory/MEMORY.md`. Startup doc: `Claude.AI/Bot.ClaudeBot/STARTUP.md`. Permissions: `Bash(*)` wildcard. MCP: velorin-gdrive, velorin-gatekeeper, github.
+### A2. MarcusAurelius
+Claude Code CLI bot. Runs in terminal. Master instructions: `/Users/lbhunt/CLAUDE.md`. Local memory: `~/.claude/projects/-Users-lbhunt/memory/MEMORY.md`. Startup doc: `Claude.AI/Bot.MarcusAurelius/STARTUP.md`. Permissions: `Bash(*)` wildcard. MCP: velorin-gdrive, velorin-gatekeeper, github.
 last-touched: 2026-03-28
 Pointers: [1] A4 | [1] neurons.agents.protocols.A4 | [1] A1 | [1] neurons.agents.protocols.A1 | [2] neurons.agents.protocols.A3 | [2] neurons.agents.protocols.A2 | [2] neurons.operations.startup.A5
 

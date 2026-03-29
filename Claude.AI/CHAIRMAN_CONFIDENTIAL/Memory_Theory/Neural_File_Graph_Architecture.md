@@ -1,6 +1,6 @@
 # Velorin Brain — Neural File Graph Architecture
 
-**Author:** Christian Taylor (Chairman) + ClaudeBot
+**Author:** Christian Taylor (Chairman) + MarcusAurelius
 **Date:** 2026-03-28
 **Status:** v1 — Active, evolving
 
@@ -31,7 +31,7 @@ Current regions:
 - **Startup** — Boot process, recovery, session initialization
 - **Architecture** — Paths, machines, folder structure
 - **Tools** — CLI tools, package managers, installed software
-- **Bots** — ClaudeBot, Alexander, communication, protocols
+- **Bots** — MarcusAurelius, Alexander, communication, protocols
 
 Each region has an `_index.md` — the entry point that lists all neurons in the region.
 
@@ -127,7 +127,7 @@ Before creating ANY new neuron or modifying any pointer:
 - Update region `_index.md` to include the new neuron.
 
 ### Step 4: Local Pointer
-- Update ClaudeBot's local `MEMORY.md` to reference the brain location
+- Update MarcusAurelius's local `MEMORY.md` to reference the brain location
 - Local memory = pointers only. Knowledge lives in the brain.
 
 ---
@@ -151,13 +151,13 @@ The brain doesn't store these docs. Instead, as a bot reads a large document, ne
 
 ## Local Memory vs Brain
 
-| | ClaudeBot Local Memory | Velorin Brain (GitHub) |
+| | MarcusAurelius Local Memory | Velorin Brain (GitHub) |
 |---|---|---|
 | Location | `~/.claude/projects/-Users-lbhunt/memory/` | `velorin-system/Velorin_Brain/` |
 | Purpose | Fast pointers, session context | Deep knowledge, cross-linked |
 | Size | Index file + small pointer files | Regions → Layers → Neurons |
 | Persists | On this machine only | GitHub — survives crashes |
-| Shared | ClaudeBot only | All bots |
+| Shared | MarcusAurelius only | All bots |
 
 ---
 

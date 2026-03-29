@@ -1,6 +1,6 @@
 #!/bin/bash
 # Bot.Scribe.Neuron — Real-time trigger
-# Fires as a PostToolUse hook when ClaudeBot writes to the memory directory.
+# Fires as a PostToolUse hook when MarcusAurelius writes to the memory directory.
 # Spawns a Claude Code subprocess to execute the Scribe's neuron-writing logic.
 #
 # Hook config (add to ~/.claude/settings.local.json):
@@ -18,7 +18,7 @@ MEMORY_DIR="/Users/lbhunt/.claude/projects/-Users-lbhunt/memory"
 SCRIBE_SPEC="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/SCRIBE.md"
 BRAIN_SCHEMA="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md"
 REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_index.md"
-RULES_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.ClaudeBot/rules/ClaudeBot.Rules.md"
+RULES_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md"
 LOG_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/error_log.md"
 
 # Read stdin for the tool use context
@@ -66,7 +66,7 @@ PROTOCOL:
 4. Read the region's _index.md, chase to candidate neurons
 5. If a neuron already covers this: update it, add pointers, shift ratings
 6. If no neuron exists: create one (max 15 lines, max 7 rated pointers), update _index.md, wire pointers from/to neighbors
-7. If the memory contains a rule/instruction/permission: append it to $RULES_FILE in correct sorted position, then copy to /Users/lbhunt/.claude/projects/-Users-lbhunt/rules/ClaudeBot.Rules.md
+7. If the memory contains a rule/instruction/permission: append it to $RULES_FILE in correct sorted position, then copy to /Users/lbhunt/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md
 8. Commit changes to git in /Users/lbhunt/Desktop/velorin-system/
 
 If you encounter an error, append it to $LOG_FILE with timestamp and continue.

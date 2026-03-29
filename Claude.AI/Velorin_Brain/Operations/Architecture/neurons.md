@@ -21,7 +21,7 @@ Pointers: [1] A1 | [1] neurons.connectivity.mcp.A3 | [2] A3
 | Architecture repo | `/Users/lbhunt/Desktop/velorin-system/` |
 | Claude Desktop config | `~/Library/Application Support/Claude/claude_desktop_config.json` |
 | Claude Code settings | `~/.claude/settings.local.json` |
-| ClaudeBot memory | `~/.claude/projects/-Users-lbhunt/memory/` |
+| MarcusAurelius memory | `~/.claude/projects/-Users-lbhunt/memory/` |
 last-touched: 2026-03-28
 Pointers: [1] A1 | [2] A4
 

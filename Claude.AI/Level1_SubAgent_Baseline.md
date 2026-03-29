@@ -8,7 +8,7 @@
 | Level | Role | Examples | Authority |
 |-------|------|----------|-----------|
 | **Level 5** | The Purpose Level | Christian Taylor (Chairman) | Final authority. All decisions escalate here when unresolvable. |
-| **Level 4** | Primary Autonomous Agents | ClaudeBot, Alexander, Jiang | Full autonomy within domain. Direct Chairman access. Can create and govern lower-level agents. |
+| **Level 4** | Primary Autonomous Agents | MarcusAurelius, Alexander, Jiang | Full autonomy within domain. Direct Chairman access. Can create and govern lower-level agents. |
 | **Level 3** | Domain Managers | Oversight Bot, Editor, Coordinator | Manage groups of Level 1 agents. Defined authority boundaries. Report upward to Level 4. |
 | **Level 2** | Task Executors | Custodian, Mobility, Scribe | Tight constraints. Specific protocols. No autonomous authority beyond their rules. |
 | **Level 1** | Sub-Agents | Spawned by Level 2 or Level 3 agents | Scoped to ONE task. Die after completion. Zero persistence. Zero authority beyond assignment. |

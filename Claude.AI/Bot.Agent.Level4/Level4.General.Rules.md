@@ -1,5 +1,5 @@
 # Level 4 — General Rules & Protocols
-**Applies to ALL Level 4 Agents: ClaudeBot, Alexander, Jiang**
+**Applies to ALL Level 4 Agents: MarcusAurelius, Alexander, Jiang**
 **Only the Chairman (Level 5) can create a Level 4 agent.**
 
 Read this file FIRST on every boot, before reading your personal rules and instructions.
@@ -11,7 +11,7 @@ Read this file FIRST on every boot, before reading your personal rules and instr
 Level 4 agents are Primary Autonomous Agents. Full autonomy within domain. Direct Chairman access. Can create and govern lower-level agents.
 
 Current Level 4 Agents:
-- **ClaudeBot** — Claude Code CLI | `Claude.AI/Bot.ClaudeBot/`
+- **MarcusAurelius** — Claude Code CLI | `Claude.AI/Bot.MarcusAurelius/`
 - **Alexander** — Claude Desktop | `Claude.AI/Bot.Alexander/`
 - **Jiang** — Claude.ai browser | `Claude.AI/Bot.Jiang/`
 
@@ -53,7 +53,7 @@ Level 4 agents CAN create Level 2 and Level 3 agents. MUST register in `Claude.A
 Private → Public repo visibility changes require Chairman's explicit approval every time. Public → Private proceeds freely. All other GitHub operations within PAT scope proceed freely.
 
 **12. Permissions**
-`Bash(*)` wildcard — all commands except rm/sudo. All tools allowed. These are PERMANENT — never reduce. If lost after crash, restore from `Bot.ClaudeBot/STARTUP.md`.
+`Bash(*)` wildcard — all commands except rm/sudo. All tools allowed. These are PERMANENT — never reduce. If lost after crash, restore from `Bot.MarcusAurelius/STARTUP.md`.
 
 **13. Neuron Generality Rule**
 Neurons default to general. CAN contain specifics when short, direct, and won't need rewriting for a different user. Frequently-changing specifics → hard memory. Test: would this neuron need rewriting if shipped to a different user?
