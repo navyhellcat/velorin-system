@@ -43,10 +43,9 @@ last-touched: 2026-03-28
 Pointers: [1] neurons.connectivity.mcp.A2 | [2] neurons.operations.tools.A4
 
 ### A8. Current Session State
-Last completed: Session 013 (2026-03-29). Phase 1 done (all 011-012 carryover resolved).
-Next session priority: Phase 2 — spawn Alexander as teammate, brief on 011-013 changes.
-Then Phase 3: review Jiang/Trey tools research (28+ files), website beta build.
-Lingering: brain permission tiers + token consolidation unimplemented; dashboard needs auth token for private repo tree.
+Last completed: Session 013 (2026-03-29). Launch next: `claude --teammate-mode tmux`.
+Priority queue: 1) Spawn Alexander in tmux pane 2) Review Jiang/Trey tools research (28+ files) — discuss with Chairman 3) File cleanup & organization (Chairman's #2) 4) Website beta build 5) Window Gravity research (Jiang automation due 2026-04-02).
+Built in 013: Theresa hook wired, dashboard verified, GDrive duplicate trashed, Terry stripped to single job, Trey research extracted (26 .md), Agent Teams hard memory, tmux installed, Jiang pipeline + .gitkeep rules + Future Builds folder.
 Full handoff: `Claude.AI/sessions/Session_013_Handoff_Mar29.md`
 last-touched: 2026-03-29
-Pointers: [1] A6 | [1] neurons.agents.roster.A1 | [2] neurons.operations.architecture.A1 | [3] neurons.connectivity.auth.A4
+Pointers: [1] A6 | [1] neurons.agents.roster.A1 | [1] neurons.operations.tools.A6 | [2] neurons.operations.architecture.A1 | [3] neurons.connectivity.auth.A4
