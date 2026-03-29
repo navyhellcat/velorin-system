@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Layer3/Layer3.General.Rules.md before this file. <<<
+
 # Oversight Bot — Specification
 
 **Role:** Receives daily reports, ONLY bot that can delete neurons

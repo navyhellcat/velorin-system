@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Layer2/Layer2.General.Rules.md before this file. <<<
+
 # Bot.Mobility.Neuron — Specification
 
 **Role:** Always-on neuron position and activity scanner

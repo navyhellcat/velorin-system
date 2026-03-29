@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Layer2/Layer2.General.Rules.md before this file. <<<
+
 # Bot.Scribe.Neuron — Specification
 
 **Role:** Brain memory writer and daily memory cleaner

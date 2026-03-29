@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Layer3/Layer3.General.Rules.md before this file. <<<
+
 # Neuron Editor Agent — Specification
 
 **Role:** Receives errors from Custodian and Mobility, edits neurons

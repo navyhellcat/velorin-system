@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Layer2/Layer2.General.Rules.md before this file. <<<
+
 # Bot.Custodian.Neuron — Specification
 
 **Role:** Always-on neuron layer scanner — rule compliance checker

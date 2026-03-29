@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Layer3/Layer3.General.Rules.md before this file. <<<
+
 # Coordinator Agent — Specification
 
 **Role:** Coordinates corrections and movements with Editor
