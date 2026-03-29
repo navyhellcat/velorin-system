@@ -37,3 +37,8 @@ Account: **navyhellcat**. Two repos:
 Both on `main` branch.
 last-touched: 2026-03-28
 Pointers: [1] neurons.connectivity.auth.A1 | [1] neurons.connectivity.auth.A2 | [2] A3
+
+### A6. Velorin Brain Structure
+Neural file graph at `Claude.AI/Velorin_Brain/` in velorin-system repo. Region → Area → neurons.md. Entry: `_index.md`. Rules: `_BRAIN_SCHEMA.md`. Regions: Operations, Connectivity, Agents, Principles. Neurons indexed A-Z with numbered entries and `last-touched` timestamps. Local memory = pointers only; deep knowledge lives here.
+last-touched: 2026-03-28
+Pointers: [1] A3 | [1] A5 | [2] neurons.operations.startup.A1 | [3] neurons.agents.roster.A1
