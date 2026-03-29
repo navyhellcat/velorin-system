@@ -109,8 +109,95 @@ B6. Completion Criteria: Pointer target matches Custodian's instruction. Timesta
 
 ---
 
+## Section C — Validation & Escalation Protocol (UNCHANGEABLE)
+
+This protocol governs how sub-agent work is validated before being applied, and how uncertain decisions escalate upward. All communication between levels happens through GitHub doc files — not direct agent-to-agent calls.
+
+### C1. Confidence Threshold
+
+After completing a task, the sub-agent runs a rule check against the brain schema and its position-specific rules. It assigns a confidence score:
+
+- **≥75% clear:** Sub-agent applies the change directly. Writes result + action log to its own escalation file (timestamped).
+- **<75% clear:** Sub-agent does NOT apply the change. Writes the proposed change + reasoning + confidence score to its spawning Level 2 agent's escalation file (timestamped). Terminates.
+
+### C2. Escalation File System
+
+Every Level 1 Sub-Agent, Level 2 Agent, and the Neuron Boss (Level 3) has a dedicated GitHub doc file for receiving escalation notes and commands:
+
+| Level | File Location | Check Cadence |
+|-------|-------------|---------------|
+| Level 1 Sub-Agent | Writes to its own file, then to Level 2's file if <75% | On trigger only (no schedule — runs and dies) |
+| Level 2 Agent (Custodian, Mobility, etc.) | `Claude.AI/Bot.[Name]/escalation.md` | Every **30 minutes** |
+| Neuron Boss (Level 3 — Oversight) | `Claude.AI/Bot.Oversight/escalation.md` | Every **1 hour** |
+
+### C3. Escalation Flow
+
+```
+Level 1 Sub-Agent
+  → runs task
+  → rule check: ≥75%? apply change, log to own file
+  → rule check: <75%? write proposed change to Level 2 file, terminate
+
+Level 2 Agent (every 30 min)
+  → reads its escalation file
+  → for each entry: applies logic based on context
+    → if clear: pushes change back down as command (writes to sub-agent command queue)
+    → if uncertain: writes to Neuron Boss escalation file
+  → after processing: verifies each note landed on next file, THEN deletes from own file
+
+Neuron Boss (every 1 hour)
+  → reads its escalation file (all entries timestamped)
+  → determines final decisions on still-uncertain items
+  → resolved: pushes commands back down to Level 2 files
+  → requires neuron deletion: executes (ONLY entity with delete authority)
+  → after processing: clears its own file
+```
+
+### C4. Note Lifecycle — Deletion Protocol
+
+**CARDINAL:** A note can ONLY be deleted from a file after verification that it exists on the next escalation file in the chain.
+
+- Level 1 Sub-Agent writes to Level 2 file → sub-agent terminates (its own file dies with it)
+- Level 2 Agent escalates to Neuron Boss file → Level 2 verifies the note is on the Boss file → THEN deletes from its own file. Not before.
+- Neuron Boss resolves and pushes commands down → Boss verifies commands landed on Level 2 files → THEN clears from its own file.
+
+**Who can delete what:**
+- Level 1 Sub-Agents: can delete their own notes in their own escalation files (but must verify note is on next file first)
+- Level 2 Agents: can delete their own notes in their own escalation files (same verification rule)
+- Neuron Boss: can delete notes from its own file + can delete neurons (ONLY entity with neuron deletion authority)
+- NO agent can delete notes from another agent's escalation file
+
+### C5. Command Flow (Downward)
+
+When a higher-level agent makes a decision, it pushes the decision down as a **command** — not a suggestion. Commands are written to the receiving agent's escalation file with:
+
+```
+TIMESTAMP | COMMAND | FROM: [agent] | ACTION: [exact instruction] | TARGET: [file/neuron] | PRIORITY: [immediate/next-cycle]
+```
+
+The receiving agent executes commands on its next cycle (30 min for Level 2) or spawns a sub-agent to execute immediately if marked `PRIORITY: immediate`.
+
+### C6. Escalation File Format
+
+Every entry in an escalation file follows this format:
+
+```
+---
+TIMESTAMP: YYYY-MM-DDTHH:MM:SSZ
+FROM: [agent name and level]
+TYPE: ESCALATION | COMMAND | RESULT
+CONFIDENCE: [percentage, if escalation]
+TARGET: [file path / neuron ID]
+PROPOSED_ACTION: [what should happen]
+REASONING: [why this was escalated or decided]
+STATUS: PENDING | EXECUTED | ESCALATED
+---
+```
+
+---
+
 *Level 1 Sub-Agent Baseline Document | Velorin System | Created March 28, 2026 | Session 011*
-*This document is structural. General rules (Section A) require Level 5 approval to modify.*
+*This document is structural. General rules (Section A) and escalation protocol (Section C) require Level 5 approval to modify.*
 
 
 ---
