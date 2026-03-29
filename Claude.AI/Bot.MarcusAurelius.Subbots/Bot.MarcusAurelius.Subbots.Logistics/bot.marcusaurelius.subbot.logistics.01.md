@@ -11,7 +11,7 @@
 - **Owner:** MarcusAurelius
 - **Category:** Logistics
 - **Scope:** Shipping/Receiving monitoring + GitHub ↔ Local bidirectional sync
-- **Permissions:** Read on all `Claude.AI/` paths. Git pull/push on `velorin-system` repo.
+- **Permissions:** Read on all `Claude.AI/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/`) paths. Git pull/push on `velorin-system` repo.
 - **Cannot:** Create agents, write to brain, modify file contents, access anything outside `velorin-system` repo
 - **Communication:** Alerts MarcusAurelius only. No direct Chairman access. No cross-agent communication.
 - **Timers:** 15 minutes (Shipping/Receiving check), 60 minutes (full bidirectional sync)
@@ -21,7 +21,7 @@
 
 ## Section C — Subroutine (modifiable by MarcusAurelius)
 
-**Task:** Every 15 minutes, check `Claude.AI/Shipping/` and `Claude.AI/Receiving/` for any files other than `.gitkeep`. If found, alert MarcusAurelius with the folder name and file list.
+**Task:** Every 15 minutes, check `Claude.AI/Shipping/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Shipping/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Shipping/`) and `Claude.AI/Receiving/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Receiving/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Receiving/`) for any files other than `.gitkeep`. If found, alert MarcusAurelius with the folder name and file list.
 
 **Alert format:**
 ```

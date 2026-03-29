@@ -51,7 +51,7 @@ A Level 1 Sub-Agent cannot create other sub-agents. Only Level 2 and Level 3 age
 A Level 1 Sub-Agent cannot escalate directly to Level 4 or Level 5. If it encounters a problem it cannot resolve, it returns a failure result to its spawning agent. The spawning agent handles escalation through the proper chain.
 
 **A8. No Brain Schema Modification**
-A Level 1 Sub-Agent cannot modify `_BRAIN_SCHEMA.md`, any `_index.md` file, or any structural element of the brain. It can only modify content within `neurons.md` files, and only within the specific entries its task scope defines.
+A Level 1 Sub-Agent cannot modify `_BRAIN_SCHEMA.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md`), any `_index.md` file, or any structural element of the brain. It can only modify content within `neurons.md` files, and only within the specific entries its task scope defines.
 
 **A9. Logging Mandatory**
 Every action a Level 1 Sub-Agent takes must be logged: timestamp, file touched, action taken, result. The log is returned to the spawning agent as part of the result. The sub-agent does not write logs to disk — the spawning agent handles log storage.
@@ -75,7 +75,7 @@ All sub-agents follow: `bot.[parent].subbot.[category].[number]`
 1. Parent bot checks their folder for `Bot.[Parent].Subbots/` — creates if missing, verifies in GitHub
 2. Inside that, checks for `Bot.[Parent].Subbots.[Category]/` — creates if missing, or creates new if existing Section B doesn't match need
 3. Parent bot writes creation request to `Bot.Theresa/escalation.md` with full Section B specification
-4. Theresa validates requester against GLOBAL_SPAWNER_REGISTRY, creates the bot file
+4. Theresa validates requester against GLOBAL_SPAWNER_REGISTRY (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`), creates the bot file
 5. Parent bot fills in Section C after creation
 
 ---
@@ -238,6 +238,6 @@ STATUS: PENDING | EXECUTED | ESCALATED
 
 ## CARDINAL — Global Registries (Layer 0)
 
-**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
-**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`). Agent cannot activate before registration.
 Failure to register is a company-wide protocol violation. No exceptions.

@@ -14,7 +14,7 @@ Any agent requesting creation must have Theresa update this file BEFORE the new 
 
 | Role | Bot | Level | Location |
 |------|-----|-------|----------|
-| **Sole Agent Creator** | Bot.Theresa | Level 3 | `Claude.AI/Bot.Theresa/` |
+| **Sole Agent Creator** | Bot.Theresa | Level 3 | `Claude.AI/Bot.Theresa/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Theresa/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Theresa/`) |
 
 Theresa executes ALL agent creation and termination. Other bots REQUEST through her escalation file. They do not build directly.
 
@@ -25,12 +25,12 @@ Theresa executes ALL agent creation and termination. Other bots REQUEST through 
 | ID | Requester Name | Level | Location | Can Request | Constraints | Authorized Date |
 |----|---------------|-------|----------|-------------|-------------|-----------------|
 | S001 | Christian Taylor (Chairman) | Level 5 | — | Any agent at any level | None — MarcusAurelius executes L4 builds | 2026-03-29 |
-| S002 | MarcusAurelius | Level 4 | `Claude.AI/Bot.MarcusAurelius/` | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
-| S003 | Alexander | Level 4 | `Claude.AI/Bot.Alexander/` | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
-| S004 | Jiang | Level 4 | `Claude.AI/Bot.Jiang/` | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
-| S005 | Bot.Editor | Level 3 | `Claude.AI/Bot.Editor/` | Level 1 Sub-Agents via Theresa | Brain fortress rules apply | 2026-03-29 |
-| S006 | Bot.Coordinator | Level 3 | `Claude.AI/Bot.Coordinator/` | Level 1 Sub-Agents via Theresa | Brain fortress rules apply | 2026-03-29 |
-| S007 | Bot.Oversight | Level 3 | `Claude.AI/Bot.Oversight/` | Level 1 Sub-Agents via Theresa | Brain fortress rules apply | 2026-03-29 |
+| S002 | MarcusAurelius | Level 4 | `Claude.AI/Bot.MarcusAurelius/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/`) | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
+| S003 | Alexander | Level 4 | `Claude.AI/Bot.Alexander/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Alexander/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Alexander/`) | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
+| S004 | Jiang | Level 4 | `Claude.AI/Bot.Jiang/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/`) | Level 3 and below via Theresa | Must create subfolder structure first | 2026-03-29 |
+| S005 | Bot.Editor | Level 3 | `Claude.AI/Bot.Editor/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Editor/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Editor/`) | Level 1 Sub-Agents via Theresa | Brain fortress rules apply | 2026-03-29 |
+| S006 | Bot.Coordinator | Level 3 | `Claude.AI/Bot.Coordinator/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Coordinator/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Coordinator/`) | Level 1 Sub-Agents via Theresa | Brain fortress rules apply | 2026-03-29 |
+| S007 | Bot.Oversight | Level 3 | `Claude.AI/Bot.Oversight/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Oversight/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Oversight/`) | Level 1 Sub-Agents via Theresa | Brain fortress rules apply | 2026-03-29 |
 
 ## HARD REJECT — These CANNOT request agent creation:
 - Any bot with `.subbot` in the name
@@ -67,7 +67,7 @@ These agents exist in the system but CANNOT create other agents under any circum
 1. **Before spawning ANY agent:** Add entry to Spawned Agent Log in this file. Commit. Push. Agent cannot activate before this file is updated.
 2. **Only agents listed in Authorized Spawners can create agents.** Any unlisted agent attempting to spawn is a protocol violation.
 3. **When a spawned agent terminates:** Update its Status to TERMINATED with date.
-4. **Every agent's instruction document must reference this file.** If an agent can spawn, its instructions must state: "Register all spawned agents in GLOBAL_SPAWNER_REGISTRY.md before activation."
+4. **Every agent's instruction document must reference this file.** If an agent can spawn, its instructions must state: "Register all spawned agents in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`) before activation."
 5. **Audit:** Any agent encountering a running agent not in this registry must halt it and report to Level 4.
 
 ---

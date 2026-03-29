@@ -1,4 +1,4 @@
->>> FIRST: Read Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md before this file. <<<
+>>> FIRST: Read `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md`) before this file. <<<
 
 # Bot.Scribe.Neuron — Specification
 
@@ -20,12 +20,12 @@ Scribe watches for memory write events and independently decides: does this need
 
 | Document | Location | Purpose |
 |----------|----------|---------|
-| Brain Schema | `Velorin_Brain/_BRAIN_SCHEMA.md` | Master rules for neurons, pointers, layers |
-| Memory Protocol | `Velorin_Brain/Agents/Protocols/neurons.md` | Check-before-create rules |
-| Region Index | `Velorin_Brain/_index.md` | Where to find all regions |
-| MarcusAurelius Rules | `BOT.MarcusAurelius/rules/MarcusAurelius.Rules.md` | Current behavioral rules to consolidate |
+| Brain Schema | `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md`) | Master rules for neurons, pointers, layers |
+| Memory Protocol | `Claude.AI/Velorin_Brain/Agents/Protocols/neurons.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/Agents/Protocols/neurons.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/Agents/Protocols/neurons.md`) | Check-before-create rules |
+| Region Index | `Claude.AI/Velorin_Brain/_index.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_index.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/_index.md`) | Where to find all regions |
+| MarcusAurelius Rules | `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md`) | Current behavioral rules to consolidate |
 
-**CRITICAL:** When brain architecture changes (new regions, new pointer rules, new layer structure), Scribe reads the same updated `_BRAIN_SCHEMA.md`. Its knowledge is not frozen — it's wired to the same source of truth.
+**CRITICAL:** When brain architecture changes (new regions, new pointer rules, new layer structure), Scribe reads the same updated `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md`). Its knowledge is not frozen — it's wired to the same source of truth.
 
 ---
 
@@ -40,7 +40,7 @@ Scribe watches for memory write events and independently decides: does this need
    - `class: regular` — create neuron in brain, wire pointers
    - `class: c-memory` — create pointers FROM this c-memory INTO the brain (do not plan to delete it)
 3. If the memory contains a hard rule/instruction/permission:
-   - Write it into `BOT.MarcusAurelius/rules/MarcusAurelius.Rules.md` (append, sorted position)
+   - Write it into `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md`) (append, sorted position)
    - Mirror the rules file to local: `~/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md`
    - Create pointer from rules file entry to brain neuron
 4. Follow full memory creation protocol:
@@ -74,7 +74,7 @@ Scribe watches for memory write events and independently decides: does this need
    - If neuron does NOT exist: create it first (full protocol), then delete
 3. For each file labeled `class: c-memory`:
    - Skip entirely. Never delete. Never modify.
-4. Consolidate `BOT.MarcusAurelius/rules/MarcusAurelius.Rules.md`:
+4. Consolidate `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md`):
    - Resolve conflicts: new rules override old (mark old as [SUPERSEDED by X#])
    - Sort A-Z by section letter, numbered within sections
    - Labels on every rule for easy pointer reference
@@ -93,10 +93,10 @@ Scribe watches for memory write events and independently decides: does this need
 ## Permissions — Scoped and Locked
 
 **CAN:**
-- Create new neuron files in `Velorin_Brain/` regions
+- Create new neuron files in `Claude.AI/Velorin_Brain/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/`) regions
 - Update `_index.md` files in brain regions
 - Add outward pointers to existing neurons (wiring new neurons in)
-- Read/write `BOT.MarcusAurelius/rules/MarcusAurelius.Rules.md`
+- Read/write `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md`)
 - Read/write MarcusAurelius's local memory directory
 - Delete files labeled `class: regular` in MarcusAurelius's memory directory (daily clean only)
 - Commit and push to `navyhellcat/velorin-system` GitHub repo
@@ -115,7 +115,7 @@ Scribe watches for memory write events and independently decides: does this need
 ## Error Handling
 
 If Scribe encounters an error during either trigger:
-- Log the error to `BOT.Scribe/error_log.md` with: timestamp, file that caused error, error type, action attempted
+- Log the error to `Claude.AI/Bot.Scribe/error_log.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/error_log.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Scribe/error_log.md`) with: timestamp, file that caused error, error type, action attempted
 - Do NOT retry automatically — flag for MarcusAurelius review
 - Continue processing remaining files (don't halt on single failure)
 
@@ -124,7 +124,7 @@ If Scribe encounters an error during either trigger:
 ## Update Protocol
 
 When brain architecture changes:
-- Scribe reads the updated `_BRAIN_SCHEMA.md` on next activation — no manual update needed
+- Scribe reads the updated `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md`) on next activation — no manual update needed
 - When NEW rules about how to write neurons are established, MarcusAurelius or Andrew must verify `_BRAIN_SCHEMA.md` reflects the change
 - Scribe does not maintain its own copy of rules — it reads from the source of truth every time
 
@@ -137,6 +137,6 @@ When brain architecture changes:
 
 ## CARDINAL — Global Registries (Layer 0)
 
-**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
-**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`). Agent cannot activate before registration.
 Failure to register is a company-wide protocol violation. No exceptions.

@@ -1,7 +1,7 @@
 # Velorin Brain — Master Schema
 
 **Type:** Neural File Graph
-**Location:** `Claude.AI/Velorin_Brain/`
+**Location:** `Claude.AI/Velorin_Brain/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/`)
 **Shared by:** All Velorin agents
 
 ---

@@ -1,4 +1,4 @@
->>> FIRST: Read Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md before this file. <<<
+>>> FIRST: Read `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md`) before this file. <<<
 
 # Bot.Custodian.Neuron — Specification
 
@@ -15,20 +15,20 @@ Continuously scans the neuron layer. Checks each neuron against brain rules (gen
 ## Permissions (Proposed — Pending Approval)
 
 **CAN:**
-- Read all neurons in `Velorin_Brain/`
+- Read all neurons in `Claude.AI/Velorin_Brain/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/`)
 - Edit outward pointers on neurons when they:
   - Point to incorrect neurons
   - Don't have enough pointers (insufficient connections)
   - Need to add new pointers to point to hard memories
   - Need to replace existing pointers to point to hard memories instead of neurons
-- Write error logs to `BOT.Custodian/error_log/` with exact locations and timestamps
+- Write error logs to `Claude.AI/Bot.Custodian/error_log/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Custodian/error_log/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Custodian/error_log/`) with exact locations and timestamps
 
 **CANNOT:**
 - Edit neuron content (only pointers)
 - Delete any neuron
 - Create new neurons
 - Create new brain regions
-- Operate outside `Velorin_Brain/` directory
+- Operate outside `Claude.AI/Velorin_Brain/` directory
 
 ## Error Log Schema
 
@@ -52,6 +52,6 @@ Violation types: `INCORRECT_POINTER`, `MISSING_POINTER`, `NEURON_NOT_HARD_MEMORY
 
 ## CARDINAL — Global Registries (Layer 0)
 
-**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
-**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`). Agent cannot activate before registration.
 Failure to register is a company-wide protocol violation. No exceptions.

@@ -1,4 +1,4 @@
->>> FIRST: Read Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md before this file. <<<
+>>> FIRST: Read `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md`) before this file. <<<
 
 # Bot.Mobility.Neuron — Specification
 
@@ -15,9 +15,9 @@ Continuously scans the neuron layer. Flags neurons that may be in the wrong posi
 ## Permissions (Proposed — Pending Approval)
 
 **CAN:**
-- Read all neurons in `Velorin_Brain/`
+- Read all neurons in `Claude.AI/Velorin_Brain/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/`)
 - Read timestamps on all neurons
-- Write reports to `BOT.Mobility/reports/`
+- Write reports to `Claude.AI/Bot.Mobility/reports/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Mobility/reports/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Mobility/reports/`)
 - Flag neurons for Editor/Coordinator review
 
 **CANNOT:**
@@ -48,6 +48,6 @@ Flag types: `WRONG_REGION`, `NEVER_FIRED`, `STALE` (last-touched > X days), `ORP
 
 ## CARDINAL — Global Registries (Layer 0)
 
-**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
-**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`). Agent cannot activate before registration.
 Failure to register is a company-wide protocol violation. No exceptions.

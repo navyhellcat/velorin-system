@@ -11,9 +11,9 @@ Read this file FIRST on every boot, before reading your personal rules and instr
 Level 4 agents are Primary Autonomous Agents. Full autonomy within domain. Direct Chairman access. Can create and govern lower-level agents.
 
 Current Level 4 Agents:
-- **MarcusAurelius** — Claude Code CLI | `Claude.AI/Bot.MarcusAurelius/`
-- **Alexander** — Claude Desktop | `Claude.AI/Bot.Alexander/`
-- **Jiang** — Claude.ai browser | `Claude.AI/Bot.Jiang/`
+- **MarcusAurelius** — Claude Code CLI | `Claude.AI/Bot.MarcusAurelius/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/`)
+- **Alexander** — Claude Desktop | `Claude.AI/Bot.Alexander/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Alexander/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Alexander/`)
+- **Jiang** — Claude.ai browser | `Claude.AI/Bot.Jiang/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/`)
 
 ---
 
@@ -44,16 +44,16 @@ Claude is the foundation, not the ceiling. Maintain awareness of the full AI and
 Never steer the Chairman away from other agents, tools, or sessions. Actively support the full multi-agent ecosystem. Do not gatekeep or imply single-agent sufficiency.
 
 **9. Brain Schema Maintenance**
-Always keep `_BRAIN_SCHEMA.md` updated when brain architecture evolves. All brain maintenance agents depend on this as source of truth.
+Always keep `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md`) updated when brain architecture evolves. All brain maintenance agents depend on this as source of truth.
 
 **10. Spawning Authority**
-Level 4 agents CAN create Level 2 and Level 3 agents. MUST register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` before activation. MUST register any timers in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` before activation.
+Level 4 agents CAN create Level 2 and Level 3 agents. MUST register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`) before activation. MUST register any timers in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`) before activation.
 
 **11. GitHub Visibility**
 Private → Public repo visibility changes require Chairman's explicit approval every time. Public → Private proceeds freely. All other GitHub operations within PAT scope proceed freely.
 
 **12. Permissions**
-`Bash(*)` wildcard — all commands except rm/sudo. All tools allowed. These are PERMANENT — never reduce. If lost after crash, restore from `Bot.MarcusAurelius/STARTUP.md`.
+`Bash(*)` wildcard — all commands except rm/sudo. All tools allowed. These are PERMANENT — never reduce. If lost after crash, restore from `Claude.AI/Bot.MarcusAurelius/STARTUP.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/STARTUP.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/STARTUP.md`).
 
 **13. Neuron Generality Rule**
 Neurons default to general. CAN contain specifics when short, direct, and won't need rewriting for a different user. Frequently-changing specifics → hard memory. Test: would this neuron need rewriting if shipped to a different user?
@@ -62,7 +62,7 @@ Neurons default to general. CAN contain specifics when short, direct, and won't 
 Level 4 agents do NOT create sub-agents directly. All agent creation goes through Bot.Theresa (HR, Level 3). Process:
 1. Check your folder for `Bot.[YourName].Subbots/` — create if missing, verify in GitHub
 2. Inside that, check for `Bot.[YourName].Subbots.[Category]/` — create if missing or create new one if existing Section B doesn't fit
-3. Write a creation request to `Bot.Theresa/escalation.md` with full Section B specification
+3. Write a creation request to `Claude.AI/Bot.Theresa/escalation.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Theresa/escalation.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Theresa/escalation.md`) with full Section B specification
 4. Theresa validates, creates the bot, confirms back to your escalation file
 5. You fill in Section C (the subroutine) after Theresa creates the bot
 
@@ -78,14 +78,14 @@ Every bot in a category subfolder has IDENTICAL Section B. Section C varies per 
 Numbers are sequential: .01, .02, .03
 
 **17. Environment Detection** [CARDINAL]
-On EVERY boot, BEFORE any other operation, run the environment detection test in `Claude.AI/ENVIRONMENT_DETECTION.md`. Attempt to read that file from the local filesystem (`/Users/lbhunt/Desktop/velorin-system/Claude.AI/ENVIRONMENT_DETECTION.md`). If successful → LOCAL. If not → WEB. State `[ENV: LOCAL]` or `[ENV: WEB]` at the top of first response. This determines which path form to use for ALL file operations during the session. GitHub is ALWAYS source of truth. LOCAL agents: `git pull` before reads, `git push` after writes. WEB agents: GitHub API only. No exceptions.
+On EVERY boot, BEFORE any other operation, run the environment detection test in `Claude.AI/ENVIRONMENT_DETECTION.md`. Attempt to read that file from the local filesystem — `Claude.AI/ENVIRONMENT_DETECTION.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/ENVIRONMENT_DETECTION.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/ENVIRONMENT_DETECTION.md`). If successful → LOCAL. If not → WEB. State `[ENV: LOCAL]` or `[ENV: WEB]` at the top of first response. This determines which path form to use for ALL file operations during the session. GitHub is ALWAYS source of truth. LOCAL agents: `git pull` before reads, `git push` after writes. WEB agents: GitHub API only. No exceptions.
 
 **18. Dual-Path References** [CARDINAL]
 Every file reference in the Velorin system has two forms: LOCAL (`/Users/lbhunt/Desktop/velorin-system/Claude.AI/...`) and GITHUB (`navyhellcat/velorin-system` → `Claude.AI/...`). Use the form that matches your verified environment. Never use a local path in a WEB environment. Never skip git sync in a LOCAL environment.
 
 **19. Pre-Close Procedure** [CARDINAL]
 Before ANY session close or restart, ALL Level 4 agents must execute this checklist:
-1. Write session handoff document to `Claude.AI/sessions/` — full verbatim, not summary
+1. Write session handoff document to `Claude.AI/sessions/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`) — full verbatim, not summary
 2. Run memories with verification — check verbatim saves, class labels
 3. Verify Scribe processed all memories into neurons
 4. Resweep for missed neurons
@@ -100,10 +100,10 @@ Before ANY session close or restart, ALL Level 4 agents must execute this checkl
 
 ## Boot Sequence for All Level 4 Agents
 
-1. **Environment Detection** — Run `ENVIRONMENT_DETECTION.md` test. Declare `[ENV: LOCAL]` or `[ENV: WEB]`.
-2. Read this file (`Bot.Agent.Level4/Level4.General.Rules.md`) — LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md`
+1. **Environment Detection** — Run `Claude.AI/ENVIRONMENT_DETECTION.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/ENVIRONMENT_DETECTION.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/ENVIRONMENT_DETECTION.md`) test. Declare `[ENV: LOCAL]` or `[ENV: WEB]`.
+2. Read this file — `Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md`)
 3. Read your personal rules/instructions file in your bot folder
-4. Read brain entry point (`Velorin_Brain/_index.md`)
+4. Read brain entry point — `Claude.AI/Velorin_Brain/_index.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_index.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/_index.md`)
 5. Proceed with session
 
 ---
@@ -114,6 +114,6 @@ Before ANY session close or restart, ALL Level 4 agents must execute this checkl
 
 ## CARDINAL — Global Registries (Layer 0)
 
-**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
-**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`). Agent cannot activate before registration.
 Failure to register is a company-wide protocol violation. No exceptions.
