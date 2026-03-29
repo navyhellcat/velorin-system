@@ -43,7 +43,7 @@ Theresa executes ALL agent creation and termination. Other bots REQUEST through 
 
 | Spawn ID | Agent Name | Level | Spawned By | Location | Purpose | Created | Status |
 |----------|-----------|-------|-----------|----------|---------|---------|--------|
-| — | — | — | — | — | — | — | No agents spawned yet |
+| SP001 | Terry (bot.marcusaurelius.subbot.logistics.01) | Level 1 | MarcusAurelius (via Chairman direct order) | `Bot.MarcusAurelius.Subbots/Bot.MarcusAurelius.Subbots.Logistics/` | Shipping/Receiving folder monitor — 15min check | 2026-03-29 | ACTIVE |
 
 ---
 

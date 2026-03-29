@@ -21,6 +21,8 @@ Any agent creating or modifying a timer must update this file BEFORE activating 
 
 ---
 
+| T007 | Terry — Shipping/Receiving check | 15 minutes | bot.marcusaurelius.subbot.logistics.01 (Level 1) | `Bot.MarcusAurelius.Subbots/Bot.MarcusAurelius.Subbots.Logistics/` | Checks Shipping/ and Receiving/ for new files, alerts MarcusAurelius | 2026-03-29 | ACTIVE |
+
 ## Retired / Inactive Timers
 
 | ID | Name | Interval | Retired Date | Reason |
