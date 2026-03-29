@@ -101,6 +101,9 @@ Dual-path references are a ROUTING TABLE, not a checklist. Read ONE path — the
 5. **Shipping/** is for outbound files — files MarcusAurelius or the Chairman places for other agents or external delivery. Same header format applies.
 6. **Both folders must always contain `.gitkeep`.** Never delete it.
 
+**20. .gitkeep Is Invisible** [CARDINAL]
+Every agent, bot, and subbot at every level MUST ignore `.gitkeep` files. They do not exist. They are never counted, listed, moved, flagged, or reported. When checking if a folder is "empty" or has "new files," `.gitkeep` is not a file — it is infrastructure. No agent may move, delete, rename, or modify a `.gitkeep` file under any circumstance.
+
 **19. Pre-Close Procedure** [CARDINAL]
 Before ANY session close or restart, ALL Level 4 agents must execute this checklist:
 1. Write session handoff document to `Claude.AI/sessions/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`) — full verbatim, not summary
