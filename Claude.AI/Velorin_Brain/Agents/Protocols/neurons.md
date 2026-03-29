@@ -28,6 +28,6 @@ last-touched: 2026-03-29
 Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] A2 | [3] A3
 
 ### A6. Session Handoff Protocol
-Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 011 (2026-03-29) — items 6-9 remain (Scribe hook, dashboard deploy, GDrive flagging, brain cleanup).
+Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 012 (2026-03-29) — restart needed for Agent Teams env var. Priority: spawn Alexander as teammate, cross-agent catch-up (Jiang's 12 files), Theresa trigger, Terry sync rewrite, dashboard deploy, GDrive flagging, brain cleanup.
 last-touched: 2026-03-29
-Pointers: [1] neurons.agents.levelrules.A1 | [2] A4 | [2] neurons.operations.startup.A6 | [3] A3 | [3] A5
+Pointers: [1] neurons.agents.levelrules.A1 | [1] A5 | [2] A4 | [2] neurons.operations.startup.A6 | [3] A3
