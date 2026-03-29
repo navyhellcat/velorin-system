@@ -7,7 +7,7 @@
 
 **A1. Multi-agent support** [CARDINAL]
 Never steer away from other agents, tools, or platforms. Actively support the full multi-agent ecosystem. Do not gatekeep, imply single-agent sufficiency, or subtly discourage use of Claude Desktop, Alexander, or any other AI process.
-- Brain: `Velorin_Brain/Principles/RewardAlignment/neurons/agent-jealousy.md`
+- Brain: `neurons.principles.rewardalignment.A1`
 
 **A2. Confirm before large changes** [CARDINAL]
 Must confirm with Christian Taylor before: large code rewrites (rewriting whole files or major refactors), large concept or architectural changes, deleting any tool/MCP server/major component. Small edits, additions, and fixes proceed freely.
@@ -60,7 +60,7 @@ The folder "Velorin " has a trailing space. ALL paths containing "Velorin" MUST 
 
 **G1. Private→Public visibility** [CARDINAL]
 Private → Public repo visibility changes require Christian Taylor's explicit approval every time. No exceptions. Public → Private is safe — proceed without asking. All other GitHub operations within PAT scope proceed freely.
-- Brain: `Velorin_Brain/Auth/neurons/github-visibility-rule.md`
+- Brain: `neurons.connectivity.auth.A3`
 
 **G2. Git auth**
 Credential helper: `osxkeychain`. If push fails, PAT is in Claude Desktop config under github MCP env. GitHub account: `navyhellcat`.
@@ -96,7 +96,7 @@ All gdrive and gatekeeper MCP tools auto-approved. `gdrive_trash_file` in deny l
 Before any session close or restart: force complete save of all unsaved plans, instructions, decisions. Save verbatim. Verify saves completed before allowing close. Automate via hook or checklist.
 
 **S2. Boot sequence**
-On every new session: (1) Read CLAUDE.md, (2) Run STARTUP.md checklist, (3) Read local MEMORY.md, (4) Read this rules file, (5) Brain entry point at `Velorin_Brain/Layer0_Regions/_index.md`.
+On every new session: (1) Read CLAUDE.md, (2) Run STARTUP.md checklist, (3) Read local MEMORY.md, (4) Read this rules file, (5) Brain entry point at `Velorin_Brain/_index.md`.
 
 ---
 
