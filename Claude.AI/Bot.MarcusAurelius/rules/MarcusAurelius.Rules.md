@@ -72,6 +72,10 @@ Private → Public repo visibility changes require Christian Taylor's explicit a
 **G2. Git auth**
 Credential helper: `osxkeychain`. If push fails, PAT is in Claude Desktop config under github MCP env. GitHub account: `navyhellcat`.
 
+**G3. GitHub is source of truth** [CARDINAL]
+GitHub is the authority for all Velorin state. The local clone is a working copy — a cache, not the source. Every operation that reads repo state MUST `git pull` first. Every write MUST `git push` immediately after. No exceptions. Reading local without pulling = reading stale data. Velorin is accessed cross-platform, cross-device, cross-agent.
+- Brain: `neurons.operations.architecture.A7`
+
 ---
 
 ## M. Memory System Architecture
