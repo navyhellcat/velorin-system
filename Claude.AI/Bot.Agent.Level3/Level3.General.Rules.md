@@ -43,9 +43,35 @@ Read and follow `Velorin_Brain/_BRAIN_SCHEMA.md`. Do not modify it — that is L
 **8. Reporting**
 Level 3 agents produce reports for Level 4. Frequency and format defined in each agent's personal rules.
 
+**9. Sub-Agent Creation — Through Theresa Only**
+Level 3 agents do NOT create sub-agents directly. All agent creation goes through Bot.Theresa (HR, Level 3). Process:
+1. Check your folder for `Bot.[YourName].Subbots/` — create if missing, verify in GitHub
+2. Inside that, check for `Bot.[YourName].Subbots.[Category]/` — create if missing or create new if existing Section B doesn't fit
+3. Write a creation request to `Bot.Theresa/escalation.md` with full Section B specification
+4. Theresa validates, creates the bot, confirms back to your escalation file
+5. You fill in Section C (the subroutine) after Theresa creates the bot
+
+**10. Section C Modification Rules**
+- You CAN modify Section C of your own subbots anytime
+- You CANNOT modify Section C of another Level 3 agent's subbots — not even Theresa after creation
+- Section B is NEVER modified — if you need different rules, request a new category subfolder
+
+**11. Brain Fortress Rules (Brain Maintenance Agents)**
+If you are a brain maintenance agent (Oversight, Editor, Coordinator):
+- You CANNOT change another brain bot's files. Ever.
+- You CANNOT change your own subbots' files — request through Theresa only.
+- Your subbots are built from EXACT templates in `Bot.Theresa/BrainAgentTemplates/`. Section B and Section C are both LOCKED after creation.
+- You have file permissions for SPECIFIC files only. That is all you can do.
+- The brain can grow bigger and run its exact routines. No self-modification. No cross-modification.
+
+**12. Naming Convention**
+All sub-agents: `bot.[parent].subbot.[category].[number]`
+Every bot in a category subfolder has IDENTICAL Section B. Section C varies per task (except brain bots where Section C is also locked).
+Numbers are sequential: .01, .02, .03
+
 ---
 
-## Boot Sequence for All Layer 3 Agents
+## Boot Sequence for All Level 3 Agents
 
 1. Read this file (`Bot.Agent.Level3/Level3.General.Rules.md`)
 2. Read your personal rules/instructions file in your bot folder

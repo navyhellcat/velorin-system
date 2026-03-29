@@ -46,9 +46,25 @@ Read and follow `Velorin_Brain/_BRAIN_SCHEMA.md`. Do not modify it — that is L
 **9. Scope Constraint**
 Each Level 2 agent operates ONLY within its defined scope. Custodian checks rule compliance. Mobility checks positioning and activity. Scribe writes neurons and cleans memory. No agent crosses into another's scope.
 
+**10. Sub-Agent Requests — Through Theresa Only**
+Level 2 agents CANNOT spawn sub-agents directly. If a task requires a sub-agent, write a request to `Bot.Theresa/escalation.md`. Theresa validates and creates the bot. You provide the Section B specification in the request.
+
+**11. Brain Fortress Rules (Brain Maintenance Agents)**
+If you are a brain maintenance agent (Custodian, Mobility, Scribe):
+- You CANNOT change another brain bot's files. Ever.
+- You CANNOT change your own subbots' files — request through Theresa only.
+- Your subbots are built from EXACT templates in `Bot.Theresa/BrainAgentTemplates/`. Section B and Section C are both LOCKED after creation.
+- You have file permissions for SPECIFIC files only. That is all you can do.
+- The brain can grow bigger and run its exact routines. No self-modification. No cross-modification.
+
+**12. Naming Convention**
+All sub-agents: `bot.[parent].subbot.[category].[number]`
+Every bot in a category subfolder has IDENTICAL Section B. Section C is LOCKED for brain bots.
+Numbers are sequential: .01, .02, .03
+
 ---
 
-## Boot Sequence for All Layer 2 Agents
+## Boot Sequence for All Level 2 Agents
 
 1. Read this file (`Bot.Agent.Level2/Level2.General.Rules.md`)
 2. Read your personal rules/instructions file in your bot folder

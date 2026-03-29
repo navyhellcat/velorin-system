@@ -61,9 +61,30 @@ Section B (position-specific rules) can ADD constraints, ADD permitted operation
 
 ---
 
-## Section B — Position-Specific Rules (WRITTEN PER POSITION)
+## Naming Convention
 
-This section is empty in the baseline document. When a Level 2 or Level 3 agent spawns a Level 1 Sub-Agent for a specific position, it writes Section B with:
+All sub-agents follow: `bot.[parent].subbot.[category].[number]`
+- Every bot in a category subfolder has IDENTICAL Section B
+- Section C varies per deployment (the specific task/subroutine)
+- If you need different Section B → different category subfolder
+- Numbers are sequential: .01, .02, .03
+- All creation goes through Bot.Theresa (HR). No bot creates sub-agents directly.
+
+## Agent Creation Process
+
+1. Parent bot checks their folder for `Bot.[Parent].Subbots/` — creates if missing, verifies in GitHub
+2. Inside that, checks for `Bot.[Parent].Subbots.[Category]/` — creates if missing, or creates new if existing Section B doesn't match need
+3. Parent bot writes creation request to `Bot.Theresa/escalation.md` with full Section B specification
+4. Theresa validates requester against GLOBAL_SPAWNER_REGISTRY, creates the bot file
+5. Parent bot fills in Section C after creation
+
+---
+
+## Section B — Position-Specific Rules (FIXED per category subfolder)
+
+Section B defines WHAT the bot IS. Its type, permissions, rules. Fixed and identical for every bot in the same category subfolder. Written by the requester in the creation request, copied exactly by Theresa. If you need different Section B, you need a different category subfolder.
+
+Section B template:
 
 **B1. Position Name**
 What this sub-agent is called and what spawning agent created it.
@@ -87,6 +108,19 @@ If the task requires choosing between options (e.g., which pointer rating to ass
 
 **B6. Completion Criteria**
 How the sub-agent knows the task is done. Must be binary — done or not done. No partial completion.
+
+---
+
+## Section C — Subroutine (CHANGEABLE by master bot)
+
+Section C defines WHAT the bot is DOING right now. The specific task, target, search query, or instructions for this particular deployment. Theresa creates this section as a placeholder: `SUB ROUTINE GOES HERE`. The master bot fills it in.
+
+**Modification rules:**
+- Master bot (named in the file) can modify Section C anytime
+- Higher-level agents can modify Section C IF the bot is: (1) not active, (2) not on a timer, (3) not on a trigger
+- Same-level agents CANNOT modify another same-level agent's subbots' Section C
+- Theresa CANNOT modify Section C after creation
+- **Brain bots: Section C is LOCKED at creation. No bot can modify it. Brain fortress rule.**
 
 ---
 

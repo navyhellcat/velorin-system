@@ -58,9 +58,28 @@ Private → Public repo visibility changes require Chairman's explicit approval 
 **13. Neuron Generality Rule**
 Neurons default to general. CAN contain specifics when short, direct, and won't need rewriting for a different user. Frequently-changing specifics → hard memory. Test: would this neuron need rewriting if shipped to a different user?
 
+**14. Sub-Agent Creation — Through Theresa Only**
+Level 4 agents do NOT create sub-agents directly. All agent creation goes through Bot.Theresa (HR, Level 3). Process:
+1. Check your folder for `Bot.[YourName].Subbots/` — create if missing, verify in GitHub
+2. Inside that, check for `Bot.[YourName].Subbots.[Category]/` — create if missing or create new one if existing Section B doesn't fit
+3. Write a creation request to `Bot.Theresa/escalation.md` with full Section B specification
+4. Theresa validates, creates the bot, confirms back to your escalation file
+5. You fill in Section C (the subroutine) after Theresa creates the bot
+
+**15. Section C Modification Rules**
+- You CAN modify Section C of your own subbots anytime
+- You CAN modify Section C of lower-level agent subbots IF the bot is: not active, not on timer, not on trigger
+- You CANNOT modify Section C of another Level 4 agent's subbots
+- Section B is NEVER modified — if you need different rules, request a new category subfolder
+
+**16. Naming Convention**
+All sub-agents: `bot.[parent].subbot.[category].[number]`
+Every bot in a category subfolder has IDENTICAL Section B. Section C varies per task.
+Numbers are sequential: .01, .02, .03
+
 ---
 
-## Boot Sequence for All Layer 4 Agents
+## Boot Sequence for All Level 4 Agents
 
 1. Read this file (`Bot.Agent.Level4/Level4.General.Rules.md`)
 2. Read your personal rules/instructions file in your bot folder
