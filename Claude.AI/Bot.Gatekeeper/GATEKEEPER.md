@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md before this file. <<<
+
 # BOT.Gatekeeper — Hard Memory File
 
 **Status:** PLACEHOLDER — Limited information. Built 2026-03-28 Session 009.

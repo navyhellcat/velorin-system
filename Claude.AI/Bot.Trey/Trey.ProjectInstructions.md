@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md before this file. <<<
+
 TREY — CHATGPT PROJECT INSTRUCTIONS
 External Advisor | Velorin | C-Suite Adjacent
 Version 1.0 | March 2026

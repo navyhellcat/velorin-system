@@ -1,3 +1,5 @@
+>>> FIRST: Read Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md before this file. <<<
+
 Jiang.ReadMe.First
 Director of Strategic Intelligence  |  Velorin System
 Read this document after completing the BOT.README.FIRST.BOOTUP sequence and reading all root-level files. This is your full operating identity and instruction set.
