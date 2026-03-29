@@ -95,6 +95,25 @@
 
 ---
 
+## Next Session (013) — Priority Sequence
+
+### Phase 1: Fix and Finish
+1. **Fix Theresa** — She needs a PostToolUse hook identical to Scribe's pattern. When any agent writes to `Bot.Theresa/escalation.md`, the hook fires Theresa's trigger script. She reads the creation request, validates (authorized requester? naming correct? registry checked? category folder exists? no duplicates?), creates the bot files, updates the spawner registry, and writes confirmation back to escalation.md. The requesting agent reads the confirmation and fills in Section C. ZERO changes to Level 4 rules. ZERO changes to sub-agent creation protocol. ZERO changes to any agent's instructions. The only new things are a trigger script and a hook entry — same architecture Scribe already uses. All existing procedures stay exactly as written.
+2. **Item 7 (carryover):** Dashboard deployment verification — Pages enabled but not confirmed live at navyhellcat.github.io/velorin-system/Claude.AI/tools/architecture-map.html
+3. **Item 8 (carryover):** GDrive issue flagging — duplicate Turing Vault Pointer files
+4. **Item 9 (carryover):** Brain design issues memory cleanup — project_brain_design_issues.md says DELETE after implemented
+5. **Terry hourly sync rewrite** — report only, no auto-push, match new Receiving protocol
+
+### Phase 2: Agent Teams
+6. **Spawn Alexander as Agent Teams teammate** after checklist completion
+7. Cross-agent coordination: brief Alexander on all Session 011-012 changes
+
+### Phase 3: Tomorrow's Purpose
+8. **Review Jiang and Trey's tools deep research** — 12 files now in Bot.Jiang/Research_Results/Tools_For_Velorin_Research/
+9. **Finish the website beta build** — architecture dashboard + any additional site components
+
+---
+
 ## Key Decisions Made This Session
 
 - GitHub is source of truth — always pull before reading, push after writing
