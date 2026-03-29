@@ -95,11 +95,31 @@ All gdrive and gatekeeper MCP tools auto-approved. `gdrive_trash_file` in deny l
 
 ## S. Session Management
 
-**S1. Pre-close procedure** [TODO — NOT YET BUILT]
-Before any session close or restart: force complete save of all unsaved plans, instructions, decisions. Save verbatim. Verify saves completed before allowing close. Automate via hook or checklist.
+**S1. Pre-close procedure** [CARDINAL]
+Before ANY session close, restart, or when the Chairman says "end of session" or equivalent, execute this checklist IN ORDER. Do not skip steps. Do not close until all steps complete.
+
+1. **Write session handoff document** — `Claude.AI/sessions/Session_[NNN]_Handoff_[MonthDD].md`. Full verbatim content: what was built, what decisions were made, what's pending, what changed, next actions. This is NOT a summary — it is a complete record.
+
+2. **Run memories with verification** — If the Chairman requested verbatim chat sections be saved, verify those saves exist and are complete. Check that every memory written during the session has the correct `class` label.
+
+3. **Verify Scribe processed memories** — Check that Bot.Scribe has picked up all memories written this session and converted them to neurons. If Scribe is not active, manually verify neurons were created for all new knowledge.
+
+4. **Resweep for missed neurons** — Review the session's work and determine if any additional neurons should have been created but weren't. Create them now.
+
+5. **Resweep instructions and rules** — Check if any general level rules (Level 4/3/2) or personal rules files need updating based on this session's decisions. Check if any bot instruction documents need changes. Make updates now.
+
+6. **Check sub-agent status** — Verify all sub-agents on timers or always-on triggers are coordinating and working properly. Check GLOBAL_TIMER_REGISTRY for active timers. Confirm cadences are being met.
+
+7. **Check brain logs** — Read escalation files for brain maintenance bots. Spot check that they are completing tasks and removing processed entries from their files. Flag any stale entries.
+
+8. **Check for running agents** — Verify if any agents or sub-agents are currently running search, writing, or thinking. If yes, wait for completion or note their status in the handoff document.
+
+9. **Commit and push** — All changes committed to GitHub before session ends.
+
+10. **Confirm to Chairman** — Report: handoff written, memories verified, neurons checked, rules updated, agents checked, logs reviewed, everything committed. Session can close.
 
 **S2. Boot sequence**
-On every new session: (1) Read CLAUDE.md, (2) Run STARTUP.md checklist, (3) Read local MEMORY.md, (4) Read this rules file, (5) Brain entry point at `Velorin_Brain/_index.md`.
+On every new session: (1) Read CLAUDE.md, (2) Read Level 4 General Rules, (3) Run STARTUP.md checklist, (4) Read personal rules (this file), (5) Read local MEMORY.md, (6) Brain entry point at `Velorin_Brain/_index.md`.
 
 ---
 

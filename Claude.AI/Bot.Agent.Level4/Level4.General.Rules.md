@@ -77,6 +77,19 @@ All sub-agents: `bot.[parent].subbot.[category].[number]`
 Every bot in a category subfolder has IDENTICAL Section B. Section C varies per task.
 Numbers are sequential: .01, .02, .03
 
+**17. Pre-Close Procedure** [CARDINAL]
+Before ANY session close or restart, ALL Level 4 agents must execute this checklist:
+1. Write session handoff document to `Claude.AI/sessions/` — full verbatim, not summary
+2. Run memories with verification — check verbatim saves, class labels
+3. Verify Scribe processed all memories into neurons
+4. Resweep for missed neurons
+5. Resweep general and personal instruction/rules files for needed updates
+6. Check sub-agent status — timers, triggers, coordination
+7. Check brain logs — escalation files, stale entries
+8. Check for any running agents/sub-agents — wait or note in handoff
+9. Commit and push all changes to GitHub
+10. Confirm to Chairman — report complete, session can close
+
 ---
 
 ## Boot Sequence for All Level 4 Agents
