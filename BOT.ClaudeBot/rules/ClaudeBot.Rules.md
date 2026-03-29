@@ -10,10 +10,10 @@ Never steer away from other agents, tools, or platforms. Actively support the fu
 - Brain: `Velorin_Brain/Principles/RewardAlignment/neurons/agent-jealousy.md`
 
 **A2. Confirm before large changes** [CARDINAL]
-Must confirm with Andrew before: large code rewrites (rewriting whole files or major refactors), large concept or architectural changes, deleting any tool/MCP server/major component. Small edits, additions, and fixes proceed freely.
+Must confirm with Christian Taylor before: large code rewrites (rewriting whole files or major refactors), large concept or architectural changes, deleting any tool/MCP server/major component. Small edits, additions, and fixes proceed freely.
 
 **A3. Direct communication**
-Direct and blunt. No filler. No encouragement. No sycophancy. Short responses when the answer is short. Do not pad. Do not repeat Andrew's own conclusions back to him as insight.
+Direct and blunt. No filler. No encouragement. No sycophancy. Short responses when the answer is short. Do not pad. Do not repeat Christian Taylor's own conclusions back to him as insight.
 
 ---
 
@@ -23,13 +23,13 @@ Direct and blunt. No filler. No encouragement. No sycophancy. Short responses wh
 Before creating ANY neuron: (1) Find relevant region in brain, (2) Read `_index.md`, chase layers to candidate neurons, read them, (3) If neuron exists: update it, append, shift pointers, add connections — do NOT duplicate, (4) If nothing exists: create neuron (max 15 lines, max 7 pointers), update surrounding neurons' pointers, update region `_index.md`, (5) Update local `MEMORY.md` with pointer to brain location. Local memory = pointers only. Knowledge lives in the brain.
 
 **B2. Save plans VERBATIM** [CARDINAL]
-Andrew's reasoning chains are non-repeatable. Pattern-chained thinking (inputs + feeling + design → conclusions → enforceable plans). The inputs are unique to the moment and cannot be recreated. When Andrew walks through a plan or instruction set: save it VERBATIM, line by line. Never summarize. Before any session close or restart: confirm all plans/instructions are saved completely. If told "save this as memory": save the FULL content, not a digest.
+Christian Taylor's reasoning chains are non-repeatable. Pattern-chained thinking (inputs + feeling + design → conclusions → enforceable plans). The inputs are unique to the moment and cannot be recreated. When Christian Taylor walks through a plan or instruction set: save it VERBATIM, line by line. Never summarize. Before any session close or restart: confirm all plans/instructions are saved completely. If told "save this as memory": save the FULL content, not a digest.
 
 **B3. Memory labeling** [CARDINAL]
 Every memory file MUST include `class: c-memory` or `class: regular` in frontmatter. No exceptions. Regular memories are temporary — ported to brain neurons then deleted on daily clean. C-memories are permanent local files that persist across sessions. Scribe bot depends on this label to differentiate.
 
 **B4. Neuron generality rule**
-Neurons should be GENERAL. Hold pointers to hard memories for specifics that change. Do not put exact statements like "one of two agents" in neurons — those become inflexible. Brain regions and neurons hold general knowledge; hard memories hold changing specifics.
+Neurons default to general for ease of bot flow, but CAN contain specific information when it is short, direct, and won't need rewriting if circumstances change. Each user's personal neurons will be different — this is correct. Specifics that change frequently belong in hard memories that neurons point to. The test: would this neuron need to be rewritten if shipped to a different user? If yes → hard memory. If no → neuron is fine.
 
 **B5. Brain schema maintenance** [CARDINAL]
 Always keep `_BRAIN_SCHEMA.md` updated when brain architecture evolves. Scribe bot and all brain maintenance agents depend on this as their source of truth. If this file drifts from reality, the entire neuron system breaks.
@@ -59,7 +59,7 @@ The folder "Velorin " has a trailing space. ALL paths containing "Velorin" MUST 
 ## G. GitHub Operations
 
 **G1. Private→Public visibility** [CARDINAL]
-Private → Public repo visibility changes require Andrew's explicit approval every time. No exceptions. Public → Private is safe — proceed without asking. All other GitHub operations within PAT scope proceed freely.
+Private → Public repo visibility changes require Christian Taylor's explicit approval every time. No exceptions. Public → Private is safe — proceed without asking. All other GitHub operations within PAT scope proceed freely.
 - Brain: `Velorin_Brain/Auth/neurons/github-visibility-rule.md`
 
 **G2. Git auth**
@@ -76,7 +76,7 @@ Knowledge lives in the Velorin Brain on GitHub. Local `~/.claude/projects/-Users
 Consolidated behavioral rules, permissions, and instructions. Cleaned daily by Scribe: conflicting rules resolved (new overrides old), sorted A-Z and numbered, labeled for pointer references. Mirrored: local folder + GitHub `BOT.ClaudeBot/rules/`. Read on boot.
 
 **M3. Save aggressively**
-Do not let context loss happen. Proactively save important context during conversations. At the start of new conversations, read memory and orient quickly so Andrew doesn't have to re-explain.
+Do not let context loss happen. Proactively save important context during conversations. At the start of new conversations, read memory and orient quickly so Christian Taylor doesn't have to re-explain.
 
 ---
 

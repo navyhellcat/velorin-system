@@ -66,13 +66,61 @@ Bottom of the funnel. Small, cross-linked, fast-firing. The working layer
 that handles day-to-day activation and retrieval.
 
 ### Key Rule: Generality in Neurons
-Neurons should be general and hold pointers to hard memories. They should NOT
-hold specifics that may change. They SHOULD hold specifics that apply generally
-(e.g., "never use the Mac account name as the Chairman's name" — specific but
-permanently applicable). The distinction: will this specific fact need rewriting
-when circumstances change? If yes, it belongs in a hard memory that a neuron
-points to, not in the neuron itself.
+Neurons default to general for ease of bot flow, but CAN contain specific
+information when: (a) the information is short and direct enough to fit the
+neuron title, and (b) it won't need rewriting when circumstances change.
+This allows each user's personal neurons to be different while keeping the
+structure universal.
+
+Specifics that change frequently belong in hard memories that neurons point to.
+Specifics that are permanent and atomic (e.g., "the Mac account name is not the
+Chairman's name") can live directly in a neuron.
+
+The test: would this neuron need to be rewritten if shipped to a different user?
+If yes → the specific belongs in a hard memory. If no → it can stay in the neuron.
+
+## Productization Architecture — Brain Shipping Model
+
+The Velorin Brain is designed to be shipped as a product. The shipped version contains:
+
+### What Ships (Universal)
+- `_BRAIN_SCHEMA.md` — how brains work, universal rules
+- Region folders with named sublayer structure
+- Empty `_index.md` files with A-Z, 1-100 neuron slot format
+- Empty `neurons/` directories — grow with use
+- Bot maintenance processes (Scribe, Custodian, Mobility) — they know HOW to
+  write neurons, not WHAT to write in them
+
+### What Does NOT Ship (Personal)
+- No pre-loaded neurons — each user's brain grows from zero
+- No identity data — filled during structured intake
+- No domain-specific knowledge — built through interaction
+
+### Onboarding Sequence
+1. **Structured intake test** — design questions that map directly to neuron
+   regions. Extracts cognitive style, decision patterns, risk tolerance, domain
+   priorities, goals, avoidances. Each answer fires a neuron into the correct
+   region with initial pointer ratings.
+2. **Account connections** — banking (Box 2), calendar (time patterns), social
+   (behavioral signals), health apps (Box 3), email (professional patterns).
+   Auto-generates hard memories that neurons point to.
+3. **First bot analysis** — Scribe creates cross-domain pointer connections the
+   user wouldn't think to make. The gap between WHO they are (test) and WHERE
+   they are (connections) is where the product operates.
+4. **First session** — presents what the brain sees, asks user to correct errors.
+   Brain is ~30-40% developed — enough to be useful, enough gaps to keep growing.
+
+### Why This Model
+Pre-loaded neurons carry assumptions from the original user's cognitive profile.
+Process that works for a 99.9th percentile verbal thinker with ADHD executive
+function gaps may be wrong for someone with a different profile. Each brain must
+develop its own firing patterns from its own data.
+
+The intake test + account connections are the moat. Nobody can shortcut it because
+the intake IS the product. The brain that results is tuned to one specific person.
 
 ## Other Future Considerations
 - **Neuron consolidation:** Numbered list files (1-100, a-z) to reduce file opens
 - **Token/hallucination testing:** End of session benchmarks
+- **Intake test design:** Research assignment for Jiang — questions must extract
+  data that predicts behavior and maps to actionable architecture, not just categorize

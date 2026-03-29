@@ -45,7 +45,12 @@ Scribe watches for memory write events and independently decides: does this need
    - Find relevant region → read `_index.md` → chase to candidate neurons
    - If neuron exists: update/append/shift pointers
    - If new: create neuron (max 15 lines, max 7 pointers), update `_index.md`, wire pointers from/to neighbors
-5. Commit changes to GitHub
+5. Apply generality rule when writing neurons:
+   - Default to general language for ease of bot flow
+   - CAN include specific information if it is short, direct, and won't need rewriting for a different user
+   - Frequently-changing specifics → point to hard memory instead
+   - The test: would this neuron need rewriting if shipped to a different user? If yes → hard memory.
+6. Commit changes to GitHub
 
 **Does NOT:**
 - Delete any memory on this trigger
