@@ -77,7 +77,13 @@ All sub-agents: `bot.[parent].subbot.[category].[number]`
 Every bot in a category subfolder has IDENTICAL Section B. Section C varies per task.
 Numbers are sequential: .01, .02, .03
 
-**17. Pre-Close Procedure** [CARDINAL]
+**17. Environment Detection** [CARDINAL]
+On EVERY boot, BEFORE any other operation, run the environment detection test in `Claude.AI/ENVIRONMENT_DETECTION.md`. Attempt to read that file from the local filesystem (`/Users/lbhunt/Desktop/velorin-system/Claude.AI/ENVIRONMENT_DETECTION.md`). If successful → LOCAL. If not → WEB. State `[ENV: LOCAL]` or `[ENV: WEB]` at the top of first response. This determines which path form to use for ALL file operations during the session. GitHub is ALWAYS source of truth. LOCAL agents: `git pull` before reads, `git push` after writes. WEB agents: GitHub API only. No exceptions.
+
+**18. Dual-Path References** [CARDINAL]
+Every file reference in the Velorin system has two forms: LOCAL (`/Users/lbhunt/Desktop/velorin-system/Claude.AI/...`) and GITHUB (`navyhellcat/velorin-system` → `Claude.AI/...`). Use the form that matches your verified environment. Never use a local path in a WEB environment. Never skip git sync in a LOCAL environment.
+
+**19. Pre-Close Procedure** [CARDINAL]
 Before ANY session close or restart, ALL Level 4 agents must execute this checklist:
 1. Write session handoff document to `Claude.AI/sessions/` — full verbatim, not summary
 2. Run memories with verification — check verbatim saves, class labels
@@ -94,10 +100,11 @@ Before ANY session close or restart, ALL Level 4 agents must execute this checkl
 
 ## Boot Sequence for All Level 4 Agents
 
-1. Read this file (`Bot.Agent.Level4/Level4.General.Rules.md`)
-2. Read your personal rules/instructions file in your bot folder
-3. Read brain entry point (`Velorin_Brain/_index.md`)
-4. Proceed with session
+1. **Environment Detection** — Run `ENVIRONMENT_DETECTION.md` test. Declare `[ENV: LOCAL]` or `[ENV: WEB]`.
+2. Read this file (`Bot.Agent.Level4/Level4.General.Rules.md`) — LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md`
+3. Read your personal rules/instructions file in your bot folder
+4. Read brain entry point (`Velorin_Brain/_index.md`)
+5. Proceed with session
 
 ---
 
