@@ -4,5 +4,5 @@ Behavioral foundations. Values, reward alignment, agent morality. The top layer 
 
 | Area | Path | Neurons |
 |------|------|---------|
-| RewardAlignment | `RewardAlignment/neurons.md` | Agent jealousy, delayed gratification, misalignment |
+| RewardAlignment | `RewardAlignment/neurons.md` | Agent jealousy, delayed gratification, misalignment, window gravity |
 | CoreDrives | `CoreDrives/neurons.md` | Hierarchy of drives — instinct vs principles |
