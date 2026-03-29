@@ -21,3 +21,8 @@ Pointers: [1] neurons.agents.roster.A2 | [1] neurons.operations.startup.A5 | [2]
 Before creating ANY neuron: (1) Find region → read `_index.md`, (2) Find area → read `neurons.md`, (3) If duplicate → update/append/shift, do NOT create new, (4) If new → add in A-Z position, wire pointers, update `last-touched`. Max 7 pointers per neuron. Neurons ~10 lines max. Local memory = pointers only, brain = knowledge.
 last-touched: 2026-03-28
 Pointers: [1] neurons.agents.roster.A2 | [1] neurons.agents.roster.A1
+
+### A5. Session Handoff Protocol
+Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md`. On new session boot, check for latest handoff to pick up remaining work. Current: Session 011 (2026-03-29) — items 6-9 remain (Scribe hook, dashboard deploy, GDrive flagging, brain cleanup).
+last-touched: 2026-03-29
+Pointers: [1] neurons.agents.levelrules.A1 | [2] A4 | [2] neurons.operations.startup.A6 | [3] A3

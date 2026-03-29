@@ -33,9 +33,9 @@ last-touched: 2026-03-28
 Pointers: [1] neurons.agents.protocols.A3 | [2] A6
 
 ### A6. Memory Load
-Read local memory index: `~/.claude/projects/-Users-lbhunt/memory/MEMORY.md`. Each entry points to a memory file. Memory files point into Velorin Brain for full knowledge.
-last-touched: 2026-03-28
-Pointers: [1] neurons.agents.roster.A2 | [2] A7
+Read local memory index: `~/.claude/projects/-Users-lbhunt/memory/MEMORY.md`. Each entry points to a memory file. Memory files point into Velorin Brain for full knowledge. Check for active session handoff at `Claude.AI/sessions/`.
+last-touched: 2026-03-29
+Pointers: [1] neurons.agents.roster.A2 | [2] neurons.agents.protocols.A5 | [2] A7
 
 ### A7. Version Check
 `claude --version` — check Claude Code CLI. Update: `sudo npm update -g @anthropic-ai/claude-code`. Requires sudo (will prompt). Autoupdate may fail with EACCES.

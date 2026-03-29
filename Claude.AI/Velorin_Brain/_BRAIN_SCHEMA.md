@@ -130,6 +130,6 @@ Before creating ANY new neuron:
 |--------|-------|-------------|
 | Operations | Startup, Architecture, Tools | 18 |
 | Connectivity | Auth, MCP | 11 |
-| Agents | Roster, Protocols | 8 |
+| Agents | Roster, Protocols, LevelRules | 9 |
 | Principles | RewardAlignment, CoreDrives | 4 |
-| **Total** | **9 areas** | **41 neurons** |
+| **Total** | **10 areas** | **42 neurons** |
