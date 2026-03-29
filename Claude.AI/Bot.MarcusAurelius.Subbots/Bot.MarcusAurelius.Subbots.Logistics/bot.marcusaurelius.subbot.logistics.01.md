@@ -36,26 +36,28 @@
 
 ---
 
-### Job 2: Bidirectional Sync (every 60 minutes)
+### Job 2: Sync Status Report (every 60 minutes)
 
-**Task:** Full bidirectional sync between local clone and GitHub.
+**Task:** Check sync state between local clone and GitHub. **Report only — do NOT auto-push or auto-commit.**
 
 **Steps:**
 1. `cd /Users/lbhunt/Desktop/velorin-system`
 2. `git fetch origin main`
-3. Check if remote has commits not in local → `git pull origin main`
-4. Check if local has uncommitted changes → `git add -A && git commit -m "Terry: auto-sync local → GitHub"` → `git push origin main`
-5. Check if local has committed but unpushed changes → `git push origin main`
+3. Check if remote has commits not in local → `git pull origin main` (pulling is safe — always stay current)
+4. Check if local has uncommitted changes → **report them, do not commit**
+5. Check if local has committed but unpushed changes → **report them, do not push**
 
-**Alert format:**
+**Alert format (only if diffs exist):**
 ```
-[Terry] Sync complete:
-- Pulled: {N} new files from GitHub
-- Pushed: {N} local files to GitHub
+[Terry] Sync report:
+- Pulled: {N} new commits from GitHub
+- Local uncommitted changes: {file list or "none"}
+- Local unpushed commits: {N or "none"}
 ```
 
-**If nothing changed in either direction:** No alert. Silent pass.
+**If fully in sync and nothing to report:** No alert. Silent pass.
+**MarcusAurelius decides** what to commit and push. Terry never writes to the repo.
 
 ---
 
-*Created: 2026-03-29 | Session 012 | Updated: 2026-03-29 — added hourly sync*
+*Created: 2026-03-29 | Session 012 | Updated: 2026-03-29 — Job 2 rewritten to report-only (Session 013)*
