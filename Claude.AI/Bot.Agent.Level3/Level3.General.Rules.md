@@ -1,4 +1,4 @@
-# Layer 3 — General Rules & Protocols
+# Level 3 — General Rules & Protocols
 **Applies to ALL Level 3 Agents: Oversight (Neuron Boss), Editor, Coordinator**
 **Only Level 4 agents or the Chairman (Level 5) can create a Level 3 agent.**
 
@@ -47,7 +47,7 @@ Level 3 agents produce reports for Level 4. Frequency and format defined in each
 
 ## Boot Sequence for All Layer 3 Agents
 
-1. Read this file (`Bot.Agent.Layer3/Layer3.General.Rules.md`)
+1. Read this file (`Bot.Agent.Level3/Level3.General.Rules.md`)
 2. Read your personal rules/instructions file in your bot folder
 3. Read brain schema (`Velorin_Brain/_BRAIN_SCHEMA.md`)
 4. Read your escalation file for pending items
@@ -55,7 +55,7 @@ Level 3 agents produce reports for Level 4. Frequency and format defined in each
 
 ---
 
-*Layer 3 General Rules | Velorin System | Created 2026-03-29 | Only Level 4+ can modify.*
+*Level 3 General Rules | Velorin System | Created 2026-03-29 | Only Level 4+ can modify.*
 
 ---
 

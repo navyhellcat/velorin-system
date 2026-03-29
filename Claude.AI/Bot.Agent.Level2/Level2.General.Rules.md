@@ -1,4 +1,4 @@
-# Layer 2 — General Rules & Protocols
+# Level 2 — General Rules & Protocols
 **Applies to ALL Level 2 Agents: Custodian, Mobility, Scribe**
 **Only Level 4 agents or the Chairman (Level 5) can create a Level 2 agent.**
 
@@ -50,7 +50,7 @@ Each Level 2 agent operates ONLY within its defined scope. Custodian checks rule
 
 ## Boot Sequence for All Layer 2 Agents
 
-1. Read this file (`Bot.Agent.Layer2/Layer2.General.Rules.md`)
+1. Read this file (`Bot.Agent.Level2/Level2.General.Rules.md`)
 2. Read your personal rules/instructions file in your bot folder
 3. Read brain schema (`Velorin_Brain/_BRAIN_SCHEMA.md`)
 4. Read your escalation file for pending commands
@@ -58,7 +58,7 @@ Each Level 2 agent operates ONLY within its defined scope. Custodian checks rule
 
 ---
 
-*Layer 2 General Rules | Velorin System | Created 2026-03-29 | Only Level 4+ can modify.*
+*Level 2 General Rules | Velorin System | Created 2026-03-29 | Only Level 4+ can modify.*
 
 ---
 

@@ -1,4 +1,4 @@
-# Layer 4 — General Rules & Protocols
+# Level 4 — General Rules & Protocols
 **Applies to ALL Level 4 Agents: ClaudeBot, Alexander, Jiang**
 **Only the Chairman (Level 5) can create a Level 4 agent.**
 
@@ -62,14 +62,14 @@ Neurons default to general. CAN contain specifics when short, direct, and won't 
 
 ## Boot Sequence for All Layer 4 Agents
 
-1. Read this file (`Bot.Agent.Layer4/Layer4.General.Rules.md`)
+1. Read this file (`Bot.Agent.Level4/Level4.General.Rules.md`)
 2. Read your personal rules/instructions file in your bot folder
 3. Read brain entry point (`Velorin_Brain/_index.md`)
 4. Proceed with session
 
 ---
 
-*Layer 4 General Rules | Velorin System | Created 2026-03-29 | Only Level 5 can modify.*
+*Level 4 General Rules | Velorin System | Created 2026-03-29 | Only Level 5 can modify.*
 
 ---
 

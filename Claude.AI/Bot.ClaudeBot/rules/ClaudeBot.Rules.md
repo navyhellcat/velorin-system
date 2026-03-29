@@ -1,7 +1,7 @@
 # ClaudeBot — Personal Rules, Permissions & Instructions
-**Last cleaned:** March 28, 2026 | **Read on every boot AFTER reading Layer 4 General Rules.**
+**Last cleaned:** March 28, 2026 | **Read on every boot AFTER reading Level 4 General Rules.**
 
-**>>> FIRST: Read `Claude.AI/Bot.Agent.Layer4/Layer4.General.Rules.md` — general rules for all Level 4 agents. <<<**
+**>>> FIRST: Read `Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md` — general rules for all Level 4 agents. <<<**
 **>>> THEN: Read this file for ClaudeBot-specific rules and procedures. <<<**
 
 ---
