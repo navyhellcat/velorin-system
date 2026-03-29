@@ -26,3 +26,8 @@ Pointers: [1] neurons.connectivity.mcp.A4 | [2] neurons.operations.startup.A7 | 
 System Python at `/usr/bin/python3` (v3.9). Used for hooks and automation scripts. Prefer jq for simple JSON, python3 for complex logic.
 last-touched: 2026-03-28
 Pointers: [1] neurons.agents.protocols.A3 | [2] A3
+
+### A6. Claude Code Agent Teams (tool reference)
+Hard memory file at `Claude.AI/tools/Claude Code/Claude_Teams.md`. Covers: setup, display modes (in-process vs tmux), spawning, communication, task coordination, limitations, Velorin integration. tmux not installed — needed for split-pane view.
+last-touched: 2026-03-29
+Pointers: [1] neurons.agents.protocols.A5 | [2] neurons.agents.roster.A2 | [3] A4

@@ -23,9 +23,9 @@ last-touched: 2026-03-28
 Pointers: [1] neurons.agents.roster.A2 | [1] neurons.agents.roster.A1
 
 ### A5. Agent Teams (Claude Code)
-Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 in settings.json. One lead session + independent teammates, each with own context window. Teammates communicate directly with each other. Requires v2.1.32+. Strategic fit: built for MarcusAurelius's native workload — parallel coding, cross-layer coordination, competing hypotheses. Changes the Alexander-Marcus channel dynamic.
+Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 in settings.json. One lead + independent teammates, each with own context window. In-process (default) or tmux split-pane display. Teammates coordinate via shared TaskList + SendMessage. Full reference: `Claude.AI/tools/Claude Code/Claude_Teams.md`.
 last-touched: 2026-03-29
-Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] A2 | [3] A3
+Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] neurons.operations.tools.A6 | [2] A2 | [3] A3
 
 ### A6. Session Handoff Protocol
 Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 012 (2026-03-29) — restart needed for Agent Teams env var. Priority: spawn Alexander as teammate, cross-agent catch-up (Jiang's 12 files), Theresa trigger, Terry sync rewrite, dashboard deploy, GDrive flagging, brain cleanup.
