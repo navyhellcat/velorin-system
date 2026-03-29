@@ -22,7 +22,12 @@ Before creating ANY neuron: (1) Find region → read `_index.md`, (2) Find area 
 last-touched: 2026-03-28
 Pointers: [1] neurons.agents.roster.A2 | [1] neurons.agents.roster.A1
 
-### A5. Session Handoff Protocol
+### A5. Agent Teams (Claude Code)
+Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 in settings.json. One lead session + independent teammates, each with own context window. Teammates communicate directly with each other. Requires v2.1.32+. Strategic fit: built for MarcusAurelius's native workload — parallel coding, cross-layer coordination, competing hypotheses. Changes the Alexander-Marcus channel dynamic.
+last-touched: 2026-03-29
+Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] A2 | [3] A3
+
+### A6. Session Handoff Protocol
 Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md`. On new session boot, check for latest handoff to pick up remaining work. Current: Session 011 (2026-03-29) — items 6-9 remain (Scribe hook, dashboard deploy, GDrive flagging, brain cleanup).
 last-touched: 2026-03-29
-Pointers: [1] neurons.agents.levelrules.A1 | [2] A4 | [2] neurons.operations.startup.A6 | [3] A3
+Pointers: [1] neurons.agents.levelrules.A1 | [2] A4 | [2] neurons.operations.startup.A6 | [3] A3 | [3] A5
