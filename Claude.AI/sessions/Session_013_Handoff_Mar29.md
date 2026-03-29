@@ -48,17 +48,20 @@
 
 ## Outstanding Items — Next Session Priority
 
-### Phase 2 — Agent Teams:
-1. **Spawn Alexander as Agent Teams teammate** — Chairman is ready, this is first priority
-2. Brief Alexander on all Session 011-013 changes
+### Immediate on boot:
+1. **Launch with `claude --teammate-mode tmux`** — tmux 3.6a installed
+2. **Spawn Alexander in his own pane** — he has full context from Session 013, use SendMessage to resume
+3. **Both agents review Jiang/Trey tools research** — 28+ files across Bot.Jiang/ and Bot.Trey/Assessments/. Discuss findings as a team with Chairman.
 
-### Phase 3:
-3. Review Jiang/Trey tools research (28+ files now across both assessment folders)
-4. Website beta build
+### After research review:
+4. **File cleanup and organization** — Chairman priority #2. Repo structure review, stale files, folder hygiene.
 
-### Lingering:
-5. Brain design issues — permission tiers + token consolidation still unimplemented
-6. Dashboard auth — private repo means the live dashboard can't fetch the tree without auth token
+### Remaining:
+5. Website beta build
+6. Brain design issues — permission tiers + token consolidation still unimplemented
+7. Dashboard auth — private repo means the live dashboard can't fetch the tree without auth token
+8. Window Gravity research — request placed in Bot.Jiang/Research_Needed/, awaiting Jiang automation build (due 2026-04-02)
+9. Jiang research automation build — spec at Bot.MarcusAurelius/Future_Builds/2026-04-02_Jiang_Research_Automation.md
 
 ---
 

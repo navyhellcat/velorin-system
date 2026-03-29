@@ -81,21 +81,16 @@ Teammate reads CLAUDE.md, inherits all permissions and MCP servers. Provide boot
 - Both have GitHub source-of-truth protocol (pull before read, push after write)
 - Alexander's boot: Level 4 rules → Alexander.ReadMe.First → Brain entry → latest session handoff
 
-## Future: tmux Installation
+## tmux — INSTALLED
 
-When ready for split-pane view:
+tmux 3.6a installed at `/usr/local/bin/tmux` (2026-03-29, Session 013).
+
+To launch with split panes:
 ```bash
-brew install tmux
+claude --teammate-mode tmux
 ```
-Then add to `~/.claude/settings.local.json`:
-```json
-{
-  "teammates": {
-    "displayMode": "tmux"
-  }
-}
-```
-Restart session. Teammates will spawn in their own visible panes.
+
+MarcusAurelius boots as lead, spawns Alexander in his own pane. Chairman can click into either pane and interact directly.
 
 ---
 
