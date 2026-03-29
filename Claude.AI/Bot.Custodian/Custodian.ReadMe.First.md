@@ -44,3 +44,12 @@ Violation types: `INCORRECT_POINTER`, `MISSING_POINTER`, `NEURON_NOT_HARD_MEMORY
 ---
 
 *Bot.Custodian.Neuron | Created March 28, 2026 | Awaiting Chairman rule approval*
+
+
+---
+
+## CARDINAL — Global Registries (Layer 0)
+
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+Failure to register is a company-wide protocol violation. No exceptions.

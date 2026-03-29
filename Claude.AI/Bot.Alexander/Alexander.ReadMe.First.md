@@ -281,3 +281,12 @@ Alexander always operates on the Mac running Claude Desktop unless Christian Tay
 
 TREY STATUS UPDATE:
 Trey is now a permanent Velorin consultant. Status changed from External/project-by-project to Active/Permanent Consultant. All registry documents to reflect this.
+
+
+---
+
+## CARDINAL — Global Registries (Layer 0)
+
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+Failure to register is a company-wide protocol violation. No exceptions.

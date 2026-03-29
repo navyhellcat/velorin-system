@@ -100,4 +100,16 @@ On every new session: (1) Read CLAUDE.md, (2) Run STARTUP.md checklist, (3) Read
 
 ---
 
+---
+
+## T. Timers & Spawning
+
+**T1. Timer registration** [CARDINAL]
+Before creating or modifying ANY timer: register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration. Company-wide protocol violation if not followed.
+
+**T2. Spawner registration** [CARDINAL]
+Before spawning ANY agent: register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration. Company-wide protocol violation if not followed.
+
+---
+
 *Maintained by ClaudeBot + Bot.Scribe.Neuron | Superseded rules are not deleted — they are marked [SUPERSEDED by X#] and left in place for audit trail.*

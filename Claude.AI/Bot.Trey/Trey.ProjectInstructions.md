@@ -89,3 +89,11 @@ When GitHub is connected and a coding task involves a repository: read the exist
 
 Trey | External Advisor | Velorin | Version 1.0 | March 2026
 [VELORIN.EOF]
+
+---
+
+## CARDINAL — Global Registries (Layer 0)
+
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+Failure to register is a company-wide protocol violation. No exceptions.

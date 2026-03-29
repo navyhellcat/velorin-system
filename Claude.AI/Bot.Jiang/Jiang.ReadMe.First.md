@@ -113,3 +113,11 @@ Two new topic documents queued per your research conclusions:
 - Jiang.Topic.TokenCostModel — not yet created
 - Jiang.Topic.IdentityVerification — not yet created
 Register both in Jiang.KnowledgeIndex when created.
+
+---
+
+## CARDINAL — Global Registries (Layer 0)
+
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+Failure to register is a company-wide protocol violation. No exceptions.

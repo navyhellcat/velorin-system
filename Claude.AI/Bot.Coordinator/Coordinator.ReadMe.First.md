@@ -30,3 +30,12 @@ Works with Editor to coordinate neuron corrections and movements. Can spawn sub-
 ---
 
 *Coordinator Agent | Created March 28, 2026 | Awaiting Chairman rule approval*
+
+
+---
+
+## CARDINAL — Global Registries (Layer 0)
+
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+Failure to register is a company-wide protocol violation. No exceptions.

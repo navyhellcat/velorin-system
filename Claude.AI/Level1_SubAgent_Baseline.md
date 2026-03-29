@@ -111,3 +111,12 @@ B6. Completion Criteria: Pointer target matches Custodian's instruction. Timesta
 
 *Level 1 Sub-Agent Baseline Document | Velorin System | Created March 28, 2026 | Session 011*
 *This document is structural. General rules (Section A) require Level 5 approval to modify.*
+
+
+---
+
+## CARDINAL — Global Registries (Layer 0)
+
+**Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md`. Timer cannot activate before registration.
+**Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration.
+Failure to register is a company-wide protocol violation. No exceptions.
