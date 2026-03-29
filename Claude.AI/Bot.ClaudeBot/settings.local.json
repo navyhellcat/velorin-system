@@ -70,7 +70,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/lbhunt/Desktop/velorin-system/BOT.Scribe/scribe-trigger.sh",
+            "command": "/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/scribe-trigger.sh",
             "timeout": 10
           }
         ]

@@ -5,12 +5,12 @@
 # consolidates the rules file.
 
 MEMORY_DIR="/Users/lbhunt/.claude/projects/-Users-lbhunt/memory"
-SCRIBE_SPEC="/Users/lbhunt/Desktop/velorin-system/BOT.Scribe/SCRIBE.md"
-BRAIN_SCHEMA="/Users/lbhunt/Desktop/velorin-system/Velorin_Brain/_BRAIN_SCHEMA.md"
-REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Velorin_Brain/Layer0_Regions/_index.md"
-RULES_GITHUB="/Users/lbhunt/Desktop/velorin-system/BOT.ClaudeBot/rules/ClaudeBot.Rules.md"
+SCRIBE_SPEC="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/SCRIBE.md"
+BRAIN_SCHEMA="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md"
+REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/Layer0_Regions/_index.md"
+RULES_GITHUB="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.ClaudeBot/rules/ClaudeBot.Rules.md"
 RULES_LOCAL="/Users/lbhunt/.claude/projects/-Users-lbhunt/rules/ClaudeBot.Rules.md"
-LOG_FILE="/Users/lbhunt/Desktop/velorin-system/BOT.Scribe/error_log.md"
+LOG_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/error_log.md"
 
 echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ') | DAILY CLEAN START" >> "$LOG_FILE"
 

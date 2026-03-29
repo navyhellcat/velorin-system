@@ -1,7 +1,7 @@
 # Velorin Brain — Master Schema
 
 **Type:** Neural File Graph
-**Location:** `velorin-system/Velorin_Brain/`
+**Location:** `velorin-system/Claude.AI/Velorin_Brain/`
 **Shared by:** All Velorin agents (consult `Bots/_index.md` for current roster)
 
 ## How to Use This Brain

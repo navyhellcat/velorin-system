@@ -77,7 +77,7 @@ git pull --rebase origin main
 - Settings: `~/.claude/settings.local.json` — permissions, hooks config
 - Architecture repo: `/Users/lbhunt/Desktop/velorin-system/` (GitHub: navyhellcat/velorin-system)
 - MCP code repo: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/` (GitHub: navyhellcat/velorin-gdrive-mcp)
-- This file: `/Users/lbhunt/Desktop/velorin-system/BOT.ClaudeBot/STARTUP.md`
+- This file: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.ClaudeBot/STARTUP.md`
 
 ## GitHub Repos
 | Repo | Local Path | Purpose |
@@ -117,7 +117,7 @@ git pull --rebase origin main
 
 **Full schema:** `BOT.Alexander/VELORIN_BRAIN_SCHEMA.md` (shared across all bots)
 
-The Velorin Brain is a neural file graph stored in GitHub (`velorin-system/Velorin_Brain/`). Knowledge lives as **neurons** — tiny bottom-layer files (one idea, ~10-15 lines max) organized in **regions** (folders by topic, layered broad → specific).
+The Velorin Brain is a neural file graph stored in GitHub (`velorin-system/Claude.AI/Velorin_Brain/`). Knowledge lives as **neurons** — tiny bottom-layer files (one idea, ~10-15 lines max) organized in **regions** (folders by topic, layered broad → specific).
 
 **How it works:**
 1. Neurons contain knowledge + **rated pointers** (1-10) to other neurons

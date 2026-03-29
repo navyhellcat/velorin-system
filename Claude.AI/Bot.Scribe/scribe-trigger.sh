@@ -7,7 +7,7 @@
 # "hooks": {
 #   "PostToolUse": [{
 #     "matcher": "Write",
-#     "command": "/Users/lbhunt/Desktop/velorin-system/BOT.Scribe/scribe-trigger.sh"
+#     "command": "/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/scribe-trigger.sh"
 #   }]
 # }
 #
@@ -15,11 +15,11 @@
 # directory writes only, then spawns Scribe.
 
 MEMORY_DIR="/Users/lbhunt/.claude/projects/-Users-lbhunt/memory"
-SCRIBE_SPEC="/Users/lbhunt/Desktop/velorin-system/BOT.Scribe/SCRIBE.md"
-BRAIN_SCHEMA="/Users/lbhunt/Desktop/velorin-system/Velorin_Brain/_BRAIN_SCHEMA.md"
-REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Velorin_Brain/Layer0_Regions/_index.md"
-RULES_FILE="/Users/lbhunt/Desktop/velorin-system/BOT.ClaudeBot/rules/ClaudeBot.Rules.md"
-LOG_FILE="/Users/lbhunt/Desktop/velorin-system/BOT.Scribe/error_log.md"
+SCRIBE_SPEC="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/SCRIBE.md"
+BRAIN_SCHEMA="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md"
+REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/Layer0_Regions/_index.md"
+RULES_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.ClaudeBot/rules/ClaudeBot.Rules.md"
+LOG_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/error_log.md"
 
 # Read stdin for the tool use context
 INPUT=$(cat)
