@@ -35,9 +35,18 @@ Pointers: [1] neurons.agents.protocols.A3 | [2] A6
 ### A6. Memory Load
 Read local memory index: `~/.claude/projects/-Users-lbhunt/memory/MEMORY.md`. Each entry points to a memory file. Memory files point into Velorin Brain for full knowledge. Check for active session handoff at `Claude.AI/sessions/`.
 last-touched: 2026-03-29
-Pointers: [1] neurons.agents.roster.A2 | [2] neurons.agents.protocols.A5 | [2] A7
+Pointers: [1] A8 | [1] neurons.agents.roster.A2 | [2] neurons.agents.protocols.A5 | [2] A7
 
 ### A7. Version Check
 `claude --version` — check Claude Code CLI. Update: `sudo npm update -g @anthropic-ai/claude-code`. Requires sudo (will prompt). Autoupdate may fail with EACCES.
 last-touched: 2026-03-28
 Pointers: [1] neurons.connectivity.mcp.A2 | [2] neurons.operations.tools.A4
+
+### A8. Current Session State
+Last completed: Session 013 (2026-03-29). Phase 1 done (all 011-012 carryover resolved).
+Next session priority: Phase 2 — spawn Alexander as teammate, brief on 011-013 changes.
+Then Phase 3: review Jiang/Trey tools research (28+ files), website beta build.
+Lingering: brain permission tiers + token consolidation unimplemented; dashboard needs auth token for private repo tree.
+Full handoff: `Claude.AI/sessions/Session_013_Handoff_Mar29.md`
+last-touched: 2026-03-29
+Pointers: [1] A6 | [1] neurons.agents.roster.A1 | [2] neurons.operations.architecture.A1 | [3] neurons.connectivity.auth.A4
