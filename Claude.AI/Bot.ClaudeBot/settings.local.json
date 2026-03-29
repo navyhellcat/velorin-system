@@ -1,4 +1,7 @@
 {
+  "env": {
+    "ENABLE_TOOL_SEARCH": "false"
+  },
   "permissions": {
     "allow": [
       "Read",
@@ -46,7 +49,6 @@
     ],
     "deny": [
       "Bash(rm:*)",
-      "Bash(rmdir:*)",
       "Bash(trash:*)",
       "Bash(rm -rf:*)",
       "Bash(sudo:*)",

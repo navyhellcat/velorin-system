@@ -19,8 +19,8 @@ Scribe watches for memory write events and independently decides: does this need
 | Document | Location | Purpose |
 |----------|----------|---------|
 | Brain Schema | `Velorin_Brain/_BRAIN_SCHEMA.md` | Master rules for neurons, pointers, layers |
-| Memory Protocol | `Velorin_Brain/Bots/neurons/memory-protocol.md` | Check-before-create rules |
-| Region Index | `Velorin_Brain/Layer0_Regions/_index.md` | Where to find all regions |
+| Memory Protocol | `Velorin_Brain/Agents/Protocols/neurons.md` | Check-before-create rules |
+| Region Index | `Velorin_Brain/_index.md` | Where to find all regions |
 | ClaudeBot Rules | `BOT.ClaudeBot/rules/ClaudeBot.Rules.md` | Current behavioral rules to consolidate |
 
 **CRITICAL:** When brain architecture changes (new regions, new pointer rules, new layer structure), Scribe reads the same updated `_BRAIN_SCHEMA.md`. Its knowledge is not frozen — it's wired to the same source of truth.

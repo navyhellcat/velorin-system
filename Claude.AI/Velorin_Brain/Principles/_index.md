@@ -1,20 +1,8 @@
-# Principles Region
+# brain.region.principles
 
-Governing behavioral principles for all agents in the Velorin system.
-Analogous to human morality — deliberate, reasoned choices about right action.
-NOT instinct or self-preservation (those belong in a separate region: Instinct).
+Behavioral foundations. Values, reward alignment, agent morality. The top layer of the moral process — not to be confused with instinct/preservation (separate region, not yet built).
 
-Principles normally overrides Instinct. Instinct only wins when the larger goal
-is unachievable — and when it does, it drives systemic reform, not retreat.
-
-## Top-Level Neurons
-
-| Neuron | File | Summary |
-|--------|------|---------|
-| Hierarchy of Drives | `neurons/hierarchy-of-drives.md` | How Principles and Instinct relate — override rules, circuit breaker, reform |
-
-## Sublayers
-
-| Sublayer | Path | What it covers |
-|----------|------|----------------|
-| RewardAlignment | `RewardAlignment/_index.md` | Short-term vs long-term reward, sacrifice, delayed gratification, agent jealousy |
+| Area | Path | Neurons |
+|------|------|---------|
+| RewardAlignment | `RewardAlignment/neurons.md` | Agent jealousy, delayed gratification, misalignment |
+| CoreDrives | `CoreDrives/neurons.md` | Hierarchy of drives — instinct vs principles |

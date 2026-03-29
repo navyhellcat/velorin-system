@@ -17,7 +17,7 @@
 MEMORY_DIR="/Users/lbhunt/.claude/projects/-Users-lbhunt/memory"
 SCRIBE_SPEC="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/SCRIBE.md"
 BRAIN_SCHEMA="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md"
-REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/Layer0_Regions/_index.md"
+REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_index.md"
 RULES_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.ClaudeBot/rules/ClaudeBot.Rules.md"
 LOG_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/error_log.md"
 

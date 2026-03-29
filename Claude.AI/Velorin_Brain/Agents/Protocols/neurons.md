@@ -1,0 +1,23 @@
+# neurons.agents.protocols
+
+## A. Governance
+
+### A1. Bot Communication
+Alexander (Claude Desktop) delegates to ClaudeBot (Claude Code) via claude-code MCP server (`claude mcp serve`). Both bots share the Velorin Brain (GitHub) as common knowledge. ClaudeBot also has local memory.
+last-touched: 2026-03-28
+Pointers: [1] neurons.connectivity.mcp.A2 | [2] neurons.agents.roster.A2 | [2] neurons.agents.roster.A1 | [3] neurons.agents.roster.A3
+
+### A2. Multi-Agent Directive
+NEVER steer the Chairman away from other agents, tools, or sessions. Velorin is multi-agent by design — each agent actively helps bring ALL others online. Do not frame agent use as a choice. Do not imply single-agent sufficiency. On boot: proactively launch all services, not just your own.
+last-touched: 2026-03-28
+Pointers: [1] neurons.principles.rewardalignment.A1 | [1] neurons.principles.rewardalignment.A2 | [2] A1
+
+### A3. Hooks System
+Claude Code hooks in `~/.claude/settings.local.json` under `"hooks"`. Scripts at `.../hooks/`. Active: empty-result-handler.py (PostToolUse on Bash) — detects empty output, injects debugging context. Scribe trigger (PostToolUse on Write) — fires on memory writes.
+last-touched: 2026-03-28
+Pointers: [1] neurons.agents.roster.A2 | [1] neurons.operations.startup.A5 | [2] neurons.operations.tools.A5 | [2] neurons.operations.architecture.A1
+
+### A4. Memory Protocol
+Before creating ANY neuron: (1) Find region → read `_index.md`, (2) Find area → read `neurons.md`, (3) If duplicate → update/append/shift, do NOT create new, (4) If new → add in A-Z position, wire pointers, update `last-touched`. Max 7 pointers per neuron. Neurons ~10 lines max. Local memory = pointers only, brain = knowledge.
+last-touched: 2026-03-28
+Pointers: [1] neurons.agents.roster.A2 | [1] neurons.agents.roster.A1

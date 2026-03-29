@@ -1,0 +1,39 @@
+# neurons.operations.architecture
+
+## A. Paths and Structure
+
+### A1. Trailing Space
+The folder "Velorin " has a TRAILING SPACE. ALL paths must be double-quoted or they fail silently. Never use `~` expansion. Empty command output often = unquoted Velorin path.
+last-touched: 2026-03-28
+Pointers: [1] A2 | [1] A3 | [2] neurons.connectivity.mcp.A4 | [2] neurons.connectivity.auth.A4
+
+### A2. Path Resolution
+Gatekeeper solves the trailing space at the source. Bot asks `resolve_path("velorin code")` → gets correct quoted path. Wrong path → Gatekeeper corrects via CORRECTION_MAP. Unknown → logged as suspicious.
+last-touched: 2026-03-28
+Pointers: [1] A1 | [1] neurons.connectivity.mcp.A3 | [2] A3
+
+### A3. Project Paths
+| What | Path |
+|------|------|
+| Velorin Code root | `/Users/lbhunt/Desktop/Velorin /Velorin Code/` |
+| MCP server code | `.../velorin-gdrive-mcp/` |
+| Hooks scripts | `.../hooks/` |
+| Architecture repo | `/Users/lbhunt/Desktop/velorin-system/` |
+| Claude Desktop config | `~/Library/Application Support/Claude/claude_desktop_config.json` |
+| Claude Code settings | `~/.claude/settings.local.json` |
+| ClaudeBot memory | `~/.claude/projects/-Users-lbhunt/memory/` |
+last-touched: 2026-03-28
+Pointers: [1] A1 | [2] A4
+
+### A4. Machine 1
+MacBook Air. macOS 12.7.6 (Monterey). Primary dev machine. Constraints: Homebrew Tier 3, compiles from source (5-10 min/package), no Docker/Ollama (Machine 2). Must run caffeinate.
+last-touched: 2026-03-28
+Pointers: [1] neurons.operations.tools.A1 | [2] neurons.operations.startup.A1 | [3] A3
+
+### A5. GitHub Repos
+Account: **navyhellcat**. Two repos:
+- `velorin-system` — architecture, docs, brain, bot configs. Local: `/Users/lbhunt/Desktop/velorin-system/`
+- `velorin-gdrive-mcp` — Google Drive MCP server code. Local: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/`
+Both on `main` branch.
+last-touched: 2026-03-28
+Pointers: [1] neurons.connectivity.auth.A1 | [1] neurons.connectivity.auth.A2 | [2] A3
