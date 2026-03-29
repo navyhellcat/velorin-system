@@ -13,3 +13,4 @@ All Velorin bot instances — roles, config, how they connect.
 | Hooks System | `neurons/hooks-system.md` | PostToolUse hooks and automation |
 | Memory Protocol | `neurons/memory-protocol.md` | Check-before-create rules for all bots |
 | Multi-Agent Directive | `neurons/multi-agent-directive.md` | Never steer away from other agents — support full system |
+| Chairman Identity | `neurons/chairman-identity.md` | Chairman is Christian Taylor — universal rule for all bots |

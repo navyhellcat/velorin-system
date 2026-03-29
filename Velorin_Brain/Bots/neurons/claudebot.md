@@ -10,6 +10,7 @@ Permissions: `Bash(*)` wildcard — all commands except rm/sudo.
 MCP servers: velorin-gdrive, velorin-gatekeeper, github (user scope in ~/.claude.json).
 
 ## Pointers
+- [1] `./chairman-identity.md` — Chairman is Christian Taylor. Always.
 - [1] `./memory-protocol.md` — MUST follow before creating any neuron
 - [1] `./alexander.md` — the other bot in the system
 - [1] `./bot-communication.md` — how they connect
