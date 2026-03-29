@@ -8,247 +8,208 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;background:#0d1117;color:#e6edf3;min-height:100vh;padding:24px}
 h1{font-size:18px;font-weight:600;color:#e6edf3;margin-bottom:4px}
-.subtitle{font-size:12px;color:#7d8590;margin-bottom:24px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.panel{background:#161b22;border:1px solid #30363d;border-radius:8px;overflow:hidden}
+.subtitle{font-size:12px;color:#7d8590;margin-bottom:16px}
+.controls{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.controls button{background:#21262d;color:#e6edf3;border:1px solid #30363d;border-radius:6px;padding:5px 12px;font-size:11px;cursor:pointer;transition:background .15s}
+.controls button:hover{background:#30363d}
+.controls .count{font-size:11px;color:#7d8590;margin-left:auto}
+.status{font-size:11px;color:#7d8590;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.status .dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.status .dot.ok{background:#3fb950}
+.status .dot.loading{background:#d29922}
+.status .dot.err{background:#f85149}
+.panel{background:#161b22;border:1px solid #30363d;border-radius:8px;overflow:hidden;margin-bottom:20px}
 .panel-head{font-size:13px;font-weight:600;color:#e6edf3;padding:12px 16px;background:#1c2128;border-bottom:1px solid #30363d;display:flex;align-items:center;gap:8px}
-.panel-body{padding:12px}
-.folder{margin:2px 0}
-.folder-label{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:5px;cursor:default;color:#e6edf3;font-weight:600;font-size:12px}
-.folder-label:hover{background:#1c2128}
-.children{padding-left:18px;border-left:1px solid #30363d;margin-left:11px;margin-top:2px;margin-bottom:4px}
+.panel-body{padding:12px;overflow-x:auto}
+.folder{margin:1px 0}
+.folder-toggle{display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:5px;cursor:pointer;color:#e6edf3;font-weight:600;font-size:12px;border:none;background:none;width:100%;text-align:left;user-select:none}
+.folder-toggle:hover{background:#1c2128}
+.folder-toggle .arrow{display:inline-block;width:12px;font-size:10px;color:#7d8590;transition:transform .15s;flex-shrink:0}
+.folder-toggle.collapsed .arrow{transform:rotate(-90deg)}
+.children{padding-left:18px;border-left:1px solid #21262d;margin-left:11px;margin-top:1px;margin-bottom:2px}
+.children.hidden{display:none}
 .file{display:flex;align-items:center;gap:7px;padding:3px 8px;border-radius:4px;color:#8b949e;font-size:11px}
 .file:hover{background:#1c2128;color:#e6edf3}
-.gap{height:8px}
-.badge{font-size:10px;padding:1px 6px;border-radius:10px;font-weight:600;margin-left:auto;flex-shrink:0;white-space:nowrap}
-.warn{background:#3d2e0a;color:#d29922;border:1px solid #6e3e0a}
-.miss{background:#2d1519;color:#f85149;border:1px solid #6e1a1a}
-.info{background:#0d2035;color:#58a6ff;border:1px solid #1158a7}
-.leg{display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap}
-.leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#8b949e}
-svg.icon{width:14px;height:14px;flex-shrink:0}
+.file a{color:inherit;text-decoration:none}
+.file a:hover{color:#58a6ff;text-decoration:underline}
 svg.ficon{width:14px;height:14px;flex-shrink:0}
 .updated{font-size:10px;color:#7d8590;margin-top:20px;text-align:right}
+.error-msg{color:#f85149;font-size:12px;padding:16px}
 </style>
 </head>
 <body>
 
 <h1>Velorin — Architecture Map</h1>
-<p class="subtitle">Last updated: March 27, 2026 — Session 008 | Refresh after each Alexander commit</p>
+<p class="subtitle">Live from GitHub — navyhellcat/velorin-system</p>
 
-<div class="leg">
-  <div class="leg-item"><span class="badge warn">misplaced</span> File is in wrong folder</div>
-  <div class="leg-item"><span class="badge warn">duplicate</span> Multiple copies exist</div>
-  <div class="leg-item"><span class="badge miss">missing</span> Should exist, does not</div>
+<div class="controls">
+  <button onclick="expandAll()">Expand All</button>
+  <button onclick="collapseAll()">Collapse All</button>
+  <button onclick="fetchTree()">Refresh</button>
+  <span class="count" id="countDisplay"></span>
 </div>
 
-<div class="grid">
-
-<div class="panel">
-  <div class="panel-head">
-    <svg class="icon" viewBox="0 0 16 16" fill="#4285f4"><path d="M8 0C5.8 0 4 1.8 4 4c0 1.4.7 2.6 1.8 3.3C3.1 8 1.5 9.8 1.5 12H3c0-2.2 1.8-4 5-4s5 1.8 5 4h1.5c0-2.2-1.6-4-4.3-4.7C11.3 6.6 12 5.4 12 4c0-2.2-1.8-4-4-4z"/></svg>
-    Google Drive — Claude.AI Root
-  </div>
-  <div class="panel-body">
-
-    <div class="folder">
-      <div class="folder-label">
-        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#EF9F27" stroke="#BA7517" stroke-width="0.5"/></svg>
-        Root (Layer 0)
-      </div>
-      <div class="children">
-        <div class="file">📄 BOT.README.FIRST.BOOTUP</div>
-        <div class="file">📄 Bot.Registry</div>
-        <div class="file">📄 Claude_Context_Profile_v1.2</div>
-        <div class="file">📄 Velorin.Company.DNA</div>
-        <div class="file">📄 Velorin.Company.Operating.Standards</div>
-        <div class="file">📄 Velorin.EndOfDay.Protocol</div>
-        <div class="file">📄 Velorin.Tools.And.URLs</div>
-        <div class="file">📄 topline_profile</div>
-        <div class="file">📄 Alexander.DailyLog <span class="badge warn">misplaced</span></div>
-        <div class="file">📄 Jiang.Corner <span class="badge warn">misplaced</span></div>
-        <div class="file">📄 Turing_Vault_Pointer <span class="badge warn">duplicate ×2</span></div>
-      </div>
-    </div>
-
-    <div class="gap"></div>
-
-    <div class="folder">
-      <div class="folder-label">
-        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.5"/></svg>
-        Bot.Alexander
-      </div>
-      <div class="children">
-        <div class="file">📄 Alexander.ReadMe.First</div>
-        <div class="file">📄 Alexander.AgentRegister</div>
-        <div class="file">📄 MasterBot_System_Instruction</div>
-        <div class="file">📄 Alexander.Topic.AgentEcosystemReality</div>
-        <div class="file">📄 Operational Personality Profile</div>
-        <div class="file">📄 Andrew_Camardella_DISC_Profile</div>
-        <div class="file">📄 Andrew_Camardella_ENTP_Profile</div>
-        <div class="file">📄 Camfil_AI_Platform_Architecture_v0.1</div>
-        <div class="file">📄 Velorin_Session_Handoff_Mar27</div>
-        <div class="file">📄 Velorin_Session_Handoff_March26</div>
-        <div class="file">📄 Velorin.ApprovalLog</div>
-        <div class="file">📄 Velorin_MCP_desktop_github_structure_build_logs</div>
-        <div class="file">📄 Velorin Multi Desktop Logs</div>
-        <div class="file">📄 De-AI Writing Voice</div>
-        <div class="file">📄 Negative Contrast</div>
-        <div class="file">📁 retired handoffs/</div>
-      </div>
-    </div>
-
-    <div class="gap"></div>
-
-    <div class="folder">
-      <div class="folder-label">
-        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/></svg>
-        Bot.Jiang
-      </div>
-      <div class="children">
-        <div class="file">📄 Jiang.ReadMe.First</div>
-        <div class="file">📄 Jiang.Claude.Profile</div>
-        <div class="file">📄 Jiang.CodingStandards</div>
-        <div class="file">📄 Jiang.KnowledgeIndex</div>
-        <div class="file">📄 Jiang.ResearchLog</div>
-        <div class="file">📄 Jiang.ResearchRequest.AgentOrchestration</div>
-        <div class="file">📄 Jiang.ResearchRequest.PathThree</div>
-        <div class="file">📄 Jiang.Topic.AgentOrchestration</div>
-        <div class="file">📄 Jiang.Topic.AgentEcosystemReality</div>
-        <div class="file">📄 Jiang_Topic_AnthropicEcosystem</div>
-        <div class="file">📄 Velorin_Session_Handoff_Mar26 <span class="badge warn">misplaced</span></div>
-        <div class="file">📁 MCP - Desktop Code/</div>
-      </div>
-    </div>
-
-    <div class="gap"></div>
-
-    <div class="folder">
-      <div class="folder-label">
-        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#F4C0D1" stroke="#993556" stroke-width="0.5"/></svg>
-        Bot.Replit (Susan)
-      </div>
-      <div class="children">
-        <div class="file">📄 THE TURING VAULT — PROJECT BRIEF</div>
-        <div class="file">📄 TURING_VAULT_BRIEF <span class="badge warn">duplicate</span></div>
-        <div class="file">📄 Turing_Vault_Cycle_Audit</div>
-        <div class="file">📄 Turing_Vault_Cycle_Audit.v2 <span class="badge warn">duplicate</span></div>
-        <div class="file">📄 Turing_Vault_Execution_Stack</div>
-        <div class="file">📄 Turing_Vault_Growth_Architecture</div>
-        <div class="file">📄 Turing_Vault_Strategic_Report</div>
-        <div class="file">📄 Turing_Vault.Phase2.Architecture</div>
-        <div class="file">📄 TuringVault_ResultsSystem_v2</div>
-        <div class="file">📄 Trey.Topic.Section4.2.ResourceLinks <span class="badge warn">misplaced</span></div>
-      </div>
-    </div>
-
-    <div class="gap"></div>
-
-    <div class="folder">
-      <div class="folder-label">
-        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.5"/></svg>
-        Bot.Trey
-      </div>
-      <div class="children">
-        <div class="file">📄 Trey.OutputStandards</div>
-        <div class="file">📄 Trey.ProjectInstructions</div>
-        <div class="file">📄 Trey.Topic.OpenAIEcosystem</div>
-        <div class="file">📁 Assessments/</div>
-      </div>
-    </div>
-
-  </div>
+<div class="status" id="statusLine">
+  <span class="dot loading"></span> Loading...
 </div>
 
 <div class="panel">
   <div class="panel-head">
-    <svg class="icon" viewBox="0 0 16 16" fill="#e6edf3"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-    GitHub — navyhellcat/velorin-system
+    <svg style="width:14px;height:14px;flex-shrink:0" viewBox="0 0 16 16" fill="#e6edf3"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    navyhellcat/velorin-system
   </div>
-  <div class="panel-body">
-
-    <div class="folder">
-      <div class="folder-label">
-        <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#EF9F27" stroke="#BA7517" stroke-width="0.5"/></svg>
-        / (root)
-      </div>
-      <div class="children">
-        <div class="file">📄 CLAUDE.md <span class="badge miss">missing</span></div>
-
-        <div class="gap"></div>
-
-        <div class="folder">
-          <div class="folder-label" style="font-weight:400;color:#8b949e">
-            <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#AFA9EC" stroke="#534AB7" stroke-width="0.5"/></svg>
-            /architecture
-          </div>
-          <div class="children">
-            <div class="file">📄 ArchitecturalPivot_Mar27.md</div>
-          </div>
-        </div>
-
-        <div class="gap"></div>
-
-        <div class="folder">
-          <div class="folder-label" style="font-weight:400;color:#8b949e">
-            <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#AFA9EC" stroke="#534AB7" stroke-width="0.5"/></svg>
-            /sessions
-          </div>
-          <div class="children">
-            <div class="file">📄 Session_007_Handoff_Mar27.md</div>
-            <div class="file">📄 DailyLog_Entry006_Mar27.md</div>
-          </div>
-        </div>
-
-        <div class="gap"></div>
-
-        <div class="folder">
-          <div class="folder-label" style="font-weight:400;color:#8b949e">
-            <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#AFA9EC" stroke="#534AB7" stroke-width="0.5"/></svg>
-            /tools
-          </div>
-          <div class="children">
-            <div class="file">📄 architecture-map.html ← you are here</div>
-          </div>
-        </div>
-
-        <div class="gap"></div>
-
-        <div class="folder">
-          <div class="folder-label" style="font-weight:400;color:#8b949e">
-            <svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#AFA9EC" stroke="#534AB7" stroke-width="0.5"/></svg>
-            /Velorin_Mainframe
-          </div>
-          <div class="children">
-            <div class="file">📄 01_machine1_mac_mini.md</div>
-            <div class="file">📄 02_machine2_hardware.md</div>
-            <div class="file">📄 03_networking.md</div>
-            <div class="file">📄 04_peripherals_machine1.md</div>
-            <div class="file">📄 05_peripherals_machine2.md</div>
-            <div class="file">📄 06_software_machine1.md</div>
-            <div class="file">📄 07_software_machine2.md</div>
-            <div class="file">📄 08_local_models.md</div>
-            <div class="file">📄 09_external_apis.md</div>
-            <div class="file">📄 10_storage_architecture.md</div>
-            <div class="file">📄 11_machine_to_machine.md</div>
-          </div>
-        </div>
-
-        <div class="gap"></div>
-
-        <div class="file" style="padding-left:8px">📁 /root <span class="badge miss">missing</span></div>
-        <div class="file" style="padding-left:8px">📁 /agents <span class="badge miss">missing</span></div>
-        <div class="file" style="padding-left:8px">📁 /intelligence <span class="badge miss">missing</span></div>
-
-      </div>
-    </div>
-
+  <div class="panel-body" id="treeContainer">
+    <div style="color:#7d8590;font-size:12px;padding:8px">Loading repository tree...</div>
   </div>
 </div>
 
-</div>
+<p class="updated" id="updatedLine"></p>
 
-<p class="updated">Alexander updates this file via GitHub MCP. Refresh browser to see latest state.</p>
+<script>
+const REPO = 'navyhellcat/velorin-system';
+const BRANCH = 'main';
+const API_BASE = 'https://api.github.com';
+
+const FOLDER_SVG = '<svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="#EF9F27" stroke="#BA7517" stroke-width="0.5"/></svg>';
+const FILE_SVG = '<svg class="ficon" viewBox="0 0 16 16"><path d="M3.75 1.5a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h8.5a.25.25 0 00.25-.25V6H9.75A1.75 1.75 0 018 4.25V1.5H3.75zm5.75.56v2.19c0 .138.112.25.25.25h2.19L9.5 2.06zM2 1.75C2 .784 2.784 0 3.75 0h5.086c.464 0 .909.184 1.237.513l3.414 3.414c.329.328.513.773.513 1.237v8.086A1.75 1.75 0 0112.25 15h-8.5A1.75 1.75 0 012 13.25V1.75z" fill="#8b949e"/></svg>';
+
+// Color map for known top-level folders
+const FOLDER_COLORS = {
+  'Claude.AI': {fill:'#9FE1CB',stroke:'#0F6E56'},
+  'Bot.Alexander': {fill:'#9FE1CB',stroke:'#0F6E56'},
+  'Bot.Jiang': {fill:'#B5D4F4',stroke:'#185FA5'},
+  'Bot.Replit': {fill:'#F4C0D1',stroke:'#993556'},
+  'Bot.Trey': {fill:'#C0DD97',stroke:'#3B6D11'},
+  'Velorin_Brain': {fill:'#AFA9EC',stroke:'#534AB7'},
+  'Velorin_Mainframe': {fill:'#F4D9A0',stroke:'#8B6914'},
+  'BOT.Alexander': {fill:'#9FE1CB',stroke:'#0F6E56'},
+  'BOT.ClaudeBot': {fill:'#D4A0F4',stroke:'#7B2AB7'},
+  'BOT.Gatekeeper': {fill:'#F4A0A0',stroke:'#B72A2A'},
+  'CHAIRMAN_CONFIDENTIAL': {fill:'#F4A0A0',stroke:'#B72A2A'},
+  'architecture': {fill:'#AFA9EC',stroke:'#534AB7'},
+  'sessions': {fill:'#AFA9EC',stroke:'#534AB7'},
+  'tools': {fill:'#AFA9EC',stroke:'#534AB7'},
+};
+
+function folderSvg(name) {
+  const c = FOLDER_COLORS[name];
+  if (c) return `<svg class="ficon" viewBox="0 0 16 16"><path d="M2 4a1 1 0 011-1h4l1 2h5a1 1 0 011 1v6a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" fill="${c.fill}" stroke="${c.stroke}" stroke-width="0.5"/></svg>`;
+  return FOLDER_SVG;
+}
+
+function buildTree(items) {
+  // items: array of {path, type} from GitHub tree API
+  const root = {};
+  items.forEach(item => {
+    const parts = item.path.split('/');
+    let node = root;
+    parts.forEach((part, i) => {
+      if (!node[part]) node[part] = (i === parts.length - 1 && item.type === 'blob') ? null : {};
+      if (node[part] !== null) node = node[part];
+    });
+  });
+  return root;
+}
+
+function renderTree(tree, parentPath) {
+  const container = document.createDocumentFragment();
+  // Sort: folders first, then files, alphabetical within each group
+  const entries = Object.entries(tree).sort((a, b) => {
+    const aIsFolder = a[1] !== null;
+    const bIsFolder = b[1] !== null;
+    if (aIsFolder !== bIsFolder) return aIsFolder ? -1 : 1;
+    return a[0].localeCompare(b[0], undefined, {sensitivity: 'base'});
+  });
+
+  entries.forEach(([name, subtree]) => {
+    const fullPath = parentPath ? `${parentPath}/${name}` : name;
+    if (subtree === null) {
+      // File
+      const div = document.createElement('div');
+      div.className = 'file';
+      const link = `https://github.com/${REPO}/blob/${BRANCH}/${encodeURIComponent(fullPath).replace(/%2F/g, '/')}`;
+      div.innerHTML = `${FILE_SVG} <a href="${link}" target="_blank" rel="noopener">${name}</a>`;
+      container.appendChild(div);
+    } else {
+      // Folder
+      const folderDiv = document.createElement('div');
+      folderDiv.className = 'folder';
+
+      const toggle = document.createElement('button');
+      toggle.className = 'folder-toggle';
+      toggle.innerHTML = `<span class="arrow">▼</span> ${folderSvg(name)} ${name}`;
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('collapsed');
+        childrenDiv.classList.toggle('hidden');
+      });
+
+      const childrenDiv = document.createElement('div');
+      childrenDiv.className = 'children';
+      childrenDiv.appendChild(renderTree(subtree, fullPath));
+
+      folderDiv.appendChild(toggle);
+      folderDiv.appendChild(childrenDiv);
+      container.appendChild(folderDiv);
+    }
+  });
+
+  return container;
+}
+
+function expandAll() {
+  document.querySelectorAll('.folder-toggle.collapsed').forEach(el => {
+    el.classList.remove('collapsed');
+    el.nextElementSibling.classList.remove('hidden');
+  });
+}
+
+function collapseAll() {
+  document.querySelectorAll('.folder-toggle:not(.collapsed)').forEach(el => {
+    el.classList.add('collapsed');
+    el.nextElementSibling.classList.add('hidden');
+  });
+}
+
+async function fetchTree() {
+  const statusLine = document.getElementById('statusLine');
+  const container = document.getElementById('treeContainer');
+  const countDisplay = document.getElementById('countDisplay');
+  const updatedLine = document.getElementById('updatedLine');
+
+  statusLine.innerHTML = '<span class="dot loading"></span> Fetching repository tree...';
+  container.innerHTML = '<div style="color:#7d8590;font-size:12px;padding:8px">Loading...</div>';
+
+  try {
+    const resp = await fetch(`${API_BASE}/repos/${REPO}/git/trees/${BRANCH}?recursive=1`);
+    if (!resp.ok) throw new Error(`GitHub API returned ${resp.status}`);
+    const data = await resp.json();
+
+    if (data.truncated) {
+      statusLine.innerHTML = '<span class="dot loading"></span> Tree was truncated by GitHub API — large repo. Showing partial results.';
+    }
+
+    const items = data.tree.filter(item => item.type === 'blob' || item.type === 'tree');
+    const tree = buildTree(items);
+
+    const fileCount = items.filter(i => i.type === 'blob').length;
+    const folderCount = items.filter(i => i.type === 'tree').length;
+
+    container.innerHTML = '';
+    container.appendChild(renderTree(tree, ''));
+
+    countDisplay.textContent = `${fileCount} files, ${folderCount} folders`;
+    statusLine.innerHTML = '<span class="dot ok"></span> Live — loaded from GitHub API';
+    updatedLine.textContent = `Last fetched: ${new Date().toLocaleString()}`;
+
+  } catch (err) {
+    statusLine.innerHTML = `<span class="dot err"></span> Error: ${err.message}`;
+    container.innerHTML = `<div class="error-msg">Failed to load repository tree.<br>This page uses the public GitHub API. If the repo is private, the tree cannot be fetched without authentication.<br><br>Error: ${err.message}</div>`;
+  }
+}
+
+// Auto-fetch on load
+fetchTree();
+</script>
 
 </body>
 </html>

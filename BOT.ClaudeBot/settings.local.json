@@ -64,6 +64,16 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/lbhunt/Desktop/velorin-system/BOT.Scribe/scribe-trigger.sh",
+            "timeout": 10
+          }
+        ]
       }
     ]
   }

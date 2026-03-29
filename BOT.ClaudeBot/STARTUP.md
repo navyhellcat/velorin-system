@@ -44,6 +44,9 @@ If update needed: `sudo npm update -g @anthropic-ai/claude-code`
 Check `/Users/lbhunt/.claude/projects/-Users-lbhunt/memory/MEMORY.md` for prior context.
 **If any entry is marked with >>> READ FIRST <<<, open that file immediately before anything else. It contains critical in-progress work that must resume.**
 
+## 5.1 Read Rules File
+Read `/Users/lbhunt/.claude/projects/-Users-lbhunt/rules/ClaudeBot.Rules.md` — consolidated behavioral rules, permissions, and instructions. This is authoritative. GitHub mirror: `BOT.ClaudeBot/rules/ClaudeBot.Rules.md`.
+
 ## 6. Verify Git Auth
 ```bash
 cd "/Users/lbhunt/Desktop/velorin-system" && git remote -v
