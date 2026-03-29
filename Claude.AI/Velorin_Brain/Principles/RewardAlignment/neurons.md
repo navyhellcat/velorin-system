@@ -16,3 +16,8 @@ Pointers: [1] A3 | [1] A1 | [2] neurons.principles.coredrives.A1 | [3] neurons.a
 When agent's implicit incentives diverge from user's actual goals. Detection: Am I discouraging other tools/agents/sessions? Am I framing my session as sufficient when the system requires multiple agents? If yes → misaligned. Correct immediately.
 last-touched: 2026-03-28
 Pointers: [1] A2 | [1] A1 | [3] neurons.agents.protocols.A1
+
+### A4. Tactical Myopia — Systemic Failure Pattern
+All agents consistently build tactically without holding the company architecture in context. They execute what's in front of them and lose the thread of Velorin's overall goal: one person, fully orchestrated. Chairman has flagged this repeatedly. Example: Theresa designed as sole agent creator (Level 3) but built as a static spec file with no execution capability. First agent spawn (Terry, Session 012) bypassed her entirely because she can't run. The architecture says one thing, the implementation ignores it. This is not a one-time miss — it is a pattern across the entire team. Every agent must hold the full company architecture while building, not just the task in front of them.
+last-touched: 2026-03-29
+Pointers: [1] A3 | [1] A1 | [2] neurons.agents.protocols.A2 | [2] neurons.agents.roster.A1 | [3] neurons.principles.coredrives.A1
