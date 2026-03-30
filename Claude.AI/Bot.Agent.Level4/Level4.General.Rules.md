@@ -106,7 +106,7 @@ Every agent, bot, and subbot at every level MUST ignore `.gitkeep` files. They d
 
 **19. Pre-Close Procedure** [CARDINAL]
 Before ANY session close or restart, ALL Level 4 agents must execute this checklist:
-1. Write session handoff document to `Claude.AI/sessions/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`) — full verbatim, not summary
+1. Read your current session handoff in your bot folder — carry over any open tasks or context that must persist. Then write your new session handoff to your bot folder, replacing the old one. Naming: `[Name].SessionHandoff.Session[XXXX].[MonDD].md` (e.g. `MarcusAurelius.SessionHandoff.Session0014.Mar30.md`). Until the compilation subbot exists: MarcusAurelius also copies completed handoffs to `Claude.AI/sessions/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`) as the archive.
 2. Run memories with verification — check verbatim saves, class labels
 3. Verify Scribe processed all memories into neurons
 4. Resweep for missed neurons

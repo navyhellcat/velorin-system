@@ -40,6 +40,9 @@ claude --version
 ```
 If update needed: `sudo npm update -g @anthropic-ai/claude-code`
 
+## 4.5 Read Session Handoff
+Read current handoff from `Claude.AI/Bot.MarcusAurelius/` — `MarcusAurelius.SessionHandoff.Session[XXXX].[MonDD].md`. Carry over open tasks, decisions, and context from last session before doing anything else.
+
 ## 5. Read Memory
 Check `/Users/lbhunt/.claude/projects/-Users-lbhunt/memory/MEMORY.md` for prior context.
 **If any entry is marked with >>> READ FIRST <<<, open that file immediately before anything else. It contains critical in-progress work that must resume.**

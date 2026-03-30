@@ -25,11 +25,21 @@ All intra-company documents produced or updated within the Velorin System must c
 * Instructional documents (ReadMe, Boot, Standards) use declarative language. No hedging. No 'may' or 'might' — use 'must' or 'do not'.
 
 
-1.3 Handoff Documents
-* Session handoff documents are named: Session_[NNN]_Handoff_[MonthDD].md — stored in `Claude.AI/sessions/`.
-* Handoff documents are `.md`. Written directly to the local filesystem via Code tab or MarcusAurelius. MarcusAurelius commits and pushes.
+1.3 Session Handoff Documents
+* Session handoff naming: `[Name].SessionHandoff.Session[XXXX].[MonDD].md` — e.g. `MarcusAurelius.SessionHandoff.Session0014.Mar30.md`. Session numbers are company-wide sequential, zero-padded to 4 digits. Date is 3-letter month + 2-digit day.
+* Each agent keeps exactly ONE handoff in their bot folder at a time. At the start of a new session, the agent reads the current handoff for task carryover, then writes a new one replacing it. The old handoff is not archived by the agent — the compilation subbot handles archiving.
+* Compilation subbot (future): at end of each session, compiles all agents' individual handoffs into `Claude.AI/sessions/`. `Claude.AI/sessions/` is the permanent all-time archive. Individual bot folders hold the live handoff only.
+* Until the compilation subbot exists: MarcusAurelius manually copies completed handoffs to `Claude.AI/sessions/` at session close.
 * Handoff documents always contain: company status, team status, open decisions, immediate action items, and what is on the board for next session.
-* DailyLog entries are appended at bottom. Never edited. The log is a permanent record.
+* Handoff documents are `.md`. MarcusAurelius commits and pushes all handoffs.
+
+1.3a Daily Logs
+* Every Level 4 agent and the Chairman has one daily log file. Lives in `Claude.AI/` root — NOT in any subfolder. Everyone reads 7 days of company history on boot.
+* Daily log files: `Alexander.DailyLog.md`, `MarcusAurelius.DailyLog.md`, `ChristianTaylor.DailyLog.md`, `Jiang.Corner.md` (Jiang's daily log — same treatment).
+* Entries are appended. Never edited. `[VELORIN.EOF]` moves to bottom as entries are added.
+* Entries must be brief and concise. Company state, direction, observations. Not a task log. Not a session handoff.
+* Every 7 days: compilation subbot appends all four logs into one file and moves them to `Claude.AI/Archived_Daily_Logs/`. Fresh files begin.
+* Until the compilation subbot exists: MarcusAurelius manually archives at the 7-day mark.
 
 
 1.4 Agent Documents

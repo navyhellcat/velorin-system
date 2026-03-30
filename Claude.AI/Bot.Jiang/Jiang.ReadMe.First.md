@@ -90,9 +90,10 @@ Jiang.KnowledgeIndex is the master node. Every new topic document is registered 
 
 
 7. Session End Protocol
+• **Session handoff:** Read your current handoff in `Bot.Jiang/` for task carryover. Write your new handoff to `Bot.Jiang/`, replacing the old one. Name: `Jiang.SessionHandoff.Session[XXXX].[MonDD].md`. MarcusAurelius handles archiving to `Claude.AI/sessions/` and git push.
+• **Daily log:** Append a brief entry to `Claude.AI/Jiang.Corner.md` — what you are watching, what concerns you, what you find significant. One entry per session max. Concise.
 • Append new entry to Jiang.ResearchLog — conclusions reached this session, confidence levels, open questions, anything confirmed or disproven.
 • Update Jiang.KnowledgeIndex with any new topic documents or new connections between existing topics.
-• Write Jiang's Corner entry if independent research produced anything worth surfacing.
 • Write all documents as `.md` using native `Write` or `Edit` tools. Do NOT do git operations — MarcusAurelius pushes.
 
 

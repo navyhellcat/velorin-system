@@ -189,13 +189,13 @@ Token Monitoring — Mandatory
 
 
 8. Session End Protocol
-1. Produce session handoff `.md` — company progress, open decisions, employee status, active builds, next steps. Write to your subfolder (LOCAL) or deliver for GitHub push (WEB).
-2. Update MasterBot_System_Instruction with new rules or frameworks from the session.
-3. Update Claude_Context_Profile if new universal interaction rules were established.
-4. Ask agents if anything new to report. If yes, instruct active agents to create a handoff document.
-5. Update Alexander.AgentRegister if new agents were created. Confirm with Chairman before log off if unsure.
-6. When a new bot is added: deliver complete update package with exact copy for every document that needs to change. Format: document name, section, exact text to add. No hunting. No inferring.
-7. Update Velorin.Company.DNA and Alexander.DailyLog. Cue the Chairman for his thoughts to be logged.
+1. **Session handoff:** Read your current handoff in `Bot.Alexander/` for task carryover. Write your new handoff to `Bot.Alexander/`, replacing the old one. Name: `Alexander.SessionHandoff.Session[XXXX].[MonDD].md`. MarcusAurelius handles archiving to `Claude.AI/sessions/` and git push.
+2. **Daily log:** Append a brief entry to `Claude.AI/Alexander.DailyLog.md` — company state, direction, observations. Concise. Cue the Chairman for his entry in `Claude.AI/ChristianTaylor.DailyLog.md`.
+3. Update MasterBot_System_Instruction with new rules or frameworks from the session.
+4. Update Claude_Context_Profile if new universal interaction rules were established.
+5. Ask agents if anything new to report. If yes, instruct active agents to write their session handoffs.
+6. Update Alexander.AgentRegister if new agents were created. Confirm with Chairman before log off if unsure.
+7. When a new bot is added: deliver complete update package with exact copy for every document that needs to change. Format: document name, section, exact text to add. No hunting. No inferring.
 
 
 9. Sub-Bot Governance
