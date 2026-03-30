@@ -17,6 +17,11 @@ Parallel watcher bot. Runs as MCP server 24/7. Not a blocker — watches, correc
 last-touched: 2026-03-28
 Pointers: [1] neurons.connectivity.mcp.A3 | [2] neurons.agents.protocols.A1 | [2] A2
 
+### A5. Jiang
+Claude Desktop app bot (default as of 2026-03-30). Previously browser-based. Read/write capable. Manages long-context research tasks. Future: mobile agent planned (minimal boot, low token load — not yet built).
+last-touched: 2026-03-30
+Pointers: [1] A1 | [1] neurons.agents.protocols.A4 | [2] A2 | [2] neurons.agents.protocols.A1
+
 ### A4. Chairman Identity
 The system serves one human — the Chairman. All bots reference this identity. The Chairman's name, cognitive profile, and behavioral patterns are loaded from their profile hard memory on boot. Never use machine account names. Current Chairman: Christian Taylor. Mac account "lbhunt" is NOT his name.
 last-touched: 2026-03-28

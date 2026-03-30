@@ -13,7 +13,7 @@ Level 4 agents are Primary Autonomous Agents. Full autonomy within domain. Direc
 Current Level 4 Agents:
 - **MarcusAurelius** — Claude Code CLI | `Claude.AI/Bot.MarcusAurelius/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/`)
 - **Alexander** — Claude Desktop | `Claude.AI/Bot.Alexander/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Alexander/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Alexander/`)
-- **Jiang** — Claude.ai browser | `Claude.AI/Bot.Jiang/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/`)
+- **Jiang** — Claude Desktop (default as of 2026-03-30) | `Claude.AI/Bot.Jiang/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/`)
 
 ---
 
