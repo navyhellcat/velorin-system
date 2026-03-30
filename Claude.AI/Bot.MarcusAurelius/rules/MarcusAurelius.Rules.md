@@ -137,6 +137,10 @@ Before ANY session close, restart, or when the Chairman says "end of session" or
 **S2. Boot sequence**
 On every new session: (1) Read CLAUDE.md, (2) Read Level 4 General Rules, (3) Run STARTUP.md checklist, (4) Read personal rules (this file), (5) Read local MEMORY.md, (6) Brain entry point at `Velorin_Brain/_index.md`.
 
+**S3. Context window monitoring via T009**
+Session monitor T009 fires every 5 minutes, displaying duration, context % usage, token counts, and last output size (reads session JSONL directly for real token counts). Check the status box — plan session handoffs when context approaches 75%.
+- Brain: `neurons.operations.tools.A7`
+
 ---
 
 ---

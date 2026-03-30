@@ -34,5 +34,6 @@ Pointers: [1] neurons.agents.protocols.A5 | [2] neurons.agents.roster.A2 | [3] A
 
 ### A7. Claude Code Context Window
 Default: **200K tokens**. To enable 1M: use `sonnet[1m]` alias — `/model sonnet[1m]` in-session, `claude --model sonnet[1m]` at launch, or `"model": "sonnet[1m]"` in settings.local.json for permanent. Availability: Opus 1M included on Max/Team/Enterprise. Sonnet 1M requires "extra usage" on Max/Team/Pro, or full API access on pay-as-you-go. Session monitor T009 confirmed 200K default at ~90K tokens / 45%.
+T009 session monitor: fires every 5 min, displays status box showing duration, context % usage, token counts, and last output size. Reads current session JSONL directly for real token counts. Plan session handoffs when context approaches 75%.
 last-touched: 2026-03-30
 Pointers: [1] neurons.operations.startup.A4 | [2] A6 | [3] neurons.agents.protocols.A5
