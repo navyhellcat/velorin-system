@@ -15,7 +15,7 @@ Pointers: [1] A1 | [1] neurons.connectivity.mcp.A3 | [2] A3
 ### A3. Project Paths
 | What | Path |
 |------|------|
-| Velorin Code root | `/Users/lbhunt/Desktop/Velorin /Velorin Code/` |
+| Velorin Code root | `/Users/lbhunt/Desktop/Velorin/Velorin Code/` |
 | MCP server code | `.../velorin-gdrive-mcp/` |
 | Hooks scripts | `.../hooks/` |
 | Architecture repo | `/Users/lbhunt/Desktop/velorin-system/` |
@@ -33,7 +33,7 @@ Pointers: [1] neurons.operations.tools.A1 | [2] neurons.operations.startup.A1 | 
 ### A5. GitHub Repos
 Account: **navyhellcat**. Two repos:
 - `velorin-system` — architecture, docs, brain, bot configs. Local: `/Users/lbhunt/Desktop/velorin-system/`
-- `velorin-gdrive-mcp` — Google Drive MCP server code. Local: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/`
+- `velorin-gdrive-mcp` — Google Drive MCP server code. Local: `/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/`
 Both on `main` branch.
 last-touched: 2026-03-29
 Pointers: [1] neurons.connectivity.auth.A1 | [1] neurons.connectivity.auth.A2 | [2] A3 | [2] A7

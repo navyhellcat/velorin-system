@@ -5,7 +5,7 @@ Account: **navyhellcat**
 | Repo | Local Path | Purpose |
 |------|-----------|---------|
 | navyhellcat/velorin-system | `/Users/lbhunt/Desktop/velorin-system/` | Architecture, docs, brain, bot configs |
-| navyhellcat/velorin-gdrive-mcp | `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/` | Google Drive MCP server code |
+| navyhellcat/velorin-gdrive-mcp | `/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/` | Google Drive MCP server code |
 
 Both on `main` branch.
 

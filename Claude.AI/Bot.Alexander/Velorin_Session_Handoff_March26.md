@@ -72,7 +72,7 @@ Key Phase 2 decisions (Jiang, 74% confidence):
 
 Server: velorin-gdrive-mcp v1.3.1
 GitHub: github.com/navyhellcat/velorin-gdrive-mcp
-Mac path: /Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/
+Mac path: /Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/
 Config: ~/Library/Application Support/Claude/claude_desktop_config.json
 Tools live: gdrive_list_folder, gdrive_read_file, gdrive_create_doc, gdrive_update_doc, gdrive_overwrite_doc, gdrive_search, gdrive_move_file, gdrive_trash_file
 

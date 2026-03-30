@@ -27,11 +27,11 @@ If velorin-gdrive or claude-code are missing, reopen Claude Desktop app.
 
 ## 3. Check Google Drive Token Health
 ```bash
-jq '{expiry: (.expiry_date / 1000 | todate), has_refresh: (.refresh_token != null)}' "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/tokens.json"
+jq '{expiry: (.expiry_date / 1000 | todate), has_refresh: (.refresh_token != null)}' "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/tokens.json"
 ```
 Token auto-refreshes. If refresh token is missing, re-run auth:
 ```bash
-cd "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp" && npm run auth
+cd "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp" && npm run auth
 ```
 
 ## 4. Check Claude Code Version
@@ -50,7 +50,7 @@ Read `/Users/lbhunt/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md
 ## 6. Verify Git Auth
 ```bash
 cd "/Users/lbhunt/Desktop/velorin-system" && git remote -v
-cd "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp" && git remote -v
+cd "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp" && git remote -v
 ```
 - Credential helper is set to `osxkeychain` (global)
 - If push fails with auth error, the PAT is stored in Claude Desktop config under the github MCP server env
@@ -60,7 +60,7 @@ cd "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp" && git remot
 ## 7. Verify Repos Are in Sync
 ```bash
 cd "/Users/lbhunt/Desktop/velorin-system" && git fetch origin && git status
-cd "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp" && git fetch origin && git status
+cd "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp" && git fetch origin && git status
 ```
 If behind remote, pull before making changes:
 ```bash
@@ -70,20 +70,20 @@ git pull --rebase origin main
 ---
 
 ## Critical Path Reminders
-- The "Velorin " folder has a **trailing space** — always double-quote paths
+- The "Velorin" folder has no trailing space (removed 2026-03-29) — double-quote subpaths with spaces e.g. "Velorin Code"
 - Config: `/Users/lbhunt/Library/Application Support/Claude/claude_desktop_config.json`
-- Hooks: `/Users/lbhunt/Desktop/Velorin /Velorin Code/hooks/`
+- Hooks: `/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/`
 - Hook scripts: `empty-result-handler.py` — PostToolUse on Bash, catches empty output
 - Settings: `~/.claude/settings.local.json` — permissions, hooks config
 - Architecture repo: `/Users/lbhunt/Desktop/velorin-system/` (GitHub: navyhellcat/velorin-system)
-- MCP code repo: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/` (GitHub: navyhellcat/velorin-gdrive-mcp)
+- MCP code repo: `/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/` (GitHub: navyhellcat/velorin-gdrive-mcp)
 - This file: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/STARTUP.md`
 
 ## GitHub Repos
 | Repo | Local Path | Purpose |
 |------|-----------|---------|
 | navyhellcat/velorin-system | `/Users/lbhunt/Desktop/velorin-system/` | Architecture, docs, BOT.MarcusAurelius, sessions, tools |
-| navyhellcat/velorin-gdrive-mcp | `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/` | Google Drive MCP server (v1.3.3) |
+| navyhellcat/velorin-gdrive-mcp | `/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/` | Google Drive MCP server (v1.3.3) |
 
 ## MCP Server Config (Claude Desktop)
 | Server | Command | Notes |

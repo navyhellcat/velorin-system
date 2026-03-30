@@ -1,7 +1,7 @@
 # Neuron: GDrive Server
 
 Custom Google Drive MCP server. v1.3.3.
-Code: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/server.js`
+Code: `/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/server.js`
 Starts automatically via Claude Desktop.
 
 ## Pointers

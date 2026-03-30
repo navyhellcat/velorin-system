@@ -1,7 +1,7 @@
 # Neuron: Claude Code MCP
 
 Claude Code CLI running as MCP server: `claude mcp serve`
-CWD: `/Users/lbhunt/Desktop/Velorin /Velorin Code`
+CWD: `/Users/lbhunt/Desktop/Velorin/Velorin Code`
 Lets Alexander delegate tasks to Claude Code engine.
 
 ## Pointers

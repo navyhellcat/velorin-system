@@ -62,7 +62,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 '/Users/lbhunt/Desktop/Velorin /Velorin Code/hooks/empty-result-handler.py'",
+            "command": "python3 '/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/empty-result-handler.py'",
             "timeout": 5
           }
         ]

@@ -1,7 +1,7 @@
 # Neuron: Trailing Space
 
 The folder "Velorin " has a TRAILING SPACE in its name.
-Path: `/Users/lbhunt/Desktop/Velorin /`
+Path: `/Users/lbhunt/Desktop/Velorin/`
 
 ALL paths referencing this folder MUST be double-quoted or they fail silently.
 Never use `~` expansion with Velorin paths — use full absolute paths.

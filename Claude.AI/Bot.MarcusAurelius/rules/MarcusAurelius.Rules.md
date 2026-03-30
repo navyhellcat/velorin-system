@@ -59,8 +59,8 @@ ENTP, FSIQ 133, VCI 151, 98.9th percentile. Pattern-chain thinker — non-repeat
 
 ## D. File & Path Rules
 
-**D1. Velorin trailing space** [CARDINAL]
-The folder "Velorin " has a trailing space. ALL paths containing "Velorin" MUST be double-quoted. Never use `~` expansion with Velorin paths. If a command returns empty, the path is probably unquoted.
+**D1. Velorin path**
+The folder is `/Users/lbhunt/Desktop/Velorin` — trailing space removed 2026-03-29. Double-quote subpaths that contain spaces (e.g. "Velorin Code").
 
 **D2. File formats**
 `.md` for all GitHub/brain files. Documents delivered externally: `.docx`. Spreadsheets: `.xlsx`. Never render file content in chat while creating.

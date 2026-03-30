@@ -100,7 +100,7 @@ Chairman opened Claude Code directly in terminal (bypassing Alexander). The foll
 - Toolchain documented — velorin-system-tools.md
 
 ### MUST DISCUSS NEXT SESSION
-- The Velorin folder path has a trailing space: /Users/lbhunt/Desktop/Velorin / — causes silent failures when paths are unquoted. Alexander MUST use full absolute double-quoted paths. Decide whether to rename or enforce quoting.
+- The Velorin folder path has a trailing space: /Users/lbhunt/Desktop/Velorin/ — causes silent failures when paths are unquoted. Alexander MUST use full absolute double-quoted paths. Decide whether to rename or enforce quoting.
 - Fine-grained GitHub token (github_pat_*) failed repo access. Classic token (ghp_*) works. All agents need to know.
 
 ### New Tools Available

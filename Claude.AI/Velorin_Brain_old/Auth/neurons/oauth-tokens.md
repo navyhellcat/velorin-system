@@ -1,7 +1,7 @@
 # Neuron: OAuth Tokens
 
 GDrive OAuth tokens stored at:
-`/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/tokens.json`
+`/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/tokens.json`
 
 Contains access_token, refresh_token, expiry_date. Auto-refreshes.
 Check health: `jq '{expiry: (.expiry_date / 1000 | todate)}' "path/to/tokens.json"`

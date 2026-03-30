@@ -279,7 +279,7 @@ SECTION 9 — MCP SERVERS
 ★ velorin-gdrive-mcp v1.3.1 (custom, operational)
 Drive read/write from Desktop. 8 tools live.
 Repo: https://github.com/navyhellcat/velorin-gdrive-mcp
-Mac path: /Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/
+Mac path: /Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/
 Config: ~/Library/Application Support/Claude/claude_desktop_config.json
 
 

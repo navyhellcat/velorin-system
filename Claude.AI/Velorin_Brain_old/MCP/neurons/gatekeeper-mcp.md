@@ -1,7 +1,7 @@
 # Neuron: Gatekeeper MCP
 
 Parallel watcher MCP server. v0.1.0. NOT a blocker — sits alongside other servers.
-Code: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gatekeeper/server.js`
+Code: `/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gatekeeper/server.js`
 4 tools: resolve_path, check_health, brain_lookup, read_logs.
 
 ## Pointers

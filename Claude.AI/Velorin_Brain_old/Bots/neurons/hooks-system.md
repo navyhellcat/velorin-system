@@ -1,7 +1,7 @@
 # Neuron: Hooks System
 
 Claude Code hooks configured in `~/.claude/settings.local.json` under `"hooks"`.
-Hook scripts live in `/Users/lbhunt/Desktop/Velorin /Velorin Code/hooks/`.
+Hook scripts live in `/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/`.
 
 Active hooks:
 - **empty-result-handler.py** — PostToolUse on Bash. Detects empty command output and injects debugging context so the bot can self-correct (check quoting, paths, etc.)

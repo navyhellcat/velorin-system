@@ -14,7 +14,7 @@ The Gatekeeper is a Node.js MCP server that runs alongside the other 4 MCP serve
 
 ## Location
 
-Code: `/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gatekeeper/`
+Code: `/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gatekeeper/`
 Config: Listed in both Claude Desktop config and Claude Code user config (`~/.claude.json`)
 
 ## Tools (4)
@@ -37,7 +37,7 @@ Config: Listed in both Claude Desktop config and Claude Code user config (`~/.cl
 ## Revert
 
 ```bash
-bash "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gatekeeper/REVERT.sh"
+bash "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gatekeeper/REVERT.sh"
 ```
 Restores pre-gatekeeper Claude Desktop config from Archival backup.
 

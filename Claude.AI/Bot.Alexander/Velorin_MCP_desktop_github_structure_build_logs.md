@@ -18,9 +18,9 @@ Tools implemented:
 2. FILE LOCATIONS
 Local Machine — Mac
 Base path for all Velorin code:
-/Users/lbhunt/Desktop/Velorin /Velorin Code/
+/Users/lbhunt/Desktop/Velorin/Velorin Code/
 MCP server project folder:
-/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/
+/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/
 Files in project folder:
 * server.js — main MCP server
 * auth.js — OAuth authorization flow
@@ -51,7 +51,7 @@ How Git Was Installed
 Homebrew was installed first. Homebrew attempted to install Git 2.53.0 from source — failed due to kernel.org mirror being down. Redirected to xcode-select --install, which revealed Git 2.37.1 (Apple Git-137.1) was already present via Xcode Command Line Tools. Git was confirmed working without any additional installation.
 Repository Setup
 Steps executed in Terminal:
-cd "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp"
+cd "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp"
 git init
 git remote add origin https://github.com/navyhellcat/velorin-gdrive-mcp.git
 git config user.email ctcamardella@gmail.com
@@ -63,7 +63,7 @@ Authentication Note
 GitHub no longer accepts passwords for git push. A Personal Access Token (classic) was generated at github.com/settings/tokens with repo scope. Token was used as the password when git push prompted. Token is not stored anywhere in the project — it was entered once interactively.
 Future Push Process
 When code changes are made, the process to update GitHub is:
-cd "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp"
+cd "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp"
 git add .
 git commit -m "description of what changed"
 git push
@@ -75,10 +75,10 @@ MCP Entry Added
   "mcpServers": {
     "velorin-gdrive": {
       "command": "node",
-      "args": ["/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/server.js"],
+      "args": ["/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/server.js"],
       "env": {
-        "GDRIVE_OAUTH_PATH": "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/gcp-oauth.keys.json",
-        "GDRIVE_TOKEN_PATH": "/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/tokens.json"
+        "GDRIVE_OAUTH_PATH": "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/gcp-oauth.keys.json",
+        "GDRIVE_TOKEN_PATH": "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/tokens.json"
       }
     }
   }
@@ -96,7 +96,7 @@ Command used to fix:
 sed -i '' 's|"http://localhost"|"http://localhost:3000"|' gcp-oauth.keys.json
 Token File
 After running node auth.js and completing the browser authorization flow, tokens are saved to:
-/Users/lbhunt/Desktop/Velorin /Velorin Code/velorin-gdrive-mcp/tokens.json
+/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp/tokens.json
 Tokens auto-refresh. The server writes updated tokens to disk on every refresh event. Token expiry should not cause server failure as long as the refresh token remains valid.
 If auth ever breaks: run node auth.js again from the project folder. This regenerates tokens.json.
 

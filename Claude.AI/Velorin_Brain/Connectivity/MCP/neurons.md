@@ -8,7 +8,7 @@ last-touched: 2026-03-28
 Pointers: [1] A6 | [2] neurons.agents.roster.A1 | [3] neurons.operations.tools.A4
 
 ### A2. Claude Code MCP
-Claude Code CLI as MCP server: `claude mcp serve`. CWD: `/Users/lbhunt/Desktop/Velorin /Velorin Code`. Lets Alexander delegate tasks to Claude Code engine.
+Claude Code CLI as MCP server: `claude mcp serve`. CWD: `/Users/lbhunt/Desktop/Velorin/Velorin Code`. Lets Alexander delegate tasks to Claude Code engine.
 last-touched: 2026-03-28
 Pointers: [1] A6 | [1] neurons.agents.protocols.A1 | [2] neurons.operations.startup.A7 | [2] neurons.operations.architecture.A1
 
