@@ -76,4 +76,55 @@ Jiang | March 28, 2026 | Follows: Ecosystem Intelligence Report
 
 Confidence: 85%.
 
+---
+
+## POINTER REGISTRY — ALL RELATED RESEARCH
+
+Added March 29, 2026. All pointers include dual-path format (LOCAL | GITHUB).
+
+### Jiang's Tool Research — This Folder (all files relevant, no noise)
+
+LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Research_Results/Tools_For_Velorin_Research/`
+GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/Research_Results/Tools_For_Velorin_Research/`
+
+Start with `00_Session_Summary_Mar29_2026.md` for full session context and synthesis. Then individual zone files (01 through 11) for deep dives on each tool.
+
+### Trey's Velorin Tooling Research — Full Folder (all files relevant, no noise)
+
+LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Trey/Assessments/velorin_tooling_research/`
+GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Trey/Assessments/velorin_tooling_research/`
+
+Primary document: `Velorin_Agent_Tooling_Correction_Memo.md` — Trey's diagnosis and permanent rule proposal. Corroborates and extends Jiang's diagnosis independently from the GPT side. Also contains: `Compression_Context_Architecture_and_Token_Optimization.md` (direct answer to reboot token problem), `MiroFish_Population_Simulation.md` (MiroFish overview and strategic read for Velorin).
+
+### Trey's MiroFish Stack Deep Research — Full Folder (all files relevant, no noise)
+
+LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Trey/Assessments/mirofish_stack_deep_research/`
+GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Trey/Assessments/mirofish_stack_deep_research/`
+
+14 deep-dive documents on MiroFish stack components. Priority reads: `01_Graph_Construction_with_GraphRAG.md` (GraphRAG as knowledge-to-structure compiler — maps to Velorin Brain architecture) and `13_Zep_Cloud_for_Memory.md` (purpose-built agent memory — maps to Velorin memory layer problem). Also: `14_OASIS_as_the_Underlying_Simulation_Engine.md` for long-term simulation layer context.
+
+### Trey's Assessment Summary Documents (individual files — mixed folder, pointer by file)
+
+| Document | LOCAL Path | What It Is |
+|---|---|---|
+| Velorin Deep Research Report | `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Trey/Assessments/Velorin_Deep_Research_Report.md` | Comprehensive Velorin market/technical analysis. 25KB. Strategic moat analysis, competitor landscape (Zapier/Workato/IFTTT/Alexa), technical priority stack, 90-day roadmap. Key finding: moat is not connectivity — it is five-box governance + trustworthy action semantics. |
+| MiroFish Adoption Memo | `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Trey/Assessments/Velorin_MiroFish_Adoption_Memo.md` | Decision memo on MiroFish stack adoption. Verdict: adopt the logic (structural separation pattern), not the full stack. |
+| Trey Market Research | `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Trey/Assessments/Trey_Market_Research.md` | Supplementary competitive landscape. |
+
+GITHUB equivalents: `navyhellcat/velorin-system` → `Claude.AI/Bot.Trey/Assessments/[filename]`
+
+### Trey's OpenAI Ecosystem Research (not yet read in full — flag for next session)
+
+LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Trey/Trey.Topic.OpenAIEcosystem.md`
+GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Trey/Trey.Topic.OpenAIEcosystem.md`
+
+45KB. ChatGPT connectivity, GPT apps, Codex, OpenAI SDK, ecosystem comparison. Read before MA/Alexander meeting.
+
+### Jiang's Window Gravity Research (filed this session)
+
+LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md`
+GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md`
+
+Directly related to tool adoption: Window Gravity is the mechanism that prevented all tools in this folder from being surfaced earlier. The mandatory evaluation gate (Section 5.1 of Window Gravity doc) is the structural fix. The tool inventory problem (Desktop not knowing its live tool surface) is Window Gravity at the infrastructure layer. These two research threads are coupled.
+
 [VELORIN.EOF]
