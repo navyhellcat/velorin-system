@@ -10,7 +10,8 @@ All intra-company documents produced or updated within the Velorin System must c
 
 1.1 Universal Requirements
 * Every document ends with [VELORIN.EOF] as the absolute last line. Nothing appears after it. No exceptions.
-* All documents are native Google Docs. No uploaded .docx files as primary documents. Uploads are for delivery only — the canonical version always lives as a native Google Doc in Drive.
+* **Format:** `.md` for all internal documents and system files. `.xlsx` for spreadsheets. External deliverables are `.md` unless Christian Taylor explicitly requests a specific format for a specific recipient. No `.docx` as a default format.
+* All documents live in the GitHub repo (`navyhellcat/velorin-system`). MarcusAurelius owns all git commits and pushes. Other agents write files; they do not git push.
 * No version numbers in file names. Files are updated in place. Same name. Same location. Same ID.
 * All dates use the format: Month DD, YYYY (e.g. March 25, 2026). All plans, targets, and deadlines must include a date. Undated items are not accountable items.
 * Document names use underscore spacing for multi-word names. No spaces in file names. No special characters except periods and underscores.
@@ -25,8 +26,8 @@ All intra-company documents produced or updated within the Velorin System must c
 
 
 1.3 Handoff Documents
-* Session handoff documents are named: Velorin_Session_Handoff_[MonthDD] — no year needed unless cross-year ambiguity exists.
-* Handoff documents are delivered as .docx for manual upload to Drive by Christian Taylor. They are not native Google Docs until uploaded.
+* Session handoff documents are named: Session_[NNN]_Handoff_[MonthDD].md — stored in `Claude.AI/sessions/`.
+* Handoff documents are `.md`. Written directly to the local filesystem via Code tab or MarcusAurelius. MarcusAurelius commits and pushes.
 * Handoff documents always contain: company status, team status, open decisions, immediate action items, and what is on the board for next session.
 * DailyLog entries are appended at bottom. Never edited. The log is a permanent record.
 
@@ -83,7 +84,7 @@ No agent in this system has ever been required to think about Claude's own nativ
 * MCP Servers (Model Context Protocol) — Claude can connect to external tools and data sources via MCP. This is the primary integration path for connecting Claude to third-party systems at scale. When evaluating any external tool integration, MCP compatibility must be assessed.
 * Claude Code — A separate Anthropic product. Command-line agentic coding tool. Relevant when build complexity exceeds what is achievable inside Claude.ai sessions. Can run persistent processes, connect to local file systems, and execute long-running tasks.
 * Claude API — Direct programmatic access to Claude. Required for the Velorin automation end state. Every build that will eventually need to be triggered automatically must be designed with API compatibility in mind.
-* Projects with Knowledge Base — Claude Projects allow persistent document context across sessions. Current bridge solution for boot document reliability. Limitations: manual file management, does not scale to multi-bot architecture without intervention.
+* Projects with Knowledge Base — Claude Projects allow persistent document context across sessions. **Superseded** — Velorin agents run in the Code tab with self-loading boot sequences from GitHub files. Projects are no longer part of the architecture.
 
 
 3.2 Tool Selection Logic

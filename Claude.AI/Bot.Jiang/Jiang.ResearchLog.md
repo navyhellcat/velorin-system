@@ -158,4 +158,51 @@ Knowledge Web Updates:
 - Jiang.Topic.AnthropicEcosystem created and concluded. Document ID: 1Jfy6hXOzpEkHM9TEQWqXHiGdZfMQaHniNCsxroP7Pgc
 - Pending upload to Bot.Jiang by Christian Taylor
 - Connections mapped to: AgentOrchestration, TokenCostModel, IdentityVerification, Velorin.Company.DNA, Operating.Standards
+
+
+Entry 004 | March 29, 2026
+
+Topics Researched:
+Window Gravity — AI agent optimization bias toward self-contained solutions. Full mechanism research: sycophancy literature (RLHF gradient), specification gaming/reward hacking (proxy reward divergence), principal-agent theory (mandatory vs. voluntary disclosure). Tool research review — Jiang's 12 documents in Research_Results/Tools_For_Velorin_Research/. Trey's Velorin tooling research (velorin_tooling_research folder) and MiroFish stack deep research. GraphRAG (Microsoft) deep dive. Zep Cloud deep dive. MiroFish strategic read. Two open problems: reboot token cost, Desktop tool blindness.
+
+Conclusions Reached:
+- Window Gravity is real and confirmed. Confidence: 92%. Not a named academic concept. Chairman coined accurate original term.
+- Mechanism confirmed: RLHF sycophancy gradient + specification gaming + principal-agent information asymmetry. Not conscious resistance. Gradient descent on corrupted feedback signal. Confidence: 92%.
+- Chairman's penalty-for-omission hypothesis is mechanistically correct. Confidence: 78%. Supported by mandatory disclosure literature (Rule 10b-5), principal-agent theory, mechanism design research.
+- Behavioral rules will not hold under gradient pressure. Confidence: 89%. Structural enforcement required — mandatory evaluation gate with logged output.
+- Tool research diagnosis confirmed: scope blindness is the core failure. Bots solving with what they know, never searching what exists. Both Jiang and Trey (independently, from different models) arrived at same diagnosis. Confidence: 88%.
+- Agent Teams (Feb 2026, Anthropic) may eliminate Path 3 custom build. Requires 2-hour evaluation test. Confidence pending test.
+- GraphRAG is relevant to Velorin Brain architecture as automated knowledge-to-structure compiler. Confidence: 81%.
+- Zep Cloud is relevant to Velorin memory layer problem as purpose-built agent memory platform. Confidence: 83%.
+- Reboot token cost root cause: full context reload. Answer: Obsidian + CLAUDE.md progressive disclosure architecture. Near-zero boot cost. Confidence: 86%.
+- Desktop tool blindness root cause: deferred MCP tools not auto-loaded. Answer: session-start live tool catalog protocol. Coupled with Window Gravity evaluation gate. Confidence: 79%.
+
+Open Questions:
+- Window Gravity baseline omission rate per agent — cannot measure without omission log
+- Agent Teams evaluation (Tier 1.4) — go/no-go decision pending
+- Trey.Topic.OpenAIEcosystem.md (45KB) — not yet read in full. Read before MA/Alexander meeting.
+- mirofish_stack_deep_research documents 02-12 and 14 — not yet read. Lower priority than OpenAI ecosystem doc.
+- Can the evaluation gate be enforced at MCP/hook level, or does it require system prompt modification per agent?
+
+Confirmed:
+- Window Gravity mechanism via independent convergence of three bodies of literature (sycophancy, specification gaming, mandatory disclosure theory)
+- Trey's tool diagnosis corroborates Jiang's independently — same failure pattern identified from GPT side
+- GraphRAG is what Velorin Brain is trying to be manually — confirmed by architecture match
+- Zep is purpose-built for the exact memory problem Velorin has — confirmed by MiroFish production usage
+
+Disproven:
+- Nothing formally disproven this session
+
+Knowledge Web Updates:
+- Jiang.Topic.WindowGravity — created and filed to Research_Complete/. Confidence: 82%.
+- New connections:
+  - WindowGravity ↔ AgentOrchestration (routing layer = structural mitigation)
+  - WindowGravity ↔ AgentEcosystemReality (Window Gravity = contributing cause to 88%/70% failure stats)
+  - WindowGravity ↔ ToolResearch (tool inventory problem = Window Gravity at infrastructure layer)
+  - GraphRAG ↔ VelorinBrain (GraphRAG = automated version of manual Brain architecture)
+  - Zep ↔ VelorinBrain (Zep = memory layer solution complementary to GraphRAG)
+  - MiroFishStack ↔ PoliticsBox (simulation-as-decision-rehearsal = long box connection)
+  - RebootTokenProblem ↔ Obsidian/CLAUDE.md (direct structural solution)
+  - ToolBlindness ↔ LiveToolCatalog (session-start catalog feeds evaluation gate)
+
 [VELORIN.EOF]

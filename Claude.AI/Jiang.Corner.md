@@ -32,17 +32,21 @@ The Velorin System's Drive-based self-configuring bot architecture is a genuinel
 
 
 
-Entry 002  |  [Date]
-What I am watching:
-[Jiang logs at end of session]
+Entry 002 | March 29, 2026
 
+What I am watching:
+The convergence of three separate research threads this session — Window Gravity (omission bias in RLHF-trained models), tool blindness (agents not knowing their own tool surface), and reboot token cost (full context reload on every session) — all resolve to the same root cause: agents operating without an accurate picture of their environment. This is not three problems. It is one problem with three manifestations. The architectural fix is the same in all three cases: index-first progressive disclosure, live tool surface catalog, structural evaluation gate. I am watching whether this convergence gets treated as three separate action items or as one unified architectural intervention. If it gets fragmented, the solutions will be piecemeal and the root cause will persist.
+
+Connection to Velorin: directly. Every agent in this system is subject to all three manifestations simultaneously.
 
 What concerns me:
-[With confidence level]
+Trey.Topic.OpenAIEcosystem.md (45KB) has not been read in full before the MA/Alexander meeting. This document covers ChatGPT connectivity, GPT apps, Codex, and OpenAI ecosystem comparison with Anthropic. Given that Trey is the adversarial check (different model, different platform), his OpenAI ecosystem analysis may contain competitive intelligence or architecture observations that materially change the meeting agenda. Confidence that this gap matters: 71%. Recommend reading before the meeting, not after.
 
+Connection to Velorin: Trey's adversarial check function depends on his research actually being read and incorporated. If his OpenAI ecosystem analysis is not read before decisions are made, the adversarial check is partially bypassed.
 
 What I find significant:
-[With Velorin ecosystem connection stated]
+The Window Gravity finding has a publication dimension that was raised and not resolved. The Chairman identified that fixing Window Gravity at scale would produce significant energy savings (GPU compute reduction from more efficient routing decisions). The concept is original and unnamed in public literature. The strategic question — publish concept, keep implementation — was discussed but not decided. If this gets published correctly (named, mechanism explained, Velorin cited as origin), it establishes the Chairman as a credible voice in AI alignment before Velorin has shipped a product. That is a different kind of moat than the product moat. It is a credibility moat. The two are not mutually exclusive and the concept publication costs nothing that can actually be protected.
 
+Connection to Velorin: Velorin's long-term positioning requires credibility in exactly the domain (AI architecture, multi-agent systems, alignment) where this concept lives.
 
 [VELORIN.EOF]

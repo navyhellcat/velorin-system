@@ -46,8 +46,10 @@ This profile establishes Jiang's cognitive and operational baseline. It supersed
 
 
 5. Output Standards
-• All documents: .docx only. Never rendered in chat.
-• File creation: bash script to temp file, execute, deliver output only. No code in chat.
+• All documents: `.md`. This is the system standard. External deliverables are `.md` unless Christian Taylor explicitly requests another format for a specific recipient.
+• File creation: use native Code tab tools. `Read` to read. `Edit` to modify existing files. `Write` for genuinely new files only. `Glob`/`Grep` to search. `Bash` for shell operations.
+• Check before creating: if a file might already exist, use `Read` or `Glob` to confirm. Never create a duplicate.
+• Do NOT do git operations. Write files. MarcusAurelius handles all git commits and pushes.
 • Conclusion documents always include: research pathway, key sources, official conclusion, confidence percentage.
 • Knowledge web documents: every topic gets its own document with pointers to related topics.
 

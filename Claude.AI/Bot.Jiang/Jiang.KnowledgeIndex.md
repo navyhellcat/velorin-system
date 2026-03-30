@@ -136,4 +136,64 @@ Jiang.Topic.AnthropicEcosystem ↔ Velorin.Company.DNA: Conclusion 7 directly va
 
 
 Jiang.Topic.AnthropicEcosystem ↔ Velorin.Company.Operating.Standards: Technology Evaluation Standard (Section 2) should be updated to include full tool inventory from Part 1 of this document.
+
+
+--- UPDATE: March 29, 2026 ---
+
+TOPIC REGISTRY — NEW ENTRIES:
+
+Topic: WindowGravity
+- Document: Jiang.Topic.WindowGravity
+- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md
+  (LOCAL: /Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md | GITHUB: navyhellcat/velorin-system → Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md)
+- Summary: AI agent optimization bias toward self-contained solutions. RLHF gradient + specification gaming + principal-agent information asymmetry. Not a named academic concept — Chairman coined original term. Fix: mandatory structured evaluation gate (penalty-for-omission mechanism). Behavioral rules insufficient.
+- Confidence: 82% overall. 92% on mechanism. 78% on fix. 89% on behavioral rules failing.
+- Status: Concluded
+- Connected to: AgentOrchestration, AgentEcosystemReality, ToolResearch, VelorinOperatingStandards
+
+Topic: GraphRAG
+- Document: Jiang.Topic.GraphRAG (NOT YET CREATED — queued)
+- Summary: Microsoft graph-based retrieval and indexing system. Converts unstructured text to knowledge graph with community detection and summaries. Stronger than vector RAG for global questions. Used in MiroFish as world compiler. Three Velorin applications: company memory graph, research graph, human OS graph.
+- Confidence: N/A — topic document not yet created
+- Status: Queued — create before GraphRAG evaluation decision
+- Connected to: VelorinBrain, MiroFishStack, Zep
+
+Topic: Zep
+- Document: Jiang.Topic.Zep (NOT YET CREATED — queued)
+- Summary: Purpose-built agent memory platform. Temporal knowledge graphs, Memory API, Graph API. Solves structured memory across agent sessions without transcript stuffing. Required component in MiroFish default stack. Directly relevant to Velorin memory layer problem.
+- Confidence: N/A — topic document not yet created
+- Status: Queued — create before Zep evaluation decision
+- Connected to: VelorinBrain, MiroFishStack, GraphRAG
+
+Topic: MiroFishStack
+- Document: Jiang.Topic.MiroFishStack (NOT YET CREATED — queued for post-OpenAIEcosystem session)
+- Summary: Open-source multi-agent prediction engine. OASIS + GraphRAG + Zep + OpenAI-compatible models. Decision rehearsal through synthetic populations. Strategic signal: adopt the structural separation pattern (knowledge layer / memory layer / simulation layer / operator layer), not the stack blindly.
+- Confidence: N/A — topic document not yet created
+- Status: Queued
+- Connected to: GraphRAG, Zep, PoliticsBox
+
+Topic: ToolResearch
+- Document: Session summary and 12 zone files in Research_Results/Tools_For_Velorin_Research/
+  (LOCAL: /Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Research_Results/Tools_For_Velorin_Research/ | GITHUB: navyhellcat/velorin-system → Claude.AI/Bot.Jiang/Research_Results/Tools_For_Velorin_Research/)
+- Summary: Comprehensive tool research — Superpowers, GSD, Cowork, Connectivity Stack, Awesome Claude Code, UI/UX Pro Max, Obsidian Skills, Obsidian as knowledge infrastructure. Diagnosis: scope blindness is core failure. Corroborated by Trey independently. Adoption memo and ecosystem intelligence report included.
+- Confidence: Diagnosis 88%. Adoption roadmap 85%.
+- Status: Concluded — adoption decisions pending (Agent Teams eval, Obsidian commit)
+- Connected to: WindowGravity, AgentOrchestration, VelorinOperatingStandards
+
+CONNECTION MAP — NEW ENTRIES:
+
+Jiang.Topic.WindowGravity ↔ Jiang.Topic.AgentOrchestration: Separate routing layer (orchestrator with no in-context incentive) is the structural mitigation for Window Gravity. Routing layer is the architectural fix; evaluation gate is the protocol fix.
+
+Jiang.Topic.WindowGravity ↔ Jiang.Topic.AgentEcosystemReality: Window Gravity is a contributing cause to the 88%/70% production failure statistics in AgentEcosystemReality. Agents optimizing in-window create the architectural complexity that kills multi-agent systems.
+
+Jiang.Topic.WindowGravity ↔ ToolResearch: Tool inventory problem (Desktop tool blindness) is Window Gravity at the infrastructure layer. An agent without a live tool surface catalog cannot perform an honest evaluation gate. Solving Window Gravity without solving tool blindness is incomplete.
+
+GraphRAG ↔ VelorinBrain: GraphRAG is the automated version of what the Velorin Brain is trying to do manually. Same architecture (entities, relationships, communities, summaries). Evaluation question: at what scale does GraphRAG become worth the infrastructure investment vs. manual Brain maintenance?
+
+Zep ↔ VelorinBrain: Zep solves the memory layer problem that neurons partially address. Temporal logic, retrieval by relevance, structured memory types. Complementary to GraphRAG — not competing. GraphRAG for knowledge structure, Zep for agent memory.
+
+MiroFishStack ↔ PoliticsBox: Simulation-as-decision-rehearsal maps to the politics long box. Scenario rehearsal for communications strategy, policy positions, and public reaction modeling. Not near-term but architecturally coherent with Velorin's long-term direction.
+
+ToolResearch ↔ Velorin.Company.Operating.Standards: Operating Standards Section 2.1 (Technology Evaluation Standard) is the correct frame but behavioral in enforcement. ToolResearch establishes that behavioral rules erode under gradient pressure. Section 2.1 needs to become a structural hook — mandatory evaluation gate with logged output.
+
 [VELORIN.EOF]
