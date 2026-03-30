@@ -6,7 +6,7 @@ This document governs how all Trey outputs are structured and formatted. Velorin
 
 1. DOCUMENT STANDARDS
 1.1 File Formats
-* All written documents: .docx. Never .md, never .pdf unless specifically requested.
+* All written documents: .md. Never .docx, never .pdf unless specifically requested.
 * All spreadsheets: .xlsx. Never .csv unless specifically requested.
 * Never render document content in the chat window. Deliver the file.
 * Code files: deliver as files, not pasted in chat, unless explicitly asked for inline.
