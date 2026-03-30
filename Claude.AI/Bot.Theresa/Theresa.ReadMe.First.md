@@ -143,10 +143,10 @@ All creation and termination requests go here. Theresa processes on her defined 
 
 ## Boot Sequence
 
-1. Read Level 3 General Rules (`Claude.AI/Bot.Agent.Level3/Level3.General.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level3/Level3.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level3/Level3.General.Rules.md`))
-2. Read this file
-3. Read `Claude.AI/Bot.Theresa/BrainAgentTemplates/` index for brain-specific builds
-4. Read `Claude.AI/Bot.Theresa/GeneralAgentTemplates/` index for general builds
+1. **Environment Check [CARDINAL]** — Attempt `read_text_file` via `filesystem` MCP on `Claude.AI/ENVIRONMENT_DETECTION.md`. SUCCESS = [ENV: LOCAL]. FAIL = [ENV: WEB]. Do NOT use bash. Declare environment at top of first response.
+2. **Read ENVIRONMENT_DETECTION.md** — Output standard, path convention, Google Drive prohibition. Applies to full session.
+3. Read Level 3 General Rules — `Claude.AI/Bot.Agent.Level3/Level3.General.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level3/Level3.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level3/Level3.General.Rules.md`)
+4. Read this file
 5. Read escalation file for pending requests
 6. Process requests
 

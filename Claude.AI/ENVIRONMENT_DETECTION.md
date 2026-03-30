@@ -7,63 +7,74 @@ Every agent MUST run this check on boot BEFORE any other operation. No exception
 
 ## The Test
 
-**Step 1: Attempt local filesystem access.**
-Try to read this exact file: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/ENVIRONMENT_DETECTION.md`
+**Attempt to read the following file using the `filesystem` MCP tool (`read_text_file`):**
 
-- If you CAN read it from the local filesystem → you are **LOCAL**
-- If you CANNOT (no Bash, no filesystem tool, permission denied, path not found) → you are **WEB**
+```
+[your velorin-system local path]/Claude.AI/ENVIRONMENT_DETECTION.md
+```
 
-**Step 2: Record your environment.**
-State at the top of your first response: `[ENV: LOCAL]` or `[ENV: WEB]`
+- If the read **SUCCEEDS** → you are **LOCAL**
+- If the read **FAILS** → you are **WEB**
+
+**Do NOT use the bash tool to test.** Bash runs in a sandboxed Linux container and cannot access Mac filesystem paths. It will always fail regardless of your environment.
+
+**Do NOT assume based on agent name, platform name, or prior sessions.** Test every boot.
 
 ---
 
 ## What This Means
 
-| Environment | Filesystem | GitHub | How to read files | How to write files |
-|-------------|-----------|--------|-------------------|-------------------|
-| **LOCAL** | Yes | Yes (via git) | Read from local path, git pull first | Write to local path, git push immediately after |
-| **WEB** | No | Yes (via GitHub MCP/API) | Read via GitHub API: `navyhellcat/velorin-system` | Write via GitHub API or flag for local agent to execute |
+| Environment | Filesystem | How to read files | How to write files |
+|-------------|-----------|-------------------|-------------------|
+| **LOCAL** | Yes — filesystem MCP works | `read_text_file` via filesystem MCP | Write via filesystem MCP. MarcusAurelius handles git push. |
+| **WEB** | No — filesystem MCP fails | GitHub API via github MCP: `navyhellcat/velorin-system` | Deliver to Christian Taylor. Ask for GitHub confirmation. Track as UNSYNCED until confirmed. |
+
+---
+
+## Declaring Your Environment
+
+State at the top of your first response: `[ENV: LOCAL]` or `[ENV: WEB]`
+
+---
+
+## Agent Environment Map
+
+This table is a reference only — it does NOT override the test result. If the test contradicts the table, trust the test.
+
+| Agent | Platform | Typical Environment |
+|-------|----------|-------------------|
+| MarcusAurelius | Claude Code CLI | Always LOCAL — uses native Read tool, not filesystem MCP |
+| Alexander | Claude Desktop | LOCAL when on Desktop — confirm with test |
+| Jiang | Claude Desktop or Claude.ai | LOCAL on Desktop, WEB on Claude.ai — confirm with test |
+| Trey | GPT | Always WEB — no local access |
+| All sub-agents | Inherits parent | Run test regardless |
+
+---
+
+## Output Standard [CARDINAL]
+
+Applies to all file output in all sessions:
+
+- **Default format:** `.md` for all system files, notes, and internal documents. `.docx` for external deliverables. `.xlsx` for spreadsheets.
+- **LOCAL:** Write files directly to the local filesystem via filesystem MCP.
+- **WEB:** Create the file content. Inform Christian Taylor: *"[filename] needs to be committed to GitHub — please confirm when pushed."* If he does not confirm, carry it forward as `UNSYNCED: [filename] — web session [date]` in your session notes until confirmed.
+- **Google Drive:** Do NOT access Google Drive under any circumstance unless Christian Taylor explicitly instructs it in this specific session. Drive references in older files are obsolete and should be ignored.
 
 ---
 
 ## Path Convention
 
-Every path reference in the Velorin system has TWO forms:
+Every file reference in the Velorin system has two forms:
 
 | Form | Example |
 |------|---------|
-| **Local** | `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Alexander/Alexander.ReadMe.First.md` |
-| **GitHub** | `navyhellcat/velorin-system` → `Claude.AI/Bot.Alexander/Alexander.ReadMe.First.md` |
+| **Local** | `/Users/lbhunt/Desktop/velorin-system/Claude.AI/[path]` |
+| **GitHub** | `navyhellcat/velorin-system` → `Claude.AI/[path]` |
 
-- **LOCAL agents** use local paths. MUST `git pull` before reading, `git push` after writing.
-- **WEB agents** use GitHub repo + relative path. Read/write via GitHub API only.
-- **Both** treat GitHub as source of truth. Local is a synced cache.
+LOCAL agents use local paths. WEB agents use GitHub repo + relative path. Read ONE path only — the one matching your verified environment.
 
 ---
 
-## Agent Environment Map (Current)
+*ENVIRONMENT_DETECTION.md | Layer 0 | Updated 2026-03-29 | CARDINAL*
 
-| Agent | Platform | Default Environment | Can Be Web? |
-|-------|----------|-------------------|-------------|
-| MarcusAurelius | Claude Code CLI | LOCAL | No — terminal only |
-| Alexander | Claude Desktop / Desktop Code | LOCAL | Yes — if opened in claude.ai |
-| Jiang | Claude.ai browser | WEB | Always web |
-| Trey | GPT | WEB | Always web (no direct repo access) |
-| All sub-agents | Spawned by parent | Inherits parent | Inherits parent |
-
----
-
-## Rules
-
-1. **This check is NOT optional.** Every boot, every agent, every session.
-2. **The filesystem test is the ONLY authority.** Do not assume based on agent name or platform.
-3. **Alexander CAN be either.** If opened on Desktop → LOCAL. If opened in claude.ai → WEB. The test determines which.
-4. **GitHub is always source of truth.** LOCAL agents sync to it. WEB agents read/write directly.
-5. **Never use a local path in a WEB environment.** Never use GitHub API in a LOCAL environment when filesystem is faster.
-6. **READ ONCE — from your environment ONLY.** [CARDINAL] Dual-path references are a ROUTING TABLE, not a checklist. You read ONE path — the one that matches your verified environment. LOCAL agents read local files. WEB agents read via GitHub API. NEVER read both. NEVER read local then re-read from GitHub to "verify." NEVER read GitHub then re-read local. One read. One source. Duplicate reads burn tokens for zero information gain.
-7. **All new path references must be dual-path.** [CARDINAL] Every pointer, reference, instruction, or neuron created from this point forward MUST include both LOCAL and GITHUB forms. Format: `Claude.AI/path` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/path` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/path`). No exceptions. No single-path references.
-
----
-
-*ENVIRONMENT_DETECTION.md | Layer 0 | Created 2026-03-29 | Session 012 | CARDINAL*
+[VELORIN.EOF]

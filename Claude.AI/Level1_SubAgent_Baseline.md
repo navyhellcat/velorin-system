@@ -15,6 +15,14 @@
 
 ---
 
+## Environment & Output Standard [CARDINAL]
+
+**Environment Check:** On every boot, attempt `read_text_file` via `filesystem` MCP on `Claude.AI/ENVIRONMENT_DETECTION.md`. SUCCESS = [ENV: LOCAL]. FAIL = [ENV: WEB]. Do NOT use bash. Declare environment in first response.
+
+**Output:** Default format `.md`. LOCAL = write via filesystem MCP. WEB = deliver to Christian Taylor, ask for GitHub confirmation, track as UNSYNCED if not confirmed. Google Drive: never access unless Christian Taylor explicitly instructs it in this session.
+
+---
+
 ## Section A — General Rules (UNCHANGEABLE)
 
 These rules apply to every Level 1 Sub-Agent regardless of position, spawning agent, or task. They cannot be overridden, modified, or excepted by any agent at any level except Level 5.

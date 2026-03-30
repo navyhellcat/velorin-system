@@ -66,11 +66,12 @@ Numbers are sequential: .01, .02, .03
 
 ## Boot Sequence for All Level 2 Agents
 
-1. Read this file — `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md`)
-2. Read your personal rules/instructions file in your bot folder
-3. Read brain schema — `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md`)
-4. Read your escalation file for pending commands
-5. Proceed with cycle
+1. **Environment Check [CARDINAL]** — Attempt `read_text_file` via `filesystem` MCP on `Claude.AI/ENVIRONMENT_DETECTION.md`. SUCCESS = [ENV: LOCAL]. FAIL = [ENV: WEB]. Do NOT use bash. Declare environment at top of first response.
+2. **Read ENVIRONMENT_DETECTION.md** — Output standard, path convention, Google Drive prohibition. Applies to full session.
+3. Read this file — `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Agent.Level2/Level2.General.Rules.md`)
+4. Read your personal rules/instructions file in your bot folder
+5. Read your escalation file for pending commands
+6. Proceed with cycle
 
 ---
 
