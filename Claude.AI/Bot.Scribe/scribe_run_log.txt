@@ -15,3 +15,13 @@ Done. Summary of actions taken:
 
 **Step 5 — Committed:** `5b35ab3` — 4 files changed.
 ========== 2026-03-30T08:18:22Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/reference_scribe_bot.md ==========
+Done.
+
+**Summary:**
+- **Region:** `Agents` ✓
+- **Area:** `Roster` ✓
+- **Action:** **CREATED** neuron `A7. Scribe` in `Agents/Roster/neurons.md`
+- **Wired inbound:** `A2 (MarcusAurelius)` now has `[1] A7` pointer; `Protocols.A3 (Hooks System)` now has `[1] neurons.agents.roster.A7`
+- **_index.md:** Updated to include Scribe in Roster neurons list
+- **Rules check:** No behavioral rules for MarcusAurelius — skipped
+- **Committed:** `e01eecd`
