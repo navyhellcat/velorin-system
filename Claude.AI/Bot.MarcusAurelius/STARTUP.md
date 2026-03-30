@@ -40,6 +40,17 @@ python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py"
 ```
 Run once on boot to confirm it's working and get initial reading. The CronCreate timer fires automatically every 5 minutes after this point — no further manual action needed. Timer ID: T009.
 
+## 3.7 Enable 1M Context Window (if needed)
+Default context is 200K. To upgrade for the session:
+```bash
+# In-session switch
+/model sonnet[1m]
+# Or launch with flag
+claude --model sonnet[1m]
+```
+Or set permanently in `~/.claude/settings.local.json`: `"model": "sonnet[1m]"`
+Note: Sonnet 1M requires "extra usage" on Max/Team/Pro plans. Opus 1M is included on Max/Team/Enterprise.
+
 ## 4. Check Claude Code Version
 ```bash
 claude --version
