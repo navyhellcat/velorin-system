@@ -2,3 +2,15 @@
 Done. Updated `neurons.agents.protocols.A3` to record that Scribe's subprocess output goes to `Claude.AI/Bot.Scribe/scribe_run_log.txt` — so any future agent knows where to look if Scribe runs silently or skips commits. Committed as `e6a782d`.
 [2026-03-30 03:00:13] Scribe processed: feedback_scribe_test.md → No brain update needed. Existing neuron neurons.agents.protocols.A3 already covers Scribe log redirect (last-touched 2026-03-30). Test memory confirmed Scribe is running and logging correctly.
 ========== 2026-03-30T08:13:01Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_escalation_test.md ==========
+Done. Summary of actions taken:
+
+**Step 1** — Memory: `Scribe escalation chain test`, type: `feedback`, class: `regular`. Topic: T009 session monitor / context window tracking.
+
+**Step 2 — Classification:**
+- Region: **Operations** ✓
+- Area: **Tools** ✓
+- Neuron: **A7** (Claude Code Context Window) — close match → **UPDATED** with T009 behavior details and 75% handoff threshold.
+
+**Step 4 — Rules:** Added **S3** to `MarcusAurelius.Rules.md` covering T009 context monitoring and 75% handoff rule. Mirrored to local rules path.
+
+**Step 5 — Committed:** `5b35ab3` — 4 files changed.
