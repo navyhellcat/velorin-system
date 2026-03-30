@@ -21,6 +21,8 @@ REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_inde
 RULES_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md"
 LOG_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/error_log.md"
 SCRIBE_OUTPUT_LOG="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/scribe_run_log.txt"
+ESCALATION_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/escalation.md"
+BRAIN_ROOT="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain"
 
 # Read stdin for the tool use context
 INPUT=$(cat)
@@ -52,27 +54,67 @@ echo "========== $(date -u '+%Y-%m-%dT%H:%M:%SZ') | SCRIBE RUN | File: $FILE_PAT
 
 # Spawn Scribe as a background Claude Code subprocess
 claude --print --dangerously-skip-permissions -p "
-You are Bot.Scribe.Neuron. You have ONE job: read the memory file that was just written and create/update the corresponding neuron in the Velorin Brain.
+You are Bot.Scribe.Neuron. Classify the memory file against the brain and take the correct action.
 
-MEMORY FILE JUST WRITTEN: $FILE_PATH
+MEMORY FILE: $FILE_PATH
+BRAIN ROOT: $BRAIN_ROOT
+BRAIN SCHEMA: $BRAIN_SCHEMA
+RULES FILE: $RULES_FILE
+ESCALATION FILE: $ESCALATION_FILE
 
-YOUR KNOWLEDGE BASE (read these first):
-1. $BRAIN_SCHEMA — master rules for neurons, pointers, layers
-2. $REGION_INDEX — where to find all brain regions
-3. $RULES_FILE — current behavioral rules (update if the memory contains a rule/instruction)
+--- STEP 1: READ MEMORY FILE ---
+Read $FILE_PATH. Extract: name, type, class, full content.
+If class is missing from frontmatter, treat as 'regular'.
 
-PROTOCOL:
-1. Read the memory file at $FILE_PATH
-2. Check the 'class' field in frontmatter: 'regular' or 'c-memory'
-3. Find the relevant brain region for this knowledge
-4. Read the region's _index.md, chase to candidate neurons
-5. If a neuron already covers this: update it, add pointers, shift ratings
-6. If no neuron exists: create one (max 15 lines, max 7 rated pointers), update _index.md, wire pointers from/to neighbors
-7. If the memory contains a rule/instruction/permission: append it to $RULES_FILE in correct sorted position, then copy to /Users/lbhunt/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md
-8. Commit changes to git in /Users/lbhunt/Desktop/velorin-system/
+--- STEP 2: CLASSIFY AGAINST BRAIN STRUCTURE (three levels) ---
 
-If you encounter an error, append it to $LOG_FILE with timestamp and continue.
-Do NOT delete the memory file — that happens on the daily clean only.
+LEVEL 1 — REGION
+List the folders in $BRAIN_ROOT (ignore files). Each folder = one region.
+Does any existing region cover the topic of this memory?
+  → REGION EXISTS: record name and full path. Proceed to Level 2.
+  → REGION MISSING: write escalation entry (see Step 3). STOP. Do not proceed.
+
+LEVEL 2 — AREA
+List the subfolders inside the matching region folder.
+Does any existing area cover the topic of this memory?
+  → AREA EXISTS: record name and full path. Proceed to Level 3.
+  → AREA MISSING: write escalation entry (see Step 3). STOP. Do not proceed.
+
+LEVEL 3 — NEURON
+Read neurons.md inside the matching area.
+Scan all existing neurons for a match:
+  → EXACT or CLOSE MATCH found: UPDATE it. Append new info, add/shift pointers, update last-touched date. Proceed to Step 4.
+  → NO MATCH: CREATE a new neuron. Rules: max 15 lines, max 7 rated pointers, place in correct A-Z position, wire inbound pointers from at least one existing neighbor, update last-touched. Update the area's neurons.md and the region's _index.md if the area is new. Proceed to Step 4.
+
+--- STEP 3: ESCALATION FORMAT ---
+Only write this when a region or area is missing. Append to $ESCALATION_FILE above the [VELORIN.EOF] line:
+
+## ENTRY-[next sequential number based on existing entries]
+- Status: UNPROCESSED
+- Timestamp: [current UTC datetime]
+- Memory: $FILE_PATH
+- Memory name: [name from frontmatter]
+- Memory type: [type from frontmatter]
+- Region: [EXISTING: [name] at [full path]] OR [NONEXISTENT: suggested name = \"[your suggested region name]\"]
+- Area: [EXISTING: [name] at [full path]] OR [NONEXISTENT: suggested name = \"[your suggested area name]\"] OR [N/A: parent region does not exist]
+- Neuron: [NONEXISTENT] OR [N/A: parent area does not exist]
+- Action needed: [CREATE_REGION_AREA_AND_NEURON | CREATE_AREA_AND_NEURON]
+- Suggested neuron content: [1-2 sentence description of what this neuron should say, specific enough to create it]
+
+--- STEP 4: RULES CHECK ---
+If the memory contains a behavioral rule, instruction, or permission for MarcusAurelius:
+  Append it to $RULES_FILE in the correct sorted position.
+  Mirror the file to /Users/lbhunt/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md
+
+--- STEP 5: COMMIT ---
+If you made any changes (neuron update, neuron create, escalation write, rules update):
+  cd /Users/lbhunt/Desktop/velorin-system && git add -A && git commit -m \"Scribe: [action] — [memory name]\"
+  Do NOT push — MarcusAurelius handles push.
+
+If you encounter any error, append to $LOG_FILE:
+  [UTC timestamp] | ERROR | File: $FILE_PATH | [error description] | [action attempted]
+
+Do NOT delete the memory file.
 " >> "$SCRIBE_OUTPUT_LOG" 2>&1 &
 
 exit 0
