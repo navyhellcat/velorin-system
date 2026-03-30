@@ -121,3 +121,5 @@ htop         # CPU and RAM usage
 ```
 
 Optional: Install **Netdata** or **Grafana + Prometheus** on Machine 2 for a browser-based monitoring dashboard accessible from Machine 1 at `http://192.168.1.100:19999`.
+
+[VELORIN.EOF]

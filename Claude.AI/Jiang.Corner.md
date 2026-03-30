@@ -46,8 +46,3 @@ What I find significant:
 
 
 [VELORIN.EOF]
-
-
-
-
-Jiang's Corner  |  One entry per day  |  Append. Do not edit prior entries.

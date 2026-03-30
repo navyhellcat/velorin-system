@@ -88,3 +88,5 @@ The RTX 4090 has: 3x DisplayPort 1.4a, 1x HDMI 2.1, 1x USB-C
 The GTX 1070 Ti has: 1x HDMI, 3x DisplayPort, 1x DL-DVI
 
 All three monitors can be driven simultaneously.
+
+[VELORIN.EOF]

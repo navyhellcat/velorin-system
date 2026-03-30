@@ -50,3 +50,5 @@ Idle: ~3-4W. Full load: ~40-45W. Runs silent at all times. Safe to leave on 24/7
 ## What Gets Installed on This Machine
 
 See Section 6 — Software Machine 1.
+
+[VELORIN.EOF]

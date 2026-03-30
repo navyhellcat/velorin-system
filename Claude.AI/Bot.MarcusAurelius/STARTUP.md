@@ -148,3 +148,5 @@ The Velorin Brain is a neural file graph stored in GitHub (`velorin-system/Claud
 
 *Last updated: 2026-03-28*
 *This file is additive — add new startup steps as the system grows.*
+
+[VELORIN.EOF]

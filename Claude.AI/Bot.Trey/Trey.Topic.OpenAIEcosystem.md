@@ -303,7 +303,6 @@ OpenAI uniqueness vs Anthropic (video + realtime + open weights): I have strong 
 Codex scope ambiguity: Public sources show Codex as (a) a ChatGPT macOS app feature, (b) "Codex agent" preview in plan pages, and (c) Codex-labeled model variants used in developer tooling (including GitHub Copilot docs). Without a single canonical Codex product spec, any attempt to define "Codex" as one product is Medium confidence only. [136]
 Plan limits and credit mechanics: OpenAI describes credits for flexible usage and notes that deep research usage varies by plan and is tracked in-product; exact limits therefore require checking the live UI and/or contract terms. Any numeric "limits" not explicitly stated in help docs should be treated as unknown. [137]
 Model availability inside custom GPTs and transitions: OpenAI publishes date-specific transition rules (e.g., GPT retirements and mappings). These are accurate as of the cited pages but can change; treat as time-sensitive. [138]
-[VELORIN.EOF]
 ________________
 
 
@@ -439,3 +438,4 @@ https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/available-
 https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-search-tool
 [137] https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-team-plans
 https://help.openai.com/en/articles/11487671-flexible-pricing-for-the-enterprise-edu-and-team-plans
+[VELORIN.EOF]

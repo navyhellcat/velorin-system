@@ -67,7 +67,6 @@ Registry Maintenance Rules
 • When a subfolder ID is assigned: update it here immediately.
 • Alexander updates this document at the end of every session if changes occurred. Deliver updated .docx for Christian Taylor to update in Drive.
 
-[VELORIN.EOF]
 
 
 
@@ -151,3 +150,5 @@ Note: Main body tables need manual cleanup in Google Docs to remove stale [TO BE
 
 
 --- END CORRECTION BLOCK ---
+
+[VELORIN.EOF]

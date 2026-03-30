@@ -222,3 +222,5 @@ These are separate systems that work together:
 ---
 
 *This document is the theoretical foundation. The implementation lives in `Velorin_Brain/`. Both evolve together.*
+
+[VELORIN.EOF]

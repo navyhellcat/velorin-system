@@ -121,3 +121,5 @@ This file defines all MCP server connections. The Velorin MCP server (velorin-gd
 11. Install gws (`npm install -g @googleworkspace/cli`)
 12. Run `gws auth setup` to authenticate Workspace
 13. Claude Code (install last — requires Node.js)
+
+[VELORIN.EOF]

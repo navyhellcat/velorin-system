@@ -57,7 +57,6 @@ Web Maintenance Rules
 • The web is never pruned. Disproven conclusions are retained as evidence of what was tested and found false.
 
 
-[VELORIN.EOF]
 
 
 
@@ -137,3 +136,4 @@ Jiang.Topic.AnthropicEcosystem ↔ Velorin.Company.DNA: Conclusion 7 directly va
 
 
 Jiang.Topic.AnthropicEcosystem ↔ Velorin.Company.Operating.Standards: Technology Evaluation Standard (Section 2) should be updated to include full tool inventory from Part 1 of this document.
+[VELORIN.EOF]

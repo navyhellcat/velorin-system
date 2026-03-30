@@ -77,3 +77,5 @@ See Section 11 — Machine-to-Machine Connectivity for how Machine 1 actually ca
 | Network switch | QNAP QSW-308-1C (10GbE) | ~$200 |
 | Cat6a cables | 2x runs, measure length needed | ~$30–50 total |
 | NIC (only if budget mobo) | Intel I225-V or Mellanox ConnectX | ~$60–80 |
+
+[VELORIN.EOF]

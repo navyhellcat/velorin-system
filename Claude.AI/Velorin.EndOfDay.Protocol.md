@@ -100,6 +100,3 @@ As of March 2026, the MCP server does not have gdrive_create_folder or gdrive_mo
 
 
 [VELORIN.EOF]
-
-
-Velorin.EndOfDay.Protocol | Version 1.0 | March 2026 | Applies to all Claude instances

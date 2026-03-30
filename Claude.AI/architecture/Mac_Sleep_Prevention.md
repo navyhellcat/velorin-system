@@ -27,5 +27,3 @@ A launchd plist registers caffeinate as a Mac launch daemon. Starts on boot, run
 The velorin-gdrive MCP server v1.3.3 already has a 90-second keepalive ping built in. This prevents OAuth idle timeout. Combined with caffeinate, the system should stay live through full sessions.
 
 [VELORIN.EOF]
-
-Mac_Sleep_Prevention | Alexander | Velorin System | March 28, 2026

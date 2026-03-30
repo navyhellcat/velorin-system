@@ -136,10 +136,3 @@ When Christian Taylor steps away to exercise, rest, or get sunlight — this is 
 
 
 [VELORIN.EOF]
-
-
-
-
-
-
-Claude Context Profile  |  Version 1.2  |  March 2026  |  Applies to all Claude instances interacting with Christian Taylor

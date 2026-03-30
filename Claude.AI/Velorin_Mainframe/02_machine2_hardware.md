@@ -186,3 +186,5 @@ Enable positive pressure (slightly more intake than exhaust) to minimize dust ac
 - The 1070 Ti goes in the second PCIe x16 slot. Connect displays 3/4 to its outputs
 - Enable EXPO memory profile in BIOS on first boot
 - Update BIOS before installing CPU if board predates the CPU (critical for X3D chips)
+
+[VELORIN.EOF]

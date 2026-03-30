@@ -72,7 +72,3 @@ Scale phase (licensed product, multi-tenant, full agent ecosystem operational)
 For each phase, for each Anthropic tool: what does Velorin build with it, what does it replace, what does it enable that wasn't possible before, and what is the build sequence.
 Confidence threshold: 75% minimum on all conclusions. Source everything. This becomes a permanent reference document in the knowledge web.
 File as: Jiang.Topic.AnthropicEcosystem in your BOT.Jiang subfolder. End with [VELORIN.EOF].
-
-https://docs.google.com/document/d/1qpM52ZhECL0eeApz9AW7HsOpNn7lEeyGSEVWbDvTyCI/edit?tab=t.0
-
-https://github.com/navyhellcat/velorin-system/blob/main/tools/architecture-map.html

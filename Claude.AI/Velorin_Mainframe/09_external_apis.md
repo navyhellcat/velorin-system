@@ -116,3 +116,5 @@ All API keys must be stored in environment variables or config files that are:
 3. Rotated on any suspected exposure
 
 Velorin has no secrets manager yet. Until one is built, maintain a private local document listing which keys are stored where.
+
+[VELORIN.EOF]

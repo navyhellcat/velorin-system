@@ -138,3 +138,12 @@ Before ANY session close or restart, ALL Level 4 agents must execute this checkl
 **Before creating or modifying ANY timer:** Register in `Claude.AI/GLOBAL_TIMER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_TIMER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_TIMER_REGISTRY.md`). Timer cannot activate before registration.
 **Before spawning ANY agent:** Register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/GLOBAL_SPAWNER_REGISTRY.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`). Agent cannot activate before registration.
 Failure to register is a company-wide protocol violation. No exceptions.
+
+
+## Document Writing Rule [CARDINAL]
+
+Every Velorin system document ends with `[VELORIN.EOF]` as the absolute last line. When appending or updating any document, ALL new content MUST be written **above** `[VELORIN.EOF]`. Never write anything after it. If you find content below `[VELORIN.EOF]`, it is an error — consolidate it above and move the marker to the end.
+
+---
+
+[VELORIN.EOF]

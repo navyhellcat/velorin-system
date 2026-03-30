@@ -79,7 +79,6 @@ Chairman's Response:
 [Christian Taylor's answer logged here]
 
 
-[VELORIN.EOF]
 
 
 
@@ -233,3 +232,5 @@ Chairman's Response:
 
 
 Not poetic. Technically precise.
+
+[VELORIN.EOF]

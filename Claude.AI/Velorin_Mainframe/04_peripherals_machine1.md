@@ -69,3 +69,5 @@ Options:
 | USB-C to DisplayPort (or adapter) | Monitor 2 connection |
 | Thunderbolt 4 cable (1m) | Mac mini to dock |
 | Cat6a Ethernet | Mac mini to network switch |
+
+[VELORIN.EOF]

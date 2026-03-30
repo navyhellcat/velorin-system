@@ -54,8 +54,3 @@ Claude reads, searches, creates, and modifies notes directly from the command li
 **What this replaces in the current Velorin architecture:**
 - Drive boot protocol (token-expensive, timeout-prone) → Claude Code reads .md files directly
 - [VELORIN.EOF] checking → unnecessary when Claude Code reads local files
-- Manual document uploads by Christian Taylor → Claude Code writes directly to vault
-- Session handoff documents → git commit history + vault changelog
-- Knowledge Web (Google Docs) → Obsidian graph with [[wikilinks]] between topic documents
-
-**Velorin application:** This is the strongest candidate for the Layer 0 infrastructure replacement. The Session 006 pivot toward GitHub + brain model was the first step. Obsidian is the second step — it provides the human-readable, visually navigable, locally-stored knowledge base that GitHub alone does not.

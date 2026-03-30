@@ -20,16 +20,3 @@ What's missing? Common requests include better tooling for state management and 
 Failure modes: Teams report that memory drift and hallucination are primary pitfalls. Without careful design, agents can "flip a coin" on outdated vs current info[12]. Cost overruns occur when naive vector use loads entire logs. Debugging single-prompt agent builds leads to silent failures (undebuggable pipeline)[4]. Many say their biggest mistake is skipping verification: e.g. not flagging when an agent makes assumptions. In the LangChain hype thread, "If your task is simple… a single prompt is the right tool. But… you need agents, not because it's sophisticated, but because it's the only architecture that lets you see where it broke"[8]. Losing track of this principle is a common regret. (Confidence: 85% for reported issues; 50% for generalizing beyond cited complaints)
 What's actually working: Structured agent pipelines and simple memory. Practitioners repeatedly mention success with clear pipelines (Orchestrator→Research→Analysis→Draft→Editor, etc.) and with small context memory strategies. As one put it: "I have a memory skill...Stores it as simple bulletpoint text…Often only a few thousand tokens." This approach "is underrated…no retrieval to break"[13]. For frameworks, community buzz suggests that LangChain (despite its flaws) gets people started, and lighter SDKs (OpenAI's, Pydantic AI) work well once the team masters core concepts[19]. Many emphasize that learning core agent patterns (hints, contracts, modular design) is more valuable than any particular library[19]. (Confidence: 80%)
 [VELORIN.EOF]
-________________
-
-
-[1] [2] [3] [4] [5] [6] [7] [8] Everyone's building AI agents wrong. Here's what actually happens inside a multi-agent system. : r/PromptEngineering
-https://www.reddit.com/r/PromptEngineering/comments/1rgfg8l/everyones_building_ai_agents_wrong_heres_what/
-[9] [10] [11] [12] [13] We've built memory into 4 different agent systems. Here's what actually works and what's a waste of time. : r/LocalLLaMA
-https://www.reddit.com/r/LocalLLaMA/comments/1r21ojm/weve_built_memory_into_4_different_agent_systems/
-[14] [15] Discussion - Did vector databases live up to the hype? : r/LangChain
-https://www.reddit.com/r/LangChain/comments/1p0a8wu/discussion_did_vector_databases_live_up_to_the/
-[16] [18] [19] [20] Which Framework is preferred? : r/AI_Agents
-https://www.reddit.com/r/AI_Agents/comments/1lvcj30/which_framework_is_preferred/
-[17] OpenAI Agent SDK vs LangGraph : r/LangChain
-https://www.reddit.com/r/LangChain/comments/1j95uat/openai_agent_sdk_vs_langgraph/

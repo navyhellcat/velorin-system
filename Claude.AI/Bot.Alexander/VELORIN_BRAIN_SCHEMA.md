@@ -95,3 +95,5 @@ velorin-system/
 ---
 
 *This schema governs all Velorin Brain operations. Both bots follow it.*
+
+[VELORIN.EOF]

@@ -132,3 +132,5 @@ ollama run qwen3:14b  # test in terminal
 7. Docker (`apt install docker.io`)
 8. Ollama (Linux version — install script from ollama.com)
 9. Clone Velorin repos from GitHub
+
+[VELORIN.EOF]

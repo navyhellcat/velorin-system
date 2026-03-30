@@ -89,4 +89,3 @@ These items require decisions before the affected phase can begin.
 
 
 [VELORIN.EOF]
-— Draft. For refinement and game theory with CT. Version 0.1 —

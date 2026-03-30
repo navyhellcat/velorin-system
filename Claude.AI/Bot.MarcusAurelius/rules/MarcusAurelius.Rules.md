@@ -148,3 +148,5 @@ Before spawning ANY agent: register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. A
 ---
 
 *Maintained by MarcusAurelius + Bot.Scribe.Neuron | Superseded rules are not deleted — they are marked [SUPERSEDED by X#] and left in place for audit trail.*
+
+[VELORIN.EOF]

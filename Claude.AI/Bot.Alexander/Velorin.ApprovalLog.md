@@ -27,7 +27,6 @@ LOG ENTRIES
 [Entries begin below this line. Append only. Never edit prior entries.]
 
 
-[VELORIN.EOF]
 
 
 Velorin.ApprovalLog | Version 1.0 | March 2026 | Append only. Never edit prior entries.
@@ -89,3 +88,5 @@ Christian Taylor has been running Opus 4.6 for all Alexander sessions to date. S
 
 
 --- END SESSION LOG NOTE ---
+
+[VELORIN.EOF]

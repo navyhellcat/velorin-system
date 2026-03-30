@@ -51,6 +51,12 @@ This table is a reference only — it does NOT override the test result. If the 
 
 ---
 
+## Document Writing Rule [CARDINAL]
+
+Every Velorin system document ends with `[VELORIN.EOF]` as the absolute last line. When appending or updating any document, ALL new content MUST be written **above** `[VELORIN.EOF]`. Never write anything after it. If you find content below `[VELORIN.EOF]`, it is an error — consolidate it above and move the marker to the end.
+
+---
+
 ## Output Standard [CARDINAL]
 
 Applies to all file output in all sessions:

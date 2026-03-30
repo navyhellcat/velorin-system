@@ -113,7 +113,6 @@ Priority task
 Velorin's own documents already identify several "don't do this" classes—treat these as cardinal product risks:
 Overbroad permission "blast radius" too early: the code-review explicitly resolves a disagreement by keeping live scopes tight while preserving a future inventory in source. If Velorin requests broad scopes before the toolset exists, it increases user mistrust and review burden. [9]
 Brittle Docs index math and unsafe Drive moves: the review explicitly rejects inferred endIndex math and "removeParents: root" assumptions in favor of end-of-segment insertion and actual-parent discovery. [9]
-Silent connector failures: the entire [VELORIN.EOF] boot doctrine exists because "metadata-only" reads and similar failures destroy reliability. Any production Velorin must preserve this bias: fail loudly rather than pretend. [4] [12]
 Brand drift toward "friendly productivity app": internally, Velorin repeatedly rejects that identity; the design handoff explicitly kills chrome/gradients and points toward precision. [10] [2]
 Roadmap, probability tree, and recommendations
 System integration diagram
@@ -249,3 +248,4 @@ https://www.rfc-editor.org/rfc/rfc8252.html?utm_source=chatgpt.com
 https://developers.google.com/drive/api/reference/rest/v3/files/list?utm_source=chatgpt.com
 [34] Implement shared drive support  |  Google Drive  |  Google for Developers
 https://developers.google.com/workspace/drive/api/guides/enable-shareddrives?utm_source=chatgpt.com
+[VELORIN.EOF]

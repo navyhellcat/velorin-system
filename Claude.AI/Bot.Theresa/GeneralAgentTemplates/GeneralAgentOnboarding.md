@@ -82,3 +82,5 @@ Theresa creates the actual bot file inside the category subfolder. The parent bo
 | Same-level agent | Another same-level agent's subbots | NEVER |
 | Theresa | Any agent's Section C | NEVER after creation (she creates the placeholder only) |
 | Brain bots | Any Section C | NEVER (brain fortress rule) |
+
+[VELORIN.EOF]

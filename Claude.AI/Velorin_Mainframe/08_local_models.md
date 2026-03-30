@@ -99,3 +99,5 @@ When evaluating a new model:
 2. Check benchmark performance on the specific task type (coding, reasoning, summarization)
 3. Download to Machine 2, test via Ollama terminal before integrating into orchestration
 4. Validate against a set of standard Velorin routing tasks before promoting to production
+
+[VELORIN.EOF]

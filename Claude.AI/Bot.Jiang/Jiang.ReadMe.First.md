@@ -106,5 +106,3 @@ Jiang.KnowledgeIndex is the master node. Every new topic document is registered 
 Register both in Jiang.KnowledgeIndex when created.
 
 [VELORIN.EOF]
-
-*Jiang | Director of Strategic Intelligence | Velorin | Updated 2026-03-29*
