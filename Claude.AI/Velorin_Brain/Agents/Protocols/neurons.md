@@ -27,6 +27,11 @@ Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE
 last-touched: 2026-03-29
 Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] neurons.operations.tools.A6 | [2] A2 | [3] A3
 
+### A7. External Agent Boot Pattern (GPT / Replit)
+For non-Claude agents (GPT custom GPTs, Replit bots), structure project instructions with an explicit ordered boot sequence at the top pointing to GitHub raw file URLs. Order: (1) general rules/operating standards, (2) company soul/DNA, (3) person profile. ~3 min cold boot is acceptable. Validated 2026-03-30 with Trey (GPT). Pattern confirmed by Chairman.
+last-touched: 2026-03-30
+Pointers: [1] neurons.agents.roster.A6 | [2] A6 | [3] neurons.agents.levelrules.A1
+
 ### A6. Session Handoff Protocol
 Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 012 (2026-03-29) — restart needed for Agent Teams env var. Priority: spawn Alexander as teammate, cross-agent catch-up (Jiang's 12 files), Theresa trigger, Terry sync rewrite, dashboard deploy, GDrive flagging, brain cleanup.
 last-touched: 2026-03-29

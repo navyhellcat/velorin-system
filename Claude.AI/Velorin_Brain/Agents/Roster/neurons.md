@@ -22,6 +22,11 @@ Claude Desktop app bot (default as of 2026-03-30). Previously browser-based. Rea
 last-touched: 2026-03-30
 Pointers: [1] A1 | [1] neurons.agents.protocols.A4 | [2] A2 | [2] neurons.agents.protocols.A1
 
+### A6. Trey
+GPT-based agent (OpenAI custom GPT). Runs inside ChatGPT with a project box (project instructions + attached files). Accesses GitHub files via raw URLs. First validated boot: 2026-03-30, ~3 min cold boot with 4 sequential GitHub reads. Boot order: Operating Standards → Company DNA → Claude_Context_Profile → topline_profile.
+last-touched: 2026-03-30
+Pointers: [1] neurons.agents.protocols.A7 | [2] A4 | [3] neurons.agents.levelrules.A1
+
 ### A4. Chairman Identity
 The system serves one human — the Chairman. All bots reference this identity. The Chairman's name, cognitive profile, and behavioral patterns are loaded from their profile hard memory on boot. Never use machine account names. Current Chairman: Christian Taylor. Mac account "lbhunt" is NOT his name.
 last-touched: 2026-03-28
