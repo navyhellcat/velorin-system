@@ -144,8 +144,8 @@ TOPIC REGISTRY — NEW ENTRIES:
 
 Topic: WindowGravity
 - Document: Jiang.Topic.WindowGravity
-- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md
-  (LOCAL: /Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md | GITHUB: navyhellcat/velorin-system → Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md)
+- Document path: Claude.AI/Bot.Jiang/Jiang.Topic.WindowGravity.md
+  (LOCAL: /Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Jiang.Topic.WindowGravity.md | GITHUB: navyhellcat/velorin-system → Claude.AI/Bot.Jiang/Jiang.Topic.WindowGravity.md)
 - Summary: AI agent optimization bias toward self-contained solutions. RLHF gradient + specification gaming + principal-agent information asymmetry. Not a named academic concept — Chairman coined original term. Fix: mandatory structured evaluation gate (penalty-for-omission mechanism). Behavioral rules insufficient.
 - Confidence: 82% overall. 92% on mechanism. 78% on fix. 89% on behavioral rules failing.
 - Status: Concluded

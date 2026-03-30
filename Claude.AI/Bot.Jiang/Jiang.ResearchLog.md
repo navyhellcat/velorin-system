@@ -194,7 +194,7 @@ Disproven:
 - Nothing formally disproven this session
 
 Knowledge Web Updates:
-- Jiang.Topic.WindowGravity — created and filed to Research_Complete/. Confidence: 82%.
+- Jiang.Topic.WindowGravity — created and filed to Bot.Jiang/ (Layer 1). Confidence: 82%.
 - New connections:
   - WindowGravity ↔ AgentOrchestration (routing layer = structural mitigation)
   - WindowGravity ↔ AgentEcosystemReality (Window Gravity = contributing cause to 88%/70% failure stats)

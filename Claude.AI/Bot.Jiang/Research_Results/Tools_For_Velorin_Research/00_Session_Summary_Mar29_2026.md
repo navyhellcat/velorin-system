@@ -29,8 +29,8 @@ This session was the first confirmed LOCAL boot for Jiang. Previous sessions ope
 ### 2.1 What Was Produced
 
 Research document filed to:
-`Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md`
-(LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md`)
+`Claude.AI/Bot.Jiang/Jiang.Topic.WindowGravity.md`
+(LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Jiang.Topic.WindowGravity.md` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/Jiang.Topic.WindowGravity.md`)
 
 Request file archived to:
 `Claude.AI/Bot.Jiang/Archived_Research_Requests/Window_Gravity_Research_Request.md`
@@ -340,8 +340,8 @@ Files: `00_Session_Summary_Mar29_2026.md` (this document), `01_superpowers.md`, 
 
 ### Jiang's Window Gravity Research
 
-LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md`
-GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md`
+LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Jiang.Topic.WindowGravity.md`
+GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/Jiang.Topic.WindowGravity.md`
 
 ### Trey's Velorin Tooling Research (full folder — all files relevant, no noise)
 
