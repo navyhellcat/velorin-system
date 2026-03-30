@@ -15,7 +15,7 @@ Pointers: [1] neurons.principles.rewardalignment.A1 | [1] neurons.principles.rew
 ### A3. Hooks System
 Claude Code hooks in `~/.claude/settings.local.json` under `"hooks"`. Scripts at `.../hooks/`. Active: empty-result-handler.py (PostToolUse on Bash) — detects empty output, injects debugging context. Scribe trigger (PostToolUse on Write) — fires on memory writes. Scribe subprocess output redirected to `Claude.AI/Bot.Scribe/scribe_run_log.txt` (debug log — check here if Scribe runs silently or skips commits).
 last-touched: 2026-03-30
-Pointers: [1] neurons.agents.roster.A2 | [1] neurons.operations.startup.A5 | [2] neurons.operations.tools.A5 | [2] neurons.operations.architecture.A1
+Pointers: [1] neurons.agents.roster.A7 | [1] neurons.agents.roster.A2 | [1] neurons.operations.startup.A5 | [2] neurons.operations.tools.A5 | [2] neurons.operations.architecture.A1
 
 ### A4. Memory Protocol
 Before creating ANY neuron: (1) Find region → read `_index.md`, (2) Find area → read `neurons.md`, (3) If duplicate → update/append/shift, do NOT create new, (4) If new → add in A-Z position, wire pointers, update `last-touched`. Max 7 pointers per neuron. Neurons ~10 lines max. Local memory = pointers only, brain = knowledge.
