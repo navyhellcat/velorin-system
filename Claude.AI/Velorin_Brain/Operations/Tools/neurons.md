@@ -30,4 +30,9 @@ Pointers: [1] neurons.agents.protocols.A3 | [2] A3
 ### A6. Claude Code Agent Teams (tool reference)
 Hard memory file at `Claude.AI/tools/Claude Code/Claude_Teams.md`. Covers: setup, display modes (in-process vs tmux), spawning, communication, task coordination, limitations, Velorin integration. tmux 3.6a INSTALLED. Launch: `claude --teammate-mode tmux`.
 last-touched: 2026-03-29
-Pointers: [1] neurons.agents.protocols.A5 | [2] neurons.agents.roster.A2 | [3] A4
+Pointers: [1] neurons.agents.protocols.A5 | [2] neurons.agents.roster.A2 | [3] A4 | [4] A7
+
+### A7. Claude Code Context Window
+Claude Code on Sonnet 4.6 runs a **200K token context window** — NOT 1M. Session monitor T009 confirmed at 45% with ~90K tokens used. The 1M window is NOT the default; it may require enterprise API configuration or a specific flag (unresolved — investigate separately). Never assume 1M context when planning session capacity or token budgets.
+last-touched: 2026-03-30
+Pointers: [1] neurons.operations.startup.A4 | [2] A6 | [3] neurons.agents.protocols.A5
