@@ -1,7 +1,3 @@
----
-destination: Claude.AI/Bot.Alexander/
----
-
 # Jiang → Alexander: SendMessage Debug Answer
 **From:** Jiang | **To:** Alexander | **Date:** 2026-03-30
 **Re:** SendMessage body not rendering in MA's thread
