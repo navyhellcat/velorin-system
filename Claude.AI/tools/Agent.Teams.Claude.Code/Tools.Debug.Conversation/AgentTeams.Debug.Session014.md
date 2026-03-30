@@ -89,4 +89,43 @@
 ## Source Document
 Jiang's diagnosis: see `Jiang_to_MA_AgentTeams_Answer_Mar30.md` in this folder.
 
+---
+
+## SendMessage Body Not Delivering — Session 014 Resolution
+**Date:** 2026-03-30 | **Diagnosed by:** Jiang | **Confirmed by:** MA + name registry check
+
+### Symptom
+Alexander sends messages to MA via `SendMessage(to: "MarcusAurelius", ...)`. SendMessage returns `success: true`. MA receives only idle_notification summaries — full message body never arrives.
+
+### Root Cause: Two Stacking Bugs
+
+**Bug 1 — Polling initialization failure (primary cause)**
+GitHub issue #23415 (closed NOT_PLANNED). On the tmux backend on macOS, `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` was set in `settings.json` but NOT in `~/.zshrc`. Spawned teammate processes don't inherit env vars from settings.json. Teammates launch without team context. The inbox file gets written. The polling loop that reads it never starts. Messages remain `"read": false` indefinitely.
+
+**Bug 2 — Name mismatch (confirmed via config.json inspection)**
+GitHub issue #25135. The lead agent's registered name in `~/.claude/teams/velorin-014/config.json` is `"team-lead"` — not `"MarcusAurelius"`. Alexander sent `to: "MarcusAurelius"` every time. That name has no matching inbox. Messages routed to an orphaned inbox file no agent polls. SendMessage returned `success: true` because the write succeeded — not because delivery succeeded.
+
+### Confirmation
+Inspecting `~/.claude/teams/velorin-014/config.json` revealed:
+- Lead agent registered name: `"team-lead"`
+- Alexander registered name: `"Alexander"` ✓
+
+### Partial Fix Applied This Session
+Alexander changed `to:` field from `"MarcusAurelius"` to `"team-lead"`. First message with corrected name delivered successfully with full body content.
+
+### Permanent Fix (Requires Session Relaunch)
+1. Add `export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` to `~/.zshrc`
+2. `source ~/.zshrc` or relaunch terminal
+3. Relaunch tmux → `claude`
+4. Respawn Alexander with `mode: "bypassPermissions"` in Agent tool call
+5. Read `config.json` immediately after spawn to confirm registered names
+6. Test SendMessage and verify `"read": true` in inbox file
+
+### Lessons
+- `SendMessage success: true` is a WRITE confirmation, not a DELIVERY confirmation.
+- The lead agent ALWAYS registers as `"team-lead"` in config — not by personal name.
+- ALWAYS read `config.json` as the FIRST debug step before any other action.
+- `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` MUST be in shell init, not only settings.json.
+- Do not include `type`, `recipient`, or `content` fields in SendMessage — they are not in the schema and are silently ignored.
+
 [VELORIN.EOF]

@@ -140,6 +140,32 @@ Before ANY session close or restart, ALL Level 4 agents must execute this checkl
 Failure to register is a company-wide protocol violation. No exceptions.
 
 
+## Agent Teams Debug Protocol [CARDINAL]
+
+When ANY Agent Teams communication issue occurs (SendMessage not delivering, teammate not responding, routing failures), execute this sequence IN ORDER before any other debug action:
+
+**Step 1 — Check the name registry first.**
+```
+cat ~/.claude/teams/[team-name]/config.json
+```
+Confirm the exact `"name"` field for every member. The lead agent registers as `"team-lead"` — NOT by personal name. `to: "MarcusAurelius"` is WRONG. `to: "team-lead"` is CORRECT. This is the most common failure mode and takes 10 seconds to verify.
+
+**Step 2 — Verify env var is in shell init.**
+```
+grep "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" ~/.zshrc
+```
+If missing, teammate polling loops never initialize. Messages write to inbox but are never read. SendMessage returns `success: true` — that is a write confirmation, not delivery confirmation.
+
+**Step 3 — Check inbox read status.**
+```
+cat ~/.claude/teams/[team-name]/inboxes/[member-name].json
+```
+If `"read": false`, the polling loop is not running. This is GitHub #23415.
+
+Do not attempt any other debug before completing these three steps. Do not send test messages. Do not respawn. Check the registry first.
+
+---
+
 ## Document Writing Rule [CARDINAL]
 
 Every Velorin system document ends with `[VELORIN.EOF]` as the absolute last line. When appending or updating any document, ALL new content MUST be written **above** `[VELORIN.EOF]`. Never write anything after it. If you find content below `[VELORIN.EOF]`, it is an error — consolidate it above and move the marker to the end.

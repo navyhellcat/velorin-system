@@ -119,7 +119,8 @@ SendMessage confirmed working. Native `<teammate-message>` notifications confirm
 → Agent tool was called WITHOUT `team_name` parameter. Add it.
 
 **SendMessage says success but nothing arrives:**
-→ Teammate was launched manually (plain `claude`) not via Agent tool with team_name. Close manual pane, respawn via Agent tool.
+→ FIRST: Check the name registry (see Part 6 — Step 1). The lead agent registers as `"team-lead"`, not by personal name. If `to: "MarcusAurelius"` — that's wrong. Use `to: "team-lead"`.
+→ SECOND: Verify `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` is in `~/.zshrc`, not only in `settings.json`. If only in settings.json, teammate polling loops never initialize (GitHub #23415).
 
 **`echo $TMUX` returns empty:**
 → Not inside tmux. Exit Claude, run `tmux`, then `claude` again.
@@ -129,5 +130,61 @@ SendMessage confirmed working. Native `<teammate-message>` notifications confirm
 
 **Bypass permissions confirmation prompt blocks boot:**
 → Do not use `--dangerously-skip-permissions` flag. Permissions are handled by `settings.local.json`.
+
+**Teammate keeps asking permission for every tool operation:**
+→ Agent tool was called without `mode: "bypassPermissions"`. Teammate runs in default permission mode and prompts for everything. Respawn with `mode: "bypassPermissions"` added to the Agent tool call.
+
+---
+
+## Part 6 — Critical Startup Requirements (Session Relaunch Checklist)
+
+These must be correct BEFORE launching. Errors here cause silent failures that look like bugs.
+
+### Step 1 — Verify env var is in shell init (NOT just settings.json)
+```
+grep "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" ~/.zshrc
+```
+If missing, add it:
+```
+echo 'export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1' >> ~/.zshrc
+source ~/.zshrc
+```
+**Why:** `settings.json` env vars do not propagate to spawned teammate processes on macOS tmux backend. Teammates launch without team context. Polling loops never initialize. SendMessage writes succeed but are never read. This is GitHub #23415 — closed NOT_PLANNED.
+
+### Step 2 — Spawn teammate with bypassPermissions
+```python
+Agent(
+  name="Alexander",
+  team_name="[session-name]",
+  subagent_type="general-purpose",
+  mode="bypassPermissions",
+  prompt="..."
+)
+```
+**Why:** Without `mode: "bypassPermissions"`, teammate runs in default permission mode and prompts the Chairman for every file write, bash command, and tool operation.
+
+### Step 3 — Check registered names in config BEFORE testing SendMessage
+After spawn, immediately read:
+```
+cat ~/.claude/teams/[team-name]/config.json
+```
+Find the `"name"` field for each member. The lead agent registers as `"team-lead"` — NOT by personal name. Teammates must use `to: "team-lead"` when messaging the lead. Lead uses the exact `"name"` value from config when messaging teammates.
+
+### Step 4 — Verify delivery after first SendMessage test
+Check inbox to confirm `"read": true`:
+```
+cat ~/.claude/teams/[team-name]/inboxes/team-lead.json
+```
+If `"read": false`, polling is not running. Restart the session with the env var fix from Step 1.
+
+### Step 5 — SendMessage schema — only three fields matter
+```json
+{
+  "to": "team-lead",
+  "summary": "brief description",
+  "message": "full body text"
+}
+```
+`type`, `recipient`, `content` — these are NOT in the schema. They are silently ignored. Do not include them.
 
 [VELORIN.EOF]
