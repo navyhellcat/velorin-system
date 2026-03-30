@@ -1,14 +1,28 @@
-# Session 014 — Handoff (IN PROGRESS)
+# Session 014 — Handoff
 **MarcusAurelius (Level 4) | March 30, 2026**
 
 ---
 
 ## Session Status
-OPEN — session still active. This file will be updated before close.
+CLOSED — session complete. Session 015 reads this file at boot.
+
+## BOOT_SUMMARY (read this first)
+- Session 014 complete. Full company restructure brainstorm done (MA + Alexander). All 6 documents committed.
+- Agent Teams SendMessage bugs diagnosed and partially fixed (env var + name mismatch). Permanent fix requires session relaunch.
+- 7 Jiang research requests filed in Research_Needed/. IntakeTestDesign is Priority 1.
+- Brain regions (Company + Intelligence) still need creation — Scribe backlog unblocking.
+- Three stale neurons (A1, A5, A8) still need patching.
+- Operating Standards Section 7 still pending CT approval.
 
 ---
 
 ## What Was Done This Session
+
+**0. Research Review — COMPLETED (all 39 files)**
+- Jiang zones 02-08 + Turing Vault scoring math
+- Trey MiroFish deep research (14 files) + Trey.Topic.OpenAIEcosystem.md (45KB)
+- Jiang.Topic.WindowGravity.md + Jiang Brain Analysis (Research.BrainAnalysis.Mar30)
+- All research read before brainstorm session began
 
 **1. Agent Teams / tmux — RESOLVED**
 - Root cause identified: Agent tool without `team_name` = in-process subagent, no visible pane
@@ -55,13 +69,28 @@ OPEN — session still active. This file will be updated before close.
 - Dashboard auth — private repo means live dashboard can't fetch tree without auth token
 - Jiang research automation build — spec at `Bot.MarcusAurelius/Future_Builds/2026-04-02_Jiang_Research_Automation.md`
 
-### Research Review — NOT YET STARTED:
-- Jiang/Trey tools research (28+ files) — Session 014 priority #1, not yet begun
-- `Bot.Jiang/Research_Results/Tools_For_Velorin_Research/` (12 files + session summary)
-- `Bot.Trey/Assessments/velorin_tooling_research/` (11 files)
-- `Bot.Trey/Assessments/mirofish_stack_deep_research/` (14 files)
-- `Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravity.md`
-- Jiang flag: read `Trey.Topic.OpenAIEcosystem.md` (45KB) before meeting
+### Phase 1 Foundation (do next session — ~2 hours MA):
+- Patch three stale brain neurons: A1 (trailing space path wrong), A5/A8 (tmux procedure wrong)
+- Run Scribe audit (check classification vs escalation vs drop)
+- Create Company + Intelligence brain regions (unblocks Scribe backlog)
+- Add TASK_EVALUATION block to all agent rules files
+- Update pre-close protocol: add S1/S2/S3 session state neuron update step
+- Update handoff template with BOOT_SUMMARY block structure
+
+### Pending Chairman Decision:
+- **Operating Standards Section 7** — Mandatory Ecosystem Check + Window Gravity evaluation gate
+- **Permanent Agent Teams fix** — env var in ~/.zshrc + session relaunch
+
+### Pending Implementation — File Lifecycle Protocol:
+- Frontmatter `lifecycle: ephemeral | archive | permanent` + `TEMP_` prefix
+- Terry routing: delete ephemerals, move archives, leave permanents
+- Needs MA + Alexander design spec → Chairman approval
+
+### Still Open from Session 013:
+- Website beta build
+- Brain design issues — permission tiers + token cost consolidation
+- Dashboard auth — private repo, live dashboard can't fetch tree without auth token
+- Jiang research automation build
 
 ---
 
@@ -71,9 +100,34 @@ OPEN — session still active. This file will be updated before close.
 - Agent Teams: TeamCreate + Agent tool WITH team_name = correct mechanism. Agent tool alone = wrong.
 - `--teammate-mode tmux` flag: do not pass. Auto mode detects tmux. Flag has documented bug.
 - 200K context is correct. Do NOT restore `sonnet[1m]` — causes concurrent boot crash.
+- SendMessage schema: only 3 fields matter — `to`, `summary`, `message`. Other fields silently ignored.
+- Alexander must send to `"team-lead"` not `"MarcusAurelius"` — lead registers as "team-lead" in config.json.
+- Spawn Alexander with `mode: "bypassPermissions"` to eliminate permission prompts.
+- Session delta architecture: S1/S2/S3 neurons in Operations/SessionState (not BOOT_SUMMARY block).
+- GSD stays Category B — evaluate after 1 week of Superpowers running solo.
+- OS Section 7 is Category A #1 — the rule must exist before any tool installs.
+- Moat priority: personal intelligence layer first, cross-domain reasoning second, action semantics = table stakes.
+- Future A first (10 users, CT as operator). CT's ADHD/exit pattern is the primary failure risk. Structural fix: system must become the operator as fast as possible.
+- Intake test = encoding mechanism. Not just onboarding. How CT installs his intelligence into the system.
+- End-of-2026 target: CT post-Camfil, 3-5 external users, intake proven, some revenue. What does NOT need to exist: enterprise, automated intake, C-Corp, 1000 users.
+
+## Brainstorm Session Documents (all committed — navyhellcat/velorin-system, commit cea9d54)
+- `Claude.AI/Brainstorming Sessions/CompanyRestructure.V1.Day10.Layer1.Tools.md`
+- `Claude.AI/Brainstorming Sessions/CompanyRestructure.V1.Day10.Layer2.Architecture.md`
+- `Claude.AI/Brainstorming Sessions/CompanyRestructure.V1.Day10.Layer3.Company.md`
+- `Claude.AI/Brainstorming Sessions/CompanyRestructure.V1.Day10.Layer4.Future.md`
+- `Claude.AI/Brainstorming Sessions/CompanyRestructure.V1.Day10.GoalMap.md`
+- `Claude.AI/Brainstorming Sessions/CompanyRestructure.V1.Day10.ToolApplication.md`
+- `Claude.AI/Brainstorming Sessions/CurrentState.LiveDoc.Mar30.md`
+
+## Jiang Research Requests Filed (7 — all in Research_Needed/)
+- **IntakeTestDesign** — PRIORITY 1 CRITICAL PATH
+- DeepResearchPipeline — Priority 2
+- WindowGravityPublication — Priority 2 (CT decides publication strategy)
+- Graphiti, ZepCloud, VoiceIOParity, OASIS — low priority, monitor
 
 ---
 
-*Session 014 Handoff | MarcusAurelius | March 30, 2026 | IN PROGRESS — update before close*
+*Session 014 Handoff | MarcusAurelius | March 30, 2026 | CLOSED*
 
 [VELORIN.EOF]
