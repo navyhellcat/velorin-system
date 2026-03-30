@@ -34,6 +34,12 @@ Token auto-refreshes. If refresh token is missing, re-run auth:
 cd "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp" && npm run auth
 ```
 
+## 3.5 Start Session Monitor
+```bash
+python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py"
+```
+Run once on boot to confirm it's working and get initial reading. The CronCreate timer fires automatically every 5 minutes after this point — no further manual action needed. Timer ID: T009.
+
 ## 4. Check Claude Code Version
 ```bash
 claude --version
