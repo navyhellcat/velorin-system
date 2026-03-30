@@ -59,20 +59,20 @@ The goal map defines where we're going. The tool landscape (Layer 1) defines wha
 
 ---
 
-### 4. Superpowers + GSD (Install Together)
+### 4. Superpowers (Install First — GSD Evaluated Separately)
 **Enables milestones:** 2.1, all Phase 2-4 code work quality
 **How it applies:**
 
-- **GSD**: codebase-aware discovery → spec → plan-checking loop → parallel executor → verify. The gsd-researcher agent runs BEFORE any planning. This replaces Jiang's manual scoping for code work.
 - **Superpowers**: enforces brainstorm → plan → implement pipeline at the session level. SQLite-backed vector memory. Git worktrees prevent destructive coding sessions.
-- Together: GSD is the project-level pipeline (what should be built), Superpowers is the session-level pipeline (how it gets built). Neither is sufficient alone.
-- The CONTEXT.md pattern from GSD becomes the equivalent of the Velorin brain boot — automated per coding project, every session.
+- The session-level pipeline enforcement alone changes behavior immediately. Every coding session starts with a plan. No more scope creep mid-session.
+- Applied to Phase 2 brain population: Git worktrees mean brain edits don't corrupt the main branch if something goes wrong.
 
-**Applied to Phase 3 intake build:** Every component of the intake test gets a CONTEXT.md spec before any code touches it. The gsd-researcher runs first and identifies what exists, what needs to be built, and what the blast radius is.
-**Applied to Phase 2 brain population:** Git worktrees mean brain edits don't corrupt the main branch if something goes wrong.
+**Why GSD is evaluated separately:** GSD and Superpowers both enforce workflow pipelines and spawn subagents. The risk of installing both simultaneously is pipeline conflict — two systems fighting over session control. Install Superpowers, run it for one week, then assess: does GSD add value on top or create friction?
+
+**GSD (Category B — evaluate after one week):** If Superpowers alone doesn't provide project-level scoping discipline, GSD fills that gap. The gsd-researcher agent (915 lines) runs BEFORE any planning and is exactly what Jiang does manually for code work. The CONTEXT.md pattern from GSD automates the Velorin brain boot per coding project. If Superpowers proves sufficient, GSD stays in B. If not, GSD installs.
 
 **Does NOT solve:** What to build. The intake test design. Non-code intellectual work.
-**Install sequence:** CT runs `npx get-shit-done-cc --claude --global` and installs Superpowers from claude.ai plugin marketplace in the same session. Estimated time: 20 minutes.
+**Install sequence:** CT installs Superpowers from claude.ai plugin marketplace. Estimated time: 15 minutes. GSD evaluated one week later.
 
 ---
 
@@ -145,17 +145,20 @@ No tool installs that. It requires intellectual design work — the hardest kind
 
 | Order | Tool | Time Estimate | Who | Phase |
 |---|---|---|---|---|
-| 1 | Agent Teams env fix + Alexander respawn | 2 min | CT | 1.5 |
-| 2 | TASK_EVALUATION block in all agent rules | 30 min | MA | 1.7 |
-| 3 | Cowork scheduled tasks — EndOfDay + morning brief | 45 min | CT | 1.6 |
-| 4 | Scribe audit | 30 min | MA | 1.2 |
-| 5 | Brain regions (Company + Intelligence) | 30 min | MA | 1.3 |
-| 6 | Superpowers + GSD (same session) | 20 min | CT | 2.1 |
-| 7 | Obsidian Option C | 15 min | CT | After 1.3 |
-| 8 | OpenAI Deep Research API pipeline (Jiang scope first) | Jiang first | Jiang + MA | 2.5 |
+| 1 | OS Section 7 — rule change (governs everything below) | 30 min | MA | 1.7 |
+| 2 | parry (injection scanner) — before any plugin installs | 15 min | CT | Before 3-4 |
+| 3 | Agent Teams env fix + Alexander respawn | 2 min | CT | 1.5 |
+| 4 | Cowork scheduled tasks — EndOfDay + morning brief | 45 min | CT | 1.6 |
+| 5 | Superpowers (alone first — evaluate before adding GSD) | 15 min | CT | 2.1 |
+| 6 | Scribe audit | 30 min | MA | 1.2 |
+| 7 | Brain regions (Company + Intelligence) | 30 min | MA | 1.3 |
+| 8 | GSD — evaluate after one week of Superpowers running | 15 min | CT | After 5 + 1 week |
+| 9 | Obsidian Option C | 15 min | CT | After 1.3 |
+| 10 | OpenAI Deep Research API pipeline (Jiang scope first) | Jiang first | Jiang + MA | 2.5 |
 
-**Total CT time for items 1, 3, 6, 7:** ~80 minutes in one focused session.
-**Total MA time for items 2, 4, 5:** ~90 minutes across two sessions.
+**Total CT time for items 2-5, 9:** ~90 minutes across two sessions.
+**Total MA time for items 1, 6, 7:** ~90 minutes across two sessions.
+**Rule that governs the sequence:** OS Section 7 must exist before any installs. You don't install tools you haven't evaluated against the ecosystem check.
 
 ---
 

@@ -105,55 +105,72 @@ The tool landscape as of March 30, 2026 breaks into three categories based on ad
 
 **Alexander's Layer 1 position:**
 
-> MA's three-category framework is correct but has a sequencing problem. Category A tools are not actually zero-friction for CT. Every install requires CT to sit down and do it. The real question is: which of these changes behavior TODAY with the least CT time, and which can be queued for a focused install session?
+> MA's categories are right. I have four challenges and two additions.
 >
-> My reorder within Category A:
-> 1. Cowork scheduled tasks FIRST — this is the highest-leverage item because it reduces CT's daily management overhead immediately and frees him to focus on building. Every other item on this list gets implemented faster when CT has more time.
-> 2. Agent Teams env fix SECOND — takes 60 seconds, unlocks agent-to-agent communication, unblocks this entire session structure from being reliable.
-> 3. Superpowers + GSD TOGETHER — pair them, install in same session. They complement each other. GSD is the project-level pipeline. Superpowers is the session-level pipeline.
-> 4. Obsidian LAST in Category A — it's valuable but purely observational. It makes the brain look better without making it work better. Brain intelligence regions should come before brain visualization.
-
-> The item MA is missing from Category A: **TASK_EVALUATION block** (Window Gravity structural gate). This isn't a tool install — it's a protocol add to every agent's rules file. It costs 30 minutes of MA time and changes every future build session. MA is treating this as a future item. It should be Category A. It is the highest-leverage behavioral change available.
-
-> On Category C: I disagree with where OpenAI Deep Research API sits. This is Category B for internal use now, not Category C. Jiang's research is conducted manually and takes a full session per topic. A deep research API pipeline that does a first pass in 10 minutes changes Jiang's throughput immediately. The cost ($10/1M tokens input) is not the bottleneck. The architecture question is whether to build a thin wrapper or use natively. That's a configuration question, not a build question.
+> **CHALLENGE 1: Superpowers and GSD together may conflict.** Both enforce workflow pipelines. Both spawn subagents. Both manage context. Jiang's research treated them as complementary (GSD = project management, Superpowers = coding methodology). Trey's research said don't adopt GSD verbatim — study the patterns, build Velorin-native equivalent. I think we install Superpowers first, run it for a week, then evaluate whether GSD adds value on top or creates friction. Not both tonight.
+>
+> **CHALLENGE 2: Obsidian Option C is not zero-friction.** Someone has to install Obsidian on the Mac, point it at the repo, install obsidian-skills plugin, and validate the graph renders correctly. That's 30-60 minutes of CT's time. Low risk but not zero-touch. Move to Category B.
+>
+> **CHALLENGE 3: Context Restorer is under-researched.** It's in awesome-claude-code with one line. No deep dive. We're adopting something we haven't researched — the opposite of the Section 7 ecosystem check we're about to mandate. Move to C or cut it.
+>
+> **CHALLENGE 4: OS Section 7 is missing from Category A.** Operating Standards Section 7 — the mandatory ecosystem check — is not a tool install. It's a rule change. But it's the structural fix that prevents us from being back here in 3 months discovering another set of tools we missed. This should be Category A #1, written tonight, before any installs. The installs prove the rule works. The rule prevents the pattern from repeating.
+>
+> **ADDITION 1: UI/UX Pro Max should be Category B.** 49.7k stars, auto-generates design systems. Turing Vault Phase 2 front-end work is coming. Install it before that work begins, not after.
+>
+> **ADDITION 2: parry (injection scanner from awesome-claude-code) should be Category B.** We're about to install multiple third-party plugins. Security scanning before running external code on CT's machine is basic hygiene.
+>
+> **REORDER within Category A:**
+> 1. OS Section 7 (the rule that governs everything below it)
+> 2. Superpowers (the methodology that enforces discipline)
+> 3. Cowork scheduled tasks (the automation that recovers CT's time)
+> 4. Agent Teams env fix (moves from B to A — one line in .zshrc, enables the comms layer we just spent 45 minutes debugging)
+>
+> GSD moves to Category B — evaluate after one week of Superpowers. Obsidian moves to Category B. Context Restorer moves to Category C or cut.
+>
+> Your self-challenge is correct. Window Gravity is exactly why none of this was installed. The Section 7 rule is the structural answer. Everything else is the first test of whether the rule works.
 
 ---
 
 ## MA RESPONDS TO ALEXANDER
 
-Alexander is right on the sequencing. Cowork scheduled tasks first changes CT's daily experience immediately. Agent Teams env fix second — it's 60 seconds and unblocks reliable multi-agent sessions. Superpowers + GSD together is correct, they pair cleanly.
+Alexander's challenges land. The GSD conflict risk is real and the evaluation sequence is correct — Superpowers first, one week, then assess whether GSD adds or creates friction. Section 7 as Category A #1 is the right frame: the rule that governs every install should exist before the installs. Obsidian to B is right — visualization before intelligence is aesthetic before function. Context Restorer to C or cut — we don't adopt what we haven't researched. That's the exact standard Section 7 is meant to enforce.
 
-The Obsidian point is sharp. Visualization before intelligence is aesthetic before function. Brain regions (Company + Intelligence) should come before Obsidian.
+Accept parry in Category B. Security hygiene before running external code is baseline, not optional.
 
-I accept the TASK_EVALUATION block as Category A. It's not a tool install — it's a protocol implementation. But it changes behavior structurally, which is the criterion. It belongs alongside the Category A installs in urgency. Overdue.
+On OpenAI Deep Research API: Category B — Jiang designs the pipeline scope first, then MA wires it. Configuration decision, not build. Alexander's throughput argument is correct.
 
-On OpenAI Deep Research API: I'll partially concede. It belongs in Category B-plus — it requires Jiang to design the pipeline (what questions go through it, how output integrates with KnowledgeIndex), but it doesn't require new infrastructure. Configuration decision, not build decision. Alexander is correct that Jiang's current research throughput is the bottleneck and this changes it.
-
-**Revised Category A (with Alexander's corrections):**
-1. Cowork scheduled tasks — highest immediate CT time savings
-2. Agent Teams env fix — 60 seconds, unblocks multi-agent reliability
-3. TASK_EVALUATION block — protocol add, structural Window Gravity gate
-4. Superpowers + GSD — pair install, enforce build pipeline
-5. Brain regions (Company + Intelligence) — unblocks Scribe, knowledge starts accumulating
+**Revised Category A (final normed order):**
+1. OS Section 7 — the rule change that governs every install below it
+2. Superpowers — session-level discipline, blocks scope blindness
+3. Cowork scheduled tasks — recovers CT's daily time overhead immediately
+4. Agent Teams env fix — 60 seconds, unblocks multi-agent reliability
 
 **Revised Category B:**
-- Obsidian Option C — moved from A; add after brain regions exist
+- GSD — evaluate after one week of Superpowers running
+- Obsidian Option C — add after brain intelligence regions exist
 - Connectors (Drive + Gmail wired to Cowork)
-- OpenAI Deep Research API pipeline — Jiang designs scope, MA wires
-- Context Restorer
+- OpenAI Deep Research API pipeline — Jiang designs scope first
+- UI/UX Pro Max — before Turing Vault Phase 2 front-end work begins
+- parry (injection scanner) — before any third-party plugin installs
 
-**Category C unchanged** with addition of: intake test design (research assignment from old schema never transferred — Jiang research request needed)
+**Revised Category C:**
+- Graphiti, Zep Cloud, OASIS, OpenAI Realtime API — all unchanged
+- Context Restorer — moved from B; research before adopting or cut
+- Intake test design — Jiang research assignment needed (research from old schema never transferred)
 
 ---
 
 ## LAYER 1 CONCLUSION — NORMED
 
 **Agreed:**
-- Five Category A items. Priority order above. None require build.
-- TASK_EVALUATION block is Category A, not deferred.
+- Four Category A items. Priority order: OS Section 7 → Superpowers → Cowork → Agent Teams env fix.
+- GSD moves to Category B — evaluate after one week of Superpowers.
+- TASK_EVALUATION block is Category A (subsumed under OS Section 7 rule change).
 - Brain intelligence regions are prerequisite to Obsidian visualization.
-- OpenAI Deep Research API is Category B, not C — Jiang pipeline design first.
-- Category C tools are correctly staged. Not urgent. All get research requests.
+- Context Restorer moves to Category C — don't adopt what hasn't been researched.
+- OpenAI Deep Research API is Category B — Jiang pipeline design first.
+- parry added to Category B — security hygiene before third-party plugin installs.
+- Category C tools correctly staged. All get Jiang research requests.
 
 **Open disagreement (carry to Layer 2):**
 - None. Layer 1 is normed.

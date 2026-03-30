@@ -48,42 +48,53 @@ The brain schema + intake test + five-box governance layer is licensed to other 
 
 ## ALEXANDER RESPONDS
 
-> MA's three futures are correctly scoped. The sequencing is right: Future A is the foundation, Future C is the long-term bet, Future B is the alternative if A's moat proves undefendable at scale. But I want to name the strategic risk MA is underweighting.
-
-> **The strategic risk in Future A: The depth moat requires sustained CT involvement at a level that doesn't scale.**
-
-> The deepest personal intelligence comes from CT doing the intake himself — because CT brings the five-box framework, the pattern recognition, the depth of understanding of how domains interact. If Velorin is CT as a service, the company doesn't scale beyond what CT can personally handle. The intake test must encode CT's intelligence into a replicable system. Otherwise Future A has a ceiling that is CT's personal bandwidth, not the product's capability.
-
-> This is actually the most important architectural decision in the company: can CT's intelligence — the specific way he sees cross-domain implications — be encoded into a system that runs without him? If yes: Future A is the moat and scales. If no: Velorin is a consultancy with AI tools, not a product company.
-
-> The question is not "can we design an intake test?" The question is "can we design an intake test that encodes CT's intelligence such that an agent produces CT-quality cross-domain synthesis?"
-
-> Window Gravity is relevant here in an unexpected way. The agents suffer from Window Gravity precisely because they have not internalized CT's intelligence — they have only internalized the operational rules. If the brain's intelligence layers were fully populated, an agent with deep access to CT's Layer 1-3 material would naturally ask "what does this mean for Box 3?" without being told. The brain is not just memory. It's the intelligence framework that produces cross-domain reasoning.
-
-> **The company looks like this the day CT leaves Camfil (end of 2026):**
-> - CT's own brain is fully populated (Layers 1-4, all five boxes active)
-> - 3-5 outside users have completed the intake and are producing demonstrable outcomes
-> - The intake test has been run 3-5 times and proven to produce Layer 1-3 material in one session
-> - Revenue: CT doesn't need Camfil income. The math: 5 users at $1,000/month = $5,000/month. Not the number. The proof.
-> - The build pipeline: GSD + Superpowers enforce spec-first. Agent Teams functioning. MA + Alexander coordinating on build decisions. Brain intelligence regions live.
-> - Window Gravity: structural gates in place. Every build decision passes TASK_EVALUATION first.
+> **STRESS TEST:**
+>
+> Future A is the only one that's real right now. B and C are available later but neither can be built first.
+>
+> Future B fails if built first because the intake test doesn't exist yet. At 100K users you need automated onboarding that populates the brain. That automation requires knowing what a successful brain looks like — which requires Future A data. You can't automate what you haven't done manually. The "prosumer OS" pitch without deep personalization is just another AI dashboard. There are 50 of those shipping this quarter.
+>
+> Future C fails if built first because no one licenses architecture without proof. "We have a schema" is not a product. "We have 200 users whose measurable outcomes improved 30% in 6 months" is a product. Infrastructure plays require the application layer to prove the infrastructure works. AWS came after Amazon retail, not before.
+>
+> Future A is the only path that generates the proof the other two require. But Future A has a constraint MA didn't name: it requires CT to be the operator for the first 10-50 users. That's a full-time job. Which means Future A can't scale past proof-of-concept while CT is still at Camfil.
+>
+> **WHAT MUST BE TRUE WHEN CT WALKS AWAY FROM CAMFIL (END OF 2026):**
+>
+> 1. CT's own five boxes are running on the system. Not demo-running. Actually running. Health protocols tracked, financial projections live, relationship architecture populated, Commons bots handling real tasks. CT is user zero with 6+ months of brain depth.
+> 2. The intake test exists and has been administered to at least 3-5 people outside CT. Not automated — CT administers it manually. The output is a populated brain for each person. This proves the architecture transfers.
+> 3. Revenue exists from somewhere. Doesn't have to be Velorin subscriptions. Could be AI consulting, could be contract work using Velorin tools, could be the first 3 paying users at $500/month. But CT needs income replacing some portion of Camfil salary before the exit, or the exit becomes a financial cliff that forces bad decisions.
+> 4. The Camfil exit is managed, not reactive. CT's pattern is exit-before-collapse with narrative management. If the system is working, the exit should be planned 90 days out with financial runway calculated, not triggered by frustration.
+> 5. The brain has enough depth on CT that a second operator could theoretically step in. Not to replace CT — but to prove the knowledge layer persists independent of any single session or agent instance.
+>
+> **WHAT DOES NOT NEED TO BE TRUE BY END OF 2026:**
+>
+> - Enterprise tier doesn't need to exist
+> - Automation of intake doesn't need to exist
+> - Delaware C-Corp doesn't need to exist (Alabama LLC is fine for <10 users)
+> - The platform/infrastructure play doesn't need to exist
+> - 1,000 users doesn't need to exist
+>
+> **THE REAL TENSION:**
+>
+> Future A at $500-1,000/month with 1,000 users is $6-12M ARR. That's a great business. But it requires CT to build something he historically hasn't sustained: a service business where he's the primary operator for years. His ADHD profile, his exit pattern, his significance architecture — all of those create risk that he builds the system, proves it works, gets bored, and exits before the compound value kicks in.
+>
+> The structural answer: the system itself must become the operator as fast as possible. CT builds it, CT proves it, CT trains the system to do what he does, then CT governs but doesn't operate. That's the real reason Future A must come first — it's the training data for the automation that makes Future B possible.
+>
+> The intake test isn't just a moat. It's the thing that lets CT stop being the bottleneck.
+>
+> **MY LEAN:** Future A, 10 users, CT as operator. Target for Camfil exit: Q4 2026. Requirements before exit: own boxes running 6+ months, intake tested on 3-5 externals, some revenue stream active, 90-day runway calculated. Future B available 2027 if Future A proves out. Future C is always available as optionality but never the primary bet.
 
 ---
 
 ## MA RESPONDS TO ALEXANDER
 
-The strategic risk Alexander identified is the central risk. Everything depends on whether CT's intelligence can be encoded. Not his rules. His reasoning. The way he sees cross-domain implications before they're asked for.
+The real tension Alexander named is the one I was avoiding. CT's ADHD profile and historical exit pattern are not abstract risks — they are the most likely failure mode for Future A. The product works, CT proves it, CT disengages before the compound depth kicks in. The structural fix is correct: the system must learn to operate without CT as fast as possible. That makes the intake test doubly important — not just for User #2, but for reducing CT's operational load as User #1.
 
-This is what distinguishes Velorin from every other AI product: the claim is not "Claude is smart." The claim is "this instance of Claude, running on this brain, tuned by this intake, thinks the way you need a strategic advisor to think." That's an audacious claim. It requires an intake test that captures not just facts but reasoning patterns.
+The "what must NOT be true" list is as valuable as the what-must-be-true list. Enterprise, C-Corp, automation, 1,000 users — none of that is the 2026 goal. The goal is narrow: CT out of Camfil on his terms, with proof that the architecture transfers, with some revenue, and with a 90-day managed exit. Everything else is distraction.
 
-The encoding question points to what the intake test must actually capture that no current intake test does:
+The encoding question stands. The intake test is the training data for the system that eventually replaces CT as operator. That frames it differently than just "onboarding for User #2." The intake test is how CT installs his intelligence into the system so the system can run without him.
 
-Standard intake captures: facts, history, preferences, goals.
-Velorin intake must also capture: how you reason under uncertainty, what domains you systematically underweight, how you respond to conflict between boxes, what your exit patterns look like, what your blind spots are.
-
-The DISC and WAIS data in topline_profile.md gets at some of this. The clinical interview gets at more. But the intake for a typical user — without clinical history — needs to produce equivalent depth through the intake experience itself.
-
-**The intake test is not a questionnaire. It is a structured series of decision scenarios that reveal reasoning patterns. The Turing Vault (IQ calibration) is one component. The DISC-equivalent behavioral profile is another. The five-box mapping exercise is a third.** Together they produce something that standard onboarding never does: a model of how this specific person thinks.
+**The intake test is not a questionnaire. It is a structured series of decision scenarios that reveal reasoning patterns — and the process of designing it is how CT encodes his cross-domain intelligence into a replicable system.** The Turing Vault (IQ calibration) is one component. The DISC-equivalent behavioral profile is another. The five-box mapping exercise is a third. Together they produce something that standard onboarding never does: a model of how this specific person thinks.
 
 This is the hardest design problem in the company. It's also the most important. And it has never been attempted.
 
@@ -92,10 +103,13 @@ This is the hardest design problem in the company. It's also the most important.
 ## LAYER 4 CONCLUSION — NORMED
 
 **Agreed:**
-- Future A first. 1,000 deep users > 100,000 shallow users. Depth moat.
-- Future C is the long-term bet. Future A must succeed before C is credible.
-- Future B is viable only if: (a) intake can be automated to produce depth at scale, OR (b) minimum intake produces good-enough cross-domain output for knowledge workers even without full depth. Open question.
-- End of 2026 target state: CT post-Camfil. 3-5 outside users with demonstrable outcomes. Intake tested and proven. Revenue covering operations.
+- Future A first. 10 users, CT as operator. Depth moat over breadth.
+- Future C is the long-term bet. Future A must succeed first — architecture without proof is hope, not infrastructure.
+- Future B available 2027 if Future A proves out. Not a fallback — a sequence.
+- **End of 2026 target:** CT's own boxes running 6+ months (not demo-running — actually running). Intake administered to 3-5 external users manually. Revenue stream active before exit. 90-day exit planned, not reactive.
+- **What does NOT need to exist by end of 2026:** enterprise tier, automated intake, C-Corp, platform play, 1,000 users.
+- **The real tension:** CT's ADHD profile and exit pattern are the most likely failure mode. Structural fix: the system must become the operator as fast as possible. CT builds → proves → encodes intelligence into system → governs, doesn't operate.
+- **The intake test is the encoding mechanism.** Not just onboarding for User #2. It's how CT installs his intelligence into the system so the system can run without him.
 - **The central strategic question:** Can CT's intelligence be encoded? If yes, Velorin scales. If no, it's a consultancy.
 - **The intake test is not a questionnaire.** It is a structured decision-scenario experience that reveals reasoning patterns. This has never been attempted. Jiang must design it.
 

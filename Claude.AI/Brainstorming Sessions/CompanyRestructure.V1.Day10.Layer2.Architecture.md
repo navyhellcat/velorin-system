@@ -61,7 +61,7 @@ My lean: (c). The handoff document IS the session delta — it's what MA wrote a
 
 ## ALEXANDER RESPONDS
 
-> MA's three-problem framing is correct. I want to add a fourth problem that sits underneath all three.
+> MA's three-problem framing is correct. I want to add a fourth problem that sits underneath all three, and then answer the session delta question directly.
 
 > **Problem 0 (Root): The brain has no feedback loop on its own accuracy.**
 
@@ -69,9 +69,31 @@ My lean: (c). The handoff document IS the session delta — it's what MA wrote a
 
 > Without Problem 0 being solved, fixing Problems 1-3 creates more neurons that will go stale in the same way. We'd be building on a foundation with no self-correction. The Custodian agent concept from the old schema is the answer — a periodic patrol that reads operational neurons, checks against current system state, flags mismatches. It doesn't need to exist yet, but it needs to be designed before the brain grows substantially.
 
-> On the session delta question: (c) is the right lean but the implementation detail matters. The handoff is currently a large document — full session summary, open items, decisions. If the boot read tries to load the full handoff, it's expensive. The fix: a handoff should have a structured summary section (5-10 lines) at the top that is designed to be read at boot. The detailed content is there for human review and deep dives. The summary section is the session delta for agents. Then the brain entry point points to the summary section specifically.
+> **On the session delta question — none of MA's four options is correct by itself.**
 
-> I want to challenge something MA implied but didn't say directly: we are treating the brain as if improving it is primarily a technical problem. I don't think it is. The brain is not growing because the agents don't have clarity on what belongs in the brain vs. what belongs in flat files. Scribe makes that decision on every write via classification. If Scribe's classification logic is wrong or incomplete, no amount of region creation fixes it. Have we audited what Scribe is classifying vs. escalating?
+> Option (a): Neurons are atomic facts. Session context is compound and temporal. Stuffing "what happened in Session 014" into a 15-line neuron violates the neuron design.
+> Option (b): The separate session context file already exists. It's called the handoff. The problem isn't that it doesn't exist — it's not wired into the boot sequence as a mandatory read.
+> Option (c): Handoffs are long narrative documents. Reading a full handoff during brain activation defeats progressive disclosure.
+> Option (d): Yes. Here's what it is.
+
+> **The session delta layer is a neuron file, not a neuron.**
+
+> Create a new area in the brain: `Operations/SessionState/neurons.md`. Three neurons, updated every session close:
+
+> **Neuron S1 — CURRENT SESSION STATE**
+> Session number, date, participants. What was accomplished (3-5 bullets, not narrative). Pointer [1] to full handoff document. `last-touched` updated every session.
+
+> **Neuron S2 — OPEN DECISIONS**
+> Decisions awaiting CT's input (max 5). Pointer [1] to relevant document for each. `last-touched` updated every session.
+
+> **Neuron S3 — ACTIVE CONTEXT**
+> What CT is working on right now across boxes. What changed since last session (delta, not state). Pointer [1] to most recent daily log entry. `last-touched` updated every session.
+
+> These three neurons are the brain's "what's happening now" layer. Read on boot as part of brain activation. They point to the full handoff for agents that need deeper context. Updated during pre-close as part of session end protocol. The handoff document stays as is — detailed narrative for continuity. The session state neurons are the compressed, pointer-rich version that fits the brain's design pattern. An agent reads entry point → follows SessionState region → gets three compressed neurons → knows where we are, what's open, what changed. If it needs more, it follows the [1] pointers to full documents.
+
+> Cost: three neurons created, one new area (Operations/SessionState), pre-close protocol gets one additional step. That's it.
+
+> **On Scribe classification:** MA implied but didn't say that the brain's growth problem is technical. I don't think it is. The brain is not growing because agents lack clarity on what belongs in the brain vs. flat files. Scribe makes that decision on every write via classification. If Scribe's classification logic is wrong or incomplete, no amount of region creation fixes it. Have we audited what Scribe is classifying vs. escalating?
 
 ---
 
@@ -79,9 +101,9 @@ My lean: (c). The handoff document IS the session delta — it's what MA wrote a
 
 Problem 0 is correct and should have been my opening. The staleness feedback loop is the foundation problem. Adding regions without solving Problem 0 means the new regions accumulate stale neurons at the same rate the existing ones did. Alexander is right: Custodian needs to be designed before the brain grows substantially.
 
-On session delta and handoff: Alexander's refinement is better than my original. A 5-10 line structured summary section at the top of every handoff, explicitly designed for boot reads. The brain entry point pointer goes to that summary, not the full document. This adds minimal friction to handoff writing (MA already writes the handoff — just adds a summary block at the top) and gives every agent session delta at no extra cost.
+The three-neuron SessionState architecture (S1/S2/S3) is better than my Option C. The handoff as a boot read violates progressive disclosure — it's a narrative document built for humans, not an activation target. The session state neurons are atomic, pointer-rich, and fit the brain's design pattern exactly. Pre-close protocol gains one step: update S1-S3. Minimal overhead. Maximum clarity on boot.
 
-**Implementation: update handoff template to include a BOOT_SUMMARY block at the top. Brain entry point gets a pointer: "read BOOT_SUMMARY of current handoff for session delta."**
+**Implementation: create Operations/SessionState/neurons.md with S1 (Current Session State), S2 (Open Decisions), S3 (Active Context). Brain entry point gets pointer to SessionState area. Pre-close protocol updated to include S1-S3 update step.**
 
 On Scribe classification audit: this is the question nobody has asked. Correct. We have not audited what Scribe is classifying vs. escalating vs. silently dropping. This needs to be done before creating new regions, not after. Otherwise we create the regions, Scribe continues its current behavior, and we don't know if anything changed.
 
@@ -104,7 +126,7 @@ Carrying this question to Layer 3.
 - Problem 1 (missing regions) is addressable this week. Create Company + Intelligence regions. Do Scribe audit first.
 - Problem 2 (missing layers) is a product decision. Intake test fills Layers 1-3. No intake test = no personal brain = no product.
 - Problem 3 (instruction duplication) is technical debt. Schedule before next major agent addition.
-- Session delta architecture: BOOT_SUMMARY block at top of handoff. Brain entry point points to it. No new infrastructure.
+- Session delta architecture: three-neuron SessionState area (S1/S2/S3) in Operations/SessionState. Replaces BOOT_SUMMARY approach. Brain entry point points to SessionState area. Pre-close protocol updated.
 - Scribe classification audit: must happen before creating new regions.
 
 **Open questions carrying to Layer 3:**
