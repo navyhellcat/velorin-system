@@ -145,6 +145,10 @@ Before creating or modifying ANY timer: register in `Claude.AI/GLOBAL_TIMER_REGI
 **T2. Spawner registration** [CARDINAL]
 Before spawning ANY agent: register in `Claude.AI/GLOBAL_SPAWNER_REGISTRY.md`. Agent cannot activate before registration. Company-wide protocol violation if not followed.
 
+**T3. Agent teammate spawn mode default**
+When spawning Claude Code teammates: always use tmux split-pane mode (Path B) by default. Never default to in-process mode. In-process is only appropriate for automated/background tasks where Christian Taylor does not need to observe or interact. Tell Chairman to open a new terminal and run the launch command — do not ask which mode.
+- Brain: `neurons.agents.protocols.A5`
+
 ---
 
 *Maintained by MarcusAurelius + Bot.Scribe.Neuron | Superseded rules are not deleted — they are marked [SUPERSEDED by X#] and left in place for audit trail.*

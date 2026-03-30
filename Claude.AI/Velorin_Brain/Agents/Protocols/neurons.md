@@ -23,7 +23,7 @@ last-touched: 2026-03-28
 Pointers: [1] neurons.agents.roster.A2 | [1] neurons.agents.roster.A1
 
 ### A5. Agent Teams (Claude Code)
-Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 in settings.json. One lead + independent teammates, each with own context window. In-process (default) or tmux split-pane display. Teammates coordinate via shared TaskList + SendMessage. Full reference: `Claude.AI/tools/Claude Code/Claude_Teams.md`.
+Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 in settings.json. One lead + independent teammates, each with own context window. In-process or tmux split-pane display. **Default: tmux split-pane (Path B).** In-process only for automated/background tasks where Chairman doesn't observe directly. Teammates coordinate via shared TaskList + SendMessage. Full reference: `Claude.AI/tools/Claude Code/Claude_Teams.md`.
 last-touched: 2026-03-29
 Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] neurons.operations.tools.A6 | [2] A2 | [3] A3
 
