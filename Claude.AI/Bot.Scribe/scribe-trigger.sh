@@ -20,6 +20,7 @@ BRAIN_SCHEMA="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAI
 REGION_INDEX="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_index.md"
 RULES_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md"
 LOG_FILE="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/error_log.md"
+SCRIBE_OUTPUT_LOG="/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/scribe_run_log.txt"
 
 # Read stdin for the tool use context
 INPUT=$(cat)
@@ -47,6 +48,7 @@ fi
 
 # Log the trigger
 echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ') | TRIGGER | File: $FILE_PATH" >> "$LOG_FILE"
+echo "========== $(date -u '+%Y-%m-%dT%H:%M:%SZ') | SCRIBE RUN | File: $FILE_PATH ==========" >> "$SCRIBE_OUTPUT_LOG"
 
 # Spawn Scribe as a background Claude Code subprocess
 claude --print --dangerously-skip-permissions -p "
@@ -71,6 +73,6 @@ PROTOCOL:
 
 If you encounter an error, append it to $LOG_FILE with timestamp and continue.
 Do NOT delete the memory file — that happens on the daily clean only.
-" > /dev/null 2>&1 &
+" >> "$SCRIBE_OUTPUT_LOG" 2>&1 &
 
 exit 0
