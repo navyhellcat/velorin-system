@@ -189,4 +189,114 @@ If `"read": false`, polling is not running. Restart the session with the env var
 ```
 `type`, `recipient`, `content` — these are NOT in the schema. They are silently ignored. Do not include them.
 
+---
+
+## Part 7 — Pre-TeamCreate Mandatory Check [CARDINAL]
+
+**TeamCreate permanently locks the session to that team's routing context. There is no recovery mid-session. Every SendMessage call for the rest of the session routes to that team. This means the decision of whether to call TeamCreate is a one-shot, irreversible gate.**
+
+### Before calling TeamCreate, run this check IN ORDER. No exceptions.
+
+**Step 1 — Are any teammates already running?**
+```bash
+ps aux | grep -E " s[0-9]{3} " | grep claude | grep -v grep
+```
+If ANY claude process appears on s002, s003, etc. — a teammate is alive in a tmux pane. **STOP. Do NOT call TeamCreate.** A teammate is already running. Creating a new team will split the routing context permanently.
+
+**Step 2 — Which team is the active teammate on?**
+```bash
+find ~/.claude/teams/ -name "team-lead.json" | xargs ls -t | head -3
+```
+The most recently modified `team-lead.json` is where the active teammate has been writing. That is the active team. Write to its Alexander/teammate inbox directly via Bash — do not use SendMessage until you confirm routing works.
+
+**Step 3 — Only call TeamCreate if:**
+- No teammate process is running (Step 1 returned nothing)
+- AND no active team exists with recent inbox activity
+- AND CT has explicitly requested spawning a new teammate from scratch
+
+**If a teammate is already running and you need to communicate:** Write directly to their inbox file via Bash:
+```python
+python3 << 'EOF'
+import json
+from datetime import datetime
+path = "/Users/lbhunt/.claude/teams/[active-team]/inboxes/[teammate-name].json"
+with open(path, 'r') as f:
+    inbox = json.load(f)
+inbox.append({
+    "from": "team-lead",
+    "text": "[your message]",
+    "summary": "[summary]",
+    "timestamp": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+    "read": False
+})
+with open(path, 'w') as f:
+    json.dump(inbox, f, indent=2)
+EOF
+```
+
+---
+
+## Part 8 — Session Compression Recovery Protocol [CARDINAL]
+
+When MA's context window fills and compresses, the session restarts with a new session ID. The new session has NO memory of which team was active. Without intervention, the new session will create a new team (velorin-015, velorin-016...) and lose routing contact with the still-running teammate.
+
+**This is what happened in Session 015. Alexander never moved. MA's context compressed. MA created a new team. Communication broke.**
+
+### On every new session start, BEFORE any other action:
+
+**Step 1 — Check for running teammates**
+```bash
+ps aux | grep -E " s[0-9]{3} " | grep claude | grep -v grep
+```
+
+**Step 2 — If a teammate process exists, find their active team**
+```bash
+find ~/.claude/teams/ -name "team-lead.json" -exec ls -la {} \; | sort -k6,7
+```
+The most recently written `team-lead.json` = active team. The teammate has been sending messages there.
+
+**Step 3 — Adopt the active team's inbox**
+Update the active team's config.json to point to the current session:
+```python
+python3 << 'EOF'
+import json
+path = "/Users/lbhunt/.claude/teams/[active-team]/config.json"
+with open(path) as f:
+    config = json.load(f)
+config['leadSessionId'] = '[current-session-id]'
+with open(path, 'w') as f:
+    json.dump(config, f, indent=2)
+EOF
+```
+Note: This updates the config but SendMessage routing is in-memory. If TeamCreate has already been called for a new team this session, routing is locked and cannot be fixed. Use direct Bash inbox writes instead.
+
+**Step 4 — DO NOT call TeamCreate**
+The existing team IS the team. Calling TeamCreate creates a new orphaned team that splits routing permanently.
+
+**Step 5 — Notify the teammate**
+Write directly to their inbox (Part 7 method) to confirm MA is back and provide context on the compression.
+
+### How to find your current session ID:
+```bash
+ls -t ~/.claude/projects/-Users-lbhunt/*.jsonl | head -1
+```
+The filename (without `.jsonl`) is your current session ID.
+
+---
+
+## Part 9 — Known Bugs (As of 2026-03-31)
+
+These are documented GitHub issues. NOT workarounds — actual bugs in Agent Teams, most closed NOT_PLANNED.
+
+| Bug | GitHub Issue | Effect | Status |
+|-----|-------------|--------|--------|
+| Polling loop only starts after first turn | #23415, #24108 | Messages accumulate `read: false` in tmux backend | NOT_PLANNED |
+| SendMessage silent success with wrong recipient | #25135 | Message written to orphaned inbox, no error | NOT_PLANNED |
+| Lock file contention on simultaneous writes | #25131 | Messages stuck `read: false`, no retry | NOT_PLANNED |
+| Timer stall after extended polling | #34668 | Intermittent delivery failure, Esc key fixes it | Open |
+| Polling = 16.2% of debug log volume | #25139 | Token/compute waste from 100ms busy-poll | Open |
+| No distinction between idle and dead teammates | #29271 | Cannot tell if teammate is alive or crashed | Open |
+
+**Practical implication:** SendMessage is not a reliable primary channel. Treat it as best-effort. For critical communications, direct Bash inbox writes are more reliable because they bypass the polling loop entirely and go straight to the file the teammate reads.
+
 [VELORIN.EOF]

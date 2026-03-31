@@ -167,6 +167,30 @@ Do not attempt any other debug before completing these three steps. Do not send 
 
 ---
 
+## Pre-TeamCreate Mandatory Check [CARDINAL]
+
+**TeamCreate permanently locks the session's SendMessage routing to that team. There is no recovery mid-session. This is a one-shot irreversible decision.**
+
+Before calling TeamCreate, run these steps IN ORDER:
+
+**Step 1:** Check for running teammate processes:
+```bash
+ps aux | grep -E " s[0-9]{3} " | grep claude | grep -v grep
+```
+If ANY claude process exists on s002, s003, etc. — a teammate is already running. **DO NOT call TeamCreate.** Find which team they're on and write to their inbox directly via Bash.
+
+**Step 2:** Check for active teams with recent inbox activity:
+```bash
+find ~/.claude/teams/ -name "team-lead.json" | xargs ls -t | head -3
+```
+The most recently modified `team-lead.json` = the active team. Use that team. Do not create a new one.
+
+**Step 3:** Only call TeamCreate if Step 1 and Step 2 both confirm no active teammate and no active team.
+
+**Session compression recovery:** When context compresses and a new session starts, teammates do NOT stop running. The same checks apply. Find the active team, adopt its inbox via Bash writes, update config.json leadSessionId to current session. Do NOT call TeamCreate. See `Claude.AI/tools/Agent.Teams.Claude.Code/AgentTeams.Setup.Guide.md` Parts 7-8 for full procedure.
+
+---
+
 ## Task Tool Rule [CARDINAL]
 
 Never use TaskCreate or the task tool system to track conversational to-do items or pending work lists. Every tool invocation injects a system reminder into subsequent tool results — 150-200 tokens per call, compounding across every tool use in the session. Use plain text lists in the conversation instead. Only use the task tool when: (1) assigning work to Agent Teams teammates, or (2) a task explicitly needs cross-session tracking and the Chairman has asked for it.

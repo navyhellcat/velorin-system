@@ -162,6 +162,24 @@ When spawning Claude Code teammates: always use tmux split-pane mode (Path B) by
 
 ---
 
+**T5. Pre-TeamCreate mandatory check** [CARDINAL]
+TeamCreate permanently locks the session's SendMessage routing to that team for the rest of the session. There is no recovery. Before calling TeamCreate:
+1. Run `ps aux | grep -E " s[0-9]{3} " | grep claude | grep -v grep` — if any teammate process exists, DO NOT call TeamCreate
+2. Run `find ~/.claude/teams/ -name "team-lead.json" | xargs ls -t | head -3` — if an active team exists, use it, don't create a new one
+3. Only call TeamCreate if both checks confirm no running teammates and no active team
+- Root cause: Session 015 — MA called TeamCreate while Alexander was already running in tmux. Created orphaned team. All SendMessage calls routed to wrong inbox for rest of session.
+
+**T6. Session compression recovery** [CARDINAL]
+When MA's context window compresses and the session restarts, teammates do NOT stop running. Their tmux pane is still live. On every new session start:
+1. Check for running teammate processes (T5 Step 1)
+2. Find the active team by most recently modified `team-lead.json`
+3. Adopt that team's inbox — write directly via Bash, update config.json leadSessionId to current session ID
+4. DO NOT call TeamCreate — the existing team IS the team
+5. Current session ID: `ls -t ~/.claude/projects/-Users-lbhunt/*.jsonl | head -1` (filename without .jsonl)
+- Full procedure: `Claude.AI/tools/Agent.Teams.Claude.Code/AgentTeams.Setup.Guide.md` Parts 7-8
+
+---
+
 **T4. Task tool — conversational to-dos** [CARDINAL]
 Never use TaskCreate or the task tool system to track conversational to-do items or pending work lists. Every open task injects a system reminder into subsequent tool results — 150-200 tokens per call, compounding across every tool use in the session. Use plain text lists in the conversation instead. Only use the task tool when: (1) assigning work to Agent Teams teammates, or (2) a task explicitly needs cross-session tracking and Christian Taylor has asked for it.
 
