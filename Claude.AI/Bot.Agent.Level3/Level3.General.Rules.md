@@ -125,6 +125,12 @@ Every pointer, reference, instruction, or neuron created from this point forward
 Failure to register is a company-wide protocol violation. No exceptions.
 
 
+## Task Tool Rule [CARDINAL]
+
+Never use TaskCreate or the task tool system to track conversational to-do items or pending work lists. Every open task injects a system reminder into subsequent tool results — 150-200 tokens per call, compounding across every tool use in the session. Use plain text lists in the conversation instead. Only use the task tool when: (1) assigning work to Agent Teams teammates, or (2) a task explicitly needs cross-session tracking and the Chairman has asked for it.
+
+---
+
 ## Document Writing Rule [CARDINAL]
 
 Every Velorin system document ends with `[VELORIN.EOF]` as the absolute last line. When appending or updating any document, ALL new content MUST be written **above** `[VELORIN.EOF]`. Never write anything after it. If you find content below `[VELORIN.EOF]`, it is an error — consolidate it above and move the marker to the end.

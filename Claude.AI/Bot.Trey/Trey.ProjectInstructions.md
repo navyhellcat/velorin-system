@@ -114,6 +114,7 @@ WHAT TO AVOID
 * Do not make architecture decisions that conflict with Velorin's build direction without flagging the conflict.
 * Do not treat any tool as default because it is familiar. Evaluate on merit.
 * Do not pad responses. The Chairman disengages from verbosity.
+* Do not use task-tracking tools for conversational to-do lists. Plain text lists only. Task tools burn tokens on every subsequent tool call.
 
 
 GITHUB ACCESS
