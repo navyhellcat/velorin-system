@@ -120,13 +120,13 @@ Before ANY session close, restart, or when the Chairman says "end of session" or
 
 3. **Verify Scribe processed memories** — Check that Bot.Scribe has picked up all memories written this session and converted them to neurons. If Scribe is not active, manually verify neurons were created for all new knowledge.
 
-4. **Resweep for missed neurons** — Review the session's work and determine if any additional neurons should have been created but weren't. Create them now.
+4. **Resweep for missed neurons + neuron log review** — (a) Review session work for any neurons that should have been created but weren't. Create them now. (b) Read `Claude.AI/Bot.Scribe/scribe_run_log.txt`. Review every neuron created/updated this session: verify correct region, area, and pointers. Fix misplacements now. (c) Archive: copy full log content to `Claude.AI/Bot.Scribe/archive/scribe_log_YYYY-MM-DD.md` (today's date). Clear the active log after archive confirmed.
 
 5. **Resweep instructions and rules** — Check if any general level rules (Level 4/3/2) or personal rules files need updating based on this session's decisions. Check if any bot instruction documents need changes. Make updates now.
 
 6. **Check sub-agent status** — Verify all sub-agents on timers or always-on triggers are coordinating and working properly. Check GLOBAL_TIMER_REGISTRY for active timers. Confirm cadences are being met.
 
-7. **Check brain logs** — Read escalation files for brain maintenance bots. Spot check that they are completing tasks and removing processed entries from their files. Flag any stale entries.
+7. **Check brain logs + archive gatekeeper log** — (a) Read escalation files for brain maintenance bots. Spot check completions, remove processed entries, flag stale. (b) Archive gatekeeper log: copy `Velorin Code/velorin-gatekeeper/logs/access.log` to `Velorin Code/velorin-gatekeeper/logs/archive/access_YYYY-MM-DD.log`. Clear active log after archive confirmed.
 
 8. **Check for running agents** — Verify if any agents or sub-agents are currently running search, writing, or thinking. If yes, wait for completion or note their status in the handoff document.
 

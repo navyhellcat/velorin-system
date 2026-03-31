@@ -109,10 +109,10 @@ Before ANY session close or restart, ALL Level 4 agents must execute this checkl
 1. Read your current session handoff in your bot folder — carry over any open tasks or context that must persist. Then write your new session handoff to your bot folder, replacing the old one. Naming: `[Name].SessionHandoff.Session[XXXX].[MonDD].md` (e.g. `MarcusAurelius.SessionHandoff.Session0014.Mar30.md`). Until the compilation subbot exists: MarcusAurelius also copies completed handoffs to `Claude.AI/sessions/` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`) as the archive.
 2. Run memories with verification — check verbatim saves, class labels
 3. Verify Scribe processed all memories into neurons
-4. Resweep for missed neurons
+4. Resweep for missed neurons + neuron log review — (a) Review session work for any neurons that should have been created but weren't. Create them now. (b) Read `Claude.AI/Bot.Scribe/scribe_run_log.txt`. Review every neuron created/updated this session: verify correct region, area, and pointers. Fix misplacements now. (c) Archive: copy full log content to `Claude.AI/Bot.Scribe/archive/scribe_log_YYYY-MM-DD.md` (today's date). Clear the active log after archive confirmed.
 5. Resweep general and personal instruction/rules files for needed updates
 6. Check sub-agent status — timers, triggers, coordination
-7. Check brain logs — escalation files, stale entries
+7. Check brain logs + archive gatekeeper log — (a) Read escalation files for brain maintenance bots. Spot check completions, remove processed entries, flag stale. (b) Archive gatekeeper log: copy `Velorin Code/velorin-gatekeeper/logs/access.log` to `Velorin Code/velorin-gatekeeper/logs/archive/access_YYYY-MM-DD.log`. Clear active log after archive confirmed.
 8. Check for any running agents/sub-agents — wait or note in handoff
 9. Commit and push all changes to GitHub
 10. Confirm to Chairman — report complete, session can close
