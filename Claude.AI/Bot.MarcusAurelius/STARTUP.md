@@ -47,11 +47,18 @@ CronCreate fires every 45 minutes. Must be recreated each session. Timer ID: T00
 Prompt to paste:
 > Use CronCreate with cron `*/15 * * * *`, recurring: true, with this prompt: `cd "/Users/lbhunt/Desktop/velorin-system" && git pull origin main --quiet 2>&1; python3 -c "import os; shipping='/Users/lbhunt/Desktop/velorin-system/Claude.AI/Shipping'; receiving='/Users/lbhunt/Desktop/velorin-system/Claude.AI/Receiving'; alerts=[]; [alerts.append('[Terry] New files detected in '+name+':\n'+'\n'.join('- '+f for f in files)) for folder,name in [(shipping,'Shipping'),(receiving,'Receiving')] if (files:=[f for f in os.listdir(folder) if f!='.gitkeep']) if os.path.exists(folder)]; [print(a) for a in alerts]"`
 
-## 3.5 Start Session Monitor
+## 3.5 Start Session Monitor (T009) — REGISTER ON EVERY BOOT
+Run once manually to confirm working, then register the cron. Both steps required every session.
 ```bash
 python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py"
 ```
-Run once on boot to confirm it's working and get initial reading. The CronCreate timer fires automatically every 5 minutes after this point — no further manual action needed. Timer ID: T009.
+Then register the 10-minute cron via CronCreate:
+- cron: `*/10 * * * *`
+- recurring: true
+- durable: true
+- prompt: `Run python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py" via Bash and display the output if any. If no output, do nothing silently.`
+
+**Thresholds:** Silent below 65%. Warning box 65–74%. Big alert + "Session end protocol required" at 75%+. Timer ID: T009.
 
 ## 3.7 Enable 1M Context Window (if needed)
 Default context is 200K. To upgrade for the session:
