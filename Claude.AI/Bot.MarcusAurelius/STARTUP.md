@@ -34,13 +34,6 @@ Token auto-refreshes. If refresh token is missing, re-run auth:
 cd "/Users/lbhunt/Desktop/Velorin/Velorin Code/velorin-gdrive-mcp" && npm run auth
 ```
 
-## 3.3 Start Scribe Escalation Monitor
-CronCreate fires every 30 minutes to check for unprocessed Scribe escalations. Must be recreated each session (7-day hard limit on all CronCreate jobs — this is a system ceiling, not a setting).
-Prompt to paste:
-> Run python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/scribe_escalation_check.py" via Bash. If it produces output, read that output and spawn a background subprocess for each UNPROCESSED entry using: claude --print --dangerously-skip-permissions -p "You are a Velorin Brain maintenance agent. Create the missing brain structure for this escalation: [paste full entry details]. Rules: follow _BRAIN_SCHEMA.md at /Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md. Create the region folder + _index.md and/or area folder + neurons.md as needed. Create the neuron per the suggested content. Wire pointers. Update all _index.md files. Commit with message 'Brain: create [region/area] for [memory name]'. Then update the escalation entry Status from UNPROCESSED to PROCESSED." Then mark each entry PROCESSED in escalation.md. If the script produces no output, do nothing.
-
-(Or use CronCreate directly with that prompt, `*/30 * * * *`, recurring: true)
-
 ## 3.4 Start Terry (Shipping/Receiving Monitor)
 CronCreate fires every 45 minutes. Must be recreated each session. Timer ID: T007.
 Prompt to paste:
