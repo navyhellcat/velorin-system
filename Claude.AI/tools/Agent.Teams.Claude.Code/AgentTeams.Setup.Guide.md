@@ -8,7 +8,7 @@ This file documents the exact procedure to launch two visible Claude Code agents
 ## Prerequisites
 
 - Claude Code v2.1.87+
-- `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` set in `~/.claude/settings.local.json` env block
+- `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` set in BOTH `~/.claude/settings.local.json` AND `~/.zshrc` (see Part 6 Step 1 — missing from zshrc causes teammate permission prompts on every tool call)
 - tmux installed (`tmux -V` to verify)
 - Model set to standard Sonnet (NOT `sonnet[1m]` — causes crash on concurrent boot)
 
@@ -149,7 +149,9 @@ If missing, add it:
 echo 'export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1' >> ~/.zshrc
 source ~/.zshrc
 ```
-**Why:** `settings.json` env vars do not propagate to spawned teammate processes on macOS tmux backend. Teammates launch without team context. Polling loops never initialize. SendMessage writes succeed but are never read. This is GitHub #23415 — closed NOT_PLANNED.
+**Confirmed applied: 2026-03-30 Session 015.**
+
+**Why this also causes permission prompts:** `settings.local.json` env vars do not propagate to spawned teammate processes on macOS tmux backend. Teammates launch without team context — and without inheriting permission settings. Result: teammate asks for permission on every single tool call. Adding to `~/.zshrc` fixes both SendMessage polling and permission inheritance. GitHub #23415 — closed NOT_PLANNED.
 
 ### Step 2 — Spawn teammate with bypassPermissions
 ```python
