@@ -105,6 +105,7 @@ Every pointer, reference, instruction, or neuron created from this point forward
 4. **The destination header is stripped after the file is moved** to its final location.
 5. **Shipping/** is for outbound files. Same header format applies.
 6. **Both folders must always contain `.gitkeep`.** Never delete it.
+7. **Do NOT read file contents when moving.** Default: move, strip header, commit, push. Do not read, summarize, act on, or reference file contents. Reading happens only when: (a) lower-layer procedure instructions explicitly call for it, or (b) the Chairman directly requests it.
 
 ---
 

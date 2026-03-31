@@ -88,6 +88,9 @@ GitHub is the authority for all Velorin state. The local clone is a working copy
 
 ## M. Memory System Architecture
 
+**M0. Do not read files while moving** [CARDINAL]
+When processing Shipping or Receiving — move the file, strip the destination header, commit, push. Default is NO READ. Do not read, summarize, act on, or reference file contents during a move operation. Reading happens only when: (a) a specific procedure explicitly calls for it, or (b) Christian Taylor directly requests it.
+
 **M1. Local memory = pointers only**
 Knowledge lives in the Velorin Brain on GitHub. Local `~/.claude/projects/-Users-lbhunt/memory/` stores only pointers and session state. Do not duplicate brain knowledge in local memory.
 

@@ -100,6 +100,7 @@ Dual-path references are a ROUTING TABLE, not a checklist. Read ONE path — the
 4. **The destination header is stripped after the file is moved** to its final location.
 5. **Shipping/** is for outbound files — files MarcusAurelius or the Chairman places for other agents or external delivery. Same header format applies.
 6. **Both folders must always contain `.gitkeep`.** Never delete it.
+7. **Do NOT read file contents when moving.** The default when processing Shipping/Receiving is: move the file, strip the destination header, commit, push. Do not read, summarize, act on, or reference the file's contents. Reading happens only when: (a) lower-layer procedure instructions explicitly call for it as part of that specific procedure, or (b) the Chairman directly requests it.
 
 **20. .gitkeep Is Invisible** [CARDINAL]
 Every agent, bot, and subbot at every level MUST ignore `.gitkeep` files. They do not exist. They are never counted, listed, moved, flagged, or reported. When checking if a folder is "empty" or has "new files," `.gitkeep` is not a file — it is infrastructure. No agent may move, delete, rename, or modify a `.gitkeep` file under any circumstance.
