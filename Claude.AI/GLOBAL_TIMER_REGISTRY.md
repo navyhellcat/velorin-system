@@ -23,7 +23,7 @@ Any agent creating or modifying a timer must update this file BEFORE activating 
 
 | T007 | Terry — Shipping/Receiving check | 15 minutes | bot.marcusaurelius.subbot.logistics.01 (Level 1) | `Bot.MarcusAurelius.Subbots/Bot.MarcusAurelius.Subbots.Logistics/` | Checks Shipping/ and Receiving/ for new files, alerts MarcusAurelius | 2026-03-29 | ACTIVE |
 
-| T009 | Session Monitor | 5 minutes | MarcusAurelius | `Velorin Code/hooks/session_status.py` (LOCAL: `/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py`) | Reports context window size, %, duration, and token usage into active session | 2026-03-30 | ACTIVE |
+| T009 | Session Monitor | 10 minutes | MarcusAurelius | `Velorin Code/hooks/session_status.py` (LOCAL: `/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py`) | Silent below 65%. Warning box 65-74%. Big alert at 75%+. Re-register via CronCreate each session boot. CronJob ID: b4358e34 | 2026-03-30 | ACTIVE |
 
 ## Retired / Inactive Timers
 
