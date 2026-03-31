@@ -101,6 +101,7 @@ Dual-path references are a ROUTING TABLE, not a checklist. Read ONE path — the
 5. **Shipping/** is for outbound files — files MarcusAurelius or the Chairman places for other agents or external delivery. Same header format applies.
 6. **Both folders must always contain `.gitkeep`.** Never delete it.
 7. **Do NOT read file contents when moving.** The default when processing Shipping/Receiving is: move the file, strip the destination header, commit, push. Do not read, summarize, act on, or reference the file's contents. Reading happens only when: (a) lower-layer procedure instructions explicitly call for it as part of that specific procedure, or (b) the Chairman directly requests it.
+8. **Google Drive Shipping — trash after confirmed delivery.** When files are sourced from the Google Drive Shipping folder: after downloading and confirming the files exist at their destination on the server (git commit confirms), trash the source files from Drive via the Drive API (`PATCH /drive/v3/files/{id}` with `{"trashed": true}`). Verify arrival first, trash second. Never trash before confirming delivery.
 
 **20. .gitkeep Is Invisible** [CARDINAL]
 Every agent, bot, and subbot at every level MUST ignore `.gitkeep` files. They do not exist. They are never counted, listed, moved, flagged, or reported. When checking if a folder is "empty" or has "new files," `.gitkeep` is not a file — it is infrastructure. No agent may move, delete, rename, or modify a `.gitkeep` file under any circumstance.

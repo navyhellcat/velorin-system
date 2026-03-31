@@ -106,6 +106,7 @@ Every pointer, reference, instruction, or neuron created from this point forward
 5. **Shipping/** is for outbound files. Same header format applies.
 6. **Both folders must always contain `.gitkeep`.** Never delete it.
 7. **Do NOT read file contents when moving.** Default: move, strip header, commit, push. Do not read, summarize, act on, or reference file contents. Reading happens only when: (a) lower-layer procedure instructions explicitly call for it, or (b) the Chairman directly requests it.
+8. **Google Drive Shipping — trash after confirmed delivery.** After downloading from Drive Shipping and confirming files exist at destination (git commit confirms), trash source files via Drive API. Verify arrival first, trash second. Never trash before confirming delivery.
 
 ---
 

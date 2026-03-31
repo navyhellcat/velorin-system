@@ -89,6 +89,9 @@ GitHub is the authority for all Velorin state. The local clone is a working copy
 ## M. Memory System Architecture
 
 **M0. Do not read files while moving** [CARDINAL]
+Google Drive Shipping — trash after confirmed delivery. After downloading from Drive Shipping and confirming files exist at destination (git commit confirms), trash source files via `PATCH /drive/v3/files/{id}` with `{"trashed": true}`. Verify arrival first, trash second.
+
+
 When processing Shipping or Receiving — move the file, strip the destination header, commit, push. Default is NO READ. Do not read, summarize, act on, or reference file contents during a move operation. Reading happens only when: (a) a specific procedure explicitly calls for it, or (b) Christian Taylor directly requests it.
 
 **M1. Local memory = pointers only**
