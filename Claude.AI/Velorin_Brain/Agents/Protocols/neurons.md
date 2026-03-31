@@ -27,6 +27,11 @@ Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE
 last-touched: 2026-03-30
 Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] neurons.operations.tools.A6 | [2] A2 | [3] A3
 
+### A8. Third Cycle Problem Protocol
+When brain traversal fails to resolve a question after two attempts (misclassification possible in cycle 2), escalate through 3 structured cycles: (1) Brain traversal [1]-[5], protection layer check after each expansion — stop if looping; (2) First principles decomposition + re-enter brain from different region; (3) GitHub research + probability score: P = (direct evidence × 0.5) + (adjacent neurons × 0.25) + (structural logic × 0.25). P > 60% → proceed with caveat. P ≤ 60% → write Research_Needed escalation to `Claude.AI/Bot.Jiang/escalation.md`, halt task. Do NOT guess below 60%. Full spec: `Claude.AI/tools/ThirdCycleProblemProtocol.md`.
+last-touched: 2026-03-30
+Pointers: [1] A1 | [1] neurons.principles.rewardalignment.A5 | [2] A2 | [2] neurons.agents.roster.A5 | [3] neurons.operations.tools.A7
+
 ### A7. External Agent Boot Pattern (GPT / Replit)
 For non-Claude agents (GPT custom GPTs, Replit bots), structure project instructions with an explicit ordered boot sequence at the top pointing to GitHub raw file URLs. Order: (1) general rules/operating standards, (2) company soul/DNA, (3) person profile. ~3 min cold boot is acceptable. Validated 2026-03-30 with Trey (GPT). Pattern confirmed by Chairman.
 last-touched: 2026-03-30

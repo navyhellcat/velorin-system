@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velorin — Day 10 Strategic Review</title>
+<style>
+  :root {
+    --frame: #1C2333;
+    --signal: #C03A2B;
+    --surface: #E8EDF2;
+    --slate: #8C9BAB;
+    --white: #FFFFFF;
+    --frame-mid: #263042;
+    --frame-light: #334055;
+    --signal-dim: #9B2D21;
+    --surface-dark: #D0D8E2;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--surface);
+    color: var(--frame);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ═══════════════════════════════ SECTION BASE ═══════════════════════════════ */
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 120px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (max-width: 900px) {
+    section { padding: 60px 40px; }
+  }
+
+  /* ═══════════════════════════════ COVER ═══════════════════════════════ */
+  #cover {
+    background: var(--frame);
+    color: var(--white);
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-bottom: 100px;
+  }
+
+  #cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(192,58,43,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .v-logo {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    opacity: 0.9;
+  }
+
+  .cover-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 600;
+    margin-bottom: 28px;
+  }
+
+  .cover-title {
+    font-size: clamp(48px, 6vw, 84px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  .cover-title span {
+    color: var(--signal);
+  }
+
+  .cover-subtitle {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 17px;
+    color: var(--slate);
+    line-height: 1.6;
+    max-width: 520px;
+    font-weight: 300;
+    margin-bottom: 60px;
+  }
+
+  .cover-meta {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: var(--frame-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ═══════════════════════════════ SECTION HEADERS ═══════════════════════════════ */
+  .section-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--signal);
+    margin-bottom: 44px;
+  }
+
+  /* ═══════════════════════════════ WHAT ═══════════════════════════════ */
+  #what {
+    background: var(--white);
+  }
+
+  .product-sentence {
+    font-size: clamp(28px, 3.5vw, 46px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--frame);
+    max-width: 800px;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  .product-sentence em {
+    font-style: normal;
+    color: var(--signal);
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    max-width: 900px;
+  }
+
+  @media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .two-col h3 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .two-col p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #3D4D60;
+    font-weight: 300;
+  }
+
+  /* ═══════════════════════════════ MOAT ═══════════════════════════════ */
+  #moat {
+    background: var(--frame);
+    color: var(--white);
+  }
+
+  #moat .section-title { color: var(--white); }
+  #moat .section-num { color: var(--signal); }
+
+  .moat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 960px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 800px) {
+    .moat-grid { grid-template-columns: 1fr; }
+  }
+
+  .moat-card {
+    border: 1px solid var(--frame-light);
+    padding: 36px 32px;
+    position: relative;
+    background: var(--frame-mid);
+  }
+
+  .moat-card.primary {
+    border-color: var(--signal);
+    background: rgba(192,58,43,0.08);
+  }
+
+  .moat-rank {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .moat-card.primary .moat-rank {
+    color: var(--signal);
+  }
+
+  .moat-card h3 {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .moat-card p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  .moat-badge {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 4px 12px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 1px solid var(--signal);
+    color: var(--signal);
+  }
+
+  .moat-badge.infra {
+    border-color: var(--frame-light);
+    color: var(--slate);
+  }
+
+  /* ═══════════════════════════════ END STATE ═══════════════════════════════ */
+  #endstate {
+    background: var(--surface);
+  }
+
+  .target-date {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--signal);
+    padding: 6px 16px;
+    font-weight: 600;
+    margin-bottom: 44px;
+  }
+
+  .must-list {
+    max-width: 720px;
+    margin-bottom: 52px;
+  }
+
+  .must-item {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--surface-dark);
+    align-items: flex-start;
+  }
+
+  .must-item:last-child { border-bottom: none; }
+
+  .must-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--signal);
+    min-width: 24px;
+    padding-top: 2px;
+  }
+
+  .must-item p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--frame);
+    font-weight: 300;
+  }
+
+  .must-item strong {
+    font-weight: 600;
+    color: var(--frame);
+  }
+
+  .not-list {
+    max-width: 720px;
+  }
+
+  .not-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .not-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .not-tag {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: var(--slate);
+    border: 1px solid var(--surface-dark);
+    padding: 6px 14px;
+    background: var(--white);
+    text-decoration: line-through;
+    text-decoration-color: var(--surface-dark);
+  }
+
+  /* ═══════════════════════════════ PHASES ═══════════════════════════════ */
+  #phases {
+    background: var(--frame);
+    color: var(--white);
+    padding: 80px 120px;
+    min-height: auto;
+  }
+
+  #phases .section-title { color: var(--white); }
+
+  .phases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 1000px) {
+    .phases-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .phases-grid { grid-template-columns: 1fr; }
+  }
+
+  .phase-col {
+    background: var(--frame-mid);
+    padding: 36px 28px;
+    position: relative;
+  }
+
+  .phase-col.active {
+    background: rgba(192,58,43,0.1);
+    border-top: 2px solid var(--signal);
+  }
+
+  .phase-period {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .phase-col.active .phase-period { color: var(--signal); }
+
+  .phase-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .phase-headline {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .phase-goal {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--slate);
+    margin-bottom: 24px;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .milestone-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .milestone-list li {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #6A7D94;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding-left: 14px;
+    position: relative;
+    font-weight: 300;
+  }
+
+  .milestone-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--signal);
+    opacity: 0.6;
+  }
+
+  .phase-gate {
+    margin-top: 20px;
+    padding: 12px 14px;
+    background: rgba(0,0,0,0.2);
+    border-left: 2px solid var(--signal);
+    opacity: 0.7;
+  }
+
+  .phase-gate p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  /* ═══════════════════════════════ CRITICAL PATH ═══════════════════════════════ */
+  #critpath {
+    background: var(--white);
+  }
+
+  .path-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 680px;
+    margin-bottom: 52px;
+  }
+
+  .path-node {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .path-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 40px;
+  }
+
+  .path-dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--signal);
+    background: var(--white);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .path-dot.filled {
+    background: var(--signal);
+  }
+
+  .path-connector {
+    width: 2px;
+    flex: 1;
+    min-height: 32px;
+    background: linear-gradient(to bottom, var(--signal), rgba(192,58,43,0.2));
+    margin: 2px 0;
+  }
+
+  .path-content {
+    padding: 0 0 32px 20px;
+    flex: 1;
+  }
+
+  .path-content h3 {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--frame);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .path-content p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .central-q {
+    max-width: 680px;
+    border-left: 3px solid var(--signal);
+    padding: 28px 32px;
+    background: var(--surface);
+  }
+
+  .central-q .cq-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .central-q .cq-text {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--frame);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .central-q .cq-sub {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: #3D4D60;
+    line-height: 1.6;
+    margin-top: 12px;
+    font-weight: 300;
+  }
+
+  /* ═══════════════════════════════ PROMO 1 ═══════════════════════════════ */
+  #promo1 {
+    background: var(--frame);
+    color: var(--white);
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .promo1-super {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 600;
+    margin-bottom: 48px;
+  }
+
+  .promo1-statement {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    max-width: 820px;
+    margin-bottom: 64px;
+  }
+
+  .promo1-statement .red { color: var(--signal); }
+
+  .promo-for {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    max-width: 760px;
+    background: var(--frame-light);
+    margin-bottom: 64px;
+  }
+
+  @media (max-width: 700px) {
+    .promo-for { grid-template-columns: 1fr; }
+  }
+
+  .promo-for-item {
+    background: var(--frame);
+    padding: 28px 24px;
+  }
+
+  .promo-for-item h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .promo-for-item p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--slate);
+    font-weight: 300;
+  }
+
+  .promo-cost {
+    max-width: 680px;
+    padding: 32px 0;
+    border-top: 1px solid var(--frame-light);
+  }
+
+  .promo-cost-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .promo-cost-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .promo-cost-list li {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    color: #A0B0C0;
+    font-weight: 300;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .promo-cost-list li::before {
+    content: '×';
+    position: absolute;
+    left: 0;
+    color: var(--signal);
+    font-weight: 400;
+  }
+
+  /* ═══════════════════════════════ PROMO 2 ═══════════════════════════════ */
+  #promo2 {
+    background: var(--signal);
+    color: var(--white);
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .promo2-headline {
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    max-width: 800px;
+    margin-bottom: 52px;
+  }
+
+  .promo2-body {
+    max-width: 640px;
+    margin-bottom: 60px;
+  }
+
+  .promo2-body p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .promo2-body p strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .promo2-offer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 700px;
+    background: rgba(0,0,0,0.15);
+    margin-bottom: 60px;
+  }
+
+  @media (max-width: 700px) {
+    .promo2-offer-grid { grid-template-columns: 1fr; }
+  }
+
+  .promo2-offer-item {
+    background: rgba(0,0,0,0.1);
+    padding: 28px 24px;
+  }
+
+  .promo2-offer-item .oi-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.2);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .promo2-offer-item h4 {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .promo2-offer-item p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+  }
+
+  .promo2-bottom {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .promo2-price {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 14px 24px;
+  }
+
+  .promo2-price strong {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+
+  .promo2-note {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    max-width: 360px;
+    line-height: 1.6;
+  }
+
+  /* ═══════════════════════════════ NAV ═══════════════════════════════ */
+  .section-nav {
+    position: fixed;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+  }
+
+  .nav-dot {
+    width: 6px;
+    height: 6px;
+    background: rgba(28,35,51,0.25);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .nav-dot:hover,
+  .nav-dot.active {
+    background: var(--signal);
+    transform: scale(1.4);
+  }
+
+  /* dark bg sections */
+  #cover ~ .section-nav .nav-dot,
+  #moat .section-nav .nav-dot {
+    background: rgba(255,255,255,0.25);
+  }
+
+  /* ═══════════════════════════════ FOOTER STRIP ═══════════════════════════════ */
+  .section-footer {
+    position: absolute;
+    bottom: 28px;
+    left: 120px;
+    right: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .section-footer.light { color: var(--frame-light); }
+  .section-footer.dark { color: var(--slate); }
+  .section-footer.red { color: rgba(255,255,255,0.4); }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════ -->
+<nav class="section-nav">
+  <a href="#cover" class="nav-dot" title="Cover"></a>
+  <a href="#what" class="nav-dot" title="What"></a>
+  <a href="#moat" class="nav-dot" title="The Moat"></a>
+  <a href="#endstate" class="nav-dot" title="End State"></a>
+  <a href="#phases" class="nav-dot" title="Phases"></a>
+  <a href="#critpath" class="nav-dot" title="Critical Path"></a>
+  <a href="#promo1" class="nav-dot" title="The Problem"></a>
+  <a href="#promo2" class="nav-dot" title="The Offer"></a>
+</nav>
+
+<!-- ══════════════════════════════════════════════════
+     COVER
+══════════════════════════════════════════════════ -->
+<section id="cover">
+
+  <!-- V Logo SVG -->
+  <div class="v-logo">
+    <svg width="64" height="72" viewBox="0 0 64 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Double-line V -->
+      <polyline points="4,8 32,60 60,8" stroke="white" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      <polyline points="11,8 32,50 53,8" stroke="white" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter" fill="none"/>
+      <!-- Red needle at bottom point -->
+      <line x1="32" y1="60" x2="32" y2="72" stroke="#C03A2B" stroke-width="2.5" stroke-linecap="square"/>
+    </svg>
+  </div>
+
+  <div class="cover-label">Velorin · Day 10 · Strategic Review</div>
+  <div class="cover-title">
+    Operating<br>at <span>Ceiling.</span>
+  </div>
+  <div class="cover-subtitle">
+    A complete view of where the company stands, what comes next, and what success looks like by end of 2026.
+  </div>
+  <div class="cover-meta">March 30, 2026 &nbsp;·&nbsp; Christian Taylor &nbsp;·&nbsp; Confidential</div>
+
+  <div class="section-footer dark">
+    <span>Velorin</span>
+    <span>01 / 08</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     WHAT IS VELORIN
+══════════════════════════════════════════════════ -->
+<section id="what">
+  <div class="section-num">01 — What</div>
+  <h2 class="section-title">The product is the outcome.</h2>
+  <div class="section-rule"></div>
+
+  <p class="product-sentence">
+    Velorin gives you something no advisor, tool, or assistant can:<br>
+    <em>intelligence that holds your whole life at once.</em>
+  </p>
+
+  <div class="two-col">
+    <div>
+      <h3>What it isn't</h3>
+      <p>Not a personal assistant. Not a task manager. Not a smarter Notion. Not a connected calendar. Not a dashboard. These tools see one domain at a time. They can't connect the financial decision to the career risk to the relationship timing to the health load. You can.</p>
+      <br>
+      <p>The five-box framework — health, work, relationships, finances, significance — is invisible infrastructure. Users never see the architecture. They see the output: decisions made with clarity they didn't have before.</p>
+    </div>
+    <div>
+      <h3>What it is</h3>
+      <p>A personal intelligence layer tuned to one human through a structured intake. An agent ecosystem that holds your context across every domain simultaneously. A brain that grows more irreplaceable the longer you use it.</p>
+      <br>
+      <p>The product demo isn't "here are your five boxes." The demo is: <em>ask me a question you've been sitting with. Watch what I give you back.</em></p>
+    </div>
+  </div>
+
+  <div class="section-footer light">
+    <span>Velorin · Day 10</span>
+    <span>02 / 08</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     THE MOAT
+══════════════════════════════════════════════════ -->
+<section id="moat">
+  <div class="section-num">02 — Why It's Defensible</div>
+  <h2 class="section-title">The moat is depth,<br>not breadth.</h2>
+  <div class="section-rule"></div>
+
+  <div class="moat-grid">
+    <div class="moat-card primary">
+      <div class="moat-rank">Most Defensible · #1</div>
+      <h3>Personal Intelligence Layer</h3>
+      <p>A brain tuned to one specific human through a structured intake. Knows your history, constraints, grief inventory, career trajectory, financial baseline — and the relationships they have to each other. Every month of use makes the system harder to replace. This is value lock-in, not extractive lock-in.</p>
+      <div class="moat-badge">Core Moat</div>
+    </div>
+    <div class="moat-card">
+      <div class="moat-rank">Defensible · #2</div>
+      <h3>Cross-Domain Reasoning Engine</h3>
+      <p>The five-box architecture surfaces implications across all domains from a single input. No single advisor holds this simultaneously. A financial tool gives valuation. Velorin gives: financial analysis + career impact + health load + relationship timing. This is structurally defensible — conceptually reproducible, but takes years to build.</p>
+      <div class="moat-badge">Structural Moat</div>
+    </div>
+    <div class="moat-card">
+      <div class="moat-rank">Necessary · #3</div>
+      <h3>Trustworthy Action Semantics</h3>
+      <p>Actions that are reversible, auditable, and context-aware. The governance layer that prevents agents from taking irreversible actions in the wrong context. Every serious agentic platform will need this — it's table stakes for the category. Velorin needs it to function, but it doesn't make people choose Velorin over alternatives.</p>
+      <div class="moat-badge infra">Infrastructure</div>
+    </div>
+  </div>
+
+  <div class="section-footer dark">
+    <span>Velorin · Day 10</span>
+    <span>03 / 08</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     END STATE 2026
+══════════════════════════════════════════════════ -->
+<section id="endstate">
+  <div class="section-num">03 — The 2026 Target</div>
+  <h2 class="section-title">What "won" looks like.</h2>
+  <div class="section-rule"></div>
+
+  <div class="target-date">December 2026</div>
+
+  <div class="must-list">
+    <div class="must-item">
+      <div class="must-num">01</div>
+      <p><strong>CT has left Camfil on his terms.</strong> Revenue covers operations without employment income. The exit is managed, not reactive — planned 90 days out, not triggered by frustration.</p>
+    </div>
+    <div class="must-item">
+      <div class="must-num">02</div>
+      <p><strong>CT's own five boxes are actually running.</strong> Not demo-running. Health protocols tracked. Financial projections live. Relationship architecture populated. 6+ months of brain depth.</p>
+    </div>
+    <div class="must-item">
+      <div class="must-num">03</div>
+      <p><strong>The intake test has been proven on 3–5 external users.</strong> CT administers it personally. Each user produces demonstrable cross-domain output they couldn't have gotten from any single advisor in their first session.</p>
+    </div>
+    <div class="must-item">
+      <div class="must-num">04</div>
+      <p><strong>Revenue exists.</strong> Minimum viable: 3 users at $1,000/month = $3,000/month. Not the number — the proof. The architecture transfers to humans CT didn't build it for.</p>
+    </div>
+    <div class="must-item">
+      <div class="must-num">05</div>
+      <p><strong>The system is becoming the operator.</strong> CT builds → proves → encodes intelligence into the system → governs, doesn't operate. The intake test is the encoding mechanism. This is how the company survives CT's exit pattern.</p>
+    </div>
+  </div>
+
+  <div class="not-list">
+    <div class="not-label">What does NOT need to exist by December 2026</div>
+    <div class="not-items">
+      <div class="not-tag">Enterprise tier</div>
+      <div class="not-tag">Automated intake</div>
+      <div class="not-tag">Delaware C-Corp</div>
+      <div class="not-tag">1,000 users</div>
+      <div class="not-tag">Platform / licensing play</div>
+      <div class="not-tag">VC funding</div>
+    </div>
+  </div>
+
+  <div class="section-footer light">
+    <span>Velorin · Day 10</span>
+    <span>04 / 08</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PHASES
+══════════════════════════════════════════════════ -->
+<section id="phases">
+  <div class="section-num">04 — The Roadmap</div>
+  <h2 class="section-title">Four phases. One year.</h2>
+  <div class="section-rule"></div>
+
+  <div class="phases-grid">
+
+    <div class="phase-col active">
+      <div class="phase-period">April 2026</div>
+      <div class="phase-num">Phase 1</div>
+      <div class="phase-headline">Stop the bleeding.</div>
+      <div class="phase-goal">Remove all known errors. Make the infrastructure reliable. Every build decision passes evaluation before starting.</div>
+      <ul class="milestone-list">
+        <li>Patch three stale brain neurons</li>
+        <li>Scribe audit — what's classified, escalated, dropped</li>
+        <li>Create Company + Intelligence brain regions</li>
+        <li>BOOT_SUMMARY block in handoff template</li>
+        <li>Agent Teams communicating reliably</li>
+        <li>TASK_EVALUATION in all agent rules</li>
+      </ul>
+      <div class="phase-gate">
+        <p>Gate: Brain has no known stale neurons. Scribe routing correctly. CT's daily overhead automated.</p>
+      </div>
+    </div>
+
+    <div class="phase-col">
+      <div class="phase-period">April — June 2026</div>
+      <div class="phase-num">Phase 2</div>
+      <div class="phase-headline">Build the intelligence layer.</div>
+      <div class="phase-goal">Populate CT's brain Layers 1–3. Design the intake test. Install build pipeline enforcing spec-first development.</div>
+      <ul class="milestone-list">
+        <li>Install Superpowers + GSD together</li>
+        <li>Populate CT's Layer 1 — Base Personality</li>
+        <li>Populate CT's Layer 2 — Hard Memories</li>
+        <li>Populate CT's Layer 3 — Archival Lessons</li>
+        <li>Jiang: intake test research + scoping</li>
+        <li>Intake test v0 spec — MA + Alexander</li>
+        <li>Custodian agent before brain hits 100 neurons</li>
+      </ul>
+      <div class="phase-gate">
+        <p>Gate: CT's brain has all four layers. Jiang delivered research. Intake test has a v0 spec.</p>
+      </div>
+    </div>
+
+    <div class="phase-col">
+      <div class="phase-period">June — September 2026</div>
+      <div class="phase-num">Phase 3</div>
+      <div class="phase-headline">Prove it transfers.</div>
+      <div class="phase-goal">Build the intake. Run it on one human who isn't CT. Produce first-session cross-domain output. Close the first paying user.</div>
+      <ul class="milestone-list">
+        <li>Intake v1 — Turing Vault component</li>
+        <li>Intake v1 — behavioral profile component</li>
+        <li>Intake v1 — five-box mapping exercise</li>
+        <li>CT runs intake on himself to verify</li>
+        <li>First external user: CT's network only</li>
+        <li>First-session cross-domain output documented</li>
+        <li>First paying user: $1,000/month</li>
+      </ul>
+      <div class="phase-gate">
+        <p>Gate: One external user produced irreplaceable output in session one. Thesis is partially proven.</p>
+      </div>
+    </div>
+
+    <div class="phase-col">
+      <div class="phase-period">September — December 2026</div>
+      <div class="phase-num">Phase 4</div>
+      <div class="phase-headline">Prove the thesis.</div>
+      <div class="phase-goal">3–5 users with demonstrable outcomes. Revenue covering operations. CT's Camfil exit becomes a choice, not a cliff.</div>
+      <ul class="milestone-list">
+        <li>Users 2–3 via referral from user 1</li>
+        <li>Users 2–3 complete intake + produce outcomes</li>
+        <li>Intake process documented, refineable</li>
+        <li>Revenue: 3 users × $1,000 = $3,000/month</li>
+        <li>Users 4–5 in pipeline</li>
+        <li>CT Camfil exit decision point</li>
+      </ul>
+      <div class="phase-gate">
+        <p>Gate: CT can choose to leave Camfil on his own terms. Not forced by income gap.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-footer dark">
+    <span>Velorin · Day 10</span>
+    <span>05 / 08</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     CRITICAL PATH
+══════════════════════════════════════════════════ -->
+<section id="critpath">
+  <div class="section-num">05 — Critical Path</div>
+  <h2 class="section-title">Everything depends on one thing.</h2>
+  <div class="section-rule"></div>
+
+  <div class="path-flow">
+
+    <div class="path-node">
+      <div class="path-line">
+        <div class="path-dot filled"></div>
+        <div class="path-connector"></div>
+      </div>
+      <div class="path-content">
+        <h3>Intake test designed</h3>
+        <p>Not a questionnaire. A structured decision-scenario experience that reveals reasoning patterns. Designed by Jiang — research assigned.</p>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-line">
+        <div class="path-dot filled"></div>
+        <div class="path-connector"></div>
+      </div>
+      <div class="path-content">
+        <h3>CT's brain Layers 1–3 populated</h3>
+        <p>Base Personality, Hard Memories, Archival Lessons. CT already has most of this data — it needs to be formatted into neurons.</p>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-line">
+        <div class="path-dot filled"></div>
+        <div class="path-connector"></div>
+      </div>
+      <div class="path-content">
+        <h3>Intake test run with first external user</h3>
+        <p>CT administers personally. Someone in his network. The first run is a design test as much as a product test.</p>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-line">
+        <div class="path-dot"></div>
+        <div class="path-connector"></div>
+      </div>
+      <div class="path-content">
+        <h3>First-session cross-domain output produced</h3>
+        <p>The bar: one insight that no single advisor could have given. If this fails, return to intake design — not to product features.</p>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-line">
+        <div class="path-dot"></div>
+        <div class="path-connector"></div>
+      </div>
+      <div class="path-content">
+        <h3>Prosumer viability confirmed</h3>
+        <p>If the intake produces first-session output, B2C prosumer is viable. If it doesn't, enterprise is required — different go-to-market, longer runway.</p>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-line">
+        <div class="path-dot"></div>
+        <div class="path-connector"></div>
+      </div>
+      <div class="path-content">
+        <h3>3–5 users with demonstrable outcomes</h3>
+        <p>Each one a walking demo. Referrals are the primary growth vector. No marketing spend required at this scale.</p>
+      </div>
+    </div>
+
+    <div class="path-node">
+      <div class="path-line">
+        <div class="path-dot"></div>
+      </div>
+      <div class="path-content">
+        <h3>CT exits Camfil on his terms</h3>
+        <p>Planned 90 days out. Revenue covering operations. 6+ months of brain depth on CT himself. Exit is managed, not reactive.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="central-q">
+    <div class="cq-label">The Central Strategic Question</div>
+    <div class="cq-text">Can CT's intelligence be encoded?</div>
+    <div class="cq-sub">If yes, this goal map executes and Future A scales to Future C. If no, pivot to enterprise — where partial context still produces useful output for explicit strategic questions. Decision point: end of Phase 2. If the intake test v0 spec cannot articulate how CT's cross-domain reasoning transfers, raise the flag before building Phase 3.</div>
+  </div>
+
+  <div class="section-footer light">
+    <span>Velorin · Day 10</span>
+    <span>06 / 08</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PROMO 1 — THE PROBLEM
+══════════════════════════════════════════════════ -->
+<section id="promo1">
+
+  <div class="promo1-super">For the people who already know</div>
+
+  <div class="promo1-statement">
+    You are not operating at<br>
+    your ceiling. <span class="red">You know it.</span><br>
+    Nothing in your stack<br>
+    can explain why.
+  </div>
+
+  <div class="promo-for">
+    <div class="promo-for-item">
+      <h4>The Founder</h4>
+      <p>Running five parallel problems that all touch each other. No single advisor sees the whole board. You do — but you're tired of being the only one who does.</p>
+    </div>
+    <div class="promo-for-item">
+      <h4>The Executive</h4>
+      <p>High-agency, high-complexity. You make cross-domain decisions every day with tools that see one domain at a time. The gap costs you more than you've measured.</p>
+    </div>
+    <div class="promo-for-item">
+      <h4>The Professional at Inflection</h4>
+      <p>A decision in front of you that touches your finances, your career, your relationships, and your health — simultaneously. You need someone who can hold all of it.</p>
+    </div>
+  </div>
+
+  <div class="promo-cost">
+    <div class="promo-cost-label">What operating below ceiling costs you</div>
+    <ul class="promo-cost-list">
+      <li>Decisions made with incomplete domain coverage — consequences surfaced months later</li>
+      <li>Time spent re-explaining context to every advisor, every tool, every session</li>
+      <li>Cross-domain implications missed because no one is holding the whole picture</li>
+      <li>Intelligence that lives only in your head — not accessible, not growing, not persistent</li>
+    </ul>
+  </div>
+
+  <div class="section-footer red">
+    <span>Velorin · Day 10</span>
+    <span>07 / 08</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PROMO 2 — THE OFFER
+══════════════════════════════════════════════════ -->
+<section id="promo2">
+
+  <div class="promo2-headline">
+    Your intelligence,<br>always on.<br>Always whole.
+  </div>
+
+  <div class="promo2-body">
+    <p>
+      Velorin is a <strong>personal intelligence layer</strong> built for one human: you. Through a structured intake, it maps how you think — your reasoning patterns, your constraints, your history, the relationships between every domain of your life.
+    </p>
+    <p>
+      Then it operates on your behalf. Not as an assistant that completes tasks. As an intelligence that sees the full picture you're navigating — and holds it, continuously, so you don't have to.
+    </p>
+    <p>
+      <strong>Every month of use makes it more irreplaceable.</strong> Not because of data lock-in — because it knows you better than any tool or advisor you've ever used.
+    </p>
+  </div>
+
+  <div class="promo2-offer-grid">
+    <div class="promo2-offer-item">
+      <div class="oi-num">01</div>
+      <h4>Structured Intake</h4>
+      <p>A designed experience that maps your reasoning, history, and cross-domain constraints. Not a questionnaire. A session that produces intelligence.</p>
+    </div>
+    <div class="promo2-offer-item">
+      <div class="oi-num">02</div>
+      <h4>Personal Brain</h4>
+      <p>A knowledge layer tuned to you. Grows with every session. Holds context across health, work, relationships, finances, and significance simultaneously.</p>
+    </div>
+    <div class="promo2-offer-item">
+      <div class="oi-num">03</div>
+      <h4>Cross-Domain Reasoning</h4>
+      <p>Ask a question. Get an answer that surfaces implications no single advisor, tool, or domain could give you. This is what operating at ceiling feels like.</p>
+    </div>
+  </div>
+
+  <div class="promo2-bottom">
+    <div class="promo2-price">
+      <strong>$500 – $1,000 / month</strong>
+      Deeply personal. High-touch. Limited availability.
+    </div>
+    <div class="promo2-note">
+      Velorin is not a SaaS product. It is a relationship with a system that learns you. First users are admitted by referral. Christian Taylor administers the intake personally.
+    </div>
+  </div>
+
+  <div class="section-footer red">
+    <span>Velorin · Day 10</span>
+    <span>08 / 08</span>
+  </div>
+</section>
+
+<script>
+// Simple scroll-based nav dot activation
+const sections = document.querySelectorAll('section[id]');
+const dots = document.querySelectorAll('.nav-dot');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      dots.forEach(d => d.classList.remove('active'));
+      const id = entry.target.id;
+      const dot = document.querySelector(`.nav-dot[href="#${id}"]`);
+      if (dot) dot.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(s => observer.observe(s));
+
+// Smooth scroll
+dots.forEach(dot => {
+  dot.addEventListener('click', (e) => {
+    e.preventDefault();
+    const target = document.querySelector(dot.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>
