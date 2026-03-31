@@ -159,6 +159,11 @@ When spawning Claude Code teammates: always use tmux split-pane mode (Path B) by
 
 ---
 
+**T4. Task tool — conversational to-dos** [CARDINAL]
+Never use TaskCreate or the task tool system to track conversational to-do items or pending work lists. Every open task injects a system reminder into subsequent tool results — 150-200 tokens per call, compounding across every tool use in the session. Use plain text lists in the conversation instead. Only use the task tool when: (1) assigning work to Agent Teams teammates, or (2) a task explicitly needs cross-session tracking and Christian Taylor has asked for it.
+
+---
+
 *Maintained by MarcusAurelius + Bot.Scribe.Neuron | Superseded rules are not deleted — they are marked [SUPERSEDED by X#] and left in place for audit trail.*
 
 [VELORIN.EOF]
