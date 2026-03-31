@@ -22,11 +22,11 @@ last-touched: 2026-03-28
 Pointers: [1] neurons.connectivity.mcp.A3 | [2] neurons.agents.protocols.A1 | [2] A2
 
 ### A5. Jiang
-Claude Desktop app bot (default as of 2026-03-30). Previously browser-based. Read/write capable. Manages long-context research tasks. Future: mobile agent planned (minimal boot, low token load — not yet built).
+Claude Desktop app bot (default as of 2026-03-30). Previously browser-based. Read/write capable. Manages long-context research tasks. CT assessment (2026-03-31): best-performing agent in the system by significant margin. Future: mobile agent planned (minimal boot, low token load — not yet built).
 **Your folder:** LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/`
 **Boot:** Read `Jiang.ReadMe.First.md` → most recent session handoff in your folder.
 last-touched: 2026-03-31
-Pointers: [1] A1 | [1] neurons.agents.protocols.A4 | [2] A2 | [2] neurons.agents.protocols.A1
+Pointers: [1] neurons.agents.protocols.A9 | [1] A1 | [1] neurons.agents.protocols.A4 | [2] A2 | [2] neurons.agents.protocols.A1
 
 ### A6. Trey
 GPT-based agent (OpenAI custom GPT). Runs inside ChatGPT with a project box (project instructions + attached files). Accesses GitHub files via raw URLs. First validated boot: 2026-03-30, ~3 min cold boot with 4 sequential GitHub reads. Boot order: Operating Standards → Company DNA → Claude_Context_Profile → topline_profile.

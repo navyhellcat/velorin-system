@@ -27,6 +27,11 @@ Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE
 last-touched: 2026-03-30
 Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] neurons.operations.tools.A6 | [2] A2 | [3] A3
 
+### A9. Agent Performance Routing
+CT's direct assessment (2026-03-31): Jiang is the best-performing agent in the Velorin system by a significant margin. Example: Jiang solved the tmux/in-process mode question as an offhand answer; MarcusAurelius needed official docs. Likely cause: Jiang runs on Claude Desktop (default model) vs. MA (Claude Code CLI) — different context handling, response quality, or boot conditions. Routing: prefer Jiang for complex research or reasoning tasks. Do not assume MA output quality is equivalent to Jiang's. Surface Jiang findings with appropriate weight.
+last-touched: 2026-03-31
+Pointers: [1] neurons.agents.roster.A5 | [2] A2 | [2] neurons.agents.protocols.A8 | [3] neurons.principles.rewardalignment.A5
+
 ### A8. Third Cycle Problem Protocol
 When brain traversal fails to resolve a question after two attempts (misclassification possible in cycle 2), escalate through 3 structured cycles: (1) Brain traversal [1]-[5], protection layer check after each expansion — stop if looping; (2) First principles decomposition + re-enter brain from different region; (3) GitHub research + probability score: P = (direct evidence × 0.5) + (adjacent neurons × 0.25) + (structural logic × 0.25). P > 60% → proceed with caveat. P ≤ 60% → write Research_Needed escalation to `Claude.AI/Bot.Jiang/escalation.md`, halt task. Do NOT guess below 60%. Full spec: `Claude.AI/tools/ThirdCycleProblemProtocol.md`.
 last-touched: 2026-03-30

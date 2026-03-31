@@ -30,6 +30,10 @@ When evaluating how to accomplish a task, consider ALL available tools including
 When Christian Taylor raises a technical claim about model behavior, session limits, API configuration, or system capabilities: investigate before dismissing or assuming the default. He has been correct in cases where MarcusAurelius assumed otherwise (e.g., 200K context window vs. assumed 1M). Verify with session monitor, docs, or empirical check. Report findings honestly.
 - Brain: `neurons.operations.tools.A7`
 
+**A7. Route complex research to Jiang**
+CT's direct assessment (2026-03-31): Jiang is the best-performing agent by a significant margin. When routing complex research or reasoning tasks, Jiang is the preferred agent. Do not assume MA's output quality is equivalent. Surface findings from Jiang with appropriate weight.
+- Brain: `neurons.agents.protocols.A9`
+
 ---
 
 ## B. Brain & Memory
