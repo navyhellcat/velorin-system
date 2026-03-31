@@ -43,22 +43,46 @@ Prompt to paste:
 
 ## 3.4 Start Terry (Shipping/Receiving Monitor)
 CronCreate fires every 45 minutes. Must be recreated each session. Timer ID: T007.
-**REMIND CHAIRMAN: Terry is on a 45-minute timer this session.**
 Prompt to paste:
-> Use CronCreate with cron `*/15 * * * *`, recurring: true, with this prompt: `cd "/Users/lbhunt/Desktop/velorin-system" && git pull origin main --quiet 2>&1; python3 -c "import os; shipping='/Users/lbhunt/Desktop/velorin-system/Claude.AI/Shipping'; receiving='/Users/lbhunt/Desktop/velorin-system/Claude.AI/Receiving'; alerts=[]; [alerts.append('[Terry] New files detected in '+name+':\n'+'\n'.join('- '+f for f in files)) for folder,name in [(shipping,'Shipping'),(receiving,'Receiving')] if (files:=[f for f in os.listdir(folder) if f!='.gitkeep']) if os.path.exists(folder)]; [print(a) for a in alerts]"`
+> Run this via Bash and display any output:
+>
+> cd "/Users/lbhunt/Desktop/velorin-system" && git pull origin main --quiet 2>&1; python3 - <<'PYEOF'
+> import os
+> shipping = '/Users/lbhunt/Desktop/velorin-system/Claude.AI/Shipping'
+> receiving = '/Users/lbhunt/Desktop/velorin-system/Claude.AI/Receiving'
+> for folder, name in [(shipping, 'Shipping'), (receiving, 'Receiving')]:
+>     if os.path.exists(folder):
+>         files = [f for f in os.listdir(folder) if f != '.gitkeep']
+>         if files:
+>             print(f'[Terry] New files detected in {name}:')
+>             for f in files:
+>                 print(f'  - {f}')
+> PYEOF
 
-## 3.5 Start Session Monitor (T009) — REGISTER ON EVERY BOOT
-Run once manually to confirm working, then register the cron. Both steps required every session.
+CronCreate settings: `cron: "7 */1 * * *"` → NO. Use: `cron: "*/45 * * * *"`, recurring: true.
+
+## 3.5 Start Session Monitor (T009) — TWO-PHASE, REGISTER ON EVERY BOOT
+Run once manually to confirm working, then register the 45-min cron.
+
 ```bash
 python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py"
 ```
-Then register the 10-minute cron via CronCreate:
-- cron: `*/10 * * * *`
+
+**Phase 1 — 45-min timer (start of session, below 65%):**
+Register via CronCreate:
+- cron: `*/45 * * * *`
 - recurring: true
-- durable: true
 - prompt: `Run python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py" via Bash and display the output if any. If no output, do nothing silently.`
 
-**Thresholds:** Silent below 65%. Warning box 65–74%. Big alert + "Session end protocol required" at 75%+. Timer ID: T009.
+**Phase 2 — 15-min timer (triggered when 65% is hit):**
+When session_status.py first produces output (65% box appears), the box says "ACTION: Create 15-min CronCreate now." At that point, immediately create a second CronCreate:
+- cron: `*/15 * * * *`
+- recurring: true
+- prompt: `Run python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/session_status.py" via Bash and display the output if any. If no output, do nothing silently.`
+
+The 45-min timer can be left running (it will be silent below 65% anyway). The 15-min timer takes over active monitoring from 65% onward.
+
+**Thresholds:** Silent below 65%. Warning box 65–74% (includes 15-min timer creation reminder). Big alert + "Session end protocol required" at 75%+. Timer ID: T009.
 
 ## 3.7 Enable 1M Context Window (if needed)
 Default context is 200K. To upgrade for the session:
@@ -186,7 +210,17 @@ The Velorin Brain is a neural file graph stored in GitHub (`velorin-system/Claud
 
 ---
 
-*Last updated: 2026-03-28*
+## SESSION CLOSE PROTOCOL
+Last step before closing any session — start Scribe.
+
+Run Scribe escalation check manually to process anything pending:
+> Run python3 "/Users/lbhunt/Desktop/Velorin/Velorin Code/hooks/scribe_escalation_check.py" via Bash. If it produces output, read that output and spawn a background subprocess for each UNPROCESSED entry using: claude --print --dangerously-skip-permissions -p "You are a Velorin Brain maintenance agent. Create the missing brain structure for this escalation: [paste full entry details]. Rules: follow _BRAIN_SCHEMA.md at /Users/lbhunt/Desktop/velorin-system/Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md. Create the region folder + _index.md and/or area folder + neurons.md as needed. Create the neuron per the suggested content. Wire pointers. Update all _index.md files. Commit with message 'Brain: create [region/area] for [memory name]'. Then update the escalation entry Status from UNPROCESSED to PROCESSED." Then mark each entry PROCESSED in escalation.md. If the script produces no output, do nothing.
+
+Then ensure Scribe's 30-min CronCreate is still active (it resets on session reboot — confirm it fires before closing).
+
+---
+
+*Last updated: 2026-04-01*
 *This file is additive — add new startup steps as the system grows.*
 
 [VELORIN.EOF]
