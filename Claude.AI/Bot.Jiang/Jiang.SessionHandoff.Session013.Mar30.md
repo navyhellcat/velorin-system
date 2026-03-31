@@ -134,4 +134,8 @@ The Trey push test worked cleanly. This is the first live test of cross-agent co
 
 
 
+---
+NOTE FOR NEXT SESSION BOOT: Explain cache writes to CT.
+He asked about token usage and saw "Cache create: 1,856,042" — needs to understand what cache writes are, why they're large, and what they actually cost vs. raw input/output tokens.
+
 [VELORIN.EOF]
