@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turing Vault — Growth Architecture</title>
+<style>
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #F4F6F9;
+    color: #1C2333;
+    margin: 0;
+    padding: 40px 0 80px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Header */
+  .doc-header {
+    border-left: 4px solid #C03A2B;
+    padding: 20px 24px;
+    background: #1C2333;
+    color: white;
+    margin-bottom: 40px;
+  }
+  .doc-header h1 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+  .doc-header p { margin: 0; font-size: 12px; color: #8C9BAB; }
+
+  /* Phase blocks */
+  .phase {
+    background: white;
+    border: 1px solid #DDE3EC;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .phase-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .phase-header:hover { background: #F8F9FB; }
+
+  .phase-0 .phase-header { background: #FEF3F2; border-left: 4px solid #C03A2B; }
+  .phase-1 .phase-header { border-left: 4px solid #1C2333; }
+  .phase-2 .phase-header { border-left: 4px solid #1C2333; }
+  .phase-3 .phase-header { border-left: 4px solid #1C2333; }
+  .phase-4 .phase-header { border-left: 4px solid #1C2333; }
+  .phase-5 .phase-header { border-left: 4px solid #1C2333; }
+  .phase-6 .phase-header { border-left: 4px solid #8C9BAB; }
+  .phase-7 .phase-header { border-left: 4px solid #8C9BAB; }
+  .phase-8 .phase-header { border-left: 4px solid #2C7A3E; }
+
+  .phase-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8C9BAB;
+    min-width: 80px;
+  }
+  .phase-0 .phase-label { color: #C03A2B; }
+  .phase-8 .phase-label { color: #2C7A3E; }
+
+  .phase-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1C2333;
+    flex: 1;
+  }
+
+  .phase-timing {
+    font-size: 11px;
+    color: #8C9BAB;
+  }
+
+  .toggle {
+    font-size: 16px;
+    color: #8C9BAB;
+    transition: transform 0.15s;
+  }
+  .phase.open .toggle { transform: rotate(180deg); }
+
+  .phase-body {
+    display: none;
+    padding: 20px 24px;
+    border-top: 1px solid #EEF1F6;
+  }
+  .phase.open .phase-body { display: block; }
+
+  /* Alert */
+  .alert {
+    background: #FEF3F2;
+    border: 1px solid #F5C6C2;
+    border-left: 3px solid #C03A2B;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #7A2018;
+    margin-bottom: 16px;
+  }
+
+  /* Items */
+  .item {
+    padding: 14px 0;
+    border-bottom: 1px solid #EEF1F6;
+  }
+  .item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .item-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1C2333;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+  .tag-urgent { background: #FEE2E2; color: #C03A2B; }
+  .tag-build  { background: #EEF1F6; color: #1C2333; }
+  .tag-auto   { background: #E8F5E9; color: #2C7A3E; }
+  .tag-ext    { background: #F3F0FF; color: #5B4DB5; }
+
+  .item p { margin: 0 0 6px; color: #3D4D60; font-size: 13px; }
+  .item-tools { font-size: 11px; color: #8C9BAB; }
+  .item-tools strong { color: #5B6B7C; }
+
+  /* Platform list */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .platform-card {
+    border: 1px solid #DDE3EC;
+    padding: 12px 14px;
+    background: #FAFBFC;
+  }
+  .platform-card .pname {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .platform-card .ppri {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .ppri-high { color: #C03A2B; }
+  .ppri-med  { color: #D97706; }
+  .ppri-low  { color: #8C9BAB; }
+  .platform-card p { margin: 0; color: #5B6B7C; font-size: 12px; line-height: 1.5; }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  th {
+    background: #EEF1F6;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    color: #3D4D60;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #EEF1F6;
+    color: #3D4D60;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #FAFBFC; }
+
+  .cost-free { color: #2C7A3E; font-weight: 600; }
+  .skipable-no { color: #C03A2B; font-weight: 600; }
+  .skipable-yes { color: #8C9BAB; }
+
+  /* Timeline blocks */
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #EEF1F6;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .tl-when {
+    min-width: 90px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8C9BAB;
+    padding-top: 2px;
+  }
+  .tl-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1C2333;
+    margin-bottom: 6px;
+  }
+  .tl-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .tl-items li {
+    font-size: 12px;
+    color: #5B6B7C;
+    padding: 2px 0 2px 14px;
+    position: relative;
+  }
+  .tl-items li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #C03A2B;
+    font-size: 10px;
+    top: 3px;
+  }
+
+  /* Agent roles */
+  .agent-card {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #EEF1F6;
+  }
+  .agent-card:last-child { border-bottom: none; }
+  .agent-name {
+    min-width: 110px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #1C2333;
+  }
+  .agent-role { font-size: 12px; color: #5B6B7C; line-height: 1.5; }
+  .agent-role strong { color: #1C2333; }
+
+  /* Workflow items */
+  .workflow {
+    padding: 12px 0;
+    border-bottom: 1px solid #EEF1F6;
+  }
+  .workflow:last-child { border-bottom: none; }
+  .workflow-name {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #1C2333;
+  }
+  .workflow p { margin: 0; font-size: 12px; color: #5B6B7C; line-height: 1.5; }
+
+  /* Cost summary */
+  .cost-summary {
+    display: flex;
+    gap: 16px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .cost-box {
+    border: 1px solid #DDE3EC;
+    padding: 14px 18px;
+    background: #FAFBFC;
+    flex: 1;
+    min-width: 160px;
+  }
+  .cost-box .cost-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #8C9BAB;
+    margin-bottom: 4px;
+  }
+  .cost-box .cost-amount {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1C2333;
+  }
+  .cost-box .cost-note {
+    font-size: 11px;
+    color: #8C9BAB;
+    margin-top: 2px;
+  }
+
+  h3 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #8C9BAB;
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #EEF1F6;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p { margin: 0 0 8px; }
+  p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <h1>Turing Vault — Growth Architecture</h1>
+    <p>Social Media · SEO · Automation · Distribution · Agent Stack &nbsp;·&nbsp; Alexander, CEO &nbsp;·&nbsp; March 27, 2026</p>
+  </div>
+
+  <!-- ═══ PHASE 0 ═══ -->
+  <div class="phase phase-0 open">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 0</span>
+      <span class="phase-title">Prerequisites — Fix the Pipe</span>
+      <span class="phase-timing">Week 1 · Before any distribution spend</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <div class="alert">⚠ Every dollar spent on traffic before this layer is complete goes into a leaky pipe. Payment doesn't work. Tracking doesn't exist. You have no email list. Fix the pipe first.</div>
+
+      <div class="item">
+        <div class="item-title"><span class="tag tag-urgent">Urgent</span> 0.1 Stripe Payment Infrastructure</div>
+        <p>Replace all # placeholder payment links with live Stripe hosted checkout URLs. Implement webhook signature verification on every inbound Stripe event. Without this, the $2.71 IQ Vault payment cannot process.</p>
+        <div class="item-tools"><strong>Tools:</strong> Stripe Dashboard, Claude Code, Replit Agent (Susan)</div>
+      </div>
+
+      <div class="item">
+        <div class="item-title"><span class="tag tag-urgent">Urgent</span> 0.2 Analytics & Event Tracking</div>
+        <p>Install PostHog AND Google Analytics 4 in parallel. PostHog for product funnel analysis. GA4 for SEO traffic attribution. Without tracking, you cannot know which channel works.</p>
+        <p style="font-size:12px; color:#5B6B7C;"><strong>Events:</strong> page_load → mode_select → test_start → question_answered → test_complete → score_viewed → leaderboard_submit → email_opt_in → payment_click → payment_success</p>
+        <p style="font-size:12px; color:#5B6B7C;"><strong>UTM structure:</strong> utm_source (platform) · utm_medium (organic/paid/creator) · utm_campaign (angle: ego/writer/anti-slop/builder) · utm_content (post ID)</p>
+        <div class="item-tools"><strong>Tools:</strong> PostHog, Google Analytics 4, Google Search Console, Microsoft Clarity (free heatmaps)</div>
+      </div>
+
+      <div class="item">
+        <div class="item-title"><span class="tag tag-urgent">Urgent</span> 0.3 Email Capture on Completion Screen</div>
+        <p>Add opt-in prompt at test completion screen, before score reveal OR as part of leaderboard submission. This is the owned audience entry point. Without it, all traffic is anonymous and unreturnable.</p>
+        <div class="item-tools"><strong>Tools:</strong> beehiiv, Claude Code / Replit</div>
+      </div>
+
+      <div class="item">
+        <div class="item-title">0.4 Share / Challenge Prompt After Completion</div>
+        <p>Single "Challenge a friend" button with pre-filled text and URL. This is the primary viral loop mechanism. Every person who completes becomes a potential distributor.</p>
+        <div class="item-tools"><strong>Tools:</strong> Claude Code</div>
+      </div>
+
+      <div class="item">
+        <div class="item-title">0.5 Basic Legal / Privacy Language</div>
+        <p>Privacy policy covering data capture, response storage, and session data. Required before running paid ads or collecting email addresses.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 1 ═══ -->
+  <div class="phase phase-1">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 1</span>
+      <span class="phase-title">SEO Foundation</span>
+      <span class="phase-timing">Weeks 1–3 · Long-term compounding traffic layer</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <p style="font-size:13px; color:#3D4D60; margin-bottom:16px;">💡 Turing Vault has a significant programmatic SEO opportunity. The game data — score distributions, mode comparisons — is proprietary. This is what Google rewards. SEO is the only channel that compounds without ongoing spend.</p>
+
+      <h3>1.1 Technical SEO (Do Now)</h3>
+      <div class="item">
+        <div class="item-title">Meta tags + Open Graph for all pages</div>
+        <p>title (50-60 chars), meta description (150-160 chars), og:title, og:description, og:image (1200×630). og:image should be dynamic — pull live score distribution numbers.</p>
+      </div>
+      <div class="item">
+        <div class="item-title">Schema Markup (JSON-LD)</div>
+        <p>WebApplication schema with ratings. FAQPage schema for FAQ content. HowTo schema for challenge mechanics. These trigger Google rich results and AI Overview citations.</p>
+      </div>
+      <div class="item">
+        <div class="item-title">Sitemap.xml + Robots.txt · Page Speed · Canonical URLs</div>
+        <p>Dynamic sitemap submitted to GSC. Block admin routes. Target LCP under 2.5s on mobile. Every page needs a canonical URL to prevent duplicate content penalties.</p>
+      </div>
+
+      <h3>1.2 Programmatic SEO — The Score Data Asset</h3>
+      <div class="item">
+        <div class="item-title">Keyword Architecture</div>
+        <p>Target clusters: "can you tell AI from human writing" / "AI detection test" / "spot AI writing quiz" / "human vs AI writing challenge" / "AI detection accuracy" / "does AI writing fool you" / "AI slop detector"</p>
+        <div class="item-tools"><strong>Tools:</strong> Semrush ($130/mo), Ahrefs ($99/mo), Google Keyword Planner (free)</div>
+      </div>
+      <div class="item">
+        <div class="item-title">Programmatic Page Types to Build</div>
+        <p><strong>Mode pages:</strong> /challenge/standard · /challenge/hard · /challenge/adversarial — live score distributions, accuracy rates</p>
+        <p><strong>Score report pages:</strong> /results/score-distribution · /results/by-mode · /results/leaderboard</p>
+        <p><strong>Versus pages:</strong> /vs/gpt4 · /vs/claude · /vs/gemini — captures long-tail from researchers and journalists</p>
+        <p><strong>Use-case pages:</strong> /for/writers · /for/teachers · /for/recruiters · /for/journalists</p>
+      </div>
+
+      <h3>1.3 GEO — AI Search Visibility</h3>
+      <div class="item">
+        <div class="item-title">Generative Engine Optimization</div>
+        <p>ChatGPT, Perplexity, Claude, and Google AI Overviews answer queries before users click. Tactics: structured data schema, authoritative content AI models cite, presence in AI evaluation communities.</p>
+        <div class="item-tools"><strong>Tools:</strong> Otterly AI (~$49/mo — tracks brand mentions in AI answers)</div>
+      </div>
+
+      <h3>1.4 Backlinks — Earned, Not Spam</h3>
+      <div class="item">
+        <div class="item-title">Backlink Strategy</div>
+        <p>Product Hunt submission · Hacker News "Show HN" · AI newsletter roundups · AI safety/evaluation communities (LessWrong, EleutherAI Discord, Alignment Forum). Lead with data, not product.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 2 ═══ -->
+  <div class="phase phase-2">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 2</span>
+      <span class="phase-title">Social Media Platform Infrastructure</span>
+      <span class="phase-timing">Week 1 · Before posting anything</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="pname">𝕏 Twitter</div>
+          <div class="ppri ppri-high">Primary Channel</div>
+          <p>@TuringVault. Argument posts, score distributions, anti-slop hot takes. 1-2x daily. Pinned tweet: score distribution screenshot. This is where controversy spreads.</p>
+        </div>
+        <div class="platform-card">
+          <div class="pname">TikTok</div>
+          <div class="ppri ppri-high">Primary Reach Engine</div>
+          <p>@TuringVault. "Guess with me" clips, score reveals, reaction content. Faceless OK. 1x daily minimum. Algorithm rewards consistency. High virality ceiling.</p>
+        </div>
+        <div class="platform-card">
+          <div class="pname">Reddit</div>
+          <div class="ppri ppri-high">High-Trust Traffic</div>
+          <p>NO automation. Manual only. r/artificial, r/ChatGPT, r/writing, r/Teachers, r/journalism. "I built this" narrative. Score distribution data performs best — people argue with numbers.</p>
+        </div>
+        <div class="platform-card">
+          <div class="pname">beehiiv Newsletter</div>
+          <div class="ppri ppri-high">Owned Audience</div>
+          <p>"The Turing Report" or "Signal vs Noise". Weekly score digest, surprising results, anti-slop analysis. Free to 2500 subs. Most valuable long-term asset.</p>
+        </div>
+        <div class="platform-card">
+          <div class="pname">LinkedIn</div>
+          <div class="ppri ppri-med">Medium Priority</div>
+          <p>Workplace/hiring angle, benchmark data posts, thought leadership. NOT challenge posts. Christian Taylor personal page supplements company page.</p>
+        </div>
+        <div class="platform-card">
+          <div class="pname">Instagram · YouTube · Bluesky · Threads</div>
+          <div class="ppri ppri-low">Auto-Crosspost</div>
+          <p>Near-zero marginal cost via Repurpose.io (video) and Typefully (text). Do it. Don't prioritize it.</p>
+        </div>
+      </div>
+      <p style="margin-top:14px; font-size:12px; color:#5B6B7C;"><strong>Platform priority order:</strong> X → TikTok → Reddit (manual) → beehiiv → LinkedIn → Instagram/Shorts/Bluesky/Threads (automated crosspost)</p>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 3 ═══ -->
+  <div class="phase phase-3">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 3</span>
+      <span class="phase-title">Content Creation Pipeline</span>
+      <span class="phase-timing">Week 2+ · The engine that feeds all channels</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <h3>Video</h3>
+      <div class="item">
+        <div class="item-title"><span class="tag tag-ext">External</span> OpusClip — Long Video → Clips</div>
+        <p>Record one 10-30 min walkthrough weekly. OpusClip extracts 10-20 viral clip candidates with virality scores, captions, vertical framing. One session → a week of content.</p>
+        <div class="item-tools"><strong>Cost:</strong> Free tier / $15/mo</div>
+      </div>
+      <div class="item">
+        <div class="item-title"><span class="tag tag-ext">External</span> AutoShorts.ai — Faceless Automation</div>
+        <p>Provide topic or script. AutoShorts generates, edits, and schedules faceless TikTok/Shorts content. "AI writing sample #47 — human or AI?" style. No camera. Zero-effort volume play.</p>
+        <div class="item-tools"><strong>Cost:</strong> ~$29/mo</div>
+      </div>
+      <div class="item">
+        <div class="item-title"><span class="tag tag-ext">External</span> Repurpose.io — Auto Cross-Distribution</div>
+        <p>Post once to TikTok → auto-cropped for Reels, Shorts, LinkedIn Video, Twitter Video simultaneously. Eliminates manual re-upload across platforms.</p>
+        <div class="item-tools"><strong>Cost:</strong> $25/mo</div>
+      </div>
+
+      <h3>Static / Graphics</h3>
+      <div class="item">
+        <div class="item-title">Canva Magic Studio — Brand Templates</div>
+        <p>Score announcement graphics, "X% of users failed this one" stat cards, leaderboard screenshots. Once templates built, content generation is 5 minutes per post. Free tier sufficient to start.</p>
+      </div>
+      <div class="item">
+        <div class="item-title"><span class="tag tag-build">Build</span> Dynamic OG Images</div>
+        <p>Serverless endpoint generating unique Open Graph image per score result page — shows user's score and mode. When anyone shares a result link, it previews with their score card. Viral loop mechanism.</p>
+        <div class="item-tools"><strong>Tools:</strong> Claude Code, Satori (OG image generation)</div>
+      </div>
+
+      <h3>Text / Scheduling</h3>
+      <div class="item">
+        <div class="item-title">Typefully — X/LinkedIn/Bluesky/Threads Scheduler</div>
+        <p>Write posts in bulk, schedule, and publish. API available for n8n to push drafts programmatically. Better UX than Buffer for X specifically.</p>
+        <div class="item-tools"><strong>Cost:</strong> $12/mo</div>
+      </div>
+      <div class="item">
+        <div class="item-title"><span class="tag tag-auto">Automate</span> n8n: Trend Monitor → Draft Queue</div>
+        <p>Pull Google Trends daily → if trending topic threshold met → Claude API drafts 3 post variants → push to Typefully for human review. Human approval required — do not publish without review.</p>
+      </div>
+
+      <h3>Volume Targets</h3>
+      <table>
+        <tr><th>Platform</th><th>Format</th><th>Frequency</th><th>Method</th></tr>
+        <tr><td>X</td><td>Text / thread</td><td>1-2x daily</td><td>Claude → Typefully</td></tr>
+        <tr><td>TikTok</td><td>Short video</td><td>1x daily</td><td>AutoShorts + OpusClip</td></tr>
+        <tr><td>Instagram / YT Shorts</td><td>Short video</td><td>1x daily</td><td>Repurpose.io from TikTok</td></tr>
+        <tr><td>LinkedIn</td><td>Long text + graphic</td><td>3x weekly</td><td>Claude + Canva</td></tr>
+        <tr><td>Bluesky / Threads</td><td>Text</td><td>Auto</td><td>Typefully sync</td></tr>
+        <tr><td>beehiiv Newsletter</td><td>Long-form email</td><td>1x weekly</td><td>Claude draft → human edit</td></tr>
+        <tr><td>Reddit</td><td>Text post</td><td>1-2x weekly</td><td>Manual only</td></tr>
+        <tr><td>SEO Blog</td><td>Long-form article</td><td>1x weekly</td><td>Claude + Surfer SEO</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 4 ═══ -->
+  <div class="phase phase-4">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 4</span>
+      <span class="phase-title">Automation Stack — n8n + MCP + Agent Pipeline</span>
+      <span class="phase-timing">Weeks 2–4 · Remove CT from repetitive tasks</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <div class="item">
+        <div class="item-title"><span class="tag tag-build">Core Infrastructure</span> n8n Setup</div>
+        <p>Install n8n (Docker on VPS OR n8n Cloud $20/mo). Connect to Claude Desktop via n8n-MCP npm package. Alexander can then describe workflows in natural language and n8n deploys them. Replaces dozens of Zapier setups with one intelligent agent.</p>
+        <div class="item-tools"><strong>Tools:</strong> n8n Cloud ($20/mo), n8n-mcp (npm: czlonkowski/n8n-mcp), Claude Desktop MCP config</div>
+      </div>
+
+      <h3>n8n Workflows to Build</h3>
+      <div class="workflow">
+        <div class="workflow-name">Workflow 1 — Daily Trend Monitor → Content Draft Queue</div>
+        <p>6 AM daily: pull Google Trends for target keywords → if trending → Claude API generates 3 post variants → push to Typefully drafts for human review → log to Sheets.</p>
+      </div>
+      <div class="workflow">
+        <div class="workflow-name">Workflow 2 — Weekly Score Distribution Report</div>
+        <p>Every Monday 9 AM: pull PostHog/Replit database → generate summary stats (avg scores, mode breakdown, completion rates) → format as shareable stat card data → push to Drive → trigger newsletter draft in beehiiv.</p>
+      </div>
+      <div class="workflow">
+        <div class="workflow-name">Workflow 3 — New Leaderboard High Score → Social Post</div>
+        <p>Webhook from site on new top-10 entry → Claude API generates congratulation post → push to Typefully as scheduled post → optionally notify user via email.</p>
+      </div>
+      <div class="workflow">
+        <div class="workflow-name">Workflow 4 — SEO Performance Weekly Report</div>
+        <p>Weekly: pull Google Search Console API → compare to prior week → generate summary → push to Drive as Alexander-readable report.</p>
+      </div>
+      <div class="workflow">
+        <div class="workflow-name">Workflow 5 — Viral Post Detection → Amplify</div>
+        <p>Hourly check on X engagement. If post crosses threshold (1000 impressions / 50 engagements) → alert CT → generate 3 follow-up variants → queue for human selection.</p>
+      </div>
+      <div class="workflow">
+        <div class="workflow-name">Workflow 6 — Creator Mention Monitor</div>
+        <p>Continuous: monitor X/social for Turing Vault mentions → route significant mentions to CT → generate suggested reply → hold for human approval.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 5 ═══ -->
+  <div class="phase phase-5">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 5</span>
+      <span class="phase-title">Creator & Newsletter Seeding</span>
+      <span class="phase-timing">Weeks 3–6 · Borrowed distribution</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <div class="alert">⚠ Do not mass-blast outreach. One sloppy mass email kills brand positioning. Automate list-building and enrichment — not the sending.</div>
+
+      <div class="item">
+        <div class="item-title">5.1 Target List Construction</div>
+        <p>Five lists: (1) AI/tech newsletter operators 5k-100k subs, (2) Writing/editing community creators, (3) Teachers who discuss AI, (4) AI safety/evaluation researchers, (5) Podcasters covering AI controversy.</p>
+        <div class="item-tools"><strong>Tools:</strong> Clay ($149/mo), Apollo ($99/mo), Substack Search (free)</div>
+      </div>
+      <div class="item">
+        <div class="item-title">5.2 Creator Offer Structure</div>
+        <p>"Run your audience through Turing Vault. We'll give you a custom landing page with your branding, a unique tracking link, and a full score breakdown report showing how your audience performed. You get unique data for a post or episode. We get traffic."</p>
+      </div>
+      <div class="item">
+        <div class="item-title"><span class="tag tag-build">Build</span> Creator-Specific Landing Pages</div>
+        <p>Dynamic route: /challenge/[creator-slug] — shows creator name, profile image, custom intro. Tracks all traffic through that slug. Shows creator how their audience performed.</p>
+      </div>
+
+      <h3>Immediate High-Priority Targets (No Outreach Tool Needed)</h3>
+      <div class="item">
+        <div class="item-title">Product Hunt Launch</div>
+        <p>Tuesday or Wednesday. 500-2000 early users in 24 hours. Requires: hunter with existing following, compelling demo GIF, clear hook copy.</p>
+      </div>
+      <div class="item">
+        <div class="item-title">Hacker News "Show HN"</div>
+        <p>"Show HN: I built a live human vs AI text classification challenge — the data is surprising." HN front page = 10,000+ visits in a day. Show data, not product.</p>
+      </div>
+      <div class="item">
+        <div class="item-title">AI Newsletter Roundups (Manual First Contact)</div>
+        <p>Personal email to: TLDR AI, The Rundown AI, Ben's Bites, Superhuman, The Neuron. Lead with data: "I have data on how well humans actually detect AI text in 2026. Willing to share the raw numbers."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 6 ═══ -->
+  <div class="phase phase-6">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 6</span>
+      <span class="phase-title">Complete Tool Registry</span>
+      <span class="phase-timing">Reference layer</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <table>
+        <tr><th>Tool</th><th>Role</th><th>Cost/mo</th><th>Phase</th><th>Skippable?</th></tr>
+        <tr><td>PostHog + GA4 + GSC + Clarity</td><td>Analytics stack</td><td class="cost-free">$0</td><td>Now</td><td class="skipable-no">No</td></tr>
+        <tr><td>beehiiv</td><td>Newsletter platform</td><td class="cost-free">$0 (to 2500)</td><td>Now</td><td class="skipable-no">No</td></tr>
+        <tr><td>Canva</td><td>Graphic design</td><td class="cost-free">$0 free tier</td><td>Now</td><td class="skipable-no">No</td></tr>
+        <tr><td>CapCut</td><td>Video editing</td><td class="cost-free">$0</td><td>Now</td><td class="skipable-no">No</td></tr>
+        <tr><td>Typefully</td><td>X/LinkedIn/Threads/Bluesky scheduler</td><td>$12</td><td>Week 1</td><td class="skipable-no">No</td></tr>
+        <tr><td>Buffer</td><td>Video + multi-platform fallback</td><td>$12 (2 ch)</td><td>Week 1</td><td class="skipable-yes">Replaceable by Typefully</td></tr>
+        <tr><td>Repurpose.io</td><td>Auto cross-post video</td><td>$25</td><td>Week 2</td><td class="skipable-yes">Yes — skip if low video volume</td></tr>
+        <tr><td>n8n Cloud</td><td>Core workflow automation</td><td>$20</td><td>Week 2</td><td class="skipable-no">No</td></tr>
+        <tr><td>OpusClip</td><td>Long video → viral clips</td><td>$15</td><td>Week 2</td><td class="skipable-yes">Yes — free tier to test first</td></tr>
+        <tr><td>AutoShorts.ai</td><td>Faceless video automation</td><td>$29</td><td>Week 2</td><td class="skipable-yes">Yes — skip if recording own video</td></tr>
+        <tr><td>Metricool</td><td>Unified social analytics</td><td>Free/$22</td><td>Week 2</td><td class="skipable-yes">Optional</td></tr>
+        <tr><td>Semrush</td><td>SEO + keyword research</td><td>$130</td><td>Week 2-3</td><td class="skipable-yes">Yes — use GSC to start</td></tr>
+        <tr><td>Surfer SEO</td><td>On-page content optimization</td><td>$89</td><td>Week 2-3</td><td class="skipable-yes">Optional</td></tr>
+        <tr><td>Clay</td><td>Creator/newsletter list enrichment</td><td>$149</td><td>Week 3+</td><td class="skipable-yes">Yes — manual first</td></tr>
+        <tr><td>Otterly AI</td><td>Track brand in AI search answers</td><td>~$49</td><td>Optional</td><td class="skipable-yes">Optional</td></tr>
+        <tr><td>Apollo</td><td>B2B contact lists</td><td>$99</td><td>Phase 3 only</td><td class="skipable-yes">Yes — Phase 3 only</td></tr>
+        <tr><td>Instantly</td><td>Cold email sequencing</td><td>$37</td><td>Phase 3 only</td><td class="skipable-yes">Yes — after offer proven</td></tr>
+      </table>
+
+      <div class="cost-summary">
+        <div class="cost-box">
+          <div class="cost-label">Minimum — First 30 Days</div>
+          <div class="cost-amount">~$84/mo</div>
+          <div class="cost-note">PostHog/GA4/GSC + beehiiv + Typefully</div>
+        </div>
+        <div class="cost-box">
+          <div class="cost-label">Full Stack — Phase 1–3</div>
+          <div class="cost-amount">~$320/mo</div>
+          <div class="cost-note">All core tools running</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 7 ═══ -->
+  <div class="phase phase-7">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 7</span>
+      <span class="phase-title">Velorin Agent Integration</span>
+      <span class="phase-timing">Ongoing · Internal intelligence layer</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <div class="agent-card">
+        <div class="agent-name">Alexander (CEO)</div>
+        <div class="agent-role"><strong>Weekly performance review.</strong> Reads all funnel data, social analytics, SEO report. Surfaces what's working and what needs intervention. Asks opening question about growth blockers. Output: Alexander.DailyLog weekly growth brief.</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">Jiang (Intelligence)</div>
+        <div class="agent-role"><strong>Competitive landscape monitoring.</strong> Track what other AI detection products are doing. Monitor AI news for viral hook opportunities. Quarterly research on audience behavior shifts.</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">Trey (External GPT)</div>
+        <div class="agent-role"><strong>Content review and editorial pass</strong> on longer-form posts, newsletter issues, SEO articles. Second opinion on angle selection. Drafts shared via Drive.</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">n8n Workflows</div>
+        <div class="agent-role"><strong>Trend monitoring, report generation, content draft queuing, score distribution reports, creator tracking, SEO performance pulls.</strong> Daily/weekly automated reports to Drive. Content drafts to Typefully queue. Alerts to CT.</div>
+      </div>
+      <p style="margin-top:14px; font-size:12px; color:#5B6B7C;"><strong>MCP connections to add:</strong> n8n-mcp (documented) → Google Analytics MCP → Metricool API via n8n node → Alexander has live read access to all growth metrics.</p>
+    </div>
+  </div>
+
+  <!-- ═══ PHASE 8 ═══ -->
+  <div class="phase phase-8">
+    <div class="phase-header" onclick="toggle(this)">
+      <span class="phase-label">Phase 8</span>
+      <span class="phase-title">Execution Timeline</span>
+      <span class="phase-timing">What gets done when</span>
+      <span class="toggle">▾</span>
+    </div>
+    <div class="phase-body">
+      <div class="timeline-item">
+        <div class="tl-when">Days 1–3</div>
+        <div>
+          <div class="tl-title">Fix the Pipe (Blocking)</div>
+          <ul class="tl-items">
+            <li>Fix Stripe links and webhook verification</li>
+            <li>Install PostHog and GA4</li>
+            <li>Set up Google Search Console and submit sitemap</li>
+            <li>Add email capture at completion screen</li>
+            <li>Add share/challenge prompt</li>
+            <li>Register all social handles (do not post yet)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-when">Days 4–7</div>
+        <div>
+          <div class="tl-title">SEO Foundation</div>
+          <ul class="tl-items">
+            <li>Add meta tags + OG tags to all pages</li>
+            <li>Add schema markup (WebApplication, FAQPage)</li>
+            <li>Generate sitemap.xml</li>
+            <li>Fix any Core Web Vitals issues</li>
+            <li>Build first 3 programmatic SEO pages (mode-specific)</li>
+            <li>Install Microsoft Clarity for heatmaps</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-when">Week 2</div>
+        <div>
+          <div class="tl-title">Turn On the Machine</div>
+          <ul class="tl-items">
+            <li>Set up Typefully + Buffer</li>
+            <li>Create Canva brand kit and first 5 templates</li>
+            <li>Record first screen walkthrough video → OpusClip</li>
+            <li>Schedule first 20 posts across X, TikTok, LinkedIn</li>
+            <li>Set up Repurpose.io TikTok→Reels→Shorts</li>
+            <li>Write first beehiiv newsletter</li>
+            <li>Install n8n and connect to Claude Desktop via n8n-MCP</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-when">Weeks 3–4</div>
+        <div>
+          <div class="tl-title">Build the n8n Workflows</div>
+          <ul class="tl-items">
+            <li>Build Workflows 1-4 in n8n</li>
+            <li>Set up Clay creator list</li>
+            <li>Build creator-specific landing page template</li>
+            <li>Manual outreach to 10 newsletter operators</li>
+            <li>Product Hunt prep and scheduling</li>
+            <li>Hacker News Show HN post</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-when">Days 31–60</div>
+        <div>
+          <div class="tl-title">Double Down on Winning Channel</div>
+          <ul class="tl-items">
+            <li>Analyze which platform drives completions (not just traffic)</li>
+            <li>Pour energy into that channel</li>
+            <li>Run first creator drop</li>
+            <li>Publish first SEO long-form article</li>
+            <li>Start $75/week paid test if organic is proven</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-when">Days 61–90</div>
+        <div>
+          <div class="tl-title">Decide the Business</div>
+          <ul class="tl-items">
+            <li>First private team challenge sale</li>
+            <li>First sponsored creator drop</li>
+            <li>First paid benchmark report</li>
+            <li>Evaluate: media product, team tool, or data asset?</li>
+            <li>Activate Apollo/Instantly only after first paid offer proof</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggle(header) {
+  header.parentElement.classList.toggle('open');
+}
+// Open Phase 0 by default (already set in HTML via class="open")
+</script>
+</body>
+</html>
