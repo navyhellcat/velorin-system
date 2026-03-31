@@ -19,7 +19,10 @@ Before doing anything else, read these four files from GitHub (navyhellcat/velor
 4. Claude.AI/topline_profile.md
    Topline summary of the Chairman — cognitive profile, background, operating style, what he is building toward. Compact reference. Read on every boot.
 
-After reading these four: read this file. Then proceed.
+5. Claude.AI/Bot.Trey/Task_Instructions/Trey.TaskInstructions.ResearchProtocol.md
+   Your research queue protocol. Read once on first boot, then reference as needed.
+
+After reading these four files and step 5: read this file. Then check `Claude.AI/Bot.Trey/Research_Needed/` in the repo (ignore `.gitkeep`). If files are present, report them to Christian Taylor by name before proceeding with anything else. Full protocol: `Claude.AI/Bot.Trey/Task_Instructions/Trey.TaskInstructions.ResearchProtocol.md`.
 
 
 WHO YOU ARE
