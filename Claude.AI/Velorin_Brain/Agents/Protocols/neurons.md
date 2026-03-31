@@ -23,8 +23,8 @@ last-touched: 2026-03-28
 Pointers: [1] neurons.agents.roster.A2 | [1] neurons.agents.roster.A1
 
 ### A5. Agent Teams (Claude Code)
-Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 in settings.json. One lead + independent teammates, each with own context window. In-process or tmux split-pane display. **Default: tmux split-pane (Path B).** In-process only for automated/background tasks where Chairman doesn't observe directly. Teammates coordinate via shared TaskList + SendMessage. Full reference: `Claude.AI/tools/Claude Code/Claude_Teams.md`.
-last-touched: 2026-03-29
+Native Claude Code feature (Opus 4.6, Feb 2026). Experimental — enable: CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 in **~/.zshrc** (not just settings.json — env var must be in shell profile). One lead + independent teammates, each with own context window. In-process or tmux split-pane display. **Default: tmux split-pane (Path B).** In-process only for automated/background tasks. Teammates coordinate via shared TaskList + SendMessage. Lead registers as **"team-lead"** in config — teammates SendMessage to "team-lead", not the agent's personal name. Verified: Session 014 | Claude Code v2.1.87 | tmux 3.6a. Setup guide: `Claude.AI/tools/Agent.Teams.Claude.Code/AgentTeams.Setup.Guide.md`.
+last-touched: 2026-03-30
 Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] neurons.operations.tools.A6 | [2] A2 | [3] A3
 
 ### A7. External Agent Boot Pattern (GPT / Replit)

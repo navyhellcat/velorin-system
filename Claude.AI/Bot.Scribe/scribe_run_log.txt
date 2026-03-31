@@ -25,3 +25,4 @@ Done.
 - **_index.md:** Updated to include Scribe in Roster neurons list
 - **Rules check:** No behavioral rules for MarcusAurelius — skipped
 - **Committed:** `e01eecd`
+========== 2026-03-31T03:13:36Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/reference_agent_teams_setup.md ==========
