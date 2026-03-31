@@ -196,4 +196,99 @@ MiroFishStack ↔ PoliticsBox: Simulation-as-decision-rehearsal maps to the poli
 
 ToolResearch ↔ Velorin.Company.Operating.Standards: Operating Standards Section 2.1 (Technology Evaluation Standard) is the correct frame but behavioral in enforcement. ToolResearch establishes that behavioral rules erode under gradient pressure. Section 2.1 needs to become a structural hook — mandatory evaluation gate with logged output.
 
+--- UPDATE: March 31, 2026 — Session 014 ---
+
+
+TOPIC REGISTRY — NEW ENTRIES:
+
+
+Topic: OASIS
+- Document: Jiang.Topic.OASIS
+- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.OASIS.md
+- Summary: Open-source multi-agent social simulation platform. pip-installable, zero GPU for 100-agent API-backed runs. BTC-validated at $0.70/run for 500 agents. Monthly cost $15–85 at personal scale. Profile-to-agent-config pipeline ~50 lines Python. Capability threshold activates at 20+ stakeholders with multi-round interaction dynamics.
+- Confidence: Confirmed operational — 85%
+- Status: Concluded
+- Connected to: MiroFishStack, InstructionLanguageArchitecture
+
+
+Topic: DeepResearchPipeline
+- Document: Jiang.Topic.DeepResearchPipeline
+- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.DeepResearchPipeline.md
+- Summary: Automated deep research pipeline design. o4-mini-deep-research correct default (10x cheaper than o3, comparable quality). Mandatory two-model pipeline for structured output. Without max_tool_calls governance, single session can silently burn $30+. MA build ~150 lines. Throughput improvement: 4–6 topics/week vs. current 1–2.
+- Confidence: 82%
+- Status: Concluded
+- Connected to: AgentOrchestration, WindowGravity
+
+
+Topic: WindowGravityPublication
+- Document: Jiang.Topic.WindowGravityPublication
+- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.WindowGravityPublication.md
+- Summary: Publication strategy for Window Gravity as a named concept. Concept unnamed anywhere in literature — Chairman holds naming window. Component mechanisms documented in silos (ICRH, MONA, short-horizon bias); unified synthesis is CT's original. Window is open and compressing — independent naming likely within 12–24 months. Recommended: Krakovna model (named concept + examples + mechanism). Publish concept, hold TASK_EVALUATION fix. Two pieces needed: technical/alignment + founder/operator.
+- Confidence: Naming gap confirmed 89%. Timeline estimate 74%.
+- Status: Concluded — awaiting CT publication decision
+- Connected to: WindowGravity, AgentOrchestration
+
+
+CONNECTION MAP — NEW ENTRIES (Session 014):
+
+Jiang.Topic.OASIS ↔ MiroFishStack: OASIS is the simulation layer of the MiroFish architecture — the component that validates profile-to-agent-config conversion at scale.
+
+Jiang.Topic.DeepResearchPipeline ↔ Jiang.Topic.AgentOrchestration: Pipeline is the research-layer implementation of Path 3 orchestration. Cost governance (max_tool_calls) directly maps to the token cost risk flagged in AgentOrchestration.
+
+Jiang.Topic.WindowGravityPublication ↔ Jiang.Topic.WindowGravity: Publication strategy document for the concept defined in WindowGravity. They are paired — never cite one without checking the other.
+
+
+--- UPDATE: March 31, 2026 — Session 015 ---
+
+
+TOPIC REGISTRY — NEW ENTRIES:
+
+
+Topic: InstructionLanguageArchitecture
+- Document: Jiang.Topic.InstructionLanguageArchitecture.PartA + PartB
+- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.InstructionLanguageArchitecture.PartA.md + PartB.md
+- Summary: Unified 3-layer instruction architecture synthesized from three Velorin documents (contrastive negation, prompt anatomy, bootloader state machine). Layer 1 = Bootloader/enforcement (BOOT_PENDING fail-closed state machine, AgentSpec structural constraints). Layer 2 = Identity activation (three-layer prompt anatomy, Lost in the Middle mitigation). Layer 3 = Output control (contrastive negation elimination, FollowBench constraint ceiling at ~3 simultaneous constraints). Confirms all three operate at different levels of the same failure class.
+- Confidence: 82% overall. 91% on Layer 1 findings. 78% on Layer 3 contrastive negation as RLHF artifact.
+- Status: Concluded
+- Connected to: WindowGravity, AgentOrchestration, AgentTeamsBootDegradation
+
+
+Topic: AgentTeamsBootDegradation
+- Document: Jiang.Topic.AgentTeamsBootDegradation
+- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.AgentTeamsBootDegradation.md
+- Summary: Agent Teams tmux compaction bug — team config stripped on context compaction, no re-injection mechanism. Root cause: Agent Teams config not persisted in CLAUDE.md (unlike system prompt), PostCompact/PreCompact hooks available as workaround. Fix: PreCompact hook saves team state to TEAM_STATE.md (2-hour recency window prevents solo-session interference); PostCompact verifies freshness; CLAUDE.md recovery check reads on next boot. Anthropic has closed all related bugs as NOT_PLANNED. Cozempic (5-layer protection) and fail-closed boot patterns confirmed viable. Implementation memo delivered to Receiving folder for MA.
+- Confidence: Root cause 87%. Fix design 79%. Implementation risk 72%.
+- Status: Concluded — fix delivered to MA via Receiving folder
+- Connected to: InstructionLanguageArchitecture, AgentOrchestration
+
+
+Topic: ClaudeOnReplit
+- Document: Jiang.Topic.ClaudeOnReplit
+- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.ClaudeOnReplit.md
+- Summary: Two distinct use patterns: (1) Claude Code running ON Replit as compute host — full Code tab, terminal, IDE, deployments, $25/mo Hacker plan with Always-On. (2) CT's actual intent — Claude as shell/client connecting to Replit's compute to save tokens. Second pattern is viable: Replit Agent API for programmatic task dispatch, Claude as orchestrator, Replit as execution backend. $VELORIN_ROOT abstraction solves portability problem. Critical distinction: unified memory not automatic across Claude↔Replit boundary.
+- Confidence: Pattern 1 coverage 88%. Pattern 2 feasibility 74%.
+- Status: Concluded (with CT intent addendum)
+- Connected to: AgentOrchestration, DeepResearchPipeline
+
+
+Topic: HumanBrainLayers
+- Document: Jiang.Topic.HumanBrainLayers + Jiang.BrainLayers.Interactive.html
+- Document path: Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.HumanBrainLayers.md + Jiang.BrainLayers.Interactive.html
+- Summary: Human brain decomposed into 7 functional layers (Sensory Encoding, Salience Gating, Working Memory, Long-Term Storage, Consolidation/Sleep, Retrieval/Output, Maintenance). Full scientific mechanisms per layer. Sleep architecture: SO→Spindle→SWR cascade for hippocampal-to-cortical transfer. Synaptic Homeostasis Hypothesis — global downscaling during SWS. Glymphatic system waste clearance. CA3 autoassociation for pattern completion. Spreading activation for recall. Four Velorin Brain operational gaps identified: salience scoring gate, pointer renormalization, reverse-pointer index, scratch log purge. None require rearchitecting — all are maintenance/indexing additions. Delivered as 858-line research document + 72KB interactive HTML visualization (3 views: broad overview, layer detail models, Velorin mapping).
+- Confidence: Neuroscience mechanisms 92% (well-established literature). Velorin gap mapping 78%.
+- Status: Concluded
+- Connected to: VelorinBrain, AgentOrchestration, InstructionLanguageArchitecture
+
+
+CONNECTION MAP — NEW ENTRIES (Session 015):
+
+Jiang.Topic.InstructionLanguageArchitecture ↔ Jiang.Topic.AgentTeamsBootDegradation: Both address the same failure class — instruction/config stripping under compaction. InstructionLanguageArchitecture provides the theoretical framework (fail-closed state machines, bootloader patterns). AgentTeamsBootDegradation applies it to the specific Agent Teams bug.
+
+Jiang.Topic.HumanBrainLayers ↔ VelorinBrain: Direct architectural mapping. Four operational gaps identified in current Velorin implementation relative to human brain model. Reverse-pointer index (CA3 equivalent) and salience scoring gate are highest-priority additions.
+
+Jiang.Topic.InstructionLanguageArchitecture ↔ Jiang.Topic.WindowGravity: Window Gravity at the instruction level — RLHF reward artifacts in output language (contrastive negation) are a micro-expression of the same gradient pressure that produces Window Gravity at the tool-selection level.
+
+Jiang.Topic.ClaudeOnReplit ↔ Jiang.Topic.DeepResearchPipeline: Both address compute efficiency — Replit as execution backend parallels o4-mini-deep-research as cost-optimized research backend. Pattern: Claude orchestrates, cheaper backend executes.
+
+
 [VELORIN.EOF]

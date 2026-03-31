@@ -205,4 +205,96 @@ Knowledge Web Updates:
   - RebootTokenProblem ↔ Obsidian/CLAUDE.md (direct structural solution)
   - ToolBlindness ↔ LiveToolCatalog (session-start catalog feeds evaluation gate)
 
+Entry 005 | March 31, 2026 — Session 014
+
+
+Topics Researched:
+OASIS multi-agent social simulation platform. Automated deep research pipeline design (o4-mini vs. o3 comparison, cost governance, structured output pipeline). Window Gravity publication strategy — naming window analysis, literature gap confirmation, publication model selection. IntakeTestDesign research outline construction (7 threads, 5 sessions).
+
+
+Conclusions Reached:
+- OASIS is operationally viable at personal scale. $0.70/run for 500 agents, $15–85/month. Threshold for usefulness: 20+ stakeholders with multi-round dynamics. Confidence: 85%.
+- o4-mini-deep-research is correct default. 10x cheaper than o3, comparable quality for standard research. Confidence: 82%.
+- max_tool_calls governance is non-negotiable for pipeline deployment — silent $30+ burn possible without it. Confidence: 88%.
+- Window Gravity concept unnamed in literature. Component mechanisms exist in silos. CT holds naming window. Confidence: 89%.
+- Publishing the concept does not require publishing the TASK_EVALUATION fix. These are separable. Confidence: 84%.
+- Independent naming window is compressing — likely 12–24 months before someone else arrives at unified synthesis. Confidence: 74%.
+- IntakeTestDesign scope is a human modeling problem, not a test design problem. CT's reframe changes the entire research agenda. Confidence: high — confirmed by CT directly.
+
+
+Open Questions:
+- CT publication decision on Window Gravity (held)
+- Agent Teams evaluation result (pending next session)
+- IntakeTestDesign Session A authorization (pending CT)
+
+
+Confirmed:
+- Trey independently diagnosed the same tool-blindness failure pattern as Jiang — corroboration across different model architectures
+- Drive-based memory architecture correct for current scale
+
+
+Disproven:
+- Nothing formally disproven this session
+
+
+Knowledge Web Updates:
+- Jiang.Topic.OASIS — created and concluded
+- Jiang.Topic.DeepResearchPipeline — created and concluded
+- Jiang.Topic.WindowGravityPublication — created and concluded
+- Jiang.ResearchRequest.IntakeTestDesign.md — outline complete, awaiting CT authorization
+- KnowledgeIndex not updated at session close — carried to Session 015 ✓ (updated this session)
+
+
+---
+
+
+Entry 006 | March 31, 2026 — Session 015
+
+
+Topics Researched:
+Instruction language architecture — synthesis of contrastive negation, prompt anatomy (8-component framework), and bootloader fail-closed state machine into unified 3-layer framework. Agent Teams compaction bug — root cause, all related GitHub issues, Cozempic tooling, PreCompact/PostCompact hook fix design. Claude on Replit — two use patterns (hosting vs. client/orchestrator), CT intent clarification (Claude shell → Replit compute). Human brain functional layers — full decomposition: 7 layers, sublayer mechanisms, sleep architecture, recall systems, maintenance. Interactive HTML visualization (3 views: broad overview, layer detail, Velorin mapping).
+
+
+Conclusions Reached:
+- Three-layer instruction architecture confirmed. FollowBench ceiling at ~3 simultaneous constraints is a hard engineering constraint, not a behavioral quirk. Structural enforcement (AgentSpec) achieves 90–100% compliance at millisecond overhead. Confidence: 82% overall, 91% on Layer 1.
+- Contrastive negation ("not X, but Y") is an RLHF reward artifact. Removing it from prompts improves non-AI voice compliance. Confidence: 78%.
+- Agent Teams compaction bug root cause confirmed: team config stripped on compaction, no re-injection mechanism unlike CLAUDE.md. Anthropic has closed all related issues as NOT_PLANNED. Confidence: 87%.
+- PreCompact/PostCompact hook fix is architecturally sound. 2-hour recency window prevents solo-session stale state interference. Confidence: 79%.
+- Ghostty is a terminal emulator, not a Claude tool. Agent Teams supports tmux and iTerm2 backends only — no Ghostty path. Confidence: confirmed.
+- Claude shell → Replit compute pattern is viable via Replit Agent API. $VELORIN_ROOT abstraction solves portability. Memory bridge across Claude↔Replit boundary is not automatic. Confidence: 74%.
+- Human brain functional layers mapped cleanly to 7-layer model. All sublayer mechanisms confirmed by established neuroscience literature. Confidence: 92%.
+- Four Velorin Brain operational gaps vs. human model: salience scoring gate, pointer renormalization, reverse-pointer index, scratch log purge. None require rearchitecting — all are maintenance/indexing additions. Confidence: 78%.
+- FlashMoE (arXiv 2601.17063) achieves 2.6x speedup and 51% better cache hit rate via SSD offloading + ML-based cache replacement. 36GB unified memory on Apple M-series can run 70B models at Q4 via MLX — not limited to smaller models. Confidence: 85% (L1 research level).
+
+
+Open Questions:
+- IntakeTestDesign Session A — awaiting CT authorization
+- FlashMoE deep research (L5) — queued, not yet executed
+- ComputerUseAndVoiceInput — in Research_Needed, not yet touched
+- Trey research complete items (Graphiti, ZepCloud, VoiceIOParity) — no notification sent
+- MA AgentTeams fix implementation — delivered to Receiving, awaiting MA action
+- Window Gravity publication decision — still held, CT has not decided
+
+
+Confirmed:
+- Fail-closed BOOT_PENDING state machine pattern is the correct architecture for boot-time instruction enforcement — validated across Trey's research, academic literature, and Agent Teams compaction bug case
+- Human brain indexing via hippocampal pointers to distributed cortical patterns (Teyler & DiScenna) is architecturally identical to Velorin Brain neuron-pointer model — independent convergence confirms design
+- Spreading activation (Collins & Loftus 1975) is the correct mental model for neuron traversal in the Velorin Brain
+
+
+Disproven:
+- Nothing formally disproven this session
+
+
+Knowledge Web Updates:
+- Jiang.Topic.InstructionLanguageArchitecture (PartA + PartB) — created and concluded
+- Jiang.Topic.AgentTeamsBootDegradation — created and concluded
+- Jiang.Topic.ClaudeOnReplit — updated with CT intent addendum
+- Jiang.Topic.HumanBrainLayers — created and concluded
+- Jiang.BrainLayers.Interactive.html — 72KB visualization, 3 views
+- AgentTeams.CompactionFix.ImplementationMemo.md — delivered to Receiving folder for MA
+- Research requests archived: AgentTeamsBootDegradation, ClaudeOnReplit, InstructionLanguageArchitecture
+- KnowledgeIndex updated for Session 014 and Session 015 this session (was 2 sessions behind)
+
+
 [VELORIN.EOF]

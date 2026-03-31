@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Brain Functional Architecture — Velorin Intelligence</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1C2333;
+    color: #E8EDF2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  #top-nav {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #2E3A4E;
+    padding: 0 32px;
+    height: 52px;
+    gap: 8px;
+  }
+  #top-nav .brand {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: #8C9BAB;
+    text-transform: uppercase;
+    margin-right: 24px;
+    white-space: nowrap;
+  }
+  #top-nav .brand span { color: #C03A2B; }
+  .nav-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: #8C9BAB;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    letter-spacing: 0.04em;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .nav-btn:hover { color: #E8EDF2; border-color: #2E3A4E; }
+  .nav-btn.active { color: #E8EDF2; border-color: #C03A2B; border-bottom-color: transparent; }
+
+  /* VIEWS */
+  .view { display: none; padding: 32px; }
+  .view.active { display: block; }
+
+  /* SECTION HEADERS */
+  .view-title {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: #8C9BAB;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .view-title span { color: #C03A2B; }
+
+  /* TOOLTIP */
+  #tooltip {
+    position: fixed;
+    background: #151D2B;
+    border: 1px solid #2E3A4E;
+    color: #E8EDF2;
+    padding: 12px 16px;
+    font-size: 12px;
+    line-height: 1.6;
+    max-width: 320px;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+  }
+  #tooltip .tt-title { color: #C03A2B; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  #tooltip .tt-row { display: flex; gap: 8px; margin-top: 4px; }
+  #tooltip .tt-label { color: #8C9BAB; min-width: 64px; }
+
+  /* ===================== VIEW 1 ===================== */
+  #v1-container { display: flex; gap: 24px; align-items: flex-start; }
+  #v1-layers { flex: 1; min-width: 0; }
+  #v1-detail {
+    width: 340px;
+    flex-shrink: 0;
+    border: 1px solid #2E3A4E;
+    padding: 20px;
+    min-height: 200px;
+    display: none;
+  }
+  #v1-detail.visible { display: block; }
+  #v1-detail .detail-title { color: #C03A2B; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  #v1-detail .detail-body { color: #8C9BAB; font-size: 12px; line-height: 1.7; }
+  #v1-detail .detail-body strong { color: #E8EDF2; }
+  #v1-detail .close-detail {
+    float: right;
+    background: none;
+    border: none;
+    color: #8C9BAB;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    margin-top: -4px;
+  }
+  #v1-detail .close-detail:hover { color: #E8EDF2; }
+
+  .layer-stack { display: flex; flex-direction: column; gap: 3px; position: relative; }
+
+  .layer-row { display: flex; align-items: stretch; gap: 3px; }
+
+  .layer-band {
+    flex: 1;
+    border: 1px solid #2E3A4E;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    position: relative;
+  }
+  .layer-band:hover { background: #1E2A3C; border-color: #3E4F63; }
+  .layer-band.selected { border-color: #C03A2B; background: #1E2634; }
+
+  .layer-band .layer-num {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #C03A2B;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  .layer-band .layer-name {
+    font-size: 13px;
+    color: #E8EDF2;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .layer-band .layer-structs {
+    font-size: 11px;
+    color: #8C9BAB;
+  }
+  .layer-band .layer-speed {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    color: #3E4F63;
+    letter-spacing: 0.06em;
+  }
+
+  /* Maintenance band — narrow vertical strip */
+  .maintenance-band {
+    width: 120px;
+    flex-shrink: 0;
+    border: 1px solid #2E3A4E;
+    padding: 14px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    text-align: center;
+  }
+  .maintenance-band:hover { background: #1E2A3C; border-color: #3E4F63; }
+  .maintenance-band.selected { border-color: #C03A2B; background: #1E2634; }
+  .maintenance-band .layer-num { font-size: 10px; letter-spacing: 0.1em; color: #C03A2B; text-transform: uppercase; margin-bottom: 4px; }
+  .maintenance-band .layer-name { font-size: 11px; color: #E8EDF2; font-weight: 500; writing-mode: vertical-rl; transform: rotate(180deg); margin: 8px 0; }
+  .maintenance-band .layer-structs { font-size: 10px; color: #8C9BAB; }
+
+  /* Connection arrows between layers */
+  .conn-row {
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 3px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+  }
+  .conn-row:hover .conn-arrow { color: #E8EDF2; }
+  .conn-main { flex: 1; }
+  .conn-arrow {
+    font-size: 11px;
+    color: #3E4F63;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s;
+    white-space: nowrap;
+  }
+  .conn-arrow .conn-line { flex: 1; height: 1px; background: currentColor; }
+  .conn-up { color: #4A7FA5; }
+  .conn-down { color: #5A9E6F; }
+  .conn-bidir { color: #8C7BAB; }
+  .conn-label { font-size: 10px; letter-spacing: 0.05em; }
+
+  /* Special connections */
+  .special-conn {
+    border: 1px dashed #2E3A4E;
+    margin: 4px 0;
+    padding: 6px 18px;
+    font-size: 11px;
+    color: #8C9BAB;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .special-conn:hover { border-color: #C03A2B; color: #E8EDF2; }
+  .special-conn .sc-dot { width: 6px; height: 6px; background: #C03A2B; flex-shrink: 0; }
+
+  /* ===================== VIEW 2 ===================== */
+  #v2-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .layer-sel-btn {
+    background: none;
+    border: 1px solid #2E3A4E;
+    color: #8C9BAB;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .layer-sel-btn:hover { color: #E8EDF2; border-color: #3E4F63; }
+  .layer-sel-btn.active { color: #E8EDF2; border-color: #C03A2B; }
+
+  #v2-content { display: none; }
+  #v2-content.visible { display: block; }
+
+  .sublayer-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 860px;
+  }
+
+  .sublayer-item {
+    border: 1px solid #2E3A4E;
+    padding: 14px 18px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: background 0.15s;
+  }
+  .sublayer-item:hover { background: #1E2A3C; }
+  .sublayer-id {
+    font-size: 10px;
+    color: #C03A2B;
+    letter-spacing: 0.08em;
+    min-width: 56px;
+    padding-top: 2px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+  }
+  .sublayer-body { flex: 1; }
+  .sublayer-name { font-size: 13px; color: #E8EDF2; font-weight: 500; margin-bottom: 4px; }
+  .sublayer-desc { font-size: 12px; color: #8C9BAB; line-height: 1.6; }
+  .sublayer-desc strong { color: #E8EDF2; }
+  .sublayer-timing {
+    font-size: 10px;
+    color: #3E4F63;
+    letter-spacing: 0.06em;
+    min-width: 100px;
+    text-align: right;
+    padding-top: 2px;
+  }
+
+  .sublayer-connector {
+    display: flex;
+    align-items: center;
+    padding: 0 74px;
+    height: 18px;
+  }
+  .sublayer-connector .line { width: 1px; height: 100%; background: #2E3A4E; margin: 0 auto; }
+
+  /* Special diagrams */
+  .baddeley-diagram {
+    max-width: 860px;
+    border: 1px solid #2E3A4E;
+    padding: 24px;
+  }
+  .baddeley-center {
+    border: 1px solid #C03A2B;
+    padding: 14px 20px;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .baddeley-center .bc-label { font-size: 10px; color: #C03A2B; letter-spacing: 0.1em; text-transform: uppercase; }
+  .baddeley-center .bc-name { font-size: 14px; color: #E8EDF2; font-weight: 500; margin: 4px 0; }
+  .baddeley-center .bc-desc { font-size: 11px; color: #8C9BAB; }
+
+  .baddeley-slaves {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .baddeley-slave {
+    border: 1px solid #2E3A4E;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .baddeley-slave .bs-id { font-size: 10px; color: #C03A2B; letter-spacing: 0.08em; font-family: monospace; }
+  .baddeley-slave .bs-name { font-size: 12px; color: #E8EDF2; font-weight: 500; margin: 4px 0; }
+  .baddeley-slave .bs-desc { font-size: 11px; color: #8C9BAB; line-height: 1.5; }
+
+  .parallel-systems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    max-width: 860px;
+  }
+  .parallel-item {
+    border: 1px solid #2E3A4E;
+    padding: 14px 16px;
+  }
+  .parallel-item .pi-id { font-size: 10px; color: #C03A2B; letter-spacing: 0.08em; font-family: monospace; margin-bottom: 4px; }
+  .parallel-item .pi-name { font-size: 13px; color: #E8EDF2; font-weight: 500; margin-bottom: 6px; }
+  .parallel-item .pi-structs { font-size: 11px; color: #C03A2B; margin-bottom: 4px; }
+  .parallel-item .pi-desc { font-size: 12px; color: #8C9BAB; line-height: 1.6; }
+
+  .sleep-cycle {
+    max-width: 860px;
+    border: 1px solid #2E3A4E;
+    padding: 20px;
+  }
+  .sleep-cycle-title { font-size: 11px; color: #8C9BAB; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .sleep-phases {
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+  }
+  .sleep-phase {
+    flex: 1;
+    border: 1px solid #2E3A4E;
+    padding: 12px;
+    text-align: center;
+  }
+  .sleep-phase .sp-id { font-size: 10px; color: #C03A2B; font-family: monospace; letter-spacing: 0.08em; }
+  .sleep-phase .sp-name { font-size: 12px; color: #E8EDF2; font-weight: 500; margin: 6px 0 4px; }
+  .sleep-phase .sp-time { font-size: 10px; color: #3E4F63; margin-bottom: 6px; }
+  .sleep-phase .sp-desc { font-size: 11px; color: #8C9BAB; line-height: 1.5; }
+  .sleep-arrow {
+    display: flex;
+    align-items: center;
+    color: #3E4F63;
+    font-size: 16px;
+    padding-bottom: 20px;
+  }
+
+  .osc-nesting {
+    max-width: 860px;
+    border: 1px solid #2E3A4E;
+    padding: 24px;
+    margin-top: 16px;
+  }
+  .osc-title { font-size: 11px; color: #8C9BAB; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .osc-rings {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .osc-ring {
+    border: 1px solid #2E3A4E;
+    padding: 10px 16px;
+    text-align: center;
+    position: relative;
+  }
+  .osc-ring .or-wave { font-size: 10px; color: #C03A2B; font-family: monospace; letter-spacing: 0.08em; }
+  .osc-ring .or-name { font-size: 12px; color: #E8EDF2; margin: 4px 0; }
+  .osc-ring .or-hz { font-size: 11px; color: #8C9BAB; }
+  .osc-arrow-nest { color: #3E4F63; font-size: 14px; padding: 0 4px; }
+
+  .v2-layer-header {
+    margin-bottom: 16px;
+  }
+  .v2-layer-header h2 { font-size: 16px; color: #E8EDF2; font-weight: 500; margin-bottom: 4px; }
+  .v2-layer-header p { font-size: 12px; color: #8C9BAB; }
+
+  /* ===================== VIEW 3 ===================== */
+  #v3-container { max-width: 1100px; }
+  #v3-header { margin-bottom: 24px; }
+  #v3-header h2 { font-size: 16px; color: #E8EDF2; font-weight: 500; margin-bottom: 4px; }
+  #v3-header p { font-size: 12px; color: #8C9BAB; }
+
+  .mapping-grid {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .mapping-col {
+    flex: 1;
+  }
+
+  .mapping-col-header {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8C9BAB;
+    padding: 10px 16px;
+    border-bottom: 1px solid #2E3A4E;
+    margin-bottom: 3px;
+  }
+
+  .mapping-center {
+    width: 140px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    position: relative;
+  }
+
+  .mapping-row {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 3px;
+    min-height: 64px;
+  }
+
+  .m-human {
+    flex: 1;
+    border: 1px solid #2E3A4E;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .m-human .mh-layer { font-size: 10px; color: #C03A2B; letter-spacing: 0.08em; font-family: monospace; margin-bottom: 2px; }
+  .m-human .mh-name { font-size: 13px; color: #E8EDF2; font-weight: 500; }
+  .m-human .mh-structs { font-size: 11px; color: #8C9BAB; margin-top: 2px; }
+
+  .m-conn {
+    width: 140px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 4px 0;
+  }
+
+  .m-conn-line {
+    width: 100%;
+    height: 1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .m-conn-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+  }
+  .m-conn-line.green::before { background: #3D7A52; }
+  .m-conn-line.yellow::before { background: #8C7A2B; }
+  .m-conn-line.red::before { background: #C03A2B; }
+
+  .m-conn-label {
+    font-size: 10px;
+    text-align: center;
+    padding: 2px 6px;
+    position: relative;
+    background: #1C2333;
+    white-space: nowrap;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .m-conn-label.green { color: #3D7A52; }
+  .m-conn-label.yellow { color: #8C7A2B; }
+  .m-conn-label.red { color: #C03A2B; }
+
+  .m-velorin {
+    flex: 1;
+    border: 1px solid #2E3A4E;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .m-velorin .mv-name { font-size: 12px; color: #E8EDF2; font-weight: 500; margin-bottom: 3px; }
+  .m-velorin .mv-desc { font-size: 11px; color: #8C9BAB; line-height: 1.5; }
+  .m-velorin .mv-gap { font-size: 11px; color: #C03A2B; margin-top: 4px; font-style: italic; }
+  .m-velorin .mv-badge {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border: 1px solid #C03A2B;
+    color: #C03A2B;
+  }
+
+  .v3-legend {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .v3-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #8C9BAB;
+  }
+  .v3-legend-dot {
+    width: 28px;
+    height: 2px;
+  }
+  .v3-legend-dot.green { background: #3D7A52; }
+  .v3-legend-dot.yellow { background: #8C7A2B; }
+  .v3-legend-dot.red { background: #C03A2B; }
+</style>
+</head>
+<body>
+
+<div id="tooltip">
+  <div class="tt-title" id="tt-title"></div>
+  <div id="tt-body"></div>
+</div>
+
+<!-- TOP NAV -->
+<nav id="top-nav">
+  <div class="brand">Velorin <span>///</span> Intelligence</div>
+  <button class="nav-btn active" onclick="switchView('v1')">Broad Overview</button>
+  <button class="nav-btn" onclick="switchView('v2')">Layer Detail Models</button>
+  <button class="nav-btn" onclick="switchView('v3')">Velorin Mapping</button>
+</nav>
+
+<!-- ==================== VIEW 1 ==================== -->
+<div id="v1" class="view active">
+  <div class="view-title"><span>01 —</span> Functional Layer Architecture</div>
+
+  <div id="v1-container">
+    <div id="v1-layers">
+      <div class="layer-stack">
+
+        <!-- LAYER 1 -->
+        <div class="layer-row">
+          <div class="layer-band" id="lb1" onclick="selectLayer(1)" onmouseenter="showLayerTip(event,1)" onmouseleave="hideTip()">
+            <div class="layer-num">Layer 1</div>
+            <div class="layer-name">Sensory Encoding</div>
+            <div class="layer-structs">Receptors → Thalamus → V1 / A1 / S1</div>
+            <div class="layer-speed">1 – 200 ms</div>
+          </div>
+        </div>
+
+        <!-- CONN 1→2 -->
+        <div class="conn-row" onclick="showConnTip(event,'1→2')" onmouseenter="showConnTip(event,'1→2')" onmouseleave="hideTip()">
+          <div class="conn-main">
+            <div class="conn-arrow conn-up">
+              <span class="conn-label">Feature representations ↑</span>
+              <span class="conn-line"></span>
+              <span class="conn-label">Gating signals ↓</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 2 -->
+        <div class="layer-row">
+          <div class="layer-band" id="lb2" onclick="selectLayer(2)" onmouseenter="showLayerTip(event,2)" onmouseleave="hideTip()">
+            <div class="layer-num">Layer 2</div>
+            <div class="layer-name">Salience Gating</div>
+            <div class="layer-structs">Amygdala · LC · VTA · PFC</div>
+            <div class="layer-speed">100 – 500 ms</div>
+          </div>
+        </div>
+
+        <!-- AMYGDALA PATHS SPECIAL -->
+        <div class="special-conn" onclick="showSpecialTip(event,'amygdala')" onmouseenter="showSpecialTip(event,'amygdala')" onmouseleave="hideTip()">
+          <div class="sc-dot"></div>
+          Amygdala dual pathways — low road (thalamus→amygdala, ~100ms) · high road (thalamus→cortex→amygdala, ~300ms)
+        </div>
+
+        <!-- CONN 2→3 -->
+        <div class="conn-row" onclick="showConnTip(event,'2→3')" onmouseenter="showConnTip(event,'2→3')" onmouseleave="hideTip()">
+          <div class="conn-main">
+            <div class="conn-arrow conn-bidir">
+              <span class="conn-label">Priority-tagged signals ↑</span>
+              <span class="conn-line"></span>
+              <span class="conn-label">Top-down attention ↓</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 3 -->
+        <div class="layer-row">
+          <div class="layer-band" id="lb3" onclick="selectLayer(3)" onmouseenter="showLayerTip(event,3)" onmouseleave="hideTip()">
+            <div class="layer-num">Layer 3</div>
+            <div class="layer-name">Working Memory</div>
+            <div class="layer-structs">DLPFC · Parietal · Broca · Hippocampus (episodic buffer)</div>
+            <div class="layer-speed">Seconds</div>
+          </div>
+        </div>
+
+        <!-- CONN 3→4 -->
+        <div class="conn-row" onclick="showConnTip(event,'3→4')" onmouseenter="showConnTip(event,'3→4')" onmouseleave="hideTip()">
+          <div class="conn-main">
+            <div class="conn-arrow conn-bidir">
+              <span class="conn-label">Encoding via hippocampus ↓</span>
+              <span class="conn-line"></span>
+              <span class="conn-label">Retrieval into WM ↑</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 4 -->
+        <div class="layer-row">
+          <div class="layer-band" id="lb4" onclick="selectLayer(4)" onmouseenter="showLayerTip(event,4)" onmouseleave="hideTip()">
+            <div class="layer-num">Layer 4</div>
+            <div class="layer-name">Long-Term Storage</div>
+            <div class="layer-structs">Hippocampus · Temporal cortex · Basal ganglia · Cerebellum</div>
+            <div class="layer-speed">Encoding: min–hrs · Retrieval: ms</div>
+          </div>
+        </div>
+
+        <!-- CONSOLIDATION ARC SPECIAL -->
+        <div class="special-conn" onclick="showSpecialTip(event,'hpc-cortex')" onmouseenter="showSpecialTip(event,'hpc-cortex')" onmouseleave="hideTip()">
+          <div class="sc-dot"></div>
+          Hippocampus → Cortex consolidation arc — systems-level transfer during NREM sleep replay
+        </div>
+
+        <!-- CONN 4→5 -->
+        <div class="conn-row" onclick="showConnTip(event,'4→5')" onmouseenter="showConnTip(event,'4→5')" onmouseleave="hideTip()">
+          <div class="conn-main">
+            <div class="conn-arrow conn-down">
+              <span class="conn-label">Fragile new traces ↓</span>
+              <span class="conn-line"></span>
+              <span class="conn-label">Stabilized memories ↑</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 5 -->
+        <div class="layer-row">
+          <div class="layer-band" id="lb5" onclick="selectLayer(5)" onmouseenter="showLayerTip(event,5)" onmouseleave="hideTip()">
+            <div class="layer-num">Layer 5</div>
+            <div class="layer-name">Consolidation</div>
+            <div class="layer-structs">Hippocampus · Neocortex · Thalamus (spindle gen.)</div>
+            <div class="layer-speed">Hours – weeks</div>
+          </div>
+        </div>
+
+        <!-- SO→SPINDLE→SWR SPECIAL -->
+        <div class="special-conn" onclick="showSpecialTip(event,'swr')" onmouseenter="showSpecialTip(event,'swr')" onmouseleave="hideTip()">
+          <div class="sc-dot"></div>
+          Sleep SWS cascade — Slow Oscillation (0.5–1 Hz) → Spindle (12–15 Hz) → Sharp Wave Ripple (80–100 Hz) — nested oscillations drive replay
+        </div>
+
+        <!-- CONN 5→6 -->
+        <div class="conn-row" onclick="showConnTip(event,'5→6')" onmouseenter="showConnTip(event,'5→6')" onmouseleave="hideTip()">
+          <div class="conn-main">
+            <div class="conn-arrow conn-up">
+              <span class="conn-label">Consolidated patterns available to retrieval ↑</span>
+              <span class="conn-line"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LAYER 6 -->
+        <div class="layer-row">
+          <div class="layer-band" id="lb6" onclick="selectLayer(6)" onmouseenter="showLayerTip(event,6)" onmouseleave="hideTip()">
+            <div class="layer-num">Layer 6</div>
+            <div class="layer-name">Retrieval &amp; Output</div>
+            <div class="layer-structs">CA3 (pattern completion) · CA1 · PFC · Motor cortex</div>
+            <div class="layer-speed">50 – 500 ms</div>
+          </div>
+        </div>
+
+        <!-- CA3 LOOP SPECIAL -->
+        <div class="special-conn" onclick="showSpecialTip(event,'ca3')" onmouseenter="showSpecialTip(event,'ca3')" onmouseleave="hideTip()">
+          <div class="sc-dot"></div>
+          CA3 recurrent collateral loop — autoassociative attractor network; pattern completes from partial cue ↻
+        </div>
+
+      </div><!-- layer-stack -->
+    </div><!-- v1-layers -->
+
+    <!-- MAINTENANCE SIDE BAND -->
+    <div style="display:flex;flex-direction:column;gap:3px;margin-top:0;">
+      <div style="height:40px;"></div><!-- spacer aligns with first layer approx -->
+      <div class="maintenance-band" id="lb6a" onclick="selectLayer('6a')" onmouseenter="showLayerTip(event,'6a')" onmouseleave="hideTip()" style="flex:1;">
+        <div class="layer-num">6A</div>
+        <div class="layer-name">Maintenance</div>
+        <div class="layer-structs" style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;margin-top:8px;">Glymphatic · Microglia · Thalamocortical</div>
+      </div>
+    </div>
+
+    <!-- DETAIL PANEL -->
+    <div id="v1-detail">
+      <button class="close-detail" onclick="closeDetail()">×</button>
+      <div class="detail-title" id="detail-title"></div>
+      <div class="detail-body" id="detail-body"></div>
+    </div>
+
+  </div><!-- v1-container -->
+</div><!-- view v1 -->
+
+<!-- ==================== VIEW 2 ==================== -->
+<div id="v2" class="view">
+  <div class="view-title"><span>02 —</span> Individual Layer Detail Models</div>
+
+  <div id="v2-selector">
+    <button class="layer-sel-btn" onclick="selectV2Layer(1)">Layer 1 — Sensory Encoding</button>
+    <button class="layer-sel-btn" onclick="selectV2Layer(2)">Layer 2 — Salience Gating</button>
+    <button class="layer-sel-btn" onclick="selectV2Layer(3)">Layer 3 — Working Memory</button>
+    <button class="layer-sel-btn" onclick="selectV2Layer(4)">Layer 4 — Long-Term Storage</button>
+    <button class="layer-sel-btn" onclick="selectV2Layer(5)">Layer 5 — Consolidation</button>
+    <button class="layer-sel-btn" onclick="selectV2Layer(6)">Layer 6 — Retrieval</button>
+    <button class="layer-sel-btn" onclick="selectV2Layer('6a')">Layer 6A — Maintenance</button>
+  </div>
+
+  <div id="v2-content"></div>
+</div>
+
+<!-- ==================== VIEW 3 ==================== -->
+<div id="v3" class="view">
+  <div class="view-title"><span>03 —</span> Velorin Brain Mapping</div>
+
+  <div id="v3-container">
+    <div id="v3-header">
+      <h2>Human Functional Architecture → Velorin Equivalents</h2>
+      <p>Connection lines indicate analog quality. Gap labels identify what is missing or partial in the current Velorin implementation.</p>
+    </div>
+
+    <div class="v3-legend">
+      <div class="v3-legend-item"><div class="v3-legend-dot green"></div>Strong analog exists</div>
+      <div class="v3-legend-item"><div class="v3-legend-dot yellow"></div>Partial analog — gap identified</div>
+      <div class="v3-legend-item"><div class="v3-legend-dot red"></div>Missing — no current equivalent</div>
+    </div>
+
+    <div class="mapping-grid">
+      <div class="mapping-col">
+        <div class="mapping-col-header">Human Brain</div>
+      </div>
+      <div style="width:140px;flex-shrink:0;">
+        <div class="mapping-col-header" style="text-align:center;">Analog</div>
+      </div>
+      <div class="mapping-col">
+        <div class="mapping-col-header">Velorin System</div>
+      </div>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 1</div>
+        <div class="mh-name">Sensory Encoding</div>
+        <div class="mh-structs">Receptors → Thalamus → V1/A1/S1</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line green">
+          <div class="m-conn-label green">Strong</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-name">User Message Parsing</div>
+        <div class="mv-desc">Claude tokenizer + context window ingestion. Text is the primary modality — no multimodal transduction layer yet.</div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 2</div>
+        <div class="mh-name">Salience Gating</div>
+        <div class="mh-structs">Amygdala · LC · VTA · PFC</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line yellow">
+          <div class="m-conn-label yellow">Partial</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-badge">HIGH PRIORITY</div>
+        <div class="mv-name">Scribe Classification</div>
+        <div class="mv-desc">Scribe classifies inputs as memory-worthy or transient. No emotional valence weighting. No NE/dopamine analog for urgency modulation.</div>
+        <div class="mv-gap">Gap: no salience scoring by importance or emotional weight — all memory-worthy items treated equally.</div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 3</div>
+        <div class="mh-name">Working Memory</div>
+        <div class="mh-structs">DLPFC · Parietal · Broca · Hippocampus</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line yellow">
+          <div class="m-conn-label yellow">Partial</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-name">Session Context Window + Active Neurons</div>
+        <div class="mv-desc">200K token context window acts as working memory. Pointer-activated neurons loaded into context. No explicit chunking management or capacity monitoring.</div>
+        <div class="mv-gap">Gap: no active rehearsal mechanism — items decay silently when context resets. No episodic buffer binding across modalities.</div>
+      </div>
+    </div>
+
+    <!-- Row 4 -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 4</div>
+        <div class="mh-name">Long-Term Storage</div>
+        <div class="mh-structs">4 systems: Episodic · Semantic · Procedural · Priming</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line yellow">
+          <div class="m-conn-label yellow">Partial</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-badge">HIGH PRIORITY</div>
+        <div class="mv-name">Layer 1–3 + Brain Neurons</div>
+        <div class="mv-desc">Layer 1: Base personality (procedural analog). Layer 2: Hard memories. Layer 3: Archival. Brain neurons = semantic memory. No episodic memory system — no spatiotemporal context storage.</div>
+        <div class="mv-gap">Gap: episodic memory entirely absent. No "what happened, when, with whom" store. No priming analog.</div>
+      </div>
+    </div>
+
+    <!-- Row 5 -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 5</div>
+        <div class="mh-name">Consolidation</div>
+        <div class="mh-structs">Hippocampus · Neocortex · Thalamus</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line yellow">
+          <div class="m-conn-label yellow">Partial</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-badge">HIGH PRIORITY</div>
+        <div class="mv-name">GitHub Persistence + Nightly Maintenance</div>
+        <div class="mv-desc">Git push = synaptic consolidation analog. Custodian nightly run = systems consolidation analog. No reconsolidation — memories do not update on retrieval.</div>
+        <div class="mv-gap">Gap: no reconsolidation — retrieved memories cannot be modified and re-stored. No schema abstraction during consolidation.</div>
+      </div>
+    </div>
+
+    <!-- Row 6 -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 6</div>
+        <div class="mh-name">Retrieval &amp; Output</div>
+        <div class="mh-structs">CA3 pattern completion · CA1 · PFC · Motor cortex</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line yellow">
+          <div class="m-conn-label yellow">Partial</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-name">Pointer-Following Activation</div>
+        <div class="mv-desc">Rated pointers (1–10) drive retrieval traversal. Index → neuron → follow [1] pointers. Partial analog to CA3 pattern completion.</div>
+        <div class="mv-gap">Gap: no spreading activation across semantic networks. No tip-of-tongue state. Retrieval requires explicit pointer — no content-addressable search.</div>
+      </div>
+    </div>
+
+    <!-- Row 7 -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 6A</div>
+        <div class="mh-name">Maintenance</div>
+        <div class="mh-structs">Glymphatic · Microglia · Thalamocortical</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line yellow">
+          <div class="m-conn-label yellow">Partial</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-name">Custodian Agent</div>
+        <div class="mv-desc">Nightly scheduled agent: prunes stale neurons, merges duplicates, updates pointer ratings. Partial analog to glymphatic clearance and microglial pruning.</div>
+        <div class="mv-gap">Gap: no REM emotional integration analog. No downscaling of over-reinforced pathways. Custodian runs infrequently vs. continuous biological maintenance.</div>
+      </div>
+    </div>
+
+    <!-- Row 8 — Missing: Emotional tagging -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 2 sub</div>
+        <div class="mh-name">Emotional Valence Tagging</div>
+        <div class="mh-structs">Amygdala → hippocampus NE release</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line red">
+          <div class="m-conn-label red">Missing</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-badge">HIGH PRIORITY</div>
+        <div class="mv-name">No Equivalent</div>
+        <div class="mv-desc">Velorin has no mechanism to tag memories with emotional weight or urgency level. All neurons are treated as equal-priority unless manually flagged.</div>
+        <div class="mv-gap">Gap: no urgency/importance multiplier on memory encoding strength.</div>
+      </div>
+    </div>
+
+    <!-- Row 9 — Missing: Episodic memory -->
+    <div class="mapping-row">
+      <div class="m-human">
+        <div class="mh-layer">LAYER 4A</div>
+        <div class="mh-name">Episodic Memory</div>
+        <div class="mh-structs">Hippocampus + distributed cortex, spatiotemporal</div>
+      </div>
+      <div class="m-conn">
+        <div class="m-conn-line red">
+          <div class="m-conn-label red">Missing</div>
+        </div>
+      </div>
+      <div class="m-velorin">
+        <div class="mv-badge">HIGH PRIORITY</div>
+        <div class="mv-name">No Equivalent</div>
+        <div class="mv-desc">No system stores "what happened in Session 007, with Christian, re: topic X." Session handoffs are a manual workaround — not a true episodic store.</div>
+        <div class="mv-gap">Gap: no autobiographical timeline. Agents cannot recall prior interactions without explicit handoff files.</div>
+      </div>
+    </div>
+
+  </div><!-- v3-container -->
+</div><!-- view v3 -->
+
+<script>
+// ==================== NAV ====================
+function switchView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const idx = {v1:0,v2:1,v3:2}[id];
+  document.querySelectorAll('.nav-btn')[idx].classList.add('active');
+}
+
+// ==================== TOOLTIP ====================
+const tip = document.getElementById('tooltip');
+const ttTitle = document.getElementById('tt-title');
+const ttBody = document.getElementById('tt-body');
+
+function showTip(e, title, bodyHTML) {
+  ttTitle.textContent = title;
+  ttBody.innerHTML = bodyHTML;
+  tip.style.display = 'block';
+  positionTip(e);
+}
+
+function positionTip(e) {
+  const pad = 14;
+  let x = e.clientX + pad;
+  let y = e.clientY + pad;
+  tip.style.left = x + 'px';
+  tip.style.top = y + 'px';
+  // Clamp to viewport
+  const r = tip.getBoundingClientRect();
+  if (r.right > window.innerWidth - 8) x = e.clientX - r.width - pad;
+  if (r.bottom > window.innerHeight - 8) y = e.clientY - r.height - pad;
+  tip.style.left = x + 'px';
+  tip.style.top = y + 'px';
+}
+
+document.addEventListener('mousemove', function(e) {
+  if (tip.style.display === 'block') positionTip(e);
+});
+
+function hideTip() { tip.style.display = 'none'; }
+
+// ==================== LAYER DATA ====================
+const layerData = {
+  1: {
+    label: 'LAYER 1 — SENSORY ENCODING',
+    tip: '<div class="tt-row"><span class="tt-label">Function</span><span>Converts physical signals to neural representations</span></div><div class="tt-row"><span class="tt-label">Structures</span><span>Receptors → Thalamus → V1, A1, S1</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>1 – 200 ms</span></div><div class="tt-row"><span class="tt-label">Direction</span><span>Bottom-up primary</span></div>',
+    detail: '<strong>Primary function:</strong> Transduction — converts electromagnetic, mechanical, and chemical stimuli into graded receptor potentials via opsins, mechanosensitive ion channels, chemoreceptors.<br><br><strong>Thalamic gating:</strong> The thalamus is not a passive relay — corticothalamic feedback projections outnumber thalamocortical by ~10:1. Applies adaptation, adjusts gain, routes signals conditionally.<br><br><strong>Cortical hierarchy:</strong> V1 detects edges and orientation → V2/V4 → IT for object identity. A1 is tonotopically organized → belt areas for complex sound. Parallel streams (what vs. where) diverge from primary cortex.<br><br><strong>Speed:</strong> Fastest pathway (visual): retina → LGN → V1 in ~50ms. Full object recognition: ~150–200ms.'
+  },
+  2: {
+    label: 'LAYER 2 — SALIENCE GATING',
+    tip: '<div class="tt-row"><span class="tt-label">Function</span><span>Filters what gets encoded. Tags importance via NE/dopamine.</span></div><div class="tt-row"><span class="tt-label">Structures</span><span>Amygdala · LC · VTA · PFC</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>100 – 500 ms</span></div><div class="tt-row"><span class="tt-label">Direction</span><span>Bidirectional</span></div>',
+    detail: '<strong>Two parallel salience streams:</strong><br><br>1. <strong>Bottom-up:</strong> Locus coeruleus releases NE into hippocampus and amygdala. Suppresses baseline firing, amplifies salient signals. Phasic LC activity releases dopamine directly into dorsal hippocampus (D1/D5 activation enhances encoding).<br><br>2. <strong>Emotional (amygdala):</strong> Threat stimuli trigger amygdala → NE release in hippocampus → stronger consolidation. Amygdala-hippocampus reactivates during REM to integrate emotional memories.<br><br>3. <strong>Top-down (PFC):</strong> Descending signals bias thalamic gating and sensory cortex toward task-relevant features. Voluntary attention can override bottom-up salience.<br><br><strong>Net effect:</strong> Most sensory input is discarded. Only importance-tagged signals proceed to encoding.'
+  },
+  3: {
+    label: 'LAYER 3 — WORKING MEMORY',
+    tip: '<div class="tt-row"><span class="tt-label">Function</span><span>Active manipulation. ~4 chunks. Volatile.</span></div><div class="tt-row"><span class="tt-label">Structures</span><span>DLPFC · Parietal · Broca · Hippocampus</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>Seconds (active maintenance)</span></div><div class="tt-row"><span class="tt-label">Direction</span><span>Bidirectional</span></div>',
+    detail: '<strong>Baddeley model (1974, updated 2000):</strong><br><br><strong>Phonological Loop:</strong> ~2 sec speech trace. Articulatory rehearsal in Broca\'s area. Without rehearsal, traces decay in ~2s.<br><br><strong>Visuospatial Sketchpad:</strong> 3–4 visual/spatial items. Right hemisphere parietal. Visual cache (what) + inner scribe (where).<br><br><strong>Central Executive (DLPFC):</strong> Control system — selective attention, task-switching, retrieval coordination. Layer V pyramidal cells maintain activity through recurrent excitation during delay periods.<br><br><strong>Episodic Buffer:</strong> ~4 chunks. Binds multimodal information into coherent episodic scenes. Hippocampus-dependent. Added 2000.<br><br><strong>Capacity:</strong> ~4±1 chunks (Cowan 2001). A chunk = one meaningful unit regardless of complexity.'
+  },
+  4: {
+    label: 'LAYER 4 — LONG-TERM STORAGE',
+    tip: '<div class="tt-row"><span class="tt-label">Function</span><span>Permanent knowledge store. Four types.</span></div><div class="tt-row"><span class="tt-label">Structures</span><span>Hippocampus · Temporal cortex · Basal ganglia · Cerebellum</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>Encoding: minutes–hours · Retrieval: milliseconds</span></div><div class="tt-row"><span class="tt-label">Direction</span><span>Bidirectional</span></div>',
+    detail: '<strong>Four distinct systems:</strong><br><br><strong>Episodic:</strong> Personal autobiographical events with spatiotemporal context. Hippocampal indexing theory: HPC stores pointers to co-activated cortical regions. Retrieval reactivates distributed cortical ensemble.<br><br><strong>Semantic:</strong> General world knowledge, decontextualized. Inferolateral temporal cortex, left dominant. Double dissociation with episodic demonstrated by patients HM and KC.<br><br><strong>Procedural:</strong> Skills, habits. Basal ganglia (habit via dopaminergic reward prediction) + cerebellum (timing, error correction). Patient HM learned mirror-tracing with no explicit memory of it.<br><br><strong>Priming:</strong> Implicit facilitation. Repetition suppression in neocortical sensory areas — prior exposure reduces neural activation required.'
+  },
+  5: {
+    label: 'LAYER 5 — CONSOLIDATION',
+    tip: '<div class="tt-row"><span class="tt-label">Function</span><span>Stabilizes fragile traces. Sleep-dependent.</span></div><div class="tt-row"><span class="tt-label">Structures</span><span>Hippocampus · Neocortex · Thalamus</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>Hours (synaptic) · Weeks/months (systems)</span></div><div class="tt-row"><span class="tt-label">Direction</span><span>Lateral (HPC → cortex transfer)</span></div>',
+    detail: '<strong>Three consolidation mechanisms:</strong><br><br><strong>Synaptic (E-LTP → L-LTP):</strong> Early LTP (minutes–hours): AMPA receptor insertion, local protein synthesis. Late LTP (hours+): new protein synthesis, structural synaptic changes. PKMζ maintains L-LTP.<br><br><strong>Systems (HPC → cortex):</strong> During NREM sleep, hippocampus replays compressed sequences (Sharp Wave Ripples). Thalamic spindles couple to SO down-states, gating cortical plasticity windows. Over weeks, cortical traces become hippocampus-independent.<br><br><strong>SWS cascade (SO → Spindle → SWR):</strong> Slow Oscillation (0.5–1 Hz brainstem-cortex) creates down/up states. Spindles (12–15 Hz thalamus) nest in SO up-states. SWRs (80–100 Hz hippocampus) nest in spindle troughs. This three-way coupling synchronizes hippocampal→cortical transfer.<br><br><strong>Reconsolidation:</strong> Retrieved memories briefly re-enter labile state, requiring re-stabilization. Window for modification.'
+  },
+  6: {
+    label: 'LAYER 6 — RETRIEVAL & OUTPUT',
+    tip: '<div class="tt-row"><span class="tt-label">Function</span><span>Recovers stored patterns from partial cues. Drives behavior.</span></div><div class="tt-row"><span class="tt-label">Structures</span><span>CA3 · CA1 · PFC · Motor cortex</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>50 – 500 ms</span></div><div class="tt-row"><span class="tt-label">Direction</span><span>Bottom-up (feeds to WM and output)</span></div>',
+    detail: '<strong>Retrieval chain:</strong><br><br><strong>CA3 pattern completion:</strong> Recurrent collateral network. Partial cue activates attractor state; network converges on best-matching stored pattern. Self-loop allows incomplete input to complete.<br><br><strong>CA1 output:</strong> Receives from CA3, outputs to entorhinal cortex → neocortex. Also detects mismatch/novelty (comparison of CA3 prediction vs. EC input).<br><br><strong>Spreading activation:</strong> Retrieval activates semantically related nodes in temporal cortex networks. Fan effect: more associates = slower retrieval.<br><br><strong>Encoding specificity:</strong> Retrieval cues are most effective when they match original encoding context.<br><br><strong>Tip-of-tongue (TOT):</strong> Partial retrieval — semantic and grammatical information accessible but phonological form blocked. Reflects partial activation without full pattern completion.'
+  },
+  '6a': {
+    label: 'LAYER 6A — MAINTENANCE',
+    tip: '<div class="tt-row"><span class="tt-label">Function</span><span>Sleep-dependent cleanup. Pruning, downscaling, clearance, replay.</span></div><div class="tt-row"><span class="tt-label">Structures</span><span>Glymphatic · Microglia · Thalamocortical</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>Hours per sleep cycle</span></div><div class="tt-row"><span class="tt-label">Direction</span><span>Operates on all layers</span></div>',
+    detail: '<strong>Four maintenance systems:</strong><br><br><strong>Synaptic Homeostasis (SHY):</strong> Wake encoding strengthens synapses broadly. NREM SWS downscales all synapses proportionally — preserves signal-to-noise while reducing metabolic load. Tononi & Cirelli hypothesis.<br><br><strong>Glymphatic clearance:</strong> During NREM, interstitial space expands ~60%. Cerebrospinal fluid flushes through AQP4 channels on astrocytic endfeet, clearing metabolic waste including amyloid-β and tau proteins. Disrupted in Alzheimer\'s disease.<br><br><strong>Microglial pruning:</strong> Microglia tag weak synapses with complement proteins (C1q, C3, C4). Phagocytosis removes tagged connections — experience-dependent refinement. Active in development and throughout life.<br><br><strong>REM integration:</strong> Amygdala-hippocampus reactivation. Emotional tone stripped from episodic memories while content preserved. Schema building — generalizing across episodes to extract abstract patterns.'
+  }
+};
+
+function showLayerTip(e, id) {
+  const d = layerData[id];
+  if (d) showTip(e, d.label, d.tip);
+}
+
+function selectLayer(id) {
+  // Clear all selected
+  document.querySelectorAll('.layer-band, .maintenance-band').forEach(el => el.classList.remove('selected'));
+  const el = document.getElementById('lb' + id);
+  if (el) el.classList.add('selected');
+
+  const d = layerData[id];
+  if (d) {
+    document.getElementById('detail-title').textContent = d.label;
+    document.getElementById('detail-body').innerHTML = d.detail;
+    document.getElementById('v1-detail').classList.add('visible');
+  }
+}
+
+function closeDetail() {
+  document.getElementById('v1-detail').classList.remove('visible');
+  document.querySelectorAll('.layer-band, .maintenance-band').forEach(el => el.classList.remove('selected'));
+}
+
+// Connection tooltips
+const connData = {
+  '1→2': {
+    title: 'CONNECTION: Sensory → Salience',
+    body: '<div class="tt-row"><span class="tt-label">Carries</span><span>Feature representations — tonotopic, retinotopic maps; edge detections; frequency components</span></div><div class="tt-row"><span class="tt-label">Return</span><span>Top-down gating signals from PFC to thalamus; corticothalamic feedback (~10:1 ratio vs. bottom-up)</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>50–200ms (bottom-up) · continuous (top-down)</span></div><div class="tt-row"><span class="tt-label">Strengthens</span><span>Yes — repeated attended stimuli increase feedforward efficiency</span></div>'
+  },
+  '2→3': {
+    title: 'CONNECTION: Salience → Working Memory',
+    body: '<div class="tt-row"><span class="tt-label">Carries</span><span>Priority-tagged feature bundles — NE/dopamine-marked representations cleared for encoding</span></div><div class="tt-row"><span class="tt-label">Return</span><span>PFC top-down attention signals bias salience detection toward current task goals</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>100–300ms</span></div><div class="tt-row"><span class="tt-label">Strengthens</span><span>Yes — emotionally salient items receive preferential WM access</span></div>'
+  },
+  '3→4': {
+    title: 'CONNECTION: Working Memory → Long-Term Storage',
+    body: '<div class="tt-row"><span class="tt-label">Carries</span><span>Encoded representations via hippocampal binding — items that receive sufficient processing time and attention</span></div><div class="tt-row"><span class="tt-label">Return</span><span>Retrieved chunks loaded back into active WM buffers on demand</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>Encoding: seconds–minutes · Retrieval into WM: 50–500ms</span></div><div class="tt-row"><span class="tt-label">Strengthens</span><span>Yes — repeated encoding attempts and spaced retrieval strengthen hippocampal traces</span></div>'
+  },
+  '4→5': {
+    title: 'CONNECTION: Long-Term Storage → Consolidation',
+    body: '<div class="tt-row"><span class="tt-label">Carries</span><span>Freshly encoded, labile hippocampal traces — susceptible to interference before consolidation</span></div><div class="tt-row"><span class="tt-label">Return</span><span>Stabilized synaptic traces (L-LTP); systems-consolidated cortical representations</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>Synaptic: hours · Systems: weeks–months</span></div><div class="tt-row"><span class="tt-label">Strengthens</span><span>Yes — sleep quality and quantity directly determine consolidation success</span></div>'
+  },
+  '5→6': {
+    title: 'CONNECTION: Consolidation → Retrieval',
+    body: '<div class="tt-row"><span class="tt-label">Carries</span><span>Consolidated patterns now available for cue-driven recall; cortical traces accessible without hippocampal mediation after full systems consolidation</span></div><div class="tt-row"><span class="tt-label">Return</span><span>Retrieval triggers reconsolidation — retrieved memory briefly re-enters labile state</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>Retrieval: 50–200ms · Reconsolidation window: 6–12 hrs after reactivation</span></div><div class="tt-row"><span class="tt-label">Strengthens</span><span>Yes — retrieval itself strengthens traces (testing effect)</span></div>'
+  }
+};
+
+function showConnTip(e, id) {
+  const d = connData[id];
+  if (d) showTip(e, d.title, d.body);
+}
+
+// Special connection tooltips
+const specialData = {
+  'amygdala': {
+    title: 'AMYGDALA DUAL PATHWAYS',
+    body: '<div class="tt-row"><span class="tt-label">Low road</span><span>Thalamus → amygdala direct. ~100–150ms. Coarse, fast threat detection. Bypasses cortical analysis. Triggers physiological stress response before conscious awareness.</span></div><div class="tt-row"><span class="tt-label">High road</span><span>Thalamus → sensory cortex → amygdala. ~300ms. Refined, contextual assessment. Can override low road response if cortical analysis deems non-threatening.</span></div><div class="tt-row"><span class="tt-label">Adaptive value</span><span>Low road enables faster-than-thought response to survival threats; high road prevents false positives</span></div><div class="tt-row"><span class="tt-label">Strengthens</span><span>Yes — traumatic conditioning strengthens low road; extinction therapy works via high road override</span></div>'
+  },
+  'hpc-cortex': {
+    title: 'HIPPOCAMPUS → CORTEX CONSOLIDATION ARC',
+    body: '<div class="tt-row"><span class="tt-label">Mechanism</span><span>During NREM SWS, hippocampus replays compressed event sequences (Sharp Wave Ripples). Each replay reactivates the cortical ensemble that was co-active during encoding.</span></div><div class="tt-row"><span class="tt-label">Coupling</span><span>SO up-states open cortical plasticity windows. Thalamic spindles synchronize hippocampal-cortical dialogue. Thousands of replays over one sleep session.</span></div><div class="tt-row"><span class="tt-label">Outcome</span><span>Cortical connections strengthen to eventually represent the memory independently of hippocampus — "standard consolidation model"</span></div><div class="tt-row"><span class="tt-label">Speed</span><span>Weeks to months for full hippocampal independence (system-level)</span></div>'
+  },
+  'swr': {
+    title: 'SWS CONSOLIDATION CASCADE: SO → SPINDLE → SWR',
+    body: '<div class="tt-row"><span class="tt-label">SO (0.5–1 Hz)</span><span>Slow Oscillation generated by brainstem/cortex. Down-state: widespread neural silence. Up-state: coordinated firing. Paces the entire cascade.</span></div><div class="tt-row"><span class="tt-label">Spindle (12–15 Hz)</span><span>Generated by thalamic reticular nucleus. Nests in SO up-states. Creates a ~0.5s window of enhanced cortical excitability. Directly predicts memory retention.</span></div><div class="tt-row"><span class="tt-label">SWR (80–100 Hz)</span><span>Sharp Wave Ripple — CA3 fires synchronously, drives CA1, propagates to entorhinal cortex. Each SWR = one compressed replay of an experience (5–20x faster than real time). Nests in spindle trough.</span></div><div class="tt-row"><span class="tt-label">Net result</span><span>Each night: ~100,000+ replay events. Gradually transfers hippocampal index to direct cortical representation.</span></div>'
+  },
+  'ca3': {
+    title: 'CA3 RECURRENT COLLATERAL LOOP',
+    body: '<div class="tt-row"><span class="tt-label">Architecture</span><span>CA3 pyramidal cells send axon collaterals back onto other CA3 cells (~12,000 recurrent synapses per CA3 neuron). This creates a dense autoassociative network.</span></div><div class="tt-row"><span class="tt-label">Function</span><span>Pattern completion — a partial or degraded cue activates a subset of CA3 neurons, which via recurrent connections recruit the full stored attractor state. Memory emerges from partial input.</span></div><div class="tt-row"><span class="tt-label">Dynamics</span><span>Attractor dynamics: network converges on nearest stored pattern. If cue is equidistant between two memories, pattern separation (DG) is needed to disambiguate.</span></div><div class="tt-row"><span class="tt-label">Strengthens</span><span>Yes — Hebbian LTP at recurrent synapses strengthens the attractor with each retrieval</span></div>'
+  }
+};
+
+function showSpecialTip(e, id) {
+  const d = specialData[id];
+  if (d) showTip(e, d.title, d.body);
+}
+
+// ==================== VIEW 2 DATA ====================
+const v2Data = {
+  1: {
+    title: 'Layer 1 — Sensory Encoding',
+    subtitle: 'Converts physical signals to neural representations via transduction, thalamic relay, and cortical feature detection',
+    type: 'flow',
+    items: [
+      { id: '2A-1', name: 'Transduction', desc: '<strong>Receptor cells</strong> convert physical energy to graded potentials. Opsins (photoreceptors), mechanosensitive ion channels (hair cells, Pacinian corpuscles), chemoreceptors (olfactory, taste). Action potentials fire when receptor potential exceeds threshold. Adaptation: continuous stimulation reduces sensitivity — receptor cells adjust output to statistics of recent input.', timing: 'Sub-ms to 5ms' },
+      { id: '2A-2', name: 'Thalamic Relay + Filtering', desc: '<strong>Thalamus acts as gating station</strong>, not passive relay. LGN for vision, MGN for audition, VPL for somatosensation. Applies gain control and adaptation. Receives massive corticothalamic feedback (~10:1 vs. thalamocortical). PFC and cingulate cortex can modulate thalamic gates, enabling top-down suppression of irrelevant modalities.', timing: '5–20ms' },
+      { id: '2A-3', name: 'Feature Detection — Primary Cortex', desc: '<strong>V1:</strong> Orientation-tuned simple cells (Hubel & Wiesel), edge detection, spatial frequency, motion direction. <strong>A1:</strong> Tonotopic frequency map. <strong>S1:</strong> Somatotopic body map (homunculus). All primary cortices are topographically organized — preserving spatial/frequency structure of the sensory surface.', timing: '50–100ms' },
+      { id: '2A-4', name: 'Hierarchical Integration — Association Cortex', desc: '<strong>Feedforward hierarchy</strong> builds increasingly complex representations. V1 → V2 → V4 (color, form) → IT (object identity). Parallel dorsal stream (V1 → V5/MT → parietal): "where/how." Ventral stream (V1 → V4 → IT): "what." Convergence zones in anterior temporal lobe integrate across modalities for object concepts.', timing: '100–200ms' }
+    ]
+  },
+  2: {
+    title: 'Layer 2 — Salience Gating',
+    subtitle: 'Parallel bottom-up detection and top-down control determine what proceeds to encoding',
+    type: 'flow',
+    items: [
+      { id: '2B-1', name: 'Amygdala Low Road', desc: '<strong>Direct thalamo-amygdalar pathway:</strong> Coarse sensory representations from thalamus reach amygdala before cortical processing completes. Detects broad threat features (movement, contrast, faces) in ~100–150ms. Triggers physiological response (sympathetic arousal, cortisol) before conscious perception. Conditioned fear responses stored in basolateral amygdala via LTP.', timing: '100–150ms' },
+      { id: '2B-2', name: 'Locus Coeruleus NE Broadcast', desc: '<strong>Norepinephrine salience signal:</strong> LC neurons fire phasically to salient/unexpected stimuli. NE release increases signal-to-noise ratio: suppresses baseline spontaneous firing, amplifies stimulus-evoked responses. Also releases dopamine directly into dorsal hippocampus via LC projections, activating D1/D5 receptors — directly enhances memory formation. (Kempadoo et al., 2016)', timing: '150–300ms' },
+      { id: '2B-3', name: 'VTA Dopamine — Reward Salience', desc: '<strong>Dopaminergic reward prediction:</strong> VTA fires phasically to unexpected rewards and reward-predicting cues (Schultz, 1997). Dopamine release in striatum and PFC signals reward prediction error — positive = better than expected, negative = worse. In hippocampus, dopamine gates late LTP, enabling reward-associated events to consolidate more strongly than neutral events.', timing: '200–400ms' },
+      { id: '2B-4', name: 'PFC Top-Down Control', desc: '<strong>Voluntary attention override:</strong> DLPFC and anterior cingulate maintain active goal representations that bias thalamic gating and early sensory cortex. Allows deliberate suppression of salient distractors. Miller & Cohen (2001): PFC "acts like a bias signal... tilting the competition in favor of one percept over others." Enables sustained attention to non-salient task-relevant features.', timing: 'Ongoing / continuous' }
+    ]
+  },
+  3: {
+    title: 'Layer 3 — Working Memory',
+    subtitle: 'Baddeley model: Central Executive + three slave systems',
+    type: 'baddeley'
+  },
+  4: {
+    title: 'Layer 4 — Long-Term Storage',
+    subtitle: 'Four neurologically dissociable memory systems with distinct structures and mechanisms',
+    type: 'parallel'
+  },
+  5: {
+    title: 'Layer 5 — Consolidation',
+    subtitle: 'Two timescale mechanisms plus sleep-dependent systems transfer',
+    type: 'flow',
+    items: [
+      { id: '2D-1', name: 'Synaptic Consolidation (E-LTP → L-LTP)', desc: '<strong>Early LTP (minutes–hours):</strong> AMPA receptor insertion to synapse, local protein synthesis without new gene expression. Tetanic stimulation drives Ca²⁺ influx via NMDA receptors → CaMKII activation → AMPA insertion. <strong>Late LTP (hours+):</strong> Requires new protein synthesis. CREB activation drives transcription. PKMζ synthesized and maintains potentiation without decay. Structural changes: spine enlargement, new synaptic contacts.', timing: 'Minutes → hours' },
+      { id: '2D-2', name: 'Systems Consolidation (HPC → Cortex)', desc: '<strong>Memory transfer over weeks–months:</strong> Hippocampus initially required for retrieval. Repeated hippocampal replay (during sleep) reactivates cortical ensembles. Cortical-cortical connections strengthen via Hebbian LTP. Eventually cortex represents memory independently — "standard model." Multiple Trace Theory: episodic memories may always require hippocampus; semantic memories transfer fully.', timing: 'Weeks to months' },
+      { id: '2D-3', name: 'Reconsolidation', desc: '<strong>Retrieval destabilizes memory:</strong> Reactivated memories re-enter a labile protein-synthesis-dependent state lasting 6–12 hours. Must be re-stabilized ("reconsolidated") to persist. This creates a window for modification: emotional extinction, memory updating. PTSD treatment implications. Requires new protein synthesis for restabilization (anisomycin blocks this, deletes memory in animals).', timing: '6–12 hrs after retrieval' },
+      { id: '2D-4', name: 'Sleep SWS Cascade (SO → Spindle → SWR)', desc: '<strong>Three-oscillation nesting drives replay:</strong> Slow Oscillations (0.5–1 Hz, brainstem-cortex) create synchronized up/down states. Thalamic spindles (12–15 Hz) nest in SO up-states, opening plasticity windows. Hippocampal Sharp Wave Ripples (80–100 Hz) nest in spindle troughs — each SWR = one compressed replay (~5–20x faster than encoding). ~100,000+ replays per sleep session. Directly predicts next-day retention.', timing: 'Per NREM cycle (~90 min)' }
+    ]
+  },
+  6: {
+    title: 'Layer 6 — Retrieval',
+    subtitle: 'Cue-driven pattern completion from partial inputs, spreading activation, and output generation',
+    type: 'flow',
+    items: [
+      { id: '2F-1', name: 'Cue-Dependent Initiation', desc: '<strong>Encoding specificity principle (Tulving & Thomson, 1973):</strong> Retrieval cues are most effective when they match the context present during encoding — same internal state, same environment, same emotional tone. Context reinstatement: mentally recreating encoding context improves recall. Explains why cold-encoding fails to retrieve in hot-state and vice versa.', timing: '50–150ms' },
+      { id: '2F-2', name: 'CA3 Pattern Completion', desc: '<strong>Autoassociative attractor dynamics:</strong> CA3 recurrent collateral network receives partial cue. Attractor dynamics drive convergence toward stored pattern. Dentate gyrus performs pattern separation (orthogonalization) to prevent catastrophic interference between similar memories. The CA3→CA1 Schaffer collaterals output completed pattern.', timing: '50–200ms' },
+      { id: '2F-3', name: 'CA1 Output + Novelty Detection', desc: '<strong>CA1 as comparator:</strong> Receives CA3 completion (via Schaffer collaterals) AND direct entorhinal cortex input (current reality). Mismatch between CA3 prediction and EC input triggers novelty signal. When prediction matches: suppressed output. When mismatch: elevated firing → novelty-driven exploration, new encoding. Gates what enters conscious awareness.', timing: '100–250ms' },
+      { id: '2F-4', name: 'Spreading Activation', desc: '<strong>Semantic network traversal:</strong> Retrieval activates associated nodes in temporal cortex semantic networks. Activation spreads through associative connections (Collins & Loftus, 1975). Fan effect: nodes with many associates show slower retrieval due to divided activation. Priming works via pre-activation of related nodes before target query.', timing: '150–400ms' },
+      { id: '2F-5', name: 'Tip-of-Tongue State', desc: '<strong>Partial retrieval:</strong> Semantic content accessible (meaning, category, first letter) but phonological form blocked. Reflects successful spreading activation to semantic network but failure at phonological encoding stage. Increases with age as phonological representations weaken. Resolution often occurs when orthographic input (seeing related word) unlocks phonological form.', timing: 'Variable — seconds to minutes' }
+    ]
+  },
+  '6a': {
+    title: 'Layer 6A — Maintenance',
+    subtitle: 'Four sleep-dependent maintenance systems operating across all layers',
+    type: 'sleep'
+  }
+};
+
+function selectV2Layer(id) {
+  document.querySelectorAll('.layer-sel-btn').forEach(b => b.classList.remove('active'));
+  const btns = document.querySelectorAll('.layer-sel-btn');
+  const idxMap = {1:0,2:1,3:2,4:3,5:4,6:5,'6a':6};
+  if (btns[idxMap[id]]) btns[idxMap[id]].classList.add('active');
+
+  const data = v2Data[id];
+  const container = document.getElementById('v2-content');
+  container.classList.add('visible');
+
+  let html = '<div class="v2-layer-header"><h2>' + data.title + '</h2><p>' + data.subtitle + '</p></div>';
+
+  if (data.type === 'flow') {
+    html += '<div class="sublayer-diagram">';
+    data.items.forEach((item, i) => {
+      html += '<div class="sublayer-item"><div class="sublayer-id">' + item.id + '</div><div class="sublayer-body"><div class="sublayer-name">' + item.name + '</div><div class="sublayer-desc">' + item.desc + '</div></div><div class="sublayer-timing">' + item.timing + '</div></div>';
+      if (i < data.items.length - 1) {
+        html += '<div class="sublayer-connector"><div class="line"></div></div>';
+      }
+    });
+    html += '</div>';
+  }
+
+  else if (data.type === 'baddeley') {
+    html += '<div class="baddeley-diagram">';
+    html += '<div class="baddeley-center"><div class="bc-label">2C-3</div><div class="bc-name">Central Executive</div><div class="bc-desc">DLPFC bilateral + ACC · Selective attention · Task-switching · Coordination · Retrieval control<br>Layer V pyramidal cells maintain persistent firing via recurrent excitation during delay periods</div></div>';
+    html += '<div class="baddeley-slaves">';
+    html += '<div class="baddeley-slave"><div class="bs-id">2C-1</div><div class="bs-name">Phonological Loop</div><div class="bs-desc">Left hemisphere perisylvian + Broca\'s area. ~2 sec trace. Without rehearsal, items decay in ~2s. Articulatory rehearsal = inner voice.</div></div>';
+    html += '<div class="baddeley-slave"><div class="bs-id">2C-4</div><div class="bs-name">Episodic Buffer</div><div class="bs-desc">Hippocampus-dependent. ~4 chunks. Binds phonological + visuospatial + LTM into coherent episode. Multimodal integration workspace.</div></div>';
+    html += '<div class="baddeley-slave"><div class="bs-id">2C-2</div><div class="bs-name">Visuospatial Sketchpad</div><div class="bs-desc">Right hemisphere parietal + occipital. 3–4 items. Visual cache (what) + inner scribe (where/movement). Two dissociable components.</div></div>';
+    html += '</div>';
+    html += '<div style="margin-top:16px;font-size:11px;color:#8C9BAB;">All three slave systems feed to and receive coordination from the Central Executive. The Episodic Buffer is the integration workspace that binds across all systems and connects to long-term memory.</div>';
+    html += '</div>';
+  }
+
+  else if (data.type === 'parallel') {
+    html += '<div class="parallel-systems">';
+    html += '<div class="parallel-item"><div class="pi-id">2D-A</div><div class="pi-name">Episodic Memory</div><div class="pi-structs">Hippocampus + distributed neocortex</div><div class="pi-desc">Spatiotemporal autobiographical events — "what, where, when." Hippocampal indexing: HPC stores pointer to co-activated cortical ensembles. LTP at entorhinal-hippocampal synapses. Requires HPC for early retrieval; systems consolidation transfers to cortex over time.</div></div>';
+    html += '<div class="parallel-item"><div class="pi-id">2D-B</div><div class="pi-name">Semantic Memory</div><div class="pi-structs">Inferolateral temporal cortex, left dominant</div><div class="pi-desc">General world knowledge, facts, concepts — decontextualized. Anterior temporal lobe, temporal poles. Double dissociation with episodic (Patient HM: lost episodic encoding, retained semantic. Patient KC: no episodic, intact semantic). Context-free storage.</div></div>';
+    html += '<div class="parallel-item"><div class="pi-id">2D-C</div><div class="pi-name">Procedural Memory</div><div class="pi-structs">Basal ganglia (striatum) + Cerebellum</div><div class="pi-desc">Skills, habits, action sequences — "how to." HPC-independent. Patient HM learned mirror-tracing with no recall of learning. Basal ganglia: habit via dopaminergic reward prediction error (Schultz, 1997). Cerebellum: timing and error correction. Incremental learning over many trials.</div></div>';
+    html += '<div class="parallel-item"><div class="pi-id">2D-D</div><div class="pi-name">Priming</div><div class="pi-structs">Neocortical sensory areas</div><div class="pi-desc">Implicit facilitation — prior exposure speeds subsequent processing without conscious awareness. Repetition suppression: neural activation required decreases with prior processing. Perceptual priming: occipital/temporal cortex. Conceptual priming: frontal/temporal. Completely HPC-independent.</div></div>';
+    html += '</div>';
+  }
+
+  else if (data.type === 'sleep') {
+    html += '<div class="sublayer-diagram">';
+    html += '<div class="sublayer-item"><div class="sublayer-id">2E-1</div><div class="sublayer-body"><div class="sublayer-name">Synaptic Homeostasis / SHY Downscaling</div><div class="sublayer-desc"><strong>Wake encodes broadly, NREM scales back proportionally.</strong> During waking, learning and experience strengthen synapses across the cortex via LTP. During NREM SWS, slow oscillation down-states trigger global synaptic downscaling — proportional reduction preserves relative strengths (signal) while reducing metabolic cost and freeing capacity for next-day learning. Tononi & Cirelli (2014). Explains why sleep deprivation impairs new learning.</div></div><div class="sublayer-timing">NREM SWS</div></div>';
+    html += '<div class="sublayer-connector"><div class="line"></div></div>';
+    html += '<div class="sublayer-item"><div class="sublayer-id">2E-2</div><div class="sublayer-body"><div class="sublayer-name">Glymphatic Clearance</div><div class="sublayer-desc"><strong>Brain waste removal via CSF flush.</strong> During NREM sleep, interstitial space expands ~60% (driven by norepinephrine drop + neuronal volume decrease). CSF flows through perivascular spaces along AQP4 channels on astrocytic endfeet, flushing metabolic waste — including amyloid-β and tau proteins. Disruption linked to Alzheimer\'s disease pathology. ~10x more active during sleep vs. waking. (Nedergaard lab, Science 2013)</div></div><div class="sublayer-timing">NREM deep sleep</div></div>';
+    html += '<div class="sublayer-connector"><div class="line"></div></div>';
+    html += '<div class="sublayer-item"><div class="sublayer-id">2E-3</div><div class="sublayer-body"><div class="sublayer-name">Microglial Synaptic Pruning</div><div class="sublayer-desc"><strong>Complement-tagged synapse elimination.</strong> Microglia (brain\'s immune cells) identify weak/redundant synapses via complement protein tagging: C1q binds weak synapses, C3/C4 cascade amplifies the tag. Microglia phagocytose tagged connections. Critical for experience-dependent circuit refinement — both in development (visual system, olfactory bulb) and throughout adult life. Over-pruning linked to schizophrenia (C4 gene variants).</div></div><div class="sublayer-timing">Ongoing / sleep-enhanced</div></div>';
+    html += '<div class="sublayer-connector"><div class="line"></div></div>';
+    html += '<div class="sublayer-item"><div class="sublayer-id">2E-4</div><div class="sublayer-body"><div class="sublayer-name">REM Emotional Integration + Schema Building</div><div class="sublayer-desc"><strong>Emotional tone stripped, content preserved.</strong> During REM sleep, amygdala-hippocampal network reactivates emotional memories, but in a low-NE environment (LC nearly silent). This allows processing emotional content without re-traumatization. Walker hypothesis: "sleep to forget (the emotion) but remember (the event)." Additionally, REM integrates new episodes with existing schemas — discovering structural similarities, abstracting general rules, enabling insight. Creative problem-solving improvements post-REM.</div></div><div class="sublayer-timing">REM cycles (later night)</div></div>';
+    html += '</div>';
+
+    html += '<div class="osc-nesting">';
+    html += '<div class="osc-title">Sleep SWS Oscillation Nesting — Consolidation Cascade</div>';
+    html += '<div class="osc-rings">';
+    html += '<div class="osc-ring"><div class="or-wave">OUTER</div><div class="or-name">Slow Oscillation</div><div class="or-hz">0.5–1 Hz · brainstem-cortex · down/up state cycle</div></div>';
+    html += '<div class="osc-arrow-nest">⊃</div>';
+    html += '<div class="osc-ring"><div class="or-wave">MIDDLE</div><div class="or-name">Sleep Spindle</div><div class="or-hz">12–15 Hz · thalamic reticular nucleus · nests in SO up-state</div></div>';
+    html += '<div class="osc-arrow-nest">⊃</div>';
+    html += '<div class="osc-ring"><div class="or-wave">INNER</div><div class="or-name">Sharp Wave Ripple</div><div class="or-hz">80–100 Hz · CA3→CA1 · nests in spindle trough · 1 SWR = 1 replay event</div></div>';
+    html += '</div>';
+    html += '<div style="margin-top:14px;font-size:11px;color:#8C9BAB;">Each night produces ~100,000+ SWR replay events. Spindle density on overnight polysomnography directly predicts next-morning memory performance. The full cascade enables gradual transfer of hippocampal indices to direct cortical representation.</div>';
+    html += '</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+// Pre-select first layer on load
+document.addEventListener('DOMContentLoaded', function() {
+  // nothing to auto-select — wait for user
+});
+</script>
+</body>
+</html>
