@@ -42,7 +42,8 @@ Prompt to paste:
 (Or use CronCreate directly with that prompt, `*/30 * * * *`, recurring: true)
 
 ## 3.4 Start Terry (Shipping/Receiving Monitor)
-CronCreate fires every 15 minutes. Must be recreated each session. Timer ID: T007.
+CronCreate fires every 45 minutes. Must be recreated each session. Timer ID: T007.
+**REMIND CHAIRMAN: Terry is on a 45-minute timer this session.**
 Prompt to paste:
 > Use CronCreate with cron `*/15 * * * *`, recurring: true, with this prompt: `cd "/Users/lbhunt/Desktop/velorin-system" && git pull origin main --quiet 2>&1; python3 -c "import os; shipping='/Users/lbhunt/Desktop/velorin-system/Claude.AI/Shipping'; receiving='/Users/lbhunt/Desktop/velorin-system/Claude.AI/Receiving'; alerts=[]; [alerts.append('[Terry] New files detected in '+name+':\n'+'\n'.join('- '+f for f in files)) for folder,name in [(shipping,'Shipping'),(receiving,'Receiving')] if (files:=[f for f in os.listdir(folder) if f!='.gitkeep']) if os.path.exists(folder)]; [print(a) for a in alerts]"`
 
