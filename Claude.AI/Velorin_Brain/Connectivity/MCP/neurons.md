@@ -27,7 +27,14 @@ Pointers: [1] A6 | [1] neurons.connectivity.auth.A4 | [1] neurons.connectivity.a
 last-touched: 2026-03-28
 Pointers: [1] A6 | [1] neurons.connectivity.auth.A2 | [3] neurons.agents.roster.A1
 
+### A7. Browser Tabs MCP
+`@kazuph/mcp-browser-tabs` via npx. macOS AppleScript-based. Tools: `get_tabs` (all open Chrome tabs, titles + URLs by window), `close_tab`. No Chrome extension required. Added to config 2026-03-30.
+Use case: enumerate all Chrome tabs to find Trey's live conversation URL → Claude in Chrome navigates directly to it → lands in booted session, no re-boot. Test confirmed: conversation URL preserves full session state.
+Limitation: read + close only, macOS only, no tab adoption. Open feature: anthropics/claude-code#26591.
+last-touched: 2026-03-30
+Pointers: [1] A6 | [1] neurons.operations.tools.A6 | [2] neurons.agents.roster.A4 | [3] neurons.connectivity.mcp.A2
+
 ### A6. MCP Config Location
-All servers configured in: `~/Library/Application Support/Claude/claude_desktop_config.json`. Claude Desktop reads on launch, starts/manages all listed servers.
-last-touched: 2026-03-28
-Pointers: [1] neurons.connectivity.auth.A2 | [2] neurons.operations.architecture.A3 | [3] neurons.agents.roster.A1
+All servers configured in: `~/Library/Application Support/Claude/claude_desktop_config.json`. Claude Desktop reads on launch, starts/manages all listed servers. Servers: GDrive, GitHub, Bash, Claude Code, Filesystem, Gatekeeper, browser-tabs.
+last-touched: 2026-03-30
+Pointers: [1] neurons.connectivity.auth.A2 | [1] A7 | [2] neurons.operations.architecture.A3 | [3] neurons.agents.roster.A1

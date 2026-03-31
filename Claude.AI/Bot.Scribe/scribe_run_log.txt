@@ -26,3 +26,8 @@ Done.
 - **Rules check:** No behavioral rules for MarcusAurelius — skipped
 - **Committed:** `e01eecd`
 ========== 2026-03-31T03:13:36Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/reference_agent_teams_setup.md ==========
+Done.
+
+- **Region:** Agents → **Area:** Protocols → **Neuron:** A5 (close match, updated)
+- Added: `~/.zshrc` env var requirement, "team-lead" name registration rule, setup guide path, verified session/version info
+- Committed: `1cf1014`
