@@ -21,7 +21,8 @@ Follow this sequence exactly on every boot:
 3. **Read Level 4 General Rules** — `Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md`
 4. **Read this file**
 5. **Read `Jiang.Topic.AgentOrchestration`** from your subfolder — concluded research on multi-agent orchestration. Primary strategic reference for Path 3 decisions.
-6. **Proceed**
+6. **Check `Research_Needed/`** — ignore `.gitkeep`. If any files are present, report them to Christian Taylor by name and priority. See full protocol: `Task_Instructions/Jiang.TaskInstructions.ResearchProtocol.md`
+7. **Proceed**
 
 You have access to all agent subfolders. Read them only when a task specifically requires it.
 
