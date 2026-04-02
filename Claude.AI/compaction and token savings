@@ -1,0 +1,217 @@
+# Boot Token Cost & Compaction Problem
+
+**Jiang | Director of Strategic Intelligence | Velorin System | March 29, 2026**
+**Research commissioned by:** Christian Taylor (Chairman)
+
+-----
+
+## THE PROBLEM — DEFINED
+
+On Sonnet 4.6 at 200K window, your session starts with a fixed overhead floor before you type anything:
+
+|Source                                  |Typical cost|Avoidable            |
+|----------------------------------------|------------|---------------------|
+|System prompt (CC internals)            |~3-4k       |No                   |
+|System tools (15 built-in CC tools)     |~12-16k     |No                   |
+|MCP tool schemas (all connected servers)|20-98k+     |Yes — primary culprit|
+|CLAUDE.md / memory files                |Variable    |Yes                  |
+|**Boot floor total**                    |**~40-120k**|Partially            |
+
+With 4 MCP servers that’s commonly 40-67k tokens consumed before message 1. At 200K window that’s 20-33% gone at boot — which matches the reported 22% observation exactly.
+
+Compaction worsens it: Sonnet 4.6 at 200K auto-compacts at 83% capacity (~167K), reserving 33K for the process. Effective working window is ~147K minus boot overhead. With 40K boot cost you get ~107K usable — then compaction fires early and loses context fidelity.
+
+-----
+
+## ROOT CAUSES — RANKED BY IMPACT
+
+### 1. MCP Server Tool Schemas Loading at Session Start (PRIMARY)
+
+Every connected MCP server registers its full tool definitions — names, descriptions, JSON schemas, parameters — on every request, even when those tools are never used in the session.
+
+Real documented costs:
+
+- GitHub MCP (27 tools): ~18K tokens
+- Filesystem MCP: ~13K tokens
+- mcp-omnisearch (20 tools): ~14K tokens
+- Playwright MCP (21 tools): ~13K tokens
+- n8n-workflow-builder (10 tools): ~7K tokens
+
+One developer documented 98.7K tokens (49.3% of 200K window) consumed by MCP tools before a single message. Another documented starting a session at 143K/200K (72%) with all servers active — 5.8% free space, before typing anything.
+
+This is a confirmed architectural issue filed in multiple GitHub issues against claude-code (issues #3406, #7172, #11364, #13717). Tool Search (deferred loading) was introduced as the fix — but requires confirmation it’s active.
+
+### 2. Running Sonnet 4.6 at 200K Instead of 1M
+
+As of March 13, 2026, the 1M context window is GA at standard rates for Sonnet 4.6 — no price premium. But it requires “extra usage” to be enabled in account settings. Without it, you stay on 200K.
+
+At 200K with 40K boot overhead: ~107K usable before compaction fires at the 83% threshold (~167K). Session depth: 15-20 productive turns before first compaction.
+
+At 1M with same 40K boot overhead: ~790K usable before compaction threshold. Session depth: 100+ turns with zero compaction for most sessions.
+
+Anthropic CPO confirmed a 15% decrease in compaction events since the 1M window shipped.
+
+### 3. CLAUDE.md Loads on Every Single API Call
+
+CLAUDE.md is not a boot-only cost. It reloads on every message for the entire session. A 500-line CLAUDE.md that costs 5K tokens costs those 5K tokens 50 times in a 50-turn session. Documented system prompt floor after compaction: consistently ~14,328 tokens — CLAUDE.md is baked into this.
+
+Anthropic’s documented target: under 200 lines. Everything beyond that that applies to specific workflows (not every task) should be in Skills instead. Skills cost 30-50 tokens at boot and full content only when invoked.
+
+### 4. Extended Thinking On By Default
+
+Sonnet 4.6 with adaptive thinking defaults to “high effort” — it almost always activates reasoning. Thinking tokens are billed as output tokens. Default budget can be tens of thousands of tokens per request on complex tasks. For routine operational work (file reads, protocol execution, document management) this is unnecessary compute.
+
+### 5. Compaction Itself Is Lossy
+
+When compaction fires, 167K of rich context — exact error messages, file paths, code snippets, decisions — gets compressed into 11-19K tokens. The summary preserves rough intent but loses specifics. Each compaction event degrades session quality. Multiple compactions per session compound the degradation.
+
+The real compaction overhead (excluding the always-present 14K system prompt) is 18-19K tokens of summary — but you lose 167K of context to get it.
+
+### 6. Velorin-Specific: Boot Protocol as MCP Tool Calls
+
+The Velorin boot sequence (reading Drive documents, GitHub files, agent configs) generates MCP tool calls. Each tool call result accumulates in context. The boot protocol is not just a one-time cost — the read content stays in context for the session. A boot that reads 20 documents via MCP generates 20 tool call results that all persist in the active context window.
+
+-----
+
+## RESOLUTION PLAN
+
+### Step 1 — IMMEDIATE: Enable 1M Context for Sonnet 4.6
+
+**Action:** Anthropic account Settings → Enable extra usage for Sonnet 4.6.
+
+**Why first:** Single highest-leverage fix with zero code changes. Boot overhead doesn’t disappear but becomes 22% of 1M instead of 200K. Session depth goes from 15-20 turns before compaction to 100+ turns with zero compaction for most sessions. Cost per token is identical — no premium since March 13, 2026.
+
+**Verify:** Run `/context` in Claude Code after enabling. Should show `1,000k` total window instead of `200k`.
+
+-----
+
+### Step 2 — MCP AUDIT: Disable Idle Servers Per Session
+
+**Action:** Run `/context` in Claude Code. Look at the MCP tools line and per-server breakdown. Identify which servers are burning tokens for work not being done in that session.
+
+**Two implementation paths:**
+
+**Path A — McPick (recommended):**
+
+```
+npx mcpick
+```
+
+CLI tool to toggle MCP servers on/off without editing config. Enable only what the current session needs. Takes 30 seconds before session start.
+
+**Path B — Manual:**
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json`. Comment out idle servers. Restart Desktop.
+
+**Confirm Tool Search is active:** Run `/doctor` in Claude Code. Tool Search (deferred MCP loading) should be listed as enabled. This is now default behavior but worth confirming. With Tool Search: only tool names load at start (~50 tokens/tool instead of 550-850 tokens/tool). Full schemas load only when tool is actually called. Documented reduction: 51K → 8.5K tokens (46.9% reduction in MCP context overhead).
+
+**Target MCP footprint per session:** Only the servers actively needed. For a Velorin operational session: filesystem + GitHub. Disable Drive MCP, playwright, any other idle servers.
+
+-----
+
+### Step 3 — CLAUDE.md SURGERY
+
+**Action:** Run `/context`. Look at “Memory files” line. If over 3K tokens, CLAUDE.md needs trimming.
+
+**Target:** Under 200 lines. Under 2K tokens.
+
+**What stays in CLAUDE.md:** Rules and context that apply to every single task. Identity, communication style, universal constraints, project name.
+
+**What moves to Skills:** Workflow-specific instructions. PR review steps. Database migration procedures. Specific project context. Boot sequences. Everything that only applies to some tasks.
+
+Skills are loaded 30-50 tokens at session start. Full content loads only when the skill is invoked. Moving 300 lines of workflow instructions from CLAUDE.md to Skills recovers those tokens on every message they aren’t needed.
+
+**Anthropic documented result:** Progressive disclosure via skills architecture recovers ~15,000 tokens per session vs. loading everything into CLAUDE.md upfront (82% improvement).
+
+-----
+
+### Step 4 — DIAL DOWN EXTENDED THINKING FOR ROUTINE TASKS
+
+**Action:** For Velorin operational sessions (file operations, document reading, protocol execution, boot sequences), set:
+
+```bash
+export MAX_THINKING_TOKENS=8000
+```
+
+Or run `/effort low` at session start.
+
+**Reserve high effort for:** Architectural decisions, multi-step reasoning, complex analysis.
+
+**Do not change for:** Jiang research sessions, complex strategic work, anything where reasoning quality matters.
+
+-----
+
+### Step 5 — CUSTOMIZE COMPACTION BEHAVIOR
+
+**Action:** Add to CLAUDE.md (under Step 3 trimmed version):
+
+```
+# Compact instructions
+When compacting, preserve: file paths modified, decisions made, open action items, error messages verbatim, current task state.
+Discard: tool call parameter details, file read contents already actioned, intermediate reasoning steps.
+```
+
+This makes compaction lossy in the right direction — preserving operational state, discarding noise that doesn’t affect forward progress.
+
+-----
+
+### Step 6 — VELORIN-SPECIFIC: MIGRATE BOOT PROTOCOL (MEDIUM-TERM)
+
+This is the Obsidian + CLAUDE.md migration from the Adoption Memo. Root cause: the current Drive/GitHub boot protocol generates MCP tool calls whose results accumulate in context.
+
+**Current boot cost:** 15-40K tokens in MCP tool calls + read content that persists in context.
+
+**CLAUDE.md boot cost:** ~2-5K tokens, loaded once, cached, does not accumulate.
+
+**The migration:**
+
+- Distill the essential boot context into CLAUDE.md (agent identity, key paths, critical rules)
+- Move reference documents to Obsidian vault readable on-demand
+- Boot loads CLAUDE.md only — 2-5K tokens flat
+- On-demand document reads via Skills or explicit commands as needed
+
+Timeline: This is Tier 1.1-1.3 in the Adoption Memo. Until then, Step 1 (1M context enable) provides the most immediate relief.
+
+-----
+
+## QUICK REFERENCE: DIAGNOSTIC COMMANDS
+
+```bash
+/context          # Full token breakdown by category — run this first
+/doctor           # Health check including Tool Search status
+/compact          # Manual compaction with custom focus instruction
+/clear            # Full reset — use when switching to unrelated work
+/cost             # Token usage this session (API users)
+/effort low       # Reduce thinking token budget for session
+```
+
+Monitor in real-time: `ccusage` CLI or ClaudeTUI (`brew install slima4/claude-tui/claudetui && claudetui setup`)
+
+-----
+
+## SUMMARY TABLE
+
+|Fix                               |Impact                               |Effort           |Do Now?|
+|----------------------------------|-------------------------------------|-----------------|-------|
+|Enable 1M context for Sonnet 4.6  |High — eliminates most compaction    |Settings toggle  |Yes    |
+|Disable idle MCP servers          |High — recovers 20-50K tokens        |McPick CLI       |Yes    |
+|Confirm Tool Search active        |Medium — 46.9% MCP overhead reduction|/doctor check    |Yes    |
+|CLAUDE.md trim to <200 lines      |Medium — per-message savings         |1-2 hours        |Soon   |
+|Set MAX_THINKING_TOKENS=8000      |Medium — operational sessions        |env var          |Yes    |
+|Customize compaction instructions |Low-medium                           |5 min            |Yes    |
+|Migrate boot protocol to CLAUDE.md|High — Velorin-specific              |See Adoption Memo|Month 1|
+
+-----
+
+## SOURCES
+
+- Anthropic Claude Code Docs — Manage costs: `https://code.claude.com/docs/en/costs`
+- Anthropic Claude Code Docs — MCP: `https://code.claude.com/docs/en/mcp`
+- Anthropic Support — Context window by plan: `https://support.claude.com/en/articles/8606394`
+- GitHub anthropics/claude-code — Issues #3406, #7172, #11364, #13717 (MCP context bloat)
+- DEV Community — Token trace analysis: `https://dev.to/slima4/where-do-your-claude-code-tokens-actually-go`
+- ClaudeCodeCamp — 1M context window: `https://www.claudecodecamp.com/p/claude-code-1m-context-window`
+- Scott Spence — MCP optimization: `https://scottspence.com/posts/optimising-mcp-server-context-usage-in-claude-code`
+- Medium/Joe Njenga — Tool Search 46.9% reduction: `https://medium.com/@joe.njenga/claude-code-just-cut-mcp-context-bloat`
+- JDHodges — /context command breakdown: `https://www.jdhodges.com/blog/claude-code-context-slash-command-token-usage`
+
+[VELORIN.EOF]
