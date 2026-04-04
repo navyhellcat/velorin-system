@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velorin Technology Stack — Session 016</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0d14;
+    color: #e0e6f0;
+    font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #1e2a3a;
+  }
+
+  header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  header p {
+    font-size: 12px;
+    color: #5a7080;
+    letter-spacing: 0.08em;
+  }
+
+  .legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: #8a9ab0;
+    letter-spacing: 0.06em;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-built     { background: #2ecc71; }
+  .dot-partial   { background: #f39c12; }
+  .dot-new       { background: #3498db; }
+  .dot-unsettled { background: #e74c3c; }
+  .dot-deferred  { background: #8e44ad; }
+
+  .stack {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 6px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .layer {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    overflow: hidden;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .layer:hover { transform: translateX(3px); }
+
+  .layer-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    gap: 14px;
+    position: relative;
+  }
+
+  .layer-number {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    min-width: 22px;
+  }
+
+  .layer-name-block { flex: 1; }
+
+  .layer-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.03em;
+  }
+
+  .layer-tagline {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  .status-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .expand-icon {
+    font-size: 14px;
+    color: rgba(255,255,255,0.3);
+    transition: transform 0.2s;
+    min-width: 18px;
+    text-align: center;
+  }
+
+  .layer.open .expand-icon { transform: rotate(180deg); }
+
+  .layer-detail {
+    display: none;
+    padding: 0 18px 18px 18px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 0;
+  }
+
+  .layer.open .layer-detail { display: block; }
+
+  .detail-section {
+    margin-top: 14px;
+  }
+
+  .detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .tech-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .tech-built   { background: rgba(46,204,113,0.08); border-color: rgba(46,204,113,0.3); color: #2ecc71; }
+  .tech-partial { background: rgba(243,156,18,0.08); border-color: rgba(243,156,18,0.3); color: #f39c12; }
+  .tech-new     { background: rgba(52,152,219,0.08); border-color: rgba(52,152,219,0.3); color: #3498db; }
+  .tech-missing { background: rgba(231,76,60,0.08);  border-color: rgba(231,76,60,0.3);  color: #e74c3c; }
+
+  .detail-text {
+    font-size: 12px;
+    color: #8a9ab0;
+    line-height: 1.7;
+  }
+
+  .questions-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .questions-list li {
+    font-size: 12px;
+    color: #8a9ab0;
+    line-height: 1.6;
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .questions-list li::before {
+    content: '?';
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+    font-weight: 700;
+    font-size: 11px;
+  }
+
+  .new-pill {
+    background: rgba(52,152,219,0.15);
+    border: 1px solid rgba(52,152,219,0.5);
+    color: #3498db;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 8px;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    margin-left: 6px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .warning-pill {
+    background: rgba(231,76,60,0.15);
+    border: 1px solid rgba(231,76,60,0.4);
+    color: #e74c3c;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 8px;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  .decision-banner {
+    background: rgba(231,76,60,0.08);
+    border: 1px solid rgba(231,76,60,0.3);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #e74c3c;
+    letter-spacing: 0.03em;
+  }
+
+  .decision-banner strong { color: #ff6b6b; }
+
+  .action-banner {
+    background: rgba(52,152,219,0.08);
+    border: 1px solid rgba(52,152,219,0.3);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #3498db;
+    letter-spacing: 0.03em;
+  }
+
+  .action-banner strong { color: #5dade2; }
+
+  /* Layer color themes */
+  .layer-0 { background: #0d1b2a; border-color: #1a3a52; }
+  .layer-0 .layer-header { background: linear-gradient(135deg, #0d1b2a, #132535); }
+  .layer-0 .status-badge { background: rgba(46,204,113,0.15); color: #2ecc71; border: 1px solid rgba(46,204,113,0.3); }
+
+  .layer-1 { background: #131520; border-color: #2a2d4a; }
+  .layer-1 .layer-header { background: linear-gradient(135deg, #131520, #1c1f30); }
+  .layer-1 .status-badge { background: rgba(52,152,219,0.15); color: #3498db; border: 1px solid rgba(52,152,219,0.3); }
+
+  .layer-2 { background: #1a0f0f; border-color: #4a1a1a; border-width: 2px; }
+  .layer-2 .layer-header { background: linear-gradient(135deg, #1a0f0f, #2a1212); }
+  .layer-2 .status-badge { background: rgba(231,76,60,0.2); color: #e74c3c; border: 1px solid rgba(231,76,60,0.4); }
+
+  .layer-3 { background: #0d1a12; border-color: #1a3a22; }
+  .layer-3 .layer-header { background: linear-gradient(135deg, #0d1a12, #12261a); }
+  .layer-3 .status-badge { background: rgba(46,204,113,0.15); color: #2ecc71; border: 1px solid rgba(46,204,113,0.3); }
+
+  .layer-4 { background: #0d1a1a; border-color: #1a3a3a; }
+  .layer-4 .layer-header { background: linear-gradient(135deg, #0d1a1a, #122626); }
+  .layer-4 .status-badge { background: rgba(46,204,113,0.15); color: #2ecc71; border: 1px solid rgba(46,204,113,0.3); }
+
+  .layer-5 { background: #1a140d; border-color: #3a2a1a; }
+  .layer-5 .layer-header { background: linear-gradient(135deg, #1a140d, #261e12); }
+  .layer-5 .status-badge { background: rgba(243,156,18,0.15); color: #f39c12; border: 1px solid rgba(243,156,18,0.3); }
+
+  .layer-6 { background: #130d1a; border-color: #2a1a3a; }
+  .layer-6 .layer-header { background: linear-gradient(135deg, #130d1a, #1e1226); }
+  .layer-6 .status-badge { background: rgba(243,156,18,0.15); color: #f39c12; border: 1px solid rgba(243,156,18,0.3); }
+
+  .bottom-label {
+    text-align: center;
+    font-size: 10px;
+    color: #3a4a5a;
+    letter-spacing: 0.15em;
+    margin-top: 6px;
+    padding-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .top-label {
+    text-align: center;
+    font-size: 10px;
+    color: #3a4a5a;
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #1e2a3a;
+    font-size: 11px;
+    color: #3a4a5a;
+    letter-spacing: 0.08em;
+  }
+
+  .instructions {
+    text-align: center;
+    font-size: 11px;
+    color: #3a5070;
+    margin-bottom: 20px;
+    letter-spacing: 0.06em;
+  }
+
+  hr.section-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin: 12px 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>VELORIN TECHNOLOGY STACK</h1>
+  <p>SESSION 016 — APRIL 3, 2026 — PREPARED BY JIANG, DIRECTOR OF STRATEGIC INTELLIGENCE</p>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><div class="dot dot-built"></div> BUILT</div>
+  <div class="legend-item"><div class="dot dot-partial"></div> PARTIAL</div>
+  <div class="legend-item"><div class="dot dot-new"></div> NEW / OPPORTUNITY</div>
+  <div class="legend-item"><div class="dot dot-unsettled"></div> UNSETTLED — DECISION NEEDED</div>
+  <div class="legend-item"><div class="dot dot-deferred"></div> DEFERRED</div>
+</div>
+
+<p class="instructions">Click any layer to expand details &darr;</p>
+
+<div class="stack" id="stack">
+
+  <!-- LAYER 0: STORAGE -->
+  <div class="layer layer-0" onclick="toggle(0)">
+    <div class="layer-header">
+      <div class="layer-number">L0</div>
+      <div class="layer-name-block">
+        <div class="layer-name">STORAGE &amp; PERSISTENCE</div>
+        <div class="layer-tagline">Where information lives permanently. The ground truth layer.</div>
+      </div>
+      <div class="status-badge">BUILT</div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="layer-detail">
+      <div class="detail-section">
+        <div class="detail-label">Technologies</div>
+        <div class="tech-grid">
+          <span class="tech-tag tech-built">GitHub (velorin-system)</span>
+          <span class="tech-tag tech-built">Google Drive</span>
+          <span class="tech-tag tech-built">Local Filesystem (/Users/lbhunt/Desktop)</span>
+          <span class="tech-tag tech-built">Markdown files (.md)</span>
+          <span class="tech-tag tech-partial">Git history (source of truth, not always pulled first)</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Velorin Status</div>
+        <div class="detail-text">Fully operational. GitHub is canonical source of truth. Google Drive holds working documents and research outputs. Local filesystem is the execution environment. The pull-before-read rule exists but is not always followed — this is a discipline issue, not a technical one.</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Open Questions</div>
+        <ul class="questions-list">
+          <li>When does Drive become insufficient as a storage layer? (Estimated: 50-80 topic documents — not yet hit)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYER 1: COMPRESSION -->
+  <div class="layer layer-1" onclick="toggle(1)">
+    <div class="layer-header">
+      <div class="layer-number">L1</div>
+      <div class="layer-name-block">
+        <div class="layer-name">COMPRESSION &amp; EFFICIENCY <span class="new-pill">NEW</span></div>
+        <div class="layer-tagline">Making large knowledge fit in context windows without information loss.</div>
+      </div>
+      <div class="status-badge">NOT YET INTEGRATED</div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="layer-detail">
+      <div class="detail-section">
+        <div class="detail-label">Technologies</div>
+        <div class="tech-grid">
+          <span class="tech-tag tech-new">TurboQuant (Google, March 2026)</span>
+          <span class="tech-tag tech-partial">KV Cache management (Anthropic-side for API)</span>
+          <span class="tech-tag tech-partial">Context distillation / summarization</span>
+          <span class="tech-tag tech-missing">Local inference compression (future)</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">TurboQuant — What It Actually Is</div>
+        <div class="detail-text">
+          2-stage KV cache compression. Stage 1 (PolarQuant): random orthogonal rotation normalizes KV vectors for mathematically optimal quantization. Stage 2 (QJL): 1 residual bit corrects compression error.<br><br>
+          Results: 4-6x memory reduction. At 4-bit: indistinguishable from FP16 on 3B+ parameter models. 8x throughput on H100 GPUs. Works on any transformer, no retraining required.<br><br>
+          Open-source implementations already on GitHub (PyTorch, Triton kernels, vLLM integration). ICLR 2026 paper.
+        </div>
+      </div>
+      <div class="action-banner">
+        <strong>FRAMING NOTE:</strong> TurboQuant operates at the inference hardware layer. When using Claude via API, Anthropic's servers manage KV caches — not Velorin. TurboQuant becomes directly relevant when running LOCAL models (Apple M-series 36GB build). For the current API-based architecture: this layer is handled for you. Park TurboQuant until the local inference build begins.
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYER 2: RETRIEVAL — THE UNSETTLED LAYER -->
+  <div class="layer layer-2" onclick="toggle(2)">
+    <div class="layer-header">
+      <div class="layer-number">L2</div>
+      <div class="layer-name-block">
+        <div class="layer-name">RETRIEVAL &amp; SEARCH <span class="warning-pill">DECISION NEEDED</span></div>
+        <div class="layer-tagline">How information is FOUND. The unsettled layer. This is where the confusion lives.</div>
+      </div>
+      <div class="status-badge">UNSETTLED</div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="layer-detail">
+      <div class="detail-section">
+        <div class="detail-label">The Technologies — What Each One Actually Does</div>
+        <div class="tech-grid">
+          <span class="tech-tag tech-partial">RAG (flat chunk retrieval)</span>
+          <span class="tech-tag tech-missing">Graph RAG (relationship retrieval)</span>
+          <span class="tech-tag tech-missing">Vector Database (semantic search index)</span>
+          <span class="tech-tag tech-partial">Pointer Traversal (current Brain approach)</span>
+          <span class="tech-tag tech-new">TurboQuant compression (at retrieval time for local)</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">The Real Difference — Not Competing, Complementary</div>
+        <div class="detail-text">
+          <strong style="color:#e0e6f0;">RAG (Retrieval Augmented Generation):</strong> Embeds documents as vectors, stores in a vector DB, retrieves by semantic similarity. Finds chunks that "sound like" your query. Good for: "what does Jiang's research say about X?" Bad for: understanding relationships and structure. Retrieves fragments, not architecture.<br><br>
+
+          <strong style="color:#e0e6f0;">Graph RAG (Microsoft, 2024):</strong> Converts documents into a knowledge graph first — extracts entities and relationships using LLM calls. Then retrieves subgraphs, not just chunks. Good for: "how does X relate to Y through Z?" Expensive to build (many LLM calls to extract). More powerful than flat RAG for relationship-heavy queries. Open-sourced by Microsoft.<br><br>
+
+          <strong style="color:#e0e6f0;">Vector Database:</strong> The infrastructure layer that makes RAG possible. Not a strategy — a tool. pgvector (Postgres), Chroma, Qdrant, Pinecone, Weaviate. Mature, commodity technology. You choose one based on scale and hosting preference.<br><br>
+
+          <strong style="color:#e0e6f0;">Pointer Traversal (current Velorin Brain):</strong> Start at a named neuron, follow rated pointers to related neurons. This IS a knowledge graph — it's Graph RAG done manually. Works perfectly when you know which neuron to start from. Gap: no way to FIND the entry neuron by semantic similarity when you don't know its name.<br><br>
+
+          <strong style="color:#e0e6f0;">Obsidian:</strong> NOT a retrieval technology. It is a human-facing visualization layer for linked markdown files. The Velorin Brain's file structure IS Obsidian-compatible already. Obsidian would add: graph visualization UI, backlink tracking, search. Relevant for Christian to visually navigate the Brain — not for agent-facing retrieval.
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">The Decision Tree</div>
+        <div class="detail-text">
+          The Velorin Brain already IS a knowledge graph (like Graph RAG). It is manually maintained and pointer-traversed. The only thing it lacks is a semantic search entry point — a way to find the right starting neuron when you don't know its name.<br><br>
+          <strong style="color:#e0e6f0;">Option A (Recommended path pending research):</strong> Add a lightweight vector index as a search entry point only. The index stores neuron names + one-line summaries as embeddings. Query = semantic search → returns neuron name → agent traverses Brain from there. Vector index does NOT replace the Brain. It is a search interface.<br><br>
+          <strong style="color:#e0e6f0;">Option B:</strong> Add Graph RAG automatic extraction for new research documents. Automatically pull entities and relationships from Jiang's research papers into the graph. More powerful but more expensive and complex to maintain.<br><br>
+          <strong style="color:#e0e6f0;">Option C:</strong> Keep pointer traversal only. Accept that well-named neurons and good _index.md files are sufficient. Simpler. Breaks at scale (~50-80 topics).
+        </div>
+      </div>
+      <div class="decision-banner">
+        <strong>THIS IS THE BLOCKING DECISION.</strong> Everything above Layer 2 is built or has a clear path. Layer 2 is the one that needs a research pass and then a decision. The bottom-of-funnel research mandate targets this layer specifically.
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYER 3: KNOWLEDGE GRAPH -->
+  <div class="layer layer-3" onclick="toggle(3)">
+    <div class="layer-header">
+      <div class="layer-number">L3</div>
+      <div class="layer-name-block">
+        <div class="layer-name">KNOWLEDGE GRAPH / BRAIN <span class="warning-pill">4 GAPS</span></div>
+        <div class="layer-tagline">The organized structure of knowledge with relationships. The Velorin Brain.</div>
+      </div>
+      <div class="status-badge">BUILT</div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="layer-detail">
+      <div class="detail-section">
+        <div class="detail-label">Technologies</div>
+        <div class="tech-grid">
+          <span class="tech-tag tech-built">Velorin Brain (neurons + rated pointers)</span>
+          <span class="tech-tag tech-built">Region → Area → Neurons hierarchy</span>
+          <span class="tech-tag tech-built">_index.md navigation files</span>
+          <span class="tech-tag tech-missing">Reverse pointer index (CA3 equivalent)</span>
+          <span class="tech-tag tech-missing">Salience scoring gate</span>
+          <span class="tech-tag tech-missing">Pointer renormalization</span>
+          <span class="tech-tag tech-missing">Scratch log purge</span>
+          <span class="tech-tag tech-partial">Obsidian (visualization — not yet connected)</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Velorin Status</div>
+        <div class="detail-text">The Brain is structurally sound and operationally used. Its architecture is independently convergent with the hippocampal indexing model (Teyler &amp; DiScenna) — hippocampus stores a pointer to distributed cortical pattern, not the pattern itself. The Velorin Brain IS this architecture in software.</div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">The 4 Gaps (from HumanBrainLayers research, 92% confidence)</div>
+        <ul class="questions-list">
+          <li><strong style="color:#e0e6f0;">Reverse pointer index (HIGHEST PRIORITY)</strong> — biological CA3 performs pattern completion from partial cues. The Brain has no equivalent. You can follow pointers forward but cannot find "what points TO this neuron." Adding this transforms recall from one-directional traversal to genuine associative search.</li>
+          <li><strong style="color:#e0e6f0;">Salience scoring gate</strong> — the brain gates what gets stored based on importance signals. The Brain stores everything equally. A salience score would prevent low-value neuron proliferation.</li>
+          <li><strong style="color:#e0e6f0;">Pointer renormalization</strong> — pointer ratings (1-10) drift over time as the graph grows. No mechanism to renormalize them relative to network changes.</li>
+          <li><strong style="color:#e0e6f0;">Scratch log purge</strong> — working memory equivalent. Temporary neurons from active sessions should be purged or consolidated. No automated mechanism.</li>
+        </ul>
+      </div>
+      <div class="action-banner">
+        <strong>None of these require rearchitecting.</strong> All four are additions, not rebuilds. The reverse pointer index is the highest priority — it compounds the value of everything else in the Brain.
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYER 4: AGENT IDENTITY -->
+  <div class="layer layer-4" onclick="toggle(4)">
+    <div class="layer-header">
+      <div class="layer-number">L4</div>
+      <div class="layer-name-block">
+        <div class="layer-name">AGENT IDENTITY &amp; MEMORY <span class="warning-pill">CEILING ISSUE</span></div>
+        <div class="layer-tagline">Who the agents are, what they remember session to session, how they boot.</div>
+      </div>
+      <div class="status-badge">BUILT</div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="layer-detail">
+      <div class="detail-section">
+        <div class="detail-label">Technologies</div>
+        <div class="tech-grid">
+          <span class="tech-tag tech-built">CLAUDE.md (boot routing)</span>
+          <span class="tech-tag tech-built">Level4 General Rules</span>
+          <span class="tech-tag tech-built">ReadMe.First (per agent)</span>
+          <span class="tech-tag tech-built">Session handoffs</span>
+          <span class="tech-tag tech-built">KnowledgeIndex</span>
+          <span class="tech-tag tech-built">ResearchLog</span>
+          <span class="tech-tag tech-partial">Compaction recovery hooks (implemented this session)</span>
+          <span class="tech-tag tech-missing">FollowBench structural fix</span>
+          <span class="tech-tag tech-missing">Reverse pointer index in Brain (L3 dependency)</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">The FollowBench Ceiling — Known Issue</div>
+        <div class="detail-text">
+          InstructionLanguageArchitecture research (Session 015, 82% confidence) confirmed: frontier models comply reliably with approximately 3 simultaneous behavioral constraints. Rules 4+ in any boot file are operating probabilistically, not reliably.<br><br>
+          Every Velorin agent boot file exceeds 3 constraints. This means the current boot architecture is partially decorative above the ceiling. We do not know which rules are below the ceiling (reliable) and which are above it (probabilistic).<br><br>
+          Fix requires: structural enforcement via AgentSpec or bootloader pattern — not adding more behavioral rules. This is an architecture session, not a rules editing session.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYER 5: TOOL ACCESS -->
+  <div class="layer layer-5" onclick="toggle(5)">
+    <div class="layer-header">
+      <div class="layer-number">L5</div>
+      <div class="layer-name-block">
+        <div class="layer-name">TOOL ACCESS &amp; ORCHESTRATION <span class="new-pill">NEW TOOLS</span></div>
+        <div class="layer-tagline">Claude calling external tools. MCP is the protocol. This layer is largely solved.</div>
+      </div>
+      <div class="status-badge">PARTIAL + NEW</div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="layer-detail">
+      <div class="detail-section">
+        <div class="detail-label">Technologies — Current Velorin MCP Servers</div>
+        <div class="tech-grid">
+          <span class="tech-tag tech-built">velorin-gatekeeper (custom)</span>
+          <span class="tech-tag tech-built">velorin-gdrive (Drive R/W)</span>
+          <span class="tech-tag tech-built">github MCP</span>
+          <span class="tech-tag tech-built">filesystem MCP</span>
+          <span class="tech-tag tech-built">browser-tabs MCP</span>
+          <span class="tech-tag tech-built">Claude_in_Chrome MCP</span>
+          <span class="tech-tag tech-built">scheduled-tasks MCP</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">NEW — Available Now, Not Yet Configured</div>
+        <div class="tech-grid">
+          <span class="tech-tag tech-new">Google Workspace MCP (official, March 2026)</span>
+          <span class="tech-tag tech-new">OpenAI Codex MCP plugin for Claude Code</span>
+          <span class="tech-tag tech-new">Google Cloud MCP (BigQuery, Maps, Compute Engine)</span>
+          <span class="tech-tag tech-new">MCP Apps (interactive UI components in conversation)</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Google Workspace MCP — What You Get</div>
+        <div class="detail-text">
+          Official Google release, March 2026. npm install -g @googleworkspace/cli.<br>
+          12 services: Gmail, Google Drive, Google Calendar, Google Docs, Google Sheets, Google Slides, Google Chat, Google Forms, Google Tasks + more.<br>
+          100+ tools. OAuth 2.1. Includes prompt injection scanning (Google Cloud Model Armor).<br>
+          This is production-ready. Not fragile community workarounds.
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">OpenAI Codex MCP — What You Get</div>
+        <div class="detail-text">
+          Official OpenAI plugin for Claude Code (codex-plugin-cc).<br>
+          Claude writes code → hands to Codex for review → result returned without leaving Claude environment.<br>
+          Eliminates sycophancy bias (same model reviewing its own output).<br>
+          Pre-coding warnings become possible. Code analysis tokens offloaded from Claude.<br>
+          This is exactly what Christian Taylor described wanting.
+        </div>
+      </div>
+      <div class="action-banner">
+        <strong>IMMEDIATE ACTION AVAILABLE:</strong> Both Google Workspace MCP and Codex MCP can be configured now. No research needed. Just installation and OAuth setup. These expand Claude's tool surface significantly at no architectural cost.
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">The $200 Subscription Question — Resolved</div>
+        <div class="detail-text">
+          Consumer subscriptions (ChatGPT Pro $200, Google AI Ultra $200, Claude Max $200) = interfaces. Human-facing.<br><br>
+          The tool access Christian wants = API keys + MCP server configuration. Priced per token.<br><br>
+          What you actually need: OpenAI API key (Codex MCP), Google account OAuth (Workspace MCP — no extra cost), Anthropic API key (existing). Cursor subscription is legitimately useful as a code execution environment with multi-model routing.
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">NotebookLM Status</div>
+        <div class="detail-text">
+          No official Google API or MCP server as of April 2026. Community implementations use undocumented internal APIs via browser cookie extraction — Google can break them at any time. Do not build production systems on these.<br><br>
+          Current recommendation: use NotebookLM as a human-facing tool. Feed it Jiang's research files manually. Query directly.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAYER 6: INTERFACE -->
+  <div class="layer layer-6" onclick="toggle(6)">
+    <div class="layer-header">
+      <div class="layer-number">L6</div>
+      <div class="layer-name-block">
+        <div class="layer-name">INTERFACE &amp; MULTI-MODEL</div>
+        <div class="layer-tagline">Human access points and cross-model decisions. Highest layer.</div>
+      </div>
+      <div class="status-badge">PARTIAL</div>
+      <div class="expand-icon">▼</div>
+    </div>
+    <div class="layer-detail">
+      <div class="detail-section">
+        <div class="detail-label">Technologies</div>
+        <div class="tech-grid">
+          <span class="tech-tag tech-built">Claude Desktop (Jiang + Alexander)</span>
+          <span class="tech-tag tech-built">Claude Code CLI (MarcusAurelius)</span>
+          <span class="tech-tag tech-partial">Cursor (code execution — available, not fully configured)</span>
+          <span class="tech-tag tech-partial">Gemini 2.5 Pro (1M context — for full-corpus sessions)</span>
+          <span class="tech-tag tech-missing">Agent Teams (tmux multi-agent — built but fragile)</span>
+          <span class="tech-tag tech-missing">Cross-model autonomous decisions</span>
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Cross-Model Strategy — What Was Decided This Session</div>
+        <div class="detail-text">
+          The goal is not three AIs talking to each other autonomously. The goal is Claude calling the right external tool for each job.<br><br>
+          <strong style="color:#e0e6f0;">Code analysis:</strong> Claude writes → Codex reviews (via MCP) → result returned.<br>
+          <strong style="color:#e0e6f0;">Long-corpus analysis:</strong> Gemini 2.5 Pro via its interface (1M context). Results returned to Velorin as files.<br>
+          <strong style="color:#e0e6f0;">Google workspace operations:</strong> Google Workspace MCP — Gmail, Drive, Docs, Sheets directly from Claude.<br>
+          <strong style="color:#e0e6f0;">Multi-model decisions:</strong> Handled at this layer — Christian routes deliberately, not autonomous agent-to-agent communication. Authentication-by-convention is insufficient for full autonomy (identity verification problem — unsolved).<br><br>
+          Full autonomous cross-model communication (where Alexander calls Jiang calls a GPT-4 agent without human in the loop) requires: identity verification solution + shared context transfer protocol + behavioral consistency work. This is Phase 3 or Phase 4.
+        </div>
+      </div>
+      <div class="detail-section">
+        <div class="detail-label">Open Questions</div>
+        <ul class="questions-list">
+          <li>When does Agent Teams become stable enough for production use? (Compaction recovery fix implemented this session — test needed)</li>
+          <li>What is the right trigger for routing to Gemini 2.5 Pro vs. staying in Claude? (Full-corpus sessions only, not routine tasks)</li>
+          <li>Identity verification solution — required before full autonomous cross-model operation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="bottom-label">↑ Bottom of the Funnel — Foundation Layers (L0-L2)</div>
+<div class="top-label">↓ Top of the Stack — Application Layers (L4-L6)</div>
+
+<footer>
+  Velorin System | Session 016 | April 3, 2026 | Jiang — Director of Strategic Intelligence<br>
+  Companion doc: Jiang.WorkingDoc.ArchitectureClarity.Session016.md
+</footer>
+
+<script>
+  function toggle(n) {
+    const layer = document.querySelector('.layer-' + n);
+    layer.classList.toggle('open');
+  }
+
+  // Auto-open the unsettled layer (L2) on load
+  window.onload = function() {
+    document.querySelector('.layer-2').classList.add('open');
+  };
+</script>
+
+</body>
+</html>

@@ -168,6 +168,18 @@ Do not attempt any other debug before completing these three steps. Do not send 
 
 ---
 
+## Compaction Recovery — Team Existence Check [CARDINAL]
+
+After any context compaction event, before calling TeamCreate:
+1. Check for `TEAM_STATE.md` at `/Users/lbhunt/Desktop/velorin-system/TEAM_STATE.md`
+2. Check `~/.claude/teams/` for existing team configs
+3. If either exists with recent activity (< 2 hours): DO NOT call TeamCreate. Adopt the existing team context and resume.
+4. Only call TeamCreate if BOTH checks confirm no active team exists.
+
+Calling TeamCreate when a team already exists creates orphaned routing that cannot be recovered without manual cleanup of `~/.claude/teams/`.
+
+---
+
 ## Pre-TeamCreate Mandatory Check [CARDINAL]
 
 **TeamCreate permanently locks the session's SendMessage routing to that team. There is no recovery mid-session. This is a one-shot irreversible decision.**
