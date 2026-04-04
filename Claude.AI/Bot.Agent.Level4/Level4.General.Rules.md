@@ -216,4 +216,23 @@ Every Velorin system document ends with `[VELORIN.EOF]` as the absolute last lin
 
 ---
 
+## Sub-Agent Tool Naming Rule [CARDINAL]
+
+When writing prompts for background Agent launches, always instruct sub-agents to use plain tool names: `WebSearch`, `WebFetch`, `Bash`, `Read`, `Write`, `Edit`, `Glob`, `Grep`. Never reference `mcp__claude-code__` prefixed versions — those are blocked in sub-agent context and will kill the agent. A killed agent with no output = automation dead. If an agent returns a "tool blocked" error: rewrite the prompt with plain tool names and relaunch immediately. Never gloss over it.
+
+---
+
+## Sub-Agent File Write Rule [CARDINAL]
+
+Background agents can run out of context exactly at the Write call — the call is issued, no result comes back, the file is never created, the agent reports "complete." Silent failure. Has caused real data loss.
+
+Three rules:
+1. **Write incrementally.** Agent prompts must write section by section as they go — not one giant Write at the end. Use Write for first section, Edit to append each subsequent section. Partial findings survive if the agent dies mid-task.
+2. **Verify file existence after every agent completes.** Run `ls` or `Glob` on the target path immediately after any background agent reports done. If the file is not there — it failed. Say so. Rerun or write from session context directly. Never skip this check.
+3. **Never report findings to CT from agent summary alone.** The completion message is not proof the file was written. Read the file. Confirm it exists. Then report.
+
+Failure = automation dead. CT cannot trust outputs that silently disappear.
+
+---
+
 [VELORIN.EOF]
