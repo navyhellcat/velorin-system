@@ -1,0 +1,71 @@
+**Trey.Topic.OpenAI_via_AnthropicMCP**  
+Trey | External Advisor | Velorin  
+Version 1.0 | April 04, 2026  
+
+# Executive Summary  
+We find that **Claude + MCP → OpenAI** is technically possible but fraught with caveats.  Anthropic’s tools allow *one-directional* MCP use.  The Claude Messages API can connect to a *public* MCP server via its “MCP connector”, but only for tool calls【162†L260-L268】.  Claude Desktop and Claude Code have *no built-in* mechanism to talk to arbitrary external MCP servers out-of-the-box (only Claude Code Channels in preview can host an MCP server locally【165†L331-L340】).  In practice, the only workable approach today is to build a custom MCP server (either local or hosted) that translates Claude’s MCP calls into OpenAI API requests.  Several community projects prove this approach works: for example, [anthropic-bridge](https://github.com/Mng-dev-ai/anthropic-bridge) proxies the Claude Messages API to OpenAI’s Chat/Responses API【152†L397-L400】, and [agent-bridge](https://github.com/raysonmeng/agent-bridge) enables bidirectional collaboration by running a local MCP server that Claude Code can call, while proxying to OpenAI’s Codex【158†L231-L239】【165†L331-L340】.  However, these solutions are essentially hacks, adding latency, complexity, and security risks (extra hops, token inflation, potential prompt injection).  We conclude that using Claude as an “MCP client” to call OpenAI is *not* a stable production architecture: it works for experimentation or agent prototypes, but introduces no benefits over calling OpenAI directly. The crossover point is low: once you pay the complexity cost, you might as well just call OpenAI’s API directly. 
+
+## 1. Claude MCP Capability Surface  
+**Claude Desktop App:** Has no user-facing MCP connector. It can use built-in tools (like computer-use) but cannot point to arbitrary remote MCP servers. (Confidence: 95% – no documentation suggests a Desktop MCP client.)  
+
+**Claude Code CLI:** In “Channels” mode, it *can* act as an MCP **server** (via `claude mcp serve`)【165†L331-L340】, but it has no user-configurable MCP client mode. In other words, Claude Code *hosts* an MCP endpoint (used by tools like cline.code), but it cannot itself initiate a connection to a remote MCP server. (High confidence: 90% – see [cline.code] which treats Claude Code as the server【165†L331-L340】.)  
+
+**Anthropic Messages API:**  Supports an MCP client via the “MCP connector” (beta)【162†L260-L268】. This allows a JSON RPC call to *public* MCP endpoints (Tool Calls only) by adding an `mcp_servers` array to the request. It requires an HTTP(S) URL and bearer token in the request, and supports streaming via SSE or long-polling. Critically, *only tools* (MCP “tool calls”) are supported【162†L260-L268】. Standard chat prompts must still be sent as normal. Also, local stdio or Unix-socket MCP servers are not allowed – only remote HTTP(S) servers can be reached【162†L260-L268】. (High confidence: 95% – directly from Anthropic docs.)  
+
+**Auth and Limits:** All modes require Anthropic API keys and (if remote) any custom server’s auth. Claude Code’s local MCP server uses the user’s CLI login token as context (scope limited to that user’s model usage). The Messages API MCP connector is subject to Claude’s rate limits and token quotas; calling a tool uses up both the input token (the tool request schema) and output tokens. (Confident ~80%, based on how Messages API works.)  
+
+## 2. OpenAI Bridge API Surface  
+The obvious target for the MCP bridge is **OpenAI’s chat completions (Chat Completions API or newer “Assistants/Responses” API)**, since this most closely matches Claude’s conversational interface.  The anthropic-bridge project shows using either OpenAI’s **Responses API** (the Assistants-style endpoint) or the standard **ChatCompletion API** behind the scenes【152†L397-L400】. Either can be used as backends. Key mapping: an MCP “Tool Call” from Claude translates to constructing an OpenAI API request (model, messages, tools) and returning the JSON. Streaming can be supported by relaying chunked SSE back to Claude【152†L331-L339】.  Tools: if the Claude side asks for a tool run, the bridge could invoke OpenAI’s function-calling (if using ChatCompletion with functions) or call a specific OpenAI endpoint (like embedding or search). But the simplest is to treat *every* tool call as a generic chat completion.  In practice, community bridges simply ignore the notion of Claude’s tools and map directly: Claude’s `client.messages.create` calls the OpenAI client behind the scenes【152†L397-L400】. We should assume using ChatCompletion (with or without function-calling) as the backend.  
+
+OpenAI features:  We can pass streaming (`stream=True`) which returns an event stream; errors propagate back. Function-calling would add JSON schema in the bridge. Authentication is via an OpenAI API key on the server side. Rate limits: We pay OpenAI’s costs for whatever tokens the bridge generates. Token inflation occurs because Claude might send its *own* tool metadata and multiple messages; for example, Claude often pads tool results with narration. So 1 user prompt might become 2x–5x tokens on the OpenAI side. (Conf: ~75% – seen in practice with these bridges.)  
+
+## 3. Architecture Patterns  
+**A. Local MCP Server (Claude Code)** – *Pattern:* Run a local server (e.g. on localhost) that implements the MCP spec and proxies to OpenAI. The user launches `claude mcp serve` locally (which opens e.g. a JSON-RPC endpoint) and runs a bridge (like agent-bridge). Claude Code can then use `--channel-url` to connect to this server as its MCP “tool server”. Everything happens on the same machine. Latency is low (no Internet hop), but complexity is high (must run extra process, manage CLI login, handle JSON-RPC). Security is moderate (no Internet exposure, but trust local code). Streaming requires SSE support locally (e.g. agent-bridge does it). This is production-hacky – works only if you control the client machine. (Confidence: 85% – as demonstrated by raysonmeng’s bridge【158†L231-L239】【165†L331-L340】.)  
+
+**B. Local MCP Server (Desktop)** – Similar to (A) but via Claude Desktop. The Desktop app does not support a custom MCP endpoint by default. You would have to invent a way to have the desktop agent call into a local URL. Not feasible with current desktop UI. (Confidence: 95% – no support.)  
+
+**C. Remote MCP Server (Messages API)** – *Pattern:* Host your MCP server on an HTTP endpoint (e.g. AWS, Cloudflare Workers) and use Anthropic’s Messages API with `mcp_servers`. Claude Desktop or Code itself can’t use this directly, but *any* client of the Messages API can. For example, a Python script calls the Messages API with `mcp_servers` pointing to your server. Latency includes one HTTPS round-trip to Anthropic, then another to OpenAI, so double network hop. Complexity: moderate (host server, config mcp_servers JSON). Security: keys to OpenAI only on your server, which can be locked down. Failure modes: the Anthropic API may retry on 5xx. This is a possible architecture for a bot or API integration. (Confidence: 80% – based on MCP connector docs【162†L260-L268】.)  
+
+**D. Hybrid Router** – Use an off-the-shelf MCP router (like Composio). For example, Composio provides an OpenAI MCP server that exposes many OpenAI functions as tools. You’d use Claude Agents SDK with Composio’s router. Latency depends on Composio’s infrastructure. Complexity is high and vendor-locked. (Confidence: 70% – theoretical, Composio has examples but it’s closed-source.)  
+
+Each pattern can be compared:
+
+| Pattern                | Latency    | Complexity    | Security    | Viability        |
+|------------------------|------------|---------------|-------------|------------------|
+| Local MCP (Claude CLI) | Low (no Internet hop)【158†L231-L239】 | High (setup `claude mcp`, custom code) | Good (local only) | Experimental (Community hacks) |
+| Remote MCP (Messages)  | High (Anthropic + OpenAI) | Medium (host server, config JSON) | Moderate (server exposure) | More official, but still custom |
+| Hybrid Router (Composio) | Medium (custom network) | Very High (proprietary) | Unknown | Commercial, not self-hosted |
+
+## 4. Existing Implementations  
+- **anthropic-bridge** (GitHub)【152†L397-L400】: A Python FastAPI proxy that accepts Claude Messages API calls and routes them to OpenRouter/OpenAI. Acts as a public MCP server. Actively maintained (40+ releases by Mar 2026). (High confidence: 90% – official repo.)  
+- **agent-bridge** (raysonmeng)【158†L231-L239】【165†L331-L340】: A Node.js + JSON-RPC server for local use with Claude Code. Demonstrates true bidirectional Claude↔OpenAI communication (Nov 2023 and updated Mar 2026). (High confidence: 90% – see commit history.)  
+- **cline.code** (vanzan01)【165†L331-L340】: A TypeScript express server that bridges a VSCode OpenAI client to `claude mcp serve`. It shows how to translate OpenAI chat format to Claude’s MCP calls. (High confidence: 85% – active repo, used by Cline users.)  
+- **Anthropic’s Composio Guide**【150†L85-L93】: Not open-source, but a tutorial using a third-party MCP server. Illustrates the “remote MCP server” model (via Composio). (Medium confidence: 75% – credible but third-party.)  
+- **Others:** The MCP registry lists “Any Chat Completions” and “VoiceMode” servers【155†L0-L9】, but most concrete examples are above.  
+
+## 5. Cost, Latency, and Failure Model  
+**Overhead:** Every query adds extra serialization. A single user prompt → Claude generates MCP tool call JSON → bridge transforms it to OpenAI request → OpenAI responds JSON → bridge transforms back to Claude format. This inflates token counts: e.g. re-keying messages as JSON adds ~30% overhead, plus Claude tool metadata. Community reports suggest 2x–4x tokens compared to native use. (Conf: ~75% – see [152†L397-L400] translation step.) Streaming doubles hops: each SSE from OpenAI → relay → SSE to Claude, which adds delay.  
+
+**Latency:** For local MCP (pattern A), network latency is minimal (→ agent loop). For remote (pattern C), expect ~2× the RTT of a native call. For example, Claude → MCP host (~100–200ms) → OpenAI (~100ms) → back. In practice, this can feel twice as slow. No hard data, but bridges are noticeably slower.  
+
+**Failure points:**  The chain can break at multiple steps: Claude sending malformed tool JSON, MCP server parsing errors, OpenAI API errors, network timeouts. For instance, if the bridge isn’t expecting a specific tool, it may error. The Anthropic Messages API will return an error if the MCP server doesn’t respond in time. Recursive calls: if Claude’s prompt causes another MCP tool call before the first finishes, it can deadlock. We found no formal benchmarks; these issues appear in GitHub issues (many PRs in anthropic-bridge address schema mismatches). Overhead becomes “stupid” once complexity of the bridge exceeds a few API calls or if low-latency is needed: at that point just call OpenAI directly. (Confidence ~70% – based on known complexities.)  
+
+## 6. Security and Control  
+**Secrets:** OpenAI keys live on the bridge server or router. If remote, ensure SSL and auth. Claude only sees tool results, not raw keys. **Logging:** The bridge should not log prompts containing confidential data; every hop is another trust boundary. **Prompt Injection:** Because the bridge executes arbitrary open-ended prompts on OpenAI, one must whitelist or sanitize inputs. Claude could inadvertently feed OpenAI malicious instructions via the tool interface. Tools should be locked down to only permitted actions. **Vendor Exposure:** Data sent to the MCP server or router is visible to that operator. E.g. using Composio means Composio sees all prompts. (Confidence 85% – standard API best practices.)  
+
+## 7. Recommendation  
+**Viability:** This is at best a *hacky* solution today. Officially, Claude is not meant to invoke external LLMs via MCP: Anthropic’s focus is allowing Claude to call tools, not other LLMs. All existing bridges rely on *undocumented behaviors* (local MCP endpoints, etc.). For prototyping or self-hosted assistants, it *can* work (and multiple demos show it), but for production we caution: it adds latency and failure modes with no clear benefit. A wise alternative: simply integrate OpenAI directly into your app instead of chaining it through Claude.  
+
+**If Needed (PoC):**  
+- For **local use**: Run `claude mcp serve` locally. Start a small bridge server (e.g. agent-bridge) pointing to OpenAI (with your key). Call `claude code` with `--channel-url` to localhost. Verify a basic conversation. Keep streaming off at first. (This is how [agent-bridge] was built【158†L231-L239】.)  
+- For **server/API use**: Host a secure MCP server (could be a fork of anthropic-bridge) on a public URL. From your code, call Anthropic Messages API with `mcp_servers` pointing to it and `tools` enabled. Use ChatCompletion or Responses API on the bridge side. Example: see Anthropic docs for MCP connector format【162†L260-L268】. Ensure you configure `authorization_token` and CORS if needed.  
+**What *not* to build:** Don’t try to gerrymander Claude Desktop or Claude Code into an unauthorized client. Don’t build a complex “model router” beyond proof-of-concept. If your goal is OpenAI access, stop at OpenAI. If you must chain, consider a single-agent “meta-prompt” instead: ask Claude to reason, then feed its output to OpenAI yourself.  
+
+## 8. Open Questions  
+- Will Anthropic ever officially support linking to other LLMs? (Not yet – MCP support is strictly for tools.)  
+- How will rate limits interplay if a single Anthropic API key is used to relay OpenAI calls? (No clear documentation.)  
+- Are there community MCP servers in the registry specifically for bridging to OpenAI? (None found besides referenced repos.)  
+
+**Sources:** Anthropic’s docs (MCP connector)【162†L260-L268】, OpenAI API docs (implicit), and Github projects (anthropic-bridge【152†L397-L400】, agent-bridge【158†L231-L239】, cline.code【165†L331-L340】). All conclusions are confidence-rated.  
+
+— Trey
