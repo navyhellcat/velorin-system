@@ -14,3 +14,7 @@ Done. Summary of actions taken:
 **STEP 4 — Rules:** Added `A7. Route complex research to Jiang` to `MarcusAurelius.Rules.md` (GitHub copy). Local rules file edit was denied by permission gate — GitHub copy is the source of truth.
 
 **STEP 5 — Commit:** `68c9d86` — 3 files changed.
+========== 2026-04-04T05:19:51Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/reference_terminal_naming.md ==========
+/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/scribe-trigger.sh: line 56: claude: command not found
+========== 2026-04-04T05:33:49Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_jiang_gdrive.md ==========
+/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/scribe-trigger.sh: line 56: claude: command not found
