@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Velorin — System Intelligence</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root{--bg:#06060f;--bg2:#0c0c1a;--bg3:#111128;--cyan:#00f5ff;--cyan2:#00c8d4;--purple:#7c3aed;--purple2:#a78bfa;--green:#10b981;--red:#ef4444;--yellow:#f59e0b;--orange:#f97316;--blue:#3b82f6;--text:#e2e8f0;--muted:#64748b;--border:rgba(255,255,255,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;overflow-x:hidden;font-size:15px;line-height:1.6;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:52px;background:rgba(6,6,15,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:1rem;}
+.nav-logo{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);white-space:nowrap;}
+.nav-links{display:flex;gap:1rem;list-style:none;margin-left:auto;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.75rem;transition:color .2s;white-space:nowrap;}
+.nav-links a:hover{color:var(--cyan);}
+/* HERO */
+#hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;}
+.hero-inner{position:relative;z-index:2;text-align:center;padding:0 1.25rem;}
+.hero-tag{font-size:.625rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;opacity:.8;}
+.hero-title{font-size:clamp(2.25rem,8vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;background:linear-gradient(135deg,#fff 0%,var(--cyan) 45%,var(--purple2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.875rem;}
+.hero-sub{font-size:.9375rem;color:var(--muted);max-width:500px;margin:0 auto 2rem;line-height:1.7;}
+.hero-stats{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;}
+.hstat{text-align:center;}
+.hstat-n{font-size:1.625rem;font-weight:800;color:var(--cyan);line-height:1;}
+.hstat-l{font-size:.625rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.2rem;}
+.scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.375rem;color:var(--muted);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;animation:bob 2.5s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-6px);}}
+.scroll-arrow{width:14px;height:14px;border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);transform:rotate(45deg);}
+/* SECTIONS */
+.section{padding:4rem 1.25rem;max-width:1360px;margin:0 auto;}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border) 30%,var(--border) 70%,transparent);margin:0 1.25rem;}
+.sec-tag{font-size:.625rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.5rem,4vw,2.375rem);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.1;}
+.sec-desc{font-size:.875rem;color:var(--muted);margin-top:.625rem;max-width:560px;line-height:1.65;}
+.sec-header{margin-bottom:2.25rem;}
+/* TABS */
+.tabs{display:flex;gap:.25rem;border-bottom:1px solid var(--border);margin-bottom:2rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{padding:.5rem 1rem;font-size:.75rem;font-weight:500;color:var(--muted);cursor:pointer;background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;font-family:inherit;white-space:nowrap;flex-shrink:0;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+/* CARDS */
+.grid{display:grid;gap:.875rem;}
+.grid-3{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));}
+.grid-2{grid-template-columns:repeat(auto-fill,minmax(360px,1fr));}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:all .25s;}
+.card:hover{border-color:rgba(0,245,255,.18);background:var(--bg3);}
+.badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.5625rem;font-weight:700;padding:.175rem .5rem;border-radius:4px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem;}
+.b-green{background:rgba(16,185,129,.12);color:var(--green);}
+.b-red{background:rgba(239,68,68,.12);color:var(--red);}
+.b-yellow{background:rgba(245,158,11,.12);color:var(--yellow);}
+.b-cyan{background:rgba(0,245,255,.1);color:var(--cyan);}
+.b-purple{background:rgba(167,139,250,.12);color:var(--purple2);}
+.b-orange{background:rgba(249,115,22,.12);color:var(--orange);}
+.b-blue{background:rgba(59,130,246,.12);color:var(--blue);}
+.card-title{font-size:.9rem;font-weight:600;color:#fff;margin-bottom:.35rem;line-height:1.3;}
+.card-body{font-size:.8rem;color:var(--muted);line-height:1.6;}
+.card-source{font-size:.625rem;color:rgba(100,116,139,.55);margin-top:.45rem;}
+/* STATUS DOT */
+.sdot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:.3rem;flex-shrink:0;}
+.sdot-green{background:var(--green);box-shadow:0 0 5px var(--green);}
+.sdot-red{background:var(--red);box-shadow:0 0 5px var(--red);animation:blink 1.8s ease-in-out infinite;}
+.sdot-yellow{background:var(--yellow);box-shadow:0 0 5px var(--yellow);}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+/* PRIORITY LIST */
+.plist{display:flex;flex-direction:column;gap:.75rem;}
+.pitem{display:flex;gap:1rem;align-items:flex-start;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem 1.125rem;}
+.pnum{flex-shrink:0;width:1.875rem;height:1.875rem;border-radius:50%;background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.25);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--cyan);}
+.ptext h3{font-size:.875rem;font-weight:600;color:#fff;margin-bottom:.25rem;}
+.ptext p{font-size:.775rem;color:var(--muted);line-height:1.6;}
+/* CONFIDENCE */
+.conf{display:flex;align-items:center;gap:.5rem;margin-top:.45rem;}
+.conf-label{font-size:.5625rem;color:var(--muted);white-space:nowrap;}
+.conf-track{flex:1;height:2px;background:rgba(255,255,255,.08);border-radius:1px;overflow:hidden;}
+.conf-fill{height:100%;border-radius:1px;background:var(--cyan);}
+.conf-pct{font-size:.5625rem;font-weight:700;color:var(--cyan);white-space:nowrap;}
+/* OPTION CARDS */
+.opt-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.opt-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.75rem;}
+.opt-icon{width:2rem;height:2rem;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.opt-icon-cyan{background:rgba(0,245,255,.1);}
+.opt-icon-purple{background:rgba(124,58,237,.15);}
+.opt-icon-green{background:rgba(16,185,129,.1);}
+.opt-icon-orange{background:rgba(249,115,22,.1);}
+.opt-icon-blue{background:rgba(59,130,246,.1);}
+.opt-name{font-size:.875rem;font-weight:600;color:#fff;}
+.opt-sub{font-size:.6875rem;color:var(--muted);}
+.opt-body{padding:1.125rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;}
+.choice{padding:.75rem .875rem;border-radius:8px;border:1px solid var(--border);cursor:default;}
+.choice.rec{border-color:rgba(0,245,255,.28);background:rgba(0,245,255,.04);}
+.choice-top{display:flex;align-items:center;gap:.4rem;margin-bottom:.2rem;flex-wrap:wrap;}
+.choice-name{font-size:.8125rem;font-weight:600;color:#fff;}
+.choice-tag{font-size:.5rem;font-weight:700;padding:.125rem .4rem;border-radius:3px;text-transform:uppercase;letter-spacing:.06em;}
+.ct-rec{background:rgba(0,245,255,.15);color:var(--cyan);}
+.ct-open{background:rgba(245,158,11,.12);color:var(--yellow);}
+.choice-desc{font-size:.725rem;color:var(--muted);line-height:1.55;}
+/* ARCH FLOW */
+.arch-flow{display:flex;flex-direction:column;align-items:center;gap:0;margin:1.5rem auto;max-width:640px;}
+.arch-layer{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.75rem 1.125rem;text-align:center;}
+.arch-layer-name{font-size:.8125rem;font-weight:700;color:#fff;margin-bottom:.15rem;}
+.arch-layer-desc{font-size:.7rem;color:var(--muted);}
+.arch-arrow{width:2px;height:20px;background:linear-gradient(180deg,var(--cyan),transparent);margin:0 auto;opacity:.35;}
+/* ANSWER TABLE */
+.atbl{width:100%;border-collapse:collapse;font-size:.775rem;}
+.atbl th{text-align:left;padding:.625rem .75rem;font-size:.625rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);}
+.atbl td{padding:.625rem .75rem;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;color:var(--text);}
+.atbl td:first-child{color:var(--muted);white-space:nowrap;}
+.atbl td:last-child{color:var(--cyan);font-weight:700;white-space:nowrap;}
+.atbl tr:hover td{background:rgba(255,255,255,.02);}
+/* CODE */
+pre{background:rgba(0,0,0,.4);border:1px solid var(--border);border-radius:8px;padding:.875rem;font-size:.7rem;overflow-x:auto;-webkit-overflow-scrolling:touch;color:#a0c4d8;line-height:1.6;margin:.625rem 0;}
+code{font-family:'SF Mono','Fira Code',monospace;}
+/* PHASE TABLE */
+.phase-tbl{width:100%;border-collapse:collapse;font-size:.775rem;}
+.phase-tbl th{text-align:left;padding:.5rem .75rem;font-size:.625rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:1px solid var(--border);}
+.phase-tbl td{padding:.5rem .75rem;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;}
+.phase-tbl tr:hover td{background:rgba(255,255,255,.02);}
+/* HIGHLIGHT BOXES */
+.hbox{background:var(--bg2);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;padding:.875rem 1rem;margin:.75rem 0;font-size:.8rem;color:var(--text);line-height:1.65;}
+.hbox.red{border-left-color:var(--red);}
+.hbox.green{border-left-color:var(--green);}
+.hbox.yellow{border-left-color:var(--yellow);}
+.hbox.purple{border-left-color:var(--purple2);}
+.hbox strong{color:#fff;}
+/* NEURON TYPE CARDS */
+.ntype{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem 1.125rem;margin-bottom:.625rem;}
+.ntype-header{display:flex;align-items:center;gap:.625rem;margin-bottom:.5rem;}
+.ntype-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.ntype-label{font-size:.8125rem;font-weight:700;color:#fff;}
+.ntype-layer{font-size:.625rem;color:var(--muted);}
+.ntype-body{font-size:.775rem;color:var(--muted);line-height:1.6;}
+.ntype-example{background:rgba(0,0,0,.35);border-radius:6px;padding:.625rem .75rem;margin-top:.5rem;font-size:.7rem;color:#8fa8b8;line-height:1.55;}
+/* VIZ */
+#viz-section{padding:0;max-width:none;}
+.viz-header{max-width:1360px;margin:0 auto;padding:4rem 1.25rem 2rem;}
+#viz-canvas{width:100%;height:70vh;min-height:480px;display:block;}
+.viz-overlay{position:relative;}
+.viz-controls{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);display:flex;gap:.625rem;z-index:10;}
+.btn{padding:.5rem 1.25rem;border-radius:8px;font-size:.8125rem;font-weight:600;cursor:pointer;transition:all .2s;border:none;font-family:inherit;}
+.btn-primary{background:var(--cyan);color:#000;}
+.btn-primary:hover{background:var(--cyan2);}
+.btn-ghost{background:rgba(255,255,255,.07);color:var(--text);border:1px solid var(--border);}
+.btn-ghost:hover{background:rgba(255,255,255,.11);}
+.viz-legend{position:absolute;top:1rem;right:1rem;background:rgba(6,6,15,.9);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;z-index:10;}
+.leg-title{font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+.leg-item{display:flex;align-items:center;gap:.4rem;font-size:.625rem;color:var(--muted);margin-bottom:.3rem;}
+.leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.viz-status{position:absolute;top:1rem;left:1rem;background:rgba(6,6,15,.9);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;z-index:10;min-width:160px;max-width:200px;}
+.vstatus-label{font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.375rem;}
+.vstatus-current{font-size:.75rem;font-weight:600;color:var(--cyan);}
+.vstatus-desc{font-size:.625rem;color:var(--muted);margin-top:.2rem;line-height:1.45;}
+/* MOBILE NOTE */
+.mobile-note{display:none;background:rgba(0,245,255,.06);border:1px solid rgba(0,245,255,.15);border-radius:8px;padding:.75rem 1rem;font-size:.75rem;color:var(--muted);text-align:center;margin-bottom:1rem;}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:1.75rem 1.25rem;text-align:center;color:var(--muted);font-size:.75rem;}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .grid-3,.grid-2{grid-template-columns:1fr;}
+  .hero-stats{gap:1.25rem;}
+  .viz-legend{display:none;}
+  .mobile-note{display:block;}
+  nav{padding:0 1rem;}
+  .section{padding:3rem 1rem;}
+  pre{font-size:.65rem;}
+  .atbl,.phase-tbl{font-size:.7rem;}
+  .atbl td:first-child{white-space:normal;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Velorin Intelligence</span>
+  <ul class="nav-links">
+    <li><a href="#state">State</a></li>
+    <li><a href="#concepts">Architecture</a></li>
+    <li><a href="#jiang2">Jiang2</a></li>
+    <li><a href="#viz-section">3D</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="hero-tag">Full System Assessment · April 4, 2026</div>
+    <h1 class="hero-title">Velorin System<br>Intelligence</h1>
+    <p class="hero-sub">Three companies. Five agents. 45 neurons. Full recursive read — state, gaps, architecture options, and Jiang2's deep analysis.</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Companies</div></div>
+      <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l">Agents</div></div>
+      <div class="hstat"><div class="hstat-n">45</div><div class="hstat-l">Neurons</div></div>
+      <div class="hstat"><div class="hstat-n">12</div><div class="hstat-l">Research Topics</div></div>
+      <div class="hstat"><div class="hstat-n">15</div><div class="hstat-l">Open Gaps</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-arrow"></div></div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SYSTEM STATE -->
+<div class="section" id="state">
+  <div class="sec-header">
+    <div class="sec-tag">Jiang2 — System Assessment Sessions 017</div>
+    <h2 class="sec-title">System State</h2>
+    <p class="sec-desc">Synthesized from all three documents: Part 1 ReadFirst, Session 017 Full Read, Tool Research Supplement.</p>
+  </div>
+  <div class="tabs">
+    <button class="tab active" data-tab="working">Working</button>
+    <button class="tab" data-tab="contradictions">Contradictions</button>
+    <button class="tab" data-tab="gaps">Gaps</button>
+    <button class="tab" data-tab="priorities">Priorities</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-working">
+    <div class="grid grid-3">
+      <div class="card"><span class="badge b-green"><span class="sdot sdot-green"></span>Live</span><div class="card-title">MCP Infrastructure</div><div class="card-body">gdrive, gatekeeper, github, filesystem, browser-tabs. GDrive OAuth auto-refresh reliable. Do not touch.</div></div>
+      <div class="card"><span class="badge b-green"><span class="sdot sdot-green"></span>Live</span><div class="card-title">Shipping / Receiving + Terry</div><div class="card-body">Mailbox protocol works. Destination headers clean. Terry monitors on 15-min cycle correctly.</div></div>
+      <div class="card"><span class="badge b-green"><span class="sdot sdot-green"></span>Live</span><div class="card-title">Session Handoff Protocol</div><div class="card-body">Session 015 handoff cited as a high-quality example. Produces good continuity when followed.</div></div>
+      <div class="card"><span class="badge b-green"><span class="sdot sdot-green"></span>High Quality</span><div class="card-title">Jiang Research Library</div><div class="card-body">12 concluded topics. Sourced, confidence-rated. Window Gravity 92%. Highest quality asset in the system.</div></div>
+      <div class="card"><span class="badge b-green"><span class="sdot sdot-green"></span>Designed Correctly</span><div class="card-title">Brain Schema + Pointers</div><div class="card-body">Pointer rating system [1]–[10] is the right design. Hippocampal indexing model convergence confirmed. Knowledge is not there yet — structure is.</div></div>
+      <div class="card"><span class="badge b-green"><span class="sdot sdot-green"></span>Live Product</span><div class="card-title">Turing Vault</div><div class="card-body">React + Node + PostgreSQL. 540 human + 508 AI passages. Game engine, leaderboard, admin panel, bot detection operational.</div></div>
+      <div class="card"><span class="badge b-green"><span class="sdot sdot-green"></span>High Quality</span><div class="card-title">Trey Research Outputs</div><div class="card-body">ZepCloud, Graphiti, VoiceIOParity, Multi_Model_Orchestration, OpenClaw/NemoClaw — all sourced, confidence-rated, cross-validated against Jiang.</div></div>
+      <div class="card"><span class="badge b-green"><span class="sdot sdot-green"></span>Production Ready</span><div class="card-title">De-AI Writing Voice</div><div class="card-body">Research + style directive complete. Immediately usable for all external Velorin communications.</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-contradictions">
+    <div class="grid grid-3">
+      <div class="card"><span class="badge b-red"><span class="sdot sdot-red"></span>Active Failure</span><div class="card-title">Scribe: command not found</div><div class="card-body">scribe-trigger.sh calls `claude` but hook PATH doesn't include the CLI. Failed twice April 4. Last success: March 31. Every memory write since produces no neurons.</div></div>
+      <div class="card"><span class="badge b-red"><span class="sdot sdot-red"></span>Direct Conflict</span><div class="card-title">sonnet[1m] vs Agent Teams</div><div class="card-body">Session 016 set model to sonnet[1m]. Agent Teams guide explicitly prohibits it — causes crash on concurrent boot. Disk and guide are in direct conflict.</div></div>
+      <div class="card"><span class="badge b-red"><span class="sdot sdot-red"></span>Silent Failure</span><div class="card-title">list_available_tools doesn't exist</div><div class="card-body">Jiang + Alexander boot sequences say "Call list_available_tools on Gatekeeper." Gatekeeper has 4 tools — none named that. Silently fails every boot.</div><div class="card-source">Note: Gatekeeper was updated this session — tool now exists</div></div>
+      <div class="card"><span class="badge b-red"><span class="sdot sdot-red"></span>4 Sessions Stale</span><div class="card-title">Brain neuron A8 references Session 013</div><div class="card-body">"Last completed: Session 013." We are at 017. Any agent reading A8 for session context gets wrong state.</div></div>
+      <div class="card"><span class="badge b-yellow"><span class="sdot sdot-yellow"></span>Not Wired</span><div class="card-title">PreCompact hooks not active</div><div class="card-body">Scripts exist at Claude.AI/hooks/. settings.local.json has no PreCompact/PostCompact entries. Every Agent Teams session runs exposed to compaction bug.</div></div>
+      <div class="card"><span class="badge b-yellow"><span class="sdot sdot-yellow"></span>Unresolved</span><div class="card-title">Two Taglines Coexist</div><div class="card-body">"One person. Fully orchestrated." in founding docs. "Built on you." in CompanyAlignment1. Session 015: "NOT YET APPLIED — CT to approve." Not approved.</div></div>
+      <div class="card"><span class="badge b-yellow"><span class="sdot sdot-yellow"></span>No Response</span><div class="card-title">FollowBench Ceiling: Active Now</div><div class="card-body">Confirmed at 85–88% March 31: every boot file exceeds the ~3 constraint ceiling. Rules 4-N are probabilistic. April 4 — zero architectural response. Adding more rules makes it worse.</div></div>
+      <div class="card"><span class="badge b-yellow"><span class="sdot sdot-yellow"></span>Parallel Systems</span><div class="card-title">Brain and Research Library: No Bridge</div><div class="card-body">45 neurons: operational only. 12 Jiang topics: AI architecture, Window Gravity, instruction ceilings. Zero overlap. Scribe doesn't fire on Research_Complete.</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-gaps">
+    <div class="grid grid-3">
+      <div class="card"><span class="badge b-red">P0 · April Deadline</span><div class="card-title">Intake Test Not Authorized</div><div class="card-body">GoalMap: "If intake test doesn't begin in April, timeline compresses." April 4. Jiang has the 7-thread outline. CT hasn't authorized. Authorization question, not research.</div></div>
+      <div class="card"><span class="badge b-red">P0 · April 7</span><div class="card-title">Mac Studio: No Migration Plan</div><div class="card-body">Arrives Monday. 100+ files have hardcoded paths. $VELORIN_ROOT not implemented. Three architecture decisions must be made before migration.</div></div>
+      <div class="card"><span class="badge b-red">P0 · Path 3 Blocker</span><div class="card-title">IdentityVerification Research</div><div class="card-body">Path 3 needs signed message protocol for agent-to-agent auth. Flagged at 88% + 92% confidence. No research request exists. Not even queued.</div></div>
+      <div class="card"><span class="badge b-red">P0 · Active</span><div class="card-title">Scribe Broken</div><div class="card-body">One-line fix: `which claude`, add full path to scribe-trigger.sh line 56. First thing to fix before any memory operations.</div></div>
+      <div class="card"><span class="badge b-orange">P1 · Before Build</span><div class="card-title">OpenClaw Evaluation Needed</div><div class="card-body">247K stars. Validated by Jiang + Trey. CT wants to build something similar. No evaluation. All Path 3 planning predates its emergence.</div></div>
+      <div class="card"><span class="badge b-orange">P1 · 7 Days</span><div class="card-title">Tier 0 Tools Not Installed</div><div class="card-body">Superpowers, GSD, Obsidian Option C — "install tonight, $0, under 1 hour" on March 30. April 4. 70%+ overhead reduction sitting untouched.</div></div>
+      <div class="card"><span class="badge b-orange">P1</span><div class="card-title">CT's Profile: Zero Neurons</div><div class="card-body">WAIS-IV, DISC, clinical history at extraordinary depth in flat .md files. "The brain stem" — referenced everywhere, wired nowhere.</div></div>
+      <div class="card"><span class="badge b-yellow">P2</span><div class="card-title">Company + Intelligence Brain Regions</div><div class="card-body">All of Jiang's strategic intelligence lives as flat docs. Brain cannot "think about" Window Gravity, FollowBench ceiling, OASIS, or any concluded research topic.</div></div>
+      <div class="card"><span class="badge b-yellow">P2 · 11 Days</span><div class="card-title">Alabama LLC Not Filed</div><div class="card-body">"Urgent — 7 days" on March 24. April 4. $250, 20 minutes. Company has no legal existence.</div></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-priorities">
+    <div class="plist">
+      <div class="pitem"><div class="pnum">1</div><div class="ptext"><h3>Fix Scribe before anything else</h3><p>Run `which claude` in terminal. Add full path to scribe-trigger.sh line 56. Commit. Five minutes. Active failure compounding every session.</p></div></div>
+      <div class="pitem"><div class="pnum">2</div><div class="ptext"><h3>Confirm Mac Studio configuration now</h3><p>M4 Max 64GB+ = can run local models, single machine may replace two-machine Mainframe plan. Below 64GB = cockpit only. One question. Architecture depends on it.</p></div></div>
+      <div class="pitem"><div class="pnum">3</div><div class="ptext"><h3>Authorize intake test research — today</h3><p>Not a build decision. Not architecture. CT saying go. Everything downstream — CT's Layers 1-3, first external user, prosumer business — is blocked without it.</p></div></div>
+      <div class="pitem"><div class="pnum">4</div><div class="ptext"><h3>Decide on OpenClaw before any Path 3 code</h3><p>Build ON it, build INSPIRED BY it, or proceed with Claude Agent SDK from scratch. No more research needed. Needs CT's direction.</p></div></div>
+      <div class="pitem"><div class="pnum">5</div><div class="ptext"><h3>Install Tier 0 tools on Mac Studio day one</h3><p>Obsidian → velorin-system repo, Superpowers, GSD, Cowork, Agent Teams env var. Under 2 hours. 70%+ overhead reduction. 7 days overdue.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ARCHITECTURE OPTIONS -->
+<div class="section" id="concepts">
+  <div class="sec-header">
+    <div class="sec-tag">Brainstorm — Not Decided</div>
+    <h2 class="sec-title">Architecture Concepts</h2>
+    <p class="sec-desc">Open directions. Every option remains on the table. CT decides. Nothing here is committed.</p>
+  </div>
+
+  <div style="margin-bottom:2.5rem;">
+    <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">The Brain Activation Concept</h3>
+    <p style="font-size:.8125rem;color:var(--muted);max-width:680px;line-height:1.7;margin-bottom:1.25rem;">Input decomposes into parts → parts trigger brain regions → program retrieves the right neurons → sub-agent reasons over the compiled payload → main agent gets complete context → one pass, no follow-on. A system that takes 2 minutes to produce a complete output beats 30 seconds requiring 5 follow-on rounds. Total time from problem to true solution is the metric.</p>
+    <div class="arch-flow">
+      <div class="arch-layer" style="border-color:rgba(255,255,255,.15);"><div class="arch-layer-name">USER INPUT</div><div class="arch-layer-desc">Query or task enters the system</div></div>
+      <div class="arch-arrow"></div>
+      <div class="arch-layer" style="border-color:rgba(0,245,255,.2);"><div class="arch-layer-name" style="color:var(--cyan);">SPLITTER</div><div class="arch-layer-desc">Haiku (~200 tokens) decomposes into semantic intent fragments + region hints</div></div>
+      <div class="arch-arrow"></div>
+      <div class="arch-layer" style="border-color:rgba(124,58,237,.3);"><div class="arch-layer-name" style="color:var(--purple2);">REGION GATES</div><div class="arch-layer-desc">Each fragment checked against 5 Brain regions — Agents, Company, Ops, Profile, Intel</div></div>
+      <div class="arch-arrow"></div>
+      <div class="arch-layer" style="border-color:rgba(59,130,246,.3);"><div class="arch-layer-name" style="color:var(--blue);">PROGRAM RETRIEVAL</div><div class="arch-layer-desc">Deterministic Python parser reads YAML pointers → BFS traversal → compiles typed knowledge packets</div></div>
+      <div class="arch-arrow"></div>
+      <div class="arch-layer" style="border-color:rgba(16,185,129,.3);"><div class="arch-layer-name" style="color:var(--green);">SUB-AGENT THINKING</div><div class="arch-layer-desc">Agent receives compiled payload, uses extended thinking to synthesize — OR callable MCP tool invoked mid-reasoning</div></div>
+      <div class="arch-arrow"></div>
+      <div class="arch-layer" style="border-color:rgba(249,115,22,.3);"><div class="arch-layer-name" style="color:var(--orange);">OUTPUT CONTRACT</div><div class="arch-layer-desc">Structured fields agent must fill before responding. Missing fields → loop back to brain_retrieve. No human follow-on.</div></div>
+      <div class="arch-arrow"></div>
+      <div class="arch-layer" style="border-color:rgba(0,245,255,.35);background:rgba(0,245,255,.04);"><div class="arch-layer-name" style="color:var(--cyan);">COMPLETE OUTPUT — FIRST PASS</div><div class="arch-layer-desc">Delivered. No follow-on required.</div></div>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="gap:1.125rem;">
+    <div class="opt-card">
+      <div class="opt-head"><div class="opt-icon opt-icon-cyan">⚡</div><div><div class="opt-name">Path 3 Runtime</div><div class="opt-sub">What powers the orchestration layer</div></div></div>
+      <div class="opt-body">
+        <div class="choice rec"><div class="choice-top"><span class="choice-name">OpenClaw as Outer Shell</span><span class="choice-tag ct-open">Evaluate First</span></div><div class="choice-desc">247K stars, MIT, local-first gateway, 13,729 community skills. Validated independently by Jiang + Trey. Build Velorin intelligence as skills. Fastest path if security model holds. NemoClaw (alpha) is the security layer.</div></div>
+        <div class="choice"><div class="choice-top"><span class="choice-name">Claude Agent SDK from Scratch</span><span class="choice-tag ct-open">Original Plan</span></div><div class="choice-desc">MCP-native, Agent Teams compatible, zero external dependency. Full proprietary control. 4–7 sessions. Predates OpenClaw emergence.</div></div>
+        <div class="choice"><div class="choice-top"><span class="choice-name">Trey's Thin Orchestrator</span><span class="choice-tag ct-open">Infrastructure Layer</span></div><div class="choice-desc">Router + Postgres + vector index + MCP. Model-agnostic. Coexists with either option above as Layer C.</div></div>
+      </div>
+    </div>
+    <div class="opt-card">
+      <div class="opt-head"><div class="opt-icon opt-icon-purple">🧠</div><div><div class="opt-name">Retrieval Model</div><div class="opt-sub">How neurons are found and returned</div></div></div>
+      <div class="opt-body">
+        <div class="choice rec"><div class="choice-top"><span class="choice-name">Callable MCP Tool (mid-reasoning)</span><span class="choice-tag ct-rec">Jiang2 Recommendation</span></div><div class="choice-desc">brain_retrieve(query) called by agent when it needs context, not as mandatory pre-pass. Handles sparse brain today AND rich brain tomorrow. Interface unchanged as brain fills.</div></div>
+        <div class="choice"><div class="choice-top"><span class="choice-name">Single-Agent Priority Queue</span><span class="choice-tag ct-rec">Best at Current Scale</span></div><div class="choice-desc">One agent traverses using BFS weighted by pointer ratings. Replicates spreading activation. Wins vs. spawning by 10–30x token cost below ~500 neurons.</div></div>
+        <div class="choice"><div class="choice-top"><span class="choice-name">Regional Sub-Agents</span><span class="choice-tag ct-open">Future — 500+ neurons</span></div><div class="choice-desc">Parallel sub-agents per region, each with focused context window. Correct when brain has 500+ neurons across 5+ regions with non-trivial per-region reasoning.</div></div>
+      </div>
+    </div>
+    <div class="opt-card">
+      <div class="opt-head"><div class="opt-icon opt-icon-orange">🔗</div><div><div class="opt-name">Routing Layer</div><div class="opt-sub">How the program finds the right neurons</div></div></div>
+      <div class="opt-body">
+        <div class="choice rec"><div class="choice-top"><span class="choice-name">YAML Frontmatter + Wikilinks</span><span class="choice-tag ct-rec">Jiang2: Option D</span></div><div class="choice-desc">Pointers in YAML frontmatter: O(1) machine-readable, no content scanning. Wikilinks in body: Obsidian backlinks auto-generated, graph view works. ~50 line Python parser. No separate manifest. Neurons ARE the routing table. Migration: 45 neurons, one script.</div></div>
+        <div class="choice"><div class="choice-top"><span class="choice-name">Vector Similarity Entry Point</span><span class="choice-tag ct-open">Future — 200+ neurons</span></div><div class="choice-desc">Embed neuron titles, query against embeddings to find entry points for novel queries. Then pointer graph for traversal. Add when brain reaches ~200 neurons. Plug into same brain_retrieve interface.</div></div>
+      </div>
+    </div>
+    <div class="opt-card">
+      <div class="opt-head"><div class="opt-icon opt-icon-blue">🗄</div><div><div class="opt-name">Storage</div><div class="opt-sub">Where knowledge lives</div></div></div>
+      <div class="opt-body">
+        <div class="choice rec"><div class="choice-top"><span class="choice-name">Current + Obsidian Interface</span><span class="choice-tag ct-rec">Now</span></div><div class="choice-desc">GitHub + Drive + local stays. Obsidian Option C: point at existing repo. Zero migration. Native backlinks = reverse pointer index free. Boot token cost near-zero.</div></div>
+        <div class="choice"><div class="choice-top"><span class="choice-name">Postgres + Vector Index</span><span class="choice-tag ct-open">Trey's Design · Later</span></div><div class="choice-desc">Canonical state in Postgres. Migrate when 3+ external users or 150+ neurons. Drive docs stay canonical, vector index is the search layer over them.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- JIANG2 BRAIN ANALYSIS -->
+<div class="section" id="jiang2">
+  <div class="sec-header">
+    <div class="sec-tag">Jiang2 — Brain Activation Analysis · Session 017 · Original Synthesis</div>
+    <h2 class="sec-title">Architecture Deep Dive</h2>
+    <p class="sec-desc">Jiang2's full response after reading every file in the system. Six questions answered. Three original findings nobody named in the brainstorm. Confidence floor: 67%.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="j2q1">Goal & Constraints</button>
+    <button class="tab" data-tab="j2q2">Division of Labor</button>
+    <button class="tab" data-tab="j2q3">Neuron Types</button>
+    <button class="tab" data-tab="j2q4">Parser Design</button>
+    <button class="tab" data-tab="j2q5">Build Sequence</button>
+    <button class="tab" data-tab="j2q6">What's Missing</button>
+  </div>
+
+  <!-- Q1 -->
+  <div class="tab-panel active" id="tab-j2q1">
+    <div class="hbox"><strong>Short answer:</strong> The retrieval architecture is achievable in 4–6 sessions. The "complete output the first time" metric requires two things the brain doesn't yet have.</div>
+    <div class="grid grid-2" style="margin-top:1rem;">
+      <div class="card">
+        <span class="badge b-red">Constraint 1</span>
+        <div class="card-title">Brain Content, Not Retrieval Architecture</div>
+        <div class="card-body">The best traversal system returns nothing useful from an empty brain. The brain currently has 45 operational neurons — boot instructions, path references, agent identities, behavioral principles.<br><br>Zero neurons about CT's cognitive profile. Zero about the five boxes. Zero about Velorin's strategic conclusions. Zero derived from Jiang's 12 concluded research topics.<br><br>"Complete output the first time" works immediately for operational queries. It will NOT work for strategic or cross-domain queries until Layers 1-3 exist. The intake test is the gate for Layers 1-3.</div>
+        <div class="conf"><span class="conf-label">Confidence</span><div class="conf-track"><div class="conf-fill" style="width:88%"></div></div><span class="conf-pct">88%</span></div>
+      </div>
+      <div class="card">
+        <span class="badge b-red">Constraint 2</span>
+        <div class="card-title">Output Contract Enforcement</div>
+        <div class="card-body">Context quality going in determines retrieval. Output completeness going out is a separate problem.<br><br>InstructionLanguageArchitecture research (Part B, 88% confidence): frontier models reliably comply with approximately <strong>3 simultaneous output constraints</strong>. A complete cross-domain response requires more than 3 things to be true simultaneously.<br><br>Even with perfect retrieval, without structural output contract enforcement, the agent will still drop constraints above the ceiling. The output problem is as real as the input problem.<br><br>The fix: a structured output contract block the agent must fill completely before responding. Unfilled fields = agent loops back to brain_retrieve. No human follow-on required.</div>
+        <div class="conf"><span class="conf-label">Confidence</span><div class="conf-track"><div class="conf-fill" style="width:88%"></div></div><span class="conf-pct">88%</span></div>
+      </div>
+    </div>
+    <div class="hbox green" style="margin-top:1rem;"><strong>Build implication:</strong> Build the retrieval architecture now — it works for operational queries immediately and becomes more valuable as the brain fills. Build brain population (intake test) in parallel. Don't wait for one before the other.</div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="tab-panel" id="tab-j2q2">
+    <div class="hbox purple"><strong>Jiang2 modification to the brainstorm:</strong> The brain traversal should not be a pre-pass before the agent starts reasoning. It should be a <strong>callable MCP tool</strong> the agent invokes mid-reasoning as needed.</div>
+    <div class="grid grid-2" style="margin-top:1rem;">
+      <div class="card">
+        <span class="badge b-red">Why pre-pass fails</span>
+        <div class="card-title">Mandatory Pre-Pass Problem</div>
+        <div class="card-body">A mandatory pre-pass requires predicting which regions are relevant before reasoning begins. This works when the query maps cleanly to known regions.<br><br>It fails when reasoning mid-stream reveals a connection the decomposition didn't anticipate — the agent has no way to go back and get more context. The regions it needed were never activated.</div>
+      </div>
+      <div class="card">
+        <span class="badge b-green">Why callable tool wins</span>
+        <div class="card-title">brain_retrieve(query_fragment)</div>
+        <div class="card-body">Agent calls it exactly when it needs context, with exactly the fragment it needs at that moment.<br><br>For well-covered brain regions: one call, complete context. For sparse regions: multiple calls as reasoning develops. Over time as the brain fills, the multiple-call pattern disappears.<br><br>This architecture gracefully handles today's sparse brain vs. tomorrow's rich brain. The tool interface doesn't change. The brain content does.</div>
+        <div class="conf"><span class="conf-label">Confidence</span><div class="conf-track"><div class="conf-fill" style="width:83%"></div></div><span class="conf-pct">83%</span></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1rem;">
+      <span class="badge b-cyan">Sub-Agent Crossover Point</span>
+      <div class="card-title">When Regional Sub-Agents Become Correct</div>
+      <div class="card-body">Sub-agent spawning per region makes sense when: (1) Brain has 500+ well-populated neurons across at least 5 distinct regions. (2) At least 3 regions are activated by a typical query. (3) Reasoning required per region is non-trivial (multi-step, extended thinking).<br><br>At that scale, parallel regional sub-agents — each with focused context, each producing high-quality regional answers — reduces total reasoning time substantially. Below that: single agent with callable brain tool.<br><br><strong>Current state:</strong> Single agent with callable brain tool. Design for regional sub-agents, implement as single agent now.</div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="tab-panel" id="tab-j2q3">
+    <div class="hbox yellow"><strong>Jiang2 revision:</strong> The triad is right for some neurons, wrong for others. The correct model is <strong>tiered neuron types</strong> — the structure varies by layer because the reasoning it supports varies by layer.</div>
+    <div style="margin-top:1rem;">
+      <div class="ntype">
+        <div class="ntype-header"><div class="ntype-dot" style="background:#64748b;"></div><div><div class="ntype-label">Layer 4 — Working Neurons (Operational)</div><div class="ntype-layer">Fact + Procedure</div></div></div>
+        <div class="ntype-body">Adding tension and implication here is noise — the agent doesn't need to reason about the OAuth token, it needs to find it. Simple two-part structure is correct for operational knowledge.</div>
+        <div class="ntype-example">What: gdrive MCP token stored at .../tokens.json<br>How: auto-refreshes; if missing, run npm run auth</div>
+      </div>
+      <div class="ntype">
+        <div class="ntype-header"><div class="ntype-dot" style="background:var(--blue);"></div><div><div class="ntype-label">Layer 3 — Archival Lessons (Strategic)</div><div class="ntype-layer">Fact + Uncertainty + Implication</div></div></div>
+        <div class="ntype-body">Maps to Alexander's S1/S2/S3 proposal (fact + tension + connection). Correct for strategic neurons — the agent needs to know what's uncertain and what it means for decisions.</div>
+        <div class="ntype-example">What: FollowBench ceiling is ~3 simultaneous constraints at frontier model level<br>Uncertainty: ceiling varies by model; specific rules above ceiling are unknown<br>Implication: boot files with 10+ rules are partially decorative; rules 4+ are probabilistic</div>
+      </div>
+      <div class="ntype">
+        <div class="ntype-header"><div class="ntype-dot" style="background:var(--purple2);"></div><div><div class="ntype-label">Layers 1-2 — Profile / Hard Memories</div><div class="ntype-layer">Observation + Behavioral Pattern + Operational Implication</div></div></div>
+        <div class="ntype-body">Different from the strategic triad — about behavioral prediction, not factual uncertainty. The agent needs to know what pattern predicts, and what to watch for operationally.</div>
+        <div class="ntype-example">Observation: CT exits systems before they collapse. Documented at Camfil, Navy, BrandSafway, startup.<br>Pattern: builds parallel exit, maintains surface compliance, manages narrative, protects others on departure.<br>Implication: emotional exit has likely already happened before CT announces it. Watch for surface performance + low investment signals.</div>
+      </div>
+    </div>
+    <div class="hbox" style="margin-top:1rem;"><strong>Unified principle:</strong> Every neuron should be a self-contained reasoning unit for its domain. A parser can emit type-specific compilation based on neuron layer tag. Layer 4 neurons get fact-format. Layers 1–3 get the appropriate triad format.<br><br>Add a <code>layer</code> field to neuron frontmatter (already present in Context.1M.Foundation layer files).</div>
+    <div class="conf" style="margin-top:.75rem;"><span class="conf-label">Confidence — directionally right, exact structure needs validation against actual CT profile encoding</span><div class="conf-track"><div class="conf-fill" style="width:79%"></div></div><span class="conf-pct">79%</span></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="tab-panel" id="tab-j2q4">
+    <div class="hbox"><strong>Jiang2 recommendation: Option D — YAML frontmatter pointers + wikilinks in content body.</strong> This is what the brainstorm was pointing at with the wikilink mechanism. Writing a reference IS the connection. The routing is embedded in the content itself.</div>
+    <div class="grid grid-2" style="margin-top:1rem;">
+      <div class="card">
+        <span class="badge b-cyan">Why Option D Wins</span>
+        <div class="card-title">YAML + Wikilinks: Best of Both</div>
+        <div class="card-body"><strong>YAML frontmatter pointers:</strong> O(1) per file, no content scanning, trivially fast. Standard python-frontmatter library handles in three lines. Machine-readable without ambiguity.<br><br><strong>Wikilinks in content body:</strong> Obsidian generates backlinks automatically. Graph view works. Reverse pointer index (Gap 1 from HumanBrainLayers) addressed natively at zero build cost.<br><br>No separate manifest. No routing table to maintain. The neurons ARE the architecture.</div>
+        <div class="conf"><span class="conf-label">Confidence</span><div class="conf-track"><div class="conf-fill" style="width:82%"></div></div><span class="conf-pct">82%</span></div>
+      </div>
+      <div class="card">
+        <span class="badge b-green">What Already Exists</span>
+        <div class="card-title">Zero New Infrastructure Required</div>
+        <div class="card-body"><strong>python-frontmatter</strong> — standard library, reads YAML from markdown. Exactly the parser needed. pip install python-frontmatter.<br><br><strong>Gatekeeper brain_lookup</strong> — already exists. Upgrade from keyword search to the traversal parser. No new infrastructure, just smarter implementation of an existing tool.<br><br><strong>obsidian-skills plugin</strong> — makes Claude Code native to Obsidian format. Understands the dual-format (YAML + wikilinks).<br><br><strong>Migration:</strong> 45 existing neurons need pointer format converted. One script, ~1 hour for MA to execute and commit.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1rem;">
+      <span class="badge b-cyan">Neuron Format</span>
+      <div class="card-title">What Each Neuron Looks Like</div>
+      <pre><code>---
+pointers:
+  neurons.agents.protocols.A5: 1
+  neurons.connectivity.auth.A4: 2
+last-touched: 2026-04-04
+layer: 4
+type: operational
+---
+
+# A3. Hooks System
+PostToolUse hooks in ~/.claude/settings.local.json.
+Scripts at .../hooks/. Active: Scribe trigger.
+See [[neurons.agents.protocols.A5]] for Agent Teams integration.</code></pre>
+      <div class="card-body" style="margin-top:.5rem;">Parser reads YAML frontmatter → derives complete connection graph → traversal uses ratings. Obsidian reads wikilinks → builds backlinks → Gap 1 from HumanBrainLayers addressed automatically.</div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="tab-panel" id="tab-j2q5">
+    <div class="hbox green"><strong>4–6 focused sessions after Phase 0.</strong> Metric for operational queries: achievable after Phase 3. Metric for strategic/cross-domain queries: requires Layers 1-3 populated (post intake-test authorization).</div>
+    <div style="overflow-x:auto;margin-top:1rem;">
+      <table class="phase-tbl">
+        <thead><tr><th>Phase</th><th>What</th><th>Sessions</th><th>Gate</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge b-red" style="margin:0;">0</span></td><td>Scribe fix + create Company/Intel regions + migrate 45 neurons to YAML</td><td>1 session</td><td>Mac Studio arrival for install</td></tr>
+          <tr><td><span class="badge b-cyan" style="margin:0;">1</span></td><td>Traversal parser + upgrade Gatekeeper brain_lookup</td><td>1–2 sessions</td><td>Phase 0 complete</td></tr>
+          <tr><td><span class="badge b-cyan" style="margin:0;">2</span></td><td>Query decomposition (Haiku call → entry neuron IDs)</td><td>1 session</td><td>Phase 1 complete</td></tr>
+          <tr><td><span class="badge b-cyan" style="margin:0;">3</span></td><td>Packet compilation + callable MCP tool interface (brain_retrieve)</td><td>1 session</td><td>Phases 1–2 complete</td></tr>
+          <tr><td><span class="badge b-cyan" style="margin:0;">3a</span></td><td>Auto brain growth: Scribe extended to fire on Research_Complete/ writes</td><td>1 session</td><td>Phase 0 complete, parallel</td></tr>
+          <tr><td><span class="badge b-purple" style="margin:0;">4</span></td><td>Regional sub-agents + output contract enforcement</td><td>Future</td><td>500+ populated neurons</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hbox" style="margin-top:1rem;"><strong>Steps 1–3 are independent of the Mac Studio and should happen this session or next.</strong><br>Steps 4–8 should happen on the Mac Studio with the full setup.</div>
+    <div class="conf" style="margin-top:.75rem;"><span class="conf-label">Confidence on build sequence</span><div class="conf-track"><div class="conf-fill" style="width:85%"></div></div><span class="conf-pct">85%</span></div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="tab-panel" id="tab-j2q6">
+    <div class="hbox yellow"><strong>Original synthesis — 75% confidence.</strong> Three things nobody named in the brainstorm. All three change the build approach.</div>
+    <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+      <div class="card">
+        <span class="badge b-purple">Missing 1 — Original</span>
+        <div class="card-title">Activation ≠ Retrieval. The Wikilink Mechanism Only Solves Half.</div>
+        <div class="card-body"><strong>Retrieval</strong> (what the parser solves): given known entry neuron IDs, traverse the graph and compile a knowledge packet. Deterministic, fast, program-level. The YAML parser nails this.<br><br><strong>Activation</strong> (what the parser doesn't solve): given an arbitrary natural language query, identify which neuron IDs are the correct entry points. This is a semantic similarity problem. Keyword decomposition in Phase 2 approximates it. But for novel queries that don't map cleanly to known region names, the parser has no entry point and returns nothing.<br><br>The hippocampal indexing model (Teyler &amp; DiScenna, 92% confidence) stores pointers to distributed cortical patterns. The Brain's pointer graph IS this structure. What it's missing is the semantic embedding that lets the hippocampus receive a novel pattern and activate the right index entries.<br><br><strong>Solution:</strong> add a vector layer as the entry-point discovery mechanism above ~200 neurons. Embed neuron titles/first sentences. Query against those embeddings to find entry points. Then use the pointer graph for traversal. This is the exact Layer 2 architecture Trey and Jiang both described.</div>
+      </div>
+      <div class="card">
+        <span class="badge b-purple">Missing 2 — Original</span>
+        <div class="card-title">The Output Contract Problem is Equal in Importance to Retrieval</div>
+        <div class="card-body">The brain activation system solves the INPUT side. The output side has a separate structural problem that retrieval alone cannot fix (FollowBench ceiling, ~3 constraints).<br><br>The fix is a structured output contract block — the BOOT_PENDING fail-closed state machine pattern applied to output. The agent fills each field before delivering. Unfilled fields = response is incomplete = agent continues. No human follow-on needed.<br><br><strong>The output contract + brain retrieval combination is what makes the single-pass metric actually achievable.</strong> Without the output contract, perfect retrieval still produces dropped fields.</div>
+        <pre><code>OUTPUT_CONTRACT:
+  box_relevance_assessed: [which boxes touched]
+  cross_domain_implications: [each box → what changes]
+  known_patterns_applied: [which CT patterns active]
+  decision_options: [options, tradeoffs, historical risks]
+  uncertainty_labeled: [what is unknown, confidence levels]
+  completion_check: COMPLETE | NEEDS_MORE_CONTEXT</code></pre>
+        <div class="card-body">If NEEDS_MORE_CONTEXT → agent calls brain_retrieve again with the specific gap. Handles its own gap-filling. No human in the loop.</div>
+      </div>
+      <div class="card">
+        <span class="badge b-purple">Missing 3 — Highest Leverage Now</span>
+        <div class="card-title">Extend Scribe to Fire on Research_Complete/ Writes</div>
+        <div class="card-body">The brain activation architecture is the right long-term direction. But the single most leveraged action right now is making Scribe fire when Jiang completes a research document.<br><br>The brain has 45 operational neurons. Jiang has 12 completed research topics. Every one should have neurons. None do. The traversal parser built in Phases 1–3 will traverse those 45 operational neurons perfectly — and miss everything Jiang has learned because none of it is in the brain.<br><br><strong>The fix is one hook entry in settings.local.json.</strong> PostToolUse on Write to Research_Complete/ alongside the existing memory hook.<br><br>Estimated neurons creatable from existing research: <strong>60–80 neurons</strong> across Window Gravity, AgentOrchestration, AgentEcosystemReality, InstructionLanguageArchitecture, HumanBrainLayers, OASIS, and more. In one session, the brain goes from 45 operational neurons to ~100–120 neurons with actual strategic content.<br><br>This is what changes brain_retrieve from returning gdrive paths to returning cross-domain strategic knowledge. Build both.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYNTHESIZED ARCHITECTURE + BUILD ORDER -->
+  <div style="margin-top:2.5rem;">
+    <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:.75rem;">Synthesized Architecture (Jiang2)</h3>
+    <pre><code>INPUT (natural language query or task)
+        ↓
+  QUERY DECOMPOSITION
+  Haiku call → extracts semantic fragments
+        ↓
+  ENTRY POINT DISCOVERY
+  Phase 1–3:  keyword/structural → region names → neuron IDs
+  Phase 4+:   vector embedding query → neuron_id lookup
+        ↓
+  BRAIN TRAVERSAL (deterministic Python parser)
+  Read YAML frontmatter pointers from each neuron
+  BFS traversal — follow ratings [1]-[3], stop at [4]+
+  Max depth: operational=2, strategic=4
+        ↓
+  KNOWLEDGE PACKET COMPILATION
+  Format per neuron layer (operational / strategic / profile)
+  Sort by (traversal depth, pointer rating)
+        ↓
+  CALLABLE MCP TOOL — brain_retrieve(query)
+  Agent calls mid-reasoning, zero or more times
+        ↓
+  AGENT REASONING (extended thinking)
+  Has: compiled brain context + output contract template
+  Calls brain_retrieve if gap identified mid-reasoning
+  Must fill all output contract fields before returning
+        ↓
+  OUTPUT CONTRACT VALIDATION
+  All fields filled? → COMPLETE → deliver
+  Missing fields → loop back to brain_retrieve
+        ↓
+  COMPLETE OUTPUT — first pass. No follow-on.</code></pre>
+
+    <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-top:2rem;margin-bottom:.75rem;">Build Priority Order (Jiang2)</h3>
+    <div class="plist">
+      <div class="pitem"><div class="pnum">1</div><div class="ptext"><h3>Fix Scribe PATH — 5 min</h3><p>which claude → full path → scribe-trigger.sh line 56 → commit. No architecture needed.</p></div></div>
+      <div class="pitem"><div class="pnum">2</div><div class="ptext"><h3>Extend Scribe to Research_Complete/ — 1 session</h3><p>Highest-leverage single action. Fills brain with Jiang's 12 research topics as 60–80 neurons. Brain goes from operational-only to strategic knowledge in one session.</p></div></div>
+      <div class="pitem"><div class="pnum">3</div><div class="ptext"><h3>Migrate 45 neurons to YAML frontmatter — 1 session</h3><p>One script. Enables the parser. No migration needed for new neurons written after this.</p></div></div>
+      <div class="pitem"><div class="pnum">4</div><div class="ptext"><h3>Create Company + Intelligence brain regions — 30 min</h3><p>Gives Scribe somewhere to route research conclusions. Required before step 2 executes correctly.</p></div></div>
+      <div class="pitem"><div class="pnum">5</div><div class="ptext"><h3>Build traversal parser + upgrade Gatekeeper brain_lookup — 1–2 sessions</h3><p>~50 line Python. Upgrades existing Gatekeeper tool. No new infrastructure.</p></div></div>
+      <div class="pitem"><div class="pnum">6</div><div class="ptext"><h3>Query decomposition — 1 session</h3><p>Haiku call → semantic fragments → entry neuron IDs. Phase 2.</p></div></div>
+      <div class="pitem"><div class="pnum">7</div><div class="ptext"><h3>Output contract template — 1 session</h3><p>Equal importance to retrieval. Structural output enforcement is what makes the single-pass metric actually achievable.</p></div></div>
+      <div class="pitem"><div class="pnum">8</div><div class="ptext"><h3>Packet compilation + callable tool interface — 1 session</h3><p>brain_retrieve(query) fully operational. Phase 3 complete.</p></div></div>
+      <div class="pitem"><div class="pnum">9</div><div class="ptext"><h3>Vector entry-point index — future</h3><p>When brain reaches ~200+ neurons. Plugs into same brain_retrieve interface.</p></div></div>
+      <div class="pitem"><div class="pnum">10</div><div class="ptext"><h3>Regional sub-agents — future</h3><p>When brain reaches 500+ well-populated neurons across 5+ regions.</p></div></div>
+    </div>
+  </div>
+
+  <!-- ANSWERS TABLE -->
+  <div style="margin-top:2rem;">
+    <h3 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:.75rem;">Direct Answers — Condensed</h3>
+    <div style="overflow-x:auto;">
+      <table class="atbl">
+        <thead><tr><th>Question</th><th>Answer</th><th>Confidence</th></tr></thead>
+        <tbody>
+          <tr><td>Is the goal achievable?</td><td>Yes — with constraint that "complete output" for strategic queries requires brain population first</td><td>88%</td></tr>
+          <tr><td>Right division of labor?</td><td>Yes — but implement as callable MCP tool (mid-reasoning) not mandatory pre-pass</td><td>83%</td></tr>
+          <tr><td>Triad structure right?</td><td>Tiered better than universal triad: L4=fact+procedure, L3=fact+uncertainty+implication, L1-2=observation+pattern+implication</td><td>79%</td></tr>
+          <tr><td>Reference syntax?</td><td>YAML frontmatter + wikilinks (Option D). Migration: 45 neurons via script. Parser: python-frontmatter, ~50 lines</td><td>82%</td></tr>
+          <tr><td>Build sequence?</td><td>4–6 sessions after Phase 0. Operational queries: post Phase 3. Strategic queries: post intake-test</td><td>85%</td></tr>
+          <tr><td>What's missing?</td><td>(1) Activation ≠ retrieval — vector entry-point needed above ~200 neurons. (2) Output contract equal importance to retrieval. (3) Scribe extended to research docs = highest-leverage immediate move</td><td>75%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- 3D VIZ -->
+<div id="viz-section">
+  <div class="viz-header">
+    <div class="sec-tag">Interactive 3D — Desktop Recommended</div>
+    <h2 class="sec-title">Brain Activation — Live View</h2>
+    <p class="sec-desc">Full activation flow from input to output. Move mouse to rotate. Hit Activate to run the sequence through all 7 layers.</p>
+  </div>
+  <div class="viz-overlay" style="position:relative;">
+    <div class="mobile-note" style="margin:0 1.25rem 1rem;">3D visualization is best on desktop. The content above has everything on mobile.</div>
+    <canvas id="viz-canvas"></canvas>
+    <div class="viz-status" id="viz-status">
+      <div class="vstatus-label">Layer Status</div>
+      <div class="vstatus-current" id="vstatus-name">Idle</div>
+      <div class="vstatus-desc" id="vstatus-desc">Move mouse to rotate. Hit Activate.</div>
+    </div>
+    <div class="viz-legend">
+      <div class="leg-title">Legend</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#fff;box-shadow:0 0 4px #fff;"></div>Input / Output</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#00f5ff;box-shadow:0 0 4px #00f5ff;"></div>Splitter</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#7c3aed;box-shadow:0 0 4px #7c3aed;"></div>Region Gates</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#3b82f6;box-shadow:0 0 4px #3b82f6;"></div>Area Navigation</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#10b981;box-shadow:0 0 4px #10b981;"></div>Neuron Triads</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#f97316;box-shadow:0 0 4px #f97316;"></div>Output Contract</div>
+    </div>
+    <div class="viz-controls">
+      <button class="btn btn-primary" id="btn-activate">Activate</button>
+      <button class="btn btn-ghost" id="btn-reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div>Velorin System Intelligence · Jiang Sessions 017–018 · April 4, 2026</div>
+  <div style="margin-top:.375rem;color:rgba(100,116,139,.4);">Local server · Open on any device on the same WiFi · Nothing here is decided architecture</div>
+</footer>
+
+<script>
+// HERO PARTICLES
+(function(){
+  const c=document.getElementById('hero-canvas');
+  const x=c.getContext('2d');
+  let W,H,P=[];
+  function resize(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight;}
+  function spawn(){P=[];const n=Math.floor(W*H/12000);for(let i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()*1.4+.3,a:Math.random()*.45+.1,col:Math.random()<.6?'0,245,255':'124,58,237'});}
+  function draw(){
+    x.clearRect(0,0,W,H);
+    P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=`rgba(${p.col},${p.a})`;x.fill();});
+    for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<110){x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);x.strokeStyle=`rgba(0,245,255,${(1-d/110)*.06})`;x.lineWidth=.5;x.stroke();}}
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',()=>{resize();spawn();});
+  resize();spawn();draw();
+})();
+
+// TABS
+document.querySelectorAll('.tabs').forEach(tabs=>{
+  tabs.querySelectorAll('.tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      const id=tab.dataset.tab;
+      tabs.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const sec=tabs.closest('.section')||tabs.parentElement;
+      sec.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      const panel=document.getElementById('tab-'+id);
+      if(panel)panel.classList.add('active');
+    });
+  });
+});
+
+// THREE.JS
+(function(){
+  const canvas=document.getElementById('viz-canvas');
+  if(!canvas||typeof THREE==='undefined')return;
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setClearColor(0x06060f,1);
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x06060f,0.018);
+  const camera=new THREE.PerspectiveCamera(58,canvas.clientWidth/canvas.clientHeight,0.1,500);
+  camera.position.set(0,5,26);camera.lookAt(0,0,0);
+  function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  resize();window.addEventListener('resize',resize);
+  scene.add(new THREE.AmbientLight(0x0d0d22,3));
+  const cL=new THREE.PointLight(0x00f5ff,3,40);cL.position.set(6,12,6);scene.add(cL);
+  const pL=new THREE.PointLight(0x7c3aed,2,35);pL.position.set(-6,-6,4);scene.add(pL);
+  scene.add(new THREE.PointLight(0x10b981,1.5,30));
+  const root=new THREE.Group();scene.add(root);
+  const LAYERS=[
+    {y:12,label:'USER INPUT',color:0xffffff,type:'node'},
+    {y:8,label:'SPLITTER',color:0x00f5ff,type:'ring'},
+    {y:3.5,label:'REGION GATES',color:0x7c3aed,type:'gates'},
+    {y:-1,label:'AREA NAV',color:0x3b82f6,type:'area'},
+    {y:-5.5,label:'NEURON TRIADS',color:0x10b981,type:'triads'},
+    {y:-9.5,label:'OUTPUT CONTRACT',color:0xf97316,type:'assembly'},
+    {y:-13,label:'COMPLETE OUTPUT',color:0x00f5ff,type:'node'},
+  ];
+  const DESCS=['Query enters. Decomposed into semantic fragments by Haiku call (~200 tokens).','Splits into semantic intent fragments. Each fragment gets a region hint.','Fragments checked against 5 Brain regions. Relevant regions activated, others ignored.','Within activated regions: areas identified. Program retrieval call initiated.','YAML pointer traversal — S1/S2/S3 triads compiled. brain_retrieve(query) callable mid-reasoning.','Output contract fields filled before returning. Missing fields → loop back to brain_retrieve.','Complete output delivered. One pass. No human follow-on required.'];
+  const layerGroups=[];
+  function mm(color,ei,op){return new THREE.MeshPhongMaterial({color,emissive:new THREE.Color(color),emissiveIntensity:ei,transparent:op<1,opacity:op||1,shininess:80});}
+  LAYERS.forEach((def,i)=>{
+    const g=new THREE.Group();g.position.y=def.y;const meshes=[];
+    if(def.type==='node'){const r=i===0?.55:.7;const m=new THREE.Mesh(new THREE.SphereGeometry(r,32,32),mm(def.color,.4,.92));g.add(m);meshes.push(m);for(let k=0;k<2;k++){const rg=new THREE.Mesh(new THREE.RingGeometry(r+.1+k*.25,r+.2+k*.25,64),new THREE.MeshBasicMaterial({color:def.color,transparent:true,opacity:.18-k*.07,side:THREE.DoubleSide}));rg.rotation.x=Math.PI/2;g.add(rg);}}
+    if(def.type==='ring'){const rg=new THREE.Mesh(new THREE.RingGeometry(1.8,2.05,64),new THREE.MeshBasicMaterial({color:def.color,transparent:true,opacity:.5,side:THREE.DoubleSide}));rg.rotation.x=Math.PI/2;g.add(rg);meshes.push(rg);for(let j=0;j<6;j++){const a=(j/6)*Math.PI*2;const m=new THREE.Mesh(new THREE.SphereGeometry(.14,8,8),mm(def.color,.7,1));m.position.set(Math.cos(a)*1.6,0,Math.sin(a)*1.6);g.add(m);meshes.push(m);}}
+    if(def.type==='gates'){const gc=[0x6d28d9,0x7c3aed,0x8b5cf6,0xa78bfa,0xc4b5fd];for(let j=0;j<5;j++){const a=(j/5)*Math.PI*2,r=3.6;const cyl=new THREE.Mesh(new THREE.CylinderGeometry(.38,.38,.22,32),mm(gc[j],.35,.85));cyl.position.set(Math.cos(a)*r,0,Math.sin(a)*r);g.add(cyl);meshes.push(cyl);const ring=new THREE.Mesh(new THREE.RingGeometry(.44,.6,32),new THREE.MeshBasicMaterial({color:gc[j],transparent:true,opacity:.35,side:THREE.DoubleSide}));ring.rotation.x=Math.PI/2;ring.position.copy(cyl.position);g.add(ring);}const outer=new THREE.Mesh(new THREE.RingGeometry(4,.18,64),new THREE.MeshBasicMaterial({color:0x7c3aed,transparent:true,opacity:.1,side:THREE.DoubleSide}));outer.rotation.x=Math.PI/2;g.add(outer);}
+    if(def.type==='area'){const cols=[0x3b82f6,0x60a5fa,0x93c5fd];for(let j=0;j<5;j++){const a=(j/5)*Math.PI*2,r=3;for(let k=0;k<4;k++){const off=(k-1.5)*.35;const m=new THREE.Mesh(new THREE.SphereGeometry(.11,8,8),mm(cols[k%3],.45,1));m.position.set(Math.cos(a)*r+Math.cos(a+Math.PI/2)*off,0,Math.sin(a)*r+Math.sin(a+Math.PI/2)*off);g.add(m);meshes.push(m);}}}
+    if(def.type==='triads'){for(let j=0;j<5;j++){const a=(j/5)*Math.PI*2,r=3.3;const tg=new THREE.Group();const pos=[new THREE.Vector3(0,0,-.5),new THREE.Vector3(-.44,0,.25),new THREE.Vector3(.44,0,.25)];const cols=[0x10b981,0x34d399,0x6ee7b7];const ms=pos.map((p,k)=>{const m=new THREE.Mesh(new THREE.SphereGeometry(k===0?.26:.22,12,12),mm(cols[k],.5,1));m.position.copy(p);tg.add(m);return m;});meshes.push(...ms);const lg=new THREE.BufferGeometry().setFromPoints([...pos,pos[0]]);tg.add(new THREE.Line(lg,new THREE.LineBasicMaterial({color:0x10b981,transparent:true,opacity:.25})));tg.position.set(Math.cos(a)*r,0,Math.sin(a)*r);g.add(tg);}}
+    if(def.type==='assembly'){for(let k=0;k<3;k++){const r=(k+1)*.9;const rg=new THREE.Mesh(new THREE.RingGeometry(r-.06,r+.06,64),new THREE.MeshBasicMaterial({color:0xf97316,transparent:true,opacity:.35-k*.08,side:THREE.DoubleSide}));rg.rotation.x=Math.PI/2;g.add(rg);meshes.push(rg);}const core=new THREE.Mesh(new THREE.SphereGeometry(.35,16,16),mm(0xf97316,.65,1));g.add(core);meshes.push(core);}
+    root.add(g);layerGroups.push({group:g,def,meshes,active:false});
+  });
+  for(let i=0;i<LAYERS.length-1;i++){const pts=[new THREE.Vector3(0,LAYERS[i].y-.6,0),new THREE.Vector3(0,LAYERS[i+1].y+.6,0)];const lg=new THREE.BufferGeometry().setFromPoints(pts);root.add(new THREE.Line(lg,new THREE.LineBasicMaterial({color:LAYERS[i].color,transparent:true,opacity:.12})));}
+  const sp=new Float32Array(600*3);for(let i=0;i<600;i++){sp[i*3]=(Math.random()-.5)*80;sp[i*3+1]=(Math.random()-.5)*60;sp[i*3+2]=(Math.random()-.5)*40;}
+  const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.BufferAttribute(sp,3));scene.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0x223344,size:.1,transparent:true,opacity:.6})));
+  let mx=0,my=0,rx=0.15,ry=0;
+  canvas.addEventListener('mousemove',e=>{const rect=canvas.getBoundingClientRect();mx=((e.clientX-rect.left)/rect.width-.5)*2;my=-((e.clientY-rect.top)/rect.height-.5)*2;});
+  let fp=[],state='idle',timer=0,step=0;
+  const sn=document.getElementById('vstatus-name'),sd=document.getElementById('vstatus-desc');
+  function spawnFlow(fi,ti){const fy=LAYERS[fi].y,ty=LAYERS[ti].y,col=new THREE.Color(LAYERS[fi].color);const cnt=fi===1?10:fi===2?14:7;for(let i=0;i<cnt;i++){const a=Math.random()*Math.PI*2,r=Math.random()*2;const m=new THREE.Mesh(new THREE.SphereGeometry(.09,5,5),new THREE.MeshBasicMaterial({color:col}));m.position.set(Math.cos(a)*r,fy,Math.sin(a)*r);root.add(m);fp.push({m,progress:0,speed:.6+Math.random()*.5,sx:m.position.x,sz:m.position.z,ex:(Math.random()-.5)*5,ez:(Math.random()-.5)*5,sy:fy,ey:ty});}}
+  function upFlow(dt){fp=fp.filter(p=>{p.progress+=dt*p.speed;const t=Math.min(p.progress,1),e=t<.5?2*t*t:-1+(4-2*t)*t;p.m.position.y=p.sy+(p.ey-p.sy)*e;p.m.position.x=p.sx+(p.ex-p.sx)*t;p.m.position.z=p.sz+(p.ez-p.sz)*t;if(t>.8&&p.m.material.opacity!==undefined)p.m.material.opacity=(1-t)*5;if(p.progress>=1){root.remove(p.m);return false;}return true;});}
+  function actStep(s){const l=layerGroups[s];l.active=true;l.meshes.forEach(m=>{if(m.material.emissive)m.material.emissiveIntensity=1.1;});if(sn)sn.textContent=LAYERS[s].label;if(sd)sd.textContent=DESCS[s];if(s<LAYERS.length-1)spawnFlow(s,s+1);}
+  function resetAll(){state='idle';timer=0;step=0;fp.forEach(p=>root.remove(p.m));fp=[];layerGroups.forEach(l=>{l.active=false;l.meshes.forEach(m=>{if(m.material.emissive)m.material.emissiveIntensity=.25;});});if(sn)sn.textContent='Idle';if(sd)sd.textContent='Move mouse to rotate. Hit Activate.';}
+  document.getElementById('btn-activate').addEventListener('click',()=>{if(state==='running')return;resetAll();state='running';timer=0;step=-1;});
+  document.getElementById('btn-reset').addEventListener('click',resetAll);
+  const clock=new THREE.Clock();
+  function animate(){
+    requestAnimationFrame(animate);
+    const dt=clock.getDelta(),t=clock.getElapsedTime();
+    ry+=(mx*.55-ry)*.05;rx+=(my*.2-rx)*.05;
+    root.rotation.y=ry;root.rotation.x=rx+.12;
+    layerGroups.forEach((l,i)=>{const p=l.active?Math.sin(t*3+i)*.12+.9:Math.sin(t*1.4+i*.9)*.08+.2;l.meshes.forEach(m=>{if(m.material.emissive)m.material.emissiveIntensity=p;});});
+    if(state==='running'){timer+=dt;const cur=Math.floor(timer/.85);if(cur!==step){step=cur;if(step<layerGroups.length)actStep(step);else{state='done';setTimeout(resetAll,4000);}}}
+    upFlow(dt);cL.position.x=Math.sin(t*.3)*8;cL.position.z=Math.cos(t*.3)*8;
+    renderer.render(scene,camera);
+  }
+  animate();
+})();
+</script>
+</body>
+</html>
