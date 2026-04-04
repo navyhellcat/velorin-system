@@ -29,9 +29,14 @@ last-touched: 2026-03-31
 Pointers: [1] neurons.agents.protocols.A9 | [1] A1 | [1] neurons.agents.protocols.A4 | [2] A2 | [2] neurons.agents.protocols.A1
 
 ### A6. Trey
-GPT-based agent (OpenAI custom GPT). Runs inside ChatGPT with a project box (project instructions + attached files). Accesses GitHub files via raw URLs. First validated boot: 2026-03-30, ~3 min cold boot with 4 sequential GitHub reads. Boot order: Operating Standards → Company DNA → Claude_Context_Profile → topline_profile.
-last-touched: 2026-03-30
+ChatGPT-based agent (NOT Perplexity — confirmed 2026-04-04). OpenAI custom GPT. Runs inside ChatGPT with a project box. Currently $25/month plan — deep research output is shallow (19-24 lines). Upgrade decision pending: Google AI Ultra ($249.99/month) is the current recommendation over ChatGPT Pro ($200/month) based on ecosystem value, API credits, and Jules GitHub write access. Research complete — see `Bot.Trey/Research_Complete/`. Accesses GitHub via raw URLs. Boot order: Operating Standards → Company DNA → Claude_Context_Profile → topline_profile.
+last-touched: 2026-04-04
 Pointers: [1] neurons.agents.protocols.A7 | [2] A4 | [3] neurons.agents.levelrules.A1
+
+### A8. CT's Brain Model (planned — not yet built)
+CT's own model. Will run locally on Mac Studio. Owns the Velorin brain — neurons, retrieval, Overseer role. Fine-tuned on Velorin knowledge corpus (neurons with confidence ≥ 0.8 are the training gate). This model is the center of Velorin — not Claude. Claude supervises and interfaces. CT's model routes tasks to external AI models (Claude, o3-pro, Gemini, others) as contractors. No dependency on any one AI company. Protocol between Claude and this model is not yet designed. Build begins after Mac Studio arrives April 7, 2026.
+last-touched: 2026-04-04
+Pointers: [1] neurons.operations.architecture.A9 | [1] neurons.operations.architecture.A8 | [2] A4 | [2] neurons.agents.roster.A5
 
 ### A7. Scribe
 Background Claude Code subprocess ("ghost bot"). Fires via PostToolUse hook on Write when MarcusAurelius writes a memory file. Classifies memory → Region → Area → Neuron: updates existing neurons, creates new ones, or writes escalation if brain structure is missing. Cannot create regions. Commits locally — MA pushes.

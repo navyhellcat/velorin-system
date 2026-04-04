@@ -26,9 +26,40 @@ last-touched: 2026-03-28
 Pointers: [1] A1 | [2] A4
 
 ### A4. Machine 1
-MacBook Air. macOS 12.7.6 (Monterey). Primary dev machine. Constraints: Homebrew Tier 3, compiles from source (5-10 min/package), no Docker/Ollama (Machine 2). Must run caffeinate.
-last-touched: 2026-03-28
-Pointers: [1] neurons.operations.tools.A1 | [2] neurons.operations.startup.A1 | [3] A3
+MacBook Air 2017. macOS Monterey. Interim dev machine. Intel i5, 8GB RAM. No local inference. Replaced by Mac Studio April 7, 2026.
+last-touched: 2026-04-04
+Pointers: [1] A8 | [1] neurons.operations.tools.A1 | [2] neurons.operations.startup.A1 | [3] A3
+
+### A8. Mac Studio — Primary Inference Host (arriving April 7, 2026)
+Mac Studio is the target machine for local model hosting. Apple Silicon, high unified memory, Thunderbolt 4, multi-monitor. This is where CT's own brain model will run. Architecture decisions should target Mac Studio specs. Do not start intensive local workloads on Machine 1.
+last-touched: 2026-04-04
+Pointers: [1] A9 | [1] neurons.operations.tools.A1 | [2] A4
+
+### A9. Velorin Architecture — Baseline Design (not resolute)
+CT owns the center of Velorin. The architecture:
+
+```
+Christian Taylor
+      ↓
+   Claude  (Supervisor + Interface — consistent face CT talks to)
+      ↓
+CT's Brain Model  (runs on Mac Studio — owns the neurons, makes routing decisions, fine-tuned on Velorin knowledge)
+      ↓
+External AI models called as tools when needed:
+  Claude (reasoning), o3-pro (math), Gemini Deep Think (frontier math), any future model
+```
+
+Key principles:
+- No dependency on any one AI company, model, or framework
+- Claude supervises and interfaces — does NOT own the brain
+- CT's model owns the brain — neurons, retrieval, confidence, Overseer role (eventually)
+- Other AI models are contractors dispatched by CT's brain model
+- The neuron build, PPR retrieval, fine-tune corpus = building CT's model's mind
+- Protocol between Claude and CT's brain model is the next design problem (not yet specified)
+
+This is baseline design — not resolute. Subject to evolution as Mac Studio arrives and build begins.
+last-touched: 2026-04-04
+Pointers: [1] A8 | [1] neurons.agents.roster.A5 | [2] neurons.agents.protocols.A1 | [2] A6
 
 ### A5. GitHub Repos
 Account: **navyhellcat**. Two repos:
