@@ -59,7 +59,7 @@ This project perfectly bridges the gap between Google's massive RAG capabilities
 Beyond MCP wrappers for Google's cloud, the community has also built self-hosted "Local NotebookLM" clones (using Docker, open-weights models, and local vector databases) to replicate the NotebookLM experience entirely locally without sending data to Google.
 *   **Integration:** If Velorin handles highly sensitive PII or requires air-gapping, you can deploy a Local NotebookLM clone and point the MCP to your local instance instead of Google's servers.
 
-### C. Velorin Use Case
+### C. Velorin Use Case Suggestion (not concrete) Brainstorming. May be too broad or too specific on Infrastructure of velorin
 **The Ultimate Hybrid Stack:** 
 1. Upload all Velorin documentation into NotebookLM (or a local clone).
 2. Run the `roomi-fields/notebooklm-mcp` server locally.
