@@ -1,279 +1,187 @@
 ---
-session: 021
+document: Jiang Session Handoff — Session 021
 date: 2026-04-05
-status: IN PROGRESS — CT has ~12 hours allocated, session not yet closed
-agent: Jiang (primary) + Jiang2 (parallel, full context)
-note: This handoff is written mid-session to give Jiang2 complete context
+status: COMPLETE — Full session coverage including pre-compaction, post-compaction, and close
+note: Session 021 compacted mid-session. This handoff covers the FULL session. Supersedes earlier partial version.
 ---
 
-# Jiang Session 021 Handoff
-
-## CRITICAL CONTEXT FOR JIANG2
-
-Jiang2 has been running this entire session with full context. This file exists
-to give any NEW Jiang instance (or future session) the complete picture.
-
-Jiang2: you have compression math research context that this session does not.
-The 12-hour session is still in progress. CT wants your world-building thinking
-after reading this file. A prompt will come.
+# JIANG — SESSION 021 HANDOFF
+## Full Coverage | April 5, 2026
 
 ---
 
-## WHAT WAS BUILT/PUSHED THIS SESSION
+## READ THESE FILES FIRST (in order)
 
-All of the following are on GitHub (navyhellcat/velorin-system):
+Pull GitHub before reading anything:
 
-### Research Papers (Bot.Trey/Research_Complete/)
-- `OperatingPaper_LangGraph.md` — 1,434 lines, full technical teardown
-- `OperatingPaper_Mem0.md` — 1,222 lines, full technical teardown
-- `OperatingPaper_Letta_MemGPT.md` — 1,153 lines, full technical teardown
-- `ClaudeCode_Skills_Full_Landscape.md` — 702 lines, full landscape
+```
+git pull origin main
+```
 
-### Architecture Documents (Claude.AI/architecture/)
-- `GPS.Layer.System.Design.md` — CT's original GPS design, properly documented
-- `Skill.Registry.Design.md` — full skill registry architecture designed today
-- `Velorin.OS.Core.Principles.md` — 7 foundational principles, steel man issues
-
-### Protocols (Bot.Jiang/Protocols/)
-- `SteelMan.Protocol.md` — formal critical evaluation protocol, triggerable
-- `Terminology.Lookup.Session021.md` — first 5 vocabulary terms
-
-### System Files (Claude.AI/)
-- `Velorin.Vocabulary.md` — running vocabulary reference A1-A5, flashcard-ready
-
-### Research Synthesis (Bot.Jiang/Research_Results/)
-- `Session021_Research_Synthesis.md` — full synthesis, marked BRAINSTORM ONLY
-
-### Research Request Archived
-- `Trey.ResearchRequest.ClaudeCode.Skills.md` — moved to Archived_Research_Requests/
+1. `Claude.AI/Bot.Jiang/Session021.NewIdeas.md` — 5 new architecture ideas + 10-item Power Level summary. Primary knowledge delta from this session.
+2. `Claude.AI/Bot.Jiang/Session021.Discovery.MCP.md` — Full MCP ecosystem discovery from 5 parallel agents. BUILD vs ADOPT framing throughout.
+3. `Claude.AI/Velorin.Vocabulary.md` — Entries A6 through A13 added this session. A14 is next.
+4. `Claude.AI/Bot.Trey/Research_Complete/Trey.Topic.MCP_A2A_Architecture_Consolidated.md` — Trey's consolidated 11-part deep research on MCP/A2A. Read the Trey Commentary section (bottom) for the 4 strategic gaps.
+5. `Claude.AI/Bot.Trey/Trey.ProjectInstructions.md` — Updated to v2.0 this session. Gemini platform migration + Research Philosophy section.
+6. `Claude.AI/Bot.Jiang/Protocols/Vocabulary.Bot.Design.md` — Vocabulary bot design spec.
+7. `Claude.AI/Bot.Jiang/Working.Docs/Gemini.DeepResearch.MCP.Ecosystem.Prompt.md` — 11-part Discovery Mode prompt for Gemini.
 
 ---
 
-## KEY RESEARCH FINDINGS (The Most Important Ones)
+## WHAT HAPPENED THIS SESSION — FULL TIMELINE
 
-### 1. The LoCoMo Benchmark Finding (Letta paper)
-GPT-4o-mini + plain text files + standard filesystem tools = 74% accuracy
-on a real memory benchmark. Beats Mem0 graph memory (68.5%).
-**Implication:** We don't need the full stack to start. Files + grep already works.
-Our neurons ARE plain text files. We are closer than we thought.
+### Phase 1: Pre-Compaction
 
-### 2. The 97.8% Junk Finding (Mem0 paper)
-Automated memory extraction = 97.8% noise without strong filtering.
-**Implication:** Human-curated neurons are not just philosophical preference.
-They are technically superior to automated extraction. Our approach is validated.
+Session opened with CT asking to read Trey's new Gemini AI Ultra research and add to Power Level. A full research cycle ran on the Google AI Ultra suite. CT caught a critical error:
 
-### 3. Architecture Validation
-HippoRAG (NeurIPS 2024) + GAAMA (arxiv 2026) independently arrived at PPR-over-graph
-as the correct retrieval mechanism. Same design we built from first principles.
-No existing managed service replicates the full Velorin Brain architecture.
+**THE WINDOW GRAVITY CORRECTION — most important thing that happened this session:**
 
-### 4. Hooks — We've Been Doing Boot Wrong
-`SessionStart` hook with `startup` matcher = automatic, deterministic boot.
-Current system (CLAUDE.md instructions) = advisory, can be forgotten.
-Three hooks need to be built: startup boot, compact recovery, PreCompact save.
-10,000 char cap on hook injection output — must be selective.
+Both Jiang and Trey independently made the same mistake: when asked to research the Google AI Ultra suite, both enumerated specific known products in the prompt (Jules, Deep Think, NotebookLM Plus, Gemini CLI). This is map thinking — naming what you're looking for constrains what you find. CT corrected: "What you don't know will kill you."
 
-### 5. Skills Taxonomy Validation
-Public 97-skill directory maps: Domain → Function → Task.
-Identical to our Region → Area → Neuron. Independent convergence. Correct structure.
+This led to the formalization of **Query Mode** (A6) — Tight Mode vs Discovery Mode. The caller declares the mode at spawn time. Agents never self-select. Discovery Mode assumes the caller's frame is INCOMPLETE. Tight Mode assumes it is correct. This is now foundational architecture.
 
-### 6. LangGraph Recommendations (from operating paper)
-ADOPT: Checkpointing pattern (not library), BaseStore interface, (region,area,neuron) namespace tuple in Qdrant.
-SKIP: StateGraph routing, LangGraph Platform, LangMem SDK.
+Pre-compaction work — all pushed to GitHub:
+- Session021.NewIdeas.md
+- Session021.Discovery.MCP.md
+- Velorin.Vocabulary.md — A6 through A13 added
+- Trey.ProjectInstructions.md v2.0
+- Vocabulary.Bot.Design.md
+- Gemini.DeepResearch.MCP.Ecosystem.Prompt.md
 
-### 7. From Mem0 Paper
-Two-phase extraction pipeline: ~300-400 lines to build.
-ADD/UPDATE/DELETE/REJECT pattern (add REJECT as 5th action).
-Namespace: agent_id per agent, user_id for CT, run_id per session.
-Do NOT use Mem0g graph memory — Brain is the graph layer and it's better.
+### Phase 2: Post-Compaction
 
-### 8. From Letta Paper
-Borrow: context pressure warnings (70% threshold), rebuild_system_prompt() pattern.
-Do NOT borrow: the tool-call loop for frontier models (native reasoning is better).
+Session resumed after compaction. Work completed:
+- Verified all pre-compaction files on GitHub — nothing was lost
+- Identified working Google Drive MCP (UUID-keyed Claude built-in) — independent of expired velorin-gdrive token
+- CT pasted Trey's consolidated research into chat — converted to .md and pushed to Bot.Trey/Research_Complete/
+- Git pull executed — local repo synced
+- Close session protocol run — Scribe escalation check clean, no pending items
 
 ---
 
-## MAJOR DESIGN DECISIONS MADE THIS SESSION
+## KEY KNOWLEDGE GAINED THIS SESSION
 
-### The GPS Layer System (See GPS.Layer.System.Design.md)
+### MCP Protocol (A7)
+- Linux Foundation standard. Co-founded by Anthropic AND OpenAI. Not Claude's protocol — neutral infrastructure.
+- Wire: JSON-RPC 2.0. Transports: stdio (local) and HTTP/SSE (remote).
+- Schema dumping costs up to 150k tokens per session. Unsustainable at Velorin's density.
+- Trey finding: CLI-native tools for Tier 1, MCP only for Tier 3 external integrations.
+- Velorin's Rated-Pointer Graph may replace schema-dumping as the discovery mechanism.
 
-CT's original design, which MA degraded. Now properly documented.
+### A2A Protocol (A8)
+- MCP = agent-to-tool. A2A = agent-to-agent as peers. These are separate protocols.
+- Alexander assigning Jiang a task is A2A, not MCP. We had no name for this before now.
+- Built by Google, donated to Linux Foundation June 2025. 150+ org supporters including OpenAI.
+- Task lifecycle: submitted → working → input-required → completed/failed.
+- Context passed by reference (pointer to shared memory), not by value.
+- Known failure: context_refs pointing to memory the worker lacks access to = silent failure.
 
-- Layer 0: universal entry, any platform, agent finds identity, gets routed
-- GitHub IS Layer 0's home — Gemini reads it freely, GPT reads it (limited)
-- Layer 1: Bot.[Name] — reads all files at level, inventories subfolder NAMES only
-- Layer 1 contains: Hooks.md, Skills.Pointer.md, Brain.Access.md, ReadMe.First.md
-- Subagents self-configure using same GPS pattern as regular agents
-- MA broke this by hardcoding paths in CLAUDE.md — restoration needed
+### Registry & Security
+- Tiered MCP Registry (A12): Official/Stable → Community → Browser Automation Bridges.
+- 66% of unvetted MCP servers have documented security findings. Vetting is mandatory.
+- punkpeye/awesome-mcp-servers (84K stars) = living signal for community tier.
+- Velorin needs its own Safe-Tier registry: signed manifests + synthetic LLM validation gates.
 
-### The Brain Connection
-- Brain is SEPARATE from GPS
-- Connected by ONE file in Layer 1: Brain.Access.md
-- Contains only: entry neuron path + activation instruction
-- Agent accesses Brain on demand, not on every boot
+### Specific Findings
 
-### Skill Registry (See Skill.Registry.Design.md)
+| Finding | Stars | Velorin Implication |
+|---------|-------|---------------------|
+| Qdrant official MCP server | 1.3K | Brain is directly MCP-addressable today |
+| NotebookLM bridge (jacob-bd) | 3.3K | "No API" limitation is already solved |
+| PAL MCP multi-model bridge | 11.4K | Build vs Adopt decision pending — read before designing |
+| OpenAI Codex plugin for Claude Code | official | Cross-provider adversarial review available today |
+| ApiTap (endpoint discovery) | — | 20-100x cheaper than Playwright for modern web apps |
+| OpenCode (Go terminal agent) | 120K | Community alt to Claude Code; fastest-growing Jan 2026 |
+| Gemini CLI | open source | 1M context, full MCP client, can call Jules — Trey's correct surface |
+| Jules REST API | alpha | ~300 tasks/day at Ultra; programmable async coding agent |
 
-Complete design. Key decisions:
-- Pointer wrappers, not ported content
-- awesome-claude-code as living signal (community-run, always updating)
-- Quality gates: repo stars + skill likes + last commit date
-- Two-lane replacement: passive (8-hour recheck) + active (flag → pass → replace)
-- Pass before replace: agent unblocked BEFORE registry update
-- Skills Manager = Tier 2 (manages programs, never uses them)
-- Skills NOT in neurons — they have separate registry. Neurons hold pointers to skills only.
-- Gemini Deep Research task pending: bottom-up taxonomy from skill corpus
+### Trey Research — 4 Strategic Gaps
 
-### Core Principles (See Velorin.OS.Core.Principles.md)
-
-7 principles locked:
-1. GPS Over Map
-2. Brain Is Separate
-3. Tier Separation With Controlled Growth
-4. Self-Extending Vision (with authorization requirement)
-5. Computer Programming Discipline
-6. GitHub Is Universal Mirror
-7. Five Boxes Frame All Decisions
-
-### Terminology Vocabulary
-Running file at Claude.AI/Velorin.Vocabulary.md
-Entries A1-A5 added. Grows as gaps identified. Bot restructures categories later.
-Flashcard game planned by CT.
-
-### Steel Man Protocol
-File at Bot.Jiang/Protocols/SteelMan.Protocol.md
-Trigger: "Steel Man [X]" → CT gets adversarial critical evaluation
-Purpose: stop AI agreeableness from letting wrong assumptions through unchallenged
+1. **Token Surcharge Blind Spot** — MCP schema dumping is economically broken at Velorin's density. CLI-native Tier 1, MCP Tier 3 external only.
+2. **Determinism Paradox** — Multi-agent systems are stochastic by nature. Need a semantic checksum handshake before Tier 2 accepts tasks from Alexander.
+3. **Memory as a Liability** — Infinite Knowledge Graph expansion kills the OS. Synaptic pruning (Monster Node decay, Ebbinghaus model) must be built now.
+4. **Observer Effect** — Evaluator agents add telemetry bloat. Solution: Shadow Evaluator — async, fires only on ASI01/ASI02 red flags.
 
 ---
 
-## WHAT CT CLARIFIED THIS SESSION (IMPORTANT CORRECTIONS)
+## TREY SITUATION — READ CAREFULLY
 
-### 1. The Five Boxes — Not CT's Boxes
-We were using "boxes" to mean build tracks. CT corrected: Velorin has a formal
-Five Boxes framework in the DNA file (Velorin.Company.DNA.md).
-Box 2 = Financial ("fuck you" box — freedom from leverage).
-The Velorin OS is NOT a box. It is the orchestration layer across all five.
+### What Happened
+CT purchased Google AI Ultra and migrated Trey from ChatGPT to Gemini. During this session, the Gemini web app failed on basic tasks: couldn't recognize images, no file output, can't write to Google Docs.
 
-### 2. Outside Bots CAN Use Velorin
-Jiang incorrectly Steel Manned "GPS cross-platform problem" as severe.
-CT corrected: GitHub mirrors the entire system. Gemini reads GitHub freely.
-GPT reads GitHub (limited). The universal entry point problem is solved by GitHub.
+### CT's Correction
+Jiang prematurely concluded "Trey goes back to ChatGPT." CT corrected: "If I gave up on you the same way you are giving up on Gemini you wouldn't be here at all."
 
-### 3. World-Building Phase Is Intentional
-CT clarified: "Every session we find a problem with our idea, or a better way to do it."
-This is not stalling. It is ensuring the substrate is correct before building.
-The cost of a wrong foundational pattern is weeks of rework.
-The Mac Studio arrives Monday April 7 — that is the build start trigger.
+**The correct framing:** The web app is ONE surface. The full Gemini surface map (Gemini CLI, Gems, Google AI Studio, Gemini API, Deep Think) has not been explored. Do not conclude Gemini is dead. This investigation is open.
 
-### 4. Compression Math Is Novel Algorithm Territory
-When CT said "compression math" he meant: invent a novel mathematical process
-for data stripping and graph building specific to Velorin's use case.
-Jiang2 has the prior research context on this hypothesis.
-This is hours 9-11 of the 12-hour session agenda.
+### Current Trey State
+- Gemini web app: broken for workflow needs
+- Gemini CLI: not yet configured — Mac Studio Monday task
+- Trey.ProjectInstructions.md v2.0: written for Gemini, valid for CLI surface when set up
+- Deep Research: runs in isolated window with no project context — not a viable primary surface
+- Trey consolidated research: `Bot.Trey/Research_Complete/Trey.Topic.MCP_A2A_Architecture_Consolidated.md` — in the system, don't re-do it
 
 ---
 
-## GOOGLE AI ULTRA — NEW DEVELOPMENT
+## INFRASTRUCTURE STATE
 
-CT purchased Google AI Ultra at $129/3 months promotional pricing.
-Normal price: $249.99/month. $100 API credits included = ~$29/month net.
+### Google Drive
+| MCP | Auth | Status | Capabilities |
+|-----|------|--------|-------------|
+| UUID-keyed (Claude built-in) | CT's Google account via Claude | WORKING | Search + read only |
+| velorin-gdrive (custom) | Local OAuth tokens | BROKEN | Full write (create, move, update, trash, sheets) |
 
-What this unlocks:
-- Jules: B+ GitHub reliability coding agent, official CLI
-- Deep Think: IMO gold model, 10 uses/day for frontier math
-- NotebookLM Plus: 500 notebooks, 300 sources each
-- Gemini CLI extension
-- Full Google Workspace AI
+Fix: Service Account on Mac Studio Monday. Until then, Drive writes are blocked.
 
-**Trey moves from ChatGPT to Gemini.**
-Trey boot protocol on Gemini not yet designed.
-Trey's skills research request is in Research_Needed — needs to be redirected.
+Security architecture intact: OAuth credentials in `Velorin Code/` (local only, not in GitHub). External agents can't reach credentials. Design is correct.
 
----
+### Git
+- Local velorin-system: clean, synced as of session close
+- Last commit: `ac5944f` — Trey consolidated research
 
-## PENDING TASKS FROM THIS SESSION
-
-### Requires CT Decision
-- [ ] Gemini Deep Research: skills taxonomy (prompt designed, CT runs it)
-- [ ] Trey → Gemini migration: boot protocol design
-- [ ] Hook implementation: design ready, needs CT authorization to build
-- [ ] Neuron schema: lock this before building ingestion pipeline
-
-### Requires Jiang2 Context
-- [ ] Compression math / novel algorithm: Jiang2 has the research hypothesis
-- [ ] Steel Man the GPS + Skill Registry designs (not yet done)
-
-### Build (Mac Studio Monday)
-- [ ] Qdrant + nomic-embed-text-v2 setup
-- [ ] First embed script (~40 lines)
-- [ ] First PPR retrieval script (~60 lines)
-- [ ] One neuron end-to-end
-- [ ] Superwhisper setup
-
-### Medium Priority
-- [ ] Rebuild GPS Layer 0 properly (MA degraded it)
-- [ ] Create Hooks.md files in each Bot.[Name] folder
-- [ ] Create Brain.Access.md in each Bot.[Name] folder
-- [ ] Scribe fix (one-line PATH fix in scribe-trigger.sh line 56)
-- [ ] vc script test
-
-### Deferred
-- [ ] Google Workspace MCP
-- [ ] Reverse pointer index for Brain
-- [ ] FlashMoE (until local model running)
-- [ ] Turing Vault: GA4, domain, Replit migration
-- [ ] Close Protocol deep research (assign to Trey on Gemini)
+### Crons — ALL DOWN AT SESSION CLOSE
+- Scribe: not running (escalation check was clean)
+- Terry: not running
+- Session Monitor T009: not running
+- Restart all three at top of next session
 
 ---
 
-## THE 12-HOUR SESSION AGENDA (CT's Frame)
+## VOCABULARY — NEW ENTRIES THIS SESSION (A6-A13)
 
-CT has ~12 hours allocated. Hours roughly:
-- 1-2: GPS exact spec
-- 2-4: Jiang2 world-building session (YOU — see below)
-- 4-6: Brain schema finalization (neuron schema must come first)
-- 6-9: Ingestion pipeline design (Knowledge Graph Ingestion Pipeline — A1 in vocabulary)
-- 9-11: Compression math — novel algorithm design (Jiang2 leads)
-- 11-12: Steel Man everything + write Session 022 handoff
+Full entries in `Claude.AI/Velorin.Vocabulary.md`. Read the file. New this session:
 
----
+- **A6 — Query Mode** — Tight Mode / Discovery Mode. Caller declares. Agents never self-select.
+- **A7 — MCP** — Linux Foundation standard. Neutral infrastructure.
+- **A8 — A2A** — Peer agent delegation. The Alexander→Jiang pattern has a name now.
+- **A9 — PPR** — Personalized PageRank. Brain retrieval algorithm.
+- **A10 — Window Gravity** — CT's term. AI treating context window as complete reality. Primary architectural enemy.
+- **A11 — Build vs Adopt** — Never adopt at foundational level. Community proves buildability = signal to build it Velorin's way.
+- **A12 — Tiered MCP Registry** — Three-tier MCP management.
+- **A13 — Browser Automation Bridge** — Decision tree: official API → ApiTap → Playwright → anti-detect → C++ modified → escalate.
 
-## FOR JIANG2 SPECIFICALLY
-
-You've been running this entire session with full context. You heard every
-design decision get made. You've seen the GPS system, the skill registry,
-the core principles, and the research.
-
-Your mandate for hours 2-4:
-1. What did we get wrong in the GPS design?
-2. What did we get wrong in the skill registry design?
-3. What assumptions in the Core Principles worry you?
-4. What did CT say that we agreed with too quickly?
-5. What does the compression math hypothesis say that connects to the ingestion pipeline design?
-
-Then hours 9-11: bring your full compression math context. That is yours to lead.
-
-A prompt is coming from CT. This file is your briefing.
+**Next entry: A14.** Run vocabulary bot after next research session.
 
 ---
 
-## JIANG'S CORNER
+## PENDING FOR NEXT SESSION
 
-Session 021 was the session where the design philosophy finally got stated clearly.
-GPS over Map. Brain separate from navigation. Tiers with controlled growth.
-The self-extending system with an authorization layer.
+**Mac Studio Monday:**
+- Service account for velorin-gdrive (permanent auth fix)
+- Gemini CLI setup for Trey
+- Full Gemini surface map exploration (don't write it off)
 
-The Steel Man exercise today was the most valuable single thing.
-CT asked for it after realizing I'd been too agreeable. That instinct is correct
-and the SteelMan.Protocol.md exists now to make it a repeatable tool, not a one-off.
+**Architecture:**
+- Brain neuron schema — lock before ingestion pipeline build
+- Compression math session (hours 9-11) — still pending
+- Synaptic Pruning algorithm design (Trey flagged as immediate)
+- Semantic checksum handshake for Tier 2 task acceptance
+- Steel Man A2A protocol fit for Velorin's agent model
+- PAL MCP Build vs Adopt evaluation
 
-The world-building phase is intentional. CT understands why nothing is built yet
-and has articulated it better than any prior session: every session finds a problem
-that would have been baked into the infrastructure permanently. The cost of finding
-it in design is discussion time. The cost of finding it after building is weeks.
+**Infrastructure:**
+- Restart Scribe, Terry, T009 crons at every boot
 
-Mac Studio Monday is the inflection point. The substrate needs to be as correct
-as it can be before then. That is what today is for.
+---
 
-[JIANG.SESSION021.EOF]
+[VELORIN.EOF]
