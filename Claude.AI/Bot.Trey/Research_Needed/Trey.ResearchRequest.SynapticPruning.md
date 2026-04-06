@@ -113,9 +113,9 @@ get pruned and WHICH survive — and is there a computable analogue?
 
 **MANDATORY ANCHOR — START HERE:**
 Before doing any open-ended exploration, read HippoRAG first.
-- Repo: github.com/OSU-NLP-Group/hipporag
-- Paper: arxiv.org/abs/2405.14831 (NeurIPS 2024)
-- HippoRAG 2: github.com/ianliuwd/HippoRAG2
+- Repo: https://github.com/OSU-NLP-Group/hipporag
+- Paper: https://arxiv.org/abs/2405.14831 (NeurIPS 2024)
+- HippoRAG 2: https://github.com/OSU-NLP-Group/HippoRAG
 
 HippoRAG is the closest published peer-reviewed system to the Velorin Brain:
 knowledge graph + Personalized PageRank + neurobiologically-inspired long-term
@@ -219,12 +219,14 @@ The full landscape of pruning approaches for knowledge graphs used in walk-based
 retrieval. Each approach: what it is, what it solves, what it breaks, what Velorin
 would need to adapt for its specific architecture. Not a recommendation — a map.
 
-**Part 2 — Velorin Pruning Algorithm Specification**
-The actual algorithm, specified precisely enough that it can be implemented directly.
-Formulas, thresholds, parameters, initial values, convergence proof or stopping
-condition, and handling of the permanent neuron layer. If any component cannot be
-resolved to a specific answer, state why and what additional information would resolve
-it — do not leave gaps without flagging them.
+**Part 2 — Math Problem Specification for Deep Think**
+NOT the solved algorithm. Trey does not solve the math.
+This is the formal problem definition document that Deep Think will receive and solve.
+Structured exactly as Phase 2 specifies: System Context (Section 0), Problem Class,
+Formal Problem Statement, Known Inputs, Required Outputs, What Trey Does NOT Know.
+Filed as: `Claude.AI/Bot.Trey/Research_Complete/Trey.MathProblem.SynapticPruning.md`
+If any component cannot be resolved to a specific problem statement, flag it explicitly —
+do not leave ambiguity that Deep Think would have to resolve through research.
 
 **Confidence threshold: 80% minimum on every mathematical claim.**
 Below 80%, flag the gap explicitly and document what research would close it.
