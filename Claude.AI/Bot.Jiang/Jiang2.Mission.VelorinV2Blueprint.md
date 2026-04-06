@@ -121,6 +121,27 @@ The known failure modes you must address:
 File: `Claude.AI/Velorin.V2.ArchitecturalBlueprint.md`
 Push to GitHub when complete.
 
+**FORMAT REQUIREMENTS — NON-NEGOTIABLE:**
+
+This is ONE single, extremely long markdown file. Not multiple files. Not a summary.
+Every section must be labeled with a bot-navigable anchor in this exact format:
+`## [SECTION N — TITLE] {#section-N}`
+Include a complete Table of Contents at the very top of the file, before any content, with
+anchor links to every section and subsection. A bot reading this file must be able to
+jump to any section without reading the whole document.
+
+Do not produce a draft. Do not split into parts. Output the entire document in one pass,
+even if it takes your full remaining context. Incomplete output is worthless — an
+architectural spec that stops at Section 4 cannot be executed.
+
+**NOVEL SYNTHESIS REQUIREMENT:**
+Do not merely organize what is already known. You have read everything. You have the
+full picture. Your job is to identify connections and resolve problems that have not
+yet been figured out. Where puzzle pieces fit together in ways the system has not yet
+articulated, articulate them. Where the research findings have architectural implications
+nobody has drawn yet, draw them. Where failure modes have solutions hiding in the data,
+name them. This document should contain things that did not exist before you wrote it.
+
 The document must cover these sections. Do not skip any.
 
 ---
@@ -314,6 +335,11 @@ that prevents v3 from making v1's mistakes.
 
 Push to: `Claude.AI/Velorin.V2.ArchitecturalBlueprint.md`
 Commit message: "Velorin V2 Architectural Blueprint — Jiang2 full-context synthesis"
+
+**LOCAL PATH FOR ALL FILE READS:**
+You are on the same machine as CT. Read everything from local disk:
+`/Users/lbhunt/Desktop/velorin-system/`
+Do not use GitHub paths. Do not use URLs. Local reads are faster and you need the speed.
 
 ---
 
