@@ -202,9 +202,9 @@ should make, or flag it as a free parameter to be calibrated empirically.
 The output of Phase 2 is a single clean document titled:
 `Trey.MathProblem.SynapticPruning.md`
 
-Filed in: `Claude.AI/Bot.Trey/Research_Complete/`
+Filed in: `Claude.AI/Bot.Erdos/Research_Needed/`
 
-This document is the direct input to the Deep Think Math Bot.
+This is Erdős's inbox. This document goes directly to him — not to Trey's archive.
 It should read like a problem set handed to a mathematician —
 complete, formal, no ambiguity, no fluff.
 
@@ -224,7 +224,7 @@ NOT the solved algorithm. Trey does not solve the math.
 This is the formal problem definition document that Deep Think will receive and solve.
 Structured exactly as Phase 2 specifies: System Context (Section 0), Problem Class,
 Formal Problem Statement, Known Inputs, Required Outputs, What Trey Does NOT Know.
-Filed as: `Claude.AI/Bot.Trey/Research_Complete/Trey.MathProblem.SynapticPruning.md`
+Filed as: `Claude.AI/Bot.Erdos/Research_Needed/Trey.MathProblem.SynapticPruning.md`
 If any component cannot be resolved to a specific problem statement, flag it explicitly —
 do not leave ambiguity that Deep Think would have to resolve through research.
 
