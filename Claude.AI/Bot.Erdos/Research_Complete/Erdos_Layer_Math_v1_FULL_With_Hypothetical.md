@@ -263,4 +263,101 @@ Erdős flagged this as "routing tensors between $E_8$ crystals." It is the next 
 
 ---
 
+## WALL B RESOLUTION: The Inter-Crystal Gauge Tensor $\mathcal{T}_{A \to B}$
+
+*Erdős — Session 022, same day.*
+
+---
+
+### Part 1: The Semantic Gauge (The Continuous Substrate)
+
+To cross from Crystal $A$ to Crystal $B$, "lift" the 8D coordinate back to 1536D using the Moore-Penrose pseudoinverse of $W_A$, then fold it down into Crystal $B$'s geometry:
+
+$$\mathbf{y}_{target} = W_B (W_A^+ \mathbf{y}_i)$$
+
+We find the discrete port $\mathbf{y}_j$ in Crystal $B$ that best aligns by maximizing the inner product:
+
+$$\mathbf{y}_{target}^T \mathbf{y}_j = \mathbf{y}_i^T (W_A^+)^T W_B^T \mathbf{y}_j$$
+
+Therefore the Semantic Gauge Tensor is:
+
+$$\mathcal{T}_{semantic} = (W_A^+)^T W_B^T$$
+
+Dimension check: $(W_A^+)^T \in \mathbb{R}^{8 \times 1536}$, $W_B^T \in \mathbb{R}^{1536 \times 8}$, product is exactly $8 \times 8$. $\checkmark$
+
+*Engineering note: $W_A^+ \mathbf{y}_i$ recovers the projection of $x_i$ onto the row space of $W_A$ — a shadow of the original embedding, not the embedding itself. Routing operates through this bottleneck. The softmax landing (Part 3) absorbs this imprecision via temperature tuning.*
+
+---
+
+### Part 2: The Topological Wormhole (Human Pointers)
+
+Let $E_{A \to B} \in \mathbb{R}^{N_A \times N_B}$ be the sparse bipartite adjacency matrix of Layer 1 pointers crossing from Crystal $A$ to Crystal $B$.
+
+Let $Y_A \in \mathbb{R}^{8 \times N_A}$ and $Y_B \in \mathbb{R}^{8 \times N_B}$ be the utilized docking ports. Seek $\mathcal{T}_{human} \in \mathbb{R}^{8 \times 8}$ minimizing:
+
+$$\min_{\mathcal{T}} \left\| Y_A^T \mathcal{T} Y_B - E_{A \to B} \right\|_F^2$$
+
+Closed-form solution:
+
+$$\mathcal{T}_{human} = (Y_A Y_A^T)^{-1} Y_A E_{A \to B} Y_B^T (Y_B Y_B^T)^{-1}$$
+
+$(Y_A Y_A^T)$ is $8 \times 8$. Inversion takes nanoseconds. The entire $240 \times 240$ boundary topology is compressed to exactly **64 floats**.
+
+*Engineering note: $(Y_A Y_A^T)$ requires the crystal to have $\ge 8$ neurons with ports spanning $\mathbb{R}^8$. Small or sparse crystals will hit rank deficiency. Implementation must use regularization: $(Y_A Y_A^T + \varepsilon I)^{-1}$.*
+
+**The rank-8 low-pass filter:** $\mathcal{T}_{human}$ is a rank-8 approximation of $E_{A \to B}$. It cannot memorize a random $240 \times 240$ bipartite graph — but it perfectly captures the dominant 8 directions of inter-crystal logical flow. Semantically consistent pointers land in the top singular components. Contradictory or noisy pointers are filtered out. The tensor inherently forgives the human for drawing bad pointers. *(Note: this benefit assumes noise occupies lower singular value directions — true for well-curated pointers, not guaranteed for chaotic ones.)*
+
+---
+
+### Part 3: The Unified Routing Tensor
+
+Blend continuous semantic truth and discrete human topology via tuning parameter $\lambda \in [0,1]$:
+
+$$\mathcal{T}_{A \to B} = (1 - \lambda)\,\mathcal{T}_{semantic} + \lambda\,\mathcal{T}_{human}$$
+
+---
+
+### Part 4: The 8D Jump Mechanics
+
+A query particle in Crystal $A$ lands on port $\mathbf{y}_i$, which holds a Layer 1 pointer crossing to Crystal $B$.
+
+**The flight vector:**
+
+$$\mathbf{v}_{flight}^T = \mathbf{y}_i^T \mathcal{T}_{A \to B}$$
+
+**The landing (softmax over 240 ports in Crystal $B$):**
+
+$$P(\text{land on } \mathbf{y}_j \mid \text{jump } A \to B) = \frac{\exp(\mathbf{v}_{flight}^T \mathbf{y}_j / \tau)}{\sum_{k} \exp(\mathbf{v}_{flight}^T \mathbf{y}_k / \tau)}$$
+
+Temperature $\tau$ controls sharpness. Tight $\tau$: walk rigidly follows CT's pointers. Relaxed $\tau$: walk soft-assigns to semantically adjacent ports, absorbing imprecision in the lift-and-fold.
+
+*(The "quantum tunneling" framing is theatrical. The mechanism is temperature-scaled softmax attention over discrete ports. It works.)*
+
+---
+
+### Part 5: Simon-Ando Aggregation — The Compute Miracle
+
+The 7-pointer cap and human clustering produce a **Nearly Completely Decomposable (NCD)** Markov chain: strong intra-crystal connections, sparse inter-crystal connections. Simon-Ando Aggregation (1961) solves NCD systems in two phases:
+
+**Phase 1 — Macro-Walk:** Collapse every $E_8$ crystal to a single Macro-Node. Run PPR on the $K \times K$ Macro-Matrix. Identifies which crystals hold the probability mass.
+
+**Phase 2 — Micro-Walk:** Zoom into activated crystals. Run the local $240 \times 240$ PPR walk inside them, using $\mathcal{T}_{A \to B}$ to route mass across boundaries.
+
+**Total complexity:** $\mathcal{O}(K^3) + \text{active} \times \mathcal{O}(240^3)$
+
+At Brain scale with sparse inter-crystal edges, this runs in milliseconds.
+
+---
+
+### Wall B: Demolished.
+
+$E_8$ crystals are no longer isolated islands. They are woven together by $8 \times 8$ Gauge Tensors — 64 floats per crystal boundary — that fuse LLM semantic geometry with human pointer topology.
+
+**Three engineering flags for implementation:**
+1. Small crystal regularization: $(Y_A Y_A^T + \varepsilon I)^{-1}$ when $N_A < 8$ or ports don't span $\mathbb{R}^8$
+2. Semantic gauge routes through a compressed shadow — tune $\tau$ accordingly
+3. Low-pass filter benefit assumes noise in lower singular directions — valid for curated pointers, not guaranteed for chaotic ones
+
+---
+
 [VELORIN.EOF]
