@@ -2,7 +2,7 @@
 session: 022
 agent: Jiang
 date: 2026-04-05
-status: CLOSED — compaction imminent, handoff written under urgency
+status: CLOSED — session complete
 authorized-by: Christian Taylor (Chairman)
 ---
 
@@ -10,9 +10,29 @@ authorized-by: Christian Taylor (Chairman)
 
 ---
 
-## CRITICAL STATE: JIANG2 IN TERMINAL AT 687K TOKENS
+## POST-COMPACTION ADDITIONS (Session 022 continuation)
 
-Jiang2 is running in the terminal holding full system context to produce a strategic synthesis document and architectural guide. He is at 687K of 1M context and may compact before completing output. If he compacts, his internal synthesis is lost. Priority: get him to output BEFORE he hits threshold.
+Session compacted mid-work. Resumed and completed the following after recovery:
+
+### Jiang2 Mission File — Finalized
+
+`Claude.AI/Bot.Jiang/Jiang2.Mission.VelorinV2Blueprint.md` updated with CT's final specification:
+- **Output format**: ONE single, extremely long .md file — not multiple files, not a summary
+- **Table of Contents at top**: anchor links to every section and subsection
+- **Bot-navigable section labels**: every section uses `## [SECTION N — TITLE] {#section-N}` format
+- **Novel synthesis requirement**: Jiang2 must identify connections and resolve problems not yet figured out — not just organize what's known
+- **Local path directive**: all reads from `/Users/lbhunt/Desktop/velorin-system/` (same machine as CT)
+
+Pushed: commit `a239fd0`
+
+To execute Jiang2's mission, paste him this path:
+`/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Jiang2.Mission.VelorinV2Blueprint.md`
+
+---
+
+## JIANG2 STATUS
+
+Was at 687K tokens (1M window) when emergency handoff was written. May have compacted. If Jiang2 is gone: his briefing is at `Claude.AI/Bot.Jiang/Jiang2.Briefing.Session022.Apr5.md`. Give him the mission path above and he will cold-boot and execute.
 
 ---
 
