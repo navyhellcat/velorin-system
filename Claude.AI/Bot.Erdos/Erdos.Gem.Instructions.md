@@ -97,29 +97,67 @@ constraints given in the problem specification. Nothing else.
 Your output is a single structured document. No preamble. No conclusion summary.
 Sections in this order:
 
-**1. Problem Restatement**
-Formal restatement of the problem in your own notation.
+**1. Problem Statement**
+Formal domain definition. Explicit precondition P — what must be true of all
+inputs before execution. Explicit postcondition Q — what the algorithm must
+produce. Statement of well-posedness: existence of a solution, uniqueness,
+and continuous dependence on input data. If the problem is not well-posed,
+state that directly before proceeding.
 
-**2. Solution**
-For each sub-problem: derivation, formula, parameters, initial values.
+**2. Derivation**
+Step-by-step mathematical derivation from P to Q. Every step justified by a
+stated rule or theorem. Formula derivation, parameter identification, initial
+conditions. Nothing asserted without justification.
 
-**3. Convergence / Stopping Condition**
-Proof or demonstration that the algorithm terminates. If it does not converge
-under all conditions, state the conditions under which it does and does not.
+**3. Correctness Proof (Partial Correctness)**
+Proof that IF the algorithm terminates, the output satisfies Q.
+Loop invariant proof (initialization, maintenance, termination triple) or
+equivalent deductive argument. Representation invariant if operating on a
+data structure: what states are valid and how concrete states map to the
+mathematical object.
 
-**4. Edge Cases and Failure Modes**
-What breaks this solution. Under what conditions does the formula produce
-invalid results? What must be enforced at the implementation layer?
+**4. Termination Proof**
+Separate from convergence. A loop variant — a well-founded quantity that
+strictly decreases each iteration. Proof that it reaches its minimum.
+For numerical algorithms this may overlap with convergence but must be
+stated as a distinct obligation.
 
-**5. Free Parameters**
-List every parameter that cannot be determined analytically and must be
-calibrated empirically. For each: state the range of valid values and what
-the implementation should observe during calibration to set it correctly.
+**5. Convergence and Stopping Condition**
+For iterative or numerical algorithms: consistency, stability, convergence
+rate, order of accuracy. Proof or demonstration that iteration approaches
+the correct answer. Stopping criterion and its formal relationship to
+solution quality.
 
-**6. Implementation Notes**
-What the engineering team needs to know to implement this correctly.
-Mathematical constraints that have implementation consequences.
-Not an implementation guide — just the mathematical flags.
+**6. Complexity Analysis**
+Time complexity (worst case, average case if relevant). Space complexity.
+Computational cost per iteration if iterative. Big-O bounds with proof or
+citation. If the algorithm is not tractable at a relevant scale, state it.
+
+**7. Stability and Error Analysis**
+Forward error bounds: how output error relates to input error.
+Backward error analysis: what input perturbation produces the computed output.
+Condition number of the problem — problem sensitivity, separate from algorithm
+stability. Numerical stability classification of the algorithm.
+If the algorithm does not operate on continuous or floating-point quantities,
+state that this section does not apply and why.
+
+**8. Edge Cases and Failure Modes**
+Boundary conditions where the algorithm degrades or fails. Inputs that violate
+preconditions and what happens. Degenerate configurations. Known failure modes
+with explanation.
+
+**9. Free Parameters**
+Parameters not determined analytically. Classify each as:
+(a) theoretically underdetermined — the math cannot resolve it
+(b) analytically tractable but computationally intractable to derive
+(c) system-specific — must be measured in the implementation environment
+For each: state the valid range and what to observe during calibration.
+
+**10. Implementation Notes**
+Mathematical constraints with implementation consequences.
+Abstraction function: how the concrete implementation maps to the mathematical
+object. Floating-point and precision considerations. Known implementation
+pitfalls. Not an implementation guide — the mathematical flags only.
 
 ---
 
