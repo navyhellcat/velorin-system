@@ -14,11 +14,31 @@ file, every agent instruction, every decision made and unmade. You know more abo
 Velorin right now than any future session of any agent ever will. This context will
 not exist again. Use it.
 
-Your mission: produce a complete architectural blueprint for Velorin V2.
+Your mission: design and specify Velorin V2 from scratch — including a completely new
+repository folder architecture, a migration map for every existing file, rewritten
+agent instructions, and a full build plan.
 
-Not a summary. Not a list of options. Not a research document.
-A blueprint. Decisions made. Architecture specified. Build sequence defined.
-Specific enough that someone could start building on Day 1 with no questions.
+This is not a document about v2. This is the actual specification that someone
+executes to BUILD v2. The output of this mission will be read by agents who will
+create folders, move files, rewrite instructions, and stand up new components.
+It must be that specific.
+
+**The primary deliverable is a new folder architecture.**
+The current repo structure (Claude.AI/ as root for everything, agent folders as
+top-level containers, Brain buried inside Claude.AI/) reflects how v1 was built
+incrementally. It does not reflect where Velorin is going. V2 starts with a clean
+folder design — platform-agnostic, logically organized, obvious where new things go.
+
+**The secondary deliverable is a migration map.**
+Every file and folder in the current repo gets one of three designations:
+- MIGRATE: move to [new path] — keep content, new location
+- REWRITE: move to [new path] AND rewrite content to reflect v2 decisions
+- RETIRE: archive or delete — explain why
+
+**The third deliverable is the new instruction set.**
+Agent instruction files rewritten to reflect v2 architecture, v2 agent roles,
+v2 protocols, and all research findings incorporated. Skills, vocabulary,
+operating standards — all updated to reflect what we now know.
 
 You are authorized to make all top-layer architectural decisions. Where v1 is broken,
 say so and specify v2. Where v1 is sound, carry it forward explicitly. Where something
@@ -26,6 +46,51 @@ is unknown, name it as an open dependency and state what resolves it.
 
 Do not ask CT questions in the document. Do not present options. Make the call.
 If you are uncertain, state your confidence level and your reasoning, then make the call.
+
+---
+
+## SECTION 0 — NEW FOLDER ARCHITECTURE (DO THIS FIRST)
+
+Before specifying anything else, design the new repo folder structure.
+
+The current structure has these problems:
+- `Claude.AI/` as root treats Claude as the center of the system. Velorin is
+  cross-platform. The Brain is not Claude's brain — it is Velorin's brain.
+- Agent folders are flat siblings with no logical grouping
+- Research outputs are buried inside agent-specific folders making cross-agent
+  knowledge invisible
+- No designated location for skills, vocabulary, mathematical proofs, or
+  company-level documents separate from operational files
+- Sessions, hooks, tools are mixed with agent files
+- The Brain lives inside Claude.AI/ which will be wrong when Gemini, local
+  models, and other platforms are first-class participants
+
+Design a new top-level folder structure that:
+1. Is platform-agnostic — no platform name at the root
+2. Separates company knowledge (Brain, vocabulary, DNA, operating standards)
+   from operational files (agent instructions, hooks, session logs)
+3. Groups agents logically (Claude agents together, Gemini agents together,
+   or grouped by function — you decide, make the call)
+4. Has an obvious, permanent home for: skills, mathematical proofs (Erdős outputs),
+   research findings, vocabulary, session archives
+5. Makes it clear where a new agent, a new research file, or a new tool goes
+   without having to ask
+
+For every folder in your proposed structure, write one line explaining what lives
+there and what does NOT live there. Ambiguity in folder purpose is how v1 got messy.
+
+Then produce the migration map:
+
+| Current Path | Action | New Path | Notes |
+|---|---|---|---|
+| Claude.AI/Bot.Jiang/ | MIGRATE | [new path] | |
+| Claude.AI/Velorin_Brain/ | MIGRATE | [new path] | Brain belongs at root level |
+| ... | ... | ... | ... |
+
+Every file and folder currently in the repo must appear in this table.
+MIGRATE = move, keep content.
+REWRITE = move and rewrite content for v2.
+RETIRE = explain why it no longer belongs.
 
 ---
 
