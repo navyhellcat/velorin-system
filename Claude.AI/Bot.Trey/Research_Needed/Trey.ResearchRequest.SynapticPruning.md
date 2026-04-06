@@ -143,6 +143,28 @@ It does not survey literature. It needs a complete, unambiguous problem specific
 
 The specification must include:
 
+**0. System Context and Design Goals**
+This is not a math section. This is the frame that tells Deep Think what "correct"
+means before he touches a single formula. Include:
+
+- What the system is: the Velorin Brain — a neural file graph of atomic markdown
+  neurons connected by rated directional pointers (1-10), queried via PPR retrieval
+- What the system does: serves a single user with highly personalized knowledge
+  retrieval hundreds of times per day; precision of retrieval is the core product
+- What failure looks like: the two failure modes described in this document
+  (Monster Node collapse, stale neuron noise) stated precisely enough that a
+  mathematician recognizes them as the constraints his solution must satisfy
+- What success looks like: the Brain at 5,000 neurons must return results as
+  precise as the Brain at 200 neurons
+- The permanence constraint: a hard class of neurons (c-memory) must never be
+  touched by the pruning algorithm regardless of output
+- Implementation environment: markdown files on a filesystem, future Qdrant
+  vector store layer, no database, human-readable format must be preserved
+
+Without this section, Deep Think can produce a mathematically valid solution
+that is architecturally wrong. This section is what makes "valid" mean the
+right thing.
+
 **1. Problem Class**
 What type of mathematical problem is this? Graph theory? Information theory?
 A combination? Name the field precisely. Deep Think needs to know which mathematical
