@@ -118,7 +118,7 @@ The relative rank-order precision of the ε-neighborhood is rigorously preserved
 
 **The Topological Contradiction.**
 
-You wish to run GNNDelete with a strict zero-bounded Lipschitz constraint: $||\phi^*(h_v) - h_v|| = 0$ for all $v \in C_{memory}$.
+You wish to run GNNDelete with a strict zero-bounded Lipschitz constraint: $\|\phi^*(h_v) - h_v\| = 0$ for all $v \in C_{memory}$.
 
 ### Theorem 4: The Incompatibility of Neighborhood Influence
 
@@ -138,7 +138,7 @@ The feasible set is mathematically empty. Convergence is impossible. $\blacksqua
 
 To achieve a global minimum, we must sacrifice Neighborhood Influence at the exact boundary of $C_{memory}$. We inject an orthogonal projection binary mask M into the GNNDelete loss function $\mathcal{L}^*(\phi^*)$, where $M_w = 0$ for all $w \in C_{memory}$, and $M_w = 1$ otherwise:
 
-$$\mathcal{L}^*(\phi^*) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot ||\phi^*(h_w) - h_w^{-e}||^2$$
+$$\mathcal{L}^*(\phi^*) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot \left\|\phi^*(h_w) - h_w^{-e}\right\|^2$$
 
 You cannot guarantee continuous gradient flow across an absolute geometric wall. You must sever the neighborhood influence calculation the exact moment it touches a $C_{memory}$ node.
 
