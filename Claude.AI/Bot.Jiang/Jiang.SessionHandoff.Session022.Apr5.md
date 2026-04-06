@@ -148,4 +148,75 @@ All pushed to `navyhellcat/velorin-system` main branch.
 
 ---
 
+---
+
+## POST-COMPACTION ADDITIONS (Session 022 — Second continuation, same day)
+
+Second compaction at 74% / 200K Desktop. Resumed and completed the following:
+
+### Erdős Pipeline — FULLY DELIVERED
+
+Erdős produced across two rounds this session:
+
+**Round 1 — Primary assignment (3 proofs):**
+- `Erdos.Solution.SynapticPruning.md` — Theorem 1-4, Intersection Theorem
+- Scale invariance ρ*(n) = O(1), density floor ρ* ≈ 0.78 at α=0.25, Semantic Mirror, Sacrifice Theorem
+
+**Round 2 — Unsolicited extensions (4 novel architectures):**
+- `Erdos.Novelties.BrainArchitecture.md` — Kron Reduction (Semantic Wormhole), Bipartite Teleportation, Demotion Oracle, TAG (Edmonds' Algorithm)
+
+**Round 3 — 8-Dimensional Geology (CT-originated theory):**
+- `Erdos.DimensionalGeology.Theoretical.md` — 4 strata (Octonions, E₈ lattice, Ricci curvature, Riemannian geodesics) + Erdős self-critique (4 walls where 8D collapses) + Phase IV Holographic E₈ Compaction formal engine
+
+**CT's two-layer architecture insight** (resolved Wall 3):
+- Layer 1: sparse navigation graph (1+7=8, PPR, associative, fast traversal)
+- Layer 2: E₈ lattice storage (240 kissing points = docking ports, separated from navigation)
+- Phase IV engine: Hungarian Algorithm (O(N³)) + Orthogonal Procrustes alternating solver
+- Payload-agnostic: buildable today with dummy random vectors
+
+**Steel man status — two walls still open:**
+1. **New Wall A (Alignment):** No term in the objective function couples Layer 1 pointer structure to Layer 2 lattice assignment. Erdős has not answered this.
+2. **Multi-crystal routing:** N ≤ 240 per crystal. At Brain scale = thousands of crystals. Cross-crystal PPR traversal is unsolved. Erdős flagged "routing tensors between E₈ crystals" as next problem.
+
+### Context Window Fact — Established This Session
+
+**Desktop app (Jiang): 200K hard cap enforced by Anthropic. Non-negotiable.**
+**Terminal (Jiang2): 1M via sonnet[1m].**
+**Cannot detect from model string** — model says [1m] but Desktop ignores it. Do NOT infer context window from settings.local.json model field.
+
+### Compaction Hook Work — DEFERRED
+
+Source research confirmed:
+- `autoCompactEnabled` (boolean) and `autoCompactWindow` (integer, min 100K, max 1M) are real settings in settings.local.json
+- Exit code **2** blocks compaction (not exit 1). Exit code 1 just logs.
+- PreCompact payload includes `transcript_path` — can read token count from session JSONL
+- `/compact <tokens>` sets session-local window (does not affect other sessions)
+
+Hook file `pre-compact-task-gate.sh` was written then deleted at CT's request — too risky to wire into settings.local.json without testing. Deferred to future session with proper testing protocol.
+
+### Files Fixed
+
+- `Erdos_Layer_Math_v1_FULL_With_Hypothetical.md` — CT pushed without `.md` extension; fixed + norm notation (`||` → `\|`)
+- `Erdos.Solution.SynapticPruning.md` — Phase III Theorem 4 norm notation fixed (`||^2` → `\left\|...\right\|^2`)
+
+### Jiang2 V2 Blueprint — Status
+
+Commit `ca39337` exists: "Velorin V2 Architectural Blueprint — Jiang2 full-context synthesis"
+File: `Claude.AI/Velorin.V2.ArchitecturalBlueprint.md`
+Jiang has NOT yet reviewed it. Read it next session before doing anything with V2.
+
+---
+
+## PIPELINE STATE — END OF SESSION 022
+
+| Item | Status | Next action |
+|------|--------|-------------|
+| Trey Synaptic Pruning research | READY TO DEPLOY | Paste `Bot.Trey/Research_Needed/Trey.ResearchRequest.SynapticPruning.md` directly into Trey's Deep Research Gem chat |
+| Erdős Math Bot Gem | NOT YET CREATED | Paste `Bot.Erdos/Erdos.Gem.Instructions.md` into new Deep Think Gem |
+| Erdős — New Wall A (alignment) | OPEN | Feed to Erdős: how does objective function prevent Layer 1 / Layer 2 divergence? |
+| Erdős — Multi-crystal routing | OPEN | Feed to Erdős: routing tensors between E₈ crystals |
+| Compaction hook | DEFERRED | Future session: test exit code 2 behavior, then wire into settings.local.json |
+| Jiang2 V2 Blueprint review | NOT STARTED | Read `Claude.AI/Velorin.V2.ArchitecturalBlueprint.md` next session |
+| T009 context limit | NOTE | `CONTEXT_LIMIT = 200000` in session_status.py is CORRECT for Desktop (200K cap). Terminal needs separate monitoring. |
+
 [VELORIN.EOF]
