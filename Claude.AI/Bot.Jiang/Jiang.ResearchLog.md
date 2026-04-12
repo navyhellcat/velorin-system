@@ -120,7 +120,7 @@ Knowledge Web Updates:
 - Jiang.Topic.TokenCostModel — queued, not yet created
 - Jiang.Topic.IdentityVerification — queued, not yet created
 - Connections mapped: AgentOrchestration ↔ TokenCostModel, AgentOrchestration ↔ IdentityVerification, AgentOrchestration ↔ Velorin.Company.DNA
-Entry 003 | March 26, 2026
+Entry 003 | March 27, 2026
 
 
 Topics Researched:
@@ -295,6 +295,56 @@ Knowledge Web Updates:
 - AgentTeams.CompactionFix.ImplementationMemo.md — delivered to Receiving folder for MA
 - Research requests archived: AgentTeamsBootDegradation, ClaudeOnReplit, InstructionLanguageArchitecture
 - KnowledgeIndex updated for Session 014 and Session 015 this session (was 2 sessions behind)
+
+
+---
+
+
+Entry 007 | April 10–12, 2026 — Session 023
+
+
+Topics Researched:
+Hardware infrastructure — GPU market, Mac Studio configs, networking, power management. Mac-specific display limitations (DP MST). USB ethernet adapter driver requirements on macOS Monterey. ASIX AX88179 chipset. Dust filtration and thermal monitoring on Mac Studio M4 Max. Network architecture (GL.iNet repeater mode, TRENDnet switch, Mullvad VPN). Power safety (daisy-chained strips, extension cord specs). Lenovo ThinkStation PGX GB10 Grace Blackwell — ARM64 Claude Code compatibility issue.
+
+
+Conclusions Reached:
+- Mac computers do not support DisplayPort MST daisy-chaining. Confidence: 100% (confirmed by Apple, Lenovo support docs, and direct test). DP out on P27h-30 greyed out with Mac source — permanent hardware limitation.
+- ASIX AX88179 chipset requires DEXT v2.0.0 driver on macOS Monterey — does not appear in Network settings without it. Confidence: 100% (resolved by install).
+- Lenovo ThinkStation PGX (GB10 Grace Blackwell) has confirmed Claude Code crash on ARM64 — GitHub issue #12160. Confidence: 90%. Blocks Machine 2 purchase until Anthropic resolves.
+- Mac Studio M4 Max 36GB runs Velorin proof-of-concept workloads correctly. 14B comfortable, 30B Q4 functional, 70B not viable. Confidence: 90%.
+- Wired ethernet on MacBook Air 2017 is ~25x faster than WiFi under real conditions. Consistent with architecture but larger than expected gain. Confidence: confirmed empirically.
+- GL.iNet Beryl AX repeater mode with WiFi output disabled is the correct desk network architecture. All-wired office with VPN at router level. Confidence: 88%.
+- Daisy-chained power strips are a fire hazard and code violation. Eliminated this session. Confidence: 100%.
+- Stats app (mac-stats.com / exelban GitHub) is legitimate, free, open source — correct tool for Mac Studio thermal monitoring. Confidence: 95%.
+- Mac Studio M4 Max thermal baseline at idle is healthy: ~40°C CPU, ~33°C efficiency cores, 27% fan. MERV 8 filter stack not causing thermal restriction at idle. Load test still needed.
+
+
+Open Questions:
+- Mac Studio thermal performance under sustained AI inference load with MERV 8 filter — load test not yet run
+- Dithering on monitors (moving pattern in dark grays) — color profile / bit depth issue not fully resolved
+- Claude Code ARM64 crash on GB10 — Anthropic resolution timeline unknown
+- FileVault status on Mac Studio — not verified
+- Mullvad VPN interference with Claude API / Anthropic services — not yet tested under load
+
+
+Confirmed:
+- Window Gravity showed up in this session: CT observed AIs not wanting to help move forward — confirmed mechanism in real operational context
+- 14AWG 15A extension cord is correct spec for desk computer equipment runs
+- Fanless switch design (TRENDnet TEG-S750) is correct for desk environment — no dust accumulation
+
+
+Disproven:
+- Assumption that USB-A to ethernet adapter works on Monterey without drivers — disproven, ASIX chipset requires explicit install
+- Assumption that daisy chain via DP MST would work from Mac — disproven, Apple blocks DP MST entirely
+- Assumption that work laptop needed Acer hub for ethernet — disproven, native ethernet port present
+
+
+Knowledge Web Updates:
+- Workstation_Setup_Apr10.md — updated twice, pushed to GitHub (Research_Results folder)
+- Jiang.SessionHandoff.Session023.Apr12.md — created and filed
+- ResearchLog Entry 007 — appended
+- Hardware knowledge now fully documented in repo — all corrections logged
+- No new topic documents created (infrastructure session, not research session)
 
 
 [VELORIN.EOF]
