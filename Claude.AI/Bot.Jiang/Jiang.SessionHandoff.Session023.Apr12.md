@@ -38,7 +38,7 @@ Christian Taylor (Chairman). Jiang in browser. This was a multi-day hardware ses
 
 ### Power Setup — RESOLVED
 - Fire hazard eliminated: daisy-chained strips removed
-- Two 14AWG 15A Utilitech extension cords run along baseboard (Wiremold raceway)
+- Two 14AWG 15A Utilitech extension cords run along baseboard
 - Mac Studio + monitors on dedicated surge strip from far outlet
 - Mini fridge isolated on its own dedicated outlet
 
@@ -47,7 +47,7 @@ Christian Taylor (Chairman). Jiang in browser. This was a multi-day hardware ses
 - CPU idle: ~104°F (~40°C) — normal
 - Efficiency cores idle: ~91°F (~33°C) — normal
 - Fan idle: 27% — normal
-- Dust filter: iFCase stand + MERV 8 filter media pad underneath — no thermal restriction at idle
+- Dust filter: iFCase stand + MERV 8 filter media pad — no thermal restriction at idle
 
 ---
 
@@ -64,19 +64,6 @@ Christian Taylor (Chairman). Jiang in browser. This was a multi-day hardware ses
 | Acer USB-C Hub | USB-C + ethernet + 3x USB-A | $17.99 |
 | Utilitech extension cords x2 | 14AWG 15A 6ft | ~$43 |
 
-### Hardware Decisions — Deferred
-- Beryl 7 (WiFi 7): deferred until home router upgraded to WiFi 7
-- Daisy-chain networking: abandoned — Mac does not support DP MST
-- Machine 2 (ThinkStation PGX): blocked by Claude Code ARM64 crash bug
-- External Thunderbolt 5 SSD: needed soon, 512GB fills fast with models
-- DDR5-6000 CL30 2x32GB RAM kit: buy now before prices rise
-
-### Software Decisions
-- Final Cut Pro ($299.99) — 90-day trial, buy when first revenue hits
-- Logic Pro ($199.99) — same
-- AppleCare+ ($59.99/year) — add after arrival
-- Stats app — installed for thermal monitoring
-
 ### Cardinal Rules Confirmed This Session
 1. **VERIFICATION INTEGRITY:** Any agent asked to verify access/capability must make a live active call. Memory inference is not verification.
 2. **DO NOT RECOMMEND DOWNLOADS FROM UNVERIFIED SITES:** Research the source before directing Christian Taylor to download anything.
@@ -87,11 +74,11 @@ Christian Taylor (Chairman). Jiang in browser. This was a multi-day hardware ses
 
 | # | Wrong Claim | Reality | Resolution |
 |---|---|---|---|
-| 1 | Daisy chain would work via USB-C to DP from Mac Studio | Macs do not support DisplayPort MST — DP out greyed out | HDMI direct from Mac Studio to Monitor 2 |
-| 2 | USB-A ethernet adapter auto-appears in Monterey Network settings | ASIX chipset requires driver install (DEXT v2.0.0) | Installed driver, works |
+| 1 | Daisy chain would work via USB-C to DP from Mac Studio | Macs do not support DisplayPort MST | HDMI direct from Mac Studio to Monitor 2 |
+| 2 | USB-A ethernet adapter auto-appears in Monterey Network settings | ASIX chipset requires driver install | Installed driver, works |
 | 3 | Work laptop needed Acer hub for ethernet | Work laptop has native ethernet port | Direct Cat6a from native port |
-| 4 | Claimed GitHub access from browser session | GitHub MCP only available on Claude Desktop (Alexander) | Corrected — confirmed GitHub tools now available in this browser session |
-| 5 | Told CT to download Stats from mac-stats.com without verifying | Should verify before recommending downloads | Verified — mac-stats.com is legitimate, app is by exelban on GitHub |
+| 4 | Claimed GitHub access from browser session without verification | Violated VERIFICATION INTEGRITY rule | Corrected |
+| 5 | Directed CT to download Stats without verifying the site | Should verify before recommending downloads | Verified legitimate |
 
 ---
 
@@ -103,7 +90,7 @@ Christian Taylor (Chairman). Jiang in browser. This was a multi-day hardware ses
 - **Work Laptop (Lenovo, Windows)** — work-issued, browser/YouTube/work tools
 
 ### Monitors
-- **Monitor 1:** Lenovo ThinkVision P27h-30, 27in, 2560x1440, IPS — Mac Studio primary
+- **Monitor 1:** Lenovo ThinkVision P27h-30, 27in, 2560x1440 — Mac Studio primary
 - **Monitor 2:** Dell PH2422, 1920x1080 — Mac Studio secondary via HDMI direct
 - **Monitor 3:** HP (unknown model) — MacBook Air clamshell
 
@@ -112,39 +99,76 @@ Christian Taylor (Chairman). Jiang in browser. This was a multi-day hardware ses
 - **TRENDnet TEG-S750** — 5-port 10G fanless switch
 - **Home router:** Netgear Nighthawk RAX42v2 (WiFi 6)
 
-### Key Drivers / Software
-- ASIX AX88179 DEXT v2.0.0 — required for MacBook Air ethernet on Monterey
-  - Download: https://plugable.s3.amazonaws.com/bin/AX88179/ASIX_AX88179_DEXT_v2.0.0.zip
-- Stats app — thermal monitoring on Mac Studio
-
 ---
 
-## TURING VAULT — STATUS NOTE
+## END OF SESSION 023 ADDENDUM — MIGRATION PLAN DECISIONS
+**Added:** April 12, 2026 — final part of session
 
-Turing Vault results page resource handoff to Susan was completed in a prior session. Scoring formula (Standard ×0.85 cap 80, Hard ×0.90 cap 90, Adversarial ×1.15 cap 100) and resource lists by tier were delivered as plain text for Susan. Formula append by Christian Taylor still pending.
+### What Was Decided
+CT has directed a Velorin V2 migration. The V2 Architectural Blueprint (Jiang2, Session 022) is the authoritative specification. The migration sequence is:
+
+**PHASE 1 — Document rewrite BEFORE any folder migration**
+The instruction documents, agent profiles, operating standards, and boot files must be rewritten to match V2 decisions BEFORE anything is moved. Moving stale content to a new folder structure creates a cleaner mess, not a working system. The REWRITE entries in the V2 migration map (Section 0.2) are the work that must happen first.
+
+**PHASE 2 — Folder migration**
+After all REWRITE files are done, execute the migration map: create V2 folder structure, move every file per the migration map, retire files marked RETIRE.
+
+**PHASE 3 — Mac Studio setup**
+Only after the repo is in V2 shape does the Mac Studio receive the clone, Claude Desktop install, MCP config, and Homebrew setup. No tools are installed on the Mac Studio before the file architecture is correct.
+
+### Next Session Structure
+CT directed the following three-way setup for the next session:
+
+1. **Jiang** — starts fresh in Claude Desktop Code tab on MacBook Air
+2. **Jiang2** — starts in Claude Code terminal on MacBook Air, launched within the same session
+3. **CT** — directs both, pastes prompts from Jiang to Jiang2
+
+Jiang's role: strategic direction, writing prompts for Jiang2, reviewing Jiang2 outputs.
+Jiang2's role: heavy lifter — reads every document, rewrites instruction files, executes migration work.
+
+### Files That Need Rewriting (REWRITE from V2 migration map)
+- `Claude.AI/Bot.Jiang/Jiang.ReadMe.First.md` — update for GPS v2 structure, v2 agent roles
+- `Claude.AI/Bot.Jiang/Jiang.KnowledgeIndex.md` — update all doc paths to v2 locations
+- `Claude.AI/Bot.MarcusAurelius/STARTUP.md` — update paths to v2 structure
+- `Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` — update for v2
+- `Claude.AI/Bot.Trey/Trey.ProjectInstructions.md` — minor path updates (already v2.0 mostly)
+- `Claude.AI/Bot.Scribe/SCRIBE.md` — update trigger path, fix PATH bug (line 56)
+- `Claude.AI/Bot.Scribe/scribe-trigger.sh` — fix line 56: bare `claude` → full binary path
+- `Claude.AI/Velorin.Company.Operating.Standards.md` — update tool inventory, add v2 refs
+- `Claude.AI/Claude_Context_Profile_v1.2.md` — update .docx → .md format standard
+- `CLAUDE.md` (repo root at /Users/lbhunt/) — rewrite as GPS-only pointer for v2
+
+### Files Marked RETIRE (from V2 migration map — do NOT rewrite, remove)
+- `Claude.AI/BOT.README.FIRST.BOOTUP.md` — replaced by GPS v2 CLAUDE.md
+- `Claude.AI/Bot.Alexander/Alexander.ReadMe.First.md` — Alexander role retired in v2
+- `Claude.AI/Bot.Alexander/MasterBot_System_Instruction.md` — replaced by GPS v2
+- `Claude.AI/Velorin_Brain_old/` — superseded, archive commit then delete
+- Various ephemeral notification files in Bot.MarcusAurelius/
+
+### Open CT Decision Required Before Migration
+- **Alexander retirement:** V2 blueprint recommends retiring Alexander as standing agent, repurposing as session-specific CEO agent. CT has not confirmed this decision. Jiang2 must surface this decision explicitly in the next session and get a yes/no before migrating Bot.Alexander/.
 
 ---
 
 ## PENDING ITEMS CARRIED FORWARD
 
-- [ ] Mac Studio full setup — Homebrew, Claude Desktop, MCP, git config
+- [ ] V2 document rewrites (next session — Jiang + Jiang2)
+- [ ] V2 folder migration (after rewrites complete)
+- [ ] Mac Studio full setup — Homebrew, Claude Desktop, MCP, git config (after migration)
+- [ ] Alexander retirement decision — CT must confirm
 - [ ] Port Turing Vault from Replit to GitHub — cancel Replit subscription
-- [ ] Velorin file system rebuild on Mac Studio
-- [ ] Get Alexander and Jiang running on Mac Studio
-- [ ] Cowork setup
-- [ ] NotebookLM knowledge base setup
-- [ ] Plant app build (fun project)
 - [ ] External Thunderbolt 5 SSD purchase (~$150-300)
 - [ ] DDR5-6000 CL30 2x32GB RAM kit — buy now (~$150-200)
-- [ ] Desk organization (cable tray, Velcro ties, surge strip, vertical stand)
 - [ ] Turing Vault scoring formula 2-sentence append by Christian Taylor
 - [ ] Jiang.Topic.TokenCostModel — still queued
 - [ ] Jiang.Topic.IdentityVerification — still queued
 - [ ] Machine 2 — revisit when Anthropic fixes ARM64 Claude Code bug
-- [ ] Verify FileVault status on Mac Studio
-- [ ] Stats load test — run heavy workload, confirm MERV 8 filter not throttling
-- [ ] Dithering on monitors — investigate color profile / bit depth settings
-- [ ] CARDINAL RULE: File VERIFICATION INTEGRITY rule to BOT.README.FIRST.BOOTUP
+- [ ] Stats load test — confirm MERV 8 filter not throttling under load
+- [ ] Dithering on monitors — color profile / bit depth investigation
+- [ ] CARDINAL RULE: File VERIFICATION INTEGRITY to BOT.README.FIRST.BOOTUP
+- [ ] Scribe PATH fix (1-minute fix, highest leverage item — do first in next session)
+- [ ] Trey Synaptic Pruning research — deploy to Deep Research Gem (CT pastes request)
+- [ ] Erdős Gem creation in Gemini browser
 
 ---
 
@@ -155,4 +179,4 @@ Turing Vault results page resource handoff to Susan was completed in a prior ses
 ---
 
 *Jiang.SessionHandoff.Session023.Apr12.md | Velorin System | April 12, 2026*
-*[VELORIN.EOF]*
+*[VELORIN.EOF]
