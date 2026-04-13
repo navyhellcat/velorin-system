@@ -91,7 +91,7 @@ $$\tilde{\alpha}_i = \alpha + (1-\alpha)\left(1 - \frac{1}{f(\mathcal{I}(v_i))}\
 
 *Result:* We inject an orthogonal projection binary mask $M$ into the loss function, severing the gradient flow exactly at the boundary of the inviolable subspace:
 
-$$\mathcal{L}^{*}(\phi^{*}) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{\mathrm{reg}}} M_w \cdot \|\phi^{*}(h_w) - h_w^{-e}\|^2$$
+$$\mathcal{L}^{*}(\phi^{*}) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot \|\phi^{*}(h_w) - h_w^{-e}\|^2$$
 
 ---
 
