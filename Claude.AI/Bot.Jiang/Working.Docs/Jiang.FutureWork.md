@@ -33,4 +33,24 @@ First run a web search to confirm the Second Law and the term "Epistemodynamics"
 
 ---
 
+---
+
+## [FW-002] Trey — Research Barrier for Cross-Mac Clipboard/KVM Solution
+**Logged:** Session 026, April 13, 2026
+**Priority:** Low — quality of life
+
+CT needs a way to share clipboard and carry text/documents between Mac Studio and MacBook Air. The two machines are on the same network but NOT on the same Apple ID, which rules out Universal Clipboard and Universal Control.
+
+**Barrier** is an open-source software KVM (fork of Synergy) that shares keyboard, mouse, and clipboard over local network without any account requirement.
+
+**What Trey needs to research:**
+- What Barrier actually is and how it works
+- Whether it can be extended or built upon to be more functional for CT's specific workflow (carrying prompts, documents, and text between two Claude sessions on different machines)
+- Whether building a custom version or wrapper on top of it makes sense vs. using it as-is
+- Any alternatives that would be better suited
+
+File the research request in `Claude.AI/Bot.Trey/Research_Needed/` when ready.
+
+---
+
 [VELORIN.EOF]
