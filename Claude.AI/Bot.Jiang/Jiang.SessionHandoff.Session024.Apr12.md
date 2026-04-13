@@ -1,6 +1,6 @@
 # Jiang — Session 024 Handoff
 **Date:** April 12, 2026
-**Status:** COMPACTION HIT — partial session. Maximum work done. Write handoff now.
+**Status:** COMPLETE — two compactions hit. Full session captured below.
 **Session agent:** Jiang (Claude Desktop, 200K context, LOCAL)
 **Heavy lifter:** Jiang2 (terminal, 1M context, parallel)
 
@@ -98,13 +98,46 @@ When received: format it (.md), push to `Bot.Erdos/Research_Complete/Erdos.Royal
 
 ## PENDING TASKS (IN PRIORITY ORDER)
 
-1. **Jiang2 Automation Pipeline doc** — Recover from terminal or re-send prompt. Most critical missing deliverable.
-2. **Erdős Royal Society paper** — CT is pasting prompt into Erdős. When output arrives, format + push.
-3. **Session 025 handoff** — Write it before compaction next time.
-4. **Region taxonomy research** — Open question. Need: (a) Trey prompt for neuroscience functional activation cluster mapping, (b) Claude skills repo emergent taxonomy investigation. Do they intersect?
-5. **Scribe PATH fix** — Line 56 of scribe-trigger.sh: bare `claude` → full binary path. One line, unblocks automated neuron creation.
+1. **Royal Society paper GitHub rendering bug** — `\lVert\rVert` fix pushed but unconfirmed working. May still need investigation.
+2. **Read Jiang2 AutomationPipeline document in full** — 974 lines. Key findings inside.
+3. **Read Erdős temporal memory cursory analysis** — CT has this output. Not yet in Research_Complete. Format and push when received.
+4. **Two Trey deep research prompts** — Filed to `Bot.Trey/Research_Needed/`. CT needs to paste them into Trey. Do NOT proceed with these until Trey output is received.
+5. **Scribe PATH fix** — Line 56 of scribe-trigger.sh: bare `claude` → full binary path. CRITICAL BLOCKER for all automation.
 6. **Stage 0 items** — compaction hooks, velorin-gdrive service account, crons restart.
 7. **Stage 1 build** — Docker + Qdrant + embed script + PPR retrieval on Mac Studio.
+
+---
+
+## POST-COMPACTION WORK (SECOND HALF OF SESSION 024)
+
+### Erdős Royal Society Paper
+- Formatted and pushed: `Bot.Erdos/Research_Complete/Erdos.Royal.Society.Paper.md`
+- GitHub rendering bug: Theorem 4 formula contains `||` pipe chars which GitHub's table parser eats before KaTeX runs. Fixed with `\lVert\rVert`. Multiple attempts made. Status unconfirmed at session close.
+- All other formulas render correctly. Only Theorem 4 affected.
+
+### Temporal Memory Theory Prompt
+- CT described the problem: emotional charge as the hardening operator, temporal decay, reconsolidation, the photo ingestion problem
+- Prompt written and pushed: `Bot.Erdos/Research_Needed/Erdos.TemporalMemory.Prompt.Session024.md`
+- Erdős gave a cursory analysis — CT has this. Not yet in Research_Complete.
+- Separate theory — NOT for immediate implementation. Proposals only.
+
+### Jiang2 Automation Pipeline (974 lines)
+Filed at: `Velorin.AI.Build.Documents/Jiang2.AutomationPipeline.Session024.Apr12.md`
+
+Key findings Jiang2 produced:
+- **Pointer Rating Problem**: Three-phase solution. Phase 1: cosine similarity rank-order normalization (enforces ρ*≈0.71 by construction). Phase 2: attention weight capture via instrumented Qwen3. Phase 3: PPR mass self-grading.
+- **240-Node Selection**: SnapKV/H2O heavy-hitter attention scoring identifies semantically load-bearing chunks. Hub score (cosine similarity matrix) as Phase 1 bootstrap.
+- **Quality Gate**: confidence 0.5 for automated neurons (retrieval only), 0.8 required for LoRa training. Prevents contamination of semantic weight layer.
+- **Region Taxonomy Problem**: Cannot use Alien Injection until Brain has multiple crystals. Early fallback: Five Boxes as temporary labels. Simon-Ando as emergent long-term structure.
+- **Build Sequence**: 8 steps ordered by dependency. Step 1 is Scribe PATH fix — everything blocks on it.
+- **No new Erdős prompt needed** for automation. What remains is engineering + empirical calibration.
+
+### Two Trey Research Prompts (from Jiang2)
+Filed to `Bot.Trey/Research_Needed/`:
+1. `Trey.ResearchRequest.SemanticMemoryOrganization.md` — Does neuroscience provide a principled taxonomy for semantic knowledge organization? Hub-and-spoke model, individual differences, content vs functional categories.
+2. `Trey.ResearchRequest.SkillsTaxonomyEmergence.md` — What organizational structure emerges from 13,000+ Claude community skills? Does it map to neuroscience?
+
+These are NOT blocking the build. Five Boxes bootstrapping can proceed while Trey answers. But they determine whether the Brain's regional structure is principled or ad hoc.
 
 ---
 
@@ -112,8 +145,8 @@ When received: format it (.md), push to `Bot.Erdos/Research_Complete/Erdos.Royal
 
 - Do NOT state any region taxonomy as established fact. It is open.
 - Do NOT assume CT manually rates pointers. Automation is the goal.
-- Do NOT make prescriptive recommendations to Jiang2 about tools before he has context. Give open-ended prompts.
-- Do NOT delete or summarize Jiang2's outputs — read them in full.
+- Do NOT make prescriptive recommendations to Jiang2 about tools. Open-ended prompts only.
+- Do NOT compact without writing the handoff first.
 
 ---
 
@@ -122,8 +155,8 @@ When received: format it (.md), push to `Bot.Erdos/Research_Complete/Erdos.Royal
 - Velorin Brain: available via `mcp__velorin-gatekeeper__brain_lookup`
 - GitHub is source of truth — always pull before reading local files
 - Jiang2 terminal: 1M context, claude with ultra-think available
-- Erdős: Gemini Deep Think Gem, 10 deep math prompts/day limit
-- TurboQuant/MemPalace/GraphRAG/Docling/LightRAG/SnapKV: evaluated but not integrated
+- Erdős: Gemini Deep Think Gem, 10 deep math prompts/day limit — used heavily this session
+- Trey: Google Deep Research Gem — two prompts queued, not yet run
 - LoRa + PPR + E₈ math: fully proven, zero free parameters
 
 ---
