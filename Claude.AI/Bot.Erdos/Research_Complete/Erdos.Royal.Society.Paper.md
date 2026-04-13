@@ -87,11 +87,11 @@ $$\tilde{\alpha}_i = \alpha + (1-\alpha)\left(1 - \frac{1}{f(\mathcal{I}(v_i))}\
 
 *Problem:* Enforcing absolute permanence on a subset $C_{memory}$ while satisfying continuous GNNDelete Neighborhood Influence creates an overdetermined contradiction.
 
-*Proof:* If an altered node is within $k$-hops of $C_{memory}$, the constraint $\|\phi^*(h_v) - h_v\| = 0$ is topologically incompatible with Neighborhood Influence updates. The feasible set is empty.
+*Proof:* If an altered node is within $k$-hops of $C_{memory}$, the constraint $\|\phi^{*}(h_v) - h_v\| = 0$ is topologically incompatible with Neighborhood Influence updates. The feasible set is empty.
 
 *Result:* We inject an orthogonal projection binary mask $M$ into the loss function, severing the gradient flow exactly at the boundary of the inviolable subspace:
 
-$$\mathcal{L}^*(\phi^*) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{\mathrm{reg}}} M_w \cdot \|\phi^*(h_w) - h_w^{-e}\|^2$$
+$$\mathcal{L}^{*}(\phi^{*}) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{\mathrm{reg}}} M_w \cdot \|\phi^{*}(h_w) - h_w^{-e}\|^2$$
 
 ---
 
@@ -123,7 +123,7 @@ $$W = Y_M (K + \gamma K L + \lambda I)^{-1} X^T$$
 
 *Derivation:* We construct an $8 \times 8$ Gauge Tensor $\mathcal{T}_{A \to B}$ by blending the Semantic Gauge (LLM continuous truth) and the Topological Wormhole (human pointers $E_{A \to B}$):
 
-$$\mathcal{T}_{semantic} = (W_A^+)^T W_B^T$$
+$$\mathcal{T}_{semantic} = (W_A^{+})^T W_B^T$$
 
 $$\mathcal{T}_{human} = (Y_A Y_A^T + \varepsilon I_8)^{-1} Y_A E_{A \to B} Y_B^T (Y_B Y_B^T + \varepsilon I_8)^{-1}$$
 
