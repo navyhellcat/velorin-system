@@ -234,6 +234,59 @@ This is too load-bearing for the standard floor.
 
 ---
 
+## TEMPORAL FRAMEWORK — EXISTING MATHEMATICAL PROPOSAL
+
+Before doing Phase 1 research, be aware that a temporal decay framework has already
+been formally proposed by the Velorin mathematical agent (Erdős) as a future extension
+to the architecture. This is marked FUTURE THEORY — not implemented, not a locked proof.
+
+**The Ebbinghaus-Laplacian Decay Model (Erdős, Session 024):**
+
+The static affinity A(u,v) is proposed to become a continuous-time dynamical system:
+
+  dA_t(u,v)/dt = -(1 / τ₀ · max(ε, H_E(u) + γπ_u)) · A_t(u,v)
+
+Where:
+- τ₀ = baseline decay timescale (free parameter)
+- H_E(u) = Affective Hamiltonian — scalar emotional charge of neuron u ∈ [0, ∞)
+- π_u = PPR stationary mass on neuron u (structural centrality)
+- γ = weight balancing structural vs emotional protection
+- ε = floor preventing division by zero
+
+**The three cases the model produces:**
+- Zero emotion, zero centrality (H_E≈0, π_u≈0): exponential decay — stale neurons vanish
+- Structural pillar (H_E≈0, π_u large): topology alone protects from decay
+- Emotionally charged (H_E large, π_u≈0): refuses to decay regardless of structural isolation
+
+**The Affective Demotion Shield:**
+When H_E is applied to the Demotion Oracle threshold, it becomes:
+  δ*(u→v) = (1 + H_E(u)) · δ(u→v)
+When H_E → ∞, δ* → ∞. The Demotion Oracle is mathematically forbidden from firing.
+High-charge memories are permanently shielded from semantic compression.
+
+**What Trey should do with this:**
+Do NOT treat this as the answer. Treat it as a prior hypothesis to evaluate. Specifically:
+1. Does the Ebbinghaus forgetting curve literature support a decay function with this
+   structure — where emotional salience and structural centrality both independently
+   slow forgetting? Is there empirical evidence for this interaction?
+2. Does the biological synaptic pruning literature identify emotional valence as a
+   protective mechanism against pruning, independent of synaptic use-frequency?
+3. Does the H_E modifier to δ produce a decay function that is stable under the
+   PPR density constraint ρ* = 0.78 — or does allowing emotionally charged neurons
+   to be permanently undemoTable create local density violations over time?
+4. Is the Ebbinghaus-Laplacian form (exponential decay with composite denominator)
+   the right functional form, or does the literature support a different decay kernel?
+
+If the literature supports the framework: include it in the Phase 2 math specification
+for Erdős, noting the empirical validation.
+If the literature contradicts it: flag the contradiction explicitly and describe what
+a better-supported decay model would look like.
+
+Filed in: `Claude.AI/Bot.Erdos/Research_Complete/Erdos.Thermodynamics.Emistemological.Time.Future.Consideration.md`
+Read the full document before Phase 1 research begins.
+
+---
+
 ## CONNECTION TO BROADER ARCHITECTURE
 
 This problem is not isolated. The pruning algorithm decision affects:
