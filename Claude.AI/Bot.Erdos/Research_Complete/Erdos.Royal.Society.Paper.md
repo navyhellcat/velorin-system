@@ -43,17 +43,17 @@ $$P_{ij} = \frac{\mathcal{A}(i,j)}{\sum_k \mathcal{A}(i,k)}$$
 
 ### 2.1 The Scale-Invariant Geometry of Retrieval
 
-**Theorem 1: Scale-Invariant Capped PPR ($\rho^* = \mathcal{O}(1)$)**
+**Theorem 1: Scale-Invariant Capped PPR ($\rho^{*} = \mathcal{O}(1)$)**
 
 *Problem:* In a growing graph, does the precision of a random-walk retrieval decay as $N \to \infty$?
 
 *Proof:* The PPR stationary distribution $R$ for a query seed $S$ with teleportation parameter $\alpha$ is $R = \alpha \sum_{t=0}^{\infty} (1 - \alpha)^t P^t S$. Because the architecture enforces a strict out-degree cap of $d_{max} = 7$, the maximum number of nodes reachable in $t$ steps is $7^t$. As $N \to \infty$, the global mixing time $\mathcal{O}(\log N)$ vastly exceeds the effective teleportation horizon $1/\alpha$. The vast majority of the graph remains mathematically invisible to any single query.
 
-*Result:* The required high-priority edge density $\rho^*(N)$ to maintain precision is entirely independent of $N$. It scales strictly as $\mathcal{O}(1)$.
+*Result:* The required high-priority edge density $\rho^{*}(N)$ to maintain precision is entirely independent of $N$. It scales strictly as $\mathcal{O}(1)$.
 
 ---
 
-**Theorem 2: The Density Floor ($\rho^* \approx 0.78$)**
+**Theorem 2: The Density Floor ($\rho^{*} \approx 0.78$)**
 
 *Problem:* What is the exact $\mathcal{O}(1)$ density threshold required to trap 75% of the probability mass in the relevant signal path?
 
@@ -63,15 +63,15 @@ $$\frac{\alpha}{1 - p_s(1-\alpha)} \ge 0.75 \implies p_s \ge \frac{1 - \frac{4}{
 
 Setting $p_s = \frac{\rho A_H}{\rho A_H + (1-\rho)A_L} = K_\alpha$, we solve for the boundary condition:
 
-$$\rho^* = \frac{K_\alpha A_L}{A_H(1 - K_\alpha) + K_\alpha A_L}$$
+$$\rho^{*} = \frac{K_\alpha A_L}{A_H(1 - K_\alpha) + K_\alpha A_L}$$
 
-*Result:* For $\alpha = 0.25$, $\rho^* \approx 0.78$. Exactly 78% of a neuron's pointers must be semantic signal. The 7-pointer cap structurally enforces this local pruning, establishing the topological survival boundary.
+*Result:* For $\alpha = 0.25$, $\rho^{*} \approx 0.78$. Exactly 78% of a neuron's pointers must be semantic signal. The 7-pointer cap structurally enforces this local pruning, establishing the topological survival boundary.
 
 ### 2.2 Anomaly Mitigation & Inviolable Subspaces
 
 **Theorem 3: Monster Node as Semantic Mirror**
 
-*Problem:* Highly central nodes accumulate probability mass, destroying local $\rho^*$ density and causing precision collapse.
+*Problem:* Highly central nodes accumulate probability mass, destroying local $\rho^{*}$ density and causing precision collapse.
 
 *Derivation:* We define discrete Fisher Information via betweenness centrality: $\mathcal{I}(v) \propto \beta(v)$. We modulate the transition matrix with a penalty $f(\mathcal{I}(v)) = \max(1, \kappa \cdot \mathcal{I}(v))$, making it sub-stochastic: $\tilde{P}_{ij} = P_{ij} / f(\mathcal{I}(v_i))$.
 
@@ -91,13 +91,13 @@ $$\tilde{\alpha}_i = \alpha + (1-\alpha)\left(1 - \frac{1}{f(\mathcal{I}(v_i))}\
 
 *Result:* We inject an orthogonal projection binary mask $M$ into the loss function, severing the gradient flow exactly at the boundary of the inviolable subspace:
 
-$$ \mathcal{L}^*(\phi^*) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot ||\phi^*(h_w) - h_w^{-e}||^2 $$
+$$ \mathcal{L}^{*}(\phi^{*}) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot ||\phi^{*}(h_w) - h_w^{-e}||^2 $$
 
 ---
 
 **The Intersection Theorem**
 
-*Dependency:* Theorems 1 and 3 are fundamentally coupled. Penalizing a Monster Node (Theorem 3) is only mathematically safe if the surrounding local topology inherently supports a density $\rho > \rho^*$ (Theorem 2). Otherwise, the Semantic Mirror isolates the query seed, causing percolation collapse.
+*Dependency:* Theorems 1 and 3 are fundamentally coupled. Penalizing a Monster Node (Theorem 3) is only mathematically safe if the surrounding local topology inherently supports a density $\rho > \rho^{*}$ (Theorem 2). Otherwise, the Semantic Mirror isolates the query seed, causing percolation collapse.
 
 ### 2.3 The Geometry of the Router (Wall A & B)
 
@@ -241,13 +241,13 @@ $$\delta(u \to v) = - \pi_u \log \Big( 1 - \mathcal{A}(u \to v) \cdot \mathcal{R
 
 ---
 
-**The Analytic LoRa Rank ($r^*$)**
+**The Analytic LoRa Rank ($r^{*}$)**
 
 *Problem:* What is the theoretical minimum description length (rank) of the LoRa adapter required to encode the Brain?
 
 *Derivation:* By the Eckart-Young-Mirsky Theorem and Reverse Water-Filling applied to the Simon-Ando spectral cliff, the optimal rank strictly counts the dominant singular values above the noise floor.
 
-$$r^* = R_{macro} + \sum_{v \in V} \mathbb{1}[\beta_{macro}(v) > \theta_{semantic}]$$
+$$r^{*} = R_{macro} + \sum_{v \in V} \mathbb{1}[\beta_{macro}(v) > \theta_{semantic}]$$
 
 *Result:* The LoRa rank is not a hyperparameter. It is exactly the number of Semantic Continents plus the number of Graduated Geodesic Tollbooths. It is a physical, self-scaling property of the user's mind.
 
@@ -259,17 +259,17 @@ The architecture operates as a mathematically closed, self-regulating thermodyna
 
 1. **Ingestion:** A piece of knowledge (Markdown) enters Layer 3. The LLM embeds it (1536D). The Alien Injection macro-router ($W_{global}$) performs one matrix multiply and an $\mathcal{O}(K)$ softmax, hurling the thought into the correct Layer 1 $E_8$ crystal.
 2. **Crystallization:** Inside the crystal, Laplacian Dual-Procrustes alignment warps the semantic space around the human's explicit pointers, snapping the thought into an 8D docking port.
-3. **Routing (The Standing Wave):** The user queries the system. PPR initiates a macro-walk via Simon-Ando aggregation, then plunges into micro-walks using the 64-float Inter-Crystal Gauge Tensors ($\mathcal{T}_{A \to B}$). Monster Nodes act as Semantic Mirrors to preserve local density $\rho^*$.
+3. **Routing (The Standing Wave):** The user queries the system. PPR initiates a macro-walk via Simon-Ando aggregation, then plunges into micro-walks using the 64-float Inter-Crystal Gauge Tensors ($\mathcal{T}_{A \to B}$). Monster Nodes act as Semantic Mirrors to preserve local density $\rho^{*}$.
 4. **Compression Event:** As the walk passes through the graph, Simon-Ando Macro-Entropy ($\beta_{macro}$) is evaluated. If a node bridges distinct semantic continents, exceeding the self-calibrating spectral gap threshold ($\theta_{semantic}$), it graduates.
 5. **Distillation:** The graduated geodesics train the Layer 0 LoRa adapter. The Gibbs Hard Negative sampler ensures tractable gradients, while the $\mathcal{L}_{LoRa\text{-}MSE}$ loss perfectly shields the training from TurboQuant 3.25-bit cache noise.
 6. **Demotion:** Once the LoRa natively learns the geodesic, the residual KL divergence drops below the pointer's intrinsic topological weight ($\delta(u \to v)$). The Demotion Oracle fires. The pointer's affinity drops to 2, turning it invisible to PPR and freeing dynamic crystal capacity.
-7. **Mitosis & Scaling:** As the crystal fills, Weighted Fiedler Bisection splits it with minimal semantic damage. The optimal LoRa rank $r^*$ increments automatically.
+7. **Mitosis & Scaling:** As the crystal fills, Weighted Fiedler Bisection splits it with minimal semantic damage. The optimal LoRa rank $r^{*}$ increments automatically.
 
 **Systemic Properties:**
 
 - **Scale Invariance:** From the $\mathcal{O}(1)$ density floor of retrieval to the $\mathcal{O}(1)$ local compute of effective resistance, the system experiences zero performance degradation at arbitrary $N$.
 - **Model Agnosticism:** By the Second Law, the Layer 3 Markdown substrate is permanent. Upgrading to a new base LLM merely spikes the residual pointer tension, instantly reviving all demoted pointers to "catch" the falling architecture while the new LoRa trains from the model-agnostic PPR ground truth.
-- **Self-Regulation:** Every parameter that could have been a free hyperparameter ($\rho^*$, $\theta_{semantic}$, $r^*$, $\delta$) has been derived analytically from the graph's own spectral properties.
+- **Self-Regulation:** Every parameter that could have been a free hyperparameter ($\rho^{*}$, $\theta_{semantic}$, $r^{*}$, $\delta$) has been derived analytically from the graph's own spectral properties.
 - **Information Preservation:** The system never deletes structural knowledge. The Second Law ensures that the discrete topological ground truth acts as an eternal heat bath, recovering all $\Delta$ information lost during neural compression.
 
 ---
@@ -286,7 +286,7 @@ Given an arbitrary, pre-trained LoRa adapter (from any user), can we mathematica
 
 **3. External Seams: MemPalace and Leiden**
 - **MemPalace Integration:** The temporal validity windows of the MemPalace KG map perfectly to the discrete state transitions of the Demotion Oracle. A demoted pointer acts as a bounded temporal interval in Layer 2.
-- **Leiden Community Detection:** The modularity optimization of the Leiden algorithm can serve as a highly efficient preprocessing step for identifying the Simon-Ando macro-regions $R_{macro}$, accelerating the calculation of the analytical LoRa rank $r^*$ without full spectral decomposition.
+- **Leiden Community Detection:** The modularity optimization of the Leiden algorithm can serve as a highly efficient preprocessing step for identifying the Simon-Ando macro-regions $R_{macro}$, accelerating the calculation of the analytical LoRa rank $r^{*}$ without full spectral decomposition.
 
 ---
 
@@ -295,7 +295,7 @@ Given an arbitrary, pre-trained LoRa adapter (from any user), can we mathematica
 We have formalized a machine that translates the discrete, episodic accumulation of human thought into the continuous, semantic intuition of a neural network. But in doing so, we have opened a vast new mathematical territory.
 
 **The Shannon Limit of a Person:**
-What is the theoretical upper bound on the channel capacity of a single human's cognitive output? As $N \to \infty$, the Simon-Ando macro-regions cannot grow infinitely; they must be asymptotically bounded by the dimensionality of human semantic space. Is there a maximum LoRa rank $r^*$ beyond which a human mind is mathematically "fully modeled," such that any further thoughts are purely interpolative?
+What is the theoretical upper bound on the channel capacity of a single human's cognitive output? As $N \to \infty$, the Simon-Ando macro-regions cannot grow infinitely; they must be asymptotically bounded by the dimensionality of human semantic space. Is there a maximum LoRa rank $r^{*}$ beyond which a human mind is mathematically "fully modeled," such that any further thoughts are purely interpolative?
 
 **Topological Invariants of the Mind:**
 Through all model migrations, crystal mitoses, and distillation cycles, the Betti numbers (the count of multi-dimensional topological holes) of the macro-graph remain invariant. This constitutes a permanent mathematical fingerprint of the user's cognitive structure. Can we classify the epistemological frameworks of different minds by their persistent homology?
