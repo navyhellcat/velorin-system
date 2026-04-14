@@ -273,7 +273,7 @@ Do NOT treat this as the answer. Treat it as a prior hypothesis to evaluate. Spe
    protective mechanism against pruning, independent of synaptic use-frequency?
 3. Does the H_E modifier to δ produce a decay function that is stable under the
    PPR density constraint ρ* = 0.78 — or does allowing emotionally charged neurons
-   to be permanently undemoTable create local density violations over time?
+   to be permanently undemotable create local density violations over time?
 4. Is the Ebbinghaus-Laplacian form (exponential decay with composite denominator)
    the right functional form, or does the literature support a different decay kernel?
 
