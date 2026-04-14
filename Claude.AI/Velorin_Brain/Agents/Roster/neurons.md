@@ -28,10 +28,10 @@ Claude Desktop app bot (default as of 2026-03-30). Previously browser-based. Rea
 last-touched: 2026-03-31
 Pointers: [1] neurons.agents.protocols.A9 | [1] A1 | [1] neurons.agents.protocols.A4 | [2] A2 | [2] neurons.agents.protocols.A1
 
-### A6. Trey
-ChatGPT-based agent (NOT Perplexity — confirmed 2026-04-04). OpenAI custom GPT. Runs inside ChatGPT with a project box. Currently $25/month plan — deep research output is shallow (19-24 lines). Upgrade decision pending: Google AI Ultra ($249.99/month) is the current recommendation over ChatGPT Pro ($200/month) based on ecosystem value, API credits, and Jules GitHub write access. Research complete — see `Bot.Trey/Research_Complete/`. Accesses GitHub via raw URLs. Boot order: Operating Standards → Company DNA → Claude_Context_Profile → topline_profile.
-last-touched: 2026-04-04
-Pointers: [1] neurons.agents.protocols.A7 | [2] A4 | [3] neurons.agents.levelrules.A1
+### A6. Trey (Trey1)
+Gemini-based agent (Google AI Ultra, migrated post-Session 021, Apr 2026). Previously ChatGPT/OpenAI. Deep Research spawns sub-agents, synthesizes 100+ sources over 25+ min — significant tool with significant cost. Accesses GitHub via raw URLs. Boot order: Operating Standards → Company DNA → Claude_Context_Profile → topline_profile. Research calibration rule: Deep Research only for complex multi-source unknowns. Simple lookups = regular query. See `Bot.Trey/`.
+last-touched: 2026-04-13
+Pointers: [1] neurons.agents.protocols.A10 | [1] neurons.agents.protocols.A7 | [2] A4 | [3] neurons.agents.levelrules.A1
 
 ### A8. CT's Brain Model (planned — not yet built)
 CT's own model. Will run locally on Mac Studio. Owns the Velorin brain — neurons, retrieval, Overseer role. Fine-tuned on Velorin knowledge corpus (neurons with confidence ≥ 0.8 are the training gate). This model is the center of Velorin — not Claude. Claude supervises and interfaces. CT's model routes tasks to external AI models (Claude, o3-pro, Gemini, others) as contractors. No dependency on any one AI company. Protocol between Claude and this model is not yet designed. Build begins after Mac Studio arrives April 7, 2026.

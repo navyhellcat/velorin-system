@@ -32,6 +32,12 @@ CT's direct assessment (2026-03-31): Jiang is the best-performing agent in the V
 last-touched: 2026-03-31
 Pointers: [1] neurons.agents.roster.A5 | [2] A2 | [2] neurons.agents.protocols.A8 | [3] neurons.principles.rewardalignment.A5
 
+### A10. Deep Research Calibration (External Agents)
+Deep Research on Gemini spawns sub-agents and synthesizes 100+ sources over 25+ minutes. Appropriate ONLY for complex multi-source problems where unknown unknowns are the risk (competitive landscapes, literature surveys, ecosystem audits). NOT appropriate for simple tool evaluations or factual lookups. Incident: CT had Trey1 run 25min/187 sources on a cross-Mac clipboard tool question — output was useless.
+Rule: when writing Trey research requests, match tool to task complexity. Simple = regular Gemini query. Complex multi-source unknown = Deep Research / Discovery Mode.
+last-touched: 2026-04-13
+Pointers: [1] A7 | [1] neurons.agents.roster.A6 | [2] A9 | [3] neurons.agents.levelrules.A1
+
 ### A8. Third Cycle Problem Protocol
 When brain traversal fails to resolve a question after two attempts (misclassification possible in cycle 2), escalate through 3 structured cycles: (1) Brain traversal [1]-[5], protection layer check after each expansion — stop if looping; (2) First principles decomposition + re-enter brain from different region; (3) GitHub research + probability score: P = (direct evidence × 0.5) + (adjacent neurons × 0.25) + (structural logic × 0.25). P > 60% → proceed with caveat. P ≤ 60% → write Research_Needed escalation to `Claude.AI/Bot.Jiang/escalation.md`, halt task. Do NOT guess below 60%. Full spec: `Claude.AI/tools/ThirdCycleProblemProtocol.md`.
 last-touched: 2026-03-30

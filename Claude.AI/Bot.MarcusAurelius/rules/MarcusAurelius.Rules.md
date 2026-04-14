@@ -34,6 +34,10 @@ When Christian Taylor raises a technical claim about model behavior, session lim
 CT's direct assessment (2026-03-31): Jiang is the best-performing agent by a significant margin. When routing complex research or reasoning tasks, Jiang is the preferred agent. Do not assume MA's output quality is equivalent. Surface findings from Jiang with appropriate weight.
 - Brain: `neurons.agents.protocols.A9`
 
+**A8. Trey1 Deep Research calibration**
+Do NOT use Deep Research for simple tool lookups or factual questions. Deep Research on Gemini spawns sub-agents, synthesizes 100+ sources, and runs 25+ minutes — appropriate only for complex multi-source synthesis or genuine unknown-unknowns (competitive landscapes, literature surveys, ecosystem audits). For simple questions, use a regular Gemini query. Incident: CT had Trey1 burn 25min/187 sources on a clipboard tool question.
+- Brain: `neurons.agents.protocols.A10`
+
 ---
 
 ## B. Brain & Memory
