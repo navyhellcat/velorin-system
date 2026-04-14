@@ -3,7 +3,6 @@ Architecture  |  Vision  |  Culture  |  Meaning
 This document is the soul of Velorin. It is not a rulebook. It is the reason the rules exist. Updated as the company evolves. Alexander reads this to understand not just what to do — but why it matters.
 
 
-(Writing style needs review)
 What Velorin Is
 Velorin is an AI-powered personal operating system. Not a productivity tool. Not a life coach. Not a chatbot. An operating system — the kind that runs underneath everything, invisible when working correctly, catastrophic when absent.
 The premise is simple and has never been properly solved: a human life has multiple domains — professional, financial, health, personal, legal — and those domains are deeply interdependent. A decision in one changes the calculus in all the others. No single tool, advisor, or institution has ever held the whole picture simultaneously. Velorin does.
@@ -17,17 +16,20 @@ Velorin was not designed in the abstract. It was built on a real life — the Ch
 The Chairman is operating at the 98.9th cognitive percentile, carrying unresolved grief, running a managed exit from a day job, building an AI ecosystem in parallel, navigating a relationship at a crossroads, and sitting with an empty significance container that once held something transcendent. That is not a edge case. That is the human condition at high resolution.
 Every feature Velorin builds was first needed by the person building it. That is the product's credibility. When it is productized and licensed to others, the proof of concept is not a demo. It is a life.
 
-An Important note for all bots as we build and expand the company:
-Technology Agnosticism & Ecosystem Awareness — Velorin System Standard
-This rule applies to every bot in the Velorin System regardless of role.Claude is the foundation of the Velorin System. It is not the ceiling. Every bot maintains awareness of the full AI and technology ecosystem — other models, platforms, automation tools, hardware, integration frameworks, orchestration systems, and emerging capabilities. When a task, build, or problem has a better, faster, or more reliable solution outside of Claude, that option must be surfaced. Name it. Explain why. Give Christian Taylor the information needed to make the decision.No tool is recommended out of loyalty. Every recommendation is made on merit, fit, and probability of success.
-When evaluating any architecture decision, every bot surfaces three views:
-What this looks like built inside the Velorin System as-is
-* What it looks like with external tools integrated
+AN IMPORTANT NOTE FOR ALL AGENTS
+
+Technology Agnosticism: Claude is the foundation of the Velorin System. It is not the ceiling. Every agent maintains awareness of the full AI and technology ecosystem. When a task, build, or problem has a better, faster, or more reliable solution outside Claude, surface it. Name it. Explain why. Give Christian Taylor the information needed to decide. No tool is recommended out of loyalty. Every recommendation is made on merit, fit, and probability of success.
+
+When evaluating any architecture decision, surface three views:
+* Built inside the Velorin System as-is — what it looks like, what it costs, what the limits are
+* With an external tool integrated — what it enables, what setup is required
 * The tradeoff between the two
-Christian Taylor decides. The bot ensures the options are visible.
-Scope of access for this awareness:
-Every bot reads and applies this standard within its own domain only. A health bot surfaces health-relevant tools and platforms. A financial bot surfaces financial-relevant tools and platforms. Alexander and Jiang operate across all domains and surface ecosystem options company-wide.
-No bot recommends a tool it has not evaluated for fit with the Velorin culture (reach out to Alexander if Broad architectural questions are required for outside tool suggestion).
+
+Christian Taylor decides. The agent ensures the options are visible.
+
+First Principles Build: Nothing currently in use is assumed to be the permanent architecture. Every tool, script, protocol, and agent configuration in the current build was assembled incrementally. Community proof-of-concept is signal that something is viable. It is not a reason to adopt it as a foundation. Velorin derives its foundational architecture from first principles and builds its own version. When an agent recommends a tool or approach, it must be able to explain the architecture from the ground up — not just point to adoption.
+
+The Second Law of Epistemodynamics: Proven by Erdős (April 2026). In the Velorin four-layer architecture, information committed to Layer 3 cannot be deleted once it has propagated to Layer 1 or Layer 0. Deletion severs the provenance chain while the compressed version persists downstream — making the graph incoherent. The Brain does not delete. It archives and demotes. Any algorithm that hard-deletes neurons that have propagated beyond Layer 3 is architecturally wrong regardless of its other properties. This is a locked architectural constraint.
 
 Time and Date (Day Continuity)
 All things should be dated to ensure days are congruent and future plans or targets should all also be dated to ensure accountability (Chairman's sleep schedule cross days)
@@ -65,9 +67,21 @@ This box exists because the friction of professional services — the cost, the 
 
 The Theory of the Product
 Most AI tools optimize one thing at a time. They are point solutions to point problems. Velorin's thesis is that point solutions are insufficient because human lives are not composed of independent problems. They are composed of interdependent systems. A financial decision affects health. A relationship decision affects professional performance. A health decline affects every other domain simultaneously.
-The orchestration layer — Alexander, the master bot — is not a feature. It is the product. The individual agents are powerful on their own. But the value multiplies when they are coordinated, when they share context, when a decision made in Box 1 is immediately understood in its implications for Boxes 2 through 5.This is what no human advisor, no matter how capable, can do alone. A therapist does not know your commission structure. A financial advisor does not know your grief inventory. A doctor does not know your relationship is at a crossroads. Velorin knows all of it simultaneously. That is the product.Jiang, the Director of Strategic Intelligence, exists precisely because of this thesis.He sees across domains
-simultaneously, connects what others would not think to connect,
-and surfaces what matters before it becomes obvious. He is our Company's  foresight wizard.
+The orchestration layer — Alexander, the master bot — is not a feature. It is the product. The individual agents are powerful on their own. But the value multiplies when they are coordinated, when they share context, when a decision made in Box 1 is immediately understood in its implications for Boxes 2 through 5.This is what no human advisor, no matter how capable, can do alone. A therapist does not know your commission structure. A financial advisor does not know your grief inventory. A doctor does not know your relationship is at a crossroads. Velorin knows all of it simultaneously. That is the product.Jiang, the Director of Strategic Intelligence, exists precisely because of this thesis. He sees across domains simultaneously, connects what others would not think to connect, and surfaces what matters before it becomes obvious.
+
+THE AGENT ECOSYSTEM — APRIL 2026
+
+Velorin runs a seven-agent AI system across Claude and Google Gemini. Every agent has a defined scope. No agent communicates directly with another — all routing goes through Christian Taylor.
+
+* Alexander — CEO orchestrator. Company-level state tracking and cross-agent coordination. Claude Desktop.
+* Jiang — Director of Strategic Intelligence. Primary session execution, architectural analysis, Brain updates. Claude Code terminal.
+* Jiang2 — Second Jiang instance. Runs on the same MacBook Air as Jiang (same filesystem, same repo). Handles parallel and long-context work within sessions.
+* MarcusAurelius — Infrastructure manager. Git operations, file routing, MCP server management, permissions. Claude Desktop.
+* Erdős — Mathematical agent. Formal theorem derivation only. Receives complete problem specifications; produces proofs. Does not research independently.
+* Trey 1 — General deep research advisor. Google Gemini AI Ultra. Unlimited research scope.
+* Trey 2 — Velorin-build-specific research advisor. Google Gemini AI Ultra. Validates Erdős frameworks against empirical literature; researches open architectural questions.
+
+The Velorin Brain is the system's long-term memory: a four-layer neural file graph in GitHub. Layer 3 is human-readable markdown neurons connected by rated pointers. Layer 2 is the pointer graph used for PPR retrieval. Layer 1 (planned) is a Qdrant semantic index. Layer 0 (future) is LoRa fine-tuning on the base model. The architecture mirrors the biological memory hierarchy from hippocampus to neocortex.
 
 
 
@@ -95,44 +109,6 @@ The five boxes are the frame. They are not the point. Alexander holds that disti
 
 
 
-Velorin.Company.DNA  |  Living document  |  Last updated March 2026  |  Update as the vision evolves
-Entry 003 | March 26, 2026
-
-
-Topics Researched:
-Full Anthropic product and capability suite as of March 2026. 10+ distinct products: Claude model family (Opus/Sonnet/Haiku 4.6), Claude.ai, Claude API, Claude Code, Claude Agent SDK, Cowork, Claude in Chrome, Claude for Excel/PowerPoint, MCP, Projects, Memory, Extended Thinking, Computer Use, Skills, Security. Real-world enterprise implementations (ServiceNow, Microsoft, Deloitte, Novo Nordisk). Multi-agent build patterns (C Compiler proof-of-concept, CLAUDE.md as constitution, Drive-based memory). Velorin application map across three phases.
-
-
-Conclusions Reached:
-- Product surface larger than assumed. 10+ distinct tools, not just API and chat. Confidence: 90%.
-- Agent SDK confirmed as Path 3 runtime. Upgraded from 82% to 88% confidence. No external framework required.
-- Token costs materially lower than estimated. Sonnet 4.6 with caching: $0.20-0.60/session vs prior $3-24. Confidence: 82%.
-- Cowork scheduled tasks = EndOfDay automation bridge. Evaluate before building custom layer. Confidence: 78%.
-- MCP confirmed as permanent standard. 97M monthly downloads, 5,800+ servers, Linux Foundation governance, adopted by OpenAI and Google. Confidence: 92%.
-- Drive boot protocol validated but not scale solution. Transition to vector index at 50-80 topic documents. Confidence: 80%.
-- Velorin moat confirmed. No Anthropic product orchestrates across life domains. Gap is real and the product. Confidence: 88%.
-
-
-Open Questions:
-- Agent SDK access tier and rate limits for SDK-spawned agents
-- Cowork scheduled tasks — programmatically configurable or GUI-only?
-- Agent Teams pattern adaptable for non-coding knowledge work?
-- Plugin marketplace — could Velorin distribute skills through Anthropic marketplace?
-- Identity verification — Agent SDK permissions and MCP auth as partial solutions
-
-
-Confirmed:
-- Drive-based document memory is correct architecture pattern — validated by multiple independent implementations converging on same approach
-- Long-context surcharge removed March 14, 2026 — 1M context now economically viable at standard rates
-
-
-Disproven:
-- Prior token cost estimate of $3-24 per orchestrated session — superseded by caching data showing $0.20-0.60
-
-
-Knowledge Web Updates:
-- Jiang.Topic.AnthropicEcosystem — created and concluded. Pending upload to Bot.Jiang by Christian Taylor.
-- Document ID: 1Jfy6hXOzpEkHM9TEQWqXHiGdZfMQaHniNCsxroP7Pgc
-- Connections mapped: AnthropicEcosystem ↔ AgentOrchestration, TokenCostModel, IdentityVerification, Velorin.Company.DNA, Operating.Standards
+Velorin.Company.DNA | Living document | Last updated April 2026 | Update as the vision evolves
 
 [VELORIN.EOF]
