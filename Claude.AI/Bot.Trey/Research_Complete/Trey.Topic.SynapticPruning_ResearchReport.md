@@ -205,5 +205,40 @@ Translating these mathematics to the Velorin operating environment, the Neural F
 15. General Strategy for Unlearning in Graph Neural Networks — Zitnik Lab: https://zitniklab.hms.harvard.edu/projects/GNNDelete/
 
 ---
+Appended NOTES : Actionable Hypotheses: Synaptic Pruning, Graph Unlearning, and Signal Thresholds
+1. Hypothesis: FI-Based Selective Centrality Reduction
+Precise Claim: Modulating the Personalized PageRank (PPR) transition matrix by an inverse function of a node's Fisher Information—calculated over discrete human-assigned pointer weights rather than continuous activation gradients—will selectively attenuate the random-walk gravity of high-centrality "Monster Nodes" without degrading the retrieval precision of the surrounding topological neighborhood.
+
+Why it is novel: Existing literature applies Fisher Information (FI) pruning strictly to neural network weights derived from gradient descent to prevent artificial sensory blindness. It operates on the assumption that edge weights are continuous, computed activations. Applying FI as a centrality penalty in a discrete, human-curated directed graph breaks the assumption that FI optimization requires a differentiable loss landscape.   
+
+Mathematical domain: Spectral Graph Theory and Information Geometry.
+
+What Erdős needs to prove/disprove: Prove that for a directed graph with discrete edge weights, an FI-penalized PPR random walk converges to a stationary distribution where the rank-order of non-monster nodes is strictly preserved compared to the unpenalized graph.
+
+2. Hypothesis: Constrained GNNDelete Operator for Hard Exemptions
+Precise Claim: Enforcing a strict zero-bounded Lipschitz continuity constraint on the deletion operator ϕ for a predefined hard exemption class of nodes (C 
+memory
+​
+ ) will satisfy the Neighborhood Influence preservation requirement of GNNDelete while mathematically guaranteeing absolute structural permanence for the exempted nodes.
+
+Why it is novel: The standard GNNDelete operator assumes uniform vulnerability—any node's embedding can be modified by the deletion operator to satisfy Deleted Edge Consistency and Neighborhood Influence. Introducing a hard exemption class requires a partitioned deletion operator that projects unlearned edges away from protected nodes, breaking the assumption that global layer-wise weight updates can be applied without structural exemptions.
+
+Mathematical domain: Topological Graph Theory and Constrained Optimization.
+
+What Erdős needs to prove/disprove: Prove that the modified GNNDelete objective function containing the C 
+memory
+​
+  zero-bound constraint converges to a global minimum that still satisfies Deleted Edge Consistency for the targeted obsolete nodes without altering the representations of the exempted class.
+
+3. Hypothesis: Mathematical Signal Threshold for PPR Precision
+Precise Claim: In a walk-based, single-user, human-curated semantic graph, PPR retrieval precision remains above the 75% utility threshold if and only if the ratio of high-priority outbound edges to total graph edges scales logarithmically rather than linearly with total node count.
+
+Why it is novel: Current graph retrieval literature focuses on automated knowledge graph extraction, where precision is treated as a function of the extraction pipeline's entity recognition accuracy and vector embedding quality. This hypothesis shifts the determinant of precision away from semantic embedding quality and strictly onto the topological density of human-curated pointer ratings, breaking the assumption that more edges inherently improve retrieval.
+
+Mathematical domain: Random Matrix Theory and Markov Chains.
+
+What Erdős needs to prove/disprove: Disprove the null hypothesis that PPR precision in a human-rated pointer graph decays linearly with total node count, by deriving the exact edge-density threshold ratio where the PPR stationary distribution collapses into a uniform distribution.
+
+
 
 [VELORIN.EOF]
