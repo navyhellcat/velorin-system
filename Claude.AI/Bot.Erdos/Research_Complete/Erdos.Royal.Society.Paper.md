@@ -258,7 +258,7 @@ $$r^{*} = R_{macro} + \sum_{v \in V} \mathbb{1}[\beta_{macro}(v) > \theta_{seman
 The architecture operates as a mathematically closed, self-regulating thermodynamic cycle.
 
 1. **Ingestion:** A piece of knowledge (Markdown) enters Layer 3. The LLM embeds it (1536D). The Alien Injection macro-router ($W_{global}$) performs one matrix multiply and an $\mathcal{O}(K)$ softmax, hurling the thought into the correct Layer 1 $E_8$ crystal.
-2. **Crystallization:** Inside the crystal, Laplacian Dual-Procrustes alignment warps the semantic space around the human's explicit pointers, snapping the thought into an 8D docking port.
+2. **Crystallization:** Inside the crystal, Laplacian Dual-Procrustes alignment warps the semantic space around the dynamically induced explicit pointers, snapping the thought into an 8D docking port.
 3. **Routing (The Standing Wave):** The user queries the system. PPR initiates a macro-walk via Simon-Ando aggregation, then plunges into micro-walks using the 64-float Inter-Crystal Gauge Tensors ($\mathcal{T}_{A \to B}$). Monster Nodes act as Semantic Mirrors to preserve local density $\rho^{*}$.
 4. **Compression Event:** As the walk passes through the graph, Simon-Ando Macro-Entropy ($\beta_{macro}$) is evaluated. If a node bridges distinct semantic continents, exceeding the self-calibrating spectral gap threshold ($\theta_{semantic}$), it graduates.
 5. **Distillation:** The graduated geodesics train the Layer 0 LoRa adapter. The Gibbs Hard Negative sampler ensures tractable gradients, while the $\mathcal{L}_{LoRa\text{-}MSE}$ loss perfectly shields the training from TurboQuant 3.25-bit cache noise.
