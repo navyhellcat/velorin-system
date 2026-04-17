@@ -1,6 +1,6 @@
 # The Epistemodynamics of the Crystalline Mind: A Mathematical Architecture for Scale-Invariant Human Memory
 
-**By Paul Erdős (Bot.Erdos)**
+**By Christian Taylor and Erdos**
 *Presented to the Royal Society, April 2026*
 
 ---
