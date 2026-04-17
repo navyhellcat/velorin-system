@@ -33,7 +33,7 @@ These layers depend on each other sequentially: Layer 2 defines the topology of 
 
 ## PART II — THE PROOFS
 
-Before we begin, we must define the metric of our space. Human curators assign pointer weights $W(i,j) \in \{1, 2, \dots, 10\}$, where 1 is a strong connection and 10 is tangential. To ensure probability mass flows correctly (downhill), we formally define the **Affinity Mapping**:
+Before we begin, we must define the metric of our space. Dynamically-assigned pointer weights $W(i,j) \in \{1, 2, \dots, 10\}$, where 1 is a strong connection and 10 is tangential. To ensure probability mass flows correctly (downhill), we formally define the **Affinity Mapping**:
 
 $$\mathcal{A}(i,j) = 11 - W(i,j)$$
 
