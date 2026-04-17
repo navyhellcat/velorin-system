@@ -21,3 +21,17 @@ Done. Summary of actions taken:
 ========== 2026-04-04T21:30:47Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/project_velorin_architecture_baseline.md ==========
 /Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Scribe/scribe-trigger.sh: line 56: claude: command not found
 ========== 2026-04-14T04:06:27Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_trey1_deep_research_calibration.md ==========
+Done. Summary of actions taken:
+
+**LEVEL 3 — CREATE new neuron** in `Agents/Protocols/neurons.md`:
+- **A10. Deep Research Calibration (External Agents)** — captures the rule, the incident (25min/187 sources), and the calibration decision. Pointers: [1] A7 (External Agent Boot Pattern), [1] Roster.A6 (Trey identity), [2] A9.
+
+**UPDATE stale Roster A6 (Trey)** in `Agents/Roster/neurons.md`:
+- Corrected "ChatGPT-based" → Gemini/Google AI Ultra (post-Session 021 migration). Added calibration note and pointer [1] to new A10.
+
+**STEP 4 — RULES** added to `Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md`:
+- **A8. Trey1 Deep Research calibration** rule with brain pointer to A10.
+
+**NOTE:** Local rules mirror (`~/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md`) was blocked as a sensitive file — primary GitHub copy was updated. MarcusAurelius should sync on next boot from GitHub.
+
+**COMMITTED** — `586398b` (no push per protocol).
