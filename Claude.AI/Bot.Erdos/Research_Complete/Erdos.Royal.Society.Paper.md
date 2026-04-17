@@ -113,7 +113,7 @@ $$\min_{W} \mathcal{L}(W) = \| W X - Y_M \|_F^2 + \gamma \cdot \text{Tr}\left( W
 
 $$W = Y_M (K + \gamma K L + \lambda I)^{-1} X^T$$
 
-*Result:* The continuous space is warped by human topological gravity *before* discrete assignment, requiring only an $\mathcal{O}(N^3)$ inversion where $N \le 240$ (microseconds), achieving a ~260x compute reduction.
+*Result:* The continuous space is warped by dynamic topological gravity *before* discrete assignment, requiring only an $\mathcal{O}(N^3)$ inversion where $N \le 240$ (microseconds), achieving a ~260x compute reduction.
 
 ---
 
