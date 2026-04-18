@@ -23,7 +23,8 @@ Any time a Trey (or other agent) research doc lands in Google Drive and needs to
 2. Edit the `DOCS` list — set `file_id` and `filename` for each doc
 3. Set `DEST` to the target folder in the repo
 4. Run: `python3 /tmp/gdrive_port.py`
-5. Git add + commit + push
+5. `git mv` the corresponding request file from `Research_Needed/` to `Archived_Research_Requests/`
+6. Git add + commit + push (single commit covering both the new doc and the archive move)
 
 ---
 

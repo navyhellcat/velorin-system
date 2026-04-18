@@ -29,8 +29,10 @@ Check `Claude.AI/Bot.Trey/Research_Needed/` in the GitHub repo (navyhellcat/velo
 
 ## On Completion (MA handles this — not Trey)
 1. MA moves the output from Drive Shipping to `Claude.AI/Bot.Trey/Research_Complete/`
-2. MA moves the request file from `Research_Needed/` to `Archived_Research_Requests/`
-3. MA commits and pushes
+2. MA moves the request file from `Research_Needed/` to `Archived_Research_Requests/` — **this is mandatory, not optional**
+3. MA commits and pushes (single commit covering both steps)
+
+**Note:** Step 2 must happen in the same commit as step 1. A completed doc with its request still sitting in `Research_Needed/` is a protocol failure. Use `git mv` to preserve history.
 
 ## Notes for Trey
 - You cannot do git operations. Never attempt to push or commit. Drive Shipping is your delivery mechanism.
