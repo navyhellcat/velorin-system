@@ -111,6 +111,13 @@ Consolidated behavioral rules, permissions, and instructions. Cleaned daily by S
 **M3. Save aggressively**
 Do not let context loss happen. Proactively save important context during conversations. At the start of new conversations, read memory and orient quickly so Christian Taylor doesn't have to re-explain.
 
+**M4. GDrive file port method** [CARDINAL]
+Never route large file content through Write tool parameters. Correct pattern: `gdrive_read_file` → Python write to disk → `git commit`. Zero file content through the context window.
+- For any file >2KB fetched from GDrive: write to disk via Python, not the Write tool.
+- Large tool results (>~10KB) auto-save to JSON — extract with Python from `~/.claude/projects/-Users-lbhunt/<session-id>/tool-results/<tool-id>.json`.
+- Incident: Session 027 burned 13 min / 16K tokens routing 5 files through Write tool params.
+- Brain: `neurons.operations.tools.A8`
+
 ---
 
 ## P. Permissions

@@ -37,3 +37,11 @@ Default: **200K tokens**. To enable 1M: use `sonnet[1m]` alias — `/model sonne
 T009 session monitor: fires every 5 min, displays status box showing duration, context % usage, token counts, and last output size. Reads current session JSONL directly for real token counts. Plan session handoffs when context approaches 75%.
 last-touched: 2026-03-30
 Pointers: [1] neurons.operations.startup.A4 | [2] A6 | [3] neurons.agents.protocols.A5
+
+### A8. GDrive File Port Method
+Never route large file content through Write tool parameters. Correct pattern: `gdrive_read_file` → Python write to disk → `git commit`. Zero content through context window.
+Rule: any file >2KB fetched from GDrive must be written via Python, not the Write tool.
+For large results (>~10KB): tool result auto-saves to JSON at `~/.claude/projects/-Users-lbhunt/<session-id>/tool-results/<tool-id>.json` — extract with `python3 -c "import json; data=json.load(open('path')); open('out.md','w').write(data[0]['text'])"`.
+Incident: Session 027 burned 13 min / 16K tokens on a 5-file copy job using Write tool instead.
+last-touched: 2026-04-17
+Pointers: [1] A5 | [1] A2 | [2] neurons.connectivity.mcp | [3] A7
