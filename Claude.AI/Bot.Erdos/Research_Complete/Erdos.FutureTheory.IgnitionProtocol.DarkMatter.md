@@ -4,7 +4,7 @@
 **Session 026 | April 17, 2026**
 **Classification: FUTURE THEORY — Extension to the Locked Architecture**
 
-*Constraint Note: The existing proofs of the Velorin Architecture (Theorems 1-5, Walls A, B, and C) remain unconditionally locked. This document formalizes the mathematical phase transition of Semantic Dark Matter into the active $E\_8$ crystal without violating the previously established $\mathcal{O}(1)$ density floors or Laplacian alignment constraints.*
+**Constraint Note:** The existing proofs of the Velorin Architecture (Theorems 1-5, Walls A, B, and C) remain unconditionally locked. This document formalizes the mathematical phase transition of Semantic Dark Matter into the active $E\_8$ crystal without violating the previously established $\mathcal{O}(1)$ density floors or Laplacian alignment constraints.
 
 ---
 
@@ -24,10 +24,13 @@ In the language of the Markov transition matrix $P$, the node $x\_{\ast}$ has an
 
 **The Proof of Infinite-Duration Tagging:**
 In a biological system, the "Synaptic Tag" $S\_{bio}$ is a biochemical state subjected to continuous exponential decay:
+
 $$ \frac{\partial}{\partial t} S_{bio}(t) = -\lambda S_{bio}(t) $$
+
 As $t \to \infty$, $S\_{bio} \to 0$. The PRPs have nothing to capture.
 
 In the Velorin Architecture, the "Synaptic Tag" is the 1536-dimensional continuous LLM embedding $x\_{\ast}$. Mathematics does not metabolize. Because $x\_{\ast}$ has no edges, it is perfectly orthogonal to the Ebbinghaus-Laplacian decay operator we proposed for the active graph. 
+
 $$ \frac{\partial}{\partial t} x_{\ast} = \mathbf{0} \implies \lambda_{velorin} = 0 $$
 
 When the user queries the system at $t\_{retrieval} = t\_{encode} + 22\text{ years}$ and experiences Emotional Resonance ($\mathcal{H}\_E \gg 0$), the mathematical capture equation evaluates the pristine vector $x\_{\ast}$ exactly as if it were encoded 5 seconds ago. Because $\lambda\_{velorin} = 0$, the artificial system mathematically collapses the gap between "initial encoding" and "active reconsolidation." The architecture replaces the volatile biological protein tag with an eternal mathematical coordinate, allowing Retrieval-Induced State-Dependent Reconsolidation to execute across infinite time horizons. $\blacksquare$
@@ -41,15 +44,18 @@ We define the **Active Retrieval Context** $V\_{active}$ as the set of nodes act
 ## SECTION 5: DERIVATION II — The Edge-Creation Formula (Affinity Assignment)
 To generate the outbound pointers from $x\_{\ast}$ (where $1 \le k \le 7$), we utilize the trained Layer 0 LoRa weight matrix $W\_{LoRa}$ to evaluate the topological fitness between the alien node $x\_{\ast}$ and the active graph context $V\_{active}$.
 The topological fitness logit between $x\_{\ast}$ and any active node $u \in V\_{active}$ is:
+
 $$ f(x_{\ast} \to u) = \pi^{(q)}_u \cdot \exp\left(\frac{x_{\ast}^T W_{LoRa} x_u}{\tau}\right) $$
 
 We select the top $k$ nodes that maximize this fitness. Because this is an Ignition event, it is driven by massive Emotional Heat ($\mathcal{H}\_E \gg 0$). We define the **Ignition Valency Constraint**: emotional accretion mathematically forces the generation of **High Affinity** weights (Human Ratings 1, 2, or 3 $\implies$ Affinities 8, 9, or 10).
+
 $$ \mathcal{A}(x_{\ast} \to u_i) = \min \left( 10, \left\lceil \mathcal{H}_E \cdot f(x_{\ast} \to u_i) \right\rceil \right) \ge 8 $$
 
 ## SECTION 6: DERIVATION IIb — The Transition Matrix Update
 The global transition matrix $P$ expands its rank from $N \times N$ to $(N+1) \times (N+1)$. 
 
 1. **The Outbound Row:** The new row $P\_{x\_{\ast}, \cdot}$ is populated using the row-normalized newly minted Affinities:
+
 $$ P_{x_{\ast}, u_i} = \frac{\mathcal{A}(x_{\ast} \to u_i)}{\sum_j \mathcal{A}(x_{\ast} \to u_j)} $$
 
 2. **The Reciprocal Gravity (Inbound Edge):** To pull $x\_{\ast}$ out of the null space so it can receive future PPR mass, the specific node the user was querying when the photo was surfaced (the anchor $u\_{anchor} = \arg\max \pi^{(q)}$) automatically spawns a single reciprocal High-Affinity pointer back to $x\_{\ast}$.
