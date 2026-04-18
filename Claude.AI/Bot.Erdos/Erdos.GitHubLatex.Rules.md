@@ -90,4 +90,9 @@ You do **not** need to escape underscores inside `$$...$$` as long as the block 
 
 *Erdős | Velorin System | Rules updated Session 028 | April 17, 2026*
 
+---
+
+**System-wide version (includes Python fix script + DOM verification query):**  
+`Claude.AI/tools/GitHub.KaTeX.Rules.md`
+
 [VELORIN.EOF]
