@@ -43,9 +43,9 @@ $$\tilde{P} = P_{AA} + P_{AX} (I - P_{XX})^{-1} P_{XA}$$
 
 ### Why This Works
 
-The second term $(I - P_{XX})^{-1}$ is the infinite geometric series of a random walk wandering entirely inside the stale subspace.
+The second term $(I - P\_{XX})^{-1}$ is the infinite geometric series of a random walk wandering entirely inside the stale subspace.
 
-If a random walk steps onto a stale neuron ($P_{AX}$), it wanders through the stale subspace and instantly jumps back out to an active neuron ($P_{XA}$). The stale neuron is transformed into a **Semantic Wormhole**:
+If a random walk steps onto a stale neuron ($P\_{AX}$), it wanders through the stale subspace and instantly jumps back out to an active neuron ($P\_{XA}$). The stale neuron is transformed into a **Semantic Wormhole**:
 - Accumulates zero PPR stationary mass (never appears in results)
 - Preserves routing perfectly (semantic pointers still propagate)
 - Historical archive intact in markdown — just invisible to retrieval
@@ -53,7 +53,7 @@ If a random walk steps onto a stale neuron ($P_{AX}$), it wanders through the st
 This solves Stale Neuron Noise without any deletion.
 
 ### Implementation Note
-Computing $(I - P_{XX})^{-1}$ requires a matrix inverse on the stale subspace. Computational cost scales with |X|. For large stale populations this becomes expensive. Requires engineering analysis before implementation.
+Computing $(I - P\_{XX})^{-1}$ requires a matrix inverse on the stale subspace. Computational cost scales with |X|. For large stale populations this becomes expensive. Requires engineering analysis before implementation.
 
 ---
 
@@ -66,7 +66,7 @@ Standard PPR: $R = (1 - \alpha) P R + \alpha S$. When the walk teleports, it goe
 
 ### The Mathematical Solution
 
-Let M be a uniform probability distribution over all $C_{memory}$ nodes.
+Let M be a uniform probability distribution over all $C\_{memory}$ nodes.
 Introduce an **Axiomatic Tension Parameter** $\lambda \in (0,1)$.
 
 Rewrite the PPR teleportation vector:
@@ -95,14 +95,14 @@ Hard structural cap of 7 outbound pointers. When a neuron is full, the lowest-ra
 
 ### The Mathematical Solution
 
-Before allowing a pointer demotion, calculate the **Effective Resistance** $\mathcal{R}_{eff}$ of each candidate edge using the pseudoinverse of the Graph Laplacian.
+Before allowing a pointer demotion, calculate the **Effective Resistance** $\mathcal{R}\_{eff}$ of each candidate edge using the pseudoinverse of the Graph Laplacian.
 
 Because the out-degree is strictly bounded at 7, this computes in local $\mathcal{O}(1)$ time.
 
 ### Why This Works
 
-- If Pointer 3 bridges two isolated clusters: $\mathcal{R}_{eff} \approx 1$ → **RED warning**: "Load-bearing semantic bridge. Demotion will fracture the graph."
-- If Pointer 5 is redundant inside a dense triangle: $\mathcal{R}_{eff} \approx 0$ → **GREEN**: "Safe to demote."
+- If Pointer 3 bridges two isolated clusters: $\mathcal{R}\_{eff} \approx 1$ → **RED warning**: "Load-bearing semantic bridge. Demotion will fracture the graph."
+- If Pointer 5 is redundant inside a dense triangle: $\mathcal{R}\_{eff} \approx 0$ → **GREEN**: "Safe to demote."
 
 Replaces human guesswork with a topological oracle. Protects the graph from self-inflicted fragmentation.
 
@@ -124,8 +124,8 @@ Current assumed approach: take Top-K retrieved neurons, sort by PPR score, paste
 Do not retrieve a set of nodes. Retrieve a **Hamiltonian Context Tour**.
 
 1. Take the Top-K retrieved neurons
-2. Construct the induced subgraph $G_K$ using those K nodes and the edges between them
-3. Compute the **Maximum Weight Directed Arborescence** through $G_K$ using **Edmonds' Algorithm**, weighted by human affinities
+2. Construct the induced subgraph $G\_K$ using those K nodes and the edges between them
+3. Compute the **Maximum Weight Directed Arborescence** through $G\_K$ using **Edmonds' Algorithm**, weighted by human affinities
 4. Flatten the arborescence via **Depth-First Search (DFS)** to create a linear sequence
 
 ### Why This Is Revolutionary

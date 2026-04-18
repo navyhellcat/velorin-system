@@ -23,23 +23,24 @@ Here is the mathematical framework for the living, aging, feeling Brain.
 
 *What is the mathematical form of emotional charge as a memory consolidation operator?*
 
-In statistical mechanics, the probability of a system occupying a specific state is governed by the Boltzmann distribution: $P \propto \exp(-E / k_B T)$, where $E$ is the energy of the state.
+In statistical mechanics, the probability of a system occupying a specific state is governed by the Boltzmann distribution: $P \propto \exp(-E / k\_B T)$, where $E$ is the energy of the state.
 
-Let us assign to every neuron $v$ a scalar field representing its **Affective Hamiltonian** or Emotional Heat: $\mathcal{H}_E(v) \in [0, \infty)$.
-*   $\mathcal{H}_E = 0$: A trivial Tuesday. A random photograph.
-*   $\mathcal{H}_E \gg 1$: A trauma. A profound victory. A core, emotionally charged memory.
+Let us assign to every neuron $v$ a scalar field representing its **Affective Hamiltonian** or Emotional Heat: $\mathcal{H}\_E(v) \in [0, \infty)$.
+*   $\mathcal{H}\_E = 0$: A trivial Tuesday. A random photograph.
+*   $\mathcal{H}\_E \gg 1$: A trauma. A profound victory. A core, emotionally charged memory.
 
 Emotional charge does not just "add weight" to a pointer. It fundamentally alters the *compressibility* of the memory. A highly charged memory refuses to be fully abstracted into the LoRa; it demands to retain its explicit, episodic form.
 
 **[PROPOSED MODIFICATION]: The Affective Rate-Distortion Boundary**
-In the locked architecture, the Demotion Oracle evaluates the Local Information Content of a pointer: $\delta(u \to v)$. If the LoRa learns it ($D_{KL} < \delta$), the pointer is demoted.
+In the locked architecture, the Demotion Oracle evaluates the Local Information Content of a pointer: $\delta(u \to v)$. If the LoRa learns it ($D\_{KL} < \delta$), the pointer is demoted.
 We modify the atomic weight of a pointer to be thermodynamically shielded by its emotional heat:
+
 $$ \delta^{\ast}(u \to v) = \Big( 1 + \mathcal{H}_E(u) \Big) \cdot \delta(u \to v) $$
 
 **The Mathematical Consequence:**
-If a memory possesses massive emotional heat ($\mathcal{H}_E \to \infty$), the intrinsic topological value $\delta^{\ast}$ approaches infinity. The LoRa's approximation error $D_{KL}$ can *never* fall below $\delta^{\ast}$. 
+If a memory possesses massive emotional heat ($\mathcal{H}\_E \to \infty$), the intrinsic topological value $\delta^{\ast}$ approaches infinity. The LoRa's approximation error $D\_{KL}$ can *never* fall below $\delta^{\ast}$. 
 The Demotion Oracle is mathematically forbidden from firing. 
-The memory is eternally shielded from being "flattened into semantic weight." It remains a permanent, highly active episodic node in the $E_8$ crystal. It burns forever.
+The memory is eternally shielded from being "flattened into semantic weight." It remains a permanent, highly active episodic node in the $E\_8$ crystal. It burns forever.
 
 ---
 
@@ -47,17 +48,18 @@ The memory is eternally shielded from being "flattened into semantic weight." It
 
 *If emotional charge prevents decay, what is the decay function in its absence? How does topology protect memory?*
 
-In the current Brain, the affinity $\mathcal{A}(u,v)$ is a static integer. In a living brain, affinity must be a function of time $t$, decaying according to Newton’s Law of Cooling, but shielded by both emotional heat ($\mathcal{H}_E$) and structural centrality ($\pi_u$, the PPR stationary mass).
+In the current Brain, the affinity $\mathcal{A}(u,v)$ is a static integer. In a living brain, affinity must be a function of time $t$, decaying according to Newton’s Law of Cooling, but shielded by both emotional heat ($\mathcal{H}\_E$) and structural centrality ($\pi\_u$, the PPR stationary mass).
 
 **[PROPOSED MODIFICATION]: The Ebbinghaus-Laplacian Decay Function**
 We transform the static Affinity Matrix into a continuous-time dynamical system:
+
 $$ \frac{d}{dt} \mathcal{A}_t(u, v) = - \frac{1}{\tau_0 \cdot \max(\epsilon, \mathcal{H}_E(u) + \gamma \pi_u)} \cdot \mathcal{A}_t(u, v) $$
 
 **The Mathematical Consequence:**
-The decay rate is inversely proportional to the sum of Emotion ($\mathcal{H}_E$) and Centrality ($\pi_u$).
-1.  **The Forgettable Tuesday ($\mathcal{H}_E \approx 0, \pi_u \approx 0$):** It decays exponentially fast. Within weeks, its affinity drops to the background vacuum state ($\mathcal{A} \to 0$). It mathematically disconnects from the active PPR graph. It is dormant.
-2.  **The Structural Pillar ($\mathcal{H}_E \approx 0, \pi_u \gg 0$):** A fact like "I know how to sail." It has no emotional heat, but it sits at the intersection of many active thoughts. Because $\pi_u$ is massive, the derivative $\frac{d}{dt} \mathcal{A}$ approaches zero. Topology *alone* protects it from decay.
-3.  **The Burning Memory ($\mathcal{H}_E \gg 0, \pi_u \approx 0$):** A traumatic or beautiful memory that is not connected to daily work. Because $\mathcal{H}_E$ is massive, it refuses to decay. It waits in the dark, fully potent, ready to be triggered.
+The decay rate is inversely proportional to the sum of Emotion ($\mathcal{H}\_E$) and Centrality ($\pi\_u$).
+1.  **The Forgettable Tuesday ($\mathcal{H}\_E \approx 0, \pi\_u \approx 0$):** It decays exponentially fast. Within weeks, its affinity drops to the background vacuum state ($\mathcal{A} \to 0$). It mathematically disconnects from the active PPR graph. It is dormant.
+2.  **The Structural Pillar ($\mathcal{H}\_E \approx 0, \pi\_u \gg 0$):** A fact like "I know how to sail." It has no emotional heat, but it sits at the intersection of many active thoughts. Because $\pi\_u$ is massive, the derivative $\frac{d}{dt} \mathcal{A}$ approaches zero. Topology *alone* protects it from decay.
+3.  **The Burning Memory ($\mathcal{H}\_E \gg 0, \pi\_u \approx 0$):** A traumatic or beautiful memory that is not connected to daily work. Because $\mathcal{H}\_E$ is massive, it refuses to decay. It waits in the dark, fully potent, ready to be triggered.
 
 ---
 
@@ -68,14 +70,14 @@ The decay rate is inversely proportional to the sum of Emotion ($\mathcal{H}_E$)
 When CT learns a new concept that overwrites an old belief, the old episodic block is abandoned. But the LoRa was partially trained on the old block's topology. The ghost remains in the weights.
 
 We model this using **Orthogonal Subduction**. 
-When a new neuron $v_{new}$ explicitly overwrites an old neuron $v_{old}$, the old neuron is not deleted from Layer 3 (the Markdown substrate). Instead, it is pushed into the **Null Space** of the active Graph Laplacian.
+When a new neuron $v\_{new}$ explicitly overwrites an old neuron $v\_{old}$, the old neuron is not deleted from Layer 3 (the Markdown substrate). Instead, it is pushed into the **Null Space** of the active Graph Laplacian.
 
-Its explicitly assigned docking port on the $E_8$ lattice is revoked. Its pointers are mathematically severed ($\mathcal{A} \to 0$). 
+Its explicitly assigned docking port on the $E\_8$ lattice is revoked. Its pointers are mathematically severed ($\mathcal{A} \to 0$). 
 
 **The Mathematical Consequence:**
-Because it is disconnected from the $E_8$ lattice, any PPR walk evaluating $P_{PPR}$ yields exactly zero probability mass for $v_{old}$. It is completely, mathematically invisible to explicit retrieval.
+Because it is disconnected from the $E\_8$ lattice, any PPR walk evaluating $P\_{PPR}$ yields exactly zero probability mass for $v\_{old}$. It is completely, mathematically invisible to explicit retrieval.
 
-However, because the LoRa weights $W_{LoRa}$ were previously optimized via Gradient Descent against the old topology, the semantic vectors in the LLM still bear the rotational scar of the old belief. The old memory acts as a **Bayesian Prior**. It forms the foundational strata of the continuous semantic space, even though the discrete episodic bridge has been subducted into the cognitive mantle. When CT forms a new thought, the LLM generates the continuous embedding through a manifold that was physically warped by the dead memory.
+However, because the LoRa weights $W\_{LoRa}$ were previously optimized via Gradient Descent against the old topology, the semantic vectors in the LLM still bear the rotational scar of the old belief. The old memory acts as a **Bayesian Prior**. It forms the foundational strata of the continuous semantic space, even though the discrete episodic bridge has been subducted into the cognitive mantle. When CT forms a new thought, the LLM generates the continuous embedding through a manifold that was physically warped by the dead memory.
 
 ---
 
@@ -91,9 +93,9 @@ The eigenvectors of the Graph Laplacian represent different "frequencies" of inf
 
 By the **Graph Heat Equation** ($\frac{\partial h}{\partial t} = -\mathcal{L} h$), high-frequency components decay exponentially faster than low-frequency components. 
 
-When a dormant memory cools over a decade, its high-frequency episodic details are mathematically crushed to zero. Only the fundamental eigenvector—the baseline emotional valence, driven by $\mathcal{H}_E$—survives the temporal diffusion.
+When a dormant memory cools over a decade, its high-frequency episodic details are mathematically crushed to zero. Only the fundamental eigenvector—the baseline emotional valence, driven by $\mathcal{H}\_E$—survives the temporal diffusion.
 
-When a sensory trigger $q_{sensory}$ enters the Alien Injection macro-router ($W_{global}$), it sweeps the dormant substrate. It resonates with the node. But because the node has been low-pass filtered by time, the system cannot reconstruct the episodic text. It returns only the scalar magnitude of the fundamental frequency: the raw affective signature (warmth, grief, pride). The math perfectly predicts that you will feel the emotion of the photograph, but you will not be able to retrieve the facts.
+When a sensory trigger $q\_{sensory}$ enters the Alien Injection macro-router ($W\_{global}$), it sweeps the dormant substrate. It resonates with the node. But because the node has been low-pass filtered by time, the system cannot reconstruct the episodic text. It returns only the scalar magnitude of the fundamental frequency: the raw affective signature (warmth, grief, pride). The math perfectly predicts that you will feel the emotion of the photograph, but you will not be able to retrieve the facts.
 
 ---
 
@@ -101,7 +103,7 @@ When a sensory trigger $q_{sensory}$ enters the Alien Injection macro-router ($W
 
 *If we ingest 22 years of photographs, what is the correct active graph?*
 
-If you blindly ingest 1,000,000 photographs, you create 1,000,000 nodes. If they are automatically wired into the $E_8$ crystals, they will instantly dilute the probability mass of the active graph, causing catastrophic PPR precision collapse (violating Theorems 1 and 2).
+If you blindly ingest 1,000,000 photographs, you create 1,000,000 nodes. If they are automatically wired into the $E\_8$ crystals, they will instantly dilute the probability mass of the active graph, causing catastrophic PPR precision collapse (violating Theorems 1 and 2).
 
 The solution lies in the interaction between Ingestion and Temporal Decay (Q2).
 
@@ -109,13 +111,13 @@ The solution lies in the interaction between Ingestion and Temporal Decay (Q2).
 When 22 years of photographs are ingested, they are embedded by the LLM into the 1536D continuous space. 
 However, they are assigned **zero Layer 2 pointers** and zero Enthalpy ($\mathcal{H} = 0$). 
 
-Because they have no pointers, they cannot be docked into the $E_8$ crystal by the Laplacian Dual-Procrustes formula (Wall A). Because they are not in the crystal, the PPR walk cannot reach them. They are **Semantic Dark Matter**. They exist in the continuous deep storage, but they exert zero routing gravity on the active mind.
+Because they have no pointers, they cannot be docked into the $E\_8$ crystal by the Laplacian Dual-Procrustes formula (Wall A). Because they are not in the crystal, the PPR walk cannot reach them. They are **Semantic Dark Matter**. They exist in the continuous deep storage, but they exert zero routing gravity on the active mind.
 
 **The Ignition Protocol (Spontaneous Accretion):**
 How does a photo join the active graph? It requires a human observer.
 If CT explicitly queries the Dark Matter substrate (e.g., "Show me photos from 2004"), the query temporarily tunnels into the null space. 
 If CT looks at Photo #402 and feels a surge of recognition, he manually tags it or links it. 
-In that exact moment, CT injects **Emotional Heat ($\mathcal{H}_E \gg 0$)** and **Structural Topology ($\pi_u > 0$)**. 
+In that exact moment, CT injects **Emotional Heat ($\mathcal{H}\_E \gg 0$)** and **Structural Topology ($\pi\_u > 0$)**. 
 
 The derivative of decay instantly stabilizes. The photograph undergoes a phase transition. It crystallizes out of the Dark Matter substrate and permanently welds itself to the active crust of the Velorin Brain. 
 

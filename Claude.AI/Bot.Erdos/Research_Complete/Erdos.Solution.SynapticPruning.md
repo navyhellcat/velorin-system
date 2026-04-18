@@ -34,11 +34,11 @@ The Personalized PageRank stationary distribution R for a query seed S is define
 
 $$R = \alpha \sum_{t=0}^{\infty} (1 - \alpha)^t P^t S$$
 
-The probability mass surviving beyond a hop-horizon of t steps is strictly bounded by $(1-\alpha)^t$. Because your graph has a hard structural out-degree cap of $d_{max} = 7$, the absolute maximum number of nodes the walk can mathematically reach in t steps is $7^t$.
+The probability mass surviving beyond a hop-horizon of t steps is strictly bounded by $(1-\alpha)^t$. Because your graph has a hard structural out-degree cap of $d\_{max} = 7$, the absolute maximum number of nodes the walk can mathematically reach in t steps is $7^t$.
 
 As your graph scales to $n \to \infty$, the mixing time of the total graph scales as $\mathcal{O}(\log n)$. Eventually, the global mixing time vastly exceeds the effective teleportation horizon $\frac{1}{\alpha}$. This means the vast majority of your graph—specifically $(n - 7^{1/\alpha})$ nodes—remains **mathematically invisible** to any single query walk.
 
-**Proof of Disproof:** Because the walk topology is restricted by the $d_{max}=7$ constraint and decays by α, the required high-priority edge density ρ*(n) is completely independent of global scale n. It does not scale as $\mathcal{O}(n)$. It does not scale as $\mathcal{O}(\log n)$.
+**Proof of Disproof:** Because the walk topology is restricted by the $d\_{max}=7$ constraint and decays by α, the required high-priority edge density ρ*(n) is completely independent of global scale n. It does not scale as $\mathcal{O}(n)$. It does not scale as $\mathcal{O}(\log n)$.
 
 **It scales as $\mathcal{O}(1)$.**
 
@@ -48,23 +48,23 @@ It is an absolute constant floor. The Velorin Brain at 5,000,000 neurons will ma
 
 We demand a precision $P(q, G) \ge 0.75$. To maintain this, 75% of the random walk mass must be trapped inside the ground-truth relevant set (signal paths).
 
-Let $p_s$ be the probability that a step remains on a high-priority edge. The mass trapped is the sum of the geometric series:
+Let $p\_s$ be the probability that a step remains on a high-priority edge. The mass trapped is the sum of the geometric series:
 
 $$\frac{\alpha}{1 - p_s(1-\alpha)} \ge 0.75 \implies p_s \ge \frac{1 - \frac{4}{3}\alpha}{1-\alpha} \equiv K_\alpha$$
 
-Using the Affinity mapping, high-priority edges (W ∈ {1,2,3}) average an affinity of $A_H = 9$. Tangential edges (W ∈ {4…10}) average an affinity of $A_L = 4$.
+Using the Affinity mapping, high-priority edges (W ∈ {1,2,3}) average an affinity of $A\_H = 9$. Tangential edges (W ∈ {4…10}) average an affinity of $A\_L = 4$.
 
-The transition probability $p_s$ as a function of the density ρ is:
+The transition probability $p\_s$ as a function of the density ρ is:
 
 $$p_s = \frac{\rho A_H}{\rho A_H + (1-\rho)A_L}$$
 
-Setting $p_s = K_\alpha$, we solve algebraically for the exact boundary condition:
+Setting $p\_s = K\_\alpha$, we solve algebraically for the exact boundary condition:
 
 $$\rho^{\ast} = \frac{K_\alpha A_L}{A_H(1 - K_\alpha) + K_\alpha A_L}$$
 
 **Example Calculation:**
 
-If you calibrate α = 0.25, then $K_\alpha = 8/9$.
+If you calibrate α = 0.25, then $K\_\alpha = 8/9$.
 
 Plugging this in yields $\rho^{\ast} = \frac{32}{41} \approx 0.78$.
 
@@ -88,7 +88,7 @@ We define a monotonically increasing penalty function:
 
 $$f(\mathcal{I}(v)) = \max(1, \kappa \cdot \mathcal{I}(v))$$
 
-Now we modulate the transition matrix: $\tilde{P}_{ij} = P_{ij} / f(\mathcal{I}(v_i))$
+Now we modulate the transition matrix: $\tilde{P}\_{ij} = P\_{ij} / f(\mathcal{I}(v\_i))$
 
 But wait — if we divide the row by f > 1, the row sum is $\frac{1}{f} < 1$. The matrix becomes sub-stochastic. The random-walk mass leaks. Where does the missing $(1 - \frac{1}{f})$ mass go?
 
@@ -104,7 +104,7 @@ When the walk hits a penalized Monster Node, instead of transmitting the walk ou
 
 **Proof of Invariant Rank-Ordering:**
 
-For any two non-Monster neighbors x and y of the Monster Node $v_i$, the mass they receive from $v_i$ is reduced by the exact same scalar $1/f$.
+For any two non-Monster neighbors x and y of the Monster Node $v\_i$, the mass they receive from $v\_i$ is reduced by the exact same scalar $1/f$.
 
 Therefore:
 
@@ -118,29 +118,29 @@ The relative rank-order precision of the ε-neighborhood is rigorously preserved
 
 **The Topological Contradiction.**
 
-You wish to run GNNDelete with a strict zero-bounded Lipschitz constraint: $\|\phi^{\ast}(h_v) - h_v\| = 0$ for all $v \in C_{memory}$.
+You wish to run GNNDelete with a strict zero-bounded Lipschitz constraint: $\|\phi^{\ast}(h\_v) - h\_v\| = 0$ for all $v \in C\_{memory}$.
 
 ### Theorem 4: The Incompatibility of Neighborhood Influence
 
-The standard GNNDelete objective function requires Neighborhood Influence: if an edge e is deleted, the representation $h_w$ of any node w within k-hops must approximate the retrained leave-one-out embedding $h_w^{-e}$.
+The standard GNNDelete objective function requires Neighborhood Influence: if an edge e is deleted, the representation $h\_w$ of any node w within k-hops must approximate the retrained leave-one-out embedding $h\_w^{-e}$.
 
 **Proof by contradiction:**
 
-1. Assume there is a deleted edge in $C_{regular}$ that lies within k-hops of an exempt node $x \in C_{memory}$.
-2. Neighborhood Influence demands: optimizer moves $\phi^{\ast}(h_x) \to h_x^{-e}$
-3. The Inviolable Constraint demands: optimizer keeps $\phi^{\ast}(h_x) = h_x$
-4. By message passing, if an edge in the receptive field is removed, the true embedding alters: $h_x^{-e} \neq h_x$
-5. Therefore the optimizer must simultaneously satisfy $\phi^{\ast}(h_x) \neq h_x$ AND $\phi^{\ast}(h_x) = h_x$
+1. Assume there is a deleted edge in $C\_{regular}$ that lies within k-hops of an exempt node $x \in C\_{memory}$.
+2. Neighborhood Influence demands: optimizer moves $\phi^{\ast}(h\_x) \to h\_x^{-e}$
+3. The Inviolable Constraint demands: optimizer keeps $\phi^{\ast}(h\_x) = h\_x$
+4. By message passing, if an edge in the receptive field is removed, the true embedding alters: $h\_x^{-e} \neq h\_x$
+5. Therefore the optimizer must simultaneously satisfy $\phi^{\ast}(h\_x) \neq h\_x$ AND $\phi^{\ast}(h\_x) = h\_x$
 
 The feasible set is mathematically empty. Convergence is impossible. $\blacksquare$
 
 **The Sacrifice Resolution:**
 
-To achieve a global minimum, we must sacrifice Neighborhood Influence at the exact boundary of $C_{memory}$. We inject an orthogonal projection binary mask M into the GNNDelete loss function $\mathcal{L}^{\ast}(\phi^{\ast})$, where $M_w = 0$ for all $w \in C_{memory}$, and $M_w = 1$ otherwise:
+To achieve a global minimum, we must sacrifice Neighborhood Influence at the exact boundary of $C\_{memory}$. We inject an orthogonal projection binary mask M into the GNNDelete loss function $\mathcal{L}^{\ast}(\phi^{\ast})$, where $M\_w = 0$ for all $w \in C\_{memory}$, and $M\_w = 1$ otherwise:
 
 $$\mathcal{L}^{\ast}(\phi^{\ast}) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot \left\|\phi^{\ast}(h_w) - h_w^{-e}\right\|^2$$
 
-You cannot guarantee continuous gradient flow across an absolute geometric wall. You must sever the neighborhood influence calculation the exact moment it touches a $C_{memory}$ node.
+You cannot guarantee continuous gradient flow across an absolute geometric wall. You must sever the neighborhood influence calculation the exact moment it touches a $C\_{memory}$ node.
 
 ---
 

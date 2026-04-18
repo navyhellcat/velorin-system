@@ -32,8 +32,8 @@ For any neuron v, define its **8D Semantic Vector**:
 $$\Omega(v) = r_v + \sum_{m=1}^7 W_m e_m$$
 
 Where:
-- $r_v$ = neuron's "internal mass" (age or local relevance)
-- $W_m$ = human-assigned pointer weights 1–10, mapped to 7 orthogonal imaginary directions
+- $r\_v$ = neuron's "internal mass" (age or local relevance)
+- $W\_m$ = human-assigned pointer weights 1–10, mapped to 7 orthogonal imaginary directions
 
 ### The Core Claim
 
@@ -199,9 +199,9 @@ Those operate in standard topological space. They do not require 8 dimensions. T
 
 ### 1. The Abstracted Sets
 
-Let $X = \{x_1, x_2, \dots, x_N\}$ be your set of $N$ data payloads, represented as continuous embeddings in $\mathbb{R}^d$ (where $d = 1536$). **$N \le 240$.**
+Let $X = \{x\_1, x\_2, \dots, x\_N\}$ be your set of $N$ data payloads, represented as continuous embeddings in $\mathbb{R}^d$ (where $d = 1536$). **$N \le 240$.**
 
-Let $Y = \{y_1, y_2, \dots, y_{240}\}$ be the exact, hardcoded coordinates of the 240 root vectors of the $E_8$ lattice in $\mathbb{R}^8$. These are the discrete docking ports.
+Let $Y = \{y\_1, y\_2, \dots, y\_{240}\}$ be the exact, hardcoded coordinates of the 240 root vectors of the $E\_8$ lattice in $\mathbb{R}^8$. These are the discrete docking ports.
 
 ---
 
@@ -211,7 +211,7 @@ Two matrices solved simultaneously:
 
 **$W \in \mathbb{R}^{8 \times d}$** — linear projection matrix that folds 1536D down into an 8D shadow.
 
-**$M \in \{0, 1\}^{N \times 240}$** — strict bipartite assignment matrix. $M_{i,j} = 1$ if payload $x_i$ is docked at port $y_j$, else $0$.
+**$M \in \{0, 1\}^{N \times 240}$** — strict bipartite assignment matrix. $M\_{i,j} = 1$ if payload $x\_i$ is docked at port $y\_j$, else $0$.
 
 ---
 
@@ -235,7 +235,7 @@ $$\min_{W, M} \mathcal{L}(W, M) = \sum_{i=1}^N \sum_{j=1}^{240} M_{i,j} \left\| 
 
 Because W is continuous and M is discrete, the system solves iteratively:
 
-**Step A — Routing Step:** Fix W. Calculate distance matrix between all projected vectors $Wx_i$ and all lattice points $y_j$. Solve for M via **Hungarian Algorithm** in $\mathcal{O}(N^3)$ time. Snaps payloads into optimal slots.
+**Step A — Routing Step:** Fix W. Calculate distance matrix between all projected vectors $Wx\_i$ and all lattice points $y\_j$. Solve for M via **Hungarian Algorithm** in $\mathcal{O}(N^3)$ time. Snaps payloads into optimal slots.
 
 **Step B — Compression Step:** Fix M. Solve for W using **Least Squares (Orthogonal Procrustes)**. Adjusts the folding matrix to better fit the crystal structure.
 
@@ -245,7 +245,7 @@ Repeat until M stops changing.
 
 ### 6. The Engineering Advantage: Payload Agnosticism
 
-The math does not care what is inside set X. If $x_1$ is a bullet point today and a 5-page summary tomorrow, the same algorithm projects and docks it. The routing architecture, 8D tensor transitions, and Hungarian assignments can be built and tested entirely with arrays of random dummy variables $\mathcal{N}(0,1)$ — **before any decision is made about what the payloads are.**
+The math does not care what is inside set X. If $x\_1$ is a bullet point today and a 5-page summary tomorrow, the same algorithm projects and docks it. The routing architecture, 8D tensor transitions, and Hungarian assignments can be built and tested entirely with arrays of random dummy variables $\mathcal{N}(0,1)$ — **before any decision is made about what the payloads are.**
 
 The geometry of the router is mathematically divorced from the text content.
 
