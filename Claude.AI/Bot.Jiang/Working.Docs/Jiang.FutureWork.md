@@ -1,7 +1,7 @@
 ---
 class: regular
 type: future-work-log
-last-updated: 2026-04-13
+last-updated: 2026-04-17
 ---
 
 # Jiang — Future Work Log
@@ -37,19 +37,42 @@ First run a web search to confirm the Second Law and the term "Epistemodynamics"
 
 ## [FW-002] Trey — Research Barrier for Cross-Mac Clipboard/KVM Solution
 **Logged:** Session 026, April 13, 2026
-**Priority:** Low — quality of life
+**STATUS: COMPLETE — Session 027, April 17, 2026**
 
-CT needs a way to share clipboard and carry text/documents between Mac Studio and MacBook Air. The two machines are on the same network but NOT on the same Apple ID, which rules out Universal Clipboard and Universal Control.
+Trey delivered two research docs now in `Claude.AI/Receiving/`:
+- `Trey.Research.BarrierKVM.CrossMacTransfer.md` — Barrier analysis + custom Python daemon recommendation
+- `Trey.Research.CrossPlatformAppMesh.md` — Tauri 2.0 + libp2p + WebRTC Data Channels + CRDT architecture
 
-**Barrier** is an open-source software KVM (fork of Synergy) that shares keyboard, mouse, and clipboard over local network without any account requirement.
+Also delivered: `Trey.Research.VelorinKVMBridge.md` (52KB full Swift/build research) and full plan at
+`Claude.AI/Bot.Jiang/Working.Docs/Jiang.Plan.VelorinKVMBridge.md`.
+Archive this FW item. KVM build is now queued as an engineering task.
 
-**What Trey needs to research:**
-- What Barrier actually is and how it works
-- Whether it can be extended or built upon to be more functional for CT's specific workflow (carrying prompts, documents, and text between two Claude sessions on different machines)
-- Whether building a custom version or wrapper on top of it makes sense vs. using it as-is
-- Any alternatives that would be better suited
+---
 
-File the research request in `Claude.AI/Bot.Trey/Research_Needed/` when ready.
+## [FW-003] Migrate GDrive MCP Auth to Service Account (Permanent — Never Expires)
+**Logged:** Session 027, April 17, 2026
+**Priority:** Medium — operational reliability
+
+**Problem:**
+Current GDrive MCP uses OAuth with a user refresh token. Google revokes these after 7 days
+of non-use for apps in Testing mode with sensitive scopes (Drive). This caused a full auth
+failure this session requiring manual re-auth flow.
+
+**Solution:**
+Migrate to a Google Service Account with a JSON key file. Service account credentials
+do not expire. No OAuth flow, no refresh token, no 7-day timeout. Auth is permanent
+until the key is manually revoked.
+
+**What needs to be done:**
+1. Create a Service Account in Google Cloud Console under the Velorin project
+2. Grant the Service Account Drive access (share the Claude.AI folder with its email)
+3. Download the JSON key file → store at a local non-committed path
+4. Update `velorin-gdrive-mcp/auth.js` to use `google.auth.GoogleAuth` with the key file
+   instead of the current OAuth flow
+5. Test: restart MCP, verify gdrive_list_folder works without any oauth token present
+6. Document the key file path in STARTUP.md
+
+**Assigned to:** Jiang (MarcusAurelius can assist with the GCP console steps)
 
 ---
 
