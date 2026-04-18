@@ -85,16 +85,15 @@ Underscores inside `$$...$$` do **not** need escaping as long as the block has b
 
 ---
 
-## Python Fix Script (Batch — Rules 4 + 5)
+## Python Fix Script (Batch — Rules 1, 2, 4, 5)
 
-Idempotent. Safe to run on already-fixed files. Handles Rules 4 and 5 only.
-For Rules 1–3, those must be corrected manually at write time.
+Idempotent. Safe to run on already-fixed files. Covers all automatable rules.
+Rule 3 (nested subscripts) requires manual inspection — no safe regex.
 
 ```python
 import re
 from pathlib import Path
 
-# Set BASE to your repo root and list files to fix
 BASE = Path("/Users/lbhunt/Desktop/velorin-system")
 
 FILES = [
@@ -102,27 +101,48 @@ FILES = [
     # "Claude.AI/Bot.Erdos/Research_Complete/Erdos.Example.md",
 ]
 
+def fix_rule1(s):
+    """^{*} and ^* → ^{\ast}"""
+    s = re.sub(r'\^\{\s*\*\s*\}', r'^{\\ast}', s)
+    s = re.sub(r'\^(\s*)\*', r'^{\ast}', s)
+    return s
+
+def fix_rule2(s):
+    """||...|| → \lVert...\rVert; leftover || → \|\|"""
+    s = re.sub(r'\|\|([^|]+?)\|\|', r'\\lVert\1\\rVert', s)
+    s = re.sub(r'\|\|', r'\\|\\|', s)
+    return s
+
+def fix_rule4(s):
+    """Escape unescaped _ in inline math."""
+    return re.sub(r'(?<!\\)_', r'\\_', s)
+
 for f in FILES:
     p = BASE / f
     content = p.read_text()
 
-    # 1. Protect display math from inline processing
-    display = []
-    def stash(m):
-        display.append(m.group(0))
-        return f"\x00DISP{len(display)-1}\x00"
-    c2 = re.sub(r'\$\$[\s\S]*?\$\$', stash, content)
+    # 1. Fix display math (Rules 1+2 inside $$...$$), stash it
+    display_blocks = []
+    def stash_display(m):
+        inner = m.group(0)[2:-2]
+        inner = fix_rule1(inner)
+        inner = fix_rule2(inner)
+        display_blocks.append(f'$${inner}$$')
+        return f"\x00DISP{len(display_blocks)-1}\x00"
+    c2 = re.sub(r'\$\$[\s\S]*?\$\$', stash_display, content)
 
-    # 2. Escape _ inside inline $...$ (skip already-escaped \_)
-    def esc(m):
-        inside = re.sub(r'(?<!\\)_', r'\\_', m.group(1))
+    # 2. Fix inline math (Rules 1+2+4 inside $...$)
+    def fix_inline(m):
+        inside = fix_rule4(m.group(1))
+        inside = fix_rule1(inside)
+        inside = fix_rule2(inside)
         return f"${inside}$"
-    c3 = re.sub(r'\$([^\$\n]+?)\$', esc, c2)
+    c3 = re.sub(r'\$([^\$\n]+?)\$', fix_inline, c2)
 
     # 3. Restore display math
-    c4 = re.sub(r'\x00DISP(\d+)\x00', lambda m: display[int(m.group(1))], c3)
+    c4 = re.sub(r'\x00DISP(\d+)\x00', lambda m: display_blocks[int(m.group(1))], c3)
 
-    # 4. Ensure blank lines around $$...$$ blocks
+    # 4. Ensure blank lines around $$...$$ blocks (Rule 5)
     lines = c4.splitlines(keepends=True)
     out = []
     for i, line in enumerate(lines):
