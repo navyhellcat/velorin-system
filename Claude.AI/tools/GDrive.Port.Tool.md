@@ -23,8 +23,10 @@ Any time a Trey (or other agent) research doc lands in Google Drive and needs to
 2. Edit the `DOCS` list — set `file_id` and `filename` for each doc
 3. Set `DEST` to the target folder in the repo
 4. Run: `python3 /tmp/gdrive_port.py`
-5. `git mv` the corresponding request file from `Research_Needed/` to `Archived_Research_Requests/`
-6. Git add + commit + push (single commit covering both the new doc and the archive move)
+5. Run the KaTeX fix on any doc that contains math — `python3 /tmp/katex_fix.py` (see script below)
+6. Verify on GitHub: DOM query `brokenCount` must be 0 before moving on
+7. `git mv` the corresponding request file from `Research_Needed/` to `Archived_Research_Requests/`
+8. Git add + commit + push (single commit covering doc, images, and archive move)
 
 ---
 
@@ -175,6 +177,78 @@ for doc in DOCS:
     port_doc(doc, access_token)
 print("\nDone. Run: git add . && git commit -m '...' && git push")
 ```
+
+---
+
+## KaTeX Fix Script (Step 5 — run on any doc with math)
+
+Edit `FILES` to point at the ported `.md` file(s). Idempotent — safe to run twice.
+
+```python
+import re
+from pathlib import Path
+
+BASE = Path("/Users/lbhunt/Desktop/velorin-system")
+FILES = [
+    # "Claude.AI/Bot.Trey/Research_Complete/Trey.Research.Example.md",
+]
+
+def fix_rule1(s):
+    s = re.sub(r'\^\{\s*\*\s*\}', r'^{\\ast}', s)
+    s = re.sub(r'\^(\s*)\*', r'^{\ast}', s)
+    return s
+
+def fix_rule2(s):
+    s = re.sub(r'\|\|([^|]+?)\|\|', r'\\lVert\1\\rVert', s)
+    s = re.sub(r'\|\|', r'\\|\\|', s)
+    return s
+
+def fix_rule4(s):
+    return re.sub(r'(?<!\\)_', r'\\_', s)
+
+for f in FILES:
+    p = BASE / f
+    content = p.read_text()
+    display_blocks = []
+    def stash(m):
+        inner = fix_rule1(fix_rule2(m.group(0)[2:-2]))
+        display_blocks.append(f'$${inner}$$')
+        return f"\x00DISP{len(display_blocks)-1}\x00"
+    c2 = re.sub(r'\$\$[\s\S]*?\$\$', stash, content)
+    def fix_inline(m):
+        i = fix_rule4(fix_rule1(fix_rule2(m.group(1))))
+        return f"${i}$"
+    c3 = re.sub(r'\$([^\$\n]+?)\$', fix_inline, c2)
+    c4 = re.sub(r'\x00DISP(\d+)\x00', lambda m: display_blocks[int(m.group(1))], c3)
+    lines = c4.splitlines(keepends=True)
+    out = []
+    for i, line in enumerate(lines):
+        s = line.strip()
+        is_disp = s.startswith('$$') and s.endswith('$$') and len(s) > 4
+        if is_disp:
+            if out and out[-1].strip() != '':
+                out.append('\n')
+            out.append(line)
+            if i + 1 < len(lines) and lines[i+1].strip() != '':
+                out.append('\n')
+        else:
+            out.append(line)
+    p.write_text(''.join(out))
+    print(f"fixed {f}")
+```
+
+## GitHub Verify (Step 6 — run in browser console on rendered page)
+
+```javascript
+const article = document.querySelector('article');
+const broken = [...article.querySelectorAll('p, li, td')].filter(p => {
+  const h = p.innerHTML;
+  return h.includes('$') && /\$[^\$<]*<em>|<\/em>[^\$>]*\$/.test(h);
+});
+({ mathRenderers: article.querySelectorAll('math-renderer').length, brokenCount: broken.length })
+```
+
+`brokenCount: 0` = good to go.
 
 ---
 
