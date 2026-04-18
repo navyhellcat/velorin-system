@@ -110,7 +110,21 @@ Claude Code's context window fills fast. Performance degrades as it fills — no
 * Long sessions on a single problem: periodically summarize what was decided and why. This prevents drift as context compresses.
 
 
-5.3 Progressive Disclosure
+5.3 Large File Operations — GDrive to GitHub Port Protocol
+When porting files from Google Drive to the GitHub repo (Receiving folder or elsewhere):
+* NEVER fetch via gdrive_read_file and pass the content as a Write tool parameter.
+  Every byte of the document routes through the context window. 5 files × 10KB = 50KB
+  of content burning context tokens. This caused a 13-minute, 16K-token waste on a
+  copy job. Completely unacceptable.
+* CORRECT METHOD: gdrive_read_file → Python write to disk → git commit.
+  Use a Bash python3 heredoc to extract content and write directly. Zero content in context.
+* For persisted large results (>~10KB), the tool result auto-saves to JSON at:
+  ~/.claude/projects/-Users-lbhunt/<session>/tool-results/<tool-id>.json
+  Read with: json.load(f)[0]['text'].replace('\r\n', '\n') → write to file.
+* Rule: any file >2KB from GDrive must be written via Python, never via Write tool params.
+
+
+5.4 Progressive Disclosure
 Do not load all documentation, references, and context files at the start of every session. Load context on demand as it becomes relevant. The instruction for a context file is: here is where to find it and when to read it — not the file itself pasted inline.
 
 
