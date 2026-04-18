@@ -36,16 +36,58 @@ GitHub's KaTeX rendering has issues with nested brace commands inside double-sub
 
 ---
 
-## Diagnostic Key
+## Rule 4: Escape underscores in inline math — use `\_`
 
-| KaTeX Error | Most Likely Cause |
-|-------------|-------------------|
-| "Extra close brace or missing open brace" | Odd number of raw `*` in formula — markdown italicized brace content |
-| Formula disappears entirely | `||` pipes present — table parser stripped them |
-| Subscript renders as italic text | `_word` outside math context — add `$...$` |
+**Wrong:** `$\mathcal{H}_E \gg 0$` ... `$x_{\ast}$` (on same line or paragraph)
+**Correct:** `$\mathcal{H}\_E \gg 0$` ... `$x\_{\ast}$`
+
+**Why:** GitHub's markdown parser pairs `_..._` characters as italic emphasis **before** the math extractor runs. When two or more `_` characters appear in inline math on the same paragraph, markdown pairs them and injects `<em>...</em>` tags **inside** the `$...$` span. KaTeX then sees malformed input like `$\mathcal{H}<em>E \gg 0$` and refuses to render.
+
+The `\_` escape tells markdown "this is a literal underscore, not an emphasis marker." KaTeX still receives a valid `_` for subscript semantics because markdown's backslash-escape is processed inline.
+
+Session 028 root cause: The Ignition Protocol file had ~80 inline `$...$` spans. Lines with multiple underscores across math blocks broke rendering. Escape all underscores inside inline `$...$` (NOT inside display `$$...$$` — see Rule 5).
 
 ---
 
-*Erdős | Velorin System | Session 026 | April 13, 2026*
+## Rule 5: Display math `$$...$$` must have blank lines above and below
+
+**Wrong:**
+```
+...ending prose here.
+$$ f(x_{\ast}) = \pi^{(q)}_u $$
+We select the top...
+```
+
+**Correct:**
+```
+...ending prose here.
+
+$$ f(x_{\ast}) = \pi^{(q)}_u $$
+
+We select the top...
+```
+
+**Why:** Without blank-line separation, markdown treats the prose + display-math + prose as one paragraph. Emphasis scanning runs across the `$$...$$` boundary. Any `_` chars inside the display math pair with `_` in prose and inject `<em>` tags that break the math.
+
+With blank lines, each `$$...$$` becomes its own block-level element. Markdown processes it as math, not as inline content with pairable emphasis.
+
+You do **not** need to escape underscores inside `$$...$$` as long as the block is properly isolated by blank lines.
+
+---
+
+## Diagnostic Key
+
+| KaTeX Error / Symptom | Most Likely Cause |
+|-----------------------|-------------------|
+| "Extra close brace or missing open brace" | Odd number of raw `*` in formula — markdown italicized brace content (Rule 1) |
+| Formula disappears entirely | `||` pipes present — table parser stripped them (Rule 2) |
+| Subscript renders as italic text | `_word` outside math context — add `$...$` |
+| `<em>` tags visible inside `$...$` HTML | Paired `_` chars in inline math — escape with `\_` (Rule 4) |
+| Display math fails mid-equation | Not isolated by blank lines — add them (Rule 5) |
+| Whole paragraph renders as raw `$...$` | Paragraph wrapped in `*...*` italic — use `**bold**` or split |
+
+---
+
+*Erdős | Velorin System | Rules updated Session 028 | April 17, 2026*
 
 [VELORIN.EOF]
