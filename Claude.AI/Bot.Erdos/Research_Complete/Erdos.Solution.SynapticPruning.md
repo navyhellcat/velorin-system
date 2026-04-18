@@ -60,13 +60,13 @@ $$p_s = \frac{\rho A_H}{\rho A_H + (1-\rho)A_L}$$
 
 Setting $p_s = K_\alpha$, we solve algebraically for the exact boundary condition:
 
-$$\rho^* = \frac{K_\alpha A_L}{A_H(1 - K_\alpha) + K_\alpha A_L}$$
+$$\rho^{\ast} = \frac{K_\alpha A_L}{A_H(1 - K_\alpha) + K_\alpha A_L}$$
 
 **Example Calculation:**
 
 If you calibrate α = 0.25, then $K_\alpha = 8/9$.
 
-Plugging this in yields $\rho^* = \frac{32}{41} \approx 0.78$.
+Plugging this in yields $\rho^{\ast} = \frac{32}{41} \approx 0.78$.
 
 This is your mathematical floor. To maintain 75% precision with α=0.25, exactly **78% of a neuron's outgoing pointers must be high-priority**. Out of a maximum 7 pointers, that means 5.5 pointers must be semantic signal. Your 7-pointer cap naturally forces this local pruning, preventing combinatorial explosion.
 
@@ -118,7 +118,7 @@ The relative rank-order precision of the ε-neighborhood is rigorously preserved
 
 **The Topological Contradiction.**
 
-You wish to run GNNDelete with a strict zero-bounded Lipschitz constraint: $\|\phi^*(h_v) - h_v\| = 0$ for all $v \in C_{memory}$.
+You wish to run GNNDelete with a strict zero-bounded Lipschitz constraint: $\|\phi^{\ast}(h_v) - h_v\| = 0$ for all $v \in C_{memory}$.
 
 ### Theorem 4: The Incompatibility of Neighborhood Influence
 
@@ -127,18 +127,18 @@ The standard GNNDelete objective function requires Neighborhood Influence: if an
 **Proof by contradiction:**
 
 1. Assume there is a deleted edge in $C_{regular}$ that lies within k-hops of an exempt node $x \in C_{memory}$.
-2. Neighborhood Influence demands: optimizer moves $\phi^*(h_x) \to h_x^{-e}$
-3. The Inviolable Constraint demands: optimizer keeps $\phi^*(h_x) = h_x$
+2. Neighborhood Influence demands: optimizer moves $\phi^{\ast}(h_x) \to h_x^{-e}$
+3. The Inviolable Constraint demands: optimizer keeps $\phi^{\ast}(h_x) = h_x$
 4. By message passing, if an edge in the receptive field is removed, the true embedding alters: $h_x^{-e} \neq h_x$
-5. Therefore the optimizer must simultaneously satisfy $\phi^*(h_x) \neq h_x$ AND $\phi^*(h_x) = h_x$
+5. Therefore the optimizer must simultaneously satisfy $\phi^{\ast}(h_x) \neq h_x$ AND $\phi^{\ast}(h_x) = h_x$
 
 The feasible set is mathematically empty. Convergence is impossible. $\blacksquare$
 
 **The Sacrifice Resolution:**
 
-To achieve a global minimum, we must sacrifice Neighborhood Influence at the exact boundary of $C_{memory}$. We inject an orthogonal projection binary mask M into the GNNDelete loss function $\mathcal{L}^*(\phi^*)$, where $M_w = 0$ for all $w \in C_{memory}$, and $M_w = 1$ otherwise:
+To achieve a global minimum, we must sacrifice Neighborhood Influence at the exact boundary of $C_{memory}$. We inject an orthogonal projection binary mask M into the GNNDelete loss function $\mathcal{L}^{\ast}(\phi^{\ast})$, where $M_w = 0$ for all $w \in C_{memory}$, and $M_w = 1$ otherwise:
 
-$$\mathcal{L}^*(\phi^*) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot \left\|\phi^*(h_w) - h_w^{-e}\right\|^2$$
+$$\mathcal{L}^{\ast}(\phi^{\ast}) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot \left\|\phi^{\ast}(h_w) - h_w^{-e}\right\|^2$$
 
 You cannot guarantee continuous gradient flow across an absolute geometric wall. You must sever the neighborhood influence calculation the exact moment it touches a $C_{memory}$ node.
 
