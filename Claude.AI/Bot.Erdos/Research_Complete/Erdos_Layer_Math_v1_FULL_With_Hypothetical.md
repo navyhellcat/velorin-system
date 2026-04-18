@@ -19,7 +19,7 @@ $$P_{ij} = \frac{\mathcal{A}(i,j)}{\sum_k \mathcal{A}(i,k)}$$
 ### PHASE I: The Mathematical Signal Threshold (Problem 3)
 *The boundary conditions of the graph.*
 
-**The Objective:** Derive the precision threshold $\rho^*(n)$ and disprove the null hypothesis that precision decays linearly with $n$.
+**The Objective:** Derive the precision threshold $\rho^{\ast}(n)$ and disprove the null hypothesis that precision decays linearly with $n$.
 
 **Theorem 1: The Scale Invariance of Capped PPR**
 The Personalized PageRank stationary distribution $R$ for a query seed $S$ is defined by the infinite geometric Neumann series:
@@ -28,9 +28,9 @@ Because your graph has a hard structural out-degree cap of $d_{max} = 7$, the ab
 
 As your graph scales to $n \to \infty$, the global mixing time vastly exceeds the effective teleportation horizon $\frac{1}{\alpha}$. This means the vast majority of your graph remains **mathematically invisible** to any single query walk.
 
-**Proof of Disproof:** Because the walk topology is restricted by the $d_{max}=7$ constraint and decays by $\alpha$, the required high-priority edge density $\rho^*(n)$ is completely independent of global scale $n$. It does not scale as $\mathcal{O}(n)$ or $\mathcal{O}(\log n)$. **It scales as $\mathcal{O}(1)$.** It is an absolute constant floor.
+**Proof of Disproof:** Because the walk topology is restricted by the $d_{max}=7$ constraint and decays by $\alpha$, the required high-priority edge density $\rho^{\ast}(n)$ is completely independent of global scale $n$. It does not scale as $\mathcal{O}(n)$ or $\mathcal{O}(\log n)$. **It scales as $\mathcal{O}(1)$.** It is an absolute constant floor.
 
-**Theorem 2: The Exact Density Boundary $\rho^*$**
+**Theorem 2: The Exact Density Boundary $\rho^{\ast}$**
 We demand a precision $P(q, G) \ge 0.75$. To maintain this, 75% of the random walk mass must be trapped inside the ground-truth relevant set.
 Let $p_s$ be the probability that a step remains on a high-priority edge. The mass trapped is:
 $$\frac{\alpha}{1 - p_s(1-\alpha)} \ge 0.75 \implies p_s \ge \frac{1 - \frac{4}{3}\alpha}{1-\alpha} \equiv K_\alpha$$
@@ -38,7 +38,7 @@ $$\frac{\alpha}{1 - p_s(1-\alpha)} \ge 0.75 \implies p_s \ge \frac{1 - \frac{4}{
 Using an Affinity mapping $\mathcal{A}(i,j) = 11 - W(i,j)$, high-priority edges average an affinity of $A_H = 9$, and tangential edges average $A_L = 4$. The transition probability $p_s$ as a function of the density $\rho$ is:
 $$p_s = \frac{\rho A_H}{\rho A_H + (1-\rho)A_L}$$
 Setting $p_s = K_\alpha$, we solve algebraically for the exact boundary condition:
-$$\rho^* = \frac{K_\alpha A_L}{A_H(1 - K_\alpha) + K_\alpha A_L}$$
+$$\rho^{\ast} = \frac{K_\alpha A_L}{A_H(1 - K_\alpha) + K_\alpha A_L}$$
 
 ---
 
@@ -64,18 +64,18 @@ When the walk hits a penalized Monster Node, **it reflects the walk back to the 
 
 **Theorem 4: The Incompatibility of Neighborhood Influence**
 Assume a deleted edge in $C_{regular}$ lies within $k$-hops of an exempt node $x \in C_{memory}$.
-1. *Neighborhood Influence* demands the optimizer moves $\phi^*(h_x) \to h_x^{-e}$.
-2. The *Inviolable Constraint* demands the optimizer keeps $\phi^*(h_x) = h_x$.
-3. Since $h_x^{-e} \neq h_x$, the optimizer is simultaneously demanded to satisfy $\phi^*(h_x) \neq h_x$ and $\phi^*(h_x) = h_x$.
+1. *Neighborhood Influence* demands the optimizer moves $\phi^{\ast}(h_x) \to h_x^{-e}$.
+2. The *Inviolable Constraint* demands the optimizer keeps $\phi^{\ast}(h_x) = h_x$.
+3. Since $h_x^{-e} \neq h_x$, the optimizer is simultaneously demanded to satisfy $\phi^{\ast}(h_x) \neq h_x$ and $\phi^{\ast}(h_x) = h_x$.
 
 **The Sacrifice Resolution:**
-To achieve a global minimum, we officially sacrifice *Neighborhood Influence* at the exact boundary of $C_{memory}$. We inject an orthogonal projection binary mask $M$ into the GNNDelete loss function $\mathcal{L}^*(\phi^*)$, where $M_w = 0$ for all $w \in C_{memory}$, and $M_w = 1$ otherwise.
-$$\mathcal{L}^*(\phi^*) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot \left\|\phi^*(h_w) - h_w^{-e}\right\|^2$$
+To achieve a global minimum, we officially sacrifice *Neighborhood Influence* at the exact boundary of $C_{memory}$. We inject an orthogonal projection binary mask $M$ into the GNNDelete loss function $\mathcal{L}^{\ast}(\phi^{\ast})$, where $M_w = 0$ for all $w \in C_{memory}$, and $M_w = 1$ otherwise.
+$$\mathcal{L}^{\ast}(\phi^{\ast}) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{regular}} M_w \cdot \left\|\phi^{\ast}(h_w) - h_w^{-e}\right\|^2$$
 
 ---
 
 ### ARCHITECTURAL SYNTHESIS: The Intersection Theorem
-**The Intersection Rule:** You may only safely penalize a Monster Node if the $k$-hop subgraph surrounding the query seed maintains an edge density $\rho > \rho^*$. If the local density is already starved, penalizing the Monster Node will isolate the graph into disconnected semantic islands, triggering a percolation collapse.
+**The Intersection Rule:** You may only safely penalize a Monster Node if the $k$-hop subgraph surrounding the query seed maintains an edge density $\rho > \rho^{\ast}$. If the local density is already starved, penalizing the Monster Node will isolate the graph into disconnected semantic islands, triggering a percolation collapse.
 
 ---
 
