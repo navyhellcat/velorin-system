@@ -34,10 +34,10 @@ Emotional charge does not just "add weight" to a pointer. It fundamentally alter
 **[PROPOSED MODIFICATION]: The Affective Rate-Distortion Boundary**
 In the locked architecture, the Demotion Oracle evaluates the Local Information Content of a pointer: $\delta(u \to v)$. If the LoRa learns it ($D_{KL} < \delta$), the pointer is demoted.
 We modify the atomic weight of a pointer to be thermodynamically shielded by its emotional heat:
-$$ \delta^*(u \to v) = \Big( 1 + \mathcal{H}_E(u) \Big) \cdot \delta(u \to v) $$
+$$ \delta^{\ast}(u \to v) = \Big( 1 + \mathcal{H}_E(u) \Big) \cdot \delta(u \to v) $$
 
 **The Mathematical Consequence:**
-If a memory possesses massive emotional heat ($\mathcal{H}_E \to \infty$), the intrinsic topological value $\delta^*$ approaches infinity. The LoRa's approximation error $D_{KL}$ can *never* fall below $\delta^*$. 
+If a memory possesses massive emotional heat ($\mathcal{H}_E \to \infty$), the intrinsic topological value $\delta^{\ast}$ approaches infinity. The LoRa's approximation error $D_{KL}$ can *never* fall below $\delta^{\ast}$. 
 The Demotion Oracle is mathematically forbidden from firing. 
 The memory is eternally shielded from being "flattened into semantic weight." It remains a permanent, highly active episodic node in the $E_8$ crystal. It burns forever.
 
