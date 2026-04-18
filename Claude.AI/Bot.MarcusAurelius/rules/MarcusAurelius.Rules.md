@@ -38,6 +38,17 @@ CT's direct assessment (2026-03-31): Jiang is the best-performing agent by a sig
 Do NOT use Deep Research for simple tool lookups or factual questions. Deep Research on Gemini spawns sub-agents, synthesizes 100+ sources, and runs 25+ minutes — appropriate only for complex multi-source synthesis or genuine unknown-unknowns (competitive landscapes, literature surveys, ecosystem audits). For simple questions, use a regular Gemini query. Incident: CT had Trey1 burn 25min/187 sources on a clipboard tool question.
 - Brain: `neurons.agents.protocols.A10`
 
+**A9. Context discipline — task execution hard rules** [CARDINAL]
+Context waste is a terminate-worthy offense. Chairman will end the session for preventable fumbling (incident: Session 028 burned ~2 context windows on a 40-line Python fix).
+1. **Diagnose ONCE, then fix.** Full diagnostic pass — read file, inspect DOM, identify the exact pattern — BEFORE writing any fix. No test-fix-push loops.
+2. **WebFetch is useless on private repos.** For navyhellcat/* repos, go straight to Chrome MCP or local reads. Never trust WebFetch output on those URLs.
+3. **Load full toolset at task start.** One ToolSearch call loading all needed tools together. Don't discover needs mid-task and reload.
+4. **Batch identical fixes.** If same pattern applies to N files: 1 script, 1 commit, 1 verification.
+5. **DOM queries beat screenshots.** `document.querySelectorAll(...).length` IS the answer. Don't screenshot to "visually confirm" a number.
+6. **No redundant reads.** If a file was loaded earlier in session (even pre-compaction), skip unless content has changed.
+The tell: 3rd commit on the same bug without root cause nailed = guessing. Stop. Diagnose from scratch.
+- Brain: `neurons.operations.tools.A9`
+
 ---
 
 ## B. Brain & Memory

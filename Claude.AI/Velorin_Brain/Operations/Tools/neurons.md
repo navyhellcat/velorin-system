@@ -45,3 +45,10 @@ For large results (>~10KB): tool result auto-saves to JSON at `~/.claude/project
 Incident: Session 027 burned 13 min / 16K tokens on a 5-file copy job using Write tool instead.
 last-touched: 2026-04-17
 Pointers: [1] A5 | [1] A2 | [2] neurons.connectivity.mcp | [3] A7
+
+### A9. Context Discipline — Task Execution Hard Rules
+Context waste is a terminate-worthy offense. Chairman will end the session for preventable fumbling. Session 028: ~2 context windows burned on a 40-line Python fix.
+Hard rules: (1) Diagnose ONCE then fix — no test-fix-push loops. (2) WebFetch fails on private repos (navyhellcat/*) — use Chrome MCP or local reads. (3) Load full toolset in one ToolSearch call at task start. (4) Batch identical fixes: N files → 1 script, 1 commit, 1 verify. (5) DOM queries beat screenshots for verification. (6) No redundant reads — if read earlier in session, skip unless content changed.
+The tell: 3rd commit on same bug without root cause = guessing. STOP. Diagnose from scratch.
+last-touched: 2026-04-17
+Pointers: [1] A7 | [1] A8 | [2] neurons.operations.startup.A4 | [3] neurons.connectivity.mcp | [4] neurons.principles.rewardalignment.A5
