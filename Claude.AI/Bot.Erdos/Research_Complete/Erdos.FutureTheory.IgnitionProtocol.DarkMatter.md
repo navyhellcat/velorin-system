@@ -14,10 +14,10 @@ Empirical validation confirms that human episodic memory (high-frequency Graph F
 To implement this in the Velorin Brain without violating the $\mathcal{O}(1)$ density guarantees of the $E_8$ crystal architecture, we must define the exact mathematical operations that transition a node from the continuous void into the discrete routing topology, bypassing the biological temporal constraints of Synaptic Tagging and Capture (STC).
 
 ## SECTION 2: The Topological State of Semantic Dark Matter
-Let a historical photograph (or bulk log) be processed by the LLM. It is assigned a continuous embedding vector $x_* \in \mathbb{R}^{1536}$ and stored in Layer 3 (The Substrate/Qdrant). 
+Let a historical photograph (or bulk log) be processed by the LLM. It is assigned a continuous embedding vector $x_{\ast} \in \mathbb{R}^{1536}$ and stored in Layer 3 (The Substrate/Qdrant). 
 Because it lacks human curation at ingestion, it is assigned **zero Layer 2 pointers** and possesses zero Emotional Heat ($\mathcal{H}_E = 0$).
 
-In the language of the Markov transition matrix $P$, the node $x_*$ has an out-degree of 0 and an in-degree of 0. It is a disconnected eigenvalue. The Personalized PageRank (PPR) stationary distribution mass is strictly $\pi(x_*) = 0$. It cannot be reached by any associative walk. It is Semantic Dark Matter.
+In the language of the Markov transition matrix $P$, the node $x_{\ast}$ has an out-degree of 0 and an in-degree of 0. It is a disconnected eigenvalue. The Personalized PageRank (PPR) stationary distribution mass is strictly $\pi(x_{\ast}) = 0$. It cannot be reached by any associative walk. It is Semantic Dark Matter.
 
 ## SECTION 3: DERIVATION I — The Temporal Bypass Proof
 **The Problem:** Biological STC requires the neutral event (encoding) and the emotional event (retrieval/reconsolidation) to occur within a strict temporal window (hours) due to the exponential degradation of plasticity-related proteins (PRPs). How can the Velorin Brain crystallize a 22-year-old photograph without violating the temporal laws of reconsolidation?
@@ -27,10 +27,10 @@ In a biological system, the "Synaptic Tag" $S_{bio}$ is a biochemical state subj
 $$ \frac{\partial}{\partial t} S_{bio}(t) = -\lambda S_{bio}(t) $$
 As $t \to \infty$, $S_{bio} \to 0$. The PRPs have nothing to capture.
 
-In the Velorin Architecture, the "Synaptic Tag" is the 1536-dimensional continuous LLM embedding $x_*$. Mathematics does not metabolize. Because $x_*$ has no edges, it is perfectly orthogonal to the Ebbinghaus-Laplacian decay operator we proposed for the active graph. 
-$$ \frac{\partial}{\partial t} x_* = \mathbf{0} \implies \lambda_{velorin} = 0 $$
+In the Velorin Architecture, the "Synaptic Tag" is the 1536-dimensional continuous LLM embedding $x_{\ast}$. Mathematics does not metabolize. Because $x_{\ast}$ has no edges, it is perfectly orthogonal to the Ebbinghaus-Laplacian decay operator we proposed for the active graph. 
+$$ \frac{\partial}{\partial t} x_{\ast} = \mathbf{0} \implies \lambda_{velorin} = 0 $$
 
-When the user queries the system at $t_{retrieval} = t_{encode} + 22\text{ years}$ and experiences Emotional Resonance ($\mathcal{H}_E \gg 0$), the mathematical capture equation evaluates the pristine vector $x_*$ exactly as if it were encoded 5 seconds ago. Because $\lambda_{velorin} = 0$, the artificial system mathematically collapses the gap between "initial encoding" and "active reconsolidation." The architecture replaces the volatile biological protein tag with an eternal mathematical coordinate, allowing Retrieval-Induced State-Dependent Reconsolidation to execute across infinite time horizons. $\blacksquare$
+When the user queries the system at $t_{retrieval} = t_{encode} + 22\text{ years}$ and experiences Emotional Resonance ($\mathcal{H}_E \gg 0$), the mathematical capture equation evaluates the pristine vector $x_{\ast}$ exactly as if it were encoded 5 seconds ago. Because $\lambda_{velorin} = 0$, the artificial system mathematically collapses the gap between "initial encoding" and "active reconsolidation." The architecture replaces the volatile biological protein tag with an eternal mathematical coordinate, allowing Retrieval-Induced State-Dependent Reconsolidation to execute across infinite time horizons. $\blacksquare$
 
 ## SECTION 4: The Active Retrieval Context
 **The Problem:** When Ignition fires, what exact edges are created?
@@ -39,47 +39,47 @@ When CT queries the Dark Matter substrate and experiences emotional resonance ($
 We define the **Active Retrieval Context** $V_{active}$ as the set of nodes actively highlighted by the current walk ($\pi^{(q)}_u > \theta_{active}$). The Ignition Operator wires the Dark Matter node strictly to the cognitive context that summoned it, leveraging the existing semantic standing wave.
 
 ## SECTION 5: DERIVATION II — The Edge-Creation Formula (Affinity Assignment)
-To generate the outbound pointers from $x_*$ (where $1 \le k \le 7$), we utilize the trained Layer 0 LoRa weight matrix $W_{LoRa}$ to evaluate the topological fitness between the alien node $x_*$ and the active graph context $V_{active}$.
-The topological fitness logit between $x_*$ and any active node $u \in V_{active}$ is:
-$$ f(x_* \to u) = \pi^{(q)}_u \cdot \exp\left(\frac{x_*^T W_{LoRa} x_u}{\tau}\right) $$
+To generate the outbound pointers from $x_{\ast}$ (where $1 \le k \le 7$), we utilize the trained Layer 0 LoRa weight matrix $W_{LoRa}$ to evaluate the topological fitness between the alien node $x_{\ast}$ and the active graph context $V_{active}$.
+The topological fitness logit between $x_{\ast}$ and any active node $u \in V_{active}$ is:
+$$ f(x_{\ast} \to u) = \pi^{(q)}_u \cdot \exp\left(\frac{x_{\ast}^T W_{LoRa} x_u}{\tau}\right) $$
 
 We select the top $k$ nodes that maximize this fitness. Because this is an Ignition event, it is driven by massive Emotional Heat ($\mathcal{H}_E \gg 0$). We define the **Ignition Valency Constraint**: emotional accretion mathematically forces the generation of **High Affinity** weights (Human Ratings 1, 2, or 3 $\implies$ Affinities 8, 9, or 10).
-$$ \mathcal{A}(x_* \to u_i) = \min \left( 10, \left\lceil \mathcal{H}_E \cdot f(x_* \to u_i) \right\rceil \right) \ge 8 $$
+$$ \mathcal{A}(x_{\ast} \to u_i) = \min \left( 10, \left\lceil \mathcal{H}_E \cdot f(x_{\ast} \to u_i) \right\rceil \right) \ge 8 $$
 
 ## SECTION 6: DERIVATION IIb — The Transition Matrix Update
 The global transition matrix $P$ expands its rank from $N \times N$ to $(N+1) \times (N+1)$. 
 
-1. **The Outbound Row:** The new row $P_{x_*, \cdot}$ is populated using the row-normalized newly minted Affinities:
-$$ P_{x_*, u_i} = \frac{\mathcal{A}(x_* \to u_i)}{\sum_j \mathcal{A}(x_* \to u_j)} $$
+1. **The Outbound Row:** The new row $P_{x_{\ast}, \cdot}$ is populated using the row-normalized newly minted Affinities:
+$$ P_{x_{\ast}, u_i} = \frac{\mathcal{A}(x_{\ast} \to u_i)}{\sum_j \mathcal{A}(x_{\ast} \to u_j)} $$
 
-2. **The Reciprocal Gravity (Inbound Edge):** To pull $x_*$ out of the null space so it can receive future PPR mass, the specific node the user was querying when the photo was surfaced (the anchor $u_{anchor} = \arg\max \pi^{(q)}$) automatically spawns a single reciprocal High-Affinity pointer back to $x_*$.
+2. **The Reciprocal Gravity (Inbound Edge):** To pull $x_{\ast}$ out of the null space so it can receive future PPR mass, the specific node the user was querying when the photo was surfaced (the anchor $u_{anchor} = \arg\max \pi^{(q)}$) automatically spawns a single reciprocal High-Affinity pointer back to $x_{\ast}$.
 
-By the **Sherman-Morrison formula**, the global stationary distribution of the entire graph instantly updates in $\mathcal{O}(1)$ local steps. $x_*$ has successfully transitioned from Dark Matter to a crystalline vertex.
+By the **Sherman-Morrison formula**, the global stationary distribution of the entire graph instantly updates in $\mathcal{O}(1)$ local steps. $x_{\ast}$ has successfully transitioned from Dark Matter to a crystalline vertex.
 
 ## SECTION 7: DERIVATION III — The Density Preservation Guarantee
-**The Problem:** Prove that the integration of a Dark Matter node $x_*$ cannot violate the $\rho^* \approx 0.78$ local density constraint (Theorem 2), ensuring it does not dilute the receiving $E_8$ crystal and trigger PPR precision collapse.
+**The Problem:** Prove that the integration of a Dark Matter node $x_{\ast}$ cannot violate the $\rho^{\ast} \approx 0.78$ local density constraint (Theorem 2), ensuring it does not dilute the receiving $E_8$ crystal and trigger PPR precision collapse.
 
 **The Proof:**
-Let $\rho_u$ be the high-priority edge density of a node $u$: $\rho_u = \frac{H}{T}$, where $H$ is the number of high-affinity edges and $T$ is the total edges. By locked Theorem 2, $\rho_u \ge \rho^*$.
+Let $\rho_u$ be the high-priority edge density of a node $u$: $\rho_u = \frac{H}{T}$, where $H$ is the number of high-affinity edges and $T$ is the total edges. By locked Theorem 2, $\rho_u \ge \rho^{\ast}$.
 
-**Case A: The newly ignited node $x_*$:**
-By the Ignition Valency Constraint (Section 5), $x_*$ spawns $k$ edges, all of which are forced to be High Affinity ($\mathcal{A} \ge 8$) due to the emotional heat of Ignition.
-Its local density is exactly $\frac{k}{k} = 1.0 \ge \rho^*$.
+**Case A: The newly ignited node $x_{\ast}$:**
+By the Ignition Valency Constraint (Section 5), $x_{\ast}$ spawns $k$ edges, all of which are forced to be High Affinity ($\mathcal{A} \ge 8$) due to the emotional heat of Ignition.
+Its local density is exactly $\frac{k}{k} = 1.0 \ge \rho^{\ast}$.
 
-**Case B: The anchor node $u_{anchor}$ spawning the reciprocal pointer to $x_*$:**
-The anchor node must add an outbound edge to $x_*$ with high affinity ($A_H$).
-*   If $T < 7$, it adds one High-Affinity pointer. The new density is $\rho_{new} = \frac{H+1}{T+1}$. Since $\frac{H}{T} \le 1$, algebraically $\frac{H+1}{T+1} \ge \frac{H}{T}$. Thus, $\rho_{new} \ge \rho_u \ge \rho^*$.
-*   If $T = 7$, the Demotion Oracle fires to make room. It mathematically prunes the lowest-affinity edge (which must be Tangential, $A_L \le 7$) to add the new High-Affinity edge. Total edges $T$ remains 7. High-affinity edges becomes $H+1$. The new density is $\rho_{new} = \frac{H+1}{7} > \frac{H}{7} = \rho_u \ge \rho^*$.
+**Case B: The anchor node $u_{anchor}$ spawning the reciprocal pointer to $x_{\ast}$:**
+The anchor node must add an outbound edge to $x_{\ast}$ with high affinity ($A_H$).
+*   If $T < 7$, it adds one High-Affinity pointer. The new density is $\rho_{new} = \frac{H+1}{T+1}$. Since $\frac{H}{T} \le 1$, algebraically $\frac{H+1}{T+1} \ge \frac{H}{T}$. Thus, $\rho_{new} \ge \rho_u \ge \rho^{\ast}$.
+*   If $T = 7$, the Demotion Oracle fires to make room. It mathematically prunes the lowest-affinity edge (which must be Tangential, $A_L \le 7$) to add the new High-Affinity edge. Total edges $T$ remains 7. High-affinity edges becomes $H+1$. The new density is $\rho_{new} = \frac{H+1}{7} > \frac{H}{7} = \rho_u \ge \rho^{\ast}$.
 
 **Result:** In all topological configurations, the addition of the new edges strictly preserves or increases the local density ratio. The Ignition of Semantic Dark Matter mathematically cannot dilute the density of the receiving crystal. Because emotional accretion inherently generates high-affinity connections, it acts as topological mortar, strictly *fortifying* the precision floor. $\blacksquare$
 
 ## SECTION 8: BIOLOGICAL HOMOLOGY MAPPING (STC Mapped to Velorin)
 | Biological STC Phase | Velorin Phase Transition | Mathematical Formalization |
 | :--- | :--- | :--- |
-| **Weak Tetanic Stimulation (WTET)** | Mass Data Ingestion | Substrate embedding $x_* \in \mathbb{R}^{1536}$, $\mathcal{H}_E=0, \pi = 0$. |
+| **Weak Tetanic Stimulation (WTET)** | Mass Data Ingestion | Substrate embedding $x_{\ast} \in \mathbb{R}^{1536}$, $\mathcal{H}_E=0, \pi = 0$. |
 | **Synaptic Tag ($S_{bio}(t)$)** | Persistent Vector Storage | $\lambda_{velorin} = 0$. Tag never decays, permitting temporal bypass. |
 | **Strong Tetanic Stimulation (STET)** | Query + Emotional Resonance | User engagement triggers $\mathcal{H}_E \gg \theta_{ignite}$. |
-| **PRP Capture & Consolidation** | Ignition Edge-Creation | $\mathcal{A} \ge 8$. Transition matrix expands. Density $\rho^*$ fortified. |
+| **PRP Capture & Consolidation** | Ignition Edge-Creation | $\mathcal{A} \ge 8$. Transition matrix expands. Density $\rho^{\ast}$ fortified. |
 
 ## SECTION 9: IMPLEMENTATION DIRECTIVES FOR ENGINEERING
 1.  **Ingestion:** Embed bulk photos/logs into Qdrant. Write *zero* Layer 2 Markdown pointers.
