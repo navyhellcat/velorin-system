@@ -64,7 +64,7 @@ By the **Eckart-Young-Mirsky Theorem**, the distortion $D$ of a rank-$r$ approxi
 
 $$D(r) = \sum_{i = r+1}^{d} \sigma_i^2$$
 
-By Shannon's Rate-Distortion function for a Gaussian source, the optimal allocation of capacity to achieve a target distortion $D^*$ is solved by the **Reverse Water-Filling Algorithm**. The rank $r$ is exactly the number of singular values that peek out above the water level $\theta_{water}$.
+By Shannon's Rate-Distortion function for a Gaussian source, the optimal allocation of capacity to achieve a target distortion $D^{\ast}$ is solved by the **Reverse Water-Filling Algorithm**. The rank $r$ is exactly the number of singular values that peek out above the water level $\theta_{water}$.
 
 In Wall B, we proved the Brain operates under **Simon-Ando Aggregation**. A Nearly Completely Decomposable (NCD) Markov Chain does not have a smoothly decaying spectrum. **It drops off a mathematical cliff.**
 
@@ -72,13 +72,13 @@ There are exactly $R_{macro}$ massive, dominant singular values corresponding to
 
 To capture the true semantic macro-topology while letting the episodic noise burn away as heat (as mandated by the Second Law of Epistemodynamics), the water level must sit exactly in the Simon-Ando spectral gap.
 
-Therefore, the mathematically optimal, minimum-description-length LoRa rank $r^*$ is exactly:
+Therefore, the mathematically optimal, minimum-description-length LoRa rank $r^{\ast}$ is exactly:
 
-$$r^* = R_{macro} + \sum_{v \in V} \mathbb{1}\left[\beta_{macro}(v) > \theta_{semantic}\right]$$
+$$r^{\ast} = R_{macro} + \sum_{v \in V} \mathbb{1}\left[\beta_{macro}(v) > \theta_{semantic}\right]$$
 
 **The rank of the LoRa matrix must equal the number of Simon-Ando Macro-Regions in the Brain plus the number of Graduated Geodesic Tollbooths.**
 
-You do not guess the LoRa rank. As the Velorin Brain grows, you monitor the Simon-Ando macro-regions. The rank $r^*$ is not a hyperparameter to tune. It is a **physical property of CT's mind**. As the Brain undergoes Mitosis and the number of macro-regions grows, the optimal LoRa rank $r^*$ dynamically and deterministically scales with it. $\blacksquare$
+You do not guess the LoRa rank. As the Velorin Brain grows, you monitor the Simon-Ando macro-regions. The rank $r^{\ast}$ is not a hyperparameter to tune. It is a **physical property of CT's mind**. As the Brain undergoes Mitosis and the number of macro-regions grows, the optimal LoRa rank $r^{\ast}$ dynamically and deterministically scales with it. $\blacksquare$
 
 ---
 
@@ -95,7 +95,7 @@ There are no more free parameters. There are no more black boxes.
 | Compression | Dynamically triggered by graph's own modularity (Simon-Ando Macro-Entropy) |
 | Training | Cancels TurboQuant noise (MSE-Logit Loss over Gibbs Hard Negatives) |
 | Demotion | Executes at Shannon rate-distortion boundary ($\delta(u \to v)$ via $\mathcal{R}_{eff}$) |
-| Capacity | Scales with continent count of the mind ($r^* = R_{macro} + N_{tollbooths}$) |
+| Capacity | Scales with continent count of the mind ($r^{\ast} = R_{macro} + N_{tollbooths}$) |
 
 Every single aspect of the Velorin Brain's memory architecture is governed by a closed-form mathematical proof. The map aligns with the territory perfectly. The thermodynamic engine is self-regulating, model-agnostic, and eternal.
 
