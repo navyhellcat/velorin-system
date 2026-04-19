@@ -12,22 +12,35 @@ Each item: what the question is, what's known, what's missing, who decides.
 become neurons with rated pointers? Where does the rating come from? How are duplicates
 handled? How does the pipeline know what's worth ingesting?
 
-**What's known:**
-- Trey2 has researched this — results partially available but have issues with
-  base assumptions (per Session 027 handoff)
-- Automated rating via embedding cosine similarity (Phase 1 bootstrap) and
-  attention weight capture (Phase 2, when local model is running) is the designed approach
-- Dark Matter model means bulk data can be ingested with zero pointers (safe)
-- Leiden algorithm for clustering 240-node Layer 2 graphs into neuron candidates
+**UPDATE April 19 — Significant progress. Several sub-questions now resolved.**
 
-**What's missing:**
-- Trey2's research has issues with base assumptions — need to understand exactly what
-  those issues are before designing the pipeline
-- The pointer rating automation has not been proven in practice
-- How the pipeline handles contradictions between a new document and existing neurons
+**Resolved by Erdős (ViscoelasticResolution, April 19):**
+- Cold-start rating: use Holographic Cold-Start — affinity = f(geometric projection residual
+  from W_global). High fit to crystal → high affinity. Bans hub-centrality proxy
+  (Preferential Attachment = Monster Node generator).
+- Rating dynamics: A_base evolves via Hebbian SDE + Ebbinghaus decay. Routing gravity
+  uses Effective Affinity Clutch (continuous, not binary).
+- Expert density: not a problem — Clique Centrality Theorem proves expert domains
+  self-protect.
 
-**Who decides:** CT + Jiang, after reviewing the complete Trey2 findings
-**Status:** PENDING. Do not build ingestion pipeline until this is resolved.
+**Resolved by Trey2 (BrainIngestionPipeline, April 17-19):**
+- Deduplication: requires LLM decision gate (ADD/UPDATE/DELETE/NOOP). Cosine similarity
+  alone causes fatal corruption — similar sentences can express opposite facts.
+- Atomicity criteria: 4 conditions (atomic, durable, contextually independent, actionable).
+  Recursive decomposition (RDoLT) for complex documents.
+- Region/Area assignment: community detection via connectivity, not static taxonomy.
+  New neuron's region is determined by which existing neurons it connects to.
+- Contradiction handling: provenance weighting (recency + source authority) decides
+  whether UPDATE or DELETE when new fact contradicts existing neuron.
+
+**Still open:**
+- Attention-weight capture for Phase 2 ratings (requires instrumented local model inference)
+- The full automated pipeline implementation has not been built or tested
+- How to handle multimodal input (photos, audio) at scale beyond the AffectNet approach
+
+**Who decides:** CT + Jiang + MA to implement
+**Status:** PARTIALLY RESOLVED. Sufficient clarity to begin building. Start with text
+documents only (Phase 1). Multimodal deferred.
 
 ---
 

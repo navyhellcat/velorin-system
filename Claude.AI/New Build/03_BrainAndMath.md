@@ -213,11 +213,34 @@ By Eckart-Young: low-rank LoRa incurs Δ = I(X;Y) - I(Z;Y) > 0 strictly.
 Consequence: deletion of Markdown records is permanently forbidden.
 The LoRa is lossy. The Markdown is the lossless ground truth.
 
-**Demotion Oracle**
-When D_KL(P_MD(·|u) || P_LoRa(·|u)) < δ(u→v):
-The explicit pointer's routing error is smaller than its structural information value.
-The Demotion Oracle fires. Pointer affinity drops to 2. Pointer is invisible to PPR
-but remains in the record as archive.
+**Continuous Affinity Clutch** *(replaces binary Demotion Oracle — April 19)*
+
+The binary Demotion Oracle (affinity drops to 2 on a threshold) was a Bang-Bang
+Controller. At scale it produces violent oscillation. At model upgrade it would require
+O(N) database writes to restore the graph. Both are catastrophic cliffs.
+
+Resolution: decouple Episodic Ground Truth from Routing Gravity.
+
+A_base is stored permanently in the database — the inviolable historical record.
+PPR uses a dynamically computed Effective Affinity:
+
+  Ã(u→v) = 2 + (A_base(u→v) - 2) · (1 - exp(-D_KL(P_MD ∥ P_LoRa) / δ(u→v)))
+
+Behavior:
+- As LoRa learns the connection: D_KL → 0, multiplier → 0, Ã glides asymptotically to 2.
+  Routing gravity released. No binary phase transition. No cliff.
+- On model upgrade (LoRa reset): D_KL → ∞, multiplier → 1, Ã snaps back to A_base
+  for every pointer in the Brain simultaneously. Zero computation. Zero manual intervention.
+  The explicit graph catches the falling mind at the exact moment of upgrade.
+
+A_base itself evolves via a unified SDE (Hebbian + Ebbinghaus):
+
+  dA_base = η · 1[e ∈ Success Path] dt  (Hebbian reinforcement on successful traversal)
+           - A_base / (τ_0 · max(ε, H_E + γπ_u)) dt  (Ebbinghaus decay)
+
+This unifies Trey's hybrid success-weighted decay rule and the Ebbinghaus-Laplacian
+decay model into a single equation. The SDE governs the ground truth. The Clutch governs
+the routing. The system is thermodynamically complete.
 
 **δ(u→v) — Atomic Weight of a Pointer**
 δ(u→v) = -π_u · log(1 - A(u→v) · R_eff(u→v))
@@ -225,6 +248,54 @@ but remains in the record as archive.
 Where R_eff(u→v) = e_v^T · L_α^(-1) · e_u (Directed Effective Resistance via
 PageRank Laplacian L_α = I-(1-α)P). Computable in O(1) due to exponential decay
 of fundamental matrix within 7-pointer bounded neighborhood.
+
+**Holographic Cold-Start** *(replaces hub-centrality proxy for initial ratings — April 19)*
+
+Using hub stationary mass (π_hub) as a proxy for initial affinity is Preferential
+Attachment (Barabási–Albert model). It provably generates scale-free Monster Node networks.
+Do not use it.
+
+Initial affinity is assigned by geometric fidelity — how well the new node's embedding
+fits the crystal's existing structure:
+
+  A_init(x_new → y_port) = max(2, ⌈11 - λ · ||W_global·x_new - y_port||²⌉)
+
+Where y_port is the nearest E₈ docking port found by Alien Injection.
+Perfect geometric fit → high affinity. Poor fit → low affinity.
+No rich-get-richer. No Monster Node seeding. No Graph Attention Networks required.
+
+**Theorem of Clique Centrality** *(resolves expert density question — April 19)*
+
+As local density ρ → 1 (expert domain approximating a complete graph), betweenness
+centrality β(v) → 1/N_local → 0 for every node in the cluster.
+
+Consequence: expert domains are immune to the Monster Node penalty. Dense expert
+clusters generate redundant parallel paths that distribute routing gravity evenly —
+β(v) drops below threshold θ automatically. No expert ceiling parameter needed.
+ρ* = 0.78 remains a global floor only. Locally dense expert clusters exceed it freely.
+
+**Multiplex Tensor / Intent-Parameterized Transition Matrix** *(April 19)*
+
+The existing relation-type annotation (taxonomic: instance-of, derived-from vs
+thematic: causes, activates, precedes) partitions the graph into two orthogonal matrices:
+P_tax (Taxonomic) and P_them (Thematic).
+
+The LLM parses each query into a Cognitive Intent Vector ω = [ω_tax, ω_them]
+where ω_tax + ω_them = 1.
+
+The active transition matrix for each PPR walk:
+
+  P_active(q) = ω_tax(q)·P_tax + ω_them(q)·P_them
+
+Analytical queries (Financial, Professional): ω_tax ≈ 1, thematic edges vanish.
+Relational queries (Personal, Relationships): ω_them ≈ 1, taxonomic edges vanish.
+Biological TPN/DMN mutual inhibition is implemented as pure linear algebra.
+
+CT's ENTP profile and 151st percentile verbal cognition mean his queries will naturally
+yield higher-entropy intent vectors (e.g., [0.6, 0.4]) — retaining cross-domain reach
+without hardcoding a user-specific suppression parameter.
+
+No new pointer fields required — the existing relation-type annotation drives the split.
 
 **LoRa Rank r***
 r* = R_macro + N_tollbooths
