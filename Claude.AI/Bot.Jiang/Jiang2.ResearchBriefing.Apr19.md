@@ -31,22 +31,38 @@ Pull first: `cd /Users/lbhunt/Desktop/velorin-system && git pull`
 
 ---
 
-## What to Update
+## Critical Reading Posture — Read This Before Touching the Build Guide
 
-After reading, assess which Build Guide sections need revision:
+**Trey and Erdős are research contractors, not authorities.** Their outputs are proposals, not directives. Do not assume anything they produced is correct, complete, or the direction the Chairman wants to go. The Chairman has not signed off on any of this material as final.
 
-- **`03_BrainAndMath.md`** — Almost certainly needs updating. The Continuous Affinity Clutch replaces the Demotion Oracle as written. The Multiplex Tensor is new. The Holographic Cold-Start replaces whatever cold-start rule you documented.
-- **`02_Architecture.md`** — May need updating if the 4-layer architecture description changes given the new edge dynamics.
-- **`07_OpenQuestions.md`** — The ingestion pipeline open question may now be partially or fully resolved by Erdős Territory II + Trey's BrainIngestionPipeline doc. Update accordingly.
+Your job reading these docs is to form your own independent assessment:
+- Does the math hold? Does it follow from the locked theorems?
+- Does Trey's neuroscience actually map onto the Brain architecture, or is it being forced?
+- Does Erdős's resolution solve the real problem or a cleaner version of the problem?
+- Where does the Chairman's judgment need to be applied before anything gets locked?
 
-Do not rewrite sections that are unaffected. Surgical updates only.
+**Do not update the Build Guide until you have completed your own analysis.** If you agree with something, say why. If you disagree, say why. If something is incomplete or unverified, flag it as TBD. The Build Guide is a build specification — it should only contain things the Chairman can execute on with confidence.
 
-Commit message format: `Jiang2: update Build Guide with post-session Erdős + Trey research (Apr 19)`
+**Your prior Build Guide work is not automatically superseded** by these docs. You wrote that guide from a full-context read of the system. If Erdős's new math conflicts with what you wrote, that is a flag for the Chairman — not an automatic overwrite.
+
+---
+
+## What to Produce
+
+After reading all four docs, produce a **review memo** (not a direct Build Guide edit) with:
+
+1. **For each doc:** A 3-5 sentence assessment — what's solid, what's unverified, what's missing, what needs Chairman input before it can be locked.
+2. **Build Guide delta:** Which sections, if any, you believe should be updated, and what specifically should change — but only after your critical review, not before.
+3. **Open questions for the Chairman:** Anything that requires his judgment or direction before it can be resolved.
+
+Save the memo to: `Claude.AI/Bot.Jiang/Jiang2.ResearchReview.Apr19.md`
+
+Do not commit Build Guide changes until the Chairman has reviewed the memo and confirmed direction.
 
 ---
 
 ## Context
 
-The Chairman is tracking whether all agents are current on the research. After this session, Jiang2 should be fully caught up. If you find that Erdős's new math contradicts something locked in the Build Guide, flag it explicitly — do not silently overwrite a locked result.
+The Chairman is tracking whether all agents are current on the research. The goal of this session is not to incorporate the new research — it is to evaluate it and tell the Chairman what it's worth and what decisions it requires.
 
 [VELORIN.EOF]
