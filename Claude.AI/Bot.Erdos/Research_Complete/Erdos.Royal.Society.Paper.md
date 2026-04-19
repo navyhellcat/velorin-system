@@ -11,7 +11,7 @@
 A human mind is not a static database; it is a dynamic, thermodynamically governed engine of epistemology. It accumulates knowledge sequentially across time (episodic memory), routes associative connections topologically (structural memory), and eventually compresses these explicit relationships into intuitive, generalized understanding (semantic memory).
 
 The mathematical problem we address is the formalization of this cognitive process into a computable, self-organizing architecture. We must construct a system that can:
-1. Store discrete, human-curated thoughts and their directed relationships at scale.
+1. Store discrete, automatically-ingested thoughts and their directed relationships at scale.
 2. Retrieve relevant thoughts independent of global scale, preventing combinatorial explosion as the number of nodes $N \to \infty$.
 3. Compress these explicit topological relationships into a continuous semantic weight space without catastrophic forgetting.
 4. Update these weights as new knowledge arrives, without destroying the foundational episodic record.
@@ -103,9 +103,9 @@ $$ \mathcal{L}^{\ast}(\phi^{\ast}) = \mathcal{L}_{del} + \lambda \sum_{w \in C_{
 
 **Wall A: Pointer Gravity (Laplacian Dual-Procrustes)**
 
-*Problem:* Projecting continuous 1536D LLM semantic space down to discrete 8D $E\_8$ docking ports purely via geometric constraints ignores the human-curated topology (Layer 2 pointers), severing explicitly curated logic.
+*Problem:* Projecting continuous 1536D LLM semantic space down to discrete 8D $E\_8$ docking ports purely via geometric constraints ignores the automated pointer topology (Layer 2 pointers), severing the ingested relational structure.
 
-*Derivation:* Let $X$ be the continuous embeddings, $Y\_M$ the discrete $E\_8$ ports, and $L$ the Graph Laplacian of the human pointer affinities. We minimize geometric distortion plus a Laplacian Tikhonov penalty weighted by Pointer Gravity $\gamma$:
+*Derivation:* Let $X$ be the continuous embeddings, $Y\_M$ the discrete $E\_8$ ports, and $L$ the Graph Laplacian of the pointer affinities. We minimize geometric distortion plus a Laplacian Tikhonov penalty weighted by Pointer Gravity $\gamma$:
 
 $$\min_{W} \mathcal{L}(W) = \| W X - Y_M \|_F^2 + \gamma \cdot \text{Tr}\left( W X L X^T W^T \right) + \lambda \|W\|_F^2$$
 
@@ -121,7 +121,7 @@ $$W = Y_M (K + \gamma K L + \lambda I)^{-1} X^T$$
 
 *Problem:* How does a random walk traverse the void between two isolated 8D $E\_8$ coordinate spaces without dropping back into $\mathcal{O}(N)$ continuous search?
 
-*Derivation:* We construct an $8 \times 8$ Gauge Tensor $\mathcal{T}\_{A \to B}$ by blending the Semantic Gauge (LLM continuous truth) and the Topological Wormhole (human pointers $E\_{A \to B}$):
+*Derivation:* We construct an $8 \times 8$ Gauge Tensor $\mathcal{T}\_{A \to B}$ by blending the Semantic Gauge (LLM continuous truth) and the Topological Wormhole (ingested pointers $E\_{A \to B}$):
 
 $$\mathcal{T}_{semantic} = (W_A^{+})^T W_B^T$$
 
@@ -229,7 +229,7 @@ $$\mathcal{L}_{LoRa\text{-}MSE} = \sum_{u, v} \left( h_u^T W_{LoRa} h_{v} - \log
 
 **The Atomic Weight of a Pointer ($\delta(u \to v)$)**
 
-*Problem:* What is the exact information content of a single human pointer, defining the Demotion Oracle threshold?
+*Problem:* What is the exact information content of a single pointer, defining the Demotion Oracle threshold?
 
 *Derivation:* By Kirchhoff's Matrix Tree Theorem and the Matrix Determinant Lemma (Sherman-Morrison), the loss of spanning-forest routing capacity upon removing an edge is a function of its Directed Effective Resistance $\mathcal{R}\_{eff}$. The exact information content is:
 

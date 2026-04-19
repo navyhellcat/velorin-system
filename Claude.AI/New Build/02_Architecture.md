@@ -53,8 +53,9 @@ retrained. The archive enables that retraining.
 ## Layer 1 — The Brain (Build This First)
 
 **What it is:** A neural file graph. Neurons are atomic markdown files (~15 lines,
-one idea each). Neurons connect via directed, human-assigned pointer ratings (1-10).
-Low number = strong connection. High number = tangential. Max 7 outbound pointers.
+one idea each). Neurons connect via directed pointer ratings (1-10), automatically
+assigned by the ingestion pipeline — never rated by hand. Low number = strong connection.
+High number = tangential. Max 7 outbound pointers.
 
 **Retrieval algorithm:** Personalized PageRank (PPR)
 ```

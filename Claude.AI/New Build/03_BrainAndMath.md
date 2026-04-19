@@ -70,9 +70,13 @@ Pointers follow this format:
 - [[region/area/neuron-slug]] weight — relation-type: description
 ```
 
-Weight is a float 0.0-1.0 derived from the human rating:
+Weight is a float 0.0-1.0 derived from the automatically-assigned rating:
 `weight = (11 - rating) / 10`
 So rating 1 → weight 1.0, rating 10 → weight 0.1.
+
+Ratings are assigned automatically by the ingestion pipeline (Holographic Cold-Start
+for initial value; A_base SDE for updates via Hebbian reinforcement and Ebbinghaus decay).
+There are no manually assigned pointer ratings in the initial build.
 
 Relation types (do not invent new ones):
 ```
@@ -87,12 +91,12 @@ No background. No setup. State the idea directly, then what it connects to.
 15 lines is the hard cap. If you're approaching it, you're writing prose, not a neuron.
 
 Bad: "The PPR algorithm is important because it allows the Brain to traverse the graph
-in a way that is proportional to the human pointer ratings, meaning that highly-rated
-connections propagate more relevance mass, which..."
+in a way that is proportional to the automatically-assigned pointer ratings, meaning
+that highly-rated connections propagate more relevance mass, which..."
 
-Good: "PPR retrieval traverses the pointer graph weighted by human ratings. High-affinity
-edges (rating 1-3) propagate more mass. With 7-pointer cap and α=0.25, precision
-scales O(1) regardless of graph size. Required density: ρ* = 0.78."
+Good: "PPR retrieval traverses the pointer graph weighted by system-assigned ratings.
+High-affinity edges (rating 1-3) propagate more mass. With 7-pointer cap and α=0.25,
+precision scales O(1) regardless of graph size. Required density: ρ* = 0.78."
 
 ---
 
@@ -158,12 +162,12 @@ percolation collapse instead of precision improvement.
 
 **Wall A — Pointer Gravity (Laplacian Dual-Procrustes)**
 The problem: projecting 1536D LLM embeddings to 8D E₈ crystal ports ignoring
-human pointer topology would sever explicitly curated logic.
+automated pointer topology would sever explicitly ingested logic.
 
 Objective with Tikhonov regularization:
 L(W) = ||WX - Y_M||²_F + γ·Tr(WXLX^TW^T) + λ||W||²_F
 
-Where L is the Graph Laplacian of human pointer affinities, γ is the Pointer
+Where L is the Graph Laplacian of pointer affinities, γ is the Pointer
 Gravity Constant (human override dial: γ→0 = pure LLM geometry, γ→∞ = pure
 human topology).
 
@@ -181,7 +185,7 @@ Solution: T_{A→B} = (1-λ)T_semantic + λT_human
 
 T_semantic = (W_A^+)^T · W_B^T  (semantic gauge: lift from A's 8D → 1536D → fold to B's 8D)
 T_human = (Y_AY_A^T + εI)^(-1) · Y_A · E_{A→B} · Y_B^T · (Y_BY_B^T + εI)^(-1)
-           (topological wormhole: human pointers crossing crystal boundary)
+           (topological wormhole: pointers crossing crystal boundary)
 
 64 floats per crystal boundary. Simon-Ando Aggregation collapses multi-crystal
 walk to O(K³) + active × O(240³).

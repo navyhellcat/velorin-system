@@ -57,7 +57,7 @@ Layer 0 is future — depends on local AI model decisions not yet made.
 - ρ* = 0.78: 78% of pointers must be high-priority (ratings 1-3) for PPR precision
 - 7-pointer cap per neuron
 - E₈ crystal structure: 240 neurons per crystal
-- Pointer Gravity: human pointer topology warps 8D crystal geometry
+- Pointer Gravity: pointer topology warps 8D crystal geometry (ratings auto-assigned)
 - Inter-Crystal Gauge Tensor: 64 floats per crystal boundary
 - Ignition Protocol: Dark Matter nodes crystallize on emotional engagement
 - Trey1/Trey2 split as external research agents on Gemini
