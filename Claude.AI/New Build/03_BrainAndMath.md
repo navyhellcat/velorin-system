@@ -213,34 +213,44 @@ By Eckart-Young: low-rank LoRa incurs Δ = I(X;Y) - I(Z;Y) > 0 strictly.
 Consequence: deletion of Markdown records is permanently forbidden.
 The LoRa is lossy. The Markdown is the lossless ground truth.
 
-**Continuous Affinity Clutch** *(replaces binary Demotion Oracle — April 19)*
+**Continuous Affinity Clutch** *(locked math — April 19; replaces binary Demotion Oracle)*
 
-The binary Demotion Oracle (affinity drops to 2 on a threshold) was a Bang-Bang
-Controller. At scale it produces violent oscillation. At model upgrade it would require
-O(N) database writes to restore the graph. Both are catastrophic cliffs.
+The binary Demotion Oracle was a Bang-Bang Controller — a binary step-function applied
+to a continuous dynamical system. At scale it produces violent oscillation. At model
+upgrade it required O(N) database writes to restore the graph. Both are catastrophic cliffs.
 
 Resolution: decouple Episodic Ground Truth from Routing Gravity.
 
-A_base is stored permanently in the database — the inviolable historical record.
+A_base ∈ [1,10] is stored permanently — the inviolable historical record, never deleted.
 PPR uses a dynamically computed Effective Affinity:
 
   Ã(u→v) = 2 + (A_base(u→v) - 2) · (1 - exp(-D_KL(P_MD ∥ P_LoRa) / δ(u→v)))
 
 Behavior:
-- As LoRa learns the connection: D_KL → 0, multiplier → 0, Ã glides asymptotically to 2.
-  Routing gravity released. No binary phase transition. No cliff.
-- On model upgrade (LoRa reset): D_KL → ∞, multiplier → 1, Ã snaps back to A_base
-  for every pointer in the Brain simultaneously. Zero computation. Zero manual intervention.
-  The explicit graph catches the falling mind at the exact moment of upgrade.
+- As LoRa learns the connection: D_KL → 0, Ã glides asymptotically to 2.
+  Routing gravity releases smoothly. No phase transition.
+- On model upgrade (LoRa reset): D_KL → ∞, Ã snaps to A_base for every pointer
+  simultaneously. Zero computation. Zero manual intervention. The explicit graph
+  catches the falling mind at the exact moment of upgrade.
 
-A_base itself evolves via a unified SDE (Hebbian + Ebbinghaus):
+This formula is LOCKED math. It follows from the Second Law (A_base permanent) and
+the requirement of smooth gradient behavior (no binary switches).
+
+**D_KL evaluation — engineering decision (locked April 19):**
+The LoRa is fixed for the duration of a session. Compute Ã(u→v) the first time a
+pointer is traversed in a session; cache the result; reuse for that session; flush
+on session end. This is lazy within-session caching. Cost: 7 dot products with W_LoRa
+per pointer, amortized to zero after first traversal. Model upgrade: D_KL → ∞
+evaluates automatically — no special-case code needed.
+
+A_base itself evolves via a unified SDE (Hebbian + Ebbinghaus) — LOCKED:
 
   dA_base = η · 1[e ∈ Success Path] dt  (Hebbian reinforcement on successful traversal)
            - A_base / (τ_0 · max(ε, H_E + γπ_u)) dt  (Ebbinghaus decay)
 
 This unifies Trey's hybrid success-weighted decay rule and the Ebbinghaus-Laplacian
-decay model into a single equation. The SDE governs the ground truth. The Clutch governs
-the routing. The system is thermodynamically complete.
+into one equation. The SDE governs the ground truth. The Clutch governs the routing.
+Calibration parameters (η, τ_0, γ) are tuned empirically once the system is running.
 
 **δ(u→v) — Atomic Weight of a Pointer**
 δ(u→v) = -π_u · log(1 - A(u→v) · R_eff(u→v))
@@ -264,6 +274,11 @@ Where y_port is the nearest E₈ docking port found by Alien Injection.
 Perfect geometric fit → high affinity. Poor fit → low affinity.
 No rich-get-richer. No Monster Node seeding. No Graph Attention Networks required.
 
+λ calibration: start at 1/σ² where σ² is the empirical variance of projection
+residuals observed across the initial crystal population. This gives natural scaling —
+a "typical" fit gets affinity ~7-8, a poor fit gets ~3-4, a perfect fit gets ~10.
+Tune from system behavior after the first 500 neurons are ingested.
+
 **Theorem of Clique Centrality** *(resolves expert density question — April 19)*
 
 As local density ρ → 1 (expert domain approximating a complete graph), betweenness
@@ -276,9 +291,19 @@ clusters generate redundant parallel paths that distribute routing gravity evenl
 
 **Multiplex Tensor / Intent-Parameterized Transition Matrix** *(April 19)*
 
-The existing relation-type annotation (taxonomic: instance-of, derived-from vs
-thematic: causes, activates, precedes) partitions the graph into two orthogonal matrices:
-P_tax (Taxonomic) and P_them (Thematic).
+The existing relation-type annotation partitions the graph into two orthogonal matrices.
+
+LOCKED relation-type partition:
+
+  Taxonomic (P_tax) — ATL: what something IS, structural definition, categorical lineage
+    instance-of, derived-from
+
+  Thematic (P_them) — Angular Gyrus: how things are USED, operational, situational
+    causes, activates, precedes, implements, depends-on, supports, contradicts
+
+Reasoning: `supports` and `contradicts` are evidential (how something functions in
+an argument), not definitional. They belong with thematic. `implements` and `depends-on`
+are operational relationships, not categorical ones.
 
 The LLM parses each query into a Cognitive Intent Vector ω = [ω_tax, ω_them]
 where ω_tax + ω_them = 1.
@@ -287,8 +312,9 @@ The active transition matrix for each PPR walk:
 
   P_active(q) = ω_tax(q)·P_tax + ω_them(q)·P_them
 
-Analytical queries (Financial, Professional): ω_tax ≈ 1, thematic edges vanish.
-Relational queries (Personal, Relationships): ω_them ≈ 1, taxonomic edges vanish.
+Definitional queries ("What is Window Gravity?"): ω_tax ≈ 0.8
+Operational queries ("How do I build the ingestion pipeline?"): ω_them ≈ 0.8
+Ambiguous intent (ω = [0.5, 0.5]): reverts to the original single P — correct fallback.
 Biological TPN/DMN mutual inhibition is implemented as pure linear algebra.
 
 CT's ENTP profile and 151st percentile verbal cognition mean his queries will naturally
