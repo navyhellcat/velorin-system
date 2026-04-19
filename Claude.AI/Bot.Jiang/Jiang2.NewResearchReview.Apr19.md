@@ -1,12 +1,13 @@
 # Jiang2 — New Research Review Prompt — April 19, 2026
 
-Two new Trey research docs just landed. Read them. Then think. Then write a decision plan for the Chairman.
+Three Trey research docs just landed. Read them. Then think. Then write a decision plan for the Chairman.
 
 ## Read These
 
 ```
 Claude.AI/Bot.Trey/Research_Complete/Trey.Research.Epistemodynamics.NoveltyCheck.md
 Claude.AI/Bot.Trey/Research_Complete/Trey.Research.EmotionalMemorySalience.Measurement.md
+Claude.AI/Bot.Trey/Research_Complete/Trey.Research.SkillsTaxonomyEmergence.md
 ```
 
 Also pull first: `cd /Users/lbhunt/Desktop/velorin-system && git pull`
@@ -44,5 +45,13 @@ If your analysis surfaces a question that requires pure research or math, do not
 ## Scope
 
 This prompt covers only the two new docs. Your earlier briefing (`Jiang2.ResearchBriefing.Apr19.md`) covers the four docs from the April 17 gap — handle that separately or together, your call on sequencing.
+
+## When Done
+
+Delete this prompt file. It is consumed once you've completed the decision plan.
+
+```
+git rm Claude.AI/Bot.Jiang/Jiang2.NewResearchReview.Apr19.md && git add -A && git commit -m "Jiang2: delete consumed prompt NewResearchReview.Apr19" && git push
+```
 
 [VELORIN.EOF]

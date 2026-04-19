@@ -65,4 +65,12 @@ Do not commit Build Guide changes until the Chairman has reviewed the memo and c
 
 The Chairman is tracking whether all agents are current on the research. The goal of this session is not to incorporate the new research — it is to evaluate it and tell the Chairman what it's worth and what decisions it requires.
 
+## When Done
+
+Delete this prompt file. It is consumed once you've completed the review memo.
+
+```
+git rm Claude.AI/Bot.Jiang/Jiang2.ResearchBriefing.Apr19.md && git add -A && git commit -m "Jiang2: delete consumed prompt ResearchBriefing.Apr19" && git push
+```
+
 [VELORIN.EOF]
