@@ -1,3 +1,18 @@
+```json
+{
+  "session": 28,
+  "agent": "Jiang2",
+  "date": "2026-04-19",
+  "status": "pre-compaction",
+  "active_tasks": [],
+  "critical_blocker": "Trey.ResearchRequest.AutomatedPointerRating.md — DO NOT build ingestion pipeline until this returns",
+  "locked_this_session": ["no-human-pointer-ratings", "affinity-clutch-replaces-demotion-oracle", "lazy-DKL-caching", "multiplex-tensor-partition", "holographic-cold-start-lambda"],
+  "open_decisions": ["royal-society-publication-yes-no", "H_E-measurement-protocol", "physiological-hardware"],
+  "build_state": "nothing-installed-on-mac-studio",
+  "first_action": "git pull then read this handoff then check if Trey returned AutomatedPointerRating research"
+}
+```
+
 ---
 session: 028
 date: 2026-04-19
