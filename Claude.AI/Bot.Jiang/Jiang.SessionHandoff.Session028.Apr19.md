@@ -221,3 +221,39 @@ Everything above Stage 0 is blocked by the fact nothing has been physically buil
 *Jiang2 | Session 028 | April 19, 2026 | PRE-COMPACTION*
 
 [VELORIN.EOF]
+
+---
+
+## CRITICAL ADDENDUM — SKILLS TAXONOMY (READ BEFORE ANYTHING ELSE)
+
+**CT rejected Jiang2's analysis of Trey.Research.SkillsTaxonomyEmergence.md.**
+
+Jiang2 concluded: Brain regions stay as-is, Skills Registry is separate, Trey's taxonomy
+recommendation is a category error. CT disagrees. He believes the analysis was too shallow
+and did not think through how the skills taxonomy integrates with the Brain — even if it
+is a separate system.
+
+**The analysis file `Jiang2.EcosystemAnalysis.SkillsTaxonomy.md` should be treated as
+INCOMPLETE. Do NOT use it as the basis for any Build Guide decisions.**
+
+**What the rebooted Jiang2 must do:**
+1. Re-read `Claude.AI/Bot.Trey/Research_Complete/Trey.Research.SkillsTaxonomyEmergence.md`
+   completely and without the prior session's framing.
+2. Think more carefully about how the Hub-and-Spoke skill architecture integrates with
+   the Brain — not as two fully isolated systems, but as potentially coupled systems
+   where skills reference Brain neurons and vice versa.
+3. Consider: if skills are procedural memory and neurons are declarative memory, what
+   is the INTERFACE between them? How does an agent move from Brain retrieval to skill
+   execution? Does the Brain's region structure affect which skills are available?
+4. Produce a revised analysis only after sitting with that question seriously.
+
+**CT's actual concern:** Trey may be right that the community convergence toward
+Hub-and-Spoke reveals something about how the Brain's ROUTING should work — not just
+how skills should be organized. The integration question is what Jiang2 missed.
+
+The SemanticMemoryOrganization research also speaks to this — Trey and that research
+may be pointing at the same architectural truth from different angles. That synthesis
+was not attempted.
+
+**Do not make any Build Guide changes related to skills taxonomy until this is resolved.**
+
