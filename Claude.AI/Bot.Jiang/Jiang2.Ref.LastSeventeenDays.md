@@ -1,0 +1,603 @@
+# Velorin System — Activity Log, Last 17 Days (Apr 3 → Apr 19, 2026)
+
+**Scope:** 195 commits, 364 unique files touched.
+**Generated:** 2026-04-19 20:32
+
+---
+
+## Part 1 — Commit History (newest first)
+
+- 2026-04-19 20:25:11 -0500 | Session 031 compaction recovery prompt
+- 2026-04-19 20:21:00 -0500 | Session 028 handoff: add CT critique of skills taxonomy analysis — treat as incomplete, rethink integration
+- 2026-04-19 18:43:40 -0500 | Jiang2: Skills taxonomy analysis + consume prompt
+- 2026-04-19 18:38:51 -0500 | Remove redundant NewResearchReview prompt
+- 2026-04-19 18:38:45 -0500 | Jiang2: read SkillsTaxonomy prompt
+- 2026-04-19 18:36:59 -0500 | Jiang2 prompt cleanup: delete 3 consumed/premature prompts; add SkillsTaxonomyEmergence to review list; add self-delete instructions to active prompts
+- 2026-04-19 18:30:07 -0500 | Add Trey deep research request: AI ecosystem state of play (last 4 weeks); Jiang2 analysis prompt
+- 2026-04-19 18:22:04 -0500 | Port Trey SkillsTaxonomyEmergence from GDrive (5 images); archive request file
+- 2026-04-19 18:17:52 -0500 | Add startup/compaction recovery tool file
+- 2026-04-19 18:10:50 -0500 | Add JSON block + compact hook wired for post-compaction recovery
+- 2026-04-19 18:06:08 -0500 | Session 028 pre-compaction handoff — full state capture
+- 2026-04-19 18:02:15 -0500 | Trey2 research request: automated pointer rating + dual-rating architecture
+- 2026-04-19 17:57:17 -0500 | Remove all human pointer rating references — ratings are fully automated
+- 2026-04-19 17:43:56 -0500 | Jiang2: decision plan for Epistemodynamics novelty + H_E measurement docs
+- 2026-04-19 17:38:16 -0500 | Jiang2 new research review prompt — NoveltyCheck + EmotionalMemorySalience, decision plan for Chairman
+- 2026-04-19 17:26:06 -0500 | Port 2 Trey research docs from GDrive — Epistemodynamics NoveltyCheck (49 images) + EmotionalMemorySalience (25 images); archive request files
+- 2026-04-19 14:20:47 -0500 | Lock Clutch math, D_KL evaluation strategy, λ calibration, Multiplex partition
+- 2026-04-19 14:14:16 -0500 | Jiang2: research review memo Apr 19 — pending Chairman approval
+- 2026-04-19 14:10:44 -0500 | Jiang2 briefing: reframe as critical review, not incorporation — Chairman has not locked new Erdos/Trey material
+- 2026-04-19 13:57:09 -0500 | Jiang2: update Build Guide with post-session Erdős + Trey research (Apr 19)
+- 2026-04-19 13:48:57 -0500 | Jiang2 research briefing — 4 docs to read + Build Guide update instructions
+- 2026-04-19 13:44:30 -0500 | Erdos ScaleIngestion response: KaTeX fix, rename, archive request; remove 4 extension-less duplicate files
+- 2026-04-19 13:40:25 -0500 | Add research findings on Velorin Brain architecture
+- 2026-04-17 23:17:09 -0500 | Session 030 compaction recovery prompt
+- 2026-04-17 23:14:26 -0500 | Session 030 handoff — Jiang
+- 2026-04-17 23:13:12 -0500 | GDrive.Port.Tool: add KaTeX fix + DOM verify steps — built into port workflow
+- 2026-04-17 23:12:14 -0500 | Port Trey: Viscoelastic Brain Architecture — A Resolution (KaTeX rules applied)
+- 2026-04-17 22:41:33 -0500 | Erdős prompt: scale, ingestion, and open architecture problems
+- 2026-04-17 22:33:16 -0500 | Enforce archive step in research protocol — mandatory, same commit as doc port
+- 2026-04-17 22:32:55 -0500 | Archive completed research requests — BrainIngestionPipeline + SemanticMemoryOrganization
+- 2026-04-17 22:29:39 -0500 | Add GDrive.Port.Tool — port Drive docs with images to repo markdown
+- 2026-04-17 22:27:43 -0500 | Port 2 Trey research docs from GDrive — Semantic Memory Neuroscience + Brain Ingestion Pipeline (8 images)
+- 2026-04-17 21:57:44 -0500 | Update GitHub.KaTeX.Rules.md — fix script now covers Rules 1+2+4+5 (not just 4+5)
+- 2026-04-17 21:57:06 -0500 | Fix KaTeX Rules 1+2+4+5 on Epistemodynamics doc — escape ^* to ^{\ast}, || to lVert/rVert, _ in inline math, blank lines around display blocks
+- 2026-04-17 21:54:58 -0500 | Fix KaTeX on Epistemodynamics doc; add system-wide GitHub.KaTeX.Rules.md with fix script + DOM query
+- 2026-04-17 21:51:26 -0500 | New Build guide: complete V2 build guide across 7 documents
+- 2026-04-17 21:48:00 -0500 | Fix KaTeX rendering on 9 Erdős docs — escape _ in inline math, blank lines around display math (Rules 4+5)
+- 2026-04-17 21:45:16 -0500 | Scribe: CREATE neuron A9 + rules A9 — Context discipline (terminate-worthy offense)
+- 2026-04-17 21:42:18 -0500 | session 028 handoff: rules doc + handoff with Python fix script for remaining 9 docs
+- 2026-04-17 21:35:04 -0500 | fix: isolate display math with blank lines + remove paragraph italic on Ignition Protocol
+- 2026-04-17 21:33:46 -0500 | fix: escape underscores in all inline math (Ignition Protocol)
+- 2026-04-17 21:28:25 -0500 | test: try backslash-escape underscores on line 33
+- 2026-04-17 21:27:42 -0500 | test: wrap inline math in backticks on line 33 (GitHub KaTeX fix test)
+- 2026-04-17 21:00:37 -0500 | Erdős Ignition Protocol formalization + archive validation request
+- 2026-04-17 20:57:31 -0500 | Fix GitHub KaTeX rendering in Erdos.FutureTheory.IgnitionProtocol.DarkMatter.md
+- 2026-04-17 20:54:24 -0500 | Add research on Ignition Protocol and Dark Matter
+- 2026-04-17 20:43:29 -0500 | Fix GitHub KaTeX rendering in Erdos.Thermodynamics.Emistemological.Time.Future.Consideration.md
+- 2026-04-17 20:43:04 -0500 | Fix GitHub KaTeX rendering in Erdos.Solution.SynapticPruning.md
+- 2026-04-17 20:41:51 -0500 | Fix GitHub KaTeX rendering in Erdos.Unification.Stage3.md
+- 2026-04-17 20:41:25 -0500 | Fix GitHub KaTeX rendering in Erdos_Layer_Math_v1_FULL_With_Hypothetical.md
+- 2026-04-17 20:40:04 -0500 | Fix GitHub KaTeX rendering in Erdos.Royal.Society.Paper.md
+- 2026-04-17 20:38:31 -0500 | Scribe log update
+- 2026-04-17 20:38:12 -0500 | Add Erdős prompt to Trey.Validation.TemporalMemory.md
+- 2026-04-17 20:36:03 -0500 | Session 027 closeout — handoff + FutureWork update
+- 2026-04-17 20:33:19 -0500 | Route Receiving folder + archive completed requests
+- 2026-04-17 20:30:37 -0500 | Scribe: CREATE neuron + rule — GDrive file port method (feedback_gdrive_port_method)
+- 2026-04-17 20:29:28 -0500 | Add GDrive port protocol to Jiang.CodingStandards §5.3
+- 2026-04-17 20:26:35 -0500 | Port 5 Trey research docs from GDrive Shipping to GitHub Receiving
+- 2026-04-17 00:15:18 -0500 | Refine crystallization process description
+- 2026-04-17 00:13:10 -0500 | Update Erdos.Royal.Society.Paper.md
+- 2026-04-17 00:02:36 -0500 | Clarify pointer weights description in paper
+- 2026-04-17 00:00:49 -0500 | Update Erdos.Royal.Society.Paper.md
+- 2026-04-16 21:25:15 -0500 | Update Erdos.Royal.Society.Paper.md
+- 2026-04-16 19:58:52 -0500 | Audit + archive pass: research queues, stale bots, Erdős requests
+- 2026-04-16 19:34:52 -0500 | Delete unauthorized BarrierKVM rewrite; file KVM Bridge research request
+- 2026-04-16 19:29:34 -0500 | Add Velorin KVM Bridge project plan + Trey1 deep research prompt
+- 2026-04-15 23:32:56 -0500 | Add Trey1 Barrier KVM research — full .md conversion with Mermaid diagram (SMB vs TCP)
+- 2026-04-15 23:23:38 -0500 | Add Trey SMB vs TCP event propagation research (Mermaid diagrams)
+- 2026-04-15 23:17:24 -0500 | Document analysis of Barrier KVM for cross-Mac transfer
+- 2026-04-13 23:22:16 -0500 | Session 026 closeout — handoff and daily log
+- 2026-04-13 23:14:02 -0500 | Add CRITICAL Trey2 research request — Brain ingestion pipeline automation
+- 2026-04-13 23:09:40 -0500 | Scribe: create A10 + update A6 — Trey1 Deep Research calibration
+- 2026-04-13 22:22:52 -0500 | Add three Trey 1 research requests — general research, no architecture context required
+- 2026-04-13 22:11:27 -0500 | Archive Erdos.Problem.SynapticPruning.md — all three hypotheses solved
+- 2026-04-13 21:51:57 -0500 | Update four core context files — April 2026 current state
+- 2026-04-13 21:45:45 -0500 | Add Jiang2 immediate task — core file update + archive pass
+- 2026-04-13 20:36:25 -0500 | Add Trey1/Trey2 Gem instructions and four Bootloader documents
+- 2026-04-13 19:55:45 -0500 | Fix typo: undemoTable -> undemotable
+- 2026-04-13 19:53:02 -0500 | Append actionable hypotheses on synaptic pruning
+- 2026-04-13 18:50:18 -0500 | FutureWork: add FW-002 Trey research on Barrier cross-Mac clipboard solution
+- 2026-04-13 17:53:00 -0500 | Add Trey temporal memory validation request (Q4/Q5) + Jiang future work log (first principles process)
+- 2026-04-13 16:25:38 -0500 | Update synaptic pruning request: add Ebbinghaus-Laplacian temporal framework
+- 2026-04-13 16:01:13 -0500 | Add Erdos.GitHubLatex.Rules.md — KaTeX rendering rules discovered Session 026
+- 2026-04-13 15:58:19 -0500 | Fix Theorem 4: ^{*} -> ^{\ast} to eliminate raw * chars that GitHub markdown italicizes before KaTeX runs
+- 2026-04-12 23:38:53 -0500 | Add 00_Chronological_File_Index.md — chronological file index used for Session 024 full system read
+- 2026-04-12 23:35:53 -0500 | Add Erdos' Future Theory on Thermodynamics of Time
+- 2026-04-12 23:33:49 -0500 | Session 024 handoff: complete — post-compaction work added
+- 2026-04-12 23:32:33 -0500 | Add Trey research prompt: neuroscience of semantic memory organization
+- 2026-04-12 23:28:30 -0500 | Fix Theorem 4: || -> lVert/rVert, pipe chars break GitHub table parser
+- 2026-04-12 23:25:19 -0500 | Global fix: all ^* -> ^{*} to prevent markdown asterisk consumption
+- 2026-04-12 23:22:38 -0500 | Fix Theorem 4 inline proof: phi^* -> phi^{*} to stop markdown eating the asterisk
+- 2026-04-12 23:18:17 -0500 | Theorem 4: verbatim formula from original source, no modifications
+- 2026-04-12 23:16:59 -0500 | Fix Theorem 4: revert C_mathrm{reg} to C_{regular}, no nested braces
+- 2026-04-12 23:13:47 -0500 | Fix ^* and ^+ bare superscripts: add explicit braces to prevent markdown/KaTeX conflict
+- 2026-04-12 23:05:30 -0500 | Fix Theorem 4: C_{text{regular}} -> C_{mathrm{reg}} to resolve nested brace rendering
+- 2026-04-12 23:03:01 -0500 | Fix math rendering: || -> \| for norms, C_{regular} -> C_{\text{regular}}
+- 2026-04-12 22:59:12 -0500 | Rename Erdos.Epistemodynamics.Crystalline.Mind.Complete to Erdos.Epistemodynamics.Crystalline.Mind.Complete.md
+- 2026-04-12 22:58:18 -0500 | Erdős Royal Society paper — formatted .md with proper LaTeX
+- 2026-04-12 22:53:54 -0500 | Add Erdos Epistemodynamics Crystalline Mind document
+- 2026-04-12 22:52:38 -0500 | Erdős prompt: temporal memory theory — emotional saliency, decay, reconsolidation
+- 2026-04-12 22:32:46 -0500 | Session 024: Automation pipeline design + two Trey research requests
+- 2026-04-12 22:28:32 -0500 | Session 024 handoff — Jiang
+- 2026-04-12 22:22:25 -0500 | Session 024: Erdős Royal Society paper prompt — full unified derivation, novel extensions, open frontier
+- 2026-04-12 22:14:27 -0500 | Erdős Stage 3 formatted .md — ε eliminated via Shannon boundary, r* = R_macro + tollbooths, δ(u→v) O(1) local, zero free parameters, manifold permanently closed
+- 2026-04-12 22:12:59 -0500 | Rename Erdos. Unification. Stage3 to Erdos.Unification.Stage3
+- 2026-04-12 22:12:10 -0500 | Add research document on Velorin Brain epistemodynamics
+- 2026-04-12 21:48:07 -0500 | Session 024: Jiang2 Stage 2 Erdős review — Second Law assessment and final prompt
+- 2026-04-12 21:35:13 -0500 | Erdős Stage 2 formatted .md — Second Law proven, Demotion Oracle, β_macro, Hard Negative Sampler, QJL-MSE fix, manifold closed
+- 2026-04-12 21:32:25 -0500 | Implement Erdos Stage 2 Problem Solving framework
+- 2026-04-12 20:16:28 -0500 | Session 024: Jiang2 Erdős review + full system read report
+- 2026-04-12 20:01:42 -0500 | Erdős Stage 1 synthesis — formatted .md with proper LaTeX: Theorem 5, W_global, compression event detector, LoRa training signal, Grand Unification
+- 2026-04-12 19:58:17 -0500 | Add initial synthesis documentation for Erdos project
+- 2026-04-12 19:41:59 -0500 | Session 024: Jiang2 Wall C prompt for Erdős — Mitosis, Alien Injection, compression event detector
+- 2026-04-12 19:28:23 -0500 | Session 024: Jiang2 full synthesis + session state snapshot — 4-layer architecture, LoRa as Layer 0, V2 Blueprint critique, Forever Layer, build sequence
+- 2026-04-12 17:29:00 -0500 | Push 5 untracked local files to GitHub — Antigravity research, Gemini model selection, Trey Gems dir, tool discovery, pre-compact hook (for visual review)
+- 2026-04-12 17:12:01 -0500 | Session 023 EOD final addendum — V2 migration plan and next session structure
+- 2026-04-12 11:57:45 -0500 | Session 023 EOD — hardware fully operational, Mac Studio live, network stack complete
+- 2026-04-12 11:47:27 -0500 | Update hardware setup — network fully live, all WiFi off, work laptop native ethernet, thermal baseline, power resolved
+- 2026-04-10 02:44:54 -0500 | Update hardware setup — Mac Studio arrived, dual monitor config, ethernet adapter driver fix, networking corrections
+- 2026-04-07 20:56:52 -0500 | Create MemPalace.TurboQuant.Semantic.Supplement.Math
+- 2026-04-07 20:49:39 -0500 | Create Tools.MemPalace.TurboQuant.Velorin.Research
+- 2026-04-07 19:40:38 -0500 | Create LoRa Semantic - Supplementary
+- 2026-04-07 19:12:33 -0500 | Create LoRa as the Sementic solition
+- 2026-04-05 23:57:25 -0500 | Append Wall C (Mitosis + Alien Injection) to Layer Math doc; create Wall C brief for next Erdos session
+- 2026-04-05 23:28:45 -0500 | Append Wall B resolution: Inter-Crystal Gauge Tensor + Simon-Ando Aggregation
+- 2026-04-05 23:15:00 -0500 | Append Wall A resolution (Pointer Gravity) + Wall B open problem to Layer Math doc
+- 2026-04-05 23:05:11 -0500 | Session 022 final close: Erdős pipeline complete, two-layer arch, hook deferred, context window fact
+- 2026-04-05 23:00:39 -0500 | Fix Phase III Theorem 4 norm notation: || to \| for proper superscript rendering
+- 2026-04-05 22:57:49 -0500 | Erdos Layer Math Full: add .md extension, fix norm notation, fix constraint display math
+- 2026-04-05 22:54:49 -0500 | Create Erdos Layer Math specification document
+- 2026-04-05 22:52:55 -0500 | Erdős Phase IV: Holographic E8 Compaction — formal engine, steel man accounting, open walls
+- 2026-04-05 22:29:38 -0500 | Erdős dimensional geology: add self-critique — four walls where 8D framework collapses
+- 2026-04-05 22:25:43 -0500 | Erdős dimensional geology — 8D theoretical framework, exploration only
+- 2026-04-05 22:15:31 -0500 | Erdős novelties: Kron reduction, bipartite teleportation, demotion oracle, TAG
+- 2026-04-05 21:33:31 -0500 | Velorin V2 Architectural Blueprint — Jiang2 full-context synthesis
+- 2026-04-05 21:26:09 -0500 | Erdős synaptic pruning solution — 4 theorems, architectural synthesis complete
+- 2026-04-05 21:15:29 -0500 | Session 022 handoff: post-compaction additions + full close
+- 2026-04-05 21:12:05 -0500 | Jiang2 mission: single-file output, TOC, bot-nav labels, novel synthesis directive
+- 2026-04-05 21:04:51 -0500 | Add folder architecture section to Jiang2 V2 blueprint mission — migration map required
+- 2026-04-05 20:45:34 -0500 | Add Jiang2 primary mission prompt — Velorin V2 complete architectural blueprint
+- 2026-04-05 20:35:26 -0500 | Add Erdos Deep Think problem spec — 3 synaptic pruning hypotheses for mathematical proof
+- 2026-04-05 20:28:59 -0500 | Add Trey synaptic pruning research report (converted from Google Doc)
+- 2026-04-05 19:42:13 -0500 | Session 022 handoff + Jiang2 emergency briefing — written under compaction threat
+- 2026-04-05 19:29:57 -0500 | Upgrade Erdos output format to 10-section structure — adds preconditions/postconditions, correctness proof, termination proof, complexity analysis, stability/error analysis
+- 2026-04-05 19:25:33 -0500 | Fix Phase 2 output path — Trey files math problem spec in Bot.Erdos/Research_Needed
+- 2026-04-05 19:22:48 -0500 | Remove Bot.Trey/Gems — Math Bot moved to Bot.Erdos
+- 2026-04-05 19:21:02 -0500 | Add Research_Needed and Archived_Research_Requests subfolders to Bot.Erdos
+- 2026-04-05 19:20:00 -0500 | Add Bot.Erdos — Paul Erdos math agent with identity doc and Deep Think Gem instructions
+- 2026-04-05 19:14:38 -0500 | Fix DELIVERABLE contradiction and HippoRAG URLs in Synaptic Pruning research request
+- 2026-04-05 19:04:05 -0500 | Add System Context and Design Goals section to Synaptic Pruning Phase 2 spec
+- 2026-04-05 19:01:23 -0500 | Add Synaptic Pruning research request and generalized Math Bot Gem instructions
+- 2026-04-05 15:33:58 -0500 | Session 021 full handoff — post-compaction complete, supersedes partial earlier version
+- 2026-04-05 15:22:30 -0500 | Add Trey consolidated MCP/A2A research report v2.0 — Session 021
+- 2026-04-05 12:27:44 -0500 | Vocabulary bot run — add A7 through A13
+- 2026-04-05 12:18:36 -0500 | Add vocabulary A6 (Query Mode) and Vocabulary Bot design spec
+- 2026-04-05 12:17:37 -0500 | Update Trey.ProjectInstructions to v2.0 — Gemini platform, Discovery Mode, Build vs Adopt
+- 2026-04-05 11:14:32 -0500 | Session 021: Add MCP discovery file and Gemini Deep Research prompt
+- 2026-04-05 10:55:31 -0500 | Session 021: Add post-compact new ideas — Query Mode, Tiered MCP, A2A Protocol, multi-model bridge findings
+- 2026-04-05 10:49:42 -0500 | Revise Velorin Use Case section for clarity
+- 2026-04-05 10:48:26 -0500 | Add files via upload
+- 2026-04-05 10:26:15 -0500 | Add files via upload
+- 2026-04-05 09:49:56 -0500 | Add Gemini AI Ultra Breakdown document
+- 2026-04-05 09:49:11 -0500 | Add files via upload
+- 2026-04-05 09:28:34 -0500 | Session 021 mid-session handoff — GPS design, skill registry, core principles, full Jiang2 briefing
+- 2026-04-05 09:19:49 -0500 | Add Velorin.Vocabulary.md — running terminology reference A1-A5
+- 2026-04-05 09:11:58 -0500 | Add terminology lookup — Session 021 vocabulary gaps resolved
+- 2026-04-05 09:01:03 -0500 | Add SteelMan protocol — critical evaluation mode for CT design reviews
+- 2026-04-05 08:06:45 -0500 | Skills landscape research complete — archived request, added paper
+- 2026-04-05 07:52:39 -0500 | Session 021 research complete — 3 operating papers + synthesis brainstorm (no Velorin changes made)
+- 2026-04-05 07:35:40 -0500 | Add Trey skills research request — Session 021
+- 2026-04-04 18:40:35 -0500 | Session 020 close — handoff written, architecture baseline, hardware consolidated, agent rules updated
+- 2026-04-04 18:06:27 -0500 | Add missing research docs: ChatGPT vs Gemini full comparison, Codex vs Jules GitHub write access
+- 2026-04-04 18:05:22 -0500 | Add Sub-Agent Tool Naming + File Write CARDINAL rules to Level4.General.Rules
+- 2026-04-04 17:53:00 -0500 | Remove old hardware files (replaced by 00_current_hardware_full.md)
+- 2026-04-04 17:51:46 -0500 | Rename deep-research-report (6).md to Cursor_Claude_GPT_Team.md
+- 2026-04-04 17:51:05 -0500 | Add files via upload
+- 2026-04-04 16:48:04 -0500 | Session 020 Pt 7: architecture baseline, hardware map, brain neurons, agent rules, research docs
+- 2026-04-04 16:41:13 -0500 | Add files via upload
+- 2026-04-04 16:19:07 -0500 | Rename deep-research-report (5).md to Claude_GPT_API_MCP_RESEARCH.md
+- 2026-04-04 16:18:11 -0500 | Add files via upload
+- 2026-04-04 13:39:12 -0500 | Workstation hardware & connection map - Apr 3 2026
+- 2026-04-04 11:40:13 -0500 | Rename deep-research-report (4).md to Voice Input_Local Inter Communication windows.md
+- 2026-04-04 11:38:51 -0500 | Add files via upload
+- 2026-04-04 11:20:01 -0500 | Add FlashMoe_Report_Tools.md to research complete
+- 2026-04-04 11:19:08 -0500 | Add files via upload
+- 2026-04-04 04:51:29 -0500 | Rename deep-research-report (2).md to Hard_Memory_Pipeline_Inversion_Compression.md
+- 2026-04-04 04:49:35 -0500 | Add files via upload
+- 2026-04-04 04:15:33 -0500 | Add TurboQuant DeepDive Math Tool documentation
+- 2026-04-04 04:14:05 -0500 | Add files via upload
+- 2026-04-04 04:01:19 -0500 | Rename deep-research-report.md to Perplexity_Computer_Framework.md
+- 2026-04-04 03:58:45 -0500 | Add files via upload
+- 2026-04-04 03:07:55 -0500 | Session 018 close: brain activation architecture, HTML dashboard, Mezzanine Project defined
+- 2026-04-04 01:10:27 -0500 | Session 017 close: MA handoff + memory update
+- 2026-04-04 01:09:24 -0500 | Session 017: Jiang2 system assessment + Level4 rules archive
+- 2026-04-03 23:36:57 -0500 | Session 016: Architecture clarity pass, 1M foundation folder, compaction fix, Camfil note
+- 2026-04-03 16:06:53 -0500 | Session 016 handoff - Apr 3 2026
+
+---
+
+## Part 2 — All Unique Files Touched (sorted)
+
+- Claude.AI/Archived_Bots/.gitkeep
+- Claude.AI/Archived_Bots/BOT.README.FIRST.BOOTUP.md
+- Claude.AI/Archived_Bots/Bot.Coordinator/Coordinator.ReadMe.First.md
+- Claude.AI/Archived_Bots/Bot.Custodian/Custodian.ReadMe.First.md
+- Claude.AI/Archived_Bots/Bot.Editor/Editor.ReadMe.First.md
+- Claude.AI/Archived_Bots/Bot.MarcusAurelius.Subbots/Bot.MarcusAurelius.Subbots.Logistics/bot.marcusaurelius.subbot.logistics.01.md
+- Claude.AI/Archived_Bots/Bot.Mobility/Mobility.ReadMe.First.md
+- Claude.AI/Archived_Bots/Bot.Oversight/Oversight.ReadMe.First.md
+- Claude.AI/Archived_Bots/Bot.Registry.md
+- Claude.AI/Archived_Bots/Bot.Replit/THE_TURING_VAULT_PROJECT_BRIEF.md
+- Claude.AI/Archived_Bots/Bot.Replit/TURING_VAULT_BRIEF.md
+- Claude.AI/Archived_Bots/Bot.Replit/Trey.Topic.Section4.2.ResourceLinks.final.md
+- Claude.AI/Archived_Bots/Bot.Replit/TuringVault.YouTubeStrategy.Parked.md
+- Claude.AI/Archived_Bots/Bot.Replit/TuringVault_ResultsSystem_v2.md
+- Claude.AI/Archived_Bots/Bot.Replit/Turing_Vault.Phase2.Architecture.md
+- Claude.AI/Archived_Bots/Bot.Replit/Turing_Vault_Cycle_Audit.md
+- Claude.AI/Archived_Bots/Bot.Replit/Turing_Vault_Cycle_Audit.v2.md
+- Claude.AI/Archived_Bots/Bot.Replit/Turing_Vault_Execution_Stack.md
+- Claude.AI/Archived_Bots/Bot.Replit/Turing_Vault_Growth_Architecture.md
+- Claude.AI/Archived_Bots/Bot.Replit/Turing_Vault_Scoring_Math.md
+- Claude.AI/Archived_Bots/Bot.Replit/Turing_Vault_Strategic_Report.md
+- Claude.AI/Archived_Bots/Bot.Theresa/BrainAgentTemplates/BrainAgentOnboarding.md
+- Claude.AI/Archived_Bots/Bot.Theresa/GeneralAgentTemplates/GeneralAgentOnboarding.md
+- Claude.AI/Archived_Bots/Bot.Theresa/Theresa.ReadMe.First.md
+- Claude.AI/Archived_Bots/Bot.Theresa/escalation.md
+- Claude.AI/Archived_Bots/Bot.Theresa/theresa-trigger.sh
+- Claude.AI/Archived_Bots/Bot.Visualizer/Visualizer.ReadMe.First.md
+- Claude.AI/Archived_Bots/ENVIRONMENT_DETECTION.md
+- Claude.AI/Archived_Bots/GLOBAL_SPAWNER_REGISTRY.md
+- Claude.AI/Archived_Bots/GLOBAL_TIMER_REGISTRY.md
+- Claude.AI/Archived_Bots/Level1_SubAgent_Baseline.md
+- Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md
+- Claude.AI/Bot.Agent.Level4/Level4.General.Rules.md.archive.2026-04-03
+- Claude.AI/Bot.Erdos/Archived_Research_Requests/.gitkeep
+- Claude.AI/Bot.Erdos/Archived_Research_Requests/Erdos.Problem.SynapticPruning.md
+- Claude.AI/Bot.Erdos/Archived_Research_Requests/Erdos.RoyalSociety.Prompt.Session024.md
+- Claude.AI/Bot.Erdos/Archived_Research_Requests/Erdos.ScaleAndIngestion.OpenProblems.md
+- Claude.AI/Bot.Erdos/Archived_Research_Requests/Erdos.TemporalMemory.Prompt.Session024.md
+- Claude.AI/Bot.Erdos/Archived_Research_Requests/Erdos.WallC.Prompt.Session024.md
+- Claude.AI/Bot.Erdos/Archived_Research_Requests/Erdos.WallC.Session023.md
+- Claude.AI/Bot.Erdos/Archived_Research_Requests/Trey.Validation.TemporalMemory.md
+- Claude.AI/Bot.Erdos/Erdos.Gem.Instructions.md
+- Claude.AI/Bot.Erdos/Erdos.GitHubLatex.Rules.md
+- Claude.AI/Bot.Erdos/Erdos.ReadMe.First.md
+- Claude.AI/Bot.Erdos/Research_Complete/.gitkeep
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos. Unification. Stage3
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.DimensionalGeology.Theoretical.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.FutureTheory.IgnitionProtocol.DarkMatter.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Initial.Synthesis.Stage1
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Initial.Synthesis.Stage1.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Novelties.BrainArchitecture.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Royal.Society.Paper.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.ScaleAndIngestion.OpenProblems.Research.Complete.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.ScaleAndIngestion.ViscoelasticResolution.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Solution.SynapticPruning.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Stage2.Problem.Solving
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Stage2.Problem.Solving.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Thermodynamics.Emistemological.Time.Future.Consideration.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Unification.Stage3
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos.Unification.Stage3.md
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos_Layer_Math_v1_FULL_With_Hypothetical
+- Claude.AI/Bot.Erdos/Research_Complete/Erdos_Layer_Math_v1_FULL_With_Hypothetical.md
+- Claude.AI/Bot.Erdos/Research_Complete/FUTURE THEORY: The Ignition Protocol & Dark Matter Crystallization
+- Claude.AI/Bot.Erdos/Research_Needed/.gitkeep
+- Claude.AI/Bot.Erdos/Research_Needed/Erdos.Problem.SynapticPruning.md
+- Claude.AI/Bot.Erdos/Research_Needed/Erdos.RoyalSociety.Prompt.Session024.md
+- Claude.AI/Bot.Erdos/Research_Needed/Erdos.ScaleAndIngestion.OpenProblems.md
+- Claude.AI/Bot.Erdos/Research_Needed/Erdos.TemporalMemory.Prompt.Session024.md
+- Claude.AI/Bot.Erdos/Research_Needed/Erdos.WallC.Prompt.Session024.md
+- Claude.AI/Bot.Erdos/Research_Needed/Erdos.WallC.Session023.md
+- Claude.AI/Bot.Erdos/Research_Needed/Trey.Validation.TemporalMemory.md
+- Claude.AI/Bot.Jiang/Context.1M.Foundation/INDEX.md
+- Claude.AI/Bot.Jiang/Context.1M.Foundation/Jiang.Layer0.StoragePersistence.md
+- Claude.AI/Bot.Jiang/Context.1M.Foundation/Jiang.Layer1.CompressionEfficiency.md
+- Claude.AI/Bot.Jiang/Context.1M.Foundation/Jiang.Layer2.RetrievalSearch.md
+- Claude.AI/Bot.Jiang/Context.1M.Foundation/Jiang.Layer3.KnowledgeGraph.md
+- Claude.AI/Bot.Jiang/Context.1M.Foundation/Jiang.Layer4.AgentIdentity.md
+- Claude.AI/Bot.Jiang/Context.1M.Foundation/Jiang.Layer5.ToolAccess.md
+- Claude.AI/Bot.Jiang/Context.1M.Foundation/Jiang.Layer6.InterfaceMultiModel.md
+- Claude.AI/Bot.Jiang/Jiang.CodingStandards.md
+- Claude.AI/Bot.Jiang/Jiang.CompactionRecovery.Session030.md
+- Claude.AI/Bot.Jiang/Jiang.CompactionRecovery.Session031.md
+- Claude.AI/Bot.Jiang/Jiang.ResearchLog.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session016.Apr3.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session018.Apr4.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session020.Apr4.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session021.Apr5.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session022.Apr5.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session023.Apr12.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session024.Apr12.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session026.Apr13.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session027.Apr17.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session028.Apr17.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session028.Apr19.md
+- Claude.AI/Bot.Jiang/Jiang.SessionHandoff.Session030.Apr17.md
+- Claude.AI/Bot.Jiang/Jiang2.AnalyzeTreyEcosystemResearch.md
+- Claude.AI/Bot.Jiang/Jiang2.Briefing.Session022.Apr5.md
+- Claude.AI/Bot.Jiang/Jiang2.DecisionPlan.Apr19.md
+- Claude.AI/Bot.Jiang/Jiang2.EcosystemAnalysis.SkillsTaxonomy.md
+- Claude.AI/Bot.Jiang/Jiang2.Mission.VelorinV2Blueprint.md
+- Claude.AI/Bot.Jiang/Jiang2.NewResearchReview.Apr19.md
+- Claude.AI/Bot.Jiang/Jiang2.Read.SkillsTaxonomy.md
+- Claude.AI/Bot.Jiang/Jiang2.ResearchBriefing.Apr19.md
+- Claude.AI/Bot.Jiang/Jiang2.ResearchReview.Apr19.md
+- Claude.AI/Bot.Jiang/Protocols/SteelMan.Protocol.md
+- Claude.AI/Bot.Jiang/Protocols/Terminology.Lookup.Session021.md
+- Claude.AI/Bot.Jiang/Protocols/Vocabulary.Bot.Design.md
+- Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.Antigravity.md
+- Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.GeminiModelSelection.md
+- Claude.AI/Bot.Jiang/Research_Complete/Jiang.Topic.TurboQuant_and_MemPalace.md
+- Claude.AI/Bot.Jiang/Research_Results/OpenClaw_Deep_Dive.md
+- Claude.AI/Bot.Jiang/Research_Results/Session021_Research_Synthesis.md
+- Claude.AI/Bot.Jiang/Research_Results/Supplementary_Current_Hardware_Setup.md
+- Claude.AI/Bot.Jiang/Research_Results/Workstation_Setup_Apr10.md
+- Claude.AI/Bot.Jiang/Research_Results/Workstation_Setup_Apr3.md
+- Claude.AI/Bot.Jiang/Session021.Discovery.MCP.md
+- Claude.AI/Bot.Jiang/Session021.NewIdeas.md
+- Claude.AI/Bot.Jiang/Working.Docs/Gemini.DeepResearch.MCP.Ecosystem.Prompt.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.BrainActivation.Brainstorm.Apr4.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.FutureInitiative.CamfilAgents.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.FutureWork.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.Plan.VelorinKVMBridge.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.SystemAssessment.Session017.Part1.ReadFirst.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.SystemAssessment.Session017.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.SystemAssessment.ToolResearch.Supplement.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.SystemViz.Apr4.html
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.TurboQuant.MemPalace.MathSupplement.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.VelorinStackViz.Session016.html
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.VelorinStackViz.Session016.zip
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang.WorkingDoc.ArchitectureClarity.Session016.md
+- Claude.AI/Bot.Jiang/Working.Docs/Jiang2.Task.CoreFileUpdate.md
+- Claude.AI/Bot.Jiang/Working.Docs/serve_viz.sh
+- Claude.AI/Bot.MarcusAurelius/MA.SessionHandoff.Session017.Apr4.md
+- Claude.AI/Bot.MarcusAurelius/notifications/tool_discovery_Jiang_1775054791272.md
+- Claude.AI/Bot.MarcusAurelius/notifications/tool_discovery_Jiang_1775251346134.md
+- Claude.AI/Bot.MarcusAurelius/notifications/tool_discovery_Jiang_1775270066410.md
+- Claude.AI/Bot.MarcusAurelius/notifications/tool_discovery_Jiang_1775283890510.md
+- Claude.AI/Bot.MarcusAurelius/notifications/tool_discovery_Jiang_1775426129051.md
+- Claude.AI/Bot.MarcusAurelius/notifications/tool_discovery_Jiang_1776055160078.md
+- Claude.AI/Bot.MarcusAurelius/notifications/tool_discovery_Jiang_1776112057318.md
+- Claude.AI/Bot.MarcusAurelius/notifications/tool_discovery_Jiang_1776225448584.md
+- Claude.AI/Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md
+- Claude.AI/Bot.Replit/TuringVault.YouTubeStrategy.Parked.md
+- Claude.AI/Bot.Scribe/error_log.md
+- Claude.AI/Bot.Scribe/scribe_run_log.txt
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.BarrierKVM.CrossMacTransfer.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.BrainIngestionPipeline.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.ClaudeCode.Skills.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.EmotionalMemorySalience.Measurement.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.Epistemodynamics.NoveltyCheck.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.SemanticMemoryOrganization.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.SkillsTaxonomyEmergence.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.SynapticPruning.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.TemporalMemoryValidation.md
+- Claude.AI/Bot.Trey/Archived_Research_Requests/Trey.ResearchRequest.VelorinKVMBridge.md
+- Claude.AI/Bot.Trey/Bootloader/Trey.Bootloader.AgentRoster.md
+- Claude.AI/Bot.Trey/Bootloader/Trey.Bootloader.BuildPhilosophy.md
+- Claude.AI/Bot.Trey/Bootloader/Trey.Bootloader.MathInventory.md
+- Claude.AI/Bot.Trey/Bootloader/Trey.Bootloader.VelorinBrain.md
+- Claude.AI/Bot.Trey/Gems/Trey.Gem.MathBot.Instructions.md
+- Claude.AI/Bot.Trey/Gems/Trey1.GemInstruction.md
+- Claude.AI/Bot.Trey/Gems/Trey2.GemInstruction.md
+- Claude.AI/Bot.Trey/Research_Complete/ChatGPT_vs_Gemini_Full_Ecosystem_Comparison.md
+- Claude.AI/Bot.Trey/Research_Complete/ClaudeCode_Skills_Full_Landscape.md
+- Claude.AI/Bot.Trey/Research_Complete/Claude_GPT_API_MCP_RESEARCH.md
+- Claude.AI/Bot.Trey/Research_Complete/Codex_vs_Jules_GitHub_Write_Access.md
+- Claude.AI/Bot.Trey/Research_Complete/Cursor_Claude_GPT_Team.md
+- Claude.AI/Bot.Trey/Research_Complete/FlashMoe_Report_Tools.md
+- Claude.AI/Bot.Trey/Research_Complete/Gemini_AI_Ultra_Breakdown.md
+- Claude.AI/Bot.Trey/Research_Complete/Google_AI_Ultra_Full_Suite_Connectivity_Research-1775402355055134993.md
+- Claude.AI/Bot.Trey/Research_Complete/Google_AI_Ultra_Suite_Pass_2-1775403722069318692.md
+- Claude.AI/Bot.Trey/Research_Complete/Google_AI_Ultra_Suite_Pass_2.md
+- Claude.AI/Bot.Trey/Research_Complete/Hard_Memory_Pipeline_Inversion_Compression.md
+- Claude.AI/Bot.Trey/Research_Complete/OperatingPaper_LangGraph.md
+- Claude.AI/Bot.Trey/Research_Complete/OperatingPaper_Letta_MemGPT.md
+- Claude.AI/Bot.Trey/Research_Complete/OperatingPaper_Mem0.md
+- Claude.AI/Bot.Trey/Research_Complete/Perplexity_Computer_Framework.md
+- Claude.AI/Bot.Trey/Research_Complete/Tool.BarrierKVM.NetworkCrossScreen.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.BarrierKVM.CrossMacTransfer.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.BrainIngestionPipeline.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.CrossPlatformAppMesh.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.EmotionalMemorySalience.Measurement.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.Epistemodynamics.NoveltyCheck.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.SMBvsTCP.EventPropagation.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.SemanticMemoryOrganization.Neuroscience.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.SkillsTaxonomyEmergence.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.SynapticPruning.v2.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.VelorinKVMBridge.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Research.ViscoelasticBrainArchitecture.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Topic.MCP_A2A_Architecture_Consolidated.md
+- Claude.AI/Bot.Trey/Research_Complete/Trey.Topic.SynapticPruning_ResearchReport.md
+- Claude.AI/Bot.Trey/Research_Complete/TurboQuant_DeepDive_Math_Tool.md
+- Claude.AI/Bot.Trey/Research_Complete/Voice Input_Local Inter Communication windows.md
+- Claude.AI/Bot.Trey/Research_Complete/deep-research-report (1).md
+- Claude.AI/Bot.Trey/Research_Complete/deep-research-report (2).md
+- Claude.AI/Bot.Trey/Research_Complete/deep-research-report (3).md
+- Claude.AI/Bot.Trey/Research_Complete/deep-research-report (4).md
+- Claude.AI/Bot.Trey/Research_Complete/deep-research-report (5).md
+- Claude.AI/Bot.Trey/Research_Complete/deep-research-report (6).md
+- Claude.AI/Bot.Trey/Research_Complete/deep-research-report (7).md
+- Claude.AI/Bot.Trey/Research_Complete/deep-research-report.md
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.BrainIngestionPipeline/Trey.Research.BrainIngestionPipeline_img000.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.BrainIngestionPipeline/Trey.Research.BrainIngestionPipeline_img001.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img000.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img001.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img002.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img003.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img004.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img005.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img006.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img007.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img008.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img009.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img010.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img011.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img012.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img013.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img014.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img015.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img016.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img017.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img018.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img019.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img020.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img021.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img022.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img023.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.EmotionalMemorySalience.Measurement/Trey.Research.EmotionalMemorySalience.Measurement_img024.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img000.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img001.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img002.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img003.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img004.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img005.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img006.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img007.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img008.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img009.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img010.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img011.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img012.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img013.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img014.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img015.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img016.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img017.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img018.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img019.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img020.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img021.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img022.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img023.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img024.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img025.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img026.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img027.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img028.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img029.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img030.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img031.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img032.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img033.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img034.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img035.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img036.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img037.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img038.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img039.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img040.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img041.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img042.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img043.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img044.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img045.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img046.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img047.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.Epistemodynamics.NoveltyCheck/Trey.Research.Epistemodynamics.NoveltyCheck_img048.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SemanticMemoryOrganization.Neuroscience/Trey.Research.SemanticMemoryOrganization.Neuroscience_img000.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SemanticMemoryOrganization.Neuroscience/Trey.Research.SemanticMemoryOrganization.Neuroscience_img001.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SemanticMemoryOrganization.Neuroscience/Trey.Research.SemanticMemoryOrganization.Neuroscience_img002.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SemanticMemoryOrganization.Neuroscience/Trey.Research.SemanticMemoryOrganization.Neuroscience_img003.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SemanticMemoryOrganization.Neuroscience/Trey.Research.SemanticMemoryOrganization.Neuroscience_img004.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SemanticMemoryOrganization.Neuroscience/Trey.Research.SemanticMemoryOrganization.Neuroscience_img005.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SkillsTaxonomyEmergence/Trey.Research.SkillsTaxonomyEmergence_img000.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SkillsTaxonomyEmergence/Trey.Research.SkillsTaxonomyEmergence_img001.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SkillsTaxonomyEmergence/Trey.Research.SkillsTaxonomyEmergence_img002.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SkillsTaxonomyEmergence/Trey.Research.SkillsTaxonomyEmergence_img003.png
+- Claude.AI/Bot.Trey/Research_Complete/images/Trey.Research.SkillsTaxonomyEmergence/Trey.Research.SkillsTaxonomyEmergence_img004.png
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.AIEcosystemStateOfPlay.Apr2026.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.AutomatedPointerRating.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.BarrierKVM.CrossMacTransfer.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.BrainIngestionPipeline.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.ClaudeCode.Skills.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.EmotionalMemorySalience.Measurement.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.Epistemodynamics.NoveltyCheck.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.SemanticMemoryOrganization.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.SkillsTaxonomyEmergence.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.SynapticPruning.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.TemporalMemoryValidation.md
+- Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.VelorinKVMBridge.md
+- Claude.AI/Bot.Trey/Task_Instructions/Trey.TaskInstructions.ResearchProtocol.md
+- Claude.AI/Bot.Trey/Trey.ProjectInstructions.md
+- Claude.AI/Claude_Context_Profile_v1.2.md
+- Claude.AI/Jiang.Corner.md
+- Claude.AI/New Build/00_Index.md
+- Claude.AI/New Build/01_RepoAndEnvironment.md
+- Claude.AI/New Build/02_Architecture.md
+- Claude.AI/New Build/03_BrainAndMath.md
+- Claude.AI/New Build/04_AgentEcosystem.md
+- Claude.AI/New Build/05_InfrastructureAndTools.md
+- Claude.AI/New Build/06_BuildSequence.md
+- Claude.AI/New Build/07_OpenQuestions.md
+- Claude.AI/Receiving/Jiang2.FullSystemRead.Report.Session024.Apr12.md
+- Claude.AI/Receiving/LoRa Semantic - Supplementary
+- Claude.AI/Receiving/LoRa as the Sementic solition
+- Claude.AI/Receiving/MemPalace.TurboQuant.Semantic.Supplement.Math
+- Claude.AI/Receiving/Tool.BarrierKVM.NetworkCrossScreen
+- Claude.AI/Receiving/Tools.MemPalace.TurboQuant.Velorin.Research
+- Claude.AI/Receiving/Trey.Research.BarrierKVM.CrossMacTransfer.md
+- Claude.AI/Receiving/Trey.Research.CrossPlatformAppMesh.md
+- Claude.AI/Receiving/Trey.Research.SynapticPruning.md
+- Claude.AI/Receiving/Trey.Research.VelorinKVMBridge.md
+- Claude.AI/Receiving/Trey.Validation.TemporalMemory.md
+- Claude.AI/Receiving/tool_discovery_Jiang_1775054791272.md
+- Claude.AI/Receiving/tool_discovery_Jiang_1775251346134.md
+- Claude.AI/Receiving/tool_discovery_Jiang_1775270066410.md
+- Claude.AI/Receiving/tool_discovery_Jiang_1775283890510.md
+- Claude.AI/Receiving/tool_discovery_Jiang_1775426129051.md
+- Claude.AI/Receiving/tool_discovery_Jiang_1776055160078.md
+- Claude.AI/Receiving/tool_discovery_Jiang_1776112057318.md
+- Claude.AI/Receiving/tool_discovery_Jiang_1776225448584.md
+- Claude.AI/Velorin.AI.Build.Documents/00_Chronological_File_Index.md
+- Claude.AI/Velorin.AI.Build.Documents/Erdos.Epistemodynamics.Crystalline.Mind.Complete
+- Claude.AI/Velorin.AI.Build.Documents/Erdos.Epistemodynamics.Crystalline.Mind.Complete.md
+- Claude.AI/Velorin.AI.Build.Documents/Jiang.Session024.StateSnapshot.md
+- Claude.AI/Velorin.AI.Build.Documents/Jiang2.AutomationPipeline.Session024.Apr12.md
+- Claude.AI/Velorin.AI.Build.Documents/Jiang2.ErdosReview.Session024.Apr12.md
+- Claude.AI/Velorin.AI.Build.Documents/Jiang2.ErdosReview.Stage2.Session024.Apr12.md
+- Claude.AI/Velorin.AI.Build.Documents/Jiang2.Synthesis.Session024.Apr12.md
+- Claude.AI/Velorin.AI.Build.Documents/LoRa.Semantic.Architecture.Supplementary.md
+- Claude.AI/Velorin.AI.Build.Documents/LoRa.Semantic.Architecture.Theory.md
+- Claude.AI/Velorin.AI.Build.Documents/Velorin.StartupAndRecovery.ToolFile.md
+- Claude.AI/Velorin.Company.DNA.md
+- Claude.AI/Velorin.Company.Operating.Standards.md
+- Claude.AI/Velorin.V2.ArchitecturalBlueprint.md
+- Claude.AI/Velorin.Vocabulary.md
+- Claude.AI/Velorin_Brain/Agents/Protocols/neurons.md
+- Claude.AI/Velorin_Brain/Agents/Roster/neurons.md
+- Claude.AI/Velorin_Brain/Operations/Architecture/neurons.md
+- Claude.AI/Velorin_Brain/Operations/Tools/neurons.md
+- Claude.AI/Velorin_Brain/Operations/_index.md
+- Claude.AI/Velorin_Mainframe/00_current_hardware_full.md
+- Claude.AI/Velorin_Mainframe/01_machine1_mac_studio.md
+- Claude.AI/architecture/GPS.Layer.System.Design.md
+- Claude.AI/architecture/Skill.Registry.Design.md
+- Claude.AI/architecture/Velorin.OS.Core.Principles.md
+- Claude.AI/hooks/.gitkeep
+- Claude.AI/hooks/post-compact-team-restore.sh
+- Claude.AI/hooks/pre-compact-task-gate.sh
+- Claude.AI/hooks/pre-compact-team-save.sh
+- Claude.AI/sessions/Jiang2.FullSystemRead.Report.Session024.Apr12.md
+- Claude.AI/tools/GDrive.Port.Tool.md
+- Claude.AI/tools/GitHub.KaTeX.Rules.md
+- Claude.AI/topline_profile.md
+
+---
+
+## Part 3 — Files Grouped by Top-Level Folder
+
+-  157 Claude.AI/Bot.Trey
+-   61 Claude.AI/Bot.Jiang
+-   38 Claude.AI/Bot.Erdos
+-   31 Claude.AI/Archived_Bots
+-   19 Claude.AI/Receiving
+-   11 Claude.AI/Velorin.AI.Build.Documents
+-   10 Claude.AI/Bot.MarcusAurelius
+-    8 Claude.AI/New Build
+-    5 Claude.AI/Velorin_Brain
+-    4 Claude.AI/hooks
+-    3 Claude.AI/architecture
+-    2 Claude.AI/tools
+-    2 Claude.AI/Velorin_Mainframe
+-    2 Claude.AI/Bot.Scribe
+-    2 Claude.AI/Bot.Agent.Level4
+-    1 Claude.AI/topline_profile.md
+-    1 Claude.AI/sessions
+-    1 Claude.AI/Velorin.Vocabulary.md
+-    1 Claude.AI/Velorin.V2.ArchitecturalBlueprint.md
+-    1 Claude.AI/Velorin.Company.Operating.Standards.md
+-    1 Claude.AI/Velorin.Company.DNA.md
+-    1 Claude.AI/Jiang.Corner.md
+-    1 Claude.AI/Claude_Context_Profile_v1.2.md
+-    1 Claude.AI/Bot.Replit
