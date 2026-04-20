@@ -175,6 +175,33 @@ def html_to_markdown(html_bytes, images_dir, doc_slug, named_images):
     body = soup.find("body") or soup
     md = h.handle(str(body))
     md = re.sub(r'\n{4,}', '\n\n\n', md).strip()
+    md = collapse_math_backslashes(md)
+    return md
+
+
+def collapse_math_backslashes(md):
+    """Self-healing fix for html2text doubling backslashes inside math.
+
+    html2text aggressively escapes backslashes for markdown safety: every `\\` in
+    the source HTML becomes `\\\\` in the markdown output. Inside `$...$` and
+    `$$...$$` math blocks, this breaks KaTeX rendering — `\\omega` becomes
+    `\\\\omega` which renders as a literal backslash followed by "omega".
+
+    Rule: inside any math block, collapse `\\\\` → `\\` UNLESS followed by
+    another `\\` (which would be a legitimate LaTeX escaped backslash like
+    `\\\\` for line breaks in matrices). Outside math blocks, leave backslashes
+    alone (they may be legitimate markdown line breaks or escapes).
+
+    Idempotent — running on already-clean math leaves it unchanged.
+    """
+    def fix_block(m):
+        inner = m.group(0)
+        # Collapse \\X → \X for any X that is not another backslash.
+        return re.sub(r'\\\\(?!\\)', r'\\', inner)
+    # Display blocks first (greedy match takes precedence over inline)
+    md = re.sub(r'\$\$[\s\S]*?\$\$', fix_block, md)
+    # Then inline blocks (single $...$ on a single line)
+    md = re.sub(r'\$[^\$\n]+?\$', fix_block, md)
     return md
 
 
@@ -220,6 +247,14 @@ FILES = [
     # "Claude.AI/Bot.Trey/Research_Complete/Trey.Research.Example.md",
 ]
 
+def fix_rule0_collapse_double_backslash(s):
+    """Self-healing — collapse `\\\\X` → `\\X` unless X is another backslash.
+
+    Defensive in case input still has html2text-doubled backslashes from a
+    pre-fix port. Idempotent: clean math passes through unchanged.
+    """
+    return re.sub(r'\\\\(?!\\)', r'\\', s)
+
 def fix_rule1(s):
     s = re.sub(r'\^\{\s*\*\s*\}', r'^{\\ast}', s)
     s = re.sub(r'\^(\s*)\*', r'^{\ast}', s)
@@ -238,12 +273,12 @@ for f in FILES:
     content = p.read_text()
     display_blocks = []
     def stash(m):
-        inner = fix_rule1(fix_rule2(m.group(0)[2:-2]))
+        inner = fix_rule0_collapse_double_backslash(fix_rule1(fix_rule2(m.group(0)[2:-2])))
         display_blocks.append(f'$${inner}$$')
         return f"\x00DISP{len(display_blocks)-1}\x00"
     c2 = re.sub(r'\$\$[\s\S]*?\$\$', stash, content)
     def fix_inline(m):
-        i = fix_rule4(fix_rule1(fix_rule2(m.group(1))))
+        i = fix_rule4(fix_rule0_collapse_double_backslash(fix_rule1(fix_rule2(m.group(1)))))
         return f"${i}$"
     c3 = re.sub(r'\$([^\$\n]+?)\$', fix_inline, c2)
     c4 = re.sub(r'\x00DISP(\d+)\x00', lambda m: display_blocks[int(m.group(1))], c3)
