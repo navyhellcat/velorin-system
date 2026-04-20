@@ -71,13 +71,17 @@ for md_rel, img_dir_rel in DOCS:
             print(f"  FAIL: {img.name} — {e}")
 
     # Patch: replace ![](images/<doc_slug>/<basename>) with $<latex>$
+    # CRITICAL: Use a lambda for the replacement, not a string. re.sub interprets
+    # backslash sequences in replacement strings (\1 = backreference, \r = CR,
+    # \a = BEL, \n = newline). LaTeX is full of backslashes — passing
+    # `f"${latex}$"` directly to re.sub will silently corrupt \rho into newline+ho,
+    # \ast into BEL+st, etc. The lambda bypasses Python's template parsing.
     patched = content
     for basename, latex in ocr_map.items():
-        # Match the image ref regardless of relative path depth
         pattern = re.compile(r'!\[\]\([^)]*' + re.escape(basename) + r'\)')
         replacement = f"${latex}$"
         before = patched
-        patched = pattern.sub(replacement, patched)
+        patched = pattern.sub(lambda _m: replacement, patched)
         n = len(pattern.findall(before))
         if n == 0:
             print(f"  WARN: {basename} OCR'd but not referenced in markdown")
