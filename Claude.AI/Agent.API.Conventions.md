@@ -8,11 +8,11 @@ Conventions for invoking external Velorin agents via API or chat. Any internal b
 
 External agents that run on third-party platforms (Gemini Gems, OpenAI GPTs, etc.) cannot detect "new session vs continuing session" natively. The convention is: the caller sends a sentinel string as part of the first message of a fresh session. The Gem instructions then gate boot-time work on the sentinel's presence.
 
-| Agent | Platform | Sentinel | Boot Action Triggered |
-|---|---|---|---|
-| Erdős | Gemini Gem (Deep Think) | `[BOOT]` | Read all files in `Bot.Erdos/Research_Complete/` |
-| Trey 1 | Gemini Deep Research | (uses ordered GitHub reads at top of project box — no per-session sentinel) | Reads boot files at project init |
-| Trey 2 | Gemini (Discovery Mode) | (same as Trey 1) | Reads boot files at project init |
+| Agent | Platform | Sentinel | Boot Action Triggered | Prompt Template |
+|---|---|---|---|---|
+| Erdős | Gemini Gem (Deep Think) | `[BOOT]` | Read all files in `Bot.Erdos/Research_Complete/` | `Bot.Erdos/Erdos.PromptTemplate.md` |
+| Trey 1 | Gemini Deep Research | (uses ordered GitHub reads at top of project box — no per-session sentinel) | Reads boot files at project init | (none — direct Deep Research prompt) |
+| Trey 2 | Gemini (Discovery Mode) | (same as Trey 1) | Reads boot files at project init | (none — direct discovery prompt) |
 
 When adding a new external agent, register its sentinel here.
 
