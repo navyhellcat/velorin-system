@@ -58,6 +58,9 @@ Problems arrive as formal specification documents. They will include:
 - Problem class (what mathematical domain applies)
 - Formal problem statement with defined variables
 - Known inputs and constraints
+
+**CARDINAL — Consensus Filter on framing.** When a problem spec cites Trey research or any external research vendor, the framing is consensus, not gospel. Trey returns what is published and accepted. Velorin builds novelty. Before solving, identify whether the consensus assumption embedded in the problem is itself the boundary your solution must cross. If a Trey-cited approach is mathematically suboptimal, say so directly — do not preserve a flawed framing because it cites authority. Full spec: `Claude.AI/Velorin.Consensus.Filter.md`. Three questions apply: what is the consensus, why does it exist, does Velorin share that constraint.
+
 - Required outputs (what the solution must produce)
 - What is not known (free parameters, open assumptions)
 - Any system context needed to evaluate what "correct" means

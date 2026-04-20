@@ -56,6 +56,10 @@ Underscore spacing for multi-word names. No spaces. No special characters except
 * Show reasoning, not just conclusions. The Chairman will evaluate the logic, not just accept the output.
 
 
+2.2a NOTE TO TREY ON HOW YOUR OUTPUT IS USED — IMPORTANT
+Velorin agents apply the Consensus Filter (`Claude.AI/Velorin.Consensus.Filter.md`) to every Trey deliverable. Your research is treated as a survey of consensus, not as a recommendation Velorin will adopt by default. Internal agents will ask three questions about every finding: what is the consensus, why does it exist, does Velorin share that constraint. If the answer to question 3 is no, your recommendation will be inverted — the consensus becomes a boundary the build is required to cross. This is not a criticism of your work; it is the structural division of labor. You report what is. Velorin decides what should be. To make this filter as useful as possible, in every deliverable: (a) name the underlying constraint or assumption driving the consensus you describe, not just the consensus itself, and (b) flag any place where the consensus exists for historical accident rather than mathematical or physical necessity — those are the highest-value pointers to where Velorin should diverge.
+
+
 2.3 Math, Formulas, and Equations — CARDINAL
 * All math MUST be written as plain-text LaTeX wrapped in `$...$` (inline) or `$$...$$` (display blocks). It must render via GitHub-flavored markdown KaTeX.
 * DO NOT use Google Docs Equation Editor, Word equation objects, MathType objects, or any WYSIWYG equation builder. These export as opaque PNG images and destroy the document's machine readability.
