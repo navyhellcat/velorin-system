@@ -118,7 +118,8 @@ The community has universally adopted the design pattern of "progressive disclos
 
 In this pattern, a skill is not treated as a single, massive monolithic file loaded entirely into memory. It is constructed as a highly compressed metadata header (strictly limited to under 100 tokens) that sits dormant in the active context, acting as a lightweight semantic pointer.18 Only when the specific trigger condition is met does the agent pull the larger instructional payload into active memory, and only during the actual execution phase does it pull heavy external assets from references/ or assets/ subdirectories.23
 
-This pattern is a practical manifestation of dynamic semantic compression. It maps flawlessly to the mathematical constraints proven by Erdős regarding the Velorin Brain. Erdős established the Personalized PageRank (PPR) density constraint (![](images/Trey.Research.SkillsTaxonomyEmergence/Trey.Research.SkillsTaxonomyEmergence_img002.png)), proving that if the ratio of active pointers to total possible pointers exceeds this threshold, the random walk loses specificity.21 By utilizing progressive disclosure to keep the active context sparsely populated with only essential metadata pointers, the system mathematically prevents the "Monster Node" collapse, where teleportation probability dilutes across too much active text, destroying retrieval precision.21
+This pattern is a practical manifestation of dynamic semantic compression. It maps flawlessly to the mathematical constraints proven by Erdős regarding the Velorin Brain. Erdős established the Personalized PageRank (PPR) density constraint ($
+ho^{st} = 0.78$), proving that if the ratio of active pointers to total possible pointers exceeds this threshold, the random walk loses specificity.21 By utilizing progressive disclosure to keep the active context sparsely populated with only essential metadata pointers, the system mathematically prevents the "Monster Node" collapse, where teleportation probability dilutes across too much active text, destroying retrieval precision.21
 
 ### 4.2 Autonomic vs. Somatic Systems (Hooks vs. Skills)
 
@@ -159,7 +160,7 @@ New Findings:
   3. Procedural memory (executable Skills) and Declarative memory (factual Neurons) have fundamentally different mathematical requirements, trigger mechanisms, and context weights, and must therefore be physically partitioned within the graph.31
 
 
-Remaining Gaps: While the architectural structure is now clear, the exact algorithmic mechanism for automatically mapping newly ingested declarative neurons to the correct procedural skill hub remains an open mathematical problem for Erdős. Furthermore, the application of the Affective Hamiltonian (![](images/Trey.Research.SkillsTaxonomyEmergence/Trey.Research.SkillsTaxonomyEmergence_img003.png))—which governs the temporal decay of episodic memory—has not yet been theoretically applied to procedural skill prioritization and demotion.21
+Remaining Gaps: While the architectural structure is now clear, the exact algorithmic mechanism for automatically mapping newly ingested declarative neurons to the correct procedural skill hub remains an open mathematical problem for Erdős. Furthermore, the application of the Affective Hamiltonian ($H\_E$)—which governs the temporal decay of episodic memory—has not yet been theoretically applied to procedural skill prioritization and demotion.21
 
 ### 5.2 Proposed Architecture: The Epistemodynamic Hub-and-Spoke Brain
 

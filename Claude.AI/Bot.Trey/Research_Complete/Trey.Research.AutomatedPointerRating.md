@@ -10,7 +10,7 @@ Confidence Threshold: 80% Minimum
 
 ## EXECUTIVE SUMMARY
 
-The transition from human-curated pointer ratings to an automated ingestion pipeline requires a metric capable of capturing asymmetric logical dependency, not merely symmetric semantic similarity. Empirical analysis contradicts the application of embedding cosine similarity due to fundamental geometric limitations, regularization artifacts, and an inability to model directed prerequisites. The literature supports a hybrid metric: Normalized Pointwise Mutual Information (NPMI) applied to the Layer 2 document graph as an ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img000.png) candidate filter, followed by an LLM-as-a-judge mechanism constrained by logit bias to evaluate asymmetric dependency and assign a strict 1-10 rating. Furthermore, neuroscientific evidence regarding the Anterior Temporal Lobe (ATL) and Angular Gyrus (AG), combined with multiplex graph theory, dictates that the taxonomic (![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img001.png)) and thematic (![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img002.png)) transition matrices must be row-normalized independently. Joint normalization will cause high-degree thematic nodes to starve taxonomic transitions, violating the ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img003.png) density constraint established by Erdős.
+The transition from human-curated pointer ratings to an automated ingestion pipeline requires a metric capable of capturing asymmetric logical dependency, not merely symmetric semantic similarity. Empirical analysis contradicts the application of embedding cosine similarity due to fundamental geometric limitations, regularization artifacts, and an inability to model directed prerequisites. The literature supports a hybrid metric: Normalized Pointwise Mutual Information (NPMI) applied to the Layer 2 document graph as an $O(N^{2})$ candidate filter, followed by an LLM-as-a-judge mechanism constrained by logit bias to evaluate asymmetric dependency and assign a strict 1-10 rating. Furthermore, neuroscientific evidence regarding the Anterior Temporal Lobe (ATL) and Angular Gyrus (AG), combined with multiplex graph theory, dictates that the taxonomic ($P\_{tax}$) and thematic ($P\_{them}$) transition matrices must be row-normalized independently. Joint normalization will cause high-degree thematic nodes to starve taxonomic transitions, violating the $\rho^{\ast} = 0.78$ density constraint established by Erdős.
 
 * * *
 
@@ -24,7 +24,7 @@ Velorin Connection: The Velorin Brain is a directed graph where pointers dictate
 
 ## PART 2: THE CROSS-NEURON RATING METRIC (RESEARCH QUESTION 1)
 
-The objective is to identify an automated metric computable at ingestion time, independent of full Brain traversal, that assigns an asymmetric 1-10 rating to a pointer ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img004.png) without violating the ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img005.png) high-affinity density constraint.
+The objective is to identify an automated metric computable at ingestion time, independent of full Brain traversal, that assigns an asymmetric 1-10 rating to a pointer $A \to B$ without violating the $\rho^{\ast} = 0.78$ high-affinity density constraint.
 
 ### Candidate A: Cosine Similarity of Embeddings
 
@@ -32,7 +32,7 @@ Mechanism: Computes the dot product of two normalized embedding vectors. High si
 
 Analysis: The literature universally rejects cosine similarity for logical dependency extraction in directed knowledge graphs.
 
-  1. Symmetry Failure: Cosine similarity is mathematically symmetric: ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img006.png). Logical dependency is strictly asymmetric. If Neuron A is a prerequisite for Neuron B, the reverse is not true. A symmetric metric destroys the directed nature of the Velorin pointer graph, turning a directed acyclic dependency chain into a bidirectionally bleeding cluster.3
+  1. Symmetry Failure: Cosine similarity is mathematically symmetric: $\cos(\theta\_{A,B}) = \cos(\theta\_{B,A})$. Logical dependency is strictly asymmetric. If Neuron A is a prerequisite for Neuron B, the reverse is not true. A symmetric metric destroys the directed nature of the Velorin pointer graph, turning a directed acyclic dependency chain into a bidirectionally bleeding cluster.3
   2. Regularization Scaling Artifacts: Recent empirical studies on embedding geometries demonstrate that regularization applied during linear matrix factorization or contrastive loss training introduces arbitrary scaling.5 Cosine similarity under these conditions yields arbitrary distance measurements. Models trained via contrastive loss push dissimilar classes apart but remain indifferent to the exact magnitude of the distance, rendering the scalar output meaningless for a strict 1-10 calibration.6
   3. Semantic Blur: Contextual embeddings map opposites (e.g., "hot" and "cold") to highly similar vector spaces because they share identical syntactic contexts. Utilizing cosine similarity for logical pointers will automatically wire contrasting or mutually exclusive neurons together with Rating 1 affinities, generating severe noise during PPR traversal.7
 
@@ -43,12 +43,12 @@ Verdict: CONTRADICTED. Cosine similarity cannot be used for Velorin pointer rati
 
 ### Candidate B & D: Pointwise Mutual Information (PMI) and Mutual Information (MI)
 
-Mechanism: Pointwise Mutual Information measures the discrepancy between the probability of two events' coincidence given their joint distribution versus their individual distributions: ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img008.png).8 Mutual Information is the expected value of PMI across the distribution.9
+Mechanism: Pointwise Mutual Information measures the discrepancy between the probability of two events' coincidence given their joint distribution versus their individual distributions: $\text{PMI}(A, B) = \log\_{2} \frac{P(A,B)}{P(A)P(B)}$.8 Mutual Information is the expected value of PMI across the distribution.9
 
 Analysis: PMI is a highly reliable proxy for structural co-occurrence in document graphs and avoids the semantic blur of cosine similarity.10 By executing over the Layer 2 episodic document graph during ingestion, PMI captures the actual statistical dependency between concepts within the user's specific context, independent of pre-trained language model biases.
 
   1. Low-Frequency Bias: Standard PMI is notorious for overvaluing rare occurrences. If two rare concepts appear together exactly once, their PMI approaches infinity, leading to exaggerated connection strengths.8
-  2. Normalization Requirement: The literature resolves the low-frequency bias via Normalized Pointwise Mutual Information (NPMI), which bounds the value between -1 and 1 by dividing by ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img009.png).12 NPMI has been proven to correlate closely with human interpretability of topics and structural dependencies.14
+  2. Normalization Requirement: The literature resolves the low-frequency bias via Normalized Pointwise Mutual Information (NPMI), which bounds the value between -1 and 1 by dividing by $-\log\_{2} P(A, B)$.12 NPMI has been proven to correlate closely with human interpretability of topics and structural dependencies.14
   3. Symmetry: Like cosine similarity, standard NPMI is symmetric. It measures co-occurrence, not directionality. It cannot determine if A causes B or B causes A. While Directed Information (DI) exists in information theory to measure asymmetric predictive relations, it is computationally prohibitive for large-scale graph ingestion.15
 
 
@@ -60,40 +60,40 @@ Mechanism: A Large Language Model evaluates a specific prompt (e.g., "Does under
 
 Analysis: The "LLM-as-a-judge" paradigm demonstrates high inter-rater reliability with human domain experts on logical dependency tasks, provided the evaluation criteria are rigidly structured.16 It is the only evaluated candidate capable of reasoning through asymmetric prerequisite structures (A requires B, but B does not require A).19
 
-  1. Calibration Failure: Uncalibrated LLMs asked to rate relationships from 1-10 suffer from severe distribution collapse. They default to "safe" median scores (4-7) or extreme binary scores, ignoring the requested power-law distribution expected in scale-free networks.17 This directly violates the Velorin ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img010.png) density constraint, which requires a heavy tail (many weak 8-10 connections, few strong 1-3 connections).22
-  2. Scalability: Executing an LLM call for every possible ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img011.png) pair as the Brain scales to ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img012.png) neurons requires ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img013.png) API calls during every ingestion event. This introduces catastrophic latency and API token costs, violating the ingestion pipeline constraints for real-time operation.23
+  1. Calibration Failure: Uncalibrated LLMs asked to rate relationships from 1-10 suffer from severe distribution collapse. They default to "safe" median scores (4-7) or extreme binary scores, ignoring the requested power-law distribution expected in scale-free networks.17 This directly violates the Velorin $\rho^{\ast} = 0.78$ density constraint, which requires a heavy tail (many weak 8-10 connections, few strong 1-3 connections).22
+  2. Scalability: Executing an LLM call for every possible $A \to B$ pair as the Brain scales to $N$ neurons requires $O(N^{2})$ API calls during every ingestion event. This introduces catastrophic latency and API token costs, violating the ingestion pipeline constraints for real-time operation.23
 
 
-Verdict: PARTIALLY SUPPORTED. Architecturally perfect for asymmetric logic, operationally fatal at ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img014.png) scale, and highly unstable in calibration.
+Verdict: PARTIALLY SUPPORTED. Architecturally perfect for asymmetric logic, operationally fatal at $O(N^{2})$ scale, and highly unstable in calibration.
 
 ### Candidate E: The Hybrid Pipeline (Recommended)
 
-The literature explicitly points to a two-stage hybrid pipeline to solve the ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img015.png) latency and symmetric limitations inherent in the individual metrics.24
+The literature explicitly points to a two-stage hybrid pipeline to solve the $O(N^{2})$ latency and symmetric limitations inherent in the individual metrics.24
 
-Phase 1: NPMI Candidate Filtering (The Fast Pass) During ingestion, NPMI is computed across the local document graph. NPMI acts as a computationally inexpensive ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img016.png) blocking strategy.24 It culls the candidate space, identifying the top ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img017.png) nodes that have high statistical co-occurrence with the new neuron. This reduces the search space from ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img018.png) to ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img019.png) or ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img020.png).
+Phase 1: NPMI Candidate Filtering (The Fast Pass) During ingestion, NPMI is computed across the local document graph. NPMI acts as a computationally inexpensive $O(N^{2})$ blocking strategy.24 It culls the candidate space, identifying the top $K$ nodes that have high statistical co-occurrence with the new neuron. This reduces the search space from $O(N^{2})$ to $O(N \log N)$ or $O(K)$.
 
 Phase 2: LLM Logical Judge (The Asymmetric Pass)
 
-The LLM evaluates only the top ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img021.png) candidates identified by NPMI. To prevent calibration collapse and enforce the ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img022.png) constraint, the LLM is not asked to generate a number in a vacuum. It is prompted via Logit Bias and Bounded Output Routing. The LLM is forced to allocate a fixed, predefined distribution of ratings across the ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img023.png) candidates. For example, the prompt dictates: "Assign exactly one Rating 1, two Rating 3s, and four Rating 8s among these 7 candidates based on logical prerequisite strength." This approach guarantees the mathematical density bounds derived by Erdős in Session 024, stripping the LLM of its tendency to regress to the mean.
+The LLM evaluates only the top $K$ candidates identified by NPMI. To prevent calibration collapse and enforce the $\rho^{\ast} = 0.78$ constraint, the LLM is not asked to generate a number in a vacuum. It is prompted via Logit Bias and Bounded Output Routing. The LLM is forced to allocate a fixed, predefined distribution of ratings across the $K$ candidates. For example, the prompt dictates: "Assign exactly one Rating 1, two Rating 3s, and four Rating 8s among these 7 candidates based on logical prerequisite strength." This approach guarantees the mathematical density bounds derived by Erdős in Session 024, stripping the LLM of its tendency to regress to the mean.
 
 ### CONCLUSIONS FOR RESEARCH QUESTION 1
 
   - HIGH CONFIDENCE 95%+: Cosine similarity is mathematically invalid for Velorin's directed pointer graph due to symmetry, semantic blur, and regularization scaling artifacts.
   - HIGH CONFIDENCE 90%+: The correct automated metric is a two-stage pipeline: NPMI candidate filtering followed by an LLM-as-a-judge for directional rating.
-  - HIGH CONFIDENCE 85%+: The LLM judge must be constrained to a forced-distribution output to guarantee compliance with the ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img024.png) density constraint.
+  - HIGH CONFIDENCE 85%+: The LLM judge must be constrained to a forced-distribution output to guarantee compliance with the $\rho^{\ast} = 0.78$ density constraint.
 
 Candidate Metric| Computable at Ingestion| Captures Asymmetry| Preserves ρ∗=0.78| Verdict  
 ---|---|---|---|---  
 A) Cosine Similarity| Yes| No| No (Scaling artifacts)| Contradicted  
 B) PMI / NPMI| Yes| No| No (Requires thresholding)| Partially Supported  
-C) LLM-as-a-Judge| No (![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img025.png) latency)| Yes| No (Calibration collapse)| Partially Supported  
+C) LLM-as-a-Judge| No ($O(N^{2})$ latency)| Yes| No (Calibration collapse)| Partially Supported  
 E) Hybrid (NPMI + LLM)| Yes| Yes| Yes (Forced distribution)| Supported / Recommended  
   
 * * *
 
 ## PART 3: RELATION-TYPE CLASSIFICATION (RESEARCH QUESTION 2)
 
-Once a pointer ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img026.png) is confirmed and rated, it must be classified into a relation-type to dictate which Multiplex Tensor (![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img027.png) or ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img028.png)) it occupies.
+Once a pointer $A \to B$ is confirmed and rated, it must be classified into a relation-type to dictate which Multiplex Tensor ($P\_{tax}$ or $P\_{them}$) it occupies.
 
 Prior Context: The Velorin architecture locks a 9-class relation partition.
 
@@ -128,7 +128,7 @@ Syntactic heuristics (e.g., detecting "is a type of" for taxonomic or "leads to"
 
 ## PART 4: THE DUAL-RATING ARCHITECTURE (RESEARCH QUESTION 3)
 
-The Problem: The Multiplex Tensor creates two separate transition matrices (![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img029.png) and ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img030.png)). Does a pointer have one global rating (1-10) applied to both, or do ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img031.png) and ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img032.png) operate on independent scales requiring separate normalization?
+The Problem: The Multiplex Tensor creates two separate transition matrices ($P\_{tax}$ and $P\_{them}$). Does a pointer have one global rating (1-10) applied to both, or do $P\_{tax}$ and $P\_{them}$ operate on independent scales requiring separate normalization?
 
 ### The Neuroscience: ATL vs. AG Magnitude Discrepancy
 
@@ -147,29 +147,29 @@ Angular Gyrus (AG)| Thematic / Event-based| Late engagement (up to 450ms)| Disti
   
 ### Multiplex Graph Theory: Independent vs. Joint Normalization
 
-In graph theory, a system where the same nodes interact via different types of relationships is a Multiplex Network.39 The Velorin Brain is a multiplex network with two layers: ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img033.png) and ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img034.png).
+In graph theory, a system where the same nodes interact via different types of relationships is a Multiplex Network.39 The Velorin Brain is a multiplex network with two layers: $L\_{tax}$ and $L\_{them}$.
 
 When executing a Multiplex PageRank, the transition matrix can be constructed in two ways:
 
-  1. Joint Normalization: The out-degree denominator is the sum of all weights across both layers. ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img035.png).
-  2. Independent Normalization: Each layer is normalized to be row-stochastic independently. ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img036.png) and ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img037.png).
+  1. Joint Normalization: The out-degree denominator is the sum of all weights across both layers. $P\_{ij} = W\_{ij} / (\sum W\_{tax} + \sum W\_{them})$.
+  2. Independent Normalization: Each layer is normalized to be row-stochastic independently. $P\_{tax,ij} = W\_{tax,ij} / \sum W\_{tax}$ and $P\_{them,ij} = W\_{them,ij} / \sum W\_{them}$.
 
 
 The Starvation Failure Mode:
 
 Human cognition creates vastly more thematic connections than taxonomic ones. Any given thought has one or two taxonomic parents, but dozens of thematic consequences, causes, and dependencies. If Joint Normalization is used, the denominator is dominated by thematic weights.
 
-Consider the "Starvation Failure Mode" conceptually: visualize a thick pipe representing the total node weight. Under Joint Normalization, this pipe splits unevenly into a tiny 17% flow for the taxonomic layer and a massive 83% flow for the thematic layer. High-volume thematic pointers dominate the denominator, starving the taxonomic layer of PPR mass. If Neuron A has 1 taxonomic pointer (Rating 1, weight 10) and 6 thematic pointers (Average Rating 3, weight 8 each, sum 48), the joint denominator is 58. The taxonomic transition probability becomes ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img038.png). The thematic transition probability becomes ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img039.png).
+Consider the "Starvation Failure Mode" conceptually: visualize a thick pipe representing the total node weight. Under Joint Normalization, this pipe splits unevenly into a tiny 17% flow for the taxonomic layer and a massive 83% flow for the thematic layer. High-volume thematic pointers dominate the denominator, starving the taxonomic layer of PPR mass. If Neuron A has 1 taxonomic pointer (Rating 1, weight 10) and 6 thematic pointers (Average Rating 3, weight 8 each, sum 48), the joint denominator is 58. The taxonomic transition probability becomes $10/58 \approx 0.17$. The thematic transition probability becomes $48/58 \approx 0.83$.
 
 The taxonomic matrix is starved of relevance mass. The PPR walk will almost entirely abandon taxonomic hierarchies and bleed exclusively into thematic tangents, destroying the structural categorization of the Brain. Conversely, under Independent Normalization, two separate identical input pipes distribute 100% of their respective mass strictly within their own layers, ensuring both matrices remain row-stochastic.
 
-### Preservation of the ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img040.png) Constraint
+### Preservation of the $\rho^{\ast} = 0.78$ Constraint
 
-Erdős established in Session 024 that the PPR walk must maintain a high-affinity density of ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img041.png) to prevent precision collapse.22 This density constraint relies on the transition probabilities ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img042.png) remaining stable.
+Erdős established in Session 024 that the PPR walk must maintain a high-affinity density of $\rho^{\ast} = 0.78$ to prevent precision collapse.22 This density constraint relies on the transition probabilities $p\_{s}$ remaining stable.
 
-If the matrices are jointly normalized, the density ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img043.png) becomes a fluid variable dependent on the arbitrary ratio of taxonomic to thematic pointers on any given node. The constant ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img044.png) boundary breaks.
+If the matrices are jointly normalized, the density $\rho$ becomes a fluid variable dependent on the arbitrary ratio of taxonomic to thematic pointers on any given node. The constant $\rho^{\ast}$ boundary breaks.
 
-Therefore, ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img045.png) and ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img046.png) must be treated as two separate rating systems. A Rating 1 in ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img047.png) guarantees maximum mass within the taxonomic walk, and a Rating 1 in ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img048.png) guarantees maximum mass within the thematic walk. They are independent row-stochastic spaces.
+Therefore, $P\_{tax}$ and $P\_{them}$ must be treated as two separate rating systems. A Rating 1 in $P\_{tax}$ guarantees maximum mass within the taxonomic walk, and a Rating 1 in $P\_{them}$ guarantees maximum mass within the thematic walk. They are independent row-stochastic spaces.
 
 ### CONCLUSIONS FOR RESEARCH QUESTION 3
 
@@ -192,10 +192,10 @@ Erdős,
 
 The empirical literature on Multiplex PageRank dictates that to prevent layer starvation in highly asymmetric multiplex networks, transition matrices must be normalized independently.
 
-Given the Velorin Multiplex Tensor ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img049.png) defined in Session 024:
+Given the Velorin Multiplex Tensor $P\_{active}(q) = \omega\_{tax}(q) \cdot P\_{tax} + \omega\_{them}(q) \cdot P\_{them}$ defined in Session 024:
 
-  1. Provide the formal proof that row-normalizing ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img050.png) and ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img051.png) independently (such that ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img052.png) and ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img053.png)) preserves the ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img054.png) density constraint within each sub-walk.
-  2. Prove that under independent normalization, the inter-layer interference term in the weighted Cheeger bound (Theorem 5) remains strictly governed by the query weights ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img055.png) and ![](images/Trey.Research.AutomatedPointerRating/Trey.Research.AutomatedPointerRating_img056.png), rather than being dictated by the raw degree distribution of the episodic scaffolding.
+  1. Provide the formal proof that row-normalizing $P\_{tax}$ and $P\_{them}$ independently (such that $\sum\_{j} P\_{tax,ij} = 1$ and $\sum\_{j} P\_{them,ij} = 1$) preserves the $\rho^{\ast} = 0.78$ density constraint within each sub-walk.
+  2. Prove that under independent normalization, the inter-layer interference term in the weighted Cheeger bound (Theorem 5) remains strictly governed by the query weights $\omega\_{tax}(q)$ and $\omega\_{them}(q)$, rather than being dictated by the raw degree distribution of the episodic scaffolding.
 
 
 #### Works cited
