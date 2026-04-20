@@ -23,10 +23,37 @@ Any time a Trey (or other agent) research doc lands in Google Drive and needs to
 2. Edit the `DOCS` list — set `file_id` and `filename` for each doc
 3. Set `DEST` to the target folder in the repo
 4. Run: `python3 /tmp/gdrive_port.py`
-5. Run the KaTeX fix on any doc that contains math — `python3 /tmp/katex_fix.py` (see script below)
-6. Verify on GitHub: DOM query `brokenCount` must be 0 before moving on
-7. `git mv` the corresponding request file from `Research_Needed/` to `Archived_Research_Requests/`
-8. Git add + commit + push (single commit covering doc, images, and archive move)
+5. **CARDINAL — Image-Math Detection.** After porting, run the detection check below on every newly ported doc. If image-math is found: STOP. Run `python3 /tmp/math_ocr.py` (see Math OCR section) to OCR equations to LaTeX before continuing. Do NOT skip this. Google Docs Equation Editor exports as opaque PNGs — every variable, fraction, and symbol becomes an inline image, breaking searchability and downstream agent reasoning.
+6. Run the KaTeX fix on any doc that contains math (after OCR if applicable) — `python3 /tmp/katex_fix.py` (see script below)
+7. Verify on GitHub: DOM query `brokenCount` must be 0 before moving on
+8. `git mv` the corresponding request file from `Research_Needed/` to `Archived_Research_Requests/`
+9. Git add + commit + push (single commit covering doc, images, and archive move)
+
+---
+
+## Image-Math Detection (Step 5 — MANDATORY after every port)
+
+Run this immediately after the port script completes. Heuristic: an `![](images/...)` reference embedded mid-sentence between words is an equation PNG, not a figure.
+
+```bash
+cd /Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Trey/Research_Complete  # or wherever DEST was
+for f in <newly_ported_docs>.md; do
+  inline=$(grep -oE '[a-z][^.\n]{0,30}!\[\]\(images/[^)]+\)[^.\n]{0,30}[a-z]' "$f" | wc -l | tr -d ' ')
+  echo "$f: $inline inline-math image refs"
+done
+```
+
+If `inline-math` count > 0 for any doc: that doc has image-math. Run OCR before proceeding. Cross-check by counting small images (`find images/<doc_slug> -size -8k | wc -l`) — small PNGs (<8KB) are almost always equations.
+
+---
+
+## Math OCR (Step 5b — only when image-math detected)
+
+Uses pix2tex (LaTeX-OCR) — open-source, local, no API. Install once: `pip3 install pix2tex`.
+
+Walks the doc's image folder, OCRs each small image to LaTeX, replaces the `![](...)` reference with `$<latex>$` inline. Skips images >8KB by default (treat as figures). Idempotent: re-running on already-patched files is safe (no `![](...)` refs remain to match).
+
+Script lives at `Claude.AI/tools/Math.OCR.Tool.md` — see that file for the full pipeline (OCR + patch + KaTeX fix wired together).
 
 ---
 

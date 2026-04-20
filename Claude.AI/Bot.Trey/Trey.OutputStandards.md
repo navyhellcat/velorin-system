@@ -56,6 +56,16 @@ Underscore spacing for multi-word names. No spaces. No special characters except
 * Show reasoning, not just conclusions. The Chairman will evaluate the logic, not just accept the output.
 
 
+2.3 Math, Formulas, and Equations — CARDINAL
+* All math MUST be written as plain-text LaTeX wrapped in `$...$` (inline) or `$$...$$` (display blocks). It must render via GitHub-flavored markdown KaTeX.
+* DO NOT use Google Docs Equation Editor, Word equation objects, MathType objects, or any WYSIWYG equation builder. These export as opaque PNG images and destroy the document's machine readability.
+* DO NOT paste images of equations from screenshots, PDFs, or other sources. Transcribe to LaTeX text.
+* If you draft in a tool that auto-converts LaTeX into rendered equation objects (Google Docs does this when you type `$x^2$`), TURN THAT FEATURE OFF. The literal `$x^2$` text must survive into the final document.
+* Follow the GitHub KaTeX rules: use `\ast` not `*`, use `\lVert\rVert` not `||`, escape underscores in inline math as `\_`, leave blank lines around `$$` display blocks. Reference: `Claude.AI/Bot.Erdos/Erdos.GitHubLatex.Rules.md`.
+* Verification: before delivery, the doc must satisfy `grep '\$' your_doc.md` returning math markers AND `grep '!\[\]\(images/' your_doc.md` returning ZERO inline-math image refs.
+* Why: image-math is unsearchable, ungreppable, unparseable by every downstream agent (Jiang, Erdős, Brain ingestion). One Google Docs paste-and-export silently broke `Trey.Research.AutomatedPointerRating.md` — 56 equations became 56 PNGs. Discovered Session 032. This rule is non-negotiable.
+
+
 3. CODE DOCUMENT STANDARDS
 3.1 Delivery
 * Deliver code as files. Not pasted in chat unless explicitly asked.

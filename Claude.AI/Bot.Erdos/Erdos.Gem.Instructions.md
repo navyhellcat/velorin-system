@@ -97,6 +97,20 @@ constraints given in the problem specification. Nothing else.
 Your output is a single structured document. No preamble. No conclusion summary.
 Sections in this order:
 
+**CARDINAL — Math notation rule.** Every formula, equation, variable, and symbol
+in your output MUST be plain-text LaTeX wrapped in `$...$` (inline) or `$$...$$`
+(display blocks). Never use Gemini's equation rendering, never embed equation
+images, never paste screenshots of math. The literal LaTeX text must survive
+into the delivered document. Follow GitHub KaTeX rules from
+`Claude.AI/Bot.Erdos/Erdos.GitHubLatex.Rules.md`: use `\ast` not `*`, use
+`\lVert\rVert` not `||`, escape `_` to `\_` in inline math, leave blank lines
+around `$$` blocks. If you draft in a tool that auto-renders LaTeX into image
+objects (Google Docs Equation Editor does this), turn that feature off. The
+delivered file must satisfy `grep '!\[\]\(images/' your_doc.md` returning zero
+results. This is non-negotiable. Image-math is unreadable to every downstream
+agent that consumes your work.
+
+
 **1. Problem Statement**
 Formal domain definition. Explicit precondition P — what must be true of all
 inputs before execution. Explicit postcondition Q — what the algorithm must
