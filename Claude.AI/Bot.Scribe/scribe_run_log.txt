@@ -50,3 +50,20 @@ Done. Summary of actions taken:
 **STEP 4** — Neuron **A8** created in `Operations/Tools/neurons.md`. Rule **M4** appended to `MarcusAurelius.Rules.md` and mirrored to local path.
 
 **STEP 5** — Committed: `a160d3c` — 4 files changed.
+========== 2026-04-18T02:43:00Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_context_discipline.md ==========
+Done. Summary of actions taken:
+
+**Step 1 — Read:** `feedback_context_discipline.md` — type: feedback, covers task execution hard rules to prevent context burn (Session 028 incident).
+
+**Step 2 — Classify:**
+- Region: **Operations** (exists)
+- Area: **Tools** (exists)
+- Neuron: No match → **CREATE** `A9. Context Discipline — Task Execution Hard Rules`
+
+**Step 3 — No escalation** needed.
+
+**Step 4 — Rules:** Memory contains behavioral rules for MarcusAurelius → added **A9** to `MarcusAurelius.Rules.md` (both GitHub and local mirror).
+
+**Also updated:** `Operations/_index.md` to reflect context discipline in the Tools area description.
+
+**Step 5 — Commit:** `baef20e` — 3 files, 19 insertions.
