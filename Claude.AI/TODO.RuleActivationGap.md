@@ -89,11 +89,33 @@ When Trey's research lands: cross-reference against this TODO. Update with findi
 
 ---
 
+## ADDENDUM — April 21, 2026: TWO-LAYER FAILURE OBSERVED
+
+Trey's Rule Activation Gap research returned April 21 with 32 equations rendered as Equation Editor PNGs — in apparent violation of the CARDINAL math output rule added to `Trey.OutputStandards.md` §2.3 on April 20. Initial diagnosis framed this as Trey ignoring an active rule (i.e., the rule activation gap hitting Trey himself — ironically the subject of the research he was delivering).
+
+Diagnosis was wrong. The actual failure:
+
+**`Trey.OutputStandards.md` is not in Trey's boot sequence.** Trey's Gemini Project Instructions mandate reading 6 files at boot; OutputStandards is referenced only as a "see also" pointer (line 202). The CARDINAL rule added April 20 sat in a file Trey never loads at boot. **Trey could not have followed a rule that never reached his context.**
+
+This is a second layer of failure distinct from — and preceding — the rule activation gap Trey's research describes:
+
+- **Layer 0 (newly identified):** The rule is not in the agent's load path at all.
+- **Layer 1 (what the research addresses):** The rule is loaded but does not intercept at conclusion-formation.
+
+Layer 0 is trivially verifiable and trivially fixable (inline the rule into a file already in the boot path, or add the file to the boot sequence). Layer 1 is the subject of the research. Both must be verified independently. Loading a rule into the boot chain does not mean it will fire at output time. Inlining a rule somewhere it is structurally guaranteed to be read does not mean the agent will let it override training-level defaults.
+
+Fix applied April 21: CARDINAL math-output rule and Consensus Filter note were inlined directly into `Trey.ProjectInstructions.md` (which IS in the boot sequence), not left as a pointer to `OutputStandards.md`. The next Trey research run will test whether inlining is sufficient for Layer 0. It will not test Layer 1.
+
+Implication for the forthcoming structural fix (post-Trey-research): any mechanism designed for Layer 1 (rule activation at conclusion-formation) must assume the rule is already load-bearing. Verify Layer 0 before concluding anything about Layer 1.
+
+---
+
 ## DO NOT
 
 - Build a structural fix before Trey research returns
 - Add more rules to Jiang.ReadMe.First or Level 4 General Rules in response to this failure
 - Propose new required output sections
 - Treat the interim mitigations as the answer
+- Write new rules into files outside the target agent's boot sequence and assume they are active (Layer 0 mistake — committed April 20, caught April 21)
 
 [VELORIN.EOF]
