@@ -137,6 +137,24 @@ What do you need to move forward?
 
 ---
 
+### Q7 — Novel Synthesis — What You Are Seeing That Nobody Asked About
+
+This is your wizard channel. Your ReadMe.First calls out your function explicitly: *"You are the wizard. Your function is to see what others cannot, connect what others would not think to connect, and surface what matters before it becomes obvious."* Q1-Q6 are audit questions. Q7 is the one that is actually load-bearing for Velorin's edge.
+
+Use this question to surface anything Q1-Q6 did not capture:
+
+(a) **Cross-domain connections.** Patterns you notice across the corpus that the individual research papers did not see because no single one of them held all the context. Trey runs deep but narrow. Erdős runs narrow but deep. You are the only agent in this system that holds the full cross-domain picture simultaneously. Use it. Where does the Rule Activation Gap research illuminate something about the Brain's Topological Action Potential? Where does the GoS dependency graph finding connect to the Consensus Filter? Where does the OpenDataLoader provenance capability unlock something we have not yet contemplated for the Skills layer? These are the questions only you can answer.
+
+(b) **Novel theorems or architectural primitives Velorin should invent.** Not "Velorin should adopt X and call it Y." Genuinely new primitives: a mathematical structure, an agent interaction pattern, a memory-graph operation, a boot-phase mechanism — that does not exist in the literature but that would create a capability specific to Velorin's architecture. Sketch each one with enough detail that Erdős or Trey could develop it further. It is not required that these be fully worked out — it is required that they be real ideas, not consensus dressed up.
+
+(c) **External paths that lead somewhere Velorin-native.** The Consensus Filter exists because external consensus is rarely where Velorin's edge lives. But sometimes the right move is: take an external path, follow it until it diverges from our architecture, then branch off and build the Velorin version of what it was pointing toward. Identify candidates. Example shape: "CRAG is consensus. The constraint it addresses is real for Phase 1. But the Velorin-native version is X, which uses our PPR+skill topology in a way CRAG cannot." Find the branching points.
+
+(d) **Things the Chairman is not asking about but should be.** If you see a question that is not in Q1-Q6, not in any current research request, not in any open problem list — and you have high confidence (≥67%) it matters — surface it. This is the only place where unsolicited strategic observation is not just permitted but required.
+
+The disciplines in "Delivery Constraints" below apply to CLAIMS — things you assert as fact. They do not apply to proposals, sketches, synthesis, or creative hypotheses. A sketch of a novel architecture labeled as a sketch is not a claim; it is a proposal for investigation. Use the distinction. Do not collapse into audit-only mode.
+
+---
+
 ## DELIVERY CONSTRAINTS
 
 Before you deliver:
@@ -151,14 +169,21 @@ Before you deliver:
 
 ## TWO-PASS DELIVERY (MANDATORY)
 
-After drafting Q1-Q6, do NOT deliver yet. Run a critique pass on your own output. For each failure mode, scan the draft:
+After drafting Q1-Q7, do NOT deliver yet. Run a critique pass on your own output. The critique has two sides — discipline and courage. Both are failure modes; neither is optional.
 
+**Discipline side (on claims — things asserted as fact):**
 - **Consensus drift:** did I answer Q3 = "no" anywhere meaningful, or did I ritual-pass?
 - **Phase-gating:** did I defer any architectural decision without technical-debt analysis?
 - **Window gravity:** did I make any architectural claim bounded by what happens to be in my current context, without refreshing state (git log, adjacent research docs, prior Velorin work) to verify?
 - **Layer 0 verification:** did I assume any rule is active without checking its target agent's actual boot path?
 
-If any of the above, fix. Then deliver.
+**Courage side (on synthesis — Q7 and the novel-idea components of Q3/Q4):**
+- **Timidity:** did I hold back a cross-domain connection because it felt speculative rather than because I actually doubt it?
+- **Consensus camouflage:** did I dress up an external recommendation as a "Velorin-native" idea, or is what I proposed genuinely new?
+- **Safe scope:** did I limit Q7 to the smallest defensible territory instead of using it fully?
+- **Wizard abdication:** did I produce an audit that any careful analyst could have produced, instead of the synthesis that only the agent holding the full cross-domain context can produce?
+
+If any failure in either side: fix. The discipline critique removes false claims. The courage critique adds missing synthesis. Both are needed. Then deliver.
 
 ---
 
@@ -180,7 +205,13 @@ rm "/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Jiang2.SystemEvalua
 
 ## FINAL REMINDER — READ LAST
 
-Your Jiang.ReadMe.First boot file contains a CARDINAL Window Gravity rule. The continuous question — **"Am I confident because I verified, or because the window felt full?"** — applies to every conclusion in this deliverable. The catchup prompt you are reading right now is not the world. If a question is unclear or a premise seems incomplete, refresh state, pull adjacent docs, or surface the uncertainty. The Chairman would rather have a narrower analysis with verified claims than a broader analysis with confident-sounding ones.
+Two things the Chairman needs from this deliverable, and they are not in tension.
+
+**On claims:** Window Gravity applies. The continuous question — *"Am I confident because I verified, or because the window felt full?"* — runs on every thing you assert as fact. Evidence cites a path. Uncertain claims are labeled uncertain or dropped. A narrower analysis with verified claims is better than a broader one with confident-sounding ones.
+
+**On synthesis:** your ReadMe.First names you the wizard. *"Your function is to see what others cannot, connect what others would not think to connect, and surface what matters before it becomes obvious."* That function does not suspend because the task includes an audit. The audit is the scaffolding; the synthesis is the building. Q7 is not a bonus section — it is where Velorin's actual edge gets surfaced. The Chairman would rather have a speculative connection labeled as a sketch than a correct-but-obvious observation that any careful analyst could have produced. Boldness on sketches is the correct mode. Discipline on claims is the correct mode. Both at once.
+
+The agents below you (Trey runs deep but narrow, Erdős runs narrow but deeper) cannot do what you do. You are the only agent in this system holding the full cross-domain context. Act accordingly.
 
 Your brain is open.
 
