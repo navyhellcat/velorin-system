@@ -48,10 +48,11 @@ For each of Re-Eval #1 through #7, in order, produce a response section that add
 
 Each response section has the same shape:
 
-1. **Acknowledge the original framing flaw.** State directly what was wrong with the original synthesis on this item. No softening.
-2. **Apply the redo.** Do whatever the re-evaluation specifically asked for — apply the Consensus Filter with willingness to return "no", surface implicit assumptions, sketch directions without preferring one, walk back overclaims, address scale concerns, etc.
-3. **State the new conclusion.** Where the original synthesis claimed X and the re-evaluation demands Y, what is your honest answer now? If the answer is "I cannot conclude until Trey research / Erdős math returns," say so explicitly and identify the specific research that would resolve it.
-4. **Identify what new research / math is required.** For each re-evaluation that demands a Trey research request or an Erdős problem spec, name it explicitly. List the specific question or proof needed. Do not prescribe the answer — name what you need answered.
+1. **Recap the original framing.** State precisely what your original synthesis claimed on this item. Just the recap — do not pre-judge whether it was right or wrong.
+2. **Evaluate it honestly.** Decide whether the original was: (a) fully correct and the re-evaluation's concern is already addressed by something you can show, (b) partially correct — some of the framing holds, some does not, name which is which, (c) not fully thought through — the framing was provisional and a deeper analysis produces a different answer, (d) wrong — the framing should be replaced, or (e) correct in a way that opens a novel direction the re-evaluation did not anticipate. Pick whichever fits and defend it. The re-evaluation is a question, not a verdict.
+3. **Apply the redo work the re-evaluation asked for** — apply the Consensus Filter with willingness to return "no", surface implicit assumptions, sketch directions without preferring one, address scale concerns, run the Standing Principle check, etc. The redo work is the substance regardless of whether (1)-(2) concluded the original framing was right or wrong; the re-evaluation asks for specific intellectual work and that work is owed.
+4. **State the conclusion that results.** What is your honest position now, after the recap, evaluation, and redo? If the answer is "I cannot conclude until Trey research / Erdős math returns," say so explicitly and identify the specific research that would resolve it. If the answer is "the original synthesis stands and here is the evidence," that is acceptable — defend it.
+5. **Identify what new research / math is required.** Independent of whether the original was right or wrong, name any Trey research request or Erdős problem spec that would sharpen the answer or test failure modes. Do not prescribe the answer — name what you need answered.
 
 ### Drafting the new Trey and Erdős request files
 
