@@ -189,3 +189,18 @@ Done. Summary of actions taken:
 - `Agents/_index.md` — Protocols row updated to reference pre-request context audit
 - `Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` — A18 added; local mirror updated
 ========== 2026-04-25T19:56:24Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_stay_in_role.md ==========
+Done.
+
+**Summary of actions taken:**
+
+- **STEP 1:** Memory read. Name: "Stay in role — math is Erdős's, architectural connection is Jiang2's, not Jiang1's". Type: feedback. Class: regular. Content: Jiang1's operational-only role locked by CT 2026-04-25.
+
+- **STEP 2 — Level 1:** Region **Agents** matched (agent roles/division of labor).
+
+- **STEP 2 — Level 2:** Area **Protocols** matched (operational behavioral protocols).
+
+- **STEP 2 — Level 3:** No existing neuron covers Jiang1 role boundaries. **Created A16** ("Jiang1 Role Discipline — Division of Labor") with 7 pointers. Wired inbound from **A9** (Agent Performance Routing). Updated **Agents/_index.md** to list Jiang1 role discipline in Protocols area.
+
+- **STEP 4:** Rule applies to Jiang1 only — not a MarcusAurelius behavioral rule. No rules file update.
+
+- **STEP 5:** Committed. Push deferred to MarcusAurelius.
