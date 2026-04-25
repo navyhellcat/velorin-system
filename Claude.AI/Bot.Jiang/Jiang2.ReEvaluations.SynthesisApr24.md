@@ -6,6 +6,25 @@
 
 ---
 
+## STANDING PRINCIPLE — Applies to Every Re-Evaluation Below
+
+**Defer implementation if and only if both of these are true:**
+
+1. Deferring has a legitimate technical advantage over building now (not "it's complicated," not "we'll get to it later," not "we don't fully understand Y yet" — a concrete technical reason why building now is worse than building later)
+2. The architecture today is designed such that the deferred implementation plugs in easily later (the seam exists, is specified, and downstream components are built against it from day one)
+
+If either condition fails, build now.
+
+If condition 1 fails: there is no technical reason to defer, so deferral is laziness or avoidance. Build now.
+
+If condition 2 fails: deferring will cost a system overhaul later, not an implementation swap. Build now.
+
+This principle applies to every recommendation in the synthesis, not just the items flagged in the re-evaluations below. Sweep every place you used "X for now, Y at scale," "selective," "for Phase 1," "evaluate later," "adopt when scale demands it," or similar deferral language. Apply both conditions. Resolve to one of: build now, defer with legitimate technical advantage AND specified seam, or commit-forever to the current choice and remove the deferred option from the schema.
+
+The Chairman has flagged the recurrence of "X for now, Y later" as the most dangerous pattern in the synthesis. Three or four such deferrals stacked together do not produce three or four implementation swaps later. They produce a system overhaul during the period when the system is supposed to be running. That cost is asymmetric and compounding.
+
+---
+
 ## Re-Evaluation #1 — Conflict Resolution Falls Back to "CT Resolves It"
 
 ### What you wrote
@@ -98,7 +117,13 @@ You used "X for now, Y at scale" framing without specifying where Y plugs in. Th
 
 If those conditions are met, "ship dense now, swap later" is fine. If they are not, "swap later" is "rewrite later," and at scale you will be doing that rewrite while debugging emergent behavior of a Brain that has been live for months. That is the failure mode the Chairman has been flagging across this entire week of synthesis.
 
-The Chairman's standing principle, which you should treat as a CARDINAL constraint on every recommendation in this synthesis: **defer implementation, never defer architecture.** Shipping the simpler implementation is fine when the architecture already has the seam where the harder version plugs in. Shipping the implementation without the seam is technical debt with compounding interest.
+The Chairman's standing principle is at the top of this file. Defer implementation if and only if (a) deferring has a legitimate technical advantage over building now AND (b) the architecture is designed today such that the deferred implementation plugs in easily later. Both conditions, not either. Failure on either condition means build now.
+
+Apply both conditions to this item:
+- **Condition 1 (legitimate technical advantage to deferring):** Is there a concrete technical reason that dense validation now is technically better than sparse from day one, beyond "it's simpler"? Simpler is not automatic technical advantage. If the only argument is "we don't need the optimization yet," that may not pass. Argue this case explicitly.
+- **Condition 2 (architectural seam exists today):** If condition 1 passes, is the validator built behind a clean module interface so swapping to sparse later is a one-line change? Specify the interface or admit it does not exist.
+
+If both conditions pass, this is a legitimate deferral. If either fails, change the recommendation.
 
 The recurrence pattern matters more than this one item. Every "X for now, Y at scale" or "ok for now, build Y later" recommendation in your synthesis needs to be re-examined under this principle. If three or four of these are stacked, the cumulative retrofit cost at scale is not three or four small changes — it is a system overhaul.
 
@@ -108,16 +133,18 @@ Two-part response on this item, then a sweep of the rest of the synthesis.
 
 **For the GoS sparse-validation item specifically:**
 
-1. State whether the dense validator will be built behind a clean interface that supports swapping the implementation to sparse later without changes to call sites, downstream schema, or expectations. Yes or no.
-2. If yes, sketch the interface — function signature, input shape, output shape, what other components depend on it, what they assume.
-3. If no — i.e., dense validation will be a one-off implementation with no defined seam — change the recommendation. Either commit to dense forever (state explicitly that Velorin will not move to sparse validation at any scale) or commit to building sparse machinery from the start (acknowledging the upfront cost).
-4. The acceptable end state is one of: dense forever, sparse from day one, or dense behind a swappable interface with the interface specified now.
+1. Argue condition 1 explicitly. State the concrete technical advantage of deferring sparse validation, beyond "it is simpler" or "we do not need it yet." If the only argument is operational simplicity, that may not pass — operational simplicity is not automatic technical advantage when the cost of swapping later is high.
+2. If condition 1 passes, address condition 2: state whether the dense validator will be built behind a clean module interface that supports swapping to sparse later without changes to call sites, downstream schema, or expectations. Yes or no.
+3. If condition 2 yes: sketch the interface — function signature, input shape, output shape, what other components depend on it, what they assume.
+4. If either condition fails: change the recommendation. Either commit to dense forever (state explicitly that Velorin will not move to sparse validation at any scale) or commit to building sparse from the start.
 
-**For the broader sweep:**
+The acceptable end state for this item is one of: dense forever, sparse from day one, or dense behind a swappable interface where both conditions of the Standing Principle are satisfied with explicit reasoning.
 
-5. Walk every other place in the synthesis where you used "X for now, Y at scale" or "selective", "for Phase 1", "evaluate later", "adopt when scale demands it", or any similar deferral language.
-6. For each, apply the same test: does the architecture today contain the seam where the deferred decision plugs in cheaply later? If yes, name the seam. If no, change the recommendation.
-7. List every item you swept. Show the result for each: dense-forever / sparse-from-day-one / seam-defined. No item gets to keep its "X for now, Y later" framing without one of those three resolutions.
+**For the broader sweep across the entire synthesis:**
+
+5. Walk every other place in the synthesis where you used "X for now, Y at scale" or "selective," "for Phase 1," "evaluate later," "adopt when scale demands it," "additive — no retrofit debt," or any similar deferral language.
+6. For each, apply both conditions of the Standing Principle.
+7. List every item you swept. For each, show the result: build-now / defer-with-conditions-passed-and-seam-specified / commit-forever. No item gets to keep its deferral framing without explicit pass on both conditions.
 
 This is the highest-leverage discipline pass on the synthesis. Three items hidden inside "we'll fix it at scale" become a system overhaul. The Chairman's instinct that this is the most dangerous pattern in the synthesis is correct.
 
