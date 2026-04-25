@@ -98,3 +98,12 @@ Mirror confirmed. A12 is present in the local file.
 - **Rules updated:** A12 added to `MarcusAurelius.Rules.md` section A (Agent Conduct), mirrored to local rules path.
 - **Committed:** `ce2cf15` — `Scribe: CREATE neurons.agents.protocols.A12 + rules update — Human-gate / Layer 3 escalation steps require functional triggers`
 - **No escalation needed** — region and area both existed.
+Done. Summary of actions taken:
+
+**Step 1 — Memory read:** `feedback_no_marcusaurelius_reflex.md` — type: feedback, class: regular. Rule: don't name current MA (Claude Code CLI) as operator in architectural prose; use neutral language until Mac Studio local model takes the MA name.
+
+**Step 2 — Classification:** Region **Agents** ✓ → Area **Protocols** ✓ → No matching neuron. A12 was already taken (Escalation Path Build). Created **A13** (MarcusAurelius Operator Naming Convention). Also updated **Roster/A2** to record the Mac Studio rename plan and wire a pointer to A13.
+
+**Step 4 — Rules check:** Behavioral rule applies to MA. Added **A13** to `MarcusAurelius.Rules.md` Section A. Mirrored to local rules path.
+
+**Step 5 — Commit:** `a36c5d0` — 4 files, 21 insertions.

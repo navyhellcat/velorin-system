@@ -72,6 +72,20 @@ Steel-man note: For taste / judgment contradictions where no algorithmic or rese
 - The current MarcusAurelius (Claude Code CLI agent) is NOT named as operator of hooks, queues, or Layer 3 review in any architectural prose. Use neutral language.
 - The producer-time `contradiction_class` tag, source multiplier calibration, ε threshold, and round-cap remain open — to be locked after the full re-evaluation walkthrough.
 
+### Jiang's Evaluation and Forward Direction
+
+The Chairman's response is correct on naming discipline and on the functional-trigger rule. Three notes for revisit when the ground-layer is locked and the MCP/API protocol design begins.
+
+**1. The naming-discipline correction is stronger than stated.** Reflexive name-dropping of MarcusAurelius is a tell that agents have been conflating two categorically different roles — the current MA (Claude Code CLI agent, conversational, limited persistent state) and the future Mac-Studio-resident MA (local model, always-on, full brain access). These have different capabilities and different responsibilities. Architectural prose has been written as if they are interchangeable. Going forward, treat them as distinct operators in every document until the rename lands; do not let the shared name paper over the role difference.
+
+**2. Generalize the functional-trigger rule into a build-time review checklist.** The trigger / artifact / routing-target requirement applies to every escalation path in the system, not just Layer 3 contradiction review. Dark skill bypass logging, FW escalations, Scribe processing failures, ATV reject-routing, conflict-resolution last-resort — same rule. Make it a structural gate at architecture review time, not a per-case judgment held in any single agent's head. Spec missing any of the three items goes back for revision.
+
+**3. Layer 3 operator architecture has a trap deferred — flag for revisit.** Local models have a context advantage but a reasoning disadvantage relative to frontier models. Layer 3 fires on the hardest cases — the contradictions that automated mechanisms could not crack. Putting the weakest reasoning machine on the hardest cases is a capability-vs-case-difficulty inversion. The "escalates to higher reasoning machine" clause partially fixes this, but introduces a new classifier (when does local-MA escalate vs. resolve directly?) that is the same stochastic-classification trap addressed in Re-Eval #6. Cleanest forward split: local-MA owns context-loading and question-framing; the higher reasoning machine always owns the decision. Local-MA's value is the brain wrapper, not the judgment.
+
+**4. Three roles were collapsed into "the reviewer."** Operator (runs the trigger, loads context), Reviewer (makes the decision), Authorizer (signs off before the answer is locked as a tier-1 neuron). These can and probably should be different roles. Different combinations produce different trust topologies. When the MCP/API protocol design begins, decide all three explicitly rather than as one collapsed slot.
+
+**Direction.** Park these notes until the ground-layer is firm and the MCP/API protocol design starts. Per the Chairman's explicit scoping, the priority right now is ground-layer design and a clear build vision — not loading the architecture with future autonomous units. The Chairman has confirmed there are plans for many autonomous operators inside the brain (skills checker, skills fixer, and similar units he previously discussed) — these are deliberately out-of-scope for the current ground-layer locking and will be reintroduced after the ground-layer is firm. Followup item: surface the prior skills-checker / skills-fixer discussion when the autonomous-unit layer is opened — this thread appears to have been lost across compaction.
+
 ---
 
 ## Re-Eval #2 — "Selective Adoption" of IES Hides Classification Failure
