@@ -79,6 +79,11 @@ Calibration questions ("what number should X be") are NOT deferrals — pick a p
 Source: CT correction Re-Eval #2, 2026-04-25.
 - Brain: `neurons.principles.rewardalignment.A7`
 
+**A15. Check-ins — Build-Wide Review Checkpoint Shape** [CARDINAL]
+When recommending any future review, calibration, parameter retuning, or recurring check across the build: do NOT propose it as a standalone trigger ("review at 500 messages," "recheck at 30 days," "tune empirically after Phase X"). That shape is rejected. Standalone review triggers feed into a single build-wide construct CT named the **Check-ins list** — vitality-important checkpoints distributed throughout the build process at different stages within every phase. The list lives in the Build Guide. Jiang identifies candidates; Jiang2 designs the structure and places entries during Build Guide updates; CT approves the schedule. Each Check-in must specify: phase position, review subject, trigger condition, artifact location, routing target. FW items ≠ Check-ins: FW = one-off architectural revisit; Check-ins = recurring/scheduled build-cadence reviews.
+Source: CT correction Re-Eval #2 walkthrough, 2026-04-25.
+- Brain: `neurons.principles.rewardalignment.A8`
+
 ---
 
 ## B. Brain & Memory

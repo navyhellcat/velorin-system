@@ -43,4 +43,9 @@ Without all three, the deferral is an abandoned promise. FW registries do not au
 Calibration questions ("what number should X be") are NOT deferrals — pick a principled value now from first principles; tune from data. Defer only when value genuinely depends on an unbuilt system component.
 Generalizes A12 (Layer 3 functional-trigger rule) from escalations to all deferred work. Source: CT correction Re-Eval #2, 2026-04-25.
 last-touched: 2026-04-25
-Pointers: [1] A6 | [1] neurons.agents.protocols.A12 | [2] A4 | [3] neurons.operations.architecture.A9
+Pointers: [1] A6 | [1] A8 | [1] neurons.agents.protocols.A12 | [2] A4 | [3] neurons.operations.architecture.A9
+
+### A8. Check-ins — Build-Wide Review Checkpoint Construct (CT rule)
+CT-locked construct (Re-Eval #2, 2026-04-25): standalone review/calibration triggers ("review at 500 messages," "recheck at 30 days," "tune empirically after Phase X") are the **wrong shape** — rejected. All review recommendations aggregate into the **Check-ins list**: a Build Guide deliverable of vitality-important checkpoints distributed across build phases. Each Check-in specifies phase position, review subject, trigger condition, artifact location, and routing target — same trigger/artifact/routing discipline as deferrals (A7). Multiple Check-ins per phase; stake level governs cadence. Roles: Jiang identifies candidates; Jiang2 designs structure and places during Build Guide updates; CT approves schedule. FW items ≠ Check-ins: FW = one-off architectural revisit; Check-ins = recurring/scheduled build-cadence reviews. CT verbatim: *"The review trigger needs to be in a list of vitality important 'Check-ins' Spread throughout the build process. At different stages inside every phase."*
+last-touched: 2026-04-25
+Pointers: [1] A7 | [1] A6 | [1] neurons.agents.protocols.A12 | [2] A4 | [3] neurons.operations.architecture.A9
