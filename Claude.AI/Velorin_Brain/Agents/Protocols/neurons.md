@@ -29,8 +29,8 @@ Pointers: [1] A1 | [1] neurons.agents.roster.A2 | [2] neurons.operations.tools.A
 
 ### A9. Agent Performance Routing
 CT's direct assessment (2026-03-31): Jiang is the best-performing agent in the Velorin system by a significant margin. Example: Jiang solved the tmux/in-process mode question as an offhand answer; MarcusAurelius needed official docs. Likely cause: Jiang runs on Claude Desktop (default model) vs. MA (Claude Code CLI) — different context handling, response quality, or boot conditions. Routing: prefer Jiang for complex research or reasoning tasks. Do not assume MA output quality is equivalent to Jiang's. Surface Jiang findings with appropriate weight.
-last-touched: 2026-03-31
-Pointers: [1] neurons.agents.roster.A5 | [2] A2 | [2] neurons.agents.protocols.A8 | [3] neurons.principles.rewardalignment.A5
+last-touched: 2026-04-25
+Pointers: [1] neurons.agents.roster.A5 | [1] A16 | [2] A2 | [2] neurons.agents.protocols.A8 | [3] neurons.principles.rewardalignment.A5
 
 ### A10. Deep Research Calibration (External Agents)
 Deep Research on Gemini spawns sub-agents and synthesizes 100+ sources over 25+ minutes. Appropriate ONLY for complex multi-source problems where unknown unknowns are the risk (competitive landscapes, literature surveys, ecosystem audits). NOT appropriate for simple tool evaluations or factual lookups. Incident: CT had Trey1 run 25min/187 sources on a cross-Mac clipboard tool question — output was useless.
@@ -88,3 +88,12 @@ Pointers: [1] A14 | [1] neurons.agents.roster.A6 | [2] A10 | [2] A7 | [3] A13 | 
 Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 012 (2026-03-29) — restart needed for Agent Teams env var. Priority: spawn Alexander as teammate, cross-agent catch-up (Jiang's 12 files), Theresa trigger, Terry sync rewrite, dashboard deploy, GDrive flagging, brain cleanup.
 last-touched: 2026-03-29
 Pointers: [1] neurons.agents.levelrules.A1 | [1] A5 | [2] A4 | [2] neurons.operations.startup.A6 | [3] A3
+
+### A16. Jiang1 Role Discipline — Division of Labor
+Jiang1 is operational: port files (GDrive→markdown→KaTeX→commit→trash), read deliverables and surface findings, draft research requests routed to the correct agent. CT locked 2026-04-25.
+Math derivation → Erdős. Architectural connection-making and build decisions → Jiang2 + CT approval. Jiang1 does NOT derive theorems, propose gate definitions, re-architect components, or commit to build directions on own judgment.
+When tempted to derive math: stop, draft an Erdős request. When tempted to propose architecture: stop, surface 1-2 options to CT or draft a Jiang2 analytical pass. File edits only with CT explicit authorization or for purely operational changes (formatting, KaTeX cleanup).
+Cost of drift: (1) work must be redone by correct agent; (2) consumes Jiang1's limited context window; (3) biases Erdős/Jiang2 inputs with Jiang1 framing.
+CT: "Math is for Erdos not you. Connecting dots and making decisions is for JIANG2 not you."
+last-touched: 2026-04-25
+Pointers: [1] neurons.agents.roster.A5 | [1] A9 | [2] A2 | [2] A15 | [3] A11 | [4] neurons.principles.rewardalignment.A1
