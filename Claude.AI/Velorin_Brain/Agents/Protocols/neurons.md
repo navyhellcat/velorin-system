@@ -35,8 +35,8 @@ Pointers: [1] neurons.agents.roster.A5 | [2] A2 | [2] neurons.agents.protocols.A
 ### A10. Deep Research Calibration (External Agents)
 Deep Research on Gemini spawns sub-agents and synthesizes 100+ sources over 25+ minutes. Appropriate ONLY for complex multi-source problems where unknown unknowns are the risk (competitive landscapes, literature surveys, ecosystem audits). NOT appropriate for simple tool evaluations or factual lookups. Incident: CT had Trey1 run 25min/187 sources on a cross-Mac clipboard tool question — output was useless.
 Rule: when writing Trey research requests, match tool to task complexity. Simple = regular Gemini query. Complex multi-source unknown = Deep Research / Discovery Mode.
-last-touched: 2026-04-13
-Pointers: [1] A7 | [1] neurons.agents.roster.A6 | [2] A9 | [3] neurons.agents.levelrules.A1
+last-touched: 2026-04-25
+Pointers: [1] A14 | [1] neurons.agents.roster.A6 | [2] A9 | [2] A7 | [3] neurons.agents.levelrules.A1
 
 ### A8. Third Cycle Problem Protocol
 When brain traversal fails to resolve a question after two attempts (misclassification possible in cycle 2), escalate through 3 structured cycles: (1) Brain traversal [1]-[5], protection layer check after each expansion — stop if looping; (2) First principles decomposition + re-enter brain from different region; (3) GitHub research + probability score: P = (direct evidence × 0.5) + (adjacent neurons × 0.25) + (structural logic × 0.25). P > 60% → proceed with caveat. P ≤ 60% → write Research_Needed escalation to `Claude.AI/Bot.Jiang/escalation.md`, halt task. Do NOT guess below 60%. Full spec: `Claude.AI/tools/ThirdCycleProblemProtocol.md`.
@@ -66,6 +66,15 @@ When writing architectural prose for Velorin systems (post-commit hooks, queues,
 Use neutral phrasing: "the system," "the post-commit hook," "the orchestration layer," "the Brain operator," "the local Mac Studio operator." Only name a specific agent when that agent is fixed, load-bearing, and the name will persist past the Mac Studio rename. Applies to all agents writing Velorin architectural prose. Caught 2026-04-25 during Re-Eval #1 walkthrough.
 last-touched: 2026-04-25
 Pointers: [1] neurons.agents.roster.A2 | [2] neurons.agents.protocols.A11 | [3] neurons.principles.rewardalignment.A4
+
+### A14. Trey Novelty Audit Deferral
+Pure-novelty checks to Trey ("is this published?", "has anyone done this before?", "does this combination of primitives exist in the literature?") are banned mid-cycle. Each consumes ~40 min / ~300 sources for low operational value during architecture-and-build work.
+Defer all novelty audits to a single end-of-cycle batched pass — triggered when CT signals "completely done" and publication/IP-positioning begins.
+Functional research remains fine to queue: tool existence, ecosystem alternatives, production patterns, correctness checks. Functional = informs build decisions. Novelty = informs publication decisions.
+Deferred items tracked in FW registry or dedicated tracking doc. Existing in-flight audits finish; do NOT extend or queue follow-ups until end-of-cycle signal.
+CT locked 2026-04-25 during Re-Eval #4 (Erdős revised Theorem 3 — Cognitive Langevin Dynamics with Brockett double-bracket flow).
+last-touched: 2026-04-25
+Pointers: [1] A10 | [2] neurons.agents.roster.A6 | [3] A9 | [4] neurons.principles.rewardalignment.A1
 
 ### A6. Session Handoff Protocol
 Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 012 (2026-03-29) — restart needed for Agent Teams env var. Priority: spawn Alexander as teammate, cross-agent catch-up (Jiang's 12 files), Theresa trigger, Terry sync rewrite, dashboard deploy, GDrive flagging, brain cleanup.

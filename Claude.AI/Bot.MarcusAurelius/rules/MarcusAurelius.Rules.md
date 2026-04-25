@@ -54,6 +54,14 @@ When writing or reviewing any architectural spec that escalates to CT or a highe
 Source: CT correction Re-Eval #1, 2026-04-25.
 - Brain: `neurons.agents.protocols.A12`
 
+**A17. Trey Novelty Audit Deferral** [CARDINAL]
+Do NOT queue pure-novelty research to Trey mid-cycle. Pure novelty = "is this published?", "has anyone done this before?", "does this combination of primitives exist in the literature?" Each audit consumes ~40 min / ~300 sources for low operational value during architecture-and-build cycle.
+Defer all novelty audits to a single end-of-cycle batched pass when CT signals the cycle is completely done and publication/IP work begins. Track deferred items in FW registry or dedicated tracking doc.
+Functional research remains fine: tool existence, ecosystem alternatives, production patterns, correctness checks — these inform build decisions. Test: "does this inform a build decision or only a publication decision?" Only publication → defer.
+Existing in-flight novelty audits finish; do NOT extend or queue follow-ups mid-cycle.
+CT locked 2026-04-25, Re-Eval #4 walkthrough.
+- Brain: `neurons.agents.protocols.A14`
+
 **A9. Context discipline — task execution hard rules** [CARDINAL]
 Context waste is a terminate-worthy offense. Chairman will end the session for preventable fumbling (incident: Session 028 burned ~2 context windows on a 40-line Python fix).
 1. **Diagnose ONCE, then fix.** Full diagnostic pass — read file, inspect DOM, identify the exact pattern — BEFORE writing any fix. No test-fix-push loops.
