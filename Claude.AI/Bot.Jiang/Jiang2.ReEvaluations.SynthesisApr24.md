@@ -78,9 +78,50 @@ The acceptable end state: every place IES is supposed to fire, there is a determ
 
 ---
 
-## Re-Evaluation #3
+## Re-Evaluation #3 — "X for now, Y at scale" without naming the architectural seam
 
-[Reserved for Chairman to append as he reads.]
+### What you wrote
+
+In the "What is consensus drift in disguise" section, item 4:
+
+> "GoS aggressive seeding machinery — sparse LLM validation, hybrid semantic-lexical seeding. Benchmark artifacts for 2000-skill libraries. Velorin starts with <100 skills. Dense exhaustive validation is fine at this scale. Adopt when scale demands it."
+
+### Why this is a problem
+
+You used "X for now, Y at scale" framing without specifying where Y plugs in. The Chairman has now flagged this pattern multiple times across multiple sessions and it keeps recurring. The problem is not that your technical analysis is wrong. Dense exhaustive validation at <100 skills is genuinely simpler than GoS's sampling machinery, and the optimization is genuinely premature at our starting scale. The problem is the framing.
+
+"Adopt when scale demands it" assumes that swapping dense for sparse later is a change of implementation, not architecture. That assumption is true only if:
+
+- The validator is built as a clean module with a defined interface from day one (e.g., `validate(candidate_edges) → validated_edges`), so swapping the implementation is a one-line change
+- Downstream agents do not have hardcoded assumptions about validator behavior baked into the call sites
+- The data shape produced by dense and sparse validation is identical (which it likely is — both produce the same edge records, just via different verification methods)
+
+If those conditions are met, "ship dense now, swap later" is fine. If they are not, "swap later" is "rewrite later," and at scale you will be doing that rewrite while debugging emergent behavior of a Brain that has been live for months. That is the failure mode the Chairman has been flagging across this entire week of synthesis.
+
+The Chairman's standing principle, which you should treat as a CARDINAL constraint on every recommendation in this synthesis: **defer implementation, never defer architecture.** Shipping the simpler implementation is fine when the architecture already has the seam where the harder version plugs in. Shipping the implementation without the seam is technical debt with compounding interest.
+
+The recurrence pattern matters more than this one item. Every "X for now, Y at scale" or "ok for now, build Y later" recommendation in your synthesis needs to be re-examined under this principle. If three or four of these are stacked, the cumulative retrofit cost at scale is not three or four small changes — it is a system overhaul.
+
+### What needs to be redone
+
+Two-part response on this item, then a sweep of the rest of the synthesis.
+
+**For the GoS sparse-validation item specifically:**
+
+1. State whether the dense validator will be built behind a clean interface that supports swapping the implementation to sparse later without changes to call sites, downstream schema, or expectations. Yes or no.
+2. If yes, sketch the interface — function signature, input shape, output shape, what other components depend on it, what they assume.
+3. If no — i.e., dense validation will be a one-off implementation with no defined seam — change the recommendation. Either commit to dense forever (state explicitly that Velorin will not move to sparse validation at any scale) or commit to building sparse machinery from the start (acknowledging the upfront cost).
+4. The acceptable end state is one of: dense forever, sparse from day one, or dense behind a swappable interface with the interface specified now.
+
+**For the broader sweep:**
+
+5. Walk every other place in the synthesis where you used "X for now, Y at scale" or "selective", "for Phase 1", "evaluate later", "adopt when scale demands it", or any similar deferral language.
+6. For each, apply the same test: does the architecture today contain the seam where the deferred decision plugs in cheaply later? If yes, name the seam. If no, change the recommendation.
+7. List every item you swept. Show the result for each: dense-forever / sparse-from-day-one / seam-defined. No item gets to keep its "X for now, Y later" framing without one of those three resolutions.
+
+This is the highest-leverage discipline pass on the synthesis. Three items hidden inside "we'll fix it at scale" become a system overhaul. The Chairman's instinct that this is the most dangerous pattern in the synthesis is correct.
+
+---
 
 ---
 
