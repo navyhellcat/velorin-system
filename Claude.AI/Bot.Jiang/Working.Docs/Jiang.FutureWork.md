@@ -168,7 +168,7 @@ These rules govern all forward work. They have NOT been applied retroactively. S
 ## [FW-007] Revisit Cyclic-Topology Routing Decision (Re-Eval #4) Before Final Build
 **Logged:** Session 036, April 25, 2026 (Re-Eval #4 walkthrough)
 **Priority:** Medium-High — architectural exposure with chosen mitigation; mitigation may need redesign based on incoming research
-**Status:** Working decision in place (route cyclic regions to Re-Eval #1's Layer 3 mechanism); revisit triggered by external math return
+**Status:** STRUCTURALLY RESOLVED 2026-04-25 — Erdős's Causal Action Potential delivery (`Erdos.Solution.DarkSkillsTriggerlessGate.md`) provides a parameter-free mathematical detector for cyclic topology: in a DAG, `E[N_v] ≤ 1`, so `Φ_causal(v) = π_v / α > 1.0` is mathematically absolute proof of a directed cycle. The cyclic-detection prefilter no longer requires a graph-theoretic cycle check; the gate value itself proves cyclicity. Cyclic regions still route to Re-Eval #1's three-layer Layer 3 mechanism. Formal closure of this FW entry is the Chairman's call after reviewing the updated Re-Eval #4 and #5 sections in `Jiang.RespondingToReEvaluations.md`.
 
 **Problem:**
 Erdős's stress test (`Erdos.Solution.VEGPStressTest.md`, Proof 3) demonstrated that the VEGP cross-manifold isomorphism breaks on cyclic regions of the Brain pointer graph. Spatial PPR resonates mass via geometric series and triggers `Φ(v) > θ_work` on cyclic neuron pairs (e.g., mutual `contradicts` relationships); temporal IES under causal mask cannot form the reciprocal attention loop and the gate fails to fire. The two sides of the supposedly-isomorphic VEGP gate disagree on cyclic regions.

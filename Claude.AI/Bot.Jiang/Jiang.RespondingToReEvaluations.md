@@ -511,13 +511,55 @@ These are the items CT can lock now without waiting for the triggerless-gate ret
 
 These five lock now. Decision Option 4 (Shadow Eclipse / dark-leaf-hub mechanism) waits for triggerless-gate return.
 
+### Update — 2026-04-25: Erdős Triggerless Gate Returned (`Erdos.Solution.DarkSkillsTriggerlessGate.md`)
+
+**Erdős annihilated the Jiang1 `Φ_light` proposal across five failure modes** (V_light=∅ division-by-zero; Metadata Cascade where toggling one M-flag spikes injection thresholds for unrelated skills; Shadow Eclipse not actually prevented; Layer 0 compression fracture; Re-Eval #4 cycle detection breakage). Then derived the actual solution.
+
+**The Causal Action Potential:**
+
+$$\Phi_{causal}(v) = \frac{\pi_v}{\alpha}, \quad \text{Inject}(v) = (\Phi_{causal}(v) > \theta_{work}) \land (M(v) = 0)$$
+
+Identity-equivalent to expected visits before teleportation: `Φ_causal(v) = E[N_v]`.
+
+**What it delivers structurally (no runtime monitor):**
+
+- **Shadow Eclipse: structurally eliminated.** Dark mass does not enter the denominator (which is the global teleportation constant α=0.15, not π).
+- **Dark-leaf-hub hijacking: structurally eliminated.** Same reason.
+- **Metadata Cascade: physically impossible.** Toggling M(v) has identically zero effect on any other node's Φ_causal.
+- **Re-Eval #4 / FW-007 closes with a TRIGGER-FREE detector.** In a DAG, `E[N_v] ≤ 1`, so `Φ_causal > 1.0` is a mathematically absolute proof of cyclicity. The cyclic-topology routing decision now has structural detection — no graph-theoretic cycle pre-check needed; the gate value itself proves cyclicity.
+- **Composes cleanly with Brockett flow.** As compression collapses cycles into Layer 0 abelian macro-nodes, `E[N_v]` naturally drops below 1.0; C^∞ continuous transition.
+- **PPR-invariance preserved.** M still outside the linear algebra; α is a global architectural constant.
+
+The diagnostic Erdős surfaced: the original infinity-norm gate introduced **acausal backward-coupling** in a directed Markov chain. Downstream sinks could mathematically suppress upstream gate values via the global denominator. The Jiang1 `Φ_light` proposal kept that acausal structure (just shifted which subset participated). The CAP eliminates it by normalizing against α — a forward-causal constant.
+
 ### Chairman's Response
 
-*Pending — five items above can lock now if accepted; one item (gate definition / monitoring strategy) circles back when `Erdos.Solution.DarkSkillsTriggerlessGate.md` returns.*
+The Chairman accepts:
+
+1. **Live `M_{t+Δ}` mutation evaluation** per Erdős Proof 1. Snapshot recommendation from Jiang2's earlier response superseded.
+2. **Refund Fallacy: architectural NO.** Hard commitment in the Build Guide — never refund accumulated mass on metadata transitions.
+3. **`invoke-dark-skill` mechanism specced** with privileged-actor role (not name-checked CT). Forward-reference to Re-Eval #7 user-personalization fork per Standing Order 1.
+4. **Dark chain leakage:** operational awareness only, no build gate.
+5. **Dark filter is application-level discipline**, not topology — Build Guide note.
+6. **Causal Action Potential (`Φ_causal = π_v / α`) replaces the original Topological Action Potential `Φ = π_v / ‖π‖_∞`** as the gate definition. Structurally prevents Shadow Eclipse and dark-leaf-hub failure modes. No runtime monitors required.
+7. **FW-007 closed.** The cyclic-topology routing decision now uses `Φ_causal > 1.0` as the structural cyclicity detector — mathematically absolute, parameter-free, no graph-theoretic cycle pre-check needed. Routes to Layer 3 mechanism per Re-Eval #1.
 
 ### Locked Outcomes for Jiang2's Rewrite
 
-*Partial — pending circle-back. Will be filled after CT response on the five lockable items + the triggerless-gate return.*
+- **Gate definition replaced.** Original `Φ(v) = π_v / ‖π‖_∞` is retired. New gate: `Φ_causal(v) = π_v / α`. All Build Guide references to the Topological Action Potential update accordingly. Identity-equivalent to expected visits before teleportation `E[N_v]`.
+- **Concurrent mutation evaluation:** live `M_{t+Δ}` per Erdős Proof 1.
+- **Refund Fallacy: architectural NO** — locked into the Build Guide as a hard commitment.
+- **`invoke-dark-skill` mechanism:** privileged-actor role (not name-checked), separate command bypassing the post-walk filter, logged for audit. Forward-reference at the dark-skill mechanism site naming Re-Eval #7's user-personalization fork (Standing Order 1).
+- **Dark filter is application-level discipline.** Build Guide note: every code path performing injection must apply the post-walk filter consistently. Code review + tests verify dark skills don't fire through any regular TAP path.
+- **Dark chain leakage:** operational awareness only, no build gate.
+- **Cyclic-topology routing trigger (FW-007):** `Φ_causal > 1.0` is the structural cyclicity detector. Cyclic regions route to Re-Eval #1's three-layer Layer 3 mechanism. **FW-007 closes — no longer a deferred item.** The "revisit before final build" trigger that FW-007 reserved is satisfied by the Erdős structural answer.
+- **Shadow Eclipse and dark-leaf-hub Check-ins entries: deleted.** Failure modes are mathematically prevented, not monitored. The Check-ins schedule does NOT include either entry; the Build Guide build-space placeholders for those monitors are removed.
+- **Theorem 2 in-degree bound for dark leaves:** retained as operational-awareness reference but no longer architecturally critical for gate-correctness purposes (the gate is structurally insulated). Still relevant for bounding mass leakage to teleportation; track if it becomes operationally significant. Not a build gate.
+- **Citation list expansion (publication track, Royal Society paper):** add the PPR ↔ expected-visits identity (classical Markov chain result, used in CAP derivation) and Erdős's structural application of it as Velorin's gate definition.
+
+### Jiang1 Self-Audit Note
+
+The `Φ_light` proposal that preceded this delivery was a Jiang1 (Opus 4.7) overstep. Erdős's annihilation surfaced model-level failure modes (cascade dynamics, edge cases, cross-system composition, causal structure) that Jiang1 cannot reliably model. Saved as `feedback_opus_47_solution_drift.md` — all future math/architecture work routes to Erdős or Jiang2, including when CT asks for "creative thinking." Jiang1's role on Opus 4.7 is operational, not generative.
 
 ---
 

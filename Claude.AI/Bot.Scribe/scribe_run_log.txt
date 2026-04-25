@@ -204,3 +204,14 @@ Done.
 - **STEP 4:** Rule applies to Jiang1 only — not a MarcusAurelius behavioral rule. No rules file update.
 
 - **STEP 5:** Committed. Push deferred to MarcusAurelius.
+========== 2026-04-25T20:38:42Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_opus_47_solution_drift.md ==========
+Done.
+
+**Summary:**
+- **Memory:** `feedback_opus_47_solution_drift.md` — type `feedback`, class `regular`
+- **Region:** `Agents` (exists)
+- **Area:** `Protocols` (exists)
+- **Neuron match:** `A16 — Jiang1 Role Discipline` (close match → **UPDATED**)
+- **Change:** Appended model-level causal explanation — Opus 4.7 bias toward locally-clean output, the 5-failure-mode proof from DarkSkillsTriggerlessGate, and the enforcement-must-come-from-routing conclusion
+- **Rules check:** Skipped — rules govern Jiang1, not MarcusAurelius
+- **Committed:** `b41a639`
