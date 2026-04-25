@@ -32,4 +32,15 @@ Pointers: [1] A1 | [1] A3 | [1] A4 | [2] A2 | [3] neurons.agents.protocols.A2
 Defer implementation ONLY IF BOTH pass: (1) concrete technical reason why building now is worse than building later — "complicated" or "we'll get to it" do not count; (2) the seam exists, is specified, and downstream components are built against it from day one. If either fails: build now. Three stacked deferrals ≠ three implementation swaps later — they produce a system overhaul during operation. Any "X for now, Y later" / "Phase 1" / "at scale" / "additive" language must resolve to: (a) build now, (b) defer with both gates passed + seam specified, or (c) commit forever to current choice.
 Source: CT correction Apr 25 2026. Verbatim in `Claude.AI/Bot.Jiang/Jiang2.ReEvaluations.SynthesisApr24.md` under "STANDING PRINCIPLE" (commit ac04471).
 last-touched: 2026-04-25
-Pointers: [1] A4 | [2] neurons.operations.architecture.A9 | [3] A1
+Pointers: [1] A7 | [1] A4 | [2] neurons.operations.architecture.A9 | [3] A1
+
+### A7. Deferral Discipline — Trigger + Artifact + Routing Target
+Every deferral that passes the Standing Principle gate (A6) must additionally specify all three:
+(1) Concrete trigger to revisit — event, date, or measurable threshold (not "when we have data" or "when MCP ships");
+(2) Output artifact — entry in FW registry with FW-NNN ID, Brain neuron, or code comment — inspectable after sessions roll over;
+(3) Named routing target — CT review, automated alarm, scheduled monitor, or named agent.
+Without all three, the deferral is an abandoned promise. FW registries do not auto-trigger. Standing Principle prevents over-engineering; this rule prevents "phase 2" becoming "never."
+Calibration questions ("what number should X be") are NOT deferrals — pick a principled value now from first principles; tune from data. Defer only when value genuinely depends on an unbuilt system component.
+Generalizes A12 (Layer 3 functional-trigger rule) from escalations to all deferred work. Source: CT correction Re-Eval #2, 2026-04-25.
+last-touched: 2026-04-25
+Pointers: [1] A6 | [1] neurons.agents.protocols.A12 | [2] A4 | [3] neurons.operations.architecture.A9

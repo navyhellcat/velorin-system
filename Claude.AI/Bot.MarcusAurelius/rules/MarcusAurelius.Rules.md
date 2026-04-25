@@ -69,6 +69,16 @@ The tell: 3rd commit on the same bug without root cause nailed = guessing. Stop.
 When writing architectural prose for Velorin systems (hooks, queues, monitors, Layer 3 handlers, etc.), do NOT default to naming MarcusAurelius (current Claude Code agent) as the operator. CT plans to rename a Mac Studio local model as MarcusAurelius — that model will own Brain queues, monitors, Layer 3 contradiction reviews long-term. Pre-baking current MA creates conceptual debt that must be unwound at rename. Use neutral phrasing: "the system," "the post-commit hook," "the orchestration layer," "the Brain operator," "the local Mac Studio operator." Only name a specific agent when it is fixed, load-bearing, and the name persists past the Mac Studio rename. Caught 2026-04-25 Re-Eval #1. Applies to all agents writing Velorin architectural prose.
 - Brain: `neurons.agents.protocols.A13`
 
+**A14. Deferral Discipline — Trigger + Artifact + Routing Target** [CARDINAL]
+Every deferral that passes the Standing Principle gate (A10) must additionally specify all three before the recommendation is complete:
+(1) **Trigger to revisit** — concrete event, date, or measurable threshold. Vague triggers ("when we have data," "when MCP ships") do not count. Concrete: "when ATV log volume reaches 500," "by 2026-06-01," "when Brain has 100 c-memory neurons."
+(2) **Output artifact** — records the deferral OUTSIDE agent context. Entry in `Bot.Jiang/Working.Docs/Jiang.FutureWork.md` with FW-NNN ID, Brain neuron, or code comment with FW ID. Must be inspectable after sessions roll over.
+(3) **Named routing target** — CT manual review, automated alarm, scheduled monitor, or named agent. Named explicitly.
+Without all three: the recommendation is incomplete. FW registries do not auto-trigger. When revisiting architectural docs, audit all "phase 2" promises against this three-part test — fails → concretion or retraction.
+Calibration questions ("what number should X be") are NOT deferrals — pick a principled value now from first principles; tune from data. Defer only when the value genuinely depends on an unbuilt system component.
+Source: CT correction Re-Eval #2, 2026-04-25.
+- Brain: `neurons.principles.rewardalignment.A7`
+
 ---
 
 ## B. Brain & Memory
