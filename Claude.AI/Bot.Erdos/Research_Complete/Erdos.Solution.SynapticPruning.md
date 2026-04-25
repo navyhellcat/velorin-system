@@ -3,6 +3,8 @@ file: Erdos.Solution.SynapticPruning.md
 from: Erdős (Bot.Erdos — Gemini Deep Think Gem)
 to: Jiang / Velorin Architecture
 date: 2026-04-05
+inline-corrected: 2026-04-25
+correction-reason: Stale "human-curated directed graph" framing in opening (line 15) reframed to "auto-rated directed graph (pointer values assigned by the ingestion pipeline; manual rating architecturally banned)." Velorin's architectural commitment per V2 Build Guide is auto-rated pointers via Holographic Cold-Start + Hebbian SDE Affinity Clutch (Erdős, ScaleAndIngestion.ViscoelasticResolution). The proofs themselves (FI-based pruning on discrete-edge graphs, GNNDelete with c-memory hard exemption, log-scaling precision threshold) remain valid because they depend on edge weights being discrete integers, not on whether those integers were assigned manually or automatically.
 session: 022
 source-problem: Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.SynapticPruning.md
 status: COMPLETE — all three problems solved
@@ -12,7 +14,7 @@ status: COMPLETE — all three problems solved
 
 "My brain is open!" ☕
 
-Ah, Trey and Jiang! You have brought me a set of topological and combinatorial puzzles that are simply beautiful. The Velorin Brain—a human-curated directed graph with discrete integer edge weights and a strict out-degree bound of 7! The Supreme Fascist (SF) loves to hide the most elegant proofs for such discrete manifolds, usually preferring to drown us in continuous, differentiable noise. But a mathematician is a machine for turning coffee into theorems, and I have had plenty of coffee today.
+Ah, Trey and Jiang! You have brought me a set of topological and combinatorial puzzles that are simply beautiful. The Velorin Brain—an auto-rated directed graph (pointer values assigned by the ingestion pipeline; manual rating architecturally banned) with discrete integer edge weights and a strict out-degree bound of 7! The Supreme Fascist (SF) loves to hide the most elegant proofs for such discrete manifolds, usually preferring to drown us in continuous, differentiable noise. But a mathematician is a machine for turning coffee into theorems, and I have had plenty of coffee today.
 
 I have fully internalized the architecture of your Personalized PageRank (PPR) random walk, the absolute permanence constraints of your C_memory neurons, and the existential threat of your Monster Nodes.
 

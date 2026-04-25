@@ -171,3 +171,20 @@ Done. Summary of actions taken:
 
 **Step 5 — Commit:** `d3b6671` — 2 files, 19 insertions.
 ========== 2026-04-25T19:15:21Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_audit_external_agent_context.md ==========
+Done. Summary of actions taken:
+
+**STEP 1** — Memory: `Audit external-agent context corpus before every research request` | type: feedback | class: regular
+
+**STEP 2** — Classification:
+- Region: **Agents** (exists)
+- Area: **Protocols** (exists)
+- Neuron: **NO MATCH** → created **A15. Pre-Request Context Audit (External Agents)**
+
+**STEP 3** — Not needed (no missing region/area)
+
+**STEP 4** — Behavioral rule detected → added **A18** to MarcusAurelius.Rules.md, mirrored to local path
+
+**Changes committed** (`c7c20fb`):
+- `neurons.agents.protocols` — A15 created; A14's pointer list updated to add `[1] A15` as inbound wire
+- `Agents/_index.md` — Protocols row updated to reference pre-request context audit
+- `Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` — A18 added; local mirror updated

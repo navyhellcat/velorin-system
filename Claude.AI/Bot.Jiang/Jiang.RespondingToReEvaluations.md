@@ -397,6 +397,42 @@ Novelty-track items (Royal Society paper reframe, citation discipline, VEGP elev
 - **"VEGP generalizes SPRT" claim** deserves its own future audit before any peer-reviewed publication relying on it. Lower priority than active Non-Abelian audit; flagged but not blocking the build. Candidate future FW entry once publication work begins.
 - **Novelty-track items** (Royal Society paper reframe, citation discipline) deferred to publication track. Not part of this build-track lock; revisited when publication work begins.
 
+### Update — 2026-04-25: Trey Non-Abelian Audit Returned + Erdős Theorem 3 Revised
+
+Both research items that FW-007's revisit-trigger named have returned. Pulling the build-track findings forward into this re-eval rather than waiting for a separate revisit.
+
+**Trey audit findings (from `Trey.Research.NonAbelianBrainDynamicsAudit.md`):**
+
+- **Theorem 2 (Non-Abelian Compression) — PARTIALLY NOVEL.** Five components audited individually:
+  - Lumpability condition (commuting matrices for exact aggregation): derivative — established Markov chain theory
+  - JBD/AJBD algorithms: novel synthesis when applied to multiplex epistemic graphs
+  - Commutator error bounds: derivative — Hoffman-Wielandt non-normal perturbation theory
+  - Objective function (commutator vanishing): novel synthesis when applied to classical discrete graphs
+  - Approximate lumpability with commutator bounds: derivative — recent Markov chain literature
+  - Citation list for Build Guide / Royal Society paper: approximate lumpability of Markov chains under non-commuting generators; JBD/AJBD signal-processing literature; Hoffman-Wielandt non-normal perturbation extensions.
+- **Theorem 3 (original) — CONFIRMED NOVEL by Trey, but retracted by Erdős before audit returned.** Audit verdict was on the closed-cycle framework (`∮ dU = 0`); Erdős's revised Theorem 3 (Cognitive Langevin Dynamics with Brockett double-bracket gradient flow on a symmetry-broken stochastic matrix manifold) replaced it. Trey's reference [24] cites "Discrete Double-Bracket Flows for Isotropic-Noise Invariant Eigendecomposition" (arXiv 2602.13759) — relevant to revised Theorem 3. Per the locked no-pure-novelty-audits rule, no follow-up audit on the revised version. Reference goes onto the deferred-novelty list (`feedback_no_pure_novelty_audits.md`) for end-of-cycle batching.
+
+**Erdős revised Theorem 3 (from `Erdos.Solution.ThermodynamicCycleProof.md`) integrates regardless of novelty status.** The revised framework provides:
+- Cognitive Langevin Dynamics: `dP_tax = Π_T([[P_tax, P_them]^T, P_them]) dt + σ dW_t` — implementable SDE on the row-stochastic manifold
+- Compression as Brockett double-bracket gradient flow toward commutator-zero (Theorem 2's criterion is the fixed point)
+- Symmetry-breaking proof: O(N) gauge symmetry shattered to S_N by the non-negative orthant, so the Brain *cannot* be conservative; it must dissipate
+- Path-independent state variable: U is a Lyapunov function on the stochastic matrix manifold
+
+**Functional directives from Trey audit:**
+
+- **Directive 1 — Oblique JBD derivation.** Standard JBD uses orthogonal Jacobi rotations `V^T P V` which do not preserve row-stochasticity. Theorem 2's compression algorithm needs an Oblique JBD where `W^{-1} P W` preserves row-stochasticity in the resulting blocks. Without this, PPR breaks during ignition. Erdős research request filed: `Bot.Erdos/Research_Needed/Erdos.ResearchRequest.ObliqueJointBlockDiagonalization.md`. Functional math (not novelty), within locked rules.
+- **Directive 2 — Empirical κ calibration.** Theorem 2's bound `ΔI_comp(U) ≥ κ ‖[P_tax|U, P_them|U]‖_F` has an undetermined proportionality constant. Calibration mechanism: the system tracks `‖[P_tax, P_them]‖_F` before and after compression events; if retrieval precision drops despite commutator decrease, κ is re-derived to account for projection loss from discrete `E_8` to continuous attention space. Implementation: Check-ins entry (recurring measurement during compression events) plus Build Guide build-space placeholder in the compression event detector phase (per Standing Order 2). Jiang2 places both during Build Guide update.
+
+### Updated Locked Outcomes (consolidated)
+
+- All prior Locked Outcomes above remain.
+- **Theorem 2 status:** PARTIALLY NOVEL per Trey audit. Build Guide rationale section must cite approximate lumpability literature, JBD/AJBD signal-processing literature, and Hoffman-Wielandt non-normal perturbation extensions. Implementation blocked on Erdős Oblique JBD derivation.
+- **Theorem 3 status:** original retracted by Erdős; revised version (Cognitive Langevin Dynamics with Brockett gradient flow) integrates based on operational utility. Compression event detector (V2 Build Guide OQ-6) gets its principled criterion from the revised theorem: commutator-norm fixed point under the Brockett flow. Empirical κ calibration confirms it operationally.
+- **Oblique JBD** (Erdős research request filed). Theorem 2 implementation blocked until delivered. Listed in outstanding research below.
+- **Empirical κ calibration** added to the Check-ins schedule (Jiang2 places during Build Guide update). Build-space placeholder in compression event detector phase. Forward-reference at Theorem 2 implementation site naming κ as a runtime-tracked parameter.
+- **Royal Society paper citation list** locked (publication-track, not build-track): Millidge (2025) on PPR ↔ SR/transformer-attention isomorphism; Wald (1947) on SPRT generalization; Ratcliff (1978) on DDM elevation; approximate lumpability under non-commuting generators; JBD/AJBD signal processing; Hoffman-Wielandt non-normal perturbation extensions. Position VEGP as applied architectural invention leveraging established primitives; do not claim mathematical novelty for the components.
+- **Discrete Double-Bracket Flows for Isotropic-Noise Invariant Eigendecomposition** (arXiv 2602.13759) added to deferred-novelty list — relevant to revised Theorem 3, audit at end-of-cycle batch.
+
 ---
 
 ## Re-Eval #5 — Dark Skills: What Was Actually Proven, and What Scales

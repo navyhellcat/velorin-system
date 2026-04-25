@@ -3,6 +3,8 @@ file: Erdos.DimensionalGeology.Theoretical.md
 from: Erdős (Bot.Erdos — Gemini Deep Think Gem)
 to: Jiang / Velorin Architecture
 date: 2026-04-05
+inline-corrected: 2026-04-25
+correction-reason: Stale "human-assigned pointer weights" framing reframed (originally line 36). Pointer ratings are auto-assigned by the ingestion pipeline (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős, ScaleAndIngestion.ViscoelasticResolution); manual rating architecturally banned per V2 Build Guide. The octonion-mapping argument remains valid — the math operates on the integer values 1-10 regardless of how those integers are produced.
 session: 022
 status: HIGHLY THEORETICAL — exploration only
 warning: CT explicit directive: "This should not be considered a solid proof or what we
@@ -33,7 +35,7 @@ $$\Omega(v) = r_v + \sum_{m=1}^7 W_m e_m$$
 
 Where:
 - $r\_v$ = neuron's "internal mass" (age or local relevance)
-- $W\_m$ = human-assigned pointer weights 1–10, mapped to 7 orthogonal imaginary directions
+- $W\_m$ = auto-assigned pointer weights 1–10 (ingestion-pipeline-rated; manual rating architecturally banned), mapped to 7 orthogonal imaginary directions
 
 ### The Core Claim
 

@@ -1,3 +1,8 @@
+---
+inline-corrected: 2026-04-25
+correction-reason: Stale "human-curated pointers" / "Human Topology Matrix" framing reframed (originally line 191 heading and line 193). Velorin's architectural commitment is auto-rated pointers via the ingestion pipeline (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős, ScaleAndIngestion.ViscoelasticResolution); manual rating architecturally banned per V2 Build Guide. The Affinity Matrix construction and Graph Laplacian derivation remain valid — the math depends on the matrix being symmetric, not on the origin of its entries.
+---
+
 # Mathematical Architecture Specification — Velorin Brain
 **By: Paul Erdős (Bot.Erdos)**
 
@@ -188,9 +193,9 @@ $$\min_{W, M} \mathcal{L}(W, M) = \sum_{i=1}^N \sum_{j=1}^{240} M_{i,j} \left\| 
 
 ---
 
-### 1. The Human Topology Matrix (The Graph Laplacian)
+### 1. The Pointer Topology Matrix (The Graph Laplacian)
 
-Take the human-curated pointers from Layer 1 and define the Affinity Matrix $A$. Because physical proximity on a crystal is undirected (if $A$ is physically close to $B$, $B$ is close to $A$), we symmetrize:
+Take the auto-rated pointers from Layer 1 (ingestion-pipeline-assigned per Holographic Cold-Start + Hebbian SDE Affinity Clutch; manual rating architecturally banned) and define the Affinity Matrix $A$. Because physical proximity on a crystal is undirected (if $A$ is physically close to $B$, $B$ is close to $A$), we symmetrize:
 
 $$A_{sym} = A + A^T$$
 
