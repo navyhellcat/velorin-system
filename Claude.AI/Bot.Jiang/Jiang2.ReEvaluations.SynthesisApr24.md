@@ -202,9 +202,54 @@ The Chairman's standing position: you may be right that VEGP is genuinely novel 
 
 ---
 
-## Re-Evaluation #5
+## Re-Evaluation #5 — Dark Skills: What Was Actually Proven, and What Scales
 
-[Reserved for Chairman to append as he reads.]
+### What you wrote
+
+> "Dark Skills (Semantic Dark Skill). PPR-invariant by Erdős proof. Security boundary enforced by graph topology, not policy. Dark skills absorb and route PPR mass (acting as Semantic Relays) without being injectable via TAP. No published skill framework has this. The analogy to Semantic Dark Matter (Qdrant-only nodes with zero PPR pointers, accessible via Ignition but not normal traversal) is structurally exact."
+
+### Why this needs re-evaluation
+
+The Chairman traced the chain and asked where the "PPR-invariant" claim came from and whether it scales. The answer is: the math is real, narrow, and clean. Your claims around it are wider than the math actually justifies, and the scale question is genuinely unaddressed.
+
+**What Erdős actually proved** (`Erdos.Solution.ThresholdsAndDarkSkillInvariance.md` Section 8):
+
+The vertex-level metadata flag $M(v): V \to \{0,1\}$ does not appear as a term in the linear system $\pi^T = \alpha s^T (I - (1-\alpha)P_{active}(q))^{-1}$ that determines the stationary distribution. Therefore the stationary distribution $\pi$ is invariant under the dark:true flag. The exclusion is applied as a post-walk filter: $\text{Inject}(v) = (\Phi(v) > \theta_{work}) \land (M(v) = 0)$.
+
+That is the entire mathematical claim. It is true. It is narrow.
+
+**What you stretched it into:**
+
+- "Security boundary enforced by graph topology, not policy." This is an overclaim. Erdős proved that the math doesn't break when dark skills are filtered out via post-walk metadata. He did not prove that the filter itself is uncircumventable. The injection operation is enforced by a post-walk check `M(v) = 0`. Every code path that performs injection must consistently apply this check. If any code path skips it (debugging tools, emergency overrides, future agent additions, refactoring bugs, malicious agents that bypass the inject function), dark skills become reachable. Topology does not protect against that — disciplined application of the filter does. That is policy enforcement of a discipline-by-judgment kind, dressed in topological language.
+- "Semantic Relays absorbing and routing probability mass." Erdős's own phrase. But "absorbing and routing" is descriptive, not a guarantee of beneficial behavior. The proof says PPR mass flowing into a dark skill is computed correctly. It does not say the resulting routing is useful. At the limit where most skills are dark, dark skills dominate the PPR mass and light skills become starved — the math still holds, but the system stops doing what TAP-based skill injection is for.
+
+**What the proof says nothing about — and what the Chairman is right to ask about for scale:**
+
+- Concurrent mutations: if multiple agents are setting `dark:true` on different vertices while PPR walks are in flight, the proof's setup (static graph, fixed $M$ during walk) does not apply. What happens to in-flight retrieval when the metadata changes mid-walk?
+- Dark skill density: if 30% or 50% of skills are dark, what fraction of PPR mass is consumed by dark relays before reaching injectable skills? Is there a density threshold above which the system becomes ineffective at routing to light skills?
+- Chains of dark skills: dark A → dark B → dark C. Does the proof's invariance argument hold across arbitrary chain depths? Specifically, the post-walk filter rejects each individual dark vertex. The walk's traversal through the chain still computes correctly, but the operational behavior — that probability mass is consumed by the chain without reaching any injectable skill — may degrade retrieval quality even if the math is invariant.
+- Dark leaf nodes: a dark skill with `dark: true` and no outbound edges becomes an absorbing state for the random walk. PPR mass enters and never leaves. The proof addresses metadata invariance, not absorbing-state behavior.
+- The original sketch said "Reachable only by CT direct command." How is that enforced? Is it the same post-walk filter, a separate access control mechanism, or undefined? If undefined, this is the same Re-Eval #1 pattern — human-as-default rather than structural automated mechanism.
+
+### What needs to be redone
+
+1. **Walk back the "security boundary enforced by graph topology" framing.** Restate accurately: Erdős proved PPR-invariance under metadata filtering. The injection-exclusion is enforced by every code path applying the post-walk filter consistently. That is application-level discipline, not topology. If the goal is genuine topology-enforced exclusion, that requires a different proof and likely a different mechanism (severing edges, but Erdős showed that breaks $\rho^*$ — so the "topology-enforced" version is provably worse). Acknowledge the tradeoff honestly.
+
+2. **Address the four scale concerns explicitly.** For each, either (a) state the proof already covers it and cite the section, (b) state it does not apply at Velorin's scale and justify why, or (c) flag it as an open question that needs additional Erdős work and draft the problem spec for that work using the existing template.
+   - Concurrent mutations during walks
+   - Dark density thresholds
+   - Dark skill chains
+   - Dark leaf nodes (absorbing states)
+
+3. **Define what "reachable only by CT direct command" means operationally.** Is it the post-walk filter rejecting M=1, paired with a separate command-line invocation pathway that bypasses the filter? If so, name that pathway and verify the same code-path-discipline issue applies. If not defined, define it now or remove the claim from the synthesis. This is the same pattern as Re-Eval #1 — name the structural mechanism or change the recommendation.
+
+4. **Re-classify "Semantic Relays" from desirable property to neutral mathematical fact.** Erdős's phrase describes what dark skills do mathematically. It does not establish that this routing is beneficial at scale. If you want to claim it is beneficial, that needs separate verification. Otherwise treat it as descriptive of the math, not a feature claim.
+
+5. **Apply the Standing Principle to dark skills.** Is the dark skill mechanism being deferred to later? No — it is being claimed for the synthesis now. Therefore both conditions of the Standing Principle apply: build it now with a verified mechanism and a specified architectural seam. If the mechanism for "reachable only by CT" is undefined, the dark skill primitive is not ready to be claimed.
+
+The Chairman's standing position: he does not object to the dark skill primitive existing. He objects to the claim being elevated past what the proof actually supports. Tighten the claim to match what was proven, and explicitly flag the scale concerns that were not in scope of the proof.
+
+---
 
 ---
 
