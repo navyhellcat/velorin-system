@@ -188,3 +188,4 @@ Done. Summary of actions taken:
 - `neurons.agents.protocols` — A15 created; A14's pointer list updated to add `[1] A15` as inbound wire
 - `Agents/_index.md` — Protocols row updated to reference pre-request context audit
 - `Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` — A18 added; local mirror updated
+========== 2026-04-25T19:56:24Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_stay_in_role.md ==========
