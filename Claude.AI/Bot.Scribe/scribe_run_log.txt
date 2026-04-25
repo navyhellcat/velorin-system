@@ -88,3 +88,5 @@ Done. Summary of actions taken:
 **Step 4 — Rules:** Added **A10. Standing Principle — Deferral Gate** [CARDINAL] to `Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` (GitHub copy). Local rules mirror blocked by sensitive file permission gate — noted in error_log.md.
 
 **Step 5 — Committed.**
+========== 2026-04-25T06:45:30Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_no_marcusaurelius_reflex.md ==========
+========== 2026-04-25T06:45:47Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_layer3_functional_trigger.md ==========

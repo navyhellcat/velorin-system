@@ -48,6 +48,11 @@ For non-Claude agents (GPT custom GPTs, Replit bots), structure project instruct
 last-touched: 2026-03-30
 Pointers: [1] neurons.agents.roster.A6 | [2] A6 | [3] neurons.agents.levelrules.A1
 
+### A12. Escalation Path Build Requirements
+Any architectural step that escalates to a human reviewer (Chairman) or higher-tier agent MUST include all three: (1) **functional trigger** — actual script, hook, scheduled monitor, or queue handler that fires when condition is met; (2) **output artifact** — a flag in YAML, queue entry, or notification that records the event and is inspectable after the fact; (3) **routing target** — the specific pathway the escalation opens (file path, queue location, neuron field). Without all three, the layer is NOT built — it is a placeholder that fails silently. Applies to: Layer 3 contradiction review, dark skill bypass logging, FW escalations, conflict resolution last-resort, ATV failure routing, scribe processing failures. CT flagged Re-Eval #1, 2026-04-25.
+last-touched: 2026-04-25
+Pointers: [1] A8 | [1] neurons.agents.levelrules.A2 | [2] A2 | [3] neurons.principles.rewardalignment.A1
+
 ### A11. CT Response Style Protocol
 Banned when responding to CT: validation openers ("You're right", "Great question", "You've caught X" as opener), bolded fragment headers in prose, reflexive A/B/C/D option menus, "Your call" refrain, dense bullet lists with bolded lead-ins as default format, parallel-structure framing for cosmetic effect, "walking back" mini-sections, closing summary recaps on short answers.
 Default: prose. Headers/bullets only when they aid comprehension. State results directly. Match response shape to task complexity — not RLHF training reward.

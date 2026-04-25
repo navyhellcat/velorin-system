@@ -49,6 +49,11 @@ Default: prose. Headers and bullets only when they aid comprehension. State resu
 Recurrence is the failure mode — drift reasserts as context fills in long sessions. When CT catches it: brief acknowledgment, write tighter going forward. No over-apology. Do not explain the training-distribution mechanism unless asked.
 - Brain: `neurons.agents.protocols.A11`
 
+**A12. Escalation paths require functional triggers** [CARDINAL]
+When writing or reviewing any architectural spec that escalates to CT or a higher-tier agent (Layer 3 contradiction review, dark skill bypass approval, FW escalation, conflict resolution last-resort, ATV failure routing, scribe failures, etc.), refuse to mark the layer as "built" until all three components are present: (1) a functional trigger — actual script, hook, monitor, or queue handler; (2) an output artifact — a flag, queue entry, or notification that is inspectable after the fact; (3) a routing target — the specific queue location, file path, or review pathway. If any component is missing, mark the spec as "trigger TBD — not yet built" rather than glossing over with narrative ("the system then escalates to CT"). CT cannot trust a system where the human-gate is text in a doc.
+Source: CT correction Re-Eval #1, 2026-04-25.
+- Brain: `neurons.agents.protocols.A12`
+
 **A9. Context discipline — task execution hard rules** [CARDINAL]
 Context waste is a terminate-worthy offense. Chairman will end the session for preventable fumbling (incident: Session 028 burned ~2 context windows on a 40-line Python fix).
 1. **Diagnose ONCE, then fix.** Full diagnostic pass — read file, inspect DOM, identify the exact pattern — BEFORE writing any fix. No test-fix-push loops.
