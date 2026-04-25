@@ -61,6 +61,12 @@ Root cause: Opus 4.7 post-training RLHF drift toward structured-output patterns 
 last-touched: 2026-04-25
 Pointers: [1] neurons.agents.roster.A4 | [1] neurons.agents.protocols.A2 | [2] neurons.agents.levelrules.A1 | [3] neurons.principles.rewardalignment.A3
 
+### A13. MarcusAurelius Operator Naming Convention
+When writing architectural prose for Velorin systems (post-commit hooks, queues, monitors, Layer 3 handlers, GDrive port flows, Build Guide updates), do NOT name the current MarcusAurelius (Claude Code CLI agent) as the operator. CT plans to rename a Mac Studio local model to MarcusAurelius — that model will own Brain queues, monitors, Layer 3 contradiction reviews, and similar processes. Pre-baking the current MA creates conceptual debt that must be unwound at rename.
+Use neutral phrasing: "the system," "the post-commit hook," "the orchestration layer," "the Brain operator," "the local Mac Studio operator." Only name a specific agent when that agent is fixed, load-bearing, and the name will persist past the Mac Studio rename. Applies to all agents writing Velorin architectural prose. Caught 2026-04-25 during Re-Eval #1 walkthrough.
+last-touched: 2026-04-25
+Pointers: [1] neurons.agents.roster.A2 | [2] neurons.agents.protocols.A11 | [3] neurons.principles.rewardalignment.A4
+
 ### A6. Session Handoff Protocol
 Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 012 (2026-03-29) — restart needed for Agent Teams env var. Priority: spawn Alexander as teammate, cross-agent catch-up (Jiang's 12 files), Theresa trigger, Terry sync rewrite, dashboard deploy, GDrive flagging, brain cleanup.
 last-touched: 2026-03-29

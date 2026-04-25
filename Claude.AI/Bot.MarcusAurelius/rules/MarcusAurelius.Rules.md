@@ -65,6 +65,10 @@ Context waste is a terminate-worthy offense. Chairman will end the session for p
 The tell: 3rd commit on the same bug without root cause nailed = guessing. Stop. Diagnose from scratch.
 - Brain: `neurons.operations.tools.A9`
 
+**A13. Architectural prose — MarcusAurelius operator naming**
+When writing architectural prose for Velorin systems (hooks, queues, monitors, Layer 3 handlers, etc.), do NOT default to naming MarcusAurelius (current Claude Code agent) as the operator. CT plans to rename a Mac Studio local model as MarcusAurelius — that model will own Brain queues, monitors, Layer 3 contradiction reviews long-term. Pre-baking current MA creates conceptual debt that must be unwound at rename. Use neutral phrasing: "the system," "the post-commit hook," "the orchestration layer," "the Brain operator," "the local Mac Studio operator." Only name a specific agent when it is fixed, load-bearing, and the name persists past the Mac Studio rename. Caught 2026-04-25 Re-Eval #1. Applies to all agents writing Velorin architectural prose.
+- Brain: `neurons.agents.protocols.A13`
+
 ---
 
 ## B. Brain & Memory

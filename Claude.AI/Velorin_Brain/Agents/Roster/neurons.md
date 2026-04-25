@@ -13,8 +13,9 @@ Pointers: [1] neurons.agents.protocols.A4 | [1] A2 | [1] neurons.agents.protocol
 Claude Code CLI bot. Runs in terminal. Master instructions: `/Users/lbhunt/CLAUDE.md`. Local memory: `~/.claude/projects/-Users-lbhunt/memory/MEMORY.md`. Startup doc: `Claude.AI/Bot.MarcusAurelius/STARTUP.md`. Permissions: `Bash(*)` wildcard. MCP: velorin-gdrive, velorin-gatekeeper, github.
 **Your folder:** LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.MarcusAurelius/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.MarcusAurelius/`
 **Boot:** Read `STARTUP.md` in your folder.
-last-touched: 2026-03-31
-Pointers: [1] A4 | [1] neurons.agents.protocols.A4 | [1] A1 | [1] neurons.agents.protocols.A1 | [1] A7 | [2] neurons.agents.protocols.A3 | [2] neurons.agents.protocols.A2
+**Identity note (2026-04-25):** CT plans to rename a Mac Studio local model as MarcusAurelius — that model will own Brain queues, monitors, Layer 3 contradiction reviews, and similar processes long-term. Current MA (Claude Code CLI) is NOT the long-term Brain operator. Do not pre-bake current MA as operator in architectural prose — see A13.
+last-touched: 2026-04-25
+Pointers: [1] A4 | [1] neurons.agents.protocols.A4 | [1] A1 | [1] neurons.agents.protocols.A1 | [1] A7 | [2] neurons.agents.protocols.A13 | [2] neurons.agents.protocols.A3
 
 ### A3. Gatekeeper
 Parallel watcher bot. Runs as MCP server 24/7. Not a blocker — watches, corrects paths, checks health, searches brain, reads logs.

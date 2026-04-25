@@ -90,3 +90,11 @@ Done. Summary of actions taken:
 **Step 5 — Committed.**
 ========== 2026-04-25T06:45:30Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_no_marcusaurelius_reflex.md ==========
 ========== 2026-04-25T06:45:47Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_layer3_functional_trigger.md ==========
+Mirror confirmed. A12 is present in the local file.
+
+**Scribe run complete:**
+
+- **Neuron created:** `neurons.agents.protocols.A12` — "Escalation Path Build Requirements" — three required components (functional trigger, output artifact, routing target) for any escalation path. Placed in correct position before A11 in Agents/Protocols/neurons.md.
+- **Rules updated:** A12 added to `MarcusAurelius.Rules.md` section A (Agent Conduct), mirrored to local rules path.
+- **Committed:** `ce2cf15` — `Scribe: CREATE neurons.agents.protocols.A12 + rules update — Human-gate / Layer 3 escalation steps require functional triggers`
+- **No escalation needed** — region and area both existed.
