@@ -198,11 +198,35 @@ Trey's deliverable (`Trey.Research.VEGPNoveltyValidation.md`, 99 image-math equa
 
 ### Chairman's Response
 
-*Pending Chairman walkthrough.*
+The Chairman accepts all five recommendations as written:
+
+1. **Selectivity mechanism.** Option A (header tag at generation time). Length threshold (Option B) rejected.
+2. **Tag-setting authority.** Runtime-set from day one. The agent wrapper that inspects tool_use vs prose generation and emits the tag is part of the ATV build itself, not a future component.
+3. **Default on missing tag.** Fail-secure at the ATV endpoint. Tag-missing events log as anomalies for engineering review of wrapper coverage gaps.
+4. **Lock #2 now.** Both Standing Principle conditions pass on Erdős's clean ATV math.
+5. **Functional-trigger requirement.** Confirmed with the per-message log artifact spec and `infrastructure/queues/atv-review/` routing target.
+
+Plus parameter calls:
+
+- **IES threshold `θ = 0.7`.** Accepted. Anti-drift bias rationale locked: false-rejection is bounded harm per Erdős's ε⁺ analysis; drift-through-enforcement is unbounded harm — the failure mode this architecture exists to prevent.
+
+- **Review trigger — modified.** Reject the standalone "500 enforced messages OR 30 days, whichever first" trigger as proposed. The review of `θ` (and reviews of other parameters across the system) does not belong as a standalone trigger — it belongs in a broader build-wide construct: a list of **vitality-important Check-ins** distributed throughout the build process at different stages within every phase. The Check-ins list lives in the Build Guide. Jiang2 designs the structure and places the entries when Jiang2 next updates the Build Guide. The IES-threshold review becomes one entry on that list, not a standalone item.
+
+  This generalizes: any recommendation that names a "review at trigger X" should feed into the Check-ins schedule rather than appearing as a one-off. The discipline is captured as a feedback memory for forward application across the remaining re-evals.
 
 ### Locked Outcomes for Jiang2's Rewrite
 
-*Pending Chairman walkthrough.*
+- Selectivity mechanism is the header tag (Option A). Length threshold rejected.
+- Tag-setting is runtime-set from day one. The agent wrapper is part of the ATV build (Stage 1 component), not a future deliverable. There is no Phase 1 / Phase 2 split.
+- Default on missing tag at ATV endpoint is fail-secure (apply IES enforcement). Tag-missing events route to `infrastructure/queues/atv-review/`.
+- Re-Eval #2 is architecturally locked. Both Standing Principle conditions pass.
+- ATV functional-trigger spec includes the per-message log artifact (`message_id`, `tag_present`, `tag_value`, `IES_enforced`, `T_V_seconds`, `path_taken`, `tag_hallucination_suspected`), the routing target (`infrastructure/queues/atv-review/` for failures and anomalies; consumer agent for enforced messages), and the trigger (every message routed through ATV).
+- IES threshold is `θ = 0.7` from day one. Anti-drift bias rationale locked: false-rejection bounded by FSM-coerced output structure (Erdős ε⁺); drift through enforcement is the unbounded failure the architecture prevents.
+- **Review of `θ` is NOT a standalone trigger.** It feeds into the build-wide Check-ins list — vitality-important checkpoints distributed at different stages within every phase, designed by Jiang2 and placed into the Build Guide. Jiang2's Build Guide update task expands to include designing this Check-ins schedule.
+- Trey VEGP novelty research integrated: cross-manifold isomorphism cites Millidge (2025) "Equivalence of Personalized PageRank and Successor Representations"; IES gate cites Wald (1947) SPRT and Drift-Diffusion Model literature where appropriate.
+- Backpressure is a build-time gate at ATV, not a deferred item. Concrete spec: bounded queue with initial `N = 5` pending entries (configurable), overflow routes to `infrastructure/queues/atv-overflow/` with rejection record.
+- ATV anomaly queue routing target is "architecture-review sessions" until a permanent Brain operator is staffed. Transition is a one-config change at that point.
+- Verifier model selection: prefer 1-3B parameter (Qwen2.5-0.5B, SmolLM2-1.7B, fine-tuned Phi-2) over Qwen 3.6 14B+ to push the 0.11 msg/s queueing threshold to 0.4-0.8 msg/s. Final choice is an engineering call at ATV build time, not a deferral.
 
 ---
 
