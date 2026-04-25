@@ -107,3 +107,4 @@ Done. Summary of actions taken:
 **Step 4 — Rules check:** Behavioral rule applies to MA. Added **A13** to `MarcusAurelius.Rules.md` Section A. Mirrored to local rules path.
 
 **Step 5 — Commit:** `a36c5d0` — 4 files, 21 insertions.
+========== 2026-04-25T07:41:31Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_deferral_discipline.md ==========

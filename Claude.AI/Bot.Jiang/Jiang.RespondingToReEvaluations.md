@@ -171,12 +171,13 @@ Trey's deliverable (`Trey.Research.VEGPNoveltyValidation.md`, 99 image-math equa
 
 2. **Citation discipline.** When Velorin documents IES enforcement in the Build Guide and any peer-reviewed work, cite Wald's Sequential Probability Ratio Test and the Drift-Diffusion Model literature where appropriate. This is intellectual honesty — and reduces peer-review attack surface against the architecture.
 
-3. **Optional threshold calibration upgrade.** SPRT theory provides explicit formulas for setting threshold boundaries `A` and `B` from target Type I (false rejection) and Type II (drift through enforcement) error rates: `A ≈ ln(β/(1-α))`, `B ≈ ln((1-β)/α)`. The synthesis used `1.0` as the IES `θ` arbitrarily. Three options:
-   - **(a)** Keep arbitrary `θ = 1.0`, tune empirically against logged drift / over-rejection rates over time.
-   - **(b)** Derive `θ` from SPRT formulas given specified target error rates (Velorin chooses α, β; theory yields θ).
-   - **(c)** Phase-1 arbitrary → Phase-2 SPRT-derived, using the same swappable seam pattern as tag-setting authority.
+3. **Threshold calibration — pick a principled value now (revised after CT pushback 2026-04-25).** The synthesis used `θ = 1.0` arbitrarily. `θ = 1.0` is the maximum-likelihood neutral cutoff (reject iff `P(c_reject) > P(c_consensus)`). Velorin's stated discipline biases toward catching drift over false-rejection because false-rejection is bounded harm (Erdős's `ε⁺` analysis: structurally perfect, semantically vacuous output — recoverable). Drift through enforcement is unbounded harm — it is the failure mode the architecture exists to prevent.
 
-   **Recommendation: option (c).** Matches the Phase 1 → Phase 2 transition for tag-setting; Standing-Principle-compliant; gives empirical data first, then anchors to validated theory. Calibration data lives in the ATV anomaly queue logs from day one.
+   **Recommendation: set `θ = 0.7` from day one with rationale "Velorin's anti-drift bias justifies sub-unit threshold; cost of false-rejection is bounded by FSM-coerced output structure."** Log every gate decision with `score`, `θ_at_time`, `outcome`. Review logs at concrete trigger: 500 enforced messages OR 30 days, whichever first. If logs show systematic over-rejection (high false-positive rate on legitimately structured analytical content) or systematic under-rejection (drift cases visible after the fact), tune. Tuning is bounded calibration, not architectural deferral.
+
+   The SPRT theory framework (`A ≈ ln(β/(1-α))`, `B ≈ ln((1-β)/α)`) remains available as a more rigorous derivation if Velorin later wants to specify target error rates. That is calibration refinement; it does not block the build.
+
+   **Earlier draft of this recommendation proposed phasing (Phase-1 arbitrary → Phase-2 SPRT-derived). Retracted.** That recommendation failed the deferral-discipline test surfaced by CT during this re-eval: it had no concrete trigger to revisit, no named owner, no external artifact tracking the deferral. Without those, "Phase 2" means "never." See `feedback_deferral_discipline.md` for the rule that now governs all deferrals.
 
 4. **Re-Eval #2's architectural decisions stand unchanged.** The header-tag mechanism, tag-setting phasing, fail-secure default, lock-now decision, and functional-trigger spec are not affected by Trey's findings. The math foundation is now stronger, the citation discipline is added, and one minor threshold calibration option appears.
 
