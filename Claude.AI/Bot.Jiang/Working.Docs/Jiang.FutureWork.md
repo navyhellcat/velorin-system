@@ -165,4 +165,34 @@ These rules govern all forward work. They have NOT been applied retroactively. S
 
 ---
 
+## [FW-007] Revisit Cyclic-Topology Routing Decision (Re-Eval #4) Before Final Build
+**Logged:** Session 036, April 25, 2026 (Re-Eval #4 walkthrough)
+**Priority:** Medium-High — architectural exposure with chosen mitigation; mitigation may need redesign based on incoming research
+**Status:** Working decision in place (route cyclic regions to Re-Eval #1's Layer 3 mechanism); revisit triggered by external math return
+
+**Problem:**
+Erdős's stress test (`Erdos.Solution.VEGPStressTest.md`, Proof 3) demonstrated that the VEGP cross-manifold isomorphism breaks on cyclic regions of the Brain pointer graph. Spatial PPR resonates mass via geometric series and triggers `Φ(v) > θ_work` on cyclic neuron pairs (e.g., mutual `contradicts` relationships); temporal IES under causal mask cannot form the reciprocal attention loop and the gate fails to fire. The two sides of the supposedly-isomorphic VEGP gate disagree on cyclic regions.
+
+Working decision (Re-Eval #4 lock): when TAP detects `Φ(v) > θ_work` AND `v` is in a cyclic region (graph-theoretic detection runs as gate-prefilter), route the query to Re-Eval #1's three-layer Layer 3 contradiction-resolution mechanism instead of normal skill injection. Architectural rationale: cyclic regions in the Brain are almost always contradictions, and contradiction handling is what the three-layer mechanism exists for; the two systems converge on the same data with the same semantics.
+
+The decision is robust to the spatial-walk formulation as long as `P_active` is well-defined. Two pieces of incoming research may force redesign:
+
+1. **Trey's Non-Abelian Brain Dynamics audit** (`Trey.Research.NonAbelianBrainDynamicsAudit.md`, in flight). If Erdős's just-delivered Theorem 2 holds (commutator-vanishing as Layer 0 → Layer 1 compression criterion, with `[P_tax, P_them]` as the structural friction operator), the convex-combination formulation `P_active(q) = ω_tax · P_tax + ω_them · P_them` is structurally inadequate. Cyclic regions are precisely where commutator structure matters most. The cyclic-detection logic and the routing rule may need to be re-derived under the non-Abelian framework rather than the convex-combination framework.
+
+2. **Erdős's Theorem 3 rigorous proof** (`Erdos.ResearchRequest.ThermodynamicCycleProof.md`, in flight). The thermodynamic cycle work may identify a conserved quantity, exact differential, or symmetry that gives cyclic regions a natural alternate treatment within the non-Abelian framework. If so, the cyclic-routing rule may simplify or change.
+
+**What needs to be done:**
+1. When either trigger returns, re-audit the cyclic-topology routing decision against the new framework
+2. Evaluate whether the cyclic-detection logic (graph-theoretic check) is still the right detection criterion or whether commutator-norm-on-region is a better criterion under the non-Abelian framework
+3. Evaluate whether routing to Re-Eval #1's Layer 3 mechanism is still the right destination, or whether a different mechanism (e.g., a non-Abelian-specific compression step) handles cyclic regions natively
+4. Re-lock the cyclic-topology routing rule before the IES gate is committed to final build (Stage 1+ build commitment)
+
+**Trigger to revisit:** when Trey's Non-Abelian audit returns OR Erdős's Theorem 3 proof returns, whichever first. Concrete trigger: the corresponding solution / research file lands in `Research_Complete/`.
+
+**Assigned to:** Jiang (re-audit and re-lock) + CT (approval of any redesign)
+
+**Build Guide build-space placeholder (per Standing Order 2):** cyclic-region routing layer lives in the TAP build phase (Stage 1), sitting as a gate-prefilter between TAP threshold check and skill injection. Placeholder marked with FW-007 reference and revisit trigger.
+
+---
+
 [VELORIN.EOF]

@@ -333,7 +333,69 @@ Saved as feedback memory `feedback_buildguide_forward_references.md` so the stan
 
 ## Re-Eval #4 — VEGP / Dirac-Markov Threshold: Validate Before Elevating
 
-*Pending Chairman walkthrough.*
+### Explanation
+
+The synthesis claimed VEGP was "the week's most significant finding" and presented it as mathematically novel, derived "without being told to look for it" and "there to find, not constructed." Three overclaims required correction: (a) factually wrong on "without being told" — the prompt explicitly asked Erdős to evaluate the isomorphism; (b) too narrow a corpus surveyed before claiming novelty; (c) epistemological overreach on "there to find."
+
+Jiang2 walked back all three and suspended the Royal Society paper reframe pending external research. Both research items have now returned:
+- **Trey's audit** (`Trey.Research.VEGPNoveltyValidation.md`)
+- **Erdős's stress test** (`Erdos.Solution.VEGPStressTest.md`)
+
+Together they resolve the novelty question and impose architectural constraints. Cross-manifold isomorphism: NOT NOVEL (Millidge 2025). VEGP as unified cross-manifold gate: novel only as APPLIED ARCHITECTURE. The math is Wald 1947 (SPRT) plus Ratcliff 1978 (DDM); the gate primitive is ubiquitous (Hopfield, Glauber, Kramers, ETC). What remains genuinely Velorin's contribution is the systemic orchestration applied across architectural layers, plus the geometric constants that make the gate functionally discriminative.
+
+### Erdős's Stress Test — Three Architectural Constraints
+
+**Proof 1 — Topological conditions.** The algebraic isomorphism holds for all connected directed graphs with `α > 0` (Perron-Frobenius). The *functional* gating capability requires Velorin's specific density constraints. On a complete graph `K_N` the stationary distribution is uniform, `Φ(v) = 1.0` everywhere, the gate becomes a vacuous flood. Velorin's `ρ* = 0.78` and `d_max = 7` are sufficient for the spectral asymmetry that keeps `Φ` discriminative.
+
+**Proof 2 — Distributional conditions.** The IES gate requires Softmax-style global attention aggregation. Pure RNN with tanh saturation fails — vanishing gradients near saturation prevent the extraction block from shifting probability. The IES gate "maps to the temporal domain if and only if the sequence model supports non-saturating, linearly decomposable global state retrieval subject to a competitive partition function."
+
+**Proof 3 — Cyclic topology break.** Constructive failure case: Brain neurons `A ↔ B` (mutual `contradicts` relationship) → spatial PPR resonates mass via geometric series, `Φ(A) > θ_work` triggers → temporal IES under causal mask gets no reciprocal attention loop, weak signals decay below prior, IES gate fails. The two sides of the supposedly-isomorphic gate disagree precisely on cyclic regions — and those are where the contradiction-resolution mechanism from Re-Eval #1 lives.
+
+### Decision Options (filtered to non-novelty / build-track)
+
+1. **Velorin constants justification.** Lock the dual-purpose framing (PPR precision + gating discriminability per Erdős Proof 1) into the Build Guide rationale section, with the honest caveat that the constants were chosen from PPR precision measurements and Erdős's result confirms-but-does-not-prove necessity.
+2. **Softmax requirement on local AI model.** Forward-reference at Stage 5 model selection: "Softmax-style global attention aggregation required for IES gate" (Standing Order 1 from Re-Eval #3).
+3. **Cyclic topology handling.** (a) Accept the limitation — document the blind spot, cyclic contradicts-pairs are rare. (b) Route cyclic regions through Re-Eval #1's three-layer Layer 3 mechanism — graph-theoretic cycle detection feeds the contradiction-resolution path. (c) Hold pending Trey's Non-Abelian audit on Erdős's just-delivered Theorem 2.
+4. **Sequencing relative to Non-Abelian audit.** Lock the items above (constants, Softmax, cyclic decision) now, or hold the cyclic decision until the Non-Abelian audit returns since cyclic regions are precisely where commutator structure matters most?
+
+Novelty-track items (Royal Society paper reframe, VEGP elevation positioning, citation discipline) are filtered out at the Chairman's request — they belong to the publication track, not the build track.
+
+### Jiang's Recommendations (build-track only)
+
+**1. Velorin constants — dual-purpose framing locked.** Build Guide rationale section names both purposes: PPR precision (`ρ* = 0.78` was originally locked from precision measurements producing 75% retrieval at the 7-pointer cap) and gating discriminability (Erdős Proof 1 confirms these constants satisfy `‖π‖_∞ ≫ median(π)` required for the threshold gate to discriminate rather than flood). Honest framing: confirms-but-does-not-prove necessity. Any future tuning of these constants must verify both properties hold. Build-time gate.
+
+**2. Softmax-attention forward-reference.** Stage 5 local AI model selection criteria explicitly includes "Softmax-style global attention aggregation; pure RNN architectures rejected per Erdős Proof 2." Forward-reference at Stage 1 PPR/TAP build subsection naming the Stage 5 criterion (Standing Order 1). ATV's verifier model is already transformer-architecture, so the temporal-side requirement is satisfied by existing build choices; this constraint binds future model substitutions.
+
+**3. Cyclic topology — option (b) with revisit-before-final-build flag.** Route cyclic regions through Re-Eval #1's three-layer Layer 3 mechanism. Implementation: when TAP detects `Φ(v) > θ_work` AND `v` is in a cyclic region (graph-theoretic check, cheap, runs as gate-prefilter), route the query to the contradiction-resolution path instead of normal skill injection. Cyclic-detection logic is a small build component sitting between TAP threshold check and skill injection.
+
+   This is the cleanest architectural fit because cyclic regions in the Brain are almost always contradictions, and contradiction handling is what the three-layer mechanism exists for. The two systems converge on the same data with the same semantics — IES enforcement isn't being faked, it's being routed to the mechanism actually designed for the case.
+
+   Revisit-before-final-build trigger: when Trey's Non-Abelian Brain Dynamics audit returns OR Erdős's Theorem 3 rigorous proof returns, whichever first. The non-commutativity framework treats cyclic dynamics differently and may force redesign. Logged as FW-007.
+
+**4. Sequencing — lock the build-track items now.** Constants and Softmax requirement are independent of the `P_active` formulation that may shift if Non-Abelian Theorem 2 holds. Cyclic-topology routing is the one item that depends on `P_active`, but the routing mechanism itself (cyclic detection → Layer 3) is robust to the underlying spatial-walk formulation. The revisit trigger handles the fragility honestly.
+
+### Implications from Research — Already Integrated
+
+- Both Trey's audit findings and Erdős's stress-test math are reflected in the recommendations and Locked Outcomes below.
+- The "VEGP generalizes Wald's SPRT" claim from Erdős's Proof 4 (Section 8) was not specifically audited by Trey. If the Royal Society paper leans on this generalization claim as load-bearing, it deserves its own audit. Filed as a candidate FW item; lower priority than the active Non-Abelian audit. Not addressed in this build-track lock.
+
+### Chairman's Response
+
+Recommended solution accepted: cyclic regions route through Re-Eval #1's three-layer Layer 3 mechanism (option b), with explicit flag that this decision must be revisited before final build based on future research and math. Specifically: when Trey's Non-Abelian audit returns or Erdős's Theorem 3 rigorous proof returns (whichever first), the cyclic-topology routing decision is re-evaluated. Logged as FW-007.
+
+The other build-track items (constants dual-purpose framing, Softmax forward-reference, sequencing) lock now per the recommendations.
+
+Novelty-track items (Royal Society paper reframe, citation discipline, VEGP elevation positioning) are out of scope for this build-track walkthrough — they belong to a separate publication track that does not block the build.
+
+### Locked Outcomes for Jiang2's Rewrite
+
+- **Novelty status (audit complete).** Cross-manifold PPR ↔ transformer-attention isomorphism is NOT novel per Trey audit (Millidge 2025, arXiv 2512.24722). VEGP as unified cross-architecture-layer gate is novel only as APPLIED ARCHITECTURE. The gate primitive itself is ubiquitous (Wald SPRT 1947, Ratcliff DDM 1978, Hopfield, Glauber, Kramers, ETC).
+- **Velorin constants `ρ* = 0.78` and `d_max = 7`** serve dual purpose (PPR precision AND gating discriminability per Erdős Proof 1). Build Guide rationale section names both honestly: confirms-but-does-not-prove necessity. Any future tuning verifies both properties hold.
+- **Stage 5 local AI model selection** must include "Softmax-style global attention aggregation required for IES gate" as a hard criterion. Forward-reference per Standing Order 1 at Stage 1 PPR/TAP subsection naming the Stage 5 criterion.
+- **Cyclic topology routing.** Option (b): cyclic-region detection at TAP gate-prefilter; cyclic regions route to Re-Eval #1's three-layer Layer 3 mechanism instead of normal skill injection. Build-space placeholder: cyclic-region routing layer in the TAP build phase (per Standing Order 2). Forward references: TAP → Layer 3 mechanism (this routing path); Layer 3 mechanism → cyclic-detection (additional input source beyond same-tier contradicts edges).
+- **FW-007** logged: cyclic-topology routing decision revisited when Trey Non-Abelian audit returns or Erdős Theorem 3 proof returns, whichever first.
+- **"VEGP generalizes SPRT" claim** deserves its own future audit before any peer-reviewed publication relying on it. Lower priority than active Non-Abelian audit; flagged but not blocking the build. Candidate future FW entry once publication work begins.
+- **Novelty-track items** (Royal Society paper reframe, citation discipline) deferred to publication track. Not part of this build-track lock; revisited when publication work begins.
 
 ---
 
