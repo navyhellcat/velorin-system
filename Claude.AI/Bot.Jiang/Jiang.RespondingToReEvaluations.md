@@ -433,11 +433,91 @@ Both research items that FW-007's revisit-trigger named have returned. Pulling t
 - **Royal Society paper citation list** locked (publication-track, not build-track): Millidge (2025) on PPR ↔ SR/transformer-attention isomorphism; Wald (1947) on SPRT generalization; Ratcliff (1978) on DDM elevation; approximate lumpability under non-commuting generators; JBD/AJBD signal processing; Hoffman-Wielandt non-normal perturbation extensions. Position VEGP as applied architectural invention leveraging established primitives; do not claim mathematical novelty for the components.
 - **Discrete Double-Bracket Flows for Isotropic-Noise Invariant Eigendecomposition** (arXiv 2602.13759) added to deferred-novelty list — relevant to revised Theorem 3, audit at end-of-cycle batch.
 
+### Update — 2026-04-25: Erdős Oblique JBD Returned (`Erdos.Solution.ObliqueJointBlockDiagonalization.md`)
+
+**Headline finding:** Exact Oblique JBD preserving row-stochasticity into k>1 blocks is **mathematically impossible** for connected sub-regions. Perron-Frobenius forbids it (irreducible stochastic matrix has λ=1 with multiplicity exactly 1; k stochastic blocks would force multiplicity k; contradiction). The continuous group GL(N) collapses to the discrete Symmetric Group S_N for any structure-preserving transformation on the probability simplex.
+
+**Architectural fallback Erdős derived:** **Joint Spectral Disaggregation (JSD)** algorithm. Spectral clustering on the symmetric mix `M_joint = (P_tax + P_them)/2` over top k right eigenvectors near λ=1 → row-normalize → k-means → permutation matrix Π → prune off-diagonal residual via row-normalization. Complexity O(k²|𝒰|). Replaces "Oblique JBD" in any Build Guide reference to Theorem 2's compression algorithm.
+
+**κ analytically derived, not empirical:**
+
+$$\kappa = 2C \cdot \frac{1-\alpha}{\alpha \delta}$$
+
+Where δ is the joint spectral gap. Compression halt threshold: `β_abelian ≥ (αδ/(2C(1-α))) · θ_work · ‖π‖_∞` — above this the compression irreversibly scrambles retrieval paths.
+
+This **supersedes Trey audit Directive 2** (empirical κ calibration). The empirical κ Check-ins entry is potentially obsolete — replaced by runtime monitoring of α (fixed config) and δ (computable from spectral gap of M_joint). Surface to CT: Check-ins entry refactored or deleted?
+
+**JSD ↔ Brockett flow unified pipeline (Erdős Section 8):** Brockett gradient flow runs continuously in background reducing commutator norm β toward zero (widening δ). When β ≤ β_abelian, JSD jumps the system to the discrete fixed point by computing the permutation Π and pruning residual E. **Compression event detector (V2 Build Guide OQ-6) trigger is now structurally defined:** detect when β has decayed sufficiently and δ has widened sufficiently that the compression halt threshold is satisfied. No empirical heuristic needed.
+
+**Implications for prior Re-Eval #4 Locked Outcomes:**
+
+- **Theorem 2 implementation unblocked.** JSD is the algorithm. Build Guide implementation reference updates from "Oblique JBD" (impossible) to "JSD via spectral clustering + permutation + pruning."
+- **κ Check-ins entry status:** open question — surface to CT whether empirical κ Check-ins is replaced by analytic κ formula plus α/δ runtime monitoring, or deleted entirely.
+- **Compression event detector (OQ-6) criterion:** principled, not heuristic — Brockett flow drives β → 0; JSD fires when threshold met.
+- **Citation list for Royal Society paper:** add Davis-Kahan sin Θ theorem (Markov invariant subspace perturbation bound used in κ derivation) and Ng-Jordan-Weiss spectral clustering.
+
+These updates are surfaced for CT decision before locking. Do not auto-update the Locked Outcomes section above without explicit confirmation.
+
 ---
 
 ## Re-Eval #5 — Dark Skills: What Was Actually Proven, and What Scales
 
-*Pending Chairman walkthrough.*
+### Explanation
+
+Synthesis claimed dark skills were *"PPR-invariant by Erdős proof. Security boundary enforced by graph topology, not policy. Dark skills absorb and route PPR mass (acting as Semantic Relays) without being injectable via TAP."* The re-eval flagged two overclaims: (a) "topology-enforced security" is wrong — the injection filter is application-level discipline requiring consistent code application; (b) "Semantic Relays beneficial at scale" was unverified. Plus four scale concerns the original proof did not address: concurrent mutations, dark density thresholds, dark chains, dark leaf nodes.
+
+Jiang2's response walked back the topology-security claim, defined the "reachable only by CT direct command" mechanism (separate `invoke-dark-skill` command bypassing the TAP filter, logged for audit), and filed an Erdős scale-analysis problem.
+
+### Erdős's Scale Analysis — `Erdos.Solution.DarkSkillsScale.md` (Returned)
+
+Four proofs delivered:
+
+- **Concurrent mutation:** PPR-invariance preserved under either snapshot-`M_t` or live-`M_{t+Δ}` evaluation. Both equivalent because metadata never enters the linear system. Erdős explicitly recommends live evaluation as operationally safer (correctly handles `0→1` and `1→0` transitions). **Critical negative result: the Refund Fallacy** — refunding accumulated mass on `light → dark` transitions destroys the Markov property. Architectural commitment: never refund.
+- **Dark density threshold:** No global scalar `ρ_L = |V_light|/|V_S|` analytic threshold exists. Real failure condition is **the Shadow Eclipse** — the super-level set `S = {v : π_v > θ_work · ‖π‖_∞}` becomes entirely subsumed by `V_dark`, so light injection globally fails because `‖π‖_∞` is hijacked by a dark hub. Concrete failure mode requiring either monitor or structural prevention.
+- **Dark chains:** Length-k chain consumes `1 - (1-α)^k` of traversing mass via teleportation. At α=0.15 and k=4, this is ~48%. **Convergence rate unchanged** (spectral gap is global). Chains are quality concerns (mass leakage), not architectural failures.
+- **Dark leaf nodes:** Cannot be true absorbing states (α > 0 prevents). But high-in-degree dark leaves can hijack `‖π‖_∞` and starve light injection. **In-degree bound derived:** `k < (C - α·s_v) / ((1-α)·w̄·π̄_in)`. Pre-write enforcement gate.
+
+### Decision Options
+
+1. **Concurrent mutation evaluation:** live `M_{t+Δ}` per Erdős, OR retain Jiang2's earlier snapshot recommendation. Erdős's analysis favors live; this contradicts Jiang2's earlier proposal.
+2. **Refund Fallacy lock:** add architectural commitment "never refund accumulated mass on metadata transitions" as a hard NO in the Build Guide.
+3. **"Reachable only by CT direct command" mechanism:** confirm Jiang2's spec (separate `invoke-dark-skill` command, post-walk filter bypass, logged for audit) — but build the authorizer as a privileged-actor role from day one rather than name-checking CT specifically. Connection to Re-Eval #7 user-personalization fork.
+4. **Shadow Eclipse and dark-leaf-hub failure modes:** monitor at runtime (Check-ins entries plus pre-write enforcement) OR pursue structural prevention. *See pending item below — sent to Erdős for triggerless gate analysis.*
+5. **Dark chain leakage:** operational awareness only (no build gate) OR add Check-ins to track cumulative consumption per walk if exceeds threshold.
+
+### Pending — Circle Back Before Finalization
+
+**`Erdos.ResearchRequest.DarkSkillsTriggerlessGate.md`** is OUT at Erdős (filed 2026-04-25 after CT directive to find a mathematical structure that prevents Shadow Eclipse and dark-leaf-hub failures architecturally rather than monitoring for them). The request hands Erdős a Jiang1-proposed candidate (`Φ_light = π_v / max_{l ∈ V_light} π_l`) with explicit instruction to **annihilate it** if breakable, **redo properly** if it survives, or **find a better solution** if one exists. Honest negative finding ("monitors are the correct answer") is acceptable.
+
+Re-Eval #5 cannot be finalized until that delivery returns. Specifically pending:
+- Decision Option 4 (Shadow Eclipse / dark-leaf-hub mechanism — monitor vs structural prevention)
+- Build Guide build-space placeholder for the gate definition (depends on whether `Φ` stays or is replaced)
+- Check-ins entries for Shadow Eclipse and dark-leaf in-degree bound (may be deleted if Erdős confirms structural prevention; may be locked if Erdős confirms monitors are correct)
+
+**Circle-back trigger (per deferral discipline):**
+- **Trigger:** `Erdos.Solution.DarkSkillsTriggerlessGate.md` lands in `Bot.Erdos/Research_Complete/` (concrete file landing event)
+- **Artifact:** the Erdős solution file plus this form section
+- **Routing target:** Jiang ports + reads, surfaces findings to CT, CT locks the four pending decision options above
+
+### Decisions Made (Subject to Above Pending Item)
+
+These are the items CT can lock now without waiting for the triggerless-gate return — they do not depend on whether the gate normalization changes:
+
+1. **Concurrent mutation: live `M_{t+Δ}` evaluation per Erdős Proof 1.** Snapshot recommendation from Jiang2's earlier response is superseded. Build Guide locks live evaluation.
+2. **Refund Fallacy: architectural NO.** Hard commitment in the Build Guide: never refund accumulated mass on metadata transitions. Lockable now.
+3. **"Reachable only by CT direct command" mechanism:** spec lock (separate `invoke-dark-skill` command, post-walk filter bypass, logged for audit), built as privileged-actor role rather than name-checking CT. Forward-reference to Re-Eval #7 (user-personalization fork) per Standing Order 1.
+4. **Dark chain leakage: operational awareness only.** No build gate. Optional Check-ins entry candidate (deferred to Build Guide update — not blocking).
+5. **Dark filter is application-level discipline, not topology-enforced.** Build Guide note: every code path performing injection must apply the post-walk filter consistently. Code review + tests verify dark skills don't fire through any regular TAP path.
+
+These five lock now. Decision Option 4 (Shadow Eclipse / dark-leaf-hub mechanism) waits for triggerless-gate return.
+
+### Chairman's Response
+
+*Pending — five items above can lock now if accepted; one item (gate definition / monitoring strategy) circles back when `Erdos.Solution.DarkSkillsTriggerlessGate.md` returns.*
+
+### Locked Outcomes for Jiang2's Rewrite
+
+*Partial — pending circle-back. Will be filled after CT response on the five lockable items + the triggerless-gate return.*
 
 ---
 
