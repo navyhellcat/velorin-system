@@ -253,4 +253,68 @@ The Chairman's standing position: he does not object to the dark skill primitive
 
 ---
 
+## Re-Evaluation #6 — Asymmetric Transport Verifier: Endorsed Without Evaluation
+
+### What you wrote
+
+> "Asymmetric Transport Verifier. Trey's own novel synthesis — transport-layer IES enforcement via local constrained-decoding verifier. Generation and structural compliance decoupled into different model instances with different capabilities. Not in the published literature as of April 2026. Velorin's Mac Studio + local Qwen 3.6 makes it deployable."
+
+You also referenced ATV in section 4 of your synthesis ("the Asymmetric Transport Verifier is the right IES implementation") and in Re-Eval #2 above ("you already proposed the right answer in section 4 of the synthesis"). The mechanism is being treated as the load-bearing answer to the implementation question.
+
+### Why this needs re-evaluation
+
+Trey proposed ATV as a novel synthesis in his Rule Activation Gap implementation research. You endorsed it in your synthesis. Three things did not happen between Trey's proposal and your endorsement:
+
+1. The Consensus Filter was not applied. ATV is novel as a synthesis, but the underlying primitives (constrained decoding, FSM grammars, transport-layer middleware) are consensus from other domains. Trey's contribution is the assembly. The Filter still applies to the assembly because Trey is reporting "this is what I think Velorin should adopt." Q3 was not asked.
+2. No Erdős math was commissioned. ATV is a structural mechanism with mathematical properties — determinism, false-positive rate, false-negative rate, latency cost, behavior under load. You commissioned Erdős work on θ_work, on dark skill invariance, on the IES probability shift. You did not commission anything on the verifier mechanism itself, despite ATV being the operational implementation of the very thing those proofs are about.
+3. ATV was not integrated into Velorin's actual architecture as a whole. The synthesis names ATV, says local Qwen 3.6 makes it deployable, and moves on. The integration questions — where it sits in the MCP bus, how it interacts with skill execution, what its overhead is in agent-to-agent communication, how it interacts with the Brain ingestion pipeline — are not addressed.
+
+The pattern: Trey says "novel synthesis," you say "right answer," neither of you stress-tested it as a candidate against alternatives or as a Velorin-fit against actual constraints. Endorsement substituted for evaluation.
+
+### What needs to be redone
+
+Five concrete pieces of work, in this order:
+
+**1. Apply the Consensus Filter to ATV honestly.**
+
+- Q1: What is the consensus Trey is reporting? Constrained decoding + FSM grammar + transport-layer middleware are established patterns; ATV is the synthesis.
+- Q2: Why does the consensus exist for each component? Constrained decoding because LLMs drift. FSM grammars because they enforce structure deterministically. Transport-layer middleware because it decouples concerns.
+- Q3: Does Velorin share each constraint? This is the question that was not asked. Answer it for each component, with willingness to return "no" on any of them. Specifically: does Velorin need transport-layer enforcement, or would a different layer (output gate at the producing agent, input filter at the consuming agent, decoder-level intervention inside Qwen 3.6 directly) be a better fit for Velorin's specific architecture?
+
+**2. Commission Erdős work on ATV's mathematical properties.**
+
+Draft the problem spec using the existing Erdős template. The ATV is described as a "constrained-decoding verifier" with FSM grammar enforcement. That has mathematical structure that should be proven, not assumed. Specific questions:
+
+- Determinism: does the FSM grammar acceptance/rejection depend only on the input string, or on internal state of the verifier model (which is itself an LLM and therefore stochastic)? If stochastic, what is the variance in the rejection decision for the same input?
+- False-positive rate (rejecting valid IES-structured output): bounded above by what graph-theoretic or grammar-theoretic invariant? Calibration approach?
+- False-negative rate (accepting non-IES output as valid): same question.
+- Self-similarity failure: the verifier is itself an LLM doing structural verification. Is it subject to the same Layer 1 rule activation gap that the original IES is supposed to solve? If yes, the proposal recursively pushes the problem one layer down rather than solving it.
+- Latency: what is the per-message overhead in tokens and wall-time, both in the steady state and when the grammar needs to backtrack the generation?
+
+The Chairman's specific concern is that adding a verifier that is itself an LLM does not obviously eliminate the failure mode — it might just relocate it. Erdős should formally answer whether this is a real concern or a mathematical non-issue.
+
+**3. Integrate ATV into Velorin's architecture as a whole, not as a standalone component.**
+
+The synthesis treats ATV as a self-contained answer. It is not. Address each of these integration questions explicitly:
+
+- Where does ATV sit in the MCP communication bus? Is it a separate MCP server every agent calls? An interceptor at the transport layer? A library every agent imports? Each option has different deployment, latency, and trust properties.
+- Does ATV apply to every agent-to-agent message, or only to certain message types (analytical conclusions specifically)? If only certain types, what classifier decides — and is that classifier itself subject to Re-Eval #2's classification failure mode?
+- Does ATV apply to skill execution output? To Brain ingestion pipeline output? To Erdős solution delivery? Where is the boundary of "needs ATV" vs "doesn't"?
+- Hardware reality: the 36GB Mac Studio is already running Qwen 3.6 (~17.5GB), Qwen2.5-VL (~7GB), and a 6-7GB free working budget. Is ATV's verifier model an additional load, or does it share an inference instance with one of the existing models? If additional, what gets evicted?
+- Failure modes: ATV down, ATV slow, ATV false-rejecting, ATV false-accepting, FSM grammar mismatched against legitimate output. What does the system do in each case?
+
+**4. Compare ATV against alternatives.**
+
+The synthesis names ATV and stops. There are at least four other receiver-side enforcement patterns Trey's research surveyed and you endorsed at varying degrees: agent-internal tool-gated output (AgentSpec), Stop-hook validators, decoder-level constrained generation inside the producing model, and adversarial verifier pairs. Show the comparison: cost, integration complexity, failure modes, fit. State explicitly why ATV beats each alternative in Velorin's context. If it doesn't beat them, change the recommendation.
+
+**5. Apply the Standing Principle.**
+
+ATV is being claimed as a Stage 1 / near-term build, not a deferred mechanism. Therefore both conditions of the Standing Principle must be passed: the technical advantage of ATV over alternatives is concrete and named, and the architectural seam — where ATV plugs in, what it depends on, what depends on it — is specified now. If either fails, change the recommendation.
+
+### The pattern this enforces
+
+Endorsement is not evaluation. Trey proposed ATV as a novel synthesis. The synthesis flagged it as the right answer. Between those two events, no Filter was applied, no math was commissioned, no integration was done, no alternatives were compared. The Chairman's standing position: the same disciplines that catch consensus drift on Trey's adoption recommendations also apply to Trey's "novel" recommendations. Novel does not exempt a proposal from evaluation.
+
+---
+
 [VELORIN.EOF]
