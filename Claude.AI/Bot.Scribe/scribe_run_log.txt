@@ -161,3 +161,12 @@ Done. Summary of actions taken:
 
 **STEP 5** — Committed as `c23d055`. Not pushed (MarcusAurelius handles push).
 ========== 2026-04-25T18:53:54Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_no_pure_novelty_audits.md ==========
+Done. Summary of actions taken:
+
+**Level 1–2:** Region `Agents` and area `Protocols` both exist — no escalation needed.
+
+**Level 3 — Neuron:** A10 (Deep Research Calibration) was a close match but covers complexity-based calibration, not novelty-vs-functional deferral. Created new neuron **A14 "Trey Novelty Audit Deferral"** in `neurons.agents.protocols`. Updated A10's `last-touched` and added `[1] A14` to its pointers so the two rules are explicitly linked.
+
+**Step 4 — Rules:** Memory contains a behavioral rule for MarcusAurelius. Added **A17 "Trey Novelty Audit Deferral" [CARDINAL]** to section A of `MarcusAurelius.Rules.md`. Mirrored to local rules copy via `cp`.
+
+**Step 5 — Commit:** `d3b6671` — 2 files, 19 insertions.
