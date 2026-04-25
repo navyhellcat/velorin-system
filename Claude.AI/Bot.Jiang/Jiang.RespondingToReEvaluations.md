@@ -90,6 +90,79 @@ The Chairman's response is correct on naming discipline and on the functional-tr
 
 ## Re-Eval #2 — "Selective Adoption" of IES Hides Classification Failure
 
+### Explanation
+
+The synthesis wrote: *"IES fills the gap where structural gates don't exist: analytical conclusions, Trey research synthesis, build decisions. Not every output. Selective adoption."* The re-eval flagged "selective" as structurally undefined — if "selective" means an agent decides per-task whether to apply IES, that is exactly the same classification-by-judgment failure the rule activation gap research demonstrated fails. The mechanism that does the selecting must be specified.
+
+Jiang2 evaluated two options and landed on the first: producing agents tag their output type at generation time (`content_type: analytical_reasoning`), and the ATV middleware reads the tag deterministically. The "selective" decision is moved out of stochastic content-judgment and into a structural property of how the message was generated. Option B (apply ATV to every message above a length threshold) was considered and rejected because length and analytical depth are not the same axis — long structured query results would be falsely enforced; short pithy analytical conclusions would falsely pass through.
+
+The mechanism is structurally tied to Re-Eval #6 (ATV evaluation). The header-tag move resolves both: it removes stochastic classification from the verifier (#6's self-similarity fix) AND defines what "selective" means (#2's specification fix). One architectural move, two re-evals closed.
+
+### Decision Options
+
+1. **Selectivity mechanism.** Adopt Option A (header tag at generation time) and reject Option B (length threshold)? Jiang2 landed on A.
+2. **Who sets the tag.** Producing agent declares its own output type, or the agent runtime sets the tag based on the generation pathway (tool-call vs prose-generation, output token count). Runtime-set closes the Goodhart gaming risk; producer-declared is simpler to build but vulnerable to drift.
+3. **Default when tag is missing.** Fail-secure (apply IES enforcement by default) or fail-open (passthrough). Fail-secure matches the consensus-drift discipline; fail-open is performance-friendly but reopens the gap.
+4. **Lock #2 conditional on #6, or hold.** Re-Eval #2's mechanism rides on ATV. ATV's math properties (FSM determinism, false-positive bounds, latency) were out at Erdős. Lock the header-tag architecture now contingent on the math returning clean, or wait for Erdős before locking.
+5. **Functional-trigger requirement.** Per the rule from #1 — ATV intercept must produce a real artifact on every message (logged passthrough or logged enforcement, with a flag in the message envelope). Confirm this applies, so the spec doesn't slip into narrative.
+
+### Jiang's Recommendations — informed by Erdős ATV math, ported and read 2026-04-25
+
+The Erdős solutions returned clean. Three proofs delivered in `Erdos.Solution.ATVMathProperties.md` (also: `Erdos.Solution.DarkSkillsScale.md` and `Erdos.Solution.VEGPStressTest.md`, relevant to Re-Evals #5 and #4 respectively). Summary of the ATV math before the recommendations, because two of the five questions resolve directly from the proofs:
+
+- **Proof 1 (Determinism).** FSM-constrained decoding under a well-formed grammar guarantees `P(z ∈ L_IES) = 1`, strictly subject to (a) the FSM being pre-compiled as a DFA over the BPE token graph to avoid vocabulary deadlock, and (b) `L_max` exceeding the valid path length to avoid context truncation. The base verifier model's stochastic preferences only dictate which valid path is chosen — they cannot escape the grammar.
+- **Proof 2 (Self-similarity shattered, not relocated).** With header-tag classification, `P(C | C_header) = 1` (deterministic software routing) and `P(M | y, C_header) = 1` (from Proof 1). The composed system achieves format compliance free of stochastic classification. The only residual stochastic failure is `ε⁺` = producer tag-hallucination rate (tag set on non-analytical content). When `ε⁺` fires, the FSM "violently coerces" the verifier to output structurally perfect, semantically vacuous IES — bounded harm, not a drift gap.
+- **Proof 3 (Latency).** DFA masking is `O(1)` per token. Fixed structural skeleton tokens (`<context_boundary_check>`, etc.) get fast-forwarded — the inference engine skips the neural forward pass entirely when only one token is valid. Net latency: `T_V ≈ (L_F - Δ) / S`. At Mac Studio M4 Max with Qwen 3.6 14B at `S ≈ 60` tok/s, `L_F = 600`, `Δ = 60`: **T_V ≈ 9 seconds per message**. The system enters M/D/1 queueing failure when arrival rate `λ ≥ 1/T_V ≈ 0.11 messages/second`. Above ~1 ATV message every 9 seconds, queue delay grows unbounded.
+
+The 9-second-per-message figure and the 0.11 msg/s queueing threshold are operational constraints that affect the recommendations below, not blockers to the architecture.
+
+**Recommendations:**
+
+**1. Selectivity mechanism — adopt Option A (header tag).** Erdős's math is unconditional on the header-tag mechanism. Option B (length threshold) is mathematically inferior because the threshold conflates length with analytical depth. The proof for Option A is mathematically absolute; Option B has no equivalent proof and would still produce false-positive and false-negative classifications on the length axis. Lock Option A.
+
+**2. Who sets the tag — runtime-set, with a phased path.** Producer-declared tags expose the system to `ε⁺` = producer's tag-hallucination rate, which under attention pressure can drift the same way the rule activation gap drifts. Runtime-set tags push `ε⁺` to ~0 because the tag becomes a structural property of which generation pathway the agent's response routed through (tool-call vs prose-generation), not a declaration the agent could mis-emit.
+
+The phased recommendation, Standing-Principle-compliant:
+
+- **Phase 1 (now, while still hand-building):** producer-declared tag. The agent runtime is not yet built — the V2 Build Guide explicitly defers automation architecture (OQ-3) until the Brain is operational. Forcing runtime-set now means waiting for an MCP orchestration layer that does not exist. Build with producer-declared and instrument tag-hallucination logging from day one.
+- **Phase 2 (when MCP orchestration ships):** runtime-set via the orchestration layer. The tag becomes a property of which MCP endpoint the agent's response routed through. The seam: the ATV MCP endpoint reads `content_type` from a message envelope set by the runtime, not the agent.
+- **The seam is specified now:** the ATV MCP endpoint reads tag from envelope. Whether the envelope is populated by the agent (Phase 1) or by the runtime (Phase 2) is an internal implementation change, not a call-site change. Standing Principle Condition 2 passes.
+
+**3. Default when tag is missing — fail-secure, with anomaly logging.** Two interpretations of a missing tag exist. Interpretation A: the message was not routed through ATV at all (correct case — most messages). Interpretation B: the message arrived at ATV but the tag was not set (anomaly — agent should have tagged but didn't, or runtime broke). Recommend fail-secure at the ATV endpoint specifically: if a message reaches ATV without a tag, apply IES enforcement. Erdős's ε⁺ analysis applies — bounded harm if the content turns out to be non-analytical (structurally perfect, semantically vacuous output). Cost is modest; consensus-drift protection preserved. Log every tag-missing event as an anomaly in the ATV review queue. These events are calibration data for Phase 2 transition and engineering review fodder.
+
+**4. Lock #2 now — Erdős math returned clean.** Both Standing Principle conditions pass:
+- Condition 1 (technical advantage): Erdős proves `P(format compliance) = 1`. No stochastic alternative matches this. Math advantage is unconditional.
+- Condition 2 (seam specified): MCP endpoint reading `content_type` from message envelope. Specified now. Internals swappable later (Phase 1 → Phase 2).
+
+The 9-second-per-message latency and 0.11 msg/s queueing threshold are operational design constraints, not blockers. Recommendations for designing around them in the recommendation set below.
+
+**5. Functional-trigger requirement — confirmed and specified.** Per the rule locked in #1, every escalation path needs trigger + artifact + routing target. ATV's spec must include:
+- **Trigger:** the MCP server endpoint code; fires per message routed through it.
+- **Output artifact per message:** log entry with `message_id`, `tag_present` (bool), `tag_value` (if present), `IES_enforced` (bool), `T_V_seconds` (float), `path_taken` (passthrough / enforced / failed), `tag_hallucination_suspected` (bool; flag set if content content-type appears mismatched against tag declared — heuristic, surfaces calibration data).
+- **Routing target:** enforced messages → consumer agent; failures + anomalies → `infrastructure/queues/atv-review/` for engineering review.
+
+This applies the build-time review checklist from #1's evaluation: spec missing any of the three goes back. ATV is the test case — every escalation in the system gets the same gate.
+
+**Novel observations surfaced by reading the math:**
+
+**A. The 9-second threshold has architectural consequences not addressed in Jiang2's response.** At Qwen 3.6 14B+ as the verifier, the system cannot sustain more than ~0.11 ATV messages per second without queue-delay growing unbounded. Three implications:
+
+1. **ATV scope must be tight.** Only inter-agent analytical conclusions, not every analytical thought. The V2 Build Guide already restricts ATV scope to inter-agent analytical messages — this restriction is now a hard requirement, not a preference. Brain ingestion pipeline output, skill execution output, and Erdős solution delivery (which has format requirements built into the Gem instructions) are all excluded by tag.
+2. **Verifier model size matters more than expected.** Qwen 3.6 14B/32B at 60 tok/s → 9-second floor. A 1-3B parameter model (Qwen2.5-0.5B, SmolLM2-1.7B, fine-tuned Phi-2) at ~200-400 tok/s could push the threshold to 0.4-0.8 messages/second — 4-8x headroom. Recommendation: choose the smallest model that can reliably execute IES grammar mapping. The grammar does the heavy lifting; the model is the rendering engine. Erdős explicitly notes the FSM grammar enforcement does not require a smart model — it requires a model that can fill structural slots without escaping the grammar.
+3. **Backpressure is required when the threshold is approached.** If the swarm starts emitting analytical messages above 0.11 msg/s (Phase 1) or whatever Phase 2 threshold lands at, ATV must apply backpressure rather than falling into unbounded queue delay. Mechanism: bounded queue with rejection past `N` pending; rejections route to `infrastructure/queues/atv-overflow/` for review. This is a separate trigger/artifact/target spec.
+
+**B. The IES grammar has more design freedom than the synthesis implied.** Fixed structural-skeleton tokens are free under DFA fast-forward — they cost zero neural compute. This means the IES grammar can include more structural enforcement (longer skeletons, deeper nested sections, additional required tags) without latency penalty. The 9-second budget is consumed by analytical content tokens, not skeleton. There is real design opportunity in expanding what the IES grammar requires structurally, since each additional skeleton token is functionally free.
+
+**C. Tag-hallucination data becomes the bridge to Phase 2.** Phase 1's `tag_hallucination_suspected` log entries are a labeled dataset of cases where producer-declared tags drift. Phase 2's runtime-set classifier can be calibrated against this corpus before being deployed. The transition path is empirically grounded, not blind.
+
+**D. The anomaly queue is itself an escalation path requiring the same discipline.** Per the build-time checklist from #1: ATV anomaly queue → `infrastructure/queues/atv-review/` (artifact) is read by the Brain operator (future Mac-Studio-resident operator that will inherit the MarcusAurelius name once the rename lands; today, the Brain operator role does not yet have a permanent owner). When that role is staffed, anomaly review becomes part of its responsibility. Until then, anomalies queue passively and get reviewed during architecture-review sessions.
+
+### Chairman's Response
+
+*Pending Chairman walkthrough.*
+
+### Locked Outcomes for Jiang2's Rewrite
+
 *Pending Chairman walkthrough.*
 
 ---
