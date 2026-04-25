@@ -122,3 +122,19 @@ Done. Summary of actions taken:
 
 **Step 5 — Commit:** `d11ec1e` — 2 files changed, 22 insertions.
 ========== 2026-04-25T07:55:16Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_checkins_construct.md ==========
+Done. Summary of actions taken:
+
+**Step 1 — Memory read:** `feedback_checkins_construct.md`, type: feedback, class: regular. Topic: CT-locked "Check-ins" construct — build-wide review checkpoint list in the Build Guide.
+
+**Step 2 — Classification:**
+- Region: **Principles** ✓ (exists)
+- Area: **RewardAlignment** ✓ (exists) — correct home alongside A6 (Deferral Gate) and A7 (Deferral Discipline), the same family of CT-locked operating rules
+- Neuron: no match → **CREATE**
+
+**Step 3 — Escalation:** Not needed.
+
+**Step 4 — Neuron created:** `neurons.principles.rewardalignment.A8` — Check-ins construct, CT verbatim included, pointers wired to A7 [1], A6 [1], agents.protocols.A12 [1], A4 [2], operations.architecture.A9 [3]. A7's pointer list updated to include [1] A8.
+
+**Step 5 — Rules:** Added `A15` to MarcusAurelius.Rules.md (Section A) — governs the required shape for review recommendations, mirrors the neuron content into an actionable behavioral rule. File mirrored to local rules path.
+
+**Step 6 — Commit:** `168b8e0` — 2 files changed, 11 insertions.
