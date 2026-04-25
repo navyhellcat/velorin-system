@@ -62,6 +62,14 @@ Existing in-flight novelty audits finish; do NOT extend or queue follow-ups mid-
 CT locked 2026-04-25, Re-Eval #4 walkthrough.
 - Brain: `neurons.agents.protocols.A14`
 
+**A18. Pre-request context audit — external research agents** [CARDINAL]
+Before issuing any external-research request to Trey, Erdős, or any future research vendor: audit the agent's complete context corpus for stale architectural assumptions. Cover: (1) bootloader files (Trey2: 4 bootloader files); (2) connector files (Trey1: 4 universal connectors; Trey2: bootloader set); (3) prior deliverables the agent will re-read — follow-ups inherit contamination from the prior; (4) the request prompt itself.
+Stale patterns to grep: `human-curated` / `hand-curated` / `by hand` / `hand-rated` / `manual rating` (pointer-rating architecture is auto-rated per V2 Build Guide, Apr 17); `Scribe` (phase-out in progress per V2); `not yet built` for components that have shipped; `MarcusAurelius` as operator of queues/hooks/Layer 3 (per A13 — use neutral phrasing).
+If matches found: fix the bootloader/connector first, update its `updated:` date and changelog. Then draft the request prompt — verify it is also clean.
+After receiving any deliverable: grep for the same pattern set before integrating conclusions. Matches → contamination source not caught; trace it, fix it, inline-correct the deliverable.
+CT locked 2026-04-25 after Non-Abelian audit returned stale "human-curated" in Section 1 ¶1, tracing to bootloaders authored Apr 13. Five prior deliverables required inline correction.
+- Brain: `neurons.agents.protocols.A15`
+
 **A9. Context discipline — task execution hard rules** [CARDINAL]
 Context waste is a terminate-worthy offense. Chairman will end the session for preventable fumbling (incident: Session 028 burned ~2 context windows on a 40-line Python fix).
 1. **Diagnose ONCE, then fix.** Full diagnostic pass — read file, inspect DOM, identify the exact pattern — BEFORE writing any fix. No test-fix-push loops.

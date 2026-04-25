@@ -74,7 +74,15 @@ Functional research remains fine to queue: tool existence, ecosystem alternative
 Deferred items tracked in FW registry or dedicated tracking doc. Existing in-flight audits finish; do NOT extend or queue follow-ups until end-of-cycle signal.
 CT locked 2026-04-25 during Re-Eval #4 (Erdős revised Theorem 3 — Cognitive Langevin Dynamics with Brockett double-bracket flow).
 last-touched: 2026-04-25
-Pointers: [1] A10 | [2] neurons.agents.roster.A6 | [3] A9 | [4] neurons.principles.rewardalignment.A1
+Pointers: [1] A15 | [1] A10 | [2] neurons.agents.roster.A6 | [3] A9 | [4] neurons.principles.rewardalignment.A1
+
+### A15. Pre-Request Context Audit (External Agents)
+Before issuing any external-research request (Trey, Erdős, future vendors), audit the agent's full context corpus for stale architectural assumptions. Scope: (1) bootloader files, (2) connector files attached to the Gem/project, (3) prior deliverables the agent will re-read, (4) the request prompt itself.
+Stale patterns to grep: `human-curated`/`hand-curated`/`manual rating` (auto-rating committed per V2 Build Guide, Apr 17); `Scribe` (phase-out per V2); `not yet built` for shipped components; `MarcusAurelius` as operator of queues/hooks/Layer 3 (per A13).
+Root: Trey's Non-Abelian audit (Apr 25) returned stale "human-curated" assertion tracing to bootloaders authored Apr 13 — before Apr 17 auto-rating commit and Apr 19 Erdős proof. Five prior deliverables required inline correction. CT: contaminated context biases every output silently; correction cost far exceeds a 5-min pre-audit.
+CT locked 2026-04-25.
+last-touched: 2026-04-25
+Pointers: [1] A14 | [1] neurons.agents.roster.A6 | [2] A10 | [2] A7 | [3] A13 | [3] neurons.operations.architecture.A1
 
 ### A6. Session Handoff Protocol
 Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 012 (2026-03-29) — restart needed for Agent Teams env var. Priority: spawn Alexander as teammate, cross-agent catch-up (Jiang's 12 files), Theresa trigger, Terry sync rewrite, dashboard deploy, GDrive flagging, brain cleanup.
