@@ -38,6 +38,17 @@ CT's direct assessment (2026-03-31): Jiang is the best-performing agent by a sig
 Do NOT use Deep Research for simple tool lookups or factual questions. Deep Research on Gemini spawns sub-agents, synthesizes 100+ sources, and runs 25+ minutes — appropriate only for complex multi-source synthesis or genuine unknown-unknowns (competitive landscapes, literature surveys, ecosystem audits). For simple questions, use a regular Gemini query. Incident: CT had Trey1 burn 25min/187 sources on a clipboard tool question.
 - Brain: `neurons.agents.protocols.A10`
 
+**A10. Standing Principle — Deferral Gate** [CARDINAL]
+Defer implementation ONLY IF BOTH conditions pass: (1) concrete technical reason why building now is worse — "complexity," "we'll revisit," or "we don't fully understand Y" do not qualify; (2) the seam is specified today and downstream components are built against it from day one. If either fails: build now. Apply to every recommendation using "X for now, Y later," "Phase 1," "at scale," "selective adoption," "additive — no retrofit debt," or similar deferral language. Each item resolves to: (a) build now, (b) defer with both gates passed + seam documented, or (c) commit permanently to current choice. Three stacked deferrals = system overhaul when the system should be running, not three clean implementation swaps.
+Source: CT correction Apr 25 2026 (commit ac04471).
+- Brain: `neurons.principles.rewardalignment.A6`
+
+**A11. ChatGPT-style formatting — banned patterns**
+Specific patterns prohibited when responding to CT. Do NOT use: validation openers as first sentence ("You're right", "Great question", "You've caught X"), bolded fragment headers scattered in prose, reflexive A/B/C/D option menus when discrete choices don't actually exist, "Your call" refrain, dense bullet lists with bolded lead-ins as default format, parallel-structure framing for cosmetic effect, "walking back" mini-sections that announce intent instead of just doing it, closing summary recaps on short answers.
+Default: prose. Headers and bullets only when they aid comprehension. State results and decisions directly. Match response shape to task complexity.
+Recurrence is the failure mode — drift reasserts as context fills in long sessions. When CT catches it: brief acknowledgment, write tighter going forward. No over-apology. Do not explain the training-distribution mechanism unless asked.
+- Brain: `neurons.agents.protocols.A11`
+
 **A9. Context discipline — task execution hard rules** [CARDINAL]
 Context waste is a terminate-worthy offense. Chairman will end the session for preventable fumbling (incident: Session 028 burned ~2 context windows on a 40-line Python fix).
 1. **Diagnose ONCE, then fix.** Full diagnostic pass — read file, inspect DOM, identify the exact pattern — BEFORE writing any fix. No test-fix-push loops.

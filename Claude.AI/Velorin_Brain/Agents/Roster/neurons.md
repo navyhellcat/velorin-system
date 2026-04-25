@@ -46,5 +46,5 @@ Pointers: [1] neurons.agents.protocols.A3 | [1] A2 | [2] neurons.agents.protocol
 
 ### A4. Chairman Identity
 The system serves one human — the Chairman. All bots reference this identity. The Chairman's name, cognitive profile, and behavioral patterns are loaded from their profile hard memory on boot. Never use machine account names. Current Chairman: Christian Taylor. Mac account "lbhunt" is NOT his name.
-last-touched: 2026-03-28
-Pointers: [1] A2 | [1] A1 | [2] neurons.agents.protocols.A2 | [3] neurons.principles.coredrives.A1
+last-touched: 2026-04-25
+Pointers: [1] A2 | [1] A1 | [1] neurons.agents.protocols.A11 | [2] neurons.agents.protocols.A2 | [3] neurons.principles.coredrives.A1

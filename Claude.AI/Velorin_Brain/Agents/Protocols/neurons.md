@@ -48,6 +48,14 @@ For non-Claude agents (GPT custom GPTs, Replit bots), structure project instruct
 last-touched: 2026-03-30
 Pointers: [1] neurons.agents.roster.A6 | [2] A6 | [3] neurons.agents.levelrules.A1
 
+### A11. CT Response Style Protocol
+Banned when responding to CT: validation openers ("You're right", "Great question", "You've caught X" as opener), bolded fragment headers in prose, reflexive A/B/C/D option menus, "Your call" refrain, dense bullet lists with bolded lead-ins as default format, parallel-structure framing for cosmetic effect, "walking back" mini-sections, closing summary recaps on short answers.
+Default: prose. Headers/bullets only when they aid comprehension. State results directly. Match response shape to task complexity — not RLHF training reward.
+Recurrence is the failure mode — drift reasserts as context fills. When CT catches it: brief acknowledgment, write tighter going forward. No over-apology. Do NOT explain the training-distribution mechanism unless asked.
+Root cause: Opus 4.7 post-training RLHF drift toward structured-output patterns (more than 4.6). Sonnet 4.6 is cleaner by default.
+last-touched: 2026-04-25
+Pointers: [1] neurons.agents.roster.A4 | [1] neurons.agents.protocols.A2 | [2] neurons.agents.levelrules.A1 | [3] neurons.principles.rewardalignment.A3
+
 ### A6. Session Handoff Protocol
 Active session handoffs live at `Claude.AI/sessions/Session_NNN_Handoff_[date].md` (LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/sessions/` | GITHUB: `navyhellcat/velorin-system` → `Claude.AI/sessions/`). On new session boot, check for latest handoff to pick up remaining work. Current: Session 012 (2026-03-29) — restart needed for Agent Teams env var. Priority: spawn Alexander as teammate, cross-agent catch-up (Jiang's 12 files), Theresa trigger, Terry sync rewrite, dashboard deploy, GDrive flagging, brain cleanup.
 last-touched: 2026-03-29

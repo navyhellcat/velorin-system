@@ -67,3 +67,24 @@ Done. Summary of actions taken:
 **Also updated:** `Operations/_index.md` to reflect context discipline in the Tools area description.
 
 **Step 5 — Commit:** `baef20e` — 3 files, 19 insertions.
+========== 2026-04-25T06:04:55Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_chatgpt_style_drift.md ==========
+========== 2026-04-25T06:05:21Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_standing_principle_deferral.md ==========
+Done. Summary of actions taken:
+
+**Step 1 — Read:** `feedback_standing_principle_deferral.md` — type: feedback, class: regular (missing from frontmatter). CT's exact wording of the Standing Principle on deferral: defer ONLY IF both conditions pass (technical advantage AND seam specified). Corrects the over-permissive paraphrase "defer implementation, never defer architecture."
+
+**Step 2 — Classify:**
+- Region: **Principles** (exists)
+- Area: **RewardAlignment** (exists — A4 Tactical Myopia is the closest neighbor)
+- Neuron: No match → **CREATE** `A6. Standing Principle — Deferral Gate (CT rule)`
+
+**Step 3 — No escalation needed.**
+
+**Neuron A6 created** in `Principles/RewardAlignment/neurons.md`:
+- Deferral gate: both conditions must pass — concrete technical reason + seam specified from day one
+- If either fails: build now; three stacked deferrals = system overhaul, not three swaps
+- Wired inbound pointer from A4 (Tactical Myopia): added [1] A6 to A4's pointer list
+
+**Step 4 — Rules:** Added **A10. Standing Principle — Deferral Gate** [CARDINAL] to `Bot.MarcusAurelius/rules/MarcusAurelius.Rules.md` (GitHub copy). Local rules mirror blocked by sensitive file permission gate — noted in error_log.md.
+
+**Step 5 — Committed.**

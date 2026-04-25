@@ -12,6 +12,8 @@ Format: `TIMESTAMP | TYPE | File | Error | Action Attempted`
 2026-03-29T09:37:26Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_github_source_of_truth.md
 2026-03-29T10:38:56Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/project_session012_state.md
 
+2026-04-25T06:05:21Z | WARN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_standing_principle_deferral.md | Local rules mirror blocked (sensitive file permission gate) | Edit /Users/lbhunt/.claude/projects/-Users-lbhunt/rules/MarcusAurelius.Rules.md — GitHub copy (authoritative) was updated successfully; A10 added there.
+
 [VELORIN.EOF]
 2026-03-30T04:59:56Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_agent_teams_default.md
 2026-03-30T07:30:35Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_trey_boot_pattern.md
@@ -27,3 +29,5 @@ Format: `TIMESTAMP | TYPE | File | Error | Action Attempted`
 2026-04-14T04:06:27Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_trey1_deep_research_calibration.md
 2026-04-18T01:29:06Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_gdrive_port_method.md
 2026-04-18T02:43:00Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_context_discipline.md
+2026-04-25T06:04:55Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_chatgpt_style_drift.md
+2026-04-25T06:05:21Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_standing_principle_deferral.md
