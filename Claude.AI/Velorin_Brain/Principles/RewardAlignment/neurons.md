@@ -43,9 +43,19 @@ Without all three, the deferral is an abandoned promise. FW registries do not au
 Calibration questions ("what number should X be") are NOT deferrals — pick a principled value now from first principles; tune from data. Defer only when value genuinely depends on an unbuilt system component.
 Generalizes A12 (Layer 3 functional-trigger rule) from escalations to all deferred work. Source: CT correction Re-Eval #2, 2026-04-25.
 last-touched: 2026-04-25
-Pointers: [1] A6 | [1] A8 | [1] neurons.agents.protocols.A12 | [2] A4 | [3] neurons.operations.architecture.A9
+Pointers: [1] A6 | [1] A8 | [1] neurons.agents.protocols.A12 | [1] A9 | [2] A4 | [3] neurons.operations.architecture.A9
 
 ### A8. Check-ins — Build-Wide Review Checkpoint Construct (CT rule)
 CT-locked construct (Re-Eval #2, 2026-04-25): standalone review/calibration triggers ("review at 500 messages," "recheck at 30 days," "tune empirically after Phase X") are the **wrong shape** — rejected. All review recommendations aggregate into the **Check-ins list**: a Build Guide deliverable of vitality-important checkpoints distributed across build phases. Each Check-in specifies phase position, review subject, trigger condition, artifact location, and routing target — same trigger/artifact/routing discipline as deferrals (A7). Multiple Check-ins per phase; stake level governs cadence. Roles: Jiang identifies candidates; Jiang2 designs structure and places during Build Guide updates; CT approves schedule. FW items ≠ Check-ins: FW = one-off architectural revisit; Check-ins = recurring/scheduled build-cadence reviews. CT verbatim: *"The review trigger needs to be in a list of vitality important 'Check-ins' Spread throughout the build process. At different stages inside every phase."*
 last-touched: 2026-04-25
-Pointers: [1] A7 | [1] A6 | [1] neurons.agents.protocols.A12 | [2] A4 | [3] neurons.operations.architecture.A9
+Pointers: [1] A7 | [1] A6 | [1] neurons.agents.protocols.A12 | [2] A9 | [2] A4 | [3] neurons.operations.architecture.A9
+
+### A9. Build Guide Standing Orders — Forward References & Build-Spaces (CT rule)
+CT-locked 2026-04-25 (Re-Eval #3). Two standing orders govern every Build Guide work pass forward.
+(1) **Forward References** — wherever a current build component couples to a future component, place an inline one-line italicized note in the current section naming the future phase and future component. Applies to ALL cross-phase interactions, not only deferrals (e.g., a Stage 0 hook read by a Stage 4 pipeline carries a note in its Stage 0 section).
+(2) **Build-Space Placeholders** — every deferred item gets an actual build-space in the appropriate Build Guide phase, NOT isolated in 07_OpenQuestions.md. Placeholder must contain: seam definition (function signature, mode parameter), trigger condition (concrete event/threshold), state-handover protocol (what carries forward at mode swap), routing target (Check-ins list reference or FW entry).
+Three-part deferral discipline (extends A7 + A8): (a) FW registry entry; (b) Check-ins entry; (c) Build Guide build-space placeholder — always required, never N/A. A deferral missing any artifact is incomplete and returned at review.
+Roles: Jiang2 owns placement during Build Guide updates; Jiang surfaces candidates during architectural work.
+Source: CT verbatim in `~/.claude/projects/-Users-lbhunt/memory/feedback_buildguide_forward_references.md`
+last-touched: 2026-04-25
+Pointers: [1] A7 | [1] A8 | [1] A6 | [2] neurons.agents.protocols.A12 | [3] A4

@@ -84,6 +84,15 @@ When recommending any future review, calibration, parameter retuning, or recurri
 Source: CT correction Re-Eval #2 walkthrough, 2026-04-25.
 - Brain: `neurons.principles.rewardalignment.A8`
 
+**A16. Build Guide Standing Orders — Forward References & Build-Space Placeholders** [CARDINAL]
+Two CT-locked standing orders (Re-Eval #3, 2026-04-25) govern every Build Guide work pass:
+(1) **Forward References** — wherever a current build component will be coupled to by a future component, place an inline one-line italicized note at the end of the current section naming the future phase and future component. Applies to ALL cross-phase interactions, not only deferrals (e.g., a hook built in Stage 0 that a Stage 4 pipeline reads must carry this note in its Stage 0 section).
+(2) **Build-Space Placeholders** — every deferred item gets an actual build-space placeholder in whichever Build Guide phase is appropriate. Do NOT isolate deferrals in `07_OpenQuestions.md`. Each placeholder must contain: seam definition, trigger condition, state-handover protocol, and routing target (Check-ins entry for recurring reviews; FW entry for one-off decisions).
+Three-part deferral discipline (supersedes informal "defer and note"): (a) FW registry entry; (b) Check-ins entry; (c) Build Guide build-space — always required, never N/A. A deferral missing any artifact is incomplete and gets returned at architecture review.
+When proposing any deferral: name all three artifacts explicitly. When updating the Build Guide: audit all existing deferrals in architectural docs for missing placeholders.
+Source: CT correction Re-Eval #3, 2026-04-25.
+- Brain: `neurons.principles.rewardalignment.A9`
+
 ---
 
 ## B. Brain & Memory
