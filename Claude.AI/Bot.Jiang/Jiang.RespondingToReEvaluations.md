@@ -157,6 +157,29 @@ This applies the build-time review checklist from #1's evaluation: spec missing 
 
 **D. The anomaly queue is itself an escalation path requiring the same discipline.** Per the build-time checklist from #1: ATV anomaly queue → `infrastructure/queues/atv-review/` (artifact) is read by the Brain operator (future Mac-Studio-resident operator that will inherit the MarcusAurelius name once the rename lands; today, the Brain operator role does not yet have a permanent owner). When that role is staffed, anomaly review becomes part of its responsibility. Until then, anomalies queue passively and get reviewed during architecture-review sessions.
 
+### Implications from Trey VEGP Novelty Research — ported and read 2026-04-25
+
+Trey's deliverable (`Trey.Research.VEGPNoveltyValidation.md`, 99 image-math equations OCR'd, KaTeX-clean) returned two novelty verdicts. Both are directly relevant to Re-Eval #4, but #4's findings reach back into #2 because the IES gate is the temporal-side instantiation of the same primitive.
+
+**Verdict 1 — Cross-manifold isomorphism (PPR ↔ transformer attention): LIKELY NOT NOVEL.** Beren Millidge published the exact structural equivalence in December 2025 ("Equivalence of Personalized PageRank and Successor Representations," arXiv 2512.24722). Resolvent matrix `(I - γP)⁻¹` describes both the Successor Representation in spatial graphs and linear attention in transformers; the identification `γ = 1 - α` makes them algebraically identical. Erdős's proof is an independent re-derivation of an established mathematical reality. Velorin must cite Millidge (2025) in any peer-reviewed framing.
+
+**Verdict 2 — VEGP as unified cross-manifold gate: CONFIRMED NOVEL in applied architecture.** While the Heaviside step over accumulated stochastic measure is ubiquitous (Event-Triggered Control, Kramers' escape rate, Drift-Diffusion Model, Wald SPRT, mean-field statistical mechanics), no existing work applies *one* gate to control epistemic switching between spatial memory retrieval and temporal reasoning divergence within a unified AI operating system. The mathematics of the threshold are trivial; the systemic orchestration is the invention.
+
+**Direct implications for IES enforcement (this re-eval):**
+
+1. **The IES gate has 78+ years of supporting literature.** Trey explicitly classifies the IES probability gate `P(c_reject | R, E) > P(c_consensus | R, E)` as "an exact discrete instantiation of SPRT" (Wald 1947) and "the exact temporal analog to the VEGP" via DDM (Ratcliff 1978). The architecture rides on validated peer-reviewed math, not speculative theory.
+
+2. **Citation discipline.** When Velorin documents IES enforcement in the Build Guide and any peer-reviewed work, cite Wald's Sequential Probability Ratio Test and the Drift-Diffusion Model literature where appropriate. This is intellectual honesty — and reduces peer-review attack surface against the architecture.
+
+3. **Optional threshold calibration upgrade.** SPRT theory provides explicit formulas for setting threshold boundaries `A` and `B` from target Type I (false rejection) and Type II (drift through enforcement) error rates: `A ≈ ln(β/(1-α))`, `B ≈ ln((1-β)/α)`. The synthesis used `1.0` as the IES `θ` arbitrarily. Three options:
+   - **(a)** Keep arbitrary `θ = 1.0`, tune empirically against logged drift / over-rejection rates over time.
+   - **(b)** Derive `θ` from SPRT formulas given specified target error rates (Velorin chooses α, β; theory yields θ).
+   - **(c)** Phase-1 arbitrary → Phase-2 SPRT-derived, using the same swappable seam pattern as tag-setting authority.
+
+   **Recommendation: option (c).** Matches the Phase 1 → Phase 2 transition for tag-setting; Standing-Principle-compliant; gives empirical data first, then anchors to validated theory. Calibration data lives in the ATV anomaly queue logs from day one.
+
+4. **Re-Eval #2's architectural decisions stand unchanged.** The header-tag mechanism, tag-setting phasing, fail-secure default, lock-now decision, and functional-trigger spec are not affected by Trey's findings. The math foundation is now stronger, the citation discipline is added, and one minor threshold calibration option appears.
+
 ### Chairman's Response
 
 *Pending Chairman walkthrough.*
