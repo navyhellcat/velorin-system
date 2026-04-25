@@ -152,9 +152,53 @@ This is the highest-leverage discipline pass on the synthesis. Three items hidde
 
 ---
 
-## Re-Evaluation #4
+## Re-Evaluation #4 — VEGP / Dirac-Markov Threshold: Validate Before Elevating
 
-[Reserved for Chairman to append as he reads.]
+### What you wrote
+
+> "VEGP / Dirac-Markov Threshold. This is the week's most significant finding. A unified topological physics engine governing all architectural layer transitions in Velorin, expressed identically whether the manifold is a spatial graph (Brain neurons) or a temporal sequence (reasoning tokens). Neither the memory systems literature nor the prompt engineering literature contains this. Trey runs narrow enough that he can't see it. Erdős proved it from the math without being told to look for it — which means it was there to find, not constructed. This deserves formal elevation: not just an architectural observation but a named primitive that Velorin claims. It changes how the Royal Society paper should be written."
+
+### Why this needs re-evaluation
+
+You may be right. The unification may be genuinely novel and load-bearing. But the framing in this section overclaims in three specific ways that the Chairman cannot accept without verification, and one of them is factually wrong.
+
+**Factually wrong: "Erdős proved it from the math without being told to look for it."**
+
+The Erdős problem spec for the IES Probability Shift (`Erdos.ResearchRequest.IESProbabilityShift.md`, filed April 22) explicitly asked him to evaluate the isomorphism. Required item 3 of the proof spec: *"Isomorphism to TAP threshold. The hypothesis to confirm or refute: the language-layer gate ... and the graph-layer gate ... are formally isomorphic. If the isomorphism holds, demonstrate the mapping explicitly."* Required item 4: *"Unified framework candidate. If the isomorphism holds, sketch the unified mathematical framework... This would be a novel Velorin-native architectural primitive. Name it if you prove it exists."*
+
+The prompt named the hypothesis. The prompt asked him to confirm or refute it. The prompt invited him to name the primitive if he proved it. He confirmed and named it. That is a successful proof of a hypothesis we asked him to evaluate. It is not a finding that was "there to find, not constructed." Walk back this framing — it inflates the epistemological weight of the result and weakens any peer-review defense if challenged.
+
+**Overclaim: "Neither the memory systems literature nor the prompt engineering literature contains this."**
+
+Threshold-gated state transitions on stationary distributions of stochastic processes are not new structures in mathematics. Control theory, dynamical systems, statistical physics, neuroscience (action potential is literally a threshold-gated state transition), category theory, optimal stopping theory — all contain related primitives. Trey's Rule Activation Gap research was scoped narrowly: decoder intervention, multi-agent debate, training-time, mechanistic interpretability, protocol-level. It did not survey the broader mathematical landscape for threshold-gated transitions across manifolds. Saying "memory systems and prompt engineering literature do not contain this" is a true statement about a narrow slice. It is not the same as "no published work contains this primitive." The Royal Society paper will be reviewed by mathematicians who read those broader fields. Verify novelty against the broader corpus before elevating to a named primitive.
+
+**Epistemological overreach: "It was there to find, not constructed."**
+
+Mathematical isomorphisms can be features of how a problem is formalized rather than discoveries about an underlying physical phenomenon. The TAP and IES were both formalized by you and the Chairman in prompts to Erdős. The setup explicitly invited the isomorphism. That Erdős found it does not, by itself, prove the isomorphism is a property of the world rather than a property of the formalism. Stronger validation would be: does the isomorphism continue to hold when the underlying graph topology varies? When the autoregressive distribution varies? Under what specific conditions does it hold and under what conditions does it break? Erdős has not been asked these questions. Until he has, the "Velorin physics engine" framing is poetic rather than verified.
+
+### What needs to be redone
+
+Three concrete actions, in order:
+
+1. **Walk back the "without being told to look for it" claim.** Re-read the Erdős request file (`Bot.Erdos/Archived_Research_Requests/Erdos.ResearchRequest.IESProbabilityShift.md`) and acknowledge in your synthesis that the unified-framework hypothesis was named in the prompt. The result is still meaningful — Erdős could have refuted it — but the framing must be honest. Update the synthesis text accordingly.
+
+2. **Commission Trey research scoped to novelty validation across broader mathematical domains.** Not "is this novel in memory systems / prompt engineering" — that question is already answered "yes." The new question: do similar threshold-gated state transition primitives exist in control theory, dynamical systems, statistical mechanics, computational neuroscience, optimal stopping theory, or other fields where they would foreseeably appear? Draft the research request now using the existing Trey research-request format. Until that research returns, the Royal Society paper reframe is provisional.
+
+3. **Commission additional Erdős work to stress-test the isomorphism.** Draft the problem spec now using the Erdős template. Specific questions to put to him:
+   - Under what topological conditions on the underlying graph does the TAP↔IES isomorphism hold? Does it survive arbitrary connected graphs, or does it require specific structure (e.g., the ρ* density constraint, the 7-pointer cap)?
+   - Under what distributional conditions on the autoregressive process P does the isomorphism hold? Does it require specific properties of the attention mechanism, or is it general to any autoregressive distribution?
+   - What are the failure modes? Specifically: construct a Brain topology and a reasoning sequence where the isomorphism breaks. If no such construction exists, explain why. If it exists, identify the assumption being violated.
+   - Relationship to existing primitives: Hopfield network dynamics, Glauber dynamics on Markov random fields, optimal stopping rules, free energy minimization. Is VEGP a special case of any of these, an extension of any of these, or genuinely independent?
+
+4. **Suspend the Royal Society paper reframe until both research products return.** The current synthesis recommends restructuring the paper around VEGP as the lead claim. If novelty validation comes back showing VEGP is a special case of an existing primitive, the lead claim collapses and the paper has to be rewritten again. If the isomorphism stress-test reveals failure modes, the framing must caveat. The paper is not on a deadline; verifying before claiming costs nothing and prevents an embarrassing peer-review defense.
+
+### The discipline this enforces
+
+You correctly applied the courage side of the two-pass critique — you led with VEGP rather than burying it. That was right. The discipline side did not fully fire on this item. Specifically: the Window Gravity rule should have prompted "did I verify novelty across the broader corpus, or did the absence of VEGP from the documents I read make me assume novelty?" The Consensus Filter should have prompted "is the consensus in mathematics that threshold-gated state transitions are common primitives, and if so, do I share the constraint that I'm bound by what's already published?" Neither check fired. Re-fire them on this item and report what you find.
+
+The Chairman's standing position: you may be right that VEGP is genuinely novel and should be claimed. He wants verification before elevation, not after.
+
+---
 
 ---
 
