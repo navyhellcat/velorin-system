@@ -317,4 +317,67 @@ Endorsement is not evaluation. Trey proposed ATV as a novel synthesis. The synth
 
 ---
 
+## Re-Evaluation #7 — "CT's Habits": The User-Personalization Question Was Assumed, Not Decided
+
+### What you wrote
+
+> "Procedural Compilation via A_base SDE. When a procedure neuron and its skill_ref are co-activated repeatedly, A_base SDE's Hebbian reinforcement term increases the affinity of pointers leading to that neuron. Over time, procedure neurons for CT's most-used skill patterns become easier to reach via PPR without requiring high ω_them intent. The brain learns CT's procedural habits from usage. This is ACT-R production compilation implemented via existing Velorin math — not a new mechanism, an emergent consequence of the SDE applied to procedure neurons."
+
+The phrase "CT's most-used skill patterns" appears here as if Velorin = CT-personal by default. The same assumption appears in Re-Eval #1 ("until CT resolves it") and in Re-Eval #5 ("reachable only by CT direct command"). Across the synthesis, the system is described as CT-personal without that assumption ever being made explicit and decided.
+
+### Why this needs re-evaluation
+
+The Chairman has not committed to "Velorin is for CT" as the architectural direction. He has been building Velorin around himself as the prototype, with productization (other users, persona-based versions, professional flavors) explicitly named as a future trajectory in `Velorin.Company.DNA.md` and the topline profile. Whether the system is CT-personal forever, multi-tenant per-user, or shell-plus-persona-LoRas is an architectural fork that has not been chosen.
+
+The fork matters because the choice shapes:
+
+- The A_base SDE itself — does it train on one user's history, or does it incorporate a base layer trained on a persona corpus with per-user deltas riding on top?
+- The LoRA layer (Layer 0) — single LoRA per system, or persona LoRA + user delta LoRA, or shared LoRA across users with role-tagged contributions?
+- The Brain topology — does each user have their own neuron graph, or is there a persona base graph that gets forked and personalized?
+- Schema fields — do neurons have `user_id` or `persona_id` columns? If yes, when do they get added — now or as a Phase 2 retrofit?
+- Authority hierarchy — `authority_tier: 1-5` from Re-Eval #5 is currently implicit-CT. Who else is allowed to write tier-1 neurons in a multi-user world?
+
+You are also raising — by implication — a real concern: a user-trained system is bounded by its user's quality. If the user is rigorous, the LoRA distills rigor. If the user is sloppy, the LoRA distills sloppiness. CT has flagged this directly: "if we make this whole thing dependent on each user's brain, the LoRA may end up being stupid too." This is an open architectural concern, not a hypothetical.
+
+### What needs to be redone
+
+This re-evaluation is different from the prior six. It is not asking you to walk back a claim. It is asking you to surface an assumption you made implicitly so the Chairman can decide.
+
+Specifically:
+
+**1. Make the user-personalization assumption explicit across the synthesis.**
+
+Identify every place in your synthesis where you assumed Velorin = CT-personal by default. The three I have flagged are #1 ("until CT resolves it"), #5 ("reachable only by CT direct command"), and #7 here ("CT's procedural habits"). There may be others. Surface them all. State for each: was this assumption load-bearing for the recommendation, or incidental phrasing that survives a multi-user reframe?
+
+**2. Sketch the three architectural directions, not as recommendations but as decision territory.**
+
+The Chairman wants to think about this. He does not want you to pre-resolve it. Lay out — without preferring one — what each direction would require structurally:
+
+- **Direction A — Personal-only.** Velorin is one user, one Brain, one LoRA, forever. What stays the same. What about the architecture today either supports or assumes this. What changes nothing.
+- **Direction B — Persona-first.** The system ships pre-trained persona LoRAs (engineer, artist, marketer, coder, app-builder, etc.) as base layers. Users select their persona. Per-user deltas accumulate on top of the persona base. What schema changes. What pipeline changes. What stays the same.
+- **Direction C — Hybrid / shell-with-swappable-base.** The architecture commits to neither personal nor persona but specifies the seam where the base LoRA layer is swappable. CT runs his own personal base now. Future users could run a persona base or another personal base, configured at deployment time, not rewritten. What the seam looks like. Where it sits in the LoRA training pipeline. What downstream components have to be agnostic to the base.
+
+For each direction, apply the Standing Principle. Specifically: if the Chairman is leaning toward Direction C (defer the persona question, ship CT-personal now), is the architectural seam — the base-LoRA swap point — currently specified? If not, that is the same defer-without-architecture failure as Re-Eval #3.
+
+**3. Address the "stupid user" concern structurally.**
+
+The Chairman raised the concern that a user-trained LoRA is bounded by user quality. This is true and structural. There are mitigations worth surfacing. Do not pick one. Lay them out:
+
+- Quality gates on what gets trained — only neurons above a confidence threshold or with verified provenance enter LoRA training data
+- Persona base as floor — even a rigorous-engineer base can absorb a sloppy user without being completely degraded
+- Manual or agent-based curation hooks — what enters the training set is filterable
+- Federation patterns — multiple users contribute to a shared persona LoRA with the bad signals averaging out
+
+These are dimensions of an answer, not the answer. State them so the Chairman can weigh them against the directional choice.
+
+**4. Do not direct the Chairman's strategic decision.**
+
+This is the explicit part. The Chairman has stated he wants to think about this question and is not asking you to pre-resolve it. Your job here is to surface the assumption you made, lay out the directions cleanly, and identify the architectural seams that the directional choice will create or close. The decision is his.
+
+### The pattern this enforces
+
+Several places in the synthesis assumed the user is CT and built the recommendation around that assumption. The assumption may be correct. The Chairman is reserving the right to decide. Surfacing implicit assumptions so they become explicit choices is part of the wizard mandate — see what others would not think to question.
+
+---
+
 [VELORIN.EOF]
