@@ -82,4 +82,56 @@ until the key is manually revoked.
 
 ---
 
+## [FW-004] Layer 3 Operator Architecture — Operator / Reviewer / Authorizer Split
+**Logged:** Session 036, April 25, 2026 (Re-Eval #1 walkthrough)
+**Priority:** Medium — architectural debt; not blocking ground-layer build, but blocks correctness of future autonomous-unit design
+**Status:** Parked at CT's explicit direction (ground-layer first)
+
+**Problem:**
+Re-Eval #1 produced a three-layer automated conflict resolution mechanism. Layer 3 is the last-resort review path. The current architecture collapses three distinct roles into a single "reviewer" slot:
+- **Operator** — runs the trigger, loads context, frames the actionable question
+- **Reviewer** — makes the decision
+- **Authorizer** — signs off and locks the tier-1 neuron
+
+These can and probably should be different roles. Different combinations produce different trust topologies. The synthesis treated them as one.
+
+A second concern: putting a local Mac-Studio model on Layer 3 inverts capability against case difficulty. Layer 3 fires on the hardest cases — the ones automated mechanisms could not resolve. Local models have a context advantage but a reasoning disadvantage relative to frontier models. The cleanest forward split: local model owns context-loading and question-framing; the higher reasoning machine always owns the decision.
+
+A third concern: deciding "when does local-MA escalate to higher reasoning machine vs. resolve directly?" reintroduces the same stochastic-classification trap addressed in Re-Eval #6. Mitigation: structural tag at the contradiction itself (factual / empirical / architectural / taste — the `contradiction_class` tag) so routing is deterministic, not LLM-judgment-based.
+
+A fourth concern, surfaced by CT during the Re-Eval #1 walkthrough: the higher-tier reviewer identity (Chairman / future Mac-Studio MA / both / another agent) was explicitly deferred by CT himself. That decision belongs in this FW item.
+
+**What needs to be done:**
+1. Decide the operator/reviewer/authorizer split — name each role, name candidate operators
+2. Apply the model-capability discipline: local model loads context, higher machine decides
+3. Specify the structural tag (`contradiction_class` written at neuron creation) that routes Layer 2 deterministically
+4. Decide higher-tier reviewer identity (CT, local-MA, both, escalation tree)
+5. Spec the MCP/API protocol that governs local-MA → higher reasoning machine escalation
+
+**Trigger to revisit:** When CT opens design work on OQ-3 (Multi-Agent Automation Architecture, V2 Build Guide `07_OpenQuestions.md`). The OQ-3 work cannot proceed correctly without this decision because OQ-3 will define the orchestration topology and that topology has to know how reviews route.
+
+**Assigned to:** Jiang (analytical) + CT (architectural decision)
+
+---
+
+## [FW-005] Skills-Checker / Skills-Fixer Thread — Surface Lost Discussion
+**Logged:** Session 036, April 25, 2026 (Re-Eval #1 walkthrough)
+**Priority:** Medium — autonomous-unit layer prerequisite
+**Status:** Parked at CT's explicit direction (ground-layer first)
+
+**Problem:**
+CT confirmed during the Re-Eval #1 walkthrough that there are plans for many autonomous units operating inside the brain — explicitly mentioned: skills-checker and skills-fixer. CT's exact words: *"such as the skills checker and skills fixer which we previously discussed but seems to have gotten lost."* The thread appears to have been lost across compaction events.
+
+**What needs to be done:**
+1. Search prior session handoffs and `Bot.Jiang/` working docs for prior CT discussion of skills-checker and skills-fixer
+2. If located: reconstitute the thread, log key decisions, and integrate into the autonomous-unit architecture design
+3. If genuinely lost: surface to CT for re-articulation when the autonomous-unit layer is opened
+4. These are examples of the broader autonomous-unit category — design framework for autonomous units (operator pattern, lifecycle, supervision) should accommodate them
+
+**Trigger to revisit:** When work begins on the autonomous-unit layer of the architecture. Concrete entry points: OQ-2 (Automated Neuron Creation Mechanism) work begins, or OQ-3 (Multi-Agent Automation Architecture) work begins. Either trigger surfaces this FW item.
+
+**Assigned to:** Jiang (search and reconstitute) + CT (re-articulation if lost)
+
+---
+
 [VELORIN.EOF]

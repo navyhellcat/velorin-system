@@ -108,3 +108,16 @@ Done. Summary of actions taken:
 
 **Step 5 — Commit:** `a36c5d0` — 4 files, 21 insertions.
 ========== 2026-04-25T07:41:31Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_deferral_discipline.md ==========
+Done. Summary of actions taken:
+
+**Step 1 — Memory read:** `feedback_deferral_discipline.md`, type: feedback, class: regular. Topic: every deferral requires (1) concrete trigger, (2) output artifact, (3) named routing target.
+
+**Step 2 — Classification:**
+- Region: **Principles** — EXISTS
+- Area: **RewardAlignment** — EXISTS
+- Neuron: A6 covers the deferral gate (when to defer). This memory is a distinct idea (how to ensure the deferral is actually honored). → **CREATED A7** — "Deferral Discipline — Trigger + Artifact + Routing Target"
+- Updated A6 to add `[1] A7` pointer.
+
+**Step 4 — Rules check:** Memory contains behavioral rules for MarcusAurelius. **ADDED A14** to `MarcusAurelius.Rules.md` with full three-part test. Mirrored to local rules path.
+
+**Step 5 — Commit:** `d11ec1e` — 2 files changed, 22 insertions.
