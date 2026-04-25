@@ -51,12 +51,18 @@ Archive this FW item. KVM build is now queued as an engineering task.
 
 ## [FW-003] Migrate GDrive MCP Auth to Service Account (Permanent — Never Expires)
 **Logged:** Session 027, April 17, 2026
-**Priority:** Medium — operational reliability
+**Priority:** HIGH — operational reliability (escalated April 24, 2026 after recurrence)
+**Re-auth occurrences (manual flows required):** Session 027 (Apr 17), Session 035 (Apr 24)
 
 **Problem:**
 Current GDrive MCP uses OAuth with a user refresh token. Google revokes these after 7 days
 of non-use for apps in Testing mode with sensitive scopes (Drive). This caused a full auth
 failure this session requiring manual re-auth flow.
+
+**Operational impact:** Each recurrence blocks all GDrive porting workflow until the
+Chairman runs `node auth.js` interactively and completes a browser OAuth dance.
+Repeated manual re-auths are a sign this fix has slipped too long. Ship the service
+account migration before the next 7-day window expires.
 
 **Solution:**
 Migrate to a Google Service Account with a JSON key file. Service account credentials
