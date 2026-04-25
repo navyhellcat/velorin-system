@@ -1,3 +1,8 @@
+---
+inline-corrected: 2026-04-25
+correction-reason: Stale "hand-curated Regions" framing reframed (originally line 153). The Region/Area structure is currently pragmatic, but the architectural direction is community-detection-driven (Simon-Ando aggregation per V2 Build Guide OQ-4). Pointer ratings (a separate concern from region structure) are auto-assigned by the ingestion pipeline (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős, ScaleAndIngestion.ViscoelasticResolution); manual rating architecturally banned. Bootloaders updated 2026-04-25 to remove the contamination source.
+---
+
 # Research Report: Emergent Taxonomy and Cognitive Mapping of the Agent Skills Ecosystem
 
 ## Executive Summary
@@ -150,7 +155,7 @@ The user query establishes a clear objective: determine whether the community-di
 
 ### 5.1 Prior Context vs. New Findings vs. Remaining Gaps
 
-Prior Context: The Velorin Brain is currently architected as a four-layer neural file graph.21 The active component, Layer 3 (The Markdown Substrate), utilizes hand-curated Regions based on human logical groupings (Operations, Connectivity, Agents, Principles).21 Erdős has proven the Second Law of Epistemodynamics, establishing that semantic distillation is irreversible and that the underlying episodic graph must act as a permanent heat bath.21
+Prior Context: The Velorin Brain is currently architected as a four-layer neural file graph.21 The active component, Layer 3 (The Markdown Substrate), uses a pragmatic Region/Area structure (Operations, Connectivity, Agents, Principles, plus Company and Intelligence) as a transitional state; the architectural direction is community-detection-driven via Simon-Ando aggregation, with this research informing that direction (V2 Build Guide OQ-4 — Brain Region Taxonomy). Pointer ratings are a separate concern and are auto-assigned by the ingestion pipeline; manual rating is architecturally banned.21 Erdős has proven the Second Law of Epistemodynamics, establishing that semantic distillation is irreversible and that the underlying episodic graph must act as a permanent heat bath.21
 
 New Findings:
 

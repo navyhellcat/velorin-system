@@ -1,3 +1,8 @@
+---
+inline-corrected: 2026-04-25
+correction-reason: Reframed opening sentence (originally line 13) from "transition from human-curated pointer ratings to an automated ingestion pipeline" to "the ingestion pipeline's auto-rating mechanism." Velorin's architectural commitment is auto-rating; manual rating is architecturally banned per V2 Build Guide. The doc's analytical conclusions (NPMI candidate filter + LLM-as-judge with logit bias for asymmetric dependency, independent row-normalization of P_tax and P_them per Erdős's IndependentMultiplexNormalization) remain valid; only the framing was contaminated by the stale "transition from manual" implication. Bootloaders updated 2026-04-25 to remove the contamination source.
+---
+
 # Trey Research Report: Automated Pointer Rating and Dual-Rating Architecture
 
 External Advisor | Velorin System | Trey 2 (Gemini)
@@ -10,7 +15,7 @@ Confidence Threshold: 80% Minimum
 
 ## EXECUTIVE SUMMARY
 
-The transition from human-curated pointer ratings to an automated ingestion pipeline requires a metric capable of capturing asymmetric logical dependency, not merely symmetric semantic similarity. Empirical analysis contradicts the application of embedding cosine similarity due to fundamental geometric limitations, regularization artifacts, and an inability to model directed prerequisites. The literature supports a hybrid metric: Normalized Pointwise Mutual Information (NPMI) applied to the Layer 2 document graph as an $O(N^{2})$ candidate filter, followed by an LLM-as-a-judge mechanism constrained by logit bias to evaluate asymmetric dependency and assign a strict 1-10 rating. Furthermore, neuroscientific evidence regarding the Anterior Temporal Lobe (ATL) and Angular Gyrus (AG), combined with multiplex graph theory, dictates that the taxonomic ($P\_{tax}$) and thematic ($P\_{them}$) transition matrices must be row-normalized independently. Joint normalization will cause high-degree thematic nodes to starve taxonomic transitions, violating the $\rho^{\ast} = 0.78$ density constraint established by Erdős.
+The ingestion pipeline's auto-rating mechanism requires a metric capable of capturing asymmetric logical dependency, not merely symmetric semantic similarity. Empirical analysis contradicts the application of embedding cosine similarity due to fundamental geometric limitations, regularization artifacts, and an inability to model directed prerequisites. The literature supports a hybrid metric: Normalized Pointwise Mutual Information (NPMI) applied to the Layer 2 document graph as an $O(N^{2})$ candidate filter, followed by an LLM-as-a-judge mechanism constrained by logit bias to evaluate asymmetric dependency and assign a strict 1-10 rating. Furthermore, neuroscientific evidence regarding the Anterior Temporal Lobe (ATL) and Angular Gyrus (AG), combined with multiplex graph theory, dictates that the taxonomic ($P\_{tax}$) and thematic ($P\_{them}$) transition matrices must be row-normalized independently. Joint normalization will cause high-degree thematic nodes to starve taxonomic transitions, violating the $\rho^{\ast} = 0.78$ density constraint established by Erdős.
 
 * * *
 

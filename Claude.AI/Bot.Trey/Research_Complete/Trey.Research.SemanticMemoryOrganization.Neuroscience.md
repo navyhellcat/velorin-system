@@ -1,3 +1,8 @@
+---
+inline-corrected: 2026-04-25
+correction-reason: Stale "human-curated pointers" framing reframed (originally line 97). Pointer ratings are auto-assigned by the ingestion pipeline (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős, ScaleAndIngestion.ViscoelasticResolution); manual rating architecturally banned per V2 Build Guide. The architectural mandate of "absolute decoupling" between markdown record (Layer 3) and continuous embeddings (Layers 1, 0) remains valid; the contamination was in the rating-origin description, not the decoupling argument. Bootloaders updated 2026-04-25.
+---
+
 # Neuroscience of Semantic Memory Organization: Architectural Implications for the Velorin Brain
 
 ## Executive Summary
@@ -94,7 +99,7 @@ In this mapping, the Layer 3 markdown files (atomic neurons limited to 15 lines)
 
 The planned Layer 1 Qdrant semantic index and Layer 0 LoRa fine-tuning layer 1 act as the amodal ATL hub. The base LLM's continuous attention space, physically warped by the LoRa weights, distills the raw markdown "spokes" into pure conceptual relationships, completely independent of the original text.
 
-The strict architectural mandate derived from this biological model is absolute decoupling. The markdown files (Layer 3) must never attempt to store exhaustive semantic definitions, structural metadata, or hierarchical taxonomies within their text. Attempting to do so conflates the spoke with the hub. The markdown must only record the raw episodic claim and explicit human-curated pointers. The continuous embeddings and LoRa weights (Layers 1 and 0) must autonomously compute the "hub" integration. If the markdown files are burdened with extensive categorization tags, the system will mimic the pathology of Semantic Dementia—relying on brittle, isolated individual features rather than achieving fluid conceptual integration across the entire graph.
+The strict architectural mandate derived from this biological model is absolute decoupling. The markdown files (Layer 3) must never attempt to store exhaustive semantic definitions, structural metadata, or hierarchical taxonomies within their text. Attempting to do so conflates the spoke with the hub. The markdown must only record the raw episodic claim and explicit pointers (auto-rated by the ingestion pipeline; manual rating architecturally banned). The continuous embeddings and LoRa weights (Layers 1 and 0) must autonomously compute the "hub" integration. If the markdown files are burdened with extensive categorization tags, the system will mimic the pathology of Semantic Dementia—relying on brittle, isolated individual features rather than achieving fluid conceptual integration across the entire graph.
 
 ## 4\. Functional Cleaving: Abstract/Concrete and Social/Physical Domains
 

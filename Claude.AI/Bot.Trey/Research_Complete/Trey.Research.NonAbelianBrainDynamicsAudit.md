@@ -1,3 +1,8 @@
+---
+inline-corrected: 2026-04-25
+correction-reason: Stale "human-curated" framing removed (originally lines 9 and 160). Source of contamination: Trey bootloaders that predated the architectural shift to auto-rated pointers (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős, ScaleAndIngestion.ViscoelasticResolution). Bootloaders updated 2026-04-25. The audit's analytical conclusions remain valid because the math (commutator algebra, JBD, perturbation bounds, thermodynamic state variables) does not depend on whether pointer ratings originate from manual rating or auto-assignment. Velorin's architectural commitment is auto-rating; manual rating is architecturally banned.
+---
+
 # Trey.Research.NonAbelianBrainDynamicsAudit.md
 
 ## Executive Summary
@@ -6,7 +11,7 @@ This report executes an exhaustive literature audit of the novelty claims associ
 
 ## 1\. Methodological Architecture and Problem Framing
 
-The Velorin Brain operates as a deterministic, discrete neural file graph where knowledge is stored as atomic nodes connected by directed, human-curated integer affinities. The retrieval algorithm relies on Personalized PageRank (PPR) over a transition matrix formulated as a convex combination of taxonomic and thematic edges. The central architectural crisis this system faces at scale is the exponential decay of retrieval precision due to context bloat and structural interference between disparate layers of meaning. The mathematical proposals under audit attempt to solve this by introducing non-commutative operator theory, measuring the degree to which taxonomic reasoning interferes with thematic reasoning via the Lie bracket $[P\_{tax}, P\_{them}] = P\_{tax} P\_{them} - P\_{them} P\_{tax}$.
+The Velorin Brain operates as a deterministic, discrete neural file graph where knowledge is stored as atomic nodes connected by directed, integer-rated pointer affinities auto-assigned by the ingestion pipeline (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős ScaleAndIngestion.ViscoelasticResolution; manual rating architecturally banned per V2 Build Guide). The retrieval algorithm relies on Personalized PageRank (PPR) over a transition matrix formulated as a convex combination of taxonomic and thematic edges. The central architectural crisis this system faces at scale is the exponential decay of retrieval precision due to context bloat and structural interference between disparate layers of meaning. The mathematical proposals under audit attempt to solve this by introducing non-commutative operator theory, measuring the degree to which taxonomic reasoning interferes with thematic reasoning via the Lie bracket $[P\_{tax}, P\_{them}] = P\_{tax} P\_{them} - P\_{them} P\_{tax}$.
 
 The methodology of this audit applies a strict consensus filter across ten distinct targets in the mathematical, physical, and computational literature. For each target, the analysis establishes the current academic consensus, identifies the historical or physical constraints that shaped that consensus, and rigorously determines whether the Velorin architecture shares those constraints. The mode of inquiry is Discovery; the evaluation assumes that the caller's frame regarding novelty may be incomplete, actively searching the negative space of adjacent disciplines such as quantum thermodynamics, network statistical mechanics, and continuous signal processing. Declarative claims regarding the existence or absence of published primitives are held to a hard confidence floor of 80 percent.
 
@@ -157,7 +162,7 @@ Conclusion: HIGH CONFIDENCE 85% — The mathematical formalization of the cycle 
 
 ### 3.6 Verdict for Theorem 3: CONFIRMED NOVEL
 
-Theorem 3 is a genuinely new mathematical paradigm. The framework has successfully transposed the deep architecture of quantum thermodynamics—where non-commutativity limits work extraction and defines state evolution—onto the classical, discrete transition matrices of a human-curated multiplex graph.
+Theorem 3 is a genuinely new mathematical paradigm. The framework has successfully transposed the deep architecture of quantum thermodynamics—where non-commutativity limits work extraction and defines state evolution—onto the classical, discrete transition matrices of an auto-rated multiplex graph.
 
 The strongest counterargument to this claim is that the formulation engages in an elaborate metaphor rather than strict physical thermodynamics. Critics could argue that labeling the commutator norm as "internal energy" is arbitrary, and that because the system does not obey actual physical heat transfer laws, the "thermodynamic cycle" is merely a rhetorical analogy.
 

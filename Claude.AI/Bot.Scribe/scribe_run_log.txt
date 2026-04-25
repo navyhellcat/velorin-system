@@ -170,3 +170,4 @@ Done. Summary of actions taken:
 **Step 4 — Rules:** Memory contains a behavioral rule for MarcusAurelius. Added **A17 "Trey Novelty Audit Deferral" [CARDINAL]** to section A of `MarcusAurelius.Rules.md`. Mirrored to local rules copy via `cp`.
 
 **Step 5 — Commit:** `d3b6671` — 2 files, 19 insertions.
+========== 2026-04-25T19:15:21Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_audit_external_agent_context.md ==========

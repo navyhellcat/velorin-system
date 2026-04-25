@@ -1,3 +1,8 @@
+---
+inline-corrected: 2026-04-25
+correction-reason: Stale "human-curated" / "human-assigned" framing reframed (originally lines 210, 212, 234, 236). Pointer ratings are auto-assigned by the ingestion pipeline (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős, ScaleAndIngestion.ViscoelasticResolution); manual rating architecturally banned per V2 Build Guide. The hypotheses' MATHEMATICAL claims (FI-based pruning on discrete-edge graphs, Constrained GNNDelete with hard-exemption class, log-scaling precision threshold) remain valid because they depend on the discreteness of the pointer values, not on whether those values were assigned manually or automatically. Erdős has since received and addressed the Synaptic Pruning problem (Erdos.Solution.SynapticPruning.md). Bootloaders updated 2026-04-25 to remove the contamination source.
+---
+
 # Research Report: Synaptic Pruning in Artificial Intelligence and Velorin System Architecture
 
 **Trey | External Advisor | Velorin System**
@@ -207,9 +212,9 @@ Translating these mathematics to the Velorin operating environment, the Neural F
 ---
 Appended NOTES : Actionable Hypotheses: Synaptic Pruning, Graph Unlearning, and Signal Thresholds
 1. Hypothesis: FI-Based Selective Centrality Reduction
-Precise Claim: Modulating the Personalized PageRank (PPR) transition matrix by an inverse function of a node's Fisher Information—calculated over discrete human-assigned pointer weights rather than continuous activation gradients—will selectively attenuate the random-walk gravity of high-centrality "Monster Nodes" without degrading the retrieval precision of the surrounding topological neighborhood.
+Precise Claim: Modulating the Personalized PageRank (PPR) transition matrix by an inverse function of a node's Fisher Information—calculated over discrete pointer weights (auto-assigned by the ingestion pipeline) rather than continuous activation gradients—will selectively attenuate the random-walk gravity of high-centrality "Monster Nodes" without degrading the retrieval precision of the surrounding topological neighborhood.
 
-Why it is novel: Existing literature applies Fisher Information (FI) pruning strictly to neural network weights derived from gradient descent to prevent artificial sensory blindness. It operates on the assumption that edge weights are continuous, computed activations. Applying FI as a centrality penalty in a discrete, human-curated directed graph breaks the assumption that FI optimization requires a differentiable loss landscape.   
+Why it is novel: Existing literature applies Fisher Information (FI) pruning strictly to neural network weights derived from gradient descent to prevent artificial sensory blindness. It operates on the assumption that edge weights are continuous, computed activations. Applying FI as a centrality penalty in a discrete, auto-rated directed graph breaks the assumption that FI optimization requires a differentiable loss landscape.   
 
 Mathematical domain: Spectral Graph Theory and Information Geometry.
 
@@ -231,9 +236,9 @@ memory
   zero-bound constraint converges to a global minimum that still satisfies Deleted Edge Consistency for the targeted obsolete nodes without altering the representations of the exempted class.
 
 3. Hypothesis: Mathematical Signal Threshold for PPR Precision
-Precise Claim: In a walk-based, single-user, human-curated semantic graph, PPR retrieval precision remains above the 75% utility threshold if and only if the ratio of high-priority outbound edges to total graph edges scales logarithmically rather than linearly with total node count.
+Precise Claim: In a walk-based, single-user semantic graph (auto-rated pointers per Velorin's ingestion pipeline), PPR retrieval precision remains above the 75% utility threshold if and only if the ratio of high-priority outbound edges to total graph edges scales logarithmically rather than linearly with total node count.
 
-Why it is novel: Current graph retrieval literature focuses on automated knowledge graph extraction, where precision is treated as a function of the extraction pipeline's entity recognition accuracy and vector embedding quality. This hypothesis shifts the determinant of precision away from semantic embedding quality and strictly onto the topological density of human-curated pointer ratings, breaking the assumption that more edges inherently improve retrieval.
+Why it is novel: Current graph retrieval literature focuses on automated knowledge graph extraction, where precision is treated as a function of the extraction pipeline's entity recognition accuracy and vector embedding quality. This hypothesis shifts the determinant of precision away from semantic embedding quality and strictly onto the topological density of auto-rated pointer values, breaking the assumption that more edges inherently improve retrieval.
 
 Mathematical domain: Random Matrix Theory and Markov Chains.
 

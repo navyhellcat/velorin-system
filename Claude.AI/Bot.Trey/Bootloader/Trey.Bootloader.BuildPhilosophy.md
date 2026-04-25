@@ -2,7 +2,8 @@
 destination: Claude.AI/Bot.Trey/Bootloader/
 file: Trey.Bootloader.BuildPhilosophy.md
 type: bootloader
-updated: April 13, 2026
+updated: April 25, 2026
+changelog: 2026-04-25 — removed stale "hand-curated graph" and "human-guided retrieval" assertions (lines 52, 58 in prior version). Pointer ratings auto-assigned by ingestion pipeline per architectural commitment; manual rating banned. Retrieval target is algorithmic PPR over Qdrant-indexed Brain (V2 Build Guide Stage 1).
 ---
 
 # Trey Bootloader — Build Philosophy and Open Questions
@@ -49,13 +50,20 @@ while the correct architecture is derived.
   also not mathematically derived from first principles — it is an engineering judgment
   call that may evolve as the architecture matures.
 
-- **Hand-curated graph:** The Brain is currently built by hand. The ingestion pipeline
-  that automates neuron creation has not been built. The correct ingestion design depends
-  on the pruning algorithm, which is still being researched.
+- **Ingestion pipeline:** The architectural commitment is auto-rated pointers via
+  Holographic Cold-Start (geometric projection residual against the global embedding)
+  plus Hebbian SDE Affinity Clutch dynamics (Erdős, ScaleAndIngestion.ViscoelasticResolution).
+  Manual rating is architecturally banned. Pipeline implementation status: partially
+  resolved per V2 Build Guide OQ-1 — sufficient clarity to begin Phase 1 build (text
+  documents only). Initial graph state during build-up may include neurons created
+  before the pipeline is fully operational; the architecture treats this as a
+  transitional state, not the long-term operating mode.
 
 - **Claude as retrieval interface:** Currently, Jiang retrieves from the Brain by reading
-  files directly. The Qdrant MCP layer (Layer 1) is planned but not built. Current
-  retrieval is human-guided, not algorithm-guided.
+  files directly. The Qdrant MCP layer (Layer 1) is planned but not built. The
+  architectural target is algorithmic PPR retrieval over the Qdrant-indexed Brain
+  (V2 Build Guide Stage 1). Direct file access is the transitional state during build-up,
+  not the long-term operating mode.
 
 ---
 

@@ -2,7 +2,8 @@
 destination: Claude.AI/Bot.Trey/Bootloader/
 file: Trey.Bootloader.VelorinBrain.md
 type: bootloader
-updated: April 13, 2026
+updated: April 25, 2026
+changelog: 2026-04-25 — removed stale "hand-curated" assertions (lines 103, 132 in prior version); pointer ratings are auto-assigned by the ingestion pipeline per architectural commitment, not hand-rated. Region/Area structure is currently pragmatic, with the architectural direction being community-detection (Simon-Ando aggregation). Ingestion pipeline status: partially resolved per V2 Build Guide OQ-1, ready for Phase 1 build. "Human-readable" descriptions of the markdown file format are accurate and preserved.
 ---
 
 # Trey Bootloader — The Velorin Brain Architecture
@@ -100,7 +101,7 @@ is architecturally wrong regardless of its mathematical properties.
 Neurons are organized into Regions (broad domain folders) → Areas (mid-level folders) →
 Neurons (bottom layer, always markdown files). The bottom layer is always neurons.
 
-Current regions are hand-curated. Automated ingestion pipeline is planned but not built.
+Pointer ratings (1-10) are auto-assigned by the ingestion pipeline using Holographic Cold-Start (geometric projection residual against the global embedding) plus Hebbian SDE Affinity Clutch dynamics (Erdős, ScaleAndIngestion.ViscoelasticResolution). Manual rating is architecturally banned. Region/Area structure is currently pragmatic (Operations, Connectivity, Agents, Principles, Company, Intelligence); the architectural direction is community-detection-driven (Simon-Ando aggregation), with active Trey research on this in progress (SkillsTaxonomyEmergence, SemanticMemoryOrganization). Ingestion pipeline implementation status: PARTIALLY RESOLVED per V2 Build Guide OQ-1 — sufficient clarity to begin Phase 1 build (text documents only).
 
 ---
 
@@ -129,7 +130,7 @@ BUILT:
 - Neuron structure and pointer format
 - 7-pointer cap with local demotion
 - c-memory class label
-- Hand-curated initial graph
+- Initial graph (architectural commitment is auto-rating via the ingestion pipeline; pipeline implementation in progress per V2 Build Guide Stage 4 / OQ-1; manual rating architecturally banned)
 - PPR retrieval (conceptually — implementation via Claude MCP)
 - Velorin Brain GitHub repo (navyhellcat/velorin-system)
 

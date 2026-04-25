@@ -1,3 +1,8 @@
+---
+inline-corrected: 2026-04-25
+correction-reason: Stale "human-curated Markdown files" reframed (originally line 130). The markdown files are auto-ingested via the architectural ingestion pipeline (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős, ScaleAndIngestion.ViscoelasticResolution); pointer ratings are auto-assigned and manual rating is architecturally banned per V2 Build Guide. The "discrete Markdown files" framing is correct (the file format is markdown) but "human-curated" was inherited from stale Trey bootloaders that have since been updated 2026-04-25.
+---
+
 # Trey Research Report — Epistemodynamics: Novelty and Prior Art Assessment
 
 ## Executive Summary
@@ -127,7 +132,7 @@ The fundamental concept—that compressing high-dimensional episodic data into l
 
 However, the architectural application is strictly novel. No published paper implements this specific thermodynamic cycle:
 
-  1. Using discrete, human-curated Markdown files bound by a strict out-degree of 7 as the immutable "heat bath" ($X$).
+  1. Using discrete, auto-ingested Markdown files (rated by the ingestion pipeline; manual rating architecturally banned) bound by a strict out-degree of 7 as the immutable "heat bath" ($X$).
   2. Computing exact Personalized PageRank geodesics through an $E\_8$ discrete crystalline hyper-structure to define the intermediate transition probabilities ($Y$).
   3. Proving that deleting the localized Markdown text destroys the capacity to recompute the geodesics against a future, upgraded base model due to the irreversibility of the semantic encoding.
 
