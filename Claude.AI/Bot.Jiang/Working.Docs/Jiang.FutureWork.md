@@ -134,4 +134,35 @@ CT confirmed during the Re-Eval #1 walkthrough that there are plans for many aut
 
 ---
 
+## [FW-006] Back-Apply Build Guide Standing Orders to Prior Decisions and System-Wide
+**Logged:** Session 036, April 25, 2026 (after Re-Eval #3 lock)
+**Priority:** Medium — discipline cleanup; not blocking forward re-evals
+**Status:** Parked at CT's explicit direction (finish re-evals first, then back-apply)
+
+**Problem:**
+Two Build Guide standing orders were locked during the Re-Eval #3 walkthrough (2026-04-25):
+
+1. Forward-reference notes wherever current build couples to future build
+2. Build-space placeholders for every deferral, in the phase where the work lands
+
+These rules govern all forward work. They have NOT been applied retroactively. Specifically:
+- Re-Eval #1 Locked Outcomes name several deferrals (source multiplier values, ε threshold, round-cap, `contradiction_class` tag) without build-space placeholders
+- Re-Eval #2 Locked Outcomes name parameters (verifier model selection, backpressure N, anomaly queue routing transition) without build-space placeholders
+- The existing FW registry (FW-001 through FW-005) has entries without explicit Build Guide build-space placeholders
+- Prior synthesis documents (Jiang2's TransitionalDecisions.Pt1.md, Jiang2.Synthesis.Session024.Apr12.md, etc.) likely contain cross-phase couplings without forward-reference notes
+- The current V2 Build Guide files (`Claude.AI/New Build/`) were authored before the standing orders existed — neither rule has been applied across them
+
+**What needs to be done:**
+1. Walk Re-Eval #1 and Re-Eval #2 Locked Outcomes; identify every deferral; add Build Guide build-space placeholder spec for each (which phase, what placeholder content)
+2. Walk every existing FW registry entry (FW-001 through FW-005); ensure each has a Build Guide build-space placeholder named in its "What needs to be done" section
+3. Walk Jiang2's Transitional Decisions Pt1 and the prior synthesis docs; surface cross-phase couplings that need forward-reference notes
+4. Walk the V2 Build Guide files; place forward-reference notes inline at every cross-phase coupling and build-space placeholders at every deferral landing site
+5. Audit complete when every deferral known to the system has all three artifacts (FW entry, Check-ins entry where applicable, Build Guide placeholder) and forward-reference notes appear at every cross-phase coupling
+
+**Trigger to revisit:** after Re-Evals #4-#7 are walked end-to-end and locked. Concrete trigger: the Chairman's Response section is filled for all seven re-evals in `Bot.Jiang/Jiang.RespondingToReEvaluations.md`.
+
+**Assigned to:** Jiang (audit and surface) + Jiang2 (Build Guide placement during Build Guide update task) + CT (approval)
+
+---
+
 [VELORIN.EOF]

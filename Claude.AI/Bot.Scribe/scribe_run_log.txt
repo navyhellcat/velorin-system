@@ -139,3 +139,24 @@ Done. Summary of actions taken:
 
 **Step 6 — Commit:** `168b8e0` — 2 files changed, 11 insertions.
 ========== 2026-04-25T17:56:07Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_buildguide_forward_references.md ==========
+Done. Summary of actions taken:
+
+**STEP 1** — Memory file read. type: `feedback`, class: `regular`. Two standing orders: (1) forward references for cross-phase couplings, (2) build-space placeholders for every deferral. CT-locked Re-Eval #3, 2026-04-25.
+
+**STEP 2 — Classification:**
+- **Region**: Principles — exists, matches (behavioral standing orders)
+- **Area**: RewardAlignment — exists, matches (A6/A7/A8 already cover deferral gate, discipline, check-ins)
+- **Neuron**: No match found — A6/A7/A8 cover adjacent territory but not forward references or build-space placement. **Created A9.**
+
+**STEP 3** — No escalation needed.
+
+**STEP 4 — Rules:**
+- Added **A16** to MarcusAurelius.Rules.md (CARDINAL) — Build Guide Standing Orders — Forward References & Build-Space Placeholders, pointing to brain `neurons.principles.rewardalignment.A9`
+- Mirrored to local rules path
+
+**Wiring:**
+- A7 updated: added `[1] A9` pointer (A9 extends A7's deferral discipline)
+- A8 updated: added `[2] A9` pointer (A9 invokes the Check-ins construct)
+- Principles `_index.md` updated: RewardAlignment row extended to mention new topics
+
+**STEP 5** — Committed as `c23d055`. Not pushed (MarcusAurelius handles push).
