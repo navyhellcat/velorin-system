@@ -138,3 +138,4 @@ Done. Summary of actions taken:
 **Step 5 — Rules:** Added `A15` to MarcusAurelius.Rules.md (Section A) — governs the required shape for review recommendations, mirrors the neuron content into an actionable behavioral rule. File mirrored to local rules path.
 
 **Step 6 — Commit:** `168b8e0` — 2 files changed, 11 insertions.
+========== 2026-04-25T17:56:07Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_buildguide_forward_references.md ==========

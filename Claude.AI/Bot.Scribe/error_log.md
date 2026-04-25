@@ -35,3 +35,4 @@ Format: `TIMESTAMP | TYPE | File | Error | Action Attempted`
 2026-04-25T06:45:47Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_layer3_functional_trigger.md
 2026-04-25T07:41:31Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_deferral_discipline.md
 2026-04-25T07:55:16Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_checkins_construct.md
+2026-04-25T17:56:07Z | TRIGGER | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_buildguide_forward_references.md

@@ -232,7 +232,102 @@ Plus parameter calls:
 
 ## Re-Eval #3 — "X for now, Y at Scale" — Standing Principle Sweep
 
-*Pending Chairman walkthrough.*
+### Explanation
+
+The synthesis used "X for now, Y at scale" framing for several architectural deferrals (GoS sparse validation, RoMem Semantic Speed Gate, θ_work empirical calibration, ATV, bi-temporal validity windows from Graphiti, 9-class label vs 4-type edge ontology reconciliation). The re-eval flagged that the framing was technically defensible but failed to explicitly run the Standing Principle's Condition 2 — was the architectural seam specified now, so the deferred implementation can plug in easily later?
+
+Jiang2's response ran the full sweep against both Standing Principle conditions. Verdicts split four ways:
+
+- **Defer with seam specified** — GoS sparse validation, RoMem, θ_work
+- **Drop forever (not defer)** — Graphiti bi-temporal validity windows
+- **Blocked on Re-Eval #6** — ATV (now resolved post-Erdős math; ATV is BUILD NOW per Re-Eval #2 lock)
+- **Promote to BUILD NOW** — 9-class label vs 4-type edge reconciliation
+
+The most consequential outcome: edge ontology unification moves from "hole that needs filling" to immediate pre-pipeline task. It must happen before either the Brain ingestion pipeline or the skills dependency graph is built, because building both with divergent edge schemas creates the exact retrofit cost the Standing Principle is trying to prevent.
+
+### Sweep — item by item
+
+Standing Principle (CT's exact wording, locked Session 035): Defer implementation IFF both (a) legitimate technical advantage to deferring AND (b) architecture seam specified now. Either fails → build now.
+
+**1. GoS sparse validation.** Dense exhaustive validation handles edge candidates fine at <100 skills. Sparse adds sampling, hybrid seeding, LLM-estimation infrastructure — pure overhead at small scale. Condition 1 passes. Condition 2 satisfied by the interface `validate_skill_edges(candidate_edges, skill_graph, validation_mode="dense")` built from day 1. Mode swap to `"sparse"` later is a one-line config change at initialization. **Defer with seam.**
+
+**2. RoMem Semantic Speed Gate.** RoMem (rotational memory geometry) requires Layer 0 LoRa, which is Stage 5 — deferred until Brain operational and a local base model is selected. Condition 1 passes (the prerequisite doesn't exist). Condition 2 satisfied *only if* PPR is built to call `compute_edge_transition_weight(source, target, query_context, mode="ebbinghaus_sde")` from day 1. If PPR inlines the weight computation, retrofit cost is high. **Defer with the explicit constraint: PPR implementation must call through this function, never inline.**
+
+**3. θ_work empirical calibration.** Can't calibrate without ingestion data. Condition 1 trivially passes. Condition 2 trivially passes — `skill_injection_threshold: float` is a runtime config parameter, not a hardcoded value. **Defer.**
+
+**4. Asymmetric Transport Verifier.** At time of Jiang2's response, Re-Eval #6 was unresolved. Post-Erdős ATV math (returned 2026-04-25, ported and read this session): both Standing Principle conditions pass. ATV is BUILD NOW per Re-Eval #2 lock. The "defer" status no longer applies — superseded.
+
+**5. Bi-temporal validity windows (from Graphiti).** Requires a graph database Velorin doesn't have. Condition 1 passes. Condition 2 N/A — Velorin already committed to *dropping* this pattern, not deferring it. **Drop permanently.**
+
+**6. 9-class label vs 4-type edge reconciliation.** Brain pointer graph uses 9 relation types (instance-of, derived-from, causes, activates, precedes, implements, depends-on, supports, contradicts). Skills dependency graph uses 4 edge types (dependency, workflow, semantic, alternative). Same conceptual territory at different abstraction levels. Condition 1 *fails* — there's no technical advantage to deferring; building both with divergent schemas creates the exact retrofit pain the Standing Principle prevents. Condition 2 *fails* — there is no clean seam; you can't easily add a unified ontology later without updating every existing edge record. **Promote to BUILD NOW.** Must happen before either pipeline starts.
+
+### Fit Into Where the System Stands
+
+Three of the seam-deferred items are tied to operational components that don't exist yet:
+- GoS sparse validation: not relevant until skills library exceeds the dense-validation comfort zone (Build Guide currently targets <100 skills)
+- RoMem: requires Layer 0 LoRa, Stage 5 (deferred until Brain operational and local model selected)
+- θ_work calibration: requires Brain populated with hundreds of labeled queries
+
+These are *structural* deferrals — they wait on real systems to come online, not convenience. Standing Principle compliance is honest, not reflexive.
+
+Edge ontology unification (item 6) becomes an immediate pre-pipeline task. Per Jiang2's `TransitionalDecisions.Pt1.md`, "Step 0a: Build Guide update — lock all new math and schema decisions" already names this work. The unification is now a hard requirement of that Build Guide update.
+
+ATV's BLOCKED status is gone. Erdős's math returned clean, Re-Eval #2 is locked, ATV is Stage 1 build with the wrapper component built alongside the FSM verifier endpoint.
+
+The deferral discipline locked in Re-Eval #2 (every "later" needs trigger + artifact + routing target) applies to each surviving seam:
+
+- **GoS sparse validation seam.** Trigger: "when skill library exceeds N skills." N is a parameter call to lock at Build Guide update time. Artifact: the `validate_skill_edges` interface in code plus a Build Guide entry. Routing: Check-ins list (per #2 construct).
+- **RoMem seam.** Trigger: "when Layer 0 LoRa is operational and a local base model is selected." Artifact: `compute_edge_transition_weight` interface in PPR implementation. Routing: whoever owns the LoRa training pipeline at that point, fed via the Check-ins list.
+- **θ_work calibration.** Trigger: "when Brain has X labeled queries" (X to lock at Build Guide update time). Artifact: runtime config parameter. Routing: Check-ins list.
+- **Edge ontology unification.** Not a deferral — promoted to build-now. Lives in the pre-pipeline section of the Build Guide.
+
+### Steel-Man — Two Concerns Jiang2's Response Did Not Address
+
+**Seam thickness.** Each "swap mode" interface assumes the future implementation will fit the existing function signature. If a future implementation requires *richer* arguments — RoMem might want access to the full query history rather than just `query_context`, or sparse validation might want population statistics dense validation doesn't compute — the seam is too narrow. Defining a seam too tightly locks in current assumptions about future architecture and creates a soft retrofit cost when the future component is built.
+
+**Mitigation:** standard pattern — pass a `mode_config: dict` parameter alongside the typed arguments, so future modes can request additional data through the config without changing the call-site signature. This becomes a Build Guide standard for every mode-swappable interface, not negotiated per-seam.
+
+**State handover at mode swap.** The seams Jiang2 specifies are at the function-interface level. They do not address state shared across modes. PPR with Ebbinghaus SDE accumulates per-edge time-decay state. Swapping to RoMem (geometric shadowing on a rotational manifold, fundamentally different statefulness) may require either carrying the SDE state forward and translating it, or discarding it. The seam should specify the state-handover protocol — *what happens to existing state when the mode flips* — not just the function signature.
+
+**Mitigation:** every mode-swappable seam in the Build Guide must include a state-handover protocol section: what state is carried forward, what is discarded, what migration step (if any) runs at the swap boundary.
+
+### Decision Options
+
+1. **Per-item verdicts.** Accept Jiang2's sweep as corrected (defer-with-seam for items 1, 2, 3; drop-forever for item 5; supersede-to-BUILD-NOW for item 4 via #2 lock; promote-to-BUILD-NOW for item 6).
+2. **Concrete trigger values.** N for GoS sparse skills count, X for θ_work labeled-query count. Lock now or defer to Jiang2's Build Guide update with proposed values for CT approval.
+3. **`mode_config: dict` pattern as Build Guide standard.** Every mode-swappable interface includes this parameter; future modes can request additional data without call-site changes.
+4. **State-handover protocol in every seam.** Every mode-swappable seam specifies what state is carried forward, what is discarded, what migration runs at swap boundary.
+5. **Edge ontology unification scope.** Promote to BUILD NOW as immediate pre-pipeline task, scoped into the Build Guide update step (Step 0a per Jiang2's TransitionalDecisions.Pt1).
+
+### Chairman's Response
+
+The Chairman accepts all recommendations as written.
+
+Plus a **Standing Order** locking two structural rules for the Build Guide that apply forward across the entire build:
+
+**Standing Order 1 — Build Guide Forward References.** Wherever a current build component will be relied on or connected to by something built later, the Build Guide places a small note flagging the future coupling at the point of the current build. Applies to ALL cross-phase interactions, not just deferrals. Examples: a hook built in Stage 0 that will be read by ingestion pipeline in Stage 4 carries a forward note in its Stage 0 description; a config field added in Stage 1 that drives a behavior in Stage 5 carries a forward note in its Stage 1 description.
+
+**Standing Order 2 — Build-Space Placement for Every Deferral.** Every deferred item gets an actual build-space placeholder in whichever phase is appropriate to its eventual implementation. Deferrals are NOT isolated in `07_OpenQuestions.md`. They live in the Build Guide where they will be built, marked as placeholders with their seam definition, their trigger condition, their state-handover protocol, and their routing target.
+
+**Reason** (CT's stated motivation): the architecture is too large for any single human to keep every deferral in mind and remember where it should land in the build. The Build Guide is the single inspectable surface where the system's full structure — present and future — must be visible. Wash-our-hands deferrals are unmaintainable. Every "later" gets a place in the build where it will land.
+
+This generalizes the Re-Eval #2 deferral discipline. The full discipline now requires three artifacts per deferral:
+- **FW registry entry** — for one-off architectural decisions parked
+- **Check-ins entry** — for recurring reviews (parameter retunes, calibrations) that aggregate into the build-wide schedule
+- **Build Guide build-space placeholder** — for every deferral, marking the phase where the build space lives, with seam definition + trigger + state-handover + routing
+
+Saved as feedback memory `feedback_buildguide_forward_references.md` so the standing order governs every Build Guide work pass forward.
+
+### Locked Outcomes for Jiang2's Rewrite
+
+- **Per-item sweep verdicts** locked as written above (GoS sparse / RoMem / θ_work defer-with-seam; bi-temporal drop forever; ATV BUILD NOW per #2; edge ontology unification BUILD NOW).
+- **`mode_config: dict` pattern** is Build Guide standard for every mode-swappable interface. Every existing seam spec in the synthesis (`validate_skill_edges`, `compute_edge_transition_weight`) updates to include this parameter.
+- **State-handover protocol** is a required section of every mode-swappable seam spec. No seam ships without specifying what state carries forward and what is discarded at the swap boundary.
+- **9-class / 4-type edge ontology unification** is the immediate pre-pipeline task, lives in Step 0a of the Build Guide update.
+- **Concrete trigger values** (N for GoS sparse, X for θ_work) are Jiang2's design call at Build Guide update time, with CT approval. They become Check-ins entries.
+- **Standing Order 1 (forward references)** and **Standing Order 2 (build-space placement)** apply to the Build Guide update task. Jiang2 maps every deferred item across the Build Guide phases with placeholder build-spaces; Jiang2 places forward-reference notes wherever the current build couples to a future build.
+- **Build Guide update task** (Jiang2's Step 0a) expands to include: (a) edge ontology unification scope, (b) mode_config dict standard for all seams, (c) state-handover protocol sections, (d) build-space placeholders for every deferral, (e) forward-reference notes for cross-phase coupling, (f) Check-ins schedule design (per #2 standing outcome).
+- **The deferral discipline is now three-part:** FW entry, Check-ins entry (when recurring), Build Guide build-space placeholder (always). Every recommendation across remaining re-evals (#4, #5, #6, #7) must satisfy this discipline before being claimed locked.
 
 ---
 
