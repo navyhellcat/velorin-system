@@ -195,4 +195,31 @@ The decision is robust to the spatial-walk formulation as long as `P_active` is 
 
 ---
 
+## [FW-008] Empirical κ Check-Ins Design Completion (Re-Eval #4)
+**Logged:** Session 036, April 25, 2026 (after `Erdos.Solution.KappaOperationalTightness.md` returned Answer C)
+**Priority:** Medium — required before Re-Eval form is finalized; not blocking remaining re-eval walkthroughs
+**Status:** Spec direction locked from Erdős's KappaOperationalTightness delivery; concrete Check-ins-entry design pending
+
+**Problem:**
+Erdős's KappaOperationalTightness response (Answer C, 2026-04-25) confirmed Trey's original directive: the empirical-κ Check-ins entry must be retained because the analytic formula `κ = 2C(1-α)/(αδ)` is a strict worst-case bound that becomes unusable as a hard operational threshold under realistic Velorin conditions (Davis-Kahan looseness on non-normal matrices, worst-case resolvent alignment, redistribution masking localized distortion, spectral-gap volatility from eigenvalue crowding in sparse `d_max=7` graphs at scale).
+
+The Check-ins entry direction is locked: measure actual retrieval-precision degradation by tracking how often `Φ_causal` drops below threshold for known ground-truth targets after test compression events. The analytic formula stays as a structural prior used to scale the empirical threshold geometrically if α changes.
+
+The CONCRETE design of the Check-ins entry — measurement frequency, ground-truth target set construction, alert threshold, action protocol when threshold is exceeded — has not been specified. This is Jiang2's design work during the Build Guide update task.
+
+**What needs to be done:**
+1. Specify the ground-truth target set (how many targets, how selected, how often refreshed)
+2. Specify the measurement protocol (what counts as a "test compression event" — synthetic compression on a copy of a region? real compression with rollback? scheduled cadence vs event-triggered?)
+3. Specify the alert threshold (X% drop in Φ_causal against ground-truth before action triggers)
+4. Specify the action protocol when alert fires (recalibrate κ from new measurements, halt further compression in that region, escalate to architecture review, etc.)
+5. Specify how the analytic formula's structural-prior role engages — when α changes, what re-scales automatically vs what requires recomputation against new ground-truth targets
+6. Place the entry into the Build Guide Check-ins schedule per Standing Order 1 (Check-ins construct from Re-Eval #2)
+7. Place the Build-space placeholder in the compression event detector phase per Standing Order 2
+
+**Trigger to revisit:** after all seven re-evals are walked end-to-end and BEFORE the Re-Eval response form (`Bot.Jiang/Jiang.RespondingToReEvaluations.md`) is finalized for Jiang2's rewrite. Concrete trigger: the Chairman's Response section is filled across all seven re-evals AND CT signals "ready to finalize." This must be designed before that finalization happens.
+
+**Assigned to:** Jiang2 (concrete Check-ins design + Build Guide placement) + CT (approval of measurement frequency, threshold values, action protocol)
+
+---
+
 [VELORIN.EOF]
