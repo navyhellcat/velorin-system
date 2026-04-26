@@ -222,4 +222,34 @@ The CONCRETE design of the Check-ins entry — measurement frequency, ground-tru
 
 ---
 
+## [FW-010] Deep Think Curated Corpus Folder (and NotebookLM Context Layer)
+**Logged:** Session 037, April 26, 2026
+**Priority:** Medium — required before Mac Studio Deep Think workflow opens; not blocking current re-imagining
+**Status:** Surfaced and parked. CT direction at session close: "we should do that later."
+
+**What happened:**
+CT surfaced that Deep Think (Gemini Deep Think mode, currently used only for Erdős math) has substantially broader applicability than math derivation — specifically: cross-corpus staleness audit, red-teaming Jiang2's reimagining synthesis, integration-topology stress-testing for the multi-vendor cowork architecture, and outside-tool deep evaluation. Constraint: 10 Deep Think prompts per 24 hours. CT noted that Deep Think will need a curated repo subset that removes noise from the first two weeks of building, so that the corpus it reads is signal-dense rather than iteration-saturated.
+
+CT also previously named NotebookLM (mixed with a research-Gem Gemini) as the system that holds the entire Velorin context for a Trey-as-NotebookLM-controller audit pass over the build. NotebookLM's context appetite overlaps significantly with Deep Think's but is not identical — NotebookLM holds canonical state for retrieval-grounded queries; Deep Think loads task-specific subsets for adversarial reasoning.
+
+**What needs to be done:**
+1. Define the signal-vs-noise principle. Probable structure: a base "Velorin canonical state" subset (locked decisions, current operating rules cleaned of staleness, current Brain region state, returned-and-still-load-bearing Erdős and Trey research, current FW registry, current Build Guide + thesis + Mac Studio setup, locked feedback memories) — this is the clean signal. Iteration history (early synthesis docs, retracted designs like Topological Action Potential before CAP, the Demotion-Oracle-replaced-by-Affinity-Clutch lineage, retired bootloader versions, session-by-session chat captures) is excluded by default — pulled in ONLY when the specific Deep Think task requires the iteration record (e.g., the staleness / ghost-connection audit explicitly needs it).
+2. Decide whether the curated folder lives inside `velorin-system/` as a tracked subset, as a generated view (script that produces it on demand), or as a separate repo (`velorin-canonical/`). Trade-off: tracked subset risks drift between the curated view and the source; generated view requires a curation script to maintain; separate repo requires sync discipline.
+3. Specify the curation script if that path is chosen — what gets included by manifest, what gets excluded by pattern, what gets transformed (e.g., stripping the "destination:" headers from Receiving artifacts that were processed into final locations).
+4. Define the relationship between the Deep Think folder and the NotebookLM context layer. Likely: NotebookLM holds the canonical state subset persistently; Deep Think's curated folder is the same canonical base PLUS task-specific add-ons per prompt.
+5. Cross-reference with FW-006 (Back-apply Build Guide standing orders) and the outdated-rules cleanup CT flagged at Session 037 close — staleness in the source corpus contaminates any Deep Think corpus derived from it.
+
+**Trigger to revisit:** when the Mac Studio multi-vendor cowork integration reaches the point where a Deep Think prompt is needed against curated context. Concrete trigger: Jiang2's reimagining synthesis lands AND CT signals readiness to commission the first non-Erdős Deep Think prompt OR the Mac Studio transition begins.
+
+**Cross-references:**
+- `project_mac_studio_multivendor_cowork.md` (overall transition plan)
+- Jiang2's WholeSystemReimagining mandate, Section 7g (NotebookLM context layer architecture) and Section 11 (Velorin Startup Folder composition) — both touch this
+- FW-006 (Build Guide standing orders back-application — the cleanup pass that produces the clean source for any Deep Think corpus)
+
+**Build Guide build-space placeholder (per Standing Order 2):** Mac Studio transition phase, section on tooling integration. Marked with FW-010 reference and trigger.
+
+**Assigned to:** Jiang (curation principle + script spec) + CT (final approval of folder composition and structure choice)
+
+---
+
 [VELORIN.EOF]
