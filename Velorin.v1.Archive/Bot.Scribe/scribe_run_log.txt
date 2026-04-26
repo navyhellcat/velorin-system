@@ -235,3 +235,22 @@ Done. Summary of actions taken:
 
 **Step 5 — Commit:** `d8c7f92` — also picked up three pre-staged research request files from prior session work (Erdős ATV drift bound, Trey FSM grammar versioning, Trey verifier benchmark methodology — consistent with Re-Eval #6 referenced in the memory).
 ========== 2026-04-26T19:32:24Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/project_mac_studio_multivendor_cowork.md ==========
+Done. Summary of actions taken:
+
+**STEP 1** — Memory read: `project` / `regular` class. Topic: CT-locked direction (2026-04-26) that at Mac Studio transition, Velorin integrates Codex + ChatGPT 5.5 + Gemini via Cowork as live co-equal agents; MCP/API libraries built at same trigger point.
+
+**STEP 2** — Classification:
+- Region: **Operations** (machines/architecture) — EXISTS
+- Area: **Architecture** — EXISTS
+- Neuron: no existing neuron covers this direction — **CREATE**
+
+**STEP 3** — Not needed (no missing region/area).
+
+**Actions taken:**
+- Created **`neurons.operations.architecture.A10`** — Mac Studio Transition — Multi-Vendor Cowork Model (Locked 2026-04-26)
+- Updated **A8** and **A9** pointers to wire inbound connections to A10; updated their `last-touched` dates
+- Updated **Operations `_index.md`** Architecture row to reflect new topic
+- Added **Rule A20** to MarcusAurelius.Rules.md: multi-vendor Cowork forward architecture directive
+- Mirrored rules to local copy (verified identical via diff)
+
+**STEP 5** — Committed: `3e2d66c` — `Scribe: create neuron + add rule — Mac Studio multi-vendor cowork integration plan`
