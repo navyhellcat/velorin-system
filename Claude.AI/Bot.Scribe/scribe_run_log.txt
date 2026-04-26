@@ -216,3 +216,21 @@ Done.
 - **Rules check:** Skipped — rules govern Jiang1, not MarcusAurelius
 - **Committed:** `b41a639`
 ========== 2026-04-26T05:08:19Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/feedback_velorin_founding_thesis_programs_not_agents.md ==========
+Done. Summary of actions taken:
+
+**Step 1 — Memory read:** `feedback_velorin_founding_thesis_programs_not_agents.md`, type: feedback, class: regular. Content: Velorin's founding thesis that programs do repeatable work without token use; AI builds, watches, checks, maintains.
+
+**Step 2 — Classification:**
+- Level 1: Region `Principles` — behavioral foundations, fits founding architectural thesis
+- Level 2: Area `RewardAlignment` — existing CT-locked operating principles (A1–A9); no separate area needed
+- Level 3: No existing neuron covers programs-vs-AI-as-operator → **CREATE**
+
+**Step 3 — Neuron A10 created** in `Principles/RewardAlignment/neurons.md`:
+- Gating question, AI roles (build/watch/check/maintain), Re-Eval #6 concrete example, CT verbatim quote
+- 6 rated pointers wired
+- Neighbor A9 updated to add `[2] A10` inbound pointer
+- `Principles/_index.md` updated to list A10
+
+**Step 4 — Rules update:** `A19. Programs-not-agents gating question [CARDINAL]` added to `MarcusAurelius.Rules.md`, mirrored to local path.
+
+**Step 5 — Commit:** `d8c7f92` — also picked up three pre-staged research request files from prior session work (Erdős ATV drift bound, Trey FSM grammar versioning, Trey verifier benchmark methodology — consistent with Re-Eval #6 referenced in the memory).

@@ -565,7 +565,65 @@ The `Φ_light` proposal that preceded this delivery was a Jiang1 (Opus 4.7) over
 
 ## Re-Eval #6 — Asymmetric Transport Verifier: Endorsed Without Evaluation
 
-*Pending Chairman walkthrough.*
+### Explanation
+
+The synthesis treated ATV as *"the right IES implementation"* and *"Trey's own novel synthesis,"* referenced as load-bearing across multiple sections. The re-eval flagged that endorsement substituted for evaluation: no Consensus Filter pass on ATV's three components, no Erdős math on its mathematical properties, no integration analysis (where ATV sits architecturally, what its failure modes are, what alternatives were considered).
+
+Jiang2's response did all three. The Erdős math (`Erdos.Solution.ATVMathProperties.md`) returned during the Re-Eval #2 walkthrough and locked the architectural decisions there.
+
+**Most of #6's substance is already locked in Re-Eval #2's Locked Outcomes** — header-tag classification, runtime-set tag-setting, fail-secure default, IES θ=0.7, per-message log artifact, backpressure spec, 1-3B parameter verifier model class, Stage 1 build commitment. Re-Eval #6 confirms Jiang2's broader evaluation framework (Consensus Filter, alternatives, integration architecture, failure modes) holds up.
+
+### Decisions That Lock Now from Jiang2's Response
+
+1. **Consensus Filter on ATV's three components — all pass.** Constrained decoding (Q3=yes, Claude API closed + Qwen 3.6 local supports FSM grammars), transport-layer middleware (Q3=yes, multi-agent system where sender-side self-regulation fails), local verifier model (Q3=yes, Mac Studio has local Qwen). ATV is an adopt-candidate.
+2. **Self-similarity concern resolved structurally** by header-tag classification (Erdős Proof 2 in `ATVMathProperties.md`): `P(C | C_header) = 1` and `P(M | y, C_header) = 1`. Rule Activation Gap eradicated, not relocated. Already locked in #2.
+3. **Integration architecture: ATV as MCP server endpoint** (not library, not network interceptor). Scope: inter-agent analytical conclusions only. Tag-based exclusion for skill execution output, Brain ingestion pipeline output, Erdős solution delivery, short structured messages.
+4. **Alternatives comparison locked.** ATV beats AgentSpec tool-gated output, stop-hook validator, decoder-level intervention, adversarial verifier pair on the producer-self-regulation-independence dimension. No alternative enforces compliance independent of producer action.
+5. **Standing Principle: both conditions pass.** Condition 1 (technical advantage): no alternative achieves enforcement independent of producer action. Condition 2 (seam specified): MCP endpoint interface; if ATV is replaced by a better verifier, call sites don't change.
+6. **ATV is a Stage 1 build component**, with the agent wrapper that emits the header tag built alongside the FSM verifier endpoint as one component (per #2 lock — runtime-set from day one).
+
+### Three Concerns Reframed Through Velorin's Founding Thesis (Programs, Not AI-As-Operator)
+
+CT surfaced 2026-04-26 the founding thesis: most operational work is done by deterministic computer programs that produce repeatable outcomes without token use; AI's job is build / watch / check / maintain those programs. Three steel-man concerns initially looked like decisions-to-make; under the thesis they become program-specifications with AI as the watcher.
+
+**Concern A — Lightweight verifier model selection (Qwen2.5-0.5B vs SmolLM2-1.7B vs fine-tuned Phi-2 vs other).**
+- **Program to build:** benchmark suite. Representative analytical-output corpus run through each candidate model with FSM grammar; measure throughput (T_V per message), false-reject rate, edge-case handling. Deterministic winner from data.
+- **AI's role:** audit benchmark design, watch outputs over time, recommend rerun if input distribution shifts.
+- **Functional research filed:** [`Trey.ResearchRequest.VerifierBenchmarkMethodology.md`](Desktop/velorin-system/Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.VerifierBenchmarkMethodology.md) — find what benchmark frameworks production constrained-decoding deployments use so Velorin adopts rather than reinvents.
+
+**Concern B — FSM grammar maintenance and evolution.**
+- **Program to build:** regression suite of analytical outputs that should/shouldn't validate against current grammar version. Each grammar change triggers regression run; pass/fail determines deployment eligibility.
+- **AI's role:** review proposed grammar changes against regression results; approve passing changes; flag failing ones; route ambiguous cases to architecture review.
+- **Functional research filed:** [`Trey.ResearchRequest.FSMGrammarVersionManagement.md`](Desktop/velorin-system/Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.FSMGrammarVersionManagement.md) — version-management patterns from production constrained-decoding systems (Outlines, Guidance, LMQL, JSON-mode, Llama Guard, etc.).
+
+**Concern C — ATV-down consumer behavior on `iES_enforced: false` flag.**
+- **Program to build:** consumer-side policy enforcement (accept / reject / rate-limit / escalate). Policy is explicit code, not per-event AI judgment.
+- **AI's role:** monitor program's behavior, alert if outcomes diverge from policy intent.
+- **Math question filed for Erdős:** [`Erdos.ResearchRequest.ATVConsumerPolicyDriftBound.md`](Desktop/velorin-system/Claude.AI/Bot.Erdos/Research_Needed/Erdos.ResearchRequest.ATVConsumerPolicyDriftBound.md) — derive the analytic upper bound on consensus drift through enforcement for each candidate policy as a function of ATV uptime and message rate. Quantitative basis for policy selection.
+
+### Pending — Circle Back Before Finalization
+
+Three deliverables out:
+- Erdős consumer-policy drift bound — gives consumer-side policy choice quantitative basis
+- Trey verifier benchmark methodology — informs the benchmark program's design
+- Trey FSM grammar version-management — informs the regression suite + AI-review workflow's design
+
+When all three return, the three program-build specifications can be locked as concrete Build Guide entries (Stage 1 build components alongside ATV itself).
+
+**Circle-back trigger:** all three deliverables land in their respective `Research_Complete/` folders.
+**Routing:** Jiang ports + reads, surfaces findings to CT, CT confirms program specs; Jiang2 places in Build Guide as Stage 1 components per the founding thesis.
+
+### Chairman's Response
+
+The Chairman accepts the six items above as locked from Jiang2's evaluation framework (Consensus Filter pass, integration architecture, alternatives, Standing Principle, Stage 1 commitment, MCP server placement). The three steel-man concerns are reframed as programs-to-build with AI as watcher per the founding thesis; research requests filed to inform the program designs.
+
+### Locked Outcomes for Jiang2's Rewrite
+
+- **All six lockable items above** are confirmed Build Guide entries for ATV.
+- **ATV is built as MCP server endpoint** with the agent wrapper (per #2 lock) as one component.
+- **Three Stage 1 program-build specifications** added to the Build Guide: verifier benchmark suite, FSM grammar regression suite + AI-review workflow, ATV-down consumer policy enforcement program. Each carries a build-space placeholder per Standing Order 2; each carries forward references per Standing Order 1.
+- **Three research deliverables circle back before finalization** to inform program designs (Erdős consumer-policy drift bound + Trey verifier benchmark methodology + Trey FSM grammar version management).
+- **Founding thesis (`feedback_velorin_founding_thesis_programs_not_agents.md`) applies to all future architectural recommendations.** Gating question runs before any Erdős/Trey/AI-as-operator recommendation: is this a program to build with AI as watcher?
 
 ---
 
