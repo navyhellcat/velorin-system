@@ -663,4 +663,131 @@ Re-Eval #7 closes with the Direction C lock. No additional research requests fil
 
 ---
 
+# Finalization — Pending Decisions
+
+All seven re-evals are locked. Three Re-Eval #6 research deliverables returned 2026-04-26 (`Erdos.Solution.ATVConsumerPolicyDriftBound.md`, `Trey.Research.VerifierBenchmarkMethodology.md`, `Trey.Research.FSMGrammarVersionManagement.md`). Plus parked items from Re-Eval #1 (calibration) and FW-007/FW-006/FW-008 confirmation. This section captures every remaining Chairman decision required before the form is handed to Jiang2 for synthesis rewrite.
+
+---
+
+## Decision 1 — ATV Consumer Policy
+
+**Locked 2026-04-26.** **Adaptive Rate-Limit Policy** per Erdős's mathematically optimal answer. Consumer dynamically computes the rate limit `ρ* = λ · max(0, A_min − τ) / (1 − τ)` from real-time ATV uptime fraction `τ` and target availability `A_min`. Above SLA: zero drift, behaves as `P_reject`. Below SLA: opens valve to the strict mathematical minimum drift required to keep the system alive. **Note: `A_min` is iteratively engineered through build + test, not a single upfront pick.** The consumer policy program is a Stage 1 build component; `A_min` calibration is part of that build phase.
+
+---
+
+## Decision 2 — Trey Verifier Benchmark Methodology Adoption Package
+
+**Summary:** Trey returned with concrete ecosystem-validated answers. The recommendation is to adopt JSONSchemaBench evaluation framework + XGrammar decoding engine + vllm-mlx Apple Silicon backend + VTPS as primary metric + 300-item Golden Dataset hand-curated by you. Each component is a separate decision but they form a coherent stack.
+
+**Options:**
+1. **Adopt the full stack as Trey recommends.** JSONSchemaBench (clone framework), XGrammar (replace any Outlines reference), vllm-mlx (replace any llama.cpp reference for Apple Silicon), VTPS metric, 300-item Golden Dataset (you personally curate: 100 clean / 100 high-complexity multi-domain / 100 noisy/edge). Build is straightforward adoption + dataset construction.
+2. **Adopt the stack but defer Golden Dataset to a programmatic + AI-assisted curation pass** (rather than personally curating 300 items by hand). Faster to start; risks bias injection per Trey's caveat.
+3. **Adopt the stack but with a reduced Golden Dataset** (e.g., 100 items instead of 300) to accelerate Stage 1 build; expand later.
+4. **Reject one or more components** (specify which and why).
+
+---
+
+## Decision 3 — Trey FSM Grammar Version Management Adoption Package
+
+**Summary:** Trey returned with a coherent multi-layer workflow: Schema Registry (Git + hash-addressed compiled artifacts) + Property-Based Testing (Hypothesis library) + Differential Equivalence Checking (against historical analytical-message corpus) + Compiler-in-the-Loop AI review (deterministic compilation feedback drives Jiang's approval) + Shadow Mode deployment + Canary rollout.
+
+**Options:**
+1. **Adopt the full workflow as Trey recommends.** All five layers (Registry, PBT, Differential, Compiler-in-the-Loop, Shadow + Canary). Velorin's intended pattern is structurally aligned with production best practices per Trey.
+2. **Adopt minus Shadow Mode** (Shadow doubles inference cost during testing window — defer if inference cost is a near-term constraint).
+3. **Adopt minus Canary** (Canary requires production traffic split — defer until system is at scale).
+4. **Adopt minimum viable workflow only** (Schema Registry + PBT + Compiler-in-the-Loop; no Shadow, no Canary, no Differential against historical corpus). Ships faster; less safety against regressions.
+
+---
+
+## Decision 4 — Re-Eval #1 Parked Calibration Items
+
+**Summary:** Four items from Re-Eval #1 were parked by you for revisit after all seven re-evals walked. That trigger is now satisfied. These are calibration decisions inside the three-layer conflict resolution mechanism.
+
+**4a — Source multiplier values (provisional 1.0 agent / 1.2 CT-curated / 1.5 Erdős-verified):**
+- (i) Accept provisional values, calibrate empirically later (becomes Check-ins entry)
+- (ii) Lock different values now (specify)
+- (iii) Defer entirely to engineering iteration (like A_min)
+
+**4b — Layer 1 ε threshold (for "scores within ε" tiebreaker fallback to Layer 2):**
+- (i) Define now (specify)
+- (ii) Build as runtime-configurable parameter, calibrate via Check-ins
+- (iii) Defer to engineering iteration
+
+**4c — Round-cap at 3 before Layer 3 escalation:**
+- (i) Accept 3
+- (ii) Change to different number (specify)
+- (iii) Make configurable
+
+**4d — Producer-time `contradiction_class` tag (factual / empirical / architectural / taste — written at neuron generation time, read deterministically by Layer 2 router):**
+- (i) Adopt the steel-man mitigation
+- (ii) Skip — accept Layer 2 stochastic-classification trap as residual risk
+- (iii) Defer until Layer 3 mechanism is built and we observe whether routing accuracy is a real problem
+
+---
+
+## Decision 5 — FW-007 Formal Closure
+
+**Summary:** FW-007 (cyclic-topology routing decision revisit) was logged with the trigger "when Trey Non-Abelian audit returns or Erdős Theorem 3 proof returns." Both have returned. Re-Eval #5's Causal Action Potential delivery provides a structural answer (`Φ_causal > 1.0` is a mathematically absolute trigger-free cyclic detector). FW-007's status is currently "STRUCTURALLY RESOLVED 2026-04-25 — formal closure pending Chairman confirmation."
+
+**Options:**
+1. **Formally close FW-007.** Mark status: COMPLETE. Cyclic-region routing now uses CAP gate value as the trigger; routes to Re-Eval #1's Layer 3 mechanism per locked outcome.
+2. **Keep FW-007 open** as a watch item until the cyclic-detection prefilter is actually built and tested (close after build verification).
+
+---
+
+## Decision 6 — FW-006 Back-Application Authorization
+
+**Summary:** FW-006 covers back-applying the Build Guide standing orders (forward references + build-space placeholders) to Re-Eval #1 + #2 Locked Outcomes, existing FW entries, prior synthesis docs, and the V2 Build Guide files. Trigger ("all 7 re-evals walked") is now satisfied.
+
+**Options:**
+1. **Authorize Jiang2 to start FW-006 immediately** as part of the Build Guide update task (parallel with finalizing this form).
+2. **Hold FW-006** until form is finalized + Jiang2 has the rewritten synthesis in hand (sequential — finalize first, then back-apply).
+3. **Authorize Jiang to surface candidates** during finalization but Jiang2 places them only at Build Guide update time (split labor).
+
+---
+
+## Decision 7 — FW-008 κ Check-ins Concrete Design
+
+**Summary:** Erdős's KappaOperationalTightness delivery (Answer C) confirmed empirical κ Check-ins entry must be retained. Direction locked: measure actual retrieval-precision degradation by tracking how often `Φ_causal` drops below threshold for known ground-truth targets after test compression events. The CONCRETE entry design (measurement frequency, ground-truth target set construction, alert threshold, action protocol) is unfilled.
+
+**Options:**
+1. **Defer concrete design to Jiang2 + you at Build Guide update time** (FW-008 stays open with the spec direction locked; concrete values designed as part of Build Guide update task).
+2. **Lock specific values now** (you specify: measurement frequency, alert threshold percentage, action protocol when alert fires).
+3. **Adopt iterative engineering pattern** (similar to A_min): start with placeholder values, calibrate via build + test cycle. FW-008 closes; calibration becomes part of the compression event detector's build phase.
+
+---
+
+## Decision 8 — Persona-Maker Observation (from #7)
+
+**Summary:** During #7's lock you surfaced an observation that the Brain build itself may organically generate a persona representation (similar to how Jiang/Trey/Erdős personas are built from bootloaders + accumulated outputs). Currently noted in #7's Locked Outcomes as "future exploration, not active."
+
+**Options:**
+1. **Keep as a noted observation only.** No FW entry. Revisited if and when you initiate the exploration.
+2. **Formal FW-009 entry** with concrete revisit trigger (e.g., "when Brain has populated past N c-memory neurons" or "when Stage 5 LoRa training pipeline begins").
+3. **Spawn a Trey functional research request now** asking how production agent systems generate persona representations from interaction data (informs the eventual exploration without committing to it).
+
+---
+
+## Decision 9 — Other Bootloader Staleness Cleanup
+
+**Summary:** During the human-curated contamination cleanup, Jiang noted other staleness in the Trey bootloaders (Scribe references, "Erdős has not yet received the formal problem specification" assertions for problems Erdős has now delivered solutions to, stale "open question" status descriptions). Scoped narrow per Chairman direction at the time. These remain.
+
+**Options:**
+1. **Schedule a broader bootloader refresh pass now**, before any further Trey research is sent (apply locked external-agent-context audit rule rigorously).
+2. **Defer to a dedicated session** (FW entry, scheduled for when next Trey research need arises).
+3. **Leave alone** until the bootloaders themselves are restructured as part of broader build-out.
+
+---
+
+## Decision 10 — Form Finalization Sequencing
+
+**Summary:** Once all decisions above are answered, the Re-Eval response form is structurally complete. Two paths to "finalized."
+
+**Options:**
+1. **Hand to Jiang2 immediately** for synthesis rewrite. Jiang2 produces the updated `Jiang2.ReEvaluationResponses.md` reflecting all locked decisions + executes Build Guide update (incorporating Check-ins schedule, build-space placeholders, forward references, and the three program-build specifications from #6).
+2. **Hold for one final review session** where you re-read the entire form and confirm every locked outcome before handing to Jiang2.
+3. **Hand to Jiang2 in stages** — first hand off the architectural decisions; defer the Build Guide update until the κ calibration / consumer policy iterative engineering produces enough data.
+
+---
+
 [VELORIN.EOF]
