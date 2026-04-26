@@ -4,5 +4,5 @@ Behavioral foundations. Values, reward alignment, agent morality. The top layer 
 
 | Area | Path | Neurons |
 |------|------|---------|
-| RewardAlignment | `RewardAlignment/neurons.md` | Agent jealousy, delayed gratification, misalignment, window gravity, deferral gate, deferral discipline, check-ins, Build Guide forward references and build-spaces |
+| RewardAlignment | `RewardAlignment/neurons.md` | Agent jealousy, delayed gratification, misalignment, window gravity, deferral gate, deferral discipline, check-ins, Build Guide forward references and build-spaces, programs-not-agents founding thesis |
 | CoreDrives | `CoreDrives/neurons.md` | Hierarchy of drives — instinct vs principles |

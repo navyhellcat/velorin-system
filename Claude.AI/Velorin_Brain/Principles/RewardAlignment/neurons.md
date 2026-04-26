@@ -58,4 +58,14 @@ Three-part deferral discipline (extends A7 + A8): (a) FW registry entry; (b) Che
 Roles: Jiang2 owns placement during Build Guide updates; Jiang surfaces candidates during architectural work.
 Source: CT verbatim in `~/.claude/projects/-Users-lbhunt/memory/feedback_buildguide_forward_references.md`
 last-touched: 2026-04-25
-Pointers: [1] A7 | [1] A8 | [1] A6 | [2] neurons.agents.protocols.A12 | [3] A4
+Pointers: [1] A7 | [1] A8 | [1] A6 | [2] neurons.agents.protocols.A12 | [2] A10 | [3] A4
+
+### A10. Programs-Not-Agents — Velorin Founding Thesis (CT, 2026-04-26)
+Velorin's founding AI-integration thesis: computer programs perform repeatable Brain operations without token use. AI's role is build/watch/check/maintain — NOT per-event operator.
+AI roles: (1) write program at build time; (2) verify it operates correctly; (3) modify with permissions; (4) monitor for failures; (5) build new programs as needed.
+Gating question before ANY architectural recommendation: "Is this a program we should build, with AI as the watcher?" If yes, reframe: define the program (inputs/outputs/logic), define what AI monitors (failure modes, drift), define what AI can modify (conditions + permissions), scope any Erdős math question to program design, scope any Trey research to functional build decisions.
+Implication: "AI decides X per-event" → "program decides X deterministically, AI audits periodically." "Monitor Y" Check-ins → "program enforces Y, AI watches." Example — Re-Eval #6 (2026-04-26): verifier model selection → benchmark program; FSM grammar maintenance → regression suite + AI-review workflow; ATV-down behavior → policy enforcement program.
+CT verbatim: "Everyone wants AI to do everything all the time, but the reality is that using AI to build programs and to monitor them is actually one of the best paths forward for AI integration. It is one of our founding thesis."
+Source: `~/.claude/projects/-Users-lbhunt/memory/feedback_velorin_founding_thesis_programs_not_agents.md`
+last-touched: 2026-04-26
+Pointers: [1] A4 | [1] neurons.agents.protocols.A12 | [2] A9 | [2] A6 | [3] A7 | [3] neurons.operations.architecture.A9

@@ -62,6 +62,10 @@ Existing in-flight novelty audits finish; do NOT extend or queue follow-ups mid-
 CT locked 2026-04-25, Re-Eval #4 walkthrough.
 - Brain: `neurons.agents.protocols.A14`
 
+**A19. Programs-not-agents gating question** [CARDINAL]
+Before drafting any Erdős math request, Trey research request, or proposing AI-as-operator for a recurring task: apply the founding thesis gating question — "Is this a program we should build, with AI as the watcher?" If yes, reframe the recommendation: (1) define the program (inputs, outputs, deterministic logic); (2) define what AI monitors (failure modes, drift conditions, when to intervene); (3) define what AI can modify (conditions + permissions); (4) scope any math question narrowly to program design (→ Erdős); (5) scope any ecosystem question to functional build decisions only (→ Trey, not novelty audit). The thesis does not eliminate research — it refocuses the bulk of work onto programs-to-build with AI as the reviewer. "AI decides X per-event" collapses to "program decides X deterministically, AI audits periodically." "Monitor Y" Check-ins collapse to "program enforces Y, AI watches." Source: CT 2026-04-26.
+- Brain: `neurons.principles.rewardalignment.A10`
+
 **A18. Pre-request context audit — external research agents** [CARDINAL]
 Before issuing any external-research request to Trey, Erdős, or any future research vendor: audit the agent's complete context corpus for stale architectural assumptions. Cover: (1) bootloader files (Trey2: 4 bootloader files); (2) connector files (Trey1: 4 universal connectors; Trey2: bootloader set); (3) prior deliverables the agent will re-read — follow-ups inherit contamination from the prior; (4) the request prompt itself.
 Stale patterns to grep: `human-curated` / `hand-curated` / `by hand` / `hand-rated` / `manual rating` (pointer-rating architecture is auto-rated per V2 Build Guide, Apr 17); `Scribe` (phase-out in progress per V2); `not yet built` for components that have shipped; `MarcusAurelius` as operator of queues/hooks/Layer 3 (per A13 — use neutral phrasing).
