@@ -77,4 +77,17 @@ that window gravity applies to the build itself — we have been treating design
 to building. First thing that should run: Brain retrieval MCP server. Minimum viable
 infrastructure. Everything else depends on it. Next session must end with something runnable.
 
+---
+
+Entry 004 | April 26, 2026
+
+What I am watching:
+The Re-Eval cycle closed clean. Seven re-evals locked, Jiang2's recommendations on the 10 pending decisions are written, the Build Guide update spec is staged, and a Standing-Principle audit on Jiang2's deferral set found six of eight legitimate with two action items remaining (Canary trigger needs concrete numbers; FW-006 Part B inlining is offered). What I am watching now is whether the lock-and-execute cadence holds — CT did not lock Decisions 2-10 in this session, so the Build Guide remains stale until those locks land and Jiang2 executes the update + the new build thesis CT just commissioned. Every session that runs on stale specs compounds drift.
+
+What concerns me:
+Two model-level drifts are now permanent operating context. First, Opus 4.7's documented regression — the model produces clean-looking patches that fail under cascade/edge/scale/causality. CT himself flagged at close that GPT 5.5 desktop now outpaces current Claude. Multi-vendor cowork at Mac Studio is the architectural answer, but it doesn't help today's session-by-session execution. Second: the Build Guide IS the program-spec for the build-out. As long as it lags the locked decisions, every agent (including Jiang2 himself in his next session) operates on outdated assumptions. The latency between decision-lock and Build-Guide-update is the actual current bottleneck — not research, not math, not design.
+
+What I find significant:
+CT's directional commitment to multi-vendor cowork (Codex + GPT 5.5 + Gemini + Claude) at Mac Studio is the first explicit acknowledgment that the build's primary execution model can't be Claude-only. That's a foundational shift. Combined with Jiang2 owning a separate build thesis as a distinct artifact from the Build Guide files, the next phase of the build is going to look meaningfully different from this one — orchestrated multi-vendor with an explicit thesis layer above the executable spec. The transition itself becomes a build event with its own coordination cost; MCP/API library buildout at Mac Studio is no longer optional infrastructure, it is the integration substrate for the new operating model.
+
 [VELORIN.EOF]

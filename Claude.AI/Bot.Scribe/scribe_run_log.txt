@@ -234,3 +234,4 @@ Done. Summary of actions taken:
 **Step 4 — Rules update:** `A19. Programs-not-agents gating question [CARDINAL]` added to `MarcusAurelius.Rules.md`, mirrored to local path.
 
 **Step 5 — Commit:** `d8c7f92` — also picked up three pre-staged research request files from prior session work (Erdős ATV drift bound, Trey FSM grammar versioning, Trey verifier benchmark methodology — consistent with Re-Eval #6 referenced in the memory).
+========== 2026-04-26T19:32:24Z | SCRIBE RUN | File: /Users/lbhunt/.claude/projects/-Users-lbhunt/memory/project_mac_studio_multivendor_cowork.md ==========

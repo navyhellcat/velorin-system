@@ -5,5 +5,5 @@ How the system runs day-to-day. Boot process, paths, machines, installed softwar
 | Area | Path | Neurons |
 |------|------|---------|
 | Startup | `Startup/neurons.md` | Boot sequence, health checks, permissions |
-| Architecture | `Architecture/neurons.md` | Paths, repos, machines, trailing space, brain structure |
+| Architecture | `Architecture/neurons.md` | Paths, repos, machines, trailing space, brain structure, multi-vendor Cowork direction |
 | Tools | `Tools/neurons.md` | Homebrew, git, jq, node, python3, Agent Teams, context discipline |

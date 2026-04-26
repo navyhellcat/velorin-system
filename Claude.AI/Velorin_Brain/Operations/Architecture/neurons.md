@@ -32,8 +32,15 @@ Pointers: [1] A8 | [1] neurons.operations.tools.A1 | [2] neurons.operations.star
 
 ### A8. Mac Studio — Primary Inference Host (arriving April 7, 2026)
 Mac Studio is the target machine for local model hosting. Apple Silicon, high unified memory, Thunderbolt 4, multi-monitor. This is where CT's own brain model will run. Architecture decisions should target Mac Studio specs. Do not start intensive local workloads on Machine 1.
-last-touched: 2026-04-04
-Pointers: [1] A9 | [1] neurons.operations.tools.A1 | [2] A4
+last-touched: 2026-04-26
+Pointers: [1] A10 | [1] A9 | [1] neurons.operations.tools.A1 | [2] A4
+
+### A10. Mac Studio Transition — Multi-Vendor Cowork Model (Locked 2026-04-26)
+CT locked at Session 037 close: at Mac Studio transition, Velorin integrates Codex + ChatGPT 5.5 desktop + Claude + Gemini via Cowork as live co-equal agents — not external research vendors. MCP/API libraries built at same transition point.
+Forward operating model = multi-vendor at frontier. Any architectural recommendation assuming single-vendor (Claude-only) execution is stale post-Mac-Studio. Current patterns hold until transition; post-transition plans must accommodate Cowork-integrated GPT, Codex, Gemini as live agents.
+Tech Agnosticism (Level 4 Rule #7) governs: Claude is foundation not ceiling. Jiang2 owns Build Guide update + build thesis (both locked 2026-04-26, distinct artifacts).
+last-touched: 2026-04-26
+Pointers: [1] A8 | [1] A9 | [2] neurons.agents.protocols.A2 | [2] neurons.agents.protocols.A13 | [3] neurons.agents.roster.A5
 
 ### A9. Velorin Architecture — Baseline Design (not resolute)
 CT owns the center of Velorin. The architecture:
@@ -58,8 +65,8 @@ Key principles:
 - Protocol between Claude and CT's brain model is the next design problem (not yet specified)
 
 This is baseline design — not resolute. Subject to evolution as Mac Studio arrives and build begins.
-last-touched: 2026-04-04
-Pointers: [1] A8 | [1] neurons.agents.roster.A5 | [2] neurons.agents.protocols.A1 | [2] A6
+last-touched: 2026-04-26
+Pointers: [1] A10 | [1] A8 | [1] neurons.agents.roster.A5 | [2] neurons.agents.protocols.A1 | [2] A6
 
 ### A5. GitHub Repos
 Account: **navyhellcat**. Two repos:
