@@ -250,6 +250,15 @@ see `07_OpenQuestions.md`.
 
 ---
 
+## Step 9b — FW-003: GDrive Service Account Migration (DO THIS BEFORE Step 10)
+
+OAuth tokens expire every 7 days (recurred Session 027 and Session 035 — HIGH priority).
+Full process: see `Velorin.MacStudio.Setup.md` Phase 0.
+Short version: Google Cloud Console → create service account → share Claude.AI folder →
+download JSON key → update velorin-gdrive-mcp/auth.js → test without tokens.json.
+
+---
+
 ## Step 10 — MCP Servers (Initial Set)
 
 Wire these in Claude Desktop config at:

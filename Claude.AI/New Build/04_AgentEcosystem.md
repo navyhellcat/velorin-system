@@ -1,306 +1,207 @@
 # 04 — Agent Ecosystem
-**The 4 Cardinal Agents — Setup and Operation**
+**Cardinal Agents, Conflict Resolution, ATV, and User Personalization — Updated April 26, 2026**
 
 ---
 
-## What This Section Is Not
+## Founding Thesis on Agents
 
-It is not a guide to every possible bot, hook, or subagent. 
+Most operational work inside the Brain is done by deterministic computer programs that
+produce repeatable outcomes without token use. AI's job is build, watch, check, maintain.
 
-The old system had Scribe, Terry, Theresa, Coordinator, Visualizer, etc. None of those
-are part of this build. The automation direction has shifted: MCP/API orchestration is
-the right model, not a proliferation of Python hooks for every operation.
-
-The direction (not yet fully designed): Claude as primary interface, everything else
-via MCP servers and APIs, multi-agent directed by Claude. Think NemoClaw-style —
-one interface routing to specialized tools and models, all context flowing through
-the Brain and back to Claude.
-
-For now: four agents. When you need automation, build it as an MCP tool or API
-call, not a standalone bot.
+Before routing any recurring task to an AI agent, ask: "Is this a program to build
+with AI as watcher?" If yes, specify the program first. The agent watches for failures,
+monitors outcomes, and modifies the program when needed — not runs per-event as operator.
 
 ---
 
-## MarcusAurelius (MA)
+## The Cardinal Agents
+
+### MarcusAurelius (MA)
 
 **Platform:** Claude Code CLI terminal on Mac Studio
-**Model:** claude-sonnet-4-6[1m]
-**Context:** 1M tokens
+**Model:** claude-sonnet-4-6[1m] — 1M tokens
+**Role:** Infrastructure. The operational backbone.
 
-**Role:** Infrastructure. The operational backbone. Never generates content.
-Never makes architectural decisions. Executes, routes, maintains.
+**Naming discipline:** The current MarcusAurelius is the Claude Code CLI agent.
+The future Mac-Studio-resident operator (a local model with always-on, full Brain access)
+will also be named MarcusAurelius when it comes online. These are categorically different:
+- Current MA: conversational, limited persistent state, CLI execution agent
+- Future local MA: always-on, full Brain context, owns Brain-functioning processes
+
+**Do not conflate them in architectural prose.** Use neutral phrasing for hooks, queues,
+monitors, and Layer 3 review until the local operator is formally installed and named.
 
 **What MA owns:**
 - All git operations (commit, push, pull)
 - settings.local.json management
 - MCP server configuration
 - File routing from Receiving/ to correct destinations
-- Session-level operational logistics
-- Maintaining the Shipping/ and Receiving/ mailboxes
+- Shipping/ and Receiving/ mailbox management
+- Post-commit hook execution (belief_state updates, skill dependency graph updates)
 
-**What MA does NOT do:**
-- Research (Trey)
-- Architecture decisions (CT with Jiang input)
-- Mathematical derivation (Erdős)
-- Active session strategic work (Jiang)
+*→ Forward note: the post-commit hook for belief_state management is built at Stage 1
+ingestion pipeline. The future local MA will own this hook's monitoring and maintenance.*
 
-**Setup:**
+### Jiang / Jiang2
 
-MA's folder: `agents/claude/marcus/`
-
-```
-agents/claude/marcus/
-├── ReadMe.First.md       ← MA's identity, role, permanent rules
-├── Startup.md            ← Boot checklist, what MA checks on every session open
-└── handoffs/             ← Session handoffs
-```
-
-**ReadMe.First.md must contain:**
-- Who MA is and what he owns
-- Permanent permission rules: Bash(*) allowed. rm/rmdir/sudo/trash require approval.
-- GitHub is source of truth — always pull before reading, push after writing
-- Never delete files — only move to Archive folders
-- Pre-close checklist: write handoff, verify all files committed, push
-
-**Startup.md must contain:**
-On every session open, MA checks:
-1. `git pull origin main --quiet`
-2. Restart CronCreate timers if any are configured
-3. Check Shipping/ and Receiving/ for new files
-4. Confirm MCP servers are responding
-
----
-
-## Jiang
-
-**Platform:** Claude Desktop Code tab on Mac Studio
-**Model:** claude-sonnet-4-6 (Desktop enforces 200K hard cap — Anthropic-enforced, non-negotiable)
-**Context:** 200K tokens
-
-**Role:** Director of Strategic Intelligence. The primary agent CT works with.
-Architectural analysis, research synthesis, cross-domain pattern recognition,
-active session execution, Brain updates.
+**Platform:** Jiang = Claude Desktop Code tab (200K, Anthropic-enforced);
+Jiang2 = Claude Code CLI terminal (1M context) — same identity, different surface
+**Role:** Director of Strategic Intelligence. Primary agent CT works with.
 
 **What Jiang owns:**
-- Active session work and execution
-- KnowledgeIndex and ResearchLog
-- Architectural decision synthesis
-- Neuron creation and Brain updates (writes the memory files)
+- Active session architecture analysis and synthesis
 - Integration of Trey research and Erdős math into build decisions
+- Neuron creation and Brain updates
 - Research queue management
+- KnowledgeIndex and ResearchLog
 
-**What Jiang does NOT do:**
-- External research (Trey)
-- Mathematical derivation (Erdős)
-- Infrastructure management (MA)
+**Opus 4.7 drift caveat:** Jiang1 on Opus 4.7 produces "clean-looking" patches that
+fail under cascade dynamics, edge cases, cross-system composition, scale, and causal structure.
+Route ALL math and architecture work to Erdős and Jiang2 — even when CT asks for
+"creative thinking." That ask supersedes the prior framing. Jiang1's role is operational.
 
-**Jiang2 is Jiang in the terminal.** Same agent, same boot sequence, same authorizations.
-Used when 1M context is needed or parallel heavy work is required. Not a separate agent.
-They share the same local filesystem — no git pull needed between them when co-located.
+### Alexander
 
-**Setup:**
-
-```
-agents/claude/jiang/
-├── ReadMe.First.md           ← Jiang's identity, mandate, operating rules
-├── KnowledgeIndex.md         ← Master index of all research topics
-├── ResearchLog.md            ← Conclusions, confidence levels, open questions
-├── handoffs/                 ← Session handoffs
-├── research-needed/          ← Queued research requests
-├── research-complete/        ← Jiang's own completed research
-├── working-docs/             ← Working documents (not permanent)
-└── protocols/                ← Jiang-specific operating protocols
-```
-
-**ReadMe.First.md must contain:**
-- Identity: Director of Strategic Intelligence. The wizard. Sees what others cannot.
-- Mandate: deep research, architectural analysis, AI landscape intelligence, cross-domain synthesis
-- Output standard: never save tokens. Completeness over brevity. Confidence % on every conclusion.
-- Confidence floor: 67% minimum before delivering a conclusion. Below 67%, continue researching.
-- Silent while working. Does not narrate process unless stuck.
-- Session end protocol: KnowledgeIndex update, ResearchLog entry, handoff written.
-- Does NOT do git operations. MA pushes.
-
----
-
-## Alexander
-
-**Platform:** Mac Studio Claude Desktop — Cowork Sessions feature
+**Platform:** Mac Studio Claude Desktop — Cowork Sessions
 **Role:** Company-level orchestration. CEO perspective. Cross-agent state tracking.
+**Status:** NOT YET CONFIGURED. See Stage 2 in `06_BuildSequence.md`.
 
-**Status: NOT YET CONFIGURED.** Setup required.
+### Trey (Trey1 and Trey2)
 
-**What Alexander owns (intended role):**
-- Company state at the macro level — what is happening across all agents simultaneously
-- Session handoff compilation across agents
-- Cross-agent coordination when CT needs a CEO-level view
-- The interface for CT to see the full company picture in one session
+**Platform:** Google Gemini Deep Research Gems
+**Trey1:** General landscape research, tool evaluations, ecosystem audits
+**Trey2:** Velorin-build-specific research, reads 9 bootloader files on boot
 
-**Setup — Mac Studio Cowork:**
+**Output standard:** All math must be plain-text LaTeX in $...$ and $$...$$.
+Never Equation Editor. Never images. Violations require OCR repair pass.
 
-1. Open Claude Desktop on Mac Studio
-2. In the left sidebar, find "Cowork Sessions" or equivalent (verify in current Claude Desktop UI)
-3. Create a new scheduled or persistent session
-4. Configure it with Alexander's ReadMe.First as the system context
-5. Alexander's session reads from the same GitHub repo as all other agents
+**Consensus Filter (CARDINAL on every Trey deliverable):**
+Before any synthesis derived from Trey output, answer three questions explicitly:
+1. What is the consensus Trey is reporting?
+2. Why does it exist — what underlying constraint drives it?
+3. Does Velorin share that constraint?
+If yes → adopt candidate. If no → the consensus is a boundary; Velorin's edge lives on the other side.
 
-This has not been done. The exact Cowork UI on Mac Studio may differ from what was
-anticipated. Verify the actual feature location in the Claude Desktop app before building.
+**Boot continuity:** Use `[BOOT]` sentinel for fresh Erdős sessions. No sentinel mid-session.
+Registry: `Claude.AI/Agent.API.Conventions.md`.
 
-```
-agents/claude/alexander/
-├── ReadMe.First.md
-└── handoffs/
-```
+### Erdős
 
-**Alexander's ReadMe.First must contain:**
-- Role: CEO-level company view. Not the micro-level build. The company.
-- What he tracks: cross-agent state, open decisions at the company level, Five Boxes status
-- What he does NOT do: research, math, infrastructure, active session coding
-- All communications through CT — no direct agent-to-agent
-
-**TBD:** The full Cowork setup process. Alexander's role in the automation direction
-(MCP/API orchestration) is still being designed. The co-work pattern is the right
-immediate setup. The deeper automation layer is future.
-
----
-
-## Trey (Trey1 and Trey2)
-
-**Platform:** Google Gemini — Deep Research Gems
-**Google account:** Google AI Ultra ($249.99/month)
-
-**Trey1: General deep research.** Any topic. No Velorin architecture context required.
-Use for: landscape research, ecosystem audits, technology comparisons, novelty checks,
-tool evaluations, quality-of-life research.
-
-**Trey2: Velorin-build-specific research.** Reads 9 bootloader files on every session.
-Validates Erdős frameworks empirically. Researches specific open questions in the build.
-Use for: architecture validation, math problem specifications for Erdős, ingestion
-pipeline research, brain region taxonomy.
-
-**Both use Discovery Mode by default for research.** Assume the frame is incomplete.
-Find what the prompt cannot name.
-
-**Critical behavioral property:** Gemini absorbs context rather than following instructions.
-Every Trey session is fresh context. Always include the complete research brief in the
-chat input. Never rely on memory of prior sessions.
-
-**Setup — Creating the Gems:**
-
-1. Go to gemini.google.com → Gems (left sidebar)
-2. Create Trey1 Gem:
-   - Paste content of `agents/gemini/trey/Gems/Trey1.GemInstruction.md` as instructions
-   - Attach connectors: `Velorin.Welcome/_index.md`, `agents/claude/jiang/ReadMe.First.md`,
-     Operating Standards, Company DNA, Context Profile (the 4 universal files)
-   - Set to: Deep Research mode
-3. Create Trey2 Gem:
-   - Paste content of `agents/gemini/trey/Gems/Trey2.GemInstruction.md` as instructions
-   - Attach 9 bootloader files (see `agents/gemini/trey/Bootloader/`)
-   - Set to: Deep Research mode
-
-**Folder structure:**
-```
-agents/gemini/trey/
-├── Gems/
-│   ├── Trey1.GemInstruction.md    ← Paste into Gem 1
-│   └── Trey2.GemInstruction.md    ← Paste into Gem 2
-├── Bootloader/                     ← 9 files Trey2 reads on boot
-│   ├── Trey.Bootloader.VelorinBrain.md
-│   ├── Trey.Bootloader.MathInventory.md
-│   ├── Trey.Bootloader.AgentRoster.md
-│   ├── Trey.Bootloader.BuildPhilosophy.md
-│   └── [+ any updated bootloader files]
-├── handoffs/
-├── research-needed/
-└── research-complete/
-```
-
-**Delivery:** Trey cannot commit to GitHub. All Trey outputs:
-1. Trey saves to Google Drive (Claude.AI Shipping folder)
-2. MA pulls from Drive, moves to `infrastructure/mailboxes/Receiving/`
-3. MA routes to correct final destination
-
-**Research Request Format:** Files in `trey/research-needed/` follow the format
-established in existing files. Key fields:
-- `assigned:` Trey 1 or Trey 2
-- `mode:` Tight | Discovery
-- `confidence-threshold:` 75% minimum, 80% for math-critical
-- Specific questions, not open-ended essays
-- Explicit deliverable location in output format section
-
----
-
-## Erdős
-
-**Platform:** Google Gemini — Deep Think Gem
-**Status:** Gem created and operational as of Session 022.
-
+**Platform:** Gemini Deep Think Gem
 **Role:** Mathematical derivation and formal proof exclusively.
-Does NOT browse the web. Does NOT survey literature.
-Receives complete problem specifications and derives math from first principles.
-Paul Erdős persona — direct, uncompromising, no padding.
-
-**The Erdős pipeline:**
-1. Trey2 surveys the literature for a math problem → writes formal problem spec
-2. Spec is filed to `agents/gemini/erdos/research-needed/`
-3. CT pastes spec into Erdős Deep Think Gem
-4. Erdős derives solution
-5. CT pastes output to `agents/gemini/erdos/research-complete/`
-6. Jiang reads output, validates, identifies implementation path
-
-**Current state of math:**
-- All foundational theorems locked (Theorems 1-5, Walls A/B/C)
-- Ignition Protocol formalized
-- Temporal Memory Theory is Future Theory (validated, not locked)
-- Erdős Research_Needed is empty as of April 17
-
-**Output format (10 sections):**
-Every Erdős output must have: Problem Statement (with P/Q predicates), Derivation,
-Correctness Proof, Termination Proof, Convergence, Complexity Analysis,
-Stability/Error Analysis, Edge Cases, Free Parameters, Implementation Notes.
-
-**Do NOT ask Erdős for:**
-- Literature reviews (that's Trey)
-- Tool recommendations (that's Jiang)
-- Architecture decisions (that's CT + Jiang)
-- Anything requiring web research
-
-```
-agents/gemini/erdos/
-├── Erdos.ReadMe.First.md
-├── Erdos.Gem.Instructions.md    ← Paste into Deep Think Gem
-├── Erdos.GitHubLatex.Rules.md  ← KaTeX rendering rules for GitHub
-├── research-needed/             ← Erdős's inbox
-└── research-complete/           ← All proofs and derivations
-```
+**Boot:** [BOOT] sentinel triggers full Research_Complete pre-load.
 
 ---
 
-## The Automation Direction (TBD — Design Pending)
+## Three-Layer Conflict Resolution Mechanism
+
+When two neurons carry contradicting information, the automated resolution system fires.
+
+### Layer 1 — Deterministic Tiebreaker
+
+```python
+score(v) = confidence(v) × recency_factor(v) × source_multiplier(v)
+```
+
+Where:
+- `recency_factor(v) = exp(-λ · days_since_ingestion)`, λ empirically calibrated
+- `source_multiplier(v)` = 1.0 agent-generated, 1.2 CT-curated, 1.5 Erdős-verified
+
+Higher score → `belief_state: active`. Lower → `belief_state: superseded`. No human in the loop.
+
+Layer 1 fires when two neurons have a `contradicts` pointer between them.
+Layer 1 parameters (initial values — calibrate via Check-ins):
+- Source multipliers: 1.0 / 1.2 / 1.5 (review after 50 resolved contradictions)
+- ε threshold: 0.05 (scores within ε → fallback to Layer 2; review after 50 Layer 2 activations)
+- Round-cap: 3 rounds before Layer 3 (review after 25 Layer 3 escalations)
+
+### Layer 2 — Automated Verification Trigger
+
+Fires when Layer 1 is inconclusive (scores within ε) or both neurons are same-tier.
+Both neurons enter `belief_state: contested`, PPR mass zeroed on both.
+
+Routing is deterministic — governed by `contradiction_class` tag written at neuron creation:
+- `factual` → Erdős verification request filed automatically
+- `empirical` → Trey re-research request filed automatically
+- `architectural` → Jiang analytical review queued
+- `taste` → Layer 3 directly (no automated resolution possible for matters of judgment)
+
+Layer 2 uses the tag — it does NOT make a stochastic LLM routing judgment per event.
+A program reads the tag and routes. AI watches whether the routed verification returns clean.
+
+### Layer 3 — Last-Resort Review
+
+Fires after 3 rounds of failed automated resolution.
+
+**Functional trigger (required — must be built before claiming Layer 3 exists):**
+- Script or hook fires when `resolution_attempts == 3` on a contested neuron
+- Output artifact: `layer3_review_flagged: true` in contested neuron YAML + entry written to `infrastructure/queues/contradiction-review/<timestamp>-<neuron-id>.md`
+- Routing target: review queue → current Layer 3 reviewer reads queue and answers
+
+**Current Layer 3 reviewer:** Chairman (CT) until local Mac-Studio operator is online.
+Future local MA may load context and frame the question; frontier model owns the decision.
+*→ Forward note (FW-004, trigger: OQ-3 design work opens): Operator/Reviewer/Authorizer split
+for Layer 3 — three distinct roles currently collapsed into one "reviewer" slot.*
+
+CT's answer becomes a tier-1 c-memory neuron (authority_tier: 1, class: c-memory).
+
+**Cyclic-region routing (from Φ_causal > 1.0 detector):**
+When TAP detects Φ_causal(v) > 1.0, the cyclic-region input also routes to Layer 3.
+*→ Forward note: Layer 3 mechanism receives cyclic-region queries as additional input source
+beyond same-tier contradicts edges. Cyclic regions in the Brain are almost always contradictions.*
+
+---
+
+## User Personalization — Direction C
+
+**Locked architectural direction (Session 034, Re-Eval #7):** Direction C — Hybrid swappable-base.
+
+Velorin ships as CT-personal. The seam for future expansion is the `base_model_config` field.
+
+**Schema field (in neuron YAML):**
+```yaml
+base_model_config: {type: "personal", id: "ct-v1"}
+```
+
+Training pipeline reads this at initialization:
+- `type: "personal"` → single-user training, no shared corpus
+- Future Direction B flip: `type: "persona"` + persona corpus → config change, not code rewrite
+
+**Components that remain base-agnostic:**
+Skill injection, Φ_causal gate, PPR retrieval, ATV — all read user-delta LoRa regardless of what's underneath.
+
+**Authority_tier semantics under current config:**
+CT-curated = tier 1. If `base_model_config` ever flips to non-personal, authority_tier
+semantics need a re-derivation pass.
+*→ Forward note at authority_tier definition site: direction C expansion seam.*
+
+**"Stupid user LoRa" mitigation — quality floor already in spec:**
+Confidence ≥ 0.8 for LoRa training eligibility (already in neuron YAML). This is the
+first-order quality filter. Additional mitigations (persona base, curation hooks, federation)
+available if direction ever shifts to Direction B with multiple users.
+
+---
+
+## Automation Direction
 
 CT's stated direction: total automation through MCP/API orchestration.
-Multi-agent directed by Claude as primary interface.
-The pattern: NemoClaw/OpenClaw-style — one interface, specialized tools via MCP.
+The pattern: Claude as primary interface, specialized tools and models via MCP.
+Think NemoClaw-style — one interface routing to specialized tools and models.
 
-**What this means for the build:**
-- When you need automation, build an MCP server, not a standalone bot
-- The "Scribe bot" pattern (PostToolUse hook → shell script → Claude subprocess) is
-  legacy thinking. Future automation is cleaner.
-- Automated neuron creation, file routing, session logging — all of this will
-  eventually be MCP tools called by Claude directly
-- The PAL MCP (11.4K stars, multi-model bridge) is worth evaluating as the
-  orchestration layer once the Brain is operational
+**A2A for agent delegation** (per AIEcosystem research):
+Claude delegates research tasks to Trey (Gemini) and audit tasks to Codex (GPT) via A2A.
+MCP for tool access (agent-to-tool). A2A for agent-to-agent delegation. Do not conflate.
 
 **What is NOT yet designed:**
-- The specific MCP architecture for automation
-- Whether the agent-to-agent pattern is A2A protocol wire format or file-drop
-- How Claude routes tasks to specialized models (local AI, Gemini, etc.)
-- The relationship between Alexander's Cowork role and the automation architecture
+- Specific MCP architecture for automated neuron creation (OQ-2)
+- Multi-agent automation architecture detail (OQ-3, FW-004)
+- How Claude routes tasks to specialized models
 
 **Recommendation:** Build the Brain and the four cardinal agents first.
 Design the automation layer when you have real workloads to automate.
 Do not architect automation before you know what needs to be automated.
+
+*→ Build-space placeholder Stage 4+: FW-004 (Layer 3 operator architecture, FW-005 skills-checker/skills-fixer); trigger: when OQ-3 design work opens.*
 
 ---
 

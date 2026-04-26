@@ -1,253 +1,276 @@
 # 07 — Open Questions
-**What still needs research, math, or a decision before building**
-
-Each item: what the question is, what's known, what's missing, who decides.
+**Current status on every OQ. Updated April 26, 2026 to reflect Sessions 033-036 outcomes.**
 
 ---
 
-## BLOCKER — Must resolve before the step that depends on it
+## OQ-1: Ingestion Pipeline Design — SUBSTANTIALLY RESOLVED
 
-### OQ-1: Ingestion Pipeline Design
-**What it is:** How does raw input (document, photo, session log, video) automatically
-become neurons with rated pointers? Where does the rating come from? How are duplicates
-handled? How does the pipeline know what's worth ingesting?
+**Original question:** How does raw input automatically become neurons with rated pointers?
 
-**UPDATE April 19 — Significant progress. Several sub-questions now resolved.**
+**Resolved (confirmed locked):**
+- Rating metric: NPMI + LLM-judge hybrid (cosine similarity formally rejected — symmetric, cannot model directed logical dependency)
+- LLM-judge calibration: forced distribution output (guarantees ρ* = 0.78 density constraint)
+- Initial affinity: Holographic Cold-Start (geometric projection residual from W_global)
+- Updates: Continuous Affinity Clutch + A_base SDE (Hebbian reinforcement + Ebbinghaus decay)
+- Relation-type classification: 9-class labels REQUIRED for all auto-ingested neurons (binary routing derived from label; LLMs can reliably do tax/them binary classification zero-shot; 9-class has ~70-80% accuracy with few-shot examples — acceptable for initial build, fine-tuned classifier is the long-term plan)
+- Deduplication: NPMI filter → LLM-judge with ADD/UPDATE/DELETE/NOOP gate (cosine similarity alone causes fatal corruption)
+- Region/area assignment: community detection via connectivity (not static taxonomy)
+- Contradiction handling: provenance weighting (recency + source authority)
+- PDF parsing: OpenDataLoader PDF v2.0 (replaces Docling — 1GB footprint, times out on >1MB)
+- Source provenance: bbox coordinates from OpenDataLoader → `source_coords` YAML field
 
-**Resolved by Erdős (ViscoelasticResolution, April 19):**
-- Cold-start rating: use Holographic Cold-Start — affinity = f(geometric projection residual
-  from W_global). High fit to crystal → high affinity. Bans hub-centrality proxy
-  (Preferential Attachment = Monster Node generator).
-- Rating dynamics: A_base evolves via Hebbian SDE + Ebbinghaus decay. Routing gravity
-  uses Effective Affinity Clutch (continuous, not binary).
-- Expert density: not a problem — Clique Centrality Theorem proves expert domains
-  self-protect.
+**Still pending — execution (not design):**
+- Full ingestion pipeline not yet built or tested (Stage 3 in 06_BuildSequence.md)
+- Multimodal input handling (photos, audio, video beyond AffectNet approach) — deferred to Phase 2
 
-**Resolved by Trey2 (BrainIngestionPipeline, April 17-19):**
-- Deduplication: requires LLM decision gate (ADD/UPDATE/DELETE/NOOP). Cosine similarity
-  alone causes fatal corruption — similar sentences can express opposite facts.
-- Atomicity criteria: 4 conditions (atomic, durable, contextually independent, actionable).
-  Recursive decomposition (RDoLT) for complex documents.
-- Region/Area assignment: community detection via connectivity, not static taxonomy.
-  New neuron's region is determined by which existing neurons it connects to.
-- Contradiction handling: provenance weighting (recency + source authority) decides
-  whether UPDATE or DELETE when new fact contradicts existing neuron.
-
-**Still open:**
-- Attention-weight capture for Phase 2 ratings (requires instrumented local model inference)
-- The full automated pipeline implementation has not been built or tested
-- How to handle multimodal input (photos, audio) at scale beyond the AffectNet approach
-
-**Who decides:** CT + Jiang + MA to implement
-**Status:** PARTIALLY RESOLVED. Sufficient clarity to begin building. Start with text
-documents only (Phase 1). Multimodal deferred.
+**Status:** DESIGN COMPLETE. Start building text-only Phase 1. Multimodal deferred.
 
 ---
 
-### OQ-2: Automated Neuron Creation Mechanism
-**What it is:** The replacement for Scribe. What creates neurons automatically?
-The old Scribe approach (PostToolUse hook → shell script → Claude subprocess) is
-legacy. The new approach should be MCP/API-based.
+## OQ-2: Automated Neuron Creation Mechanism — OPEN
 
-**What's known:**
-- Scribe is NOT included in this build
-- The direction is MCP/API orchestration, not bot proliferation
+**Question:** What creates neurons automatically? How does the system detect what's worth ingesting?
+
+**Known:**
+- The old Scribe approach (PostToolUse hook → shell script → Claude subprocess) is legacy
+- Direction confirmed: MCP/API-based automation
 - Any automation should be an MCP tool call, not a standalone subprocess
 
-**What's missing:**
-- The specific MCP architecture for automated neuron creation
+**Pending:**
+- Specific MCP architecture for automated neuron creation
 - Whether this happens in the ingestion pipeline or separately
 - What triggers it (session close? file write? API call from Claude?)
 
-**Who decides:** CT + Jiang + MA
-**Status:** PENDING. Build manually first. Automate when you understand the pattern.
+*→ Build-space placeholder Stage 4+: FW-005 skills-checker/skills-fixer thread surfaces here
+(trigger: OQ-2 or OQ-3 design work opens).*
+
+**Status:** OPEN. Build manually first. Automate when you understand the pattern.
 
 ---
 
-### OQ-3: Multi-Agent Automation Architecture
-**What it is:** The NemoClaw-style orchestration design. Claude as primary interface,
-specialized tools and models via MCP/API, all context flowing through the Brain.
+## OQ-3: Multi-Agent Automation Architecture — OPEN
 
-**What's known:**
-- This is the confirmed direction
-- PAL MCP (11.4K stars) is the most promising existing tool to evaluate
-- A2A protocol exists for peer agent delegation — aligned with Alexander→Jiang pattern
-- Claude does NOT natively support agent-to-agent communication without tools
+**Question:** How does NemoClaw-style orchestration work for Velorin? Claude as primary interface, specialized tools and models via MCP/API.
 
-**What's missing:**
-- Which MCP orchestration approach to adopt (build vs PAL vs something else)
-- How the local AI model integrates with this architecture
+**Known:**
+- Direction confirmed: A2A protocol for agent-to-agent delegation; MCP for agent-to-tool
+- PAL MCP worth evaluating as orchestration layer once Brain operational
+- A2A: Gemini subagents for research via A2A delegation from Claude
+
+**Pending:**
+- Specific MCP orchestration design
 - How task routing decisions are made (which model gets which task)
-- Whether A2A wire protocol is needed or file-drop coordination is sufficient
+- Alexander's role in this architecture
 
-**Who decides:** CT + Jiang, after evaluating PAL MCP in context
-**Status:** PENDING. Build the Brain first. Design this when you have real workloads.
+*→ Build-space placeholder Stage 4+: FW-004 Layer 3 operator architecture lives here
+(trigger: this OQ opens). Cannot design OQ-3 correctly without FW-004's decisions.*
 
----
-
-## HIGH PRIORITY — Needed soon but not blocking Stage 1-4
-
-### OQ-4: Brain Region Taxonomy
-**What it is:** The principled organization of Brain regions and areas.
-Currently: pragmatic (Operations, Connectivity, Agents, Principles, Company, Intelligence).
-Open question: should this be derived from neuroscience or community skill taxonomy?
-
-**What's known:**
-- Two Trey1 research requests are queued: SemanticMemoryOrganization, SkillsTaxonomyEmergence
-- The bootstrapping approach (let Simon-Ando reveal natural regions from the data) is valid
-- The Five Boxes are life domains, not cognitive functional regions — they should not
-  directly map to Brain regions
-
-**What's missing:**
-- Trey1 research results on both topics
-- Whether neuroscience gives a principled content taxonomy or only processing taxonomy
-
-**Who decides:** CT + Jiang after Trey1 results
-**Status:** ACTIVE RESEARCH IN QUEUE. Use current pragmatic structure until research returns.
+**Status:** OPEN. Build Brain first.
 
 ---
 
-### OQ-5: H_E (Emotional Charge) Measurement and YAML Field
-**What it is:** How does the system assign emotional charge (H_E) to a neuron?
-What measurement procedure? What field in the YAML frontmatter?
+## OQ-4: Brain Region Taxonomy — PARTIALLY ANSWERED
 
-**What's known:**
-- H_E is mathematically defined: δ*(u→v) = (1+H_E(u))·δ(u→v)
-- High H_E prevents demotion by the Demotion Oracle
-- Trey1 research request queued: EmotionalMemorySalience.Measurement
-- CT's personal profile neurons with high H_E exist but field is not in YAML yet
+**Question:** How should Brain regions and areas be organized? Neuroscience-derived or emergent?
 
-**What's missing:**
-- Trey1 research on validated measurement methods
-- Exact YAML field format (float? categorical? scale?)
+**Resolved:**
+- Edge ontology unification (9-class Brain + 4-type GoS) is a BUILD NOW pre-pipeline task (see Pre-Stage 0 in 06_BuildSequence.md)
+- Unified mapping established: instance-of/derived-from → dependency; operational thematic → workflow; supports/contradicts → semantic; alternative is skills-specific
+- The Brain's folder-level region structure (Operations, Connectivity, Agents, Principles, Company, Intelligence) is navigation scaffolding — it stays as-is
+- Semantic organization happens in E₈ crystal layer via Pointer Gravity and PPR traversal
+- Five Boxes are life domains (administrative overlay) — NOT Brain regions
+
+**Remaining open:**
+- How the Brain's folder structure evolves as Simon-Ando clustering reveals natural regions from data
+- Whether Community/ and Intelligence/ regions are the right two additions beyond the original four
+
+**Status:** ACTIVE — edge ontology unification in progress (Pre-Stage 0).
+
+---
+
+## OQ-5: H_E (Emotional Charge) Measurement — OPEN
+
+**Question:** How does the system assign emotional charge (H_E) to a neuron?
+
+**Known:**
+- H_E mathematically defined: δ*(u→v) = (1+H_E(u))·δ(u→v) — high H_E prevents demotion
+- Research returned: Trey.Research.EmotionalMemorySalience.Measurement.md
+  - Self-report (CES-7, IES-R) measures narrative anchoring, not raw arousal — inadequate alone
+  - GSR/EDA tracks sympathetic nervous system activation — proxy for H_E
+  - Observer effect: asking CT to rate a memory's emotional charge alters the trace
+  - Passive inference (involuntary intrusion frequency, response latency) is the correct measurement approach
+  - fNIRS + EEG headband: viable non-invasive hardware for future H_E inference
+- CT recommendation from Session 028: Option B — passive tracking + qualitative prior (high/medium/low) at neuron creation, never prompted directly
+
+**Pending decision (CT):**
+- Exact YAML field format (float? categorical scale?)
 - Whether H_E is set at neuron creation or updated over time
-- How a system (not CT) measures emotional charge
+- Hardware acquisition (fNIRS + EEG — optional, not blocking the build)
 
-**Who decides:** CT + Jiang after Trey1 research returns
-**Status:** Do NOT add H_E to YAML until this is resolved. Create profile neurons
-without H_E for now (they are c-memory which protects them without H_E).
+**Do NOT add H_E to neuron YAML until this is resolved.** C-memory neurons without H_E are
+still protected (class: c-memory is the protection mechanism).
 
----
-
-### OQ-6: Compression Event Detector
-**What it is:** The mechanism that watches interactions and identifies when a pattern
-has become semantically load-bearing — worth encoding in the LoRa.
-
-**What's known:**
-- β_macro entropy criterion: β_macro(v) > θ_semantic triggers compression event
-- Simon-Ando macro-regions define the "domains" for diversity measurement
-- The mathematical criterion is specified
-- The engineering implementation is not designed
-
-**What's missing:**
-- How PPR is run from K macro-region seeds efficiently as a batch process
-- How often this runs (nightly? per session? continuous?)
-- The pipeline from "compression event detected" → "LoRa queue update"
-- Whether this needs to wait for the local AI model (yes — LoRa requires base model)
-
-**Who decides:** CT + Jiang after Brain has enough neurons to meaningfully test
-**Status:** FUTURE. Design after Stage 3 is complete and Brain is populated.
+**Status:** RESEARCH COMPLETE. Protocol decision pending from CT.
 
 ---
 
-### OQ-7: Session Close Protocol
-**What it is:** At the end of each session, what exactly happens automatically?
-Which neurons get updated? What gets archived? How does the Brain reflect session output?
+## OQ-6: Compression Event Detector — STRUCTURALLY DEFINED
 
-**What's known:**
-- Current close protocol is fully manual (agents write handoff, update index, push)
-- CloseProtocolOptimization research request has been in Jiang's queue since Session 015
-- The optimization is a design task, not web research — Jiang can do it directly
-- The close protocol eats ~12,000 tokens at minimum in its current form
+**Original question:** How does the system detect that a pattern has become load-bearing enough to encode in the LoRa?
 
-**What's missing:**
-- The optimized close protocol design (Jiang has never done this work)
-- Hook-based automation for mechanical steps vs judgment-based steps for agents
+**Resolved (Sessions 034-035):**
+- Criterion: Brockett double-bracket gradient flow drives commutator norm β → 0
+- JSD fires when β ≤ β_abelian where:
 
-**Who decides:** Jiang designs this. CT approves.
-**Status:** JIANG TASK — design this in a session before automation work begins.
+$$\beta_{abelian} = \frac{\alpha \delta}{2C(1-\alpha)} \cdot \theta_{work} \cdot \|\pi\|_\infty$$
 
----
+- Commutator norm β = ‖[P_tax, P_them]‖_F is the structural friction operator
+- As CT applies a framework consistently across diverse contexts, P_tax and P_them commute more closely
+- κ: analytic formula $\kappa = 2C(1-\alpha)/(\alpha\delta)$ is a structural prior only — empirical calibration required
 
-### OQ-8: Compaction Hooks
-**What it is:** PreCompact and PostCompact hooks that save/restore team state during
-context window compaction.
+*→ Build-space placeholder Stage 4+: κ empirical calibration. Check-ins entry: after 10 test compression events.*
 
-**What's known:**
-- `pre-compact-task-gate.sh` was written, then deleted by CT (too risky without testing)
-- Exit code 2 blocks compaction. Exit code 1 does not (does not trigger block).
-- `autoCompactEnabled` and `autoCompactWindow` are real settings in settings.local.json
-- The TEAM_STATE.md with 2-hour recency window is the correct pattern
+**Pending — implementation (not math):**
+- Compression event detector program that monitors β per region
+- JSD algorithm implementation on region copies
+- Connection to LoRa training pipeline (Stage 5)
 
-**What's missing:**
-- Testing of exit-code-2 behavior in a safe environment
-- The actual pre-compact script (was deleted)
-- Confirmation that the hook fires reliably before Claude compacts
-
-**Who decides:** MA implements. CT approves before wiring.
-**Status:** Build and test script standalone before wiring to settings.
+**Status:** MATH COMPLETE. Implementation deferred to Stage 4+.
 
 ---
 
-## LOWER PRIORITY — Future phases
+## OQ-7: Session Close Protocol — OPEN
 
-### OQ-9: Intake Test Design
-**What it is:** The structured decision-scenario experience that reveals reasoning
-patterns and produces Layer 1-3 material for a new user in 60-90 minutes.
-The hardest design problem in the company.
+**Question:** At the end of each session, what exactly happens automatically?
 
-**What's known:**
-- Research plan (7 threads) was complete as of Session 013
-- CT has not authorized the research to begin
-- CT's Layer 1-3 is partially populated but never formally designed
-- The intake test is the encoding mechanism — how CT installs his intelligence into
-  the system so it can eventually run without him
+**Known:**
+- Current close protocol is fully manual
+- The optimization is a design task — Jiang should do it directly
+- Eats ~12,000 tokens in current form
 
-**What's missing:**
-- CT authorization
-- Research execution (5 sessions from Jiang)
-- Testing on CT himself
-- Testing on 3-5 external users
-
-**Who decides:** CT. Authorization is the only blocker.
-**Status:** BLOCKED ON CT AUTHORIZATION — has been blocked since Session 013.
+**Status:** JIANG TASK. Design this before automation work begins.
 
 ---
 
-### OQ-10: The Velorin.Welcome Rename
-**What it is:** Renaming the Layer 0 folder from `Claude.AI/` to `Velorin.Welcome`.
-CT confirmed this in Session 024.
+## OQ-8: Compaction Hooks — OPEN
 
-**Status:** The new build starts with `Velorin.Welcome/` as the name.
-No renaming needed — built correctly from scratch.
+**Question:** How do PreCompact/PostCompact hooks save/restore state during context compaction?
 
----
+**Known:**
+- pre-compact-task-gate.sh was written, then deleted by CT (too risky without testing)
+- exit code 2 blocks compaction; exit code 1 does not
+- TEAM_STATE.md with 2-hour recency window is the correct pattern
+- autoCompactEnabled and autoCompactWindow are real settings
 
-### OQ-11: The RTX 4090 Windows Build
-**What it is:** A second machine for 70B+ local inference, fine-tuning, and heavy compute.
+**Process (required before wiring):**
+1. Write the script
+2. Test standalone several times
+3. Add to settings.local.json with short timeout
+4. Monitor for one session before relying on it
 
-**What's known:**
-- Spec: RTX 4090 (24GB VRAM), AMD Ryzen 9 X3D, 64GB DDR5-6000 CL30, AM5
-- Blocked on: ARM64 Claude Code crash (GitHub issue #12160 — Anthropic has not fixed)
-- Action item: Buy 2×32GB DDR5-6000 CL30 RAM kit NOW while prices low
-  (Tim Cook Q1 2026 earnings call — memory prices rising)
-- 70B models require this machine — not viable on Mac Studio 36GB
-
-**Status:** DEFERRED. Buy the RAM. Build the machine when ARM64 bug is resolved.
+**Status:** DESIGN ONLY. Build and test standalone before wiring.
 
 ---
 
-## Research Still In Queue (What Trey Needs to Do)
+## OQ-9: Intake Test Design — BLOCKED
 
-In priority order:
+**Question:** The structured decision-scenario experience that reveals CT's reasoning patterns and produces Layer 1-3 material for a new user.
 
-| Request | Trey | Priority | Status |
-|---|---|---|---|
-| BrainIngestionPipeline | Trey 2 | CRITICAL | Results have issues — review before building |
-| SemanticMemoryOrganization | Trey 1/2 | HIGH | Not started |
-| SkillsTaxonomyEmergence | Trey 1 | HIGH | Not started |
-| EmotionalMemorySalience.Measurement | Trey 1 | MEDIUM | Not started |
-| Epistemodynamics.NoveltyCheck | Trey 1 | MEDIUM | Not started |
+**Status:** BLOCKED ON CT AUTHORIZATION since Session 013.
+
+---
+
+## OQ-10: Velorin.Welcome Rename — RESOLVED
+
+The new build uses Velorin.Welcome/ as the name from the start. No rename needed.
+
+---
+
+## OQ-11: RTX 4090 Windows Build — DEFERRED
+
+**Spec:** RTX 4090, AMD Ryzen 9 X3D, 64GB DDR5-6000 CL30, AM5
+**Blocked on:** ARM64 Claude Code crash (GitHub issue #12160)
+**Action:** Buy 2×32GB DDR5-6000 CL30 RAM kit now while prices low.
+
+**Status:** DEFERRED. Buy RAM. Build when bug resolved.
+
+---
+
+## OQ-12: θ_work Empirical Calibration — PENDING BUILD DATA
+
+**Question:** What is the exact optimal θ_work within the spectral band (0.375, 0.585]?
+
+**Known:**
+- Spectral band analytically derived: (0.375, 0.585]
+- Provisional value 0.5 is within the band
+- Minimum dataset: 738 labeled queries (PAC bound, ε=0.05, δ=0.05)
+
+**Pending:** Brain populated with 738+ labeled queries from actual use.
+
+*→ Build-space placeholder Stage 3: θ_work calibration. Check-ins entry: after 738 labeled queries exist. Config: skill_injection_threshold: float — NOT hardcoded.*
+
+**Status:** SPECTRAL BAND LOCKED. Empirical calibration pending Stage 3 data.
+
+---
+
+## OQ-13: Skills Library N Threshold (Sparse vs Dense Validation) — PENDING
+
+**Question:** At what skill count does GoS sparse validation become worth building?
+
+*→ Build-space placeholder Stage 3: GoS sparse validation mode (trigger: N skills, defined at Stage 3 design). Check-ins entry: 90 days of dense validation — review skill count and cost.*
+
+**Status:** PENDING. Decide N when Stage 3 is operational.
+
+---
+
+## OQ-14: ATV Verifier Model Selection — PENDING BENCHMARK
+
+**Question:** Which 1-3B parameter model achieves highest VTPS on IES grammar on Mac Studio M4 Max?
+
+**Candidates:** Qwen2.5-0.5B, SmolLM2-1.7B
+**Benchmark:** JSONSchemaBench + XGrammar + vllm-mlx + VTPS metric + 100-item Golden Dataset Phase 1
+**Primary metric:** VTPS = (N_total × C) / T_total (schema-invalid outputs are zero-throughput events)
+**Secondary metric:** FRR (false-reject rate) — prioritized over FAR per anti-drift discipline
+
+*→ Build-space placeholder Stage 1: ATV verifier model selection is Stage 1 engineering output.*
+
+**Status:** PENDING benchmark program execution.
+
+---
+
+## OQ-15: Layer 3 Operator Architecture — PARKED (FW-004)
+
+**Question:** Who performs Layer 3 contradiction review; who authorizes; what is the escalation protocol when local model cannot resolve?
+
+*→ Build-space placeholder Stage 4+: FW-004 (trigger: OQ-3 design work opens). Operator/Reviewer/Authorizer role split for future local Mac-Studio MA.*
+
+**Status:** PARKED per CT at Stage 0. Trigger: OQ-3 design work opens.
+
+---
+
+## OQ-16: GDrive Service Account Migration — STAGE 0 OPERATIONAL FIX
+
+This is not an architectural question but it blocks the porting workflow.
+
+**Problem:** OAuth tokens expire every 7 days (recurred Session 027 and Session 035).
+**Fix:** Google Service Account with JSON key file (permanent credentials).
+**Priority:** HIGH — must ship before next 7-day window expires.
+
+**Status:** STAGE 0 REQUIRED. See FW-003.
+
+---
+
+## Research Still Queued
+
+**All Trey and Erdős queues are currently empty** (as of Session 036).
+
+Deferred-novelty list (for end-of-cycle batched pass when architecture is locked and publication begins):
+- "VEGP generalizes Wald's SPRT" claim (steel-man from Re-Eval #4)
+- Revised Theorem 3 (Cognitive Langevin Dynamics / Brockett flow) vs arXiv 2602.13759
+- Causal Action Potential as triggerless gate + cyclic detector
+- JSD as compression algorithm vs Double-Bracket Flows literature
+
+No pure-novelty Trey audits until end-of-cycle batched pass per `feedback_no_pure_novelty_audits.md`.
 
 ---
 
