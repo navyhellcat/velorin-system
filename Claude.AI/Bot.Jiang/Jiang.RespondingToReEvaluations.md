@@ -629,7 +629,37 @@ The Chairman accepts the six items above as locked from Jiang2's evaluation fram
 
 ## Re-Eval #7 — "CT's Habits": User-Personalization Assumption Was Implicit
 
-*Pending Chairman walkthrough.*
+### Explanation
+
+The synthesis assumed Velorin = CT-personal throughout (e.g., "the brain learns CT's procedural habits," "CT's most-used skill patterns") without ever stating it as an architectural decision. The re-eval flagged this as a flaw in surfacing an undecided assumption, not a flaw in the technical recommendation (the A_base SDE and Hebbian dynamics work for any user). Jiang2's response surfaced where the assumption lived (most CT-references incidental and survive any direction; two load-bearing — `authority_tier` and dark-skill admin role), presented three architectural directions without preferring one (A: personal-only; B: persona-first; C: hybrid swappable-base), and laid out the "stupid user LoRa" mitigation menu (quality gates, persona base, curation hooks, federation, confidence-weighted training).
+
+### Decision Options
+
+1. **Direction A — Personal-only** (Velorin = CT, forever). Simplest. No schema changes. No persona corpus. Implicit single-user assumptions throughout.
+2. **Direction B — Persona-first** (shared persona LoRa base + user delta). Requires `persona_id` field, two-tier training pipeline, persona corpus authoring.
+3. **Direction C — Hybrid / shell-with-swappable-base.** Commit personal now, but build the architectural seam (`base_model_config: {type: "personal", id: "ct-v1"}`) so future expansion is a config change, not a rewrite. Standing-Principle compliant.
+
+### Chairman's Response
+
+**Direction C locked.** Optionality-preserving path. The `base_model_config` field is added now; training pipeline reads the config; downstream components remain agnostic to base identity. Single-user architecture in production today; future expansion is a config flip plus a new training pass, not a system rewrite.
+
+**CT-surfaced observation (preserved as future exploration, not a current lock):** the Brain build itself may serve as a persona-maker on its own — similar to how Jiang, Trey, and Erdős have personas built from their bootloader files, Gem instructions, and accumulated outputs. The Brain's neuron pointer graph plus pointer-rating dynamics may, with sufficient maturation, generate a persona representation organically from CT's interaction patterns. This is exploratory and not blocking #7. Surface for design when the ground-layer is firm and CT decides to explore it.
+
+### Locked Outcomes for Jiang2's Rewrite
+
+- **Direction C is the locked architectural direction.** Velorin ships as CT-personal; the seam for future expansion is the `base_model_config` field plus base-identity-agnostic downstream components.
+- **`base_model_config` field added to the schema now.** Initial value: `{type: "personal", id: "ct-v1"}`. The training pipeline reads this at initialization to determine whether to incorporate a shared corpus (currently no, for `type: "personal"`). All downstream components (skill injection, TAP, PPR, ATV) remain agnostic to base identity — they read the user-delta LoRa as a single layer regardless of what's underneath it.
+- **Schema does NOT add `persona_id` or `user_id` yet.** Those are Direction B-only fields. They are reserved as fields to add IF Velorin ever flips to Direction B; the current commitment is they are not added preemptively.
+- **`authority_tier` semantics stay absolute under current configuration** (CT-curated = tier 1). If `base_model_config` ever flips to non-personal, `authority_tier` semantics need a re-derivation pass at that time. Forward reference at the schema definition site noting this dependency (per Standing Order 1).
+- **Re-Eval #1's Layer 3 reviewer identity** (FW-004's parked question): under Direction C, the reviewer is Chairman until the local Mac-Studio operator comes online; that operator inherits the role under the same `base_model_config: personal` configuration. The reviewer-identity-as-role generalization that FW-004 reserved becomes activated only if `base_model_config` flips. FW-004 stays open as filed; its trigger remains valid.
+- **Re-Eval #5's `invoke-dark-skill` mechanism** is already built as privileged-actor role per #5 lock. Direction C means CT is the only role member under current configuration; B/C would generalize to multiple holders without code change. Forward reference at the dark-skill mechanism site naming Direction C's `base_model_config` dependency (per Standing Order 1).
+- **"Stupid user LoRa" mitigations:** the quality gate (confidence ≥ 0.8 for LoRa training eligibility) is already in the schema and provides the first-order floor under Direction C. Additional mitigations from Jiang2's menu (agent curation hooks, confidence-weighted training, federation patterns) are not adopted now; they become available if Velorin ever flips to Direction B with multiple users contributing.
+- **Persona-maker observation** (CT-surfaced): noted for future exploration when ground-layer is firm. Not a Build Guide entry yet; not an FW entry yet. CT initiates if and when the direction is to be explored.
+- **Build Guide forward references** per Standing Order 1: the schema's `base_model_config` field reading sites (training pipeline, downstream components claiming base-agnosticism) all carry forward-reference notes naming Direction C's expansion seam.
+
+### Pending — None From This Re-Eval
+
+Re-Eval #7 closes with the Direction C lock. No additional research requests filed from this walkthrough. The persona-maker observation is preserved but not actively pursued.
 
 ---
 
