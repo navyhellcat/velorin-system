@@ -1,0 +1,81 @@
+# Velorin — Conflict Routing Configuration
+# Maps contradiction_class path-prefixes to resolution destinations.
+# Schema: contradiction_class: <primary>.<sub_category>
+# Routing destinations: AI agent, skill library, external system, or Layer 3 queue.
+# Modify this file to add sub-categories or reroute paths — NO schema changes required.
+#
+# Last updated: 2026-04-26 (FW-013 finalization pass)
+# Stage 1 initial configuration — expand as the system matures.
+
+routing:
+  # Factual disputes — empirical truth-value questions
+  "factual":
+    default_destination: erdos_verification
+    description: "Routes to Erdős for formal verification"
+  "factual.mathematical":
+    destination: erdos_verification
+  "factual.scientific":
+    destination: trey_reresearch
+  "factual.historical":
+    destination: trey_reresearch
+
+  # Empirical disputes — ecosystem/research finding questions
+  "empirical":
+    default_destination: trey_reresearch
+    description: "Routes to Trey for additional research"
+  "empirical.tooling":
+    destination: trey_reresearch
+  "empirical.literature":
+    destination: trey_reresearch
+  "empirical.benchmark":
+    destination: trey_reresearch
+
+  # Architectural disputes — system design decisions
+  "architectural":
+    default_destination: jiang_analytical_review
+    description: "Routes to Jiang for architectural analysis"
+  "architectural.schema":
+    destination: jiang_analytical_review
+  "architectural.protocol":
+    destination: jiang_analytical_review
+  "architectural.sequence":
+    destination: jiang_analytical_review
+
+  # Taste disputes — judgment/aesthetic/preference questions
+  # No automated resolution possible — routes directly to Layer 3
+  "taste":
+    default_destination: layer3_escalation
+    description: "Routes directly to Chairman review — no LLM mediation"
+  "taste.aesthetic":
+    destination: layer3_escalation
+  "taste.strategic":
+    destination: layer3_escalation
+
+  # Operational disputes — runbook/deployment/config/process questions
+  "operational":
+    default_destination: jiang_analytical_review
+    description: "Routes to Jiang (interim) until dedicated operational routing wired"
+  "operational.deployment":
+    destination: jiang_analytical_review
+  "operational.configuration":
+    destination: jiang_analytical_review
+  "operational.process":
+    destination: jiang_analytical_review
+
+# Destination definitions
+destinations:
+  erdos_verification:
+    type: agent
+    location: "Claude.AI/Bot.Erdos/Research_Needed/"
+    protocol: "file a verification request using Erdos.PromptTemplate.md"
+  trey_reresearch:
+    type: agent
+    location: "Claude.AI/Bot.Trey/Research_Needed/"
+    protocol: "file a research request using the Trey request format"
+  jiang_analytical_review:
+    type: agent
+    protocol: "queue in infrastructure/queues/jiang-analytical-review/"
+  layer3_escalation:
+    type: queue
+    location: "infrastructure/queues/contradiction-review/"
+    protocol: "write queue entry per Layer 3 functional trigger spec"
