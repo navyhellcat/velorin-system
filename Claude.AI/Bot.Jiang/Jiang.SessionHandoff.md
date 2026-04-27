@@ -10,7 +10,30 @@ priority-on-next-boot: read this file in full, then verify Jiang2's FW-013 outpu
 
 **Read this completely before doing anything else on next boot.**
 
-This file is the canonical rolling Jiang handoff per the standing rule (one file per named bot, oldest content rolls to `Build Timeline Help/Jiang.SessionHandoff.HistoricalArchive.md` when overwritten). The prior content of this file (the Apr 26 handoff written earlier in this session) has been appended to that archive.
+This file is the canonical rolling Jiang handoff per the standing rule (one file per named bot, oldest content rolls to `Velorin.v1.Archive/Build Timeline Help/Jiang.SessionHandoff.HistoricalArchive.md` when overwritten). The prior content of this file (the Apr 26 handoff written earlier in this session) has been appended to that archive.
+
+---
+
+## ADDENDUM: Jiang2 Context-Collapse Archive Incident (2026-04-27)
+
+After this handoff was first written, Jiang2 (running on Sonnet 4.6 with 1M context) executed a major archive consolidation per CT's intent to silo all "don't-need" content into a single folder so a full-Velorin context read can cleanly exclude it. Jiang2's commit (`1e4e0b4 — Archive all v1 content to Velorin.v1.Archive/`) moved Build Timeline Help/, Brainstorming Sessions/, hooks/, Skills and Hooks Pending Development/, Possibly Useful Scripts/, architecture/, Velorin_Brain_old/, Velorin_Mainframe/, Velorin.AI.Build.Documents/, daily logs, Receiving/, Shipping/, skills/, old Bot.Jiang session handoffs, and many other files into `Velorin.v1.Archive/`.
+
+**Most of the archival was correct and matches CT's intent.** The unified-silo structure is right; the v1 stuff, old session handoffs (Session 0006-030), consumed Jiang2 prompts, retired bots, daily logs, and old planning docs all properly went into the silo.
+
+**Three errors from context collapse — restored 2026-04-27 (commit 884091b):**
+
+1. **`Bot.Jiang/Jiang.SessionHandoff.md`** (this file) was archived as if it were old. It is the NEW canonical rolling handoff established by the Decision 9 standing rule the same day. **Restored.**
+2. **`Claude.AI/Jiang.Corner.md`** — entire active 7-day rolling Corner file got archived, breaking the standing rule (oldest day rolls to archive; whole-file archive is wrong). **Restored.**
+3. **`Claude.AI/Skills and Hooks Pending Development/`** — active future-build queue (Math.OCR.Tool, GitHub.KaTeX.Rules, ThirdCycleProblemProtocol, Velorin.Skill.MathOCRRepair) was archived. These are pending DEVELOPMENT, not historical retirement. **Restored.**
+
+**Path reference fixes also applied:**
+- `STARTUP.md` Build Timeline Help reference updated to `Velorin.v1.Archive/Build Timeline Help/`
+- `Jiang.ReadMe.First.md` rolling-handoff and rolling-Corner references updated to the same new path
+- `Trey.Bootloader.AgentRoster.md` Build Timeline Help reference updated
+
+**Lesson logged:** when an agent runs a sweep operation under degraded context (compacted, late-session, fatigued model), there is real risk of confusing same-named files between archive and active paths. The mitigation pattern is: any file CT explicitly created TODAY (no-date rolling files, pending-development queues, just-locked operating files) is suspect for archive sweep — verify before moving.
+
+**Net state after restoration:** The unified-silo archive (Velorin.v1.Archive/ with Build Timeline Help/ inside) is correct architecture and serves CT's siloing intent. Active path Bot.Jiang/, Claude.AI/Jiang.Corner.md, and Claude.AI/Skills and Hooks Pending Development/ are correctly active. STARTUP.md / Jiang.ReadMe.First.md / Trey AgentRoster path references are aligned with the new archive subpath.
 
 ---
 
