@@ -171,8 +171,6 @@ The Commutator Persona math (Erdős Solution 3, genuinely new) identifies which 
 
 **Deferred:** The mechanism for converting agent-success notes into pointer-rating updates is "to be discussed and built later" (CT exact wording). When FW-009 fires, the agent-factory part is in scope; the rating-update mechanism is logged for separate later work.
 
-**Personality guide generation — candidate approach:** THEORY (requires-proof). The personality guide for a Persona-Maker-derived agent may not need to be manually authored. The quasi-abelian sub-graph for the target domain (the Brain region where the commutator norm has vanished, indicating CT has deeply mastered the domain) contains the statistical signature of CT's mastered pattern in that domain: which neurons are most-traversed, which edges carry highest affinity, which semantic themes dominate. Reading those statistics and generating the personality guide from them produces a CT-specific personality that is mathematically grounded in CT's actual cognitive structure rather than manually approximated. The factory reads the Brain's commutator-low regions → orientation guide (which region, which neurons) → personality guide (from pointer statistics of that region's quasi-abelian sub-graph) → sub-agent. If this theory proves out, Persona-Maker becomes genuinely automatic: the Brain generates the agents that know how to work with CT's own thinking.
-
 *→ Build-space placeholder (FW-009 trigger: 500 c-memory neurons AND CT initiation + precursor checkpoint at 100 c-memory). See `Velorin.CheckIns.md` for checkpoint design.*
 
 ---
