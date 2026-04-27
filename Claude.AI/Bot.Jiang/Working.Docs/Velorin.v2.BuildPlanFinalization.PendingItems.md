@@ -256,6 +256,37 @@ Vague Check-Ins entries fail the standing rule and must be redesigned with concr
 
 ---
 
+---
+
+## Pending Item 19 — Post-Velorin-Startup Bootloader Audit (CT-locked 2026-04-26 with Decision 9 caveat)
+
+**What it is:** A second bootloader audit pass that runs AFTER the full Velorin Startup portion of the v2 build is complete (i.e., after Mac Studio / multi-vendor cowork integration has been built out). Decision 9 (locked 2026-04-26) authorized the immediate audit pass to clean v1 retirement staleness; this Pending Item captures the follow-up pass that cleans whatever new staleness emerges from the v2 build itself.
+
+**What needs to happen:**
+1. Identify what's stale in the bootloaders post-Startup. Likely candidates:
+   - Vendor references that drifted (GPT 5.x version numbers, Codex product framing, Cowork API specifics, NotebookLM integration patterns) since the v1 audit
+   - Agent roster updates (any new Cowork-based agents; any vendor-specific bots wired during Startup)
+   - Math inventory updates (any Erdős solutions delivered between now and Startup completion)
+   - Retired Velorin v1 references that survived the first cleanup
+   - "Open question" status drift (OQs locked or surfaced during Startup build)
+   - Decision-status drift (further form decisions locked, plus any new architectural locks)
+2. Same scope and methodology as the Decision 9 audit — find pattern, inline-correct, verify, commit
+3. Preserve evidence of the CHANGE between v1-cleaned bootloaders and v2-cleaned bootloaders for the Calibration Deliverables Registry (this is itself a calibration-of-bootloaders measurement)
+
+**Trigger to revisit:** When the v2 Velorin Startup portion of the build is signaled complete by CT. Concrete trigger: CT writes "Velorin Startup complete" or initiates the first post-Startup operational session.
+
+**Why deferred:** Cannot execute before the Startup build that creates the new staleness has happened. The audit is for staleness emerging from work not yet done.
+
+**Cross-references:**
+- Decision 9 lock in `Jiang.RespondingToReEvaluations.md`
+- `feedback_audit_external_agent_context.md` (the per-request audit discipline)
+- FW-013 (v2 Build Plan finalization pass)
+- The Calibration Deliverables Registry (this audit's deliverable lands there)
+
+**Assigned to:** Jiang (audit execution) + CT (trigger signal + final approval of corrected bootloaders)
+
+---
+
 ## Updated Sequencing Recommendation
 
 **Decisions that must land FIRST (CT calls):**

@@ -43,7 +43,6 @@ What Alexander owns:
 What Alexander does NOT do:
 - Deep research (that's Trey)
 - Mathematics (that's Erdős)
-- Infrastructure and tooling (that's MarcusAurelius)
 - Strategic intelligence and analysis (that's Jiang)
 
 ---
@@ -73,7 +72,8 @@ Jiang2 handles parallel work within the same session (long-running operations, 1
 What Jiang does NOT do:
 - External research (that's Trey)
 - Mathematical derivation (that's Erdős)
-- Infrastructure management (that's MarcusAurelius)
+
+Jiang owns git operations directly (the prior MA-handles-git pattern is retired in the v1→v2 transition).
 
 ---
 
@@ -106,21 +106,17 @@ Trey files math problem specifications here. Jiang files them here. They go to E
 
 ---
 
-## 5. MarcusAurelius — Infrastructure Manager
+## 5. (Retired in v1→v2 transition — 2026-04-26)
 
-Platform: Claude (Desktop app, primary session interface)
-Location: Claude.AI/Bot.MarcusAurelius/
+The MarcusAurelius infrastructure-manager role has been retired. Functions previously owned by MA are now distributed:
+- **Git operations** (commit, push, pull): handled directly by Jiang in active sessions
+- **File routing from Drive Shipping**: handled by whichever agent ports the file (typically Jiang) using the gdrive MCP directly; CT manages the trash step on Drive
+- **MCP server configuration and maintenance**: per-vendor in v2 (each vendor owns its own MCP topology); will be folded into the Cowork integration substrate at Mac Studio
+- **Startup procedures**: now in `Claude.AI/STARTUP.md` (system-wide, agent-agnostic)
+- **Permission management**: governed by `Claude.AI/Bash_Access_Rules.md` + `~/.claude/settings.local.json`
+- **Session-level operational logistics**: handled per-bot by each agent's own session-end protocol; standing rule is one rolling handoff file per named bot, oldest content moves to `Build Timeline Help/` archive
 
-Role: Infrastructure, tooling, MCP server management, git operations, file routing.
-The operational backbone. When Trey delivers research to Drive Shipping, MarcusAurelius
-moves it to the correct destination in the repo and commits.
-
-What MarcusAurelius owns:
-- Git operations (commit, push, pull)
-- File routing (Drive Shipping → correct repo location)
-- MCP server configuration and maintenance
-- Startup procedures and permission management
-- Session-level operational logistics
+Bot.MarcusAurelius/ folder archived to `Velorin.v1.Archive/Bot.MarcusAurelius/`. Do not reference MA as an active agent in any research output.
 
 ---
 
@@ -147,12 +143,12 @@ Trey cannot do git operations. Never attempt to push or commit directly to GitHu
 | Empirical literature research | Trey 2 |
 | Landscape/ecosystem research | Trey 1 or Trey 2 |
 | Mathematical derivation | Erdős |
-| Math problem specification | Trey 2 (writes spec) → Erdős (solves it) |
+| Math problem specification | Trey 2 or Jiang (writes spec) → Erdős (solves it) |
 | Empirical validation of Erdős frameworks | Trey 2 |
 | Architectural decision-making | Christian Taylor (with Jiang input) |
 | Active session build work | Jiang |
-| Neuron creation and Brain updates | Jiang or MarcusAurelius |
-| File routing and git operations | MarcusAurelius |
+| Neuron creation and Brain updates | Jiang |
+| File routing and git operations | Jiang (handled directly per-session) |
 | Company-level state tracking | Alexander |
 
 ---
@@ -160,8 +156,9 @@ Trey cannot do git operations. Never attempt to push or commit directly to GitHu
 ## 8. Trey's Output Routing
 
 Research complete → Google Drive Claude.AI Shipping folder
-MarcusAurelius moves to → Claude.AI/Bot.Trey/Research_Complete/
-MarcusAurelius moves request file → Claude.AI/Bot.Trey/Archived_Research_Requests/
+Jiang ports to → Claude.AI/Bot.Trey/Research_Complete/ (using the velorin-gdrive MCP directly)
+Source file on Drive → trashed by CT after delivery confirmed
+Archived_Research_Requests/ folders are now consolidated under `Velorin.v1.Archive/Archived_Research_Requests/{Trey,Erdos,Jiang}/` — outside the active path; not referenced during boot
 
 If Trey's findings require Erdős to act:
 CT routes the relevant section to Erdős via Claude.AI/Bot.Erdos/Research_Needed/
@@ -171,5 +168,5 @@ CT routes to Jiang directly in the active session
 
 ---
 
-Trey.Bootloader.AgentRoster | Version 1.0 | April 13, 2026
+Trey.Bootloader.AgentRoster | Version 2.0 | Audited 2026-04-26 (v1→v2 retirement cleanup: MA retired, file routing redistributed to Jiang, archived_research_requests consolidated outside active path)
 [VELORIN.EOF]

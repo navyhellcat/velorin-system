@@ -7,9 +7,26 @@ updated: April 13, 2026
 
 # Trey Bootloader — Erdős Math Inventory
 
-Version 1.0 | April 13, 2026
-Complete inventory of mathematical work produced by Erdős (Velorin mathematical agent)
+Version 2.0 | Audited 2026-04-26
+Bootloader summary of mathematical work produced by Erdős (Velorin mathematical agent). For complete current inventory of solutions, read `Bot.Erdos/Research_Complete/` directly — this bootloader summarizes load-bearing pieces only and may lag the live folder.
+
 Status codes: LOCKED (proven, architecture depends on it) | FUTURE THEORY (derived but not yet empirically validated) | OPEN (problem defined, not yet solved)
+
+**Recent locked solutions added since the original April 13 inventory** (see Research_Complete for full content):
+- `Erdos.Solution.UnifiedGatingPrimitive.md` — VEGP / Dirac-Markov Threshold
+- `Erdos.Solution.ATVMathProperties.md`
+- `Erdos.Solution.DarkSkillsScale.md`, `Erdos.Solution.DarkSkillsTriggerlessGate.md` — Causal Action Potential `Φ_causal = π_v / α` REPLACES the original infinity-norm gate; mathematically absolute trigger-free cyclic detector when `Φ_causal > 1.0`
+- `Erdos.Solution.VEGPStressTest.md`
+- `Erdos.Solution.NonAbelianBrainDynamics.md` — Theorem 2 (commutator-vanishing as Layer 0→1 compression criterion)
+- `Erdos.Solution.ThermodynamicCycleProof.md` — revised Theorem 3 (Cognitive Langevin Dynamics with Brockett gradient flow)
+- `Erdos.Solution.KappaOperationalTightness.md` — analytic κ formula too loose for hard-threshold use; empirical Check-Ins required
+- `Erdos.Solution.ObliqueJointBlockDiagonalization.md` — Joint Spectral Disaggregation algorithm (replaces standard JBD which is impossible per Perron-Frobenius)
+- `Erdos.Solution.ATVConsumerPolicyDriftBound.md` — Adaptive Rate-Limit Policy
+- `Erdos.Solution.ThresholdsAndDarkSkillInvariance.md`
+- `Erdos.Solution.IndependentMultiplexNormalization.md`
+- `Erdos.Solution.SynapticPruning.md` — global pruning algorithm derived (closes prior Open Question 1)
+- `Erdos.Solution.BridgingDeclarativeProceduralMemory.md`
+- `Erdos.Solution.COMBINED.Apr26.md` — five solutions for v2 multi-vendor architecture: Vendor Routing (VEGP-instance), Cross-Vendor Coherence (Virtual Contradiction Graph), Commutator Persona (Lie bracket norm weights LoRa training distribution — flagged "genuinely new" by Erdős's novelty self-check), Ghost-Connection Priority (Sherman-Morrison-updated Smith's-Rule scheduling), NotebookLM-Brain Sync (Conditional Entropy + Asymmetric NLI replacing the symmetric mutual-information formulation)
 
 ---
 
@@ -59,15 +76,13 @@ maintain ρ < 0.78. This is a hard constraint on graph density, not a recommenda
 
 ---
 
-### 1.3 The 7-Pointer Cap as Local Demotion Oracle (Session 022)
+### 1.3 The 7-Pointer Cap with Affinity Clutch (Session 022, Affinity Clutch replacement locked Session 028)
 **Claim:** The 7-pointer cap on each neuron functions as a local pruning oracle — when a
 neuron is full and a higher-rated connection is added, the lowest-rated pointer is demoted.
 
-**Status:** This is implemented behavior, not future theory. It is the only active pruning
-mechanism currently in the Brain.
+**Naming update:** The mechanism was previously referred to as the "Demotion Oracle." Locked terminology as of Session 028 is **Affinity Clutch** (covers same behavior + Hebbian SDE per-session affinity dynamics). Use "Affinity Clutch" in research output.
 
-**Known limitation:** Local and reactive only. Does not handle global Monster Node centrality
-growth or stale neuron accumulation. The global pruning algorithm must supplement this.
+**Status:** Implemented behavior. Local pruning supplemented by the global pruning algorithm in `Erdos.Solution.SynapticPruning.md` (closes prior Open Question 1).
 
 ---
 
@@ -155,26 +170,15 @@ Status: mathematically unresolved. Trey research on synaptic pruning addresses t
 
 ---
 
-## 3. Open Problems — Formally Defined, Math Not Yet Solved
+## 3. Open Problems — Status Updated 2026-04-26
 
-### 3.1 Synaptic Pruning Algorithm
+### 3.1 Synaptic Pruning Algorithm — RESOLVED 2026-04-26
 
-**The problem:** As the Brain grows to 5,000+ neurons, both failure modes (Monster Node
-collapse and stale neuron noise) will degrade retrieval precision. No global pruning
-algorithm exists yet.
+**Status:** LOCKED. Erdős derived the algorithm — `Bot.Erdos/Research_Complete/Erdos.Solution.SynapticPruning.md`. Closes the prior Open Question 1 from the BuildPhilosophy bootloader.
 
-**Current state of research:**
-- Trey completed a full literature review (Research_Complete/Trey.Topic.SynapticPruning_ResearchReport.md)
-- Report includes three formal hypotheses in appended notes:
-  1. Fisher Information (FI)-Based Selective Centrality Reduction for Monster Node suppression
-  2. Constrained GNNDelete with hard exemptions for c-memory permanence
-  3. Mathematical signal threshold for PPR precision maintenance
+**Implementation:** Lives in the v2 Build Guide compression event detector phase. The κ measurement program spec (Erdős `KappaOperationalTightness.md` + Jiang2's Check-Ins design locked under Decision 7 on 2026-04-26) governs operational calibration of the empirical pruning threshold. Analytic formula `κ = 2C(1-α)/(αδ)` retained as structural prior only — operationally too loose for hard-threshold use under realistic Velorin conditions.
 
-- Phase 2 math specification for Erdős: needs to be drafted by Trey from the research findings
-  (this may be the appended notes, or may require a formal separate document)
-
-**Next step:** Erdős receives the formal problem specification and derives the algorithm.
-Status: OPEN — research phase substantially complete, math derivation not started.
+**For Trey research touching this area:** the algorithm is settled. Empirical validation of the Cognitive Langevin Dynamics + Brockett gradient flow formulation (revised Theorem 3 in `Erdos.Solution.ThermodynamicCycleProof.md`) is the residual research surface. Position any literature review against the published formulation, not against the prior open-problem framing.
 
 ---
 
@@ -194,5 +198,5 @@ Research on them belongs to Trey's strategic and design research function, not t
 
 ---
 
-Trey.Bootloader.MathInventory | Version 1.0 | April 13, 2026
+Trey.Bootloader.MathInventory | Version 2.0 | Audited 2026-04-26 (v1→v2 retirement cleanup: added 14 locked Erdős solutions delivered Sessions 033-036 + COMBINED.Apr26; Demotion Oracle terminology updated to Affinity Clutch; Synaptic Pruning Open Question 1 closed with reference to Erdos.Solution.SynapticPruning.md)
 [VELORIN.EOF]

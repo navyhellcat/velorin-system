@@ -41,10 +41,11 @@ The following tools and systems are currently in the Velorin build. None of them
 be assumed to be the permanent architecture. They are placeholders or current-best-available
 while the correct architecture is derived.
 
-- **Scribe (scribe-trigger.sh):** A shell script that currently handles some session
-  triggering. It was built incrementally as a practical tool. It has NOT been designated
-  as the correct long-term automation mechanism. Trey should NOT assume Scribe is the
-  right answer for any automation problem.
+- **Scribe (RETIRED 2026-04-26):** The `scribe-trigger.sh` shell script and surrounding
+  Bot.Scribe/ infrastructure were retired in the v1→v2 transition. The session-trigger /
+  automated-logging use case has not yet been designed for v2 — the replacement pattern
+  will be designed during the v2 build. Trey should not reference Scribe as an active
+  system in any research output. Bot.Scribe/ is archived in `Velorin.v1.Archive/`.
 
 - **Current neuron format:** 15 lines, markdown, pointer syntax. This is working. It is
   also not mathematically derived from first principles — it is an engineering judgment
@@ -72,14 +73,11 @@ while the correct architecture is derived.
 These questions have NOT been decided. Do not assume they have answers. If your research
 touches one of these, flag it explicitly.
 
-**Open Question 1 — Global Pruning Algorithm:**
+**Open Question 1 — Global Pruning Algorithm: RESOLVED**
 How does the Brain maintain retrieval precision as it scales to 5,000+ neurons?
-The failure modes (Monster Node collapse, stale neuron noise) are defined. The algorithm
-that prevents them is not yet designed. This is the highest-priority open mathematical
-problem in the current build.
+The failure modes (Monster Node collapse, stale neuron noise) are defined.
 
-Status: Trey literature review complete. Phase 2 math spec pending. Erdős has not yet
-received the formal problem specification.
+Status: Erdős derived the algorithm — see `Bot.Erdos/Research_Complete/Erdos.Solution.SynapticPruning.md`. The math is now LOCKED. Implementation lives in the v2 Build Guide compression event detector phase (per FW-008 closure 2026-04-26 and the κ measurement program spec).
 
 **Open Question 2 — Ingestion Pipeline Design:**
 What determines whether a new piece of information becomes a neuron? What triggers
@@ -94,7 +92,7 @@ The Affective Hamiltonian H_E is mathematically defined. It is not operationally
 How does a system assign H_E to a neuron? What is the measurement procedure? What data
 does it use? Is H_E set at neuron creation or updated over time?
 
-Status: Open. Not researched. No assignment mechanism exists.
+Status: Trey research returned (`Bot.Trey/Research_Complete/Trey.Research.EmotionalMemorySalience.Measurement.md`). Recommendation Option B (passive inference, never prompted directly) was made in Session 028. Decision pending Chairman lock — until that lands, do NOT assume H_E assignment mechanism is fixed; the operational design is still in CT's decision queue.
 
 **Open Question 4 — Session Close Protocol:**
 At the end of each session, which neurons get updated? Which get archived? Which trigger
@@ -156,5 +154,5 @@ do when the assumptions it depends on are violated?
 
 ---
 
-Trey.Bootloader.BuildPhilosophy | Version 1.0 | April 13, 2026
+Trey.Bootloader.BuildPhilosophy | Version 2.0 | Audited 2026-04-26 (v1→v2 retirement cleanup: Scribe retired; Open Question 1 marked RESOLVED with Erdős solution reference; Open Question 3 status updated to reflect returned research + pending CT lock)
 [VELORIN.EOF]

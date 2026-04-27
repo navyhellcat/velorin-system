@@ -812,6 +812,10 @@ The Build Guide finalization pass (FW-013) must produce a Calibration Deliverabl
 
 ## Decision 9 — Other Bootloader Staleness Cleanup
 
+**Locked 2026-04-26.** Option 1 (do it now, before queues refill) per Jiang2's recommendation. Jiang executes immediately — bootloader files identified: `Bot.Trey/Bootloader/{AgentRoster, BuildPhilosophy, MathInventory, VelorinBrain}`, `Bot.Trey/Gems/{Trey.Gem.MathBot.Instructions, Trey1.GemInstruction, Trey2.GemInstruction}`, `Bot.Trey/Task_Instructions/Trey.TaskInstructions.ResearchProtocol`, `Bot.Erdos/Erdos.Gem.Instructions`. (`Trey.ProjectInstructions.md` and `Erdos.PromptTemplate.md` already cleaned earlier this session.) Audit covers MA/Theresa/Scribe/Gatekeeper retirements, Level-hierarchy retirement, Agent Teams retirement, math inventory updates through `Erdos.Solution.COMBINED.Apr26.md`, OQ status updates (OQ-6 now structurally defined; FW-007/008 closed today), Decisions 1-8 lock state. Time-sensitive: 3 fresh Trey research requests sit in `Bot.Trey/Research_Needed/` (NotebookLM API surface, GPT 5.5/Codex integration surface, PersonaMaker landscape) — audit must complete before any of those paste into a Trey session.
+
+**CAVEAT (CT-locked 2026-04-26 with Decision 9):** A second bootloader audit pass is required AFTER the full Velorin Startup portion of the v2 build is complete. The current pass corrects v1 retirement staleness; the post-Startup pass corrects whatever staleness emerges from the Mac Studio / multi-vendor cowork integration build. Tracked in `Velorin.v2.BuildPlanFinalization.PendingItems.md` as Pending Item 19.
+
 **Summary:** During the human-curated contamination cleanup, Jiang noted other staleness in the Trey bootloaders (Scribe references, "Erdős has not yet received the formal problem specification" assertions for problems Erdős has now delivered solutions to, stale "open question" status descriptions). Scoped narrow per Chairman direction at the time. These remain.
 
 **Options:**
