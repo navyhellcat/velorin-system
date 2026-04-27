@@ -108,19 +108,29 @@ Build priorities flow from these. Box 2 can build and ship independently of the 
 
 ---
 
-## Principle 8: Cowork-Orchestrated, Tool-Centric Multi-Vendor Architecture (NEW for v2)
+## Principle 8: Cowork-Orchestrated, Sub-Agent-Activation Pattern (NEW for v2)
 
 **Claude Cowork is the orchestrator.** It operates and controls the multi-agent multi-platform plan — first without the brain (Part 1), then with the brain inserted as a local specialization layer (Part 2). Cowork runs the show.
 
 **Claude (the UI controller surface) accesses every aspect of the brain and the system.** This is the human-facing control point.
 
-**Everything else is a TOOL Claude calls and uses.** GPT 5.5 (desktop + API), Codex (desktop + CLI), Gemini, NotebookLM (human-facing project-context-feeder for Deep Think — NOT a Velorin component), Google Suite, GitHub skill repos, OpenDataLoader, Gemma 4 visual capabilities, 3D processing tools, and the broader open-source corpus — all are TOOLS in the toolbox, invoked by Cowork-orchestrated Claude when the task warrants. They are NOT delegation peers, NOT a decentralized agent swarm, NOT a hub-and-spoke of A2A-coordinated workers. The pattern is `Claude Cowork orchestrates → Claude (UI) holds the user-facing thread → Claude calls Tool X for task Y → Tool X returns to Claude → Claude integrates → Cowork proceeds.`
+**Claude can activate external specialist systems AS IF they were direct sub-agents.** The functional capability is what matters: Claude hands a specialist task to the system best suited for it, the system does the work, the result comes back, Claude integrates it into the Cowork-orchestrated flow. From Claude's perspective at invocation time, the system behaves like a sub-agent — task in, specialist work out. The underlying invocation mechanism (MCP server, API call, A2A peer protocol, CLI subprocess, desktop hand-off, browser automation, etc.) is **implementation detail that gets built when needed for each specific integration.** It does not need to be uniform; whatever protocol works per tool is fine.
 
-**Architectural test:** any recommendation that frames vendors as "Supervisor" / "Worker peers" / "delegation targets" / "decentralized agents" is using the wrong abstraction. Vendors are tools. The orchestrator is Cowork. The user-facing controller is Claude. Tools have invocation surfaces (CLI, MCP, API, desktop hand-off); they do not have peer status.
+**Concrete examples of sub-agent activations (non-exhaustive — the ecosystem expands as new capabilities emerge):**
+- **Gemini Deep Research** — cross-source research synthesis when Claude needs broad literature/landscape work
+- **Gemini Deep Think** — heavy reasoning over hard problems, especially adversarial review of Claude's own output
+- **ChatGPT Codex** (desktop + CLI) — code audit, repository engineering, cross-provider adversarial code review
+- **ChatGPT 5.5** (desktop + API) — many specific tasks where ChatGPT's strengths exceed Claude's (long-context analysis, particular writing styles, specialized reasoning patterns)
+- **Google photo/visual tools** — image generation, image editing, visual-domain reasoning
+- **Video generation tools** (Veo, Sora, etc.) — video-domain work
+- **Open-source ecosystem** broadly — OpenDataLoader for parsing, Gemma 4 for visual capabilities, 3D processing tools, GitHub skill repositories, et al.
+- **NotebookLM stays out** — it's a human-facing project-context-feeder for Deep Think, NOT a Claude-invoked sub-agent (per the NotebookLM scope-correction banner)
 
-**Persona-Maker note (per FW-009):** the future Persona-Maker subsystem is itself an agent-factory that PRODUCES tools (specialized agents with startup + personality guides, oriented at specific brain regions). The output of that factory becomes additional tools in Claude's toolbox; the agents do not modify the brain directly. They CAN leave notes in region/area logs suggesting pointer-rating adjustments (the rating-update mechanism itself is deferred). Persona-derived agents are tools, not peers.
+**Architectural test:** the architecture is correct if Claude can invoke any of these specialist systems and get specialist work back during a normal Cowork flow. The wrong abstractions are: (a) treating any single vendor as "Supervisor" over the others (no — Cowork is orchestrator; specialist systems are sub-agent activations), (b) hard-coding a specific protocol as the universal binding (no — protocol is per-integration), (c) requiring all activations to look the same architecturally (no — heterogeneous invocation surfaces are fine and expected).
 
-See `feedback_opus_47_solution_drift.md` for the model-level reasoning that makes multi-vendor at the tool layer essential — Opus 4.7's regression on cascade / edge-case / scale / causal reasoning was the trigger that made single-vendor execution risk concrete.
+**Persona-Maker note (per FW-009):** the future Persona-Maker subsystem is itself an agent-factory that PRODUCES additional sub-agent activations — specialized agents with startup + personality guides, pre-oriented at specific brain regions. When triggered, Claude can activate a persona-derived agent the same way it activates Gemini Deep Think or Codex. The persona-derived agents do not modify the brain directly; they CAN leave notes in region/area logs suggesting pointer-rating adjustments (the rating-update mechanism itself is deferred — "to be discussed and built later" per CT).
+
+See `feedback_opus_47_solution_drift.md` for the model-level reasoning that makes sub-agent-activation across multiple vendors essential — Opus 4.7's regression on cascade / edge-case / scale / causal reasoning was the trigger that made single-vendor execution risk concrete.
 
 ---
 
