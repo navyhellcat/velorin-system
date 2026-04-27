@@ -330,4 +330,29 @@ The v1 archive execution pass surfaced 6 items that require Build-Guide-coupled 
 
 ---
 
+## [FW-014] KVM Bridge Build Decision (Authorize or Defer)
+**Logged:** Session 037, April 26, 2026
+**Priority:** Medium — gates multi-Mac operational pattern; not blocking Mac Studio v2 transition itself
+**Status:** Surfaced. CT decision required: authorize build or explicitly defer.
+
+**What happened:**
+FW-002 (KVM cross-Mac transfer research) was marked COMPLETE Session 027 (April 17, 2026). Trey delivered the full research package: `Trey.Research.BarrierKVM.CrossMacTransfer.md`, `Trey.Research.CrossPlatformAppMesh.md`, `Trey.Research.VelorinKVMBridge.md` (52KB Swift/build research), and the implementation plan at `Bot.Jiang/Working.Docs/Jiang.Plan.VelorinKVMBridge.md`. The Swift daemon was designed. The bridge was never built. Jiang2 surfaced this as a parked operational item in his SynthesisUpdate gap map.
+
+**What needs to be done:**
+1. CT decision: authorize build, or explicitly defer (and if defer — until what trigger?)
+2. If authorize: assign to whoever builds Velorin Code/ resident operational tools (was MA; that role is retired; needs new operator binding)
+3. If defer: log the deferral trigger explicitly (e.g., "after Mac Studio integration completes" or "if/when multi-Mac workflow becomes operational need")
+
+**Trigger to revisit:** When CT considers multi-Mac workflow setup (likely at Mac Studio integration time — using current Mac + Studio together). Concrete trigger: CT signals readiness to set up cross-Mac keyboard/clipboard/file transfer.
+
+**Cross-references:**
+- `Bot.Jiang/Working.Docs/Jiang.Plan.VelorinKVMBridge.md` — full build plan
+- `Trey.Research.VelorinKVMBridge.md` — research package
+- `project_mac_studio_multivendor_cowork.md` — overall transition plan
+- FW-011 (Velorin Code/ separate triage — KVM bridge build would land in Velorin Code/)
+
+**Assigned to:** CT (decision) + post-decision operator TBD (build, if authorized)
+
+---
+
 [VELORIN.EOF]

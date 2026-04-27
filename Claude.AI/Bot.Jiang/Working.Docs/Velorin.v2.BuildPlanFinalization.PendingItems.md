@@ -90,14 +90,150 @@ Pragmatic path: ship (a) as v1 (manual but immediate value) → standardize fron
 
 ---
 
-## Sequencing Recommendation
+---
 
-Items 1, 2, 6 are Build-Guide-coupled — handle together in the v2 finalization pass.
+## Items Surfaced from Jiang2's SynthesisUpdate (2026-04-26)
 
-Item 3 is STARTUP.md-coupled — handle when STARTUP.md gets its next focused review.
+After receiving Erdős's COMBINED solution to his 5 math gap theories, Jiang2 produced `Jiang2.WholeSystemReimagining.SynthesisUpdate.Apr26.md` and surfaced 11 additional Build-Guide edits required before final lock. They are added below as Items 7-17.
 
-Item 4 is operational tool — handle when GDrive workflow needs maintenance OR when the MCP API change forces it.
+---
 
-Item 5 is the largest individual build — depends on NotebookLM integration timing and is best sequenced with that work.
+## Pending Item 7 — Part 1 / Part 2 Build-Sequence Restructuring
+
+**What it is:** The current Build Guide stages (00-07) do not explicitly reflect the two-part build sequence locked in Jiang2's WholeSystemReimagining synthesis: Part 1 = Velorin without the Brain (multi-vendor Cowork integration); Part 2 = Brain insertion into already-functional integrated system.
+
+**What needs to happen:** Reframe Stage 0-1 explicitly as Part 1 deliverables (vendor routing, Cowork integration, no Brain dependency). Reframe Stages 3-5 as Part 2 (Brain insertion). Update `06_BuildSequence.md` to make the part-boundary visible. Add explicit "Brain not required to function at this point" markers through Part 1 stages.
+
+**Why deferred:** Build Guide is FROZEN per Jiang2's mandate Hard Constraint 1. Restructuring the build sequence is a substantive Build Guide edit that requires the finalization pass.
+
+---
+
+## Pending Item 8 — ARC-1 Virtual Contradiction Graph Spec
+
+**What it is:** New architectural primitive proven by Erdős (Solution 2 in `Erdos.Solution.COMBINED.Apr26.md`). Cross-vendor context conflict is formally equivalent to Brain neuron contradiction under a bipartite source-graph transformation. Each external vendor claim becomes a virtual neuron; logical inconsistency becomes a `contradicts` pointer; the existing Layer 1/2/3 conflict resolution mechanism applies natively.
+
+**What needs to happen:** Add ARC-1 (Virtual Contradiction Graph) as a Stage 1 Part 1 build component. Specify: (a) the asymmetric NLI surrogate that detects mutual exclusion across vendor outputs, (b) the virtual-neuron encoding of vendor claims, (c) the routing of detected contradictions through Layer 1 composite scoring → Layer 2 verification → Layer 3 escalation, (d) the propagation step that overwrites the losing vendor's context window via system prompt injection.
+
+**Why deferred:** New architectural primitive not yet in the Build Guide. Mathematically proven, ready to integrate during finalization pass.
+
+---
+
+## Pending Item 9 — ARC-2 Vendor Routing Program Spec
+
+**What it is:** Vendor routing program proven by Erdős (Solution 1) as a strict, finite instance of the Velorin Epistemic Gating Primitive (VEGP). The vendor routing map is an affine bipartite projection (NOT an endomorphism — the original Multiplex Tensor isomorphism claim is REFUTED). Optimal routing evaluates `Ξ(v_(1), μ, μ_base, θ) = H(μ(v_(1))/μ(v_(2)) - (1+ε_gap))`.
+
+**What needs to happen:** Add ARC-2 (Vendor Routing Program) as a Stage 1 Part 1 build component. Specify: (a) the vendor capability matrix V (rectangular, bipartite — see Pending Item 10 for normalization correction), (b) the task-alignment scoring `μ(v_i) = (V·ω_task)_i`, (c) the VEGP gate evaluation against capability margin ε_gap, (d) fallback logic when Ξ=0 (capability gap topologically ambiguous → ensemble polling).
+
+**Why deferred:** New architectural primitive. Ready to integrate during finalization pass.
+
+---
+
+## Pending Item 10 — Vendor Capability Matrix: Column-Normalization Correction
+
+**What it is:** Erdős's Proof 1A explicitly REFUTED the Multiplex-Tensor isomorphism in Jiang2's original synthesis. Original synthesis assumed V required row-normalization (matching `P_tax`/`P_them` independent row-normalization in the Brain). Erdős proved this is structurally wrong for a rectangular bipartite projection — row-normalizing would enforce a zero-sum capability budget (penalizing a vendor in writing because it's good at coding). V requires **column-normalization** (relative scoring within a single cognitive task) to prevent scalar magnitude distortion.
+
+**What needs to happen:** Find every Build Guide reference that says "row-normalize the vendor capability matrix" or implies it via Multiplex-Tensor analogy. Update to specify column-normalization. Add the explanatory footnote citing `Erdos.Solution.COMBINED.Apr26.md` Proof 1A.
+
+**Why deferred:** Build Guide is FROZEN. Mandatory correction during finalization pass.
+
+---
+
+## Pending Item 11 — Directed NLI Replaces Mutual Information for NotebookLM-Brain Sync
+
+**What it is:** Erdős's Solution 5 REFUTED the use of mutual information `I(c_v; s)` as the consistency criterion for neuron↔source synchronization. Mutual information is symmetric; lossy compression is violently asymmetric. Correct formulation: Conditional Entropy `H(c_v | s) ≤ ε` — the source fully explains the compression. The cheap surrogate is Directed Natural Language Inference: `P(Entails | Premise: source, Hypothesis: neuron)`.
+
+**What needs to happen:** Find every Build Guide reference to mutual information as the NotebookLM-Brain sync consistency check (likely in `02_Architecture.md` or the Brain layer sections). Replace with Conditional Entropy formulation. Specify the directed NLI surrogate as the operational implementation. Distinguish stale (source updates and crosses ε) from superseded (new source logically contradicts neuron, requires overwrite).
+
+**Why deferred:** Build Guide is FROZEN. Mandatory correction during finalization pass.
+
+---
+
+## Pending Item 12 — Broker Pattern for Layer 3 Cross-Vendor Coherence
+
+**What it is:** New architectural primitive from Erdős's Derivation 2B. When Layer 2 verification yields Ξ=0 (composite scores within ε), the conflict is routed to an orthogonal, high-authority vendor (the Broker) for evaluation. If the Broker also returns Ξ=0 (epistemic deadlock), it escapes to the Chairman.
+
+**What needs to happen:** Add the Broker pattern to the Layer 3 conflict resolution mechanism specification (currently in `04_AgentEcosystem.md`). Specify: (a) what makes a vendor a valid Broker (orthogonal to the conflicting vendors, higher authority_tier), (b) Broker selection logic (deterministic from contradiction_class tag + vendor capability matrix), (c) the deadlock-to-Chairman escalation artifact + queue.
+
+**Why deferred:** New primitive. Ready to integrate during finalization pass.
+
+---
+
+## Pending Item 13 — Velorin Startup Manifest
+
+**What it is:** The document specifying exactly what travels from the v1 system to Mac Studio for v2 build initialization. The "Velorin Startup folder" composition that bridges in-progress Velorin into the new fully-integrated system being built around it. Per Jiang2's WholeSystemReimagining mandate Section 11 — proposed but not yet written.
+
+**What needs to happen:** Compose the manifest. Specify: (a) load-bearing state that travels (Bot.Jiang/, Brain region state, Build Guide files, operating rules cleaned of staleness, locked feedback memories, Research_Complete archives), (b) format (git repo / packaged archive / Cowork-readable manifest), (c) sequencing (Build thesis defines target operating model first, then manifest composed against thesis), (d) cleanup-before-travel rules (operating rules carry rewritten versions, not stale verbatim), (e) bridge-vs-destination boundaries (what the startup folder is allowed to do vs not — keep in-progress work alive but not become a parallel architecture competing with new build).
+
+**Why deferred:** Substantial document requiring sequencing decisions and Build Thesis alignment. Best done during finalization pass with full v2 architecture in view.
+
+---
+
+## Pending Item 14 — FW-006 Back-Application Sweep
+
+**What it is:** Forward-reference notes (Standing Order 1) and build-space placeholders (Standing Order 2) need to be back-applied across the entire Build Guide. The candidate map exists in `Jiang2.BuildGuideUpdateSpec.Apr26.md` Section 3 (substantial table with draft text). Held until Decisions 2-10 lock so placeholders reflect final decisions.
+
+**What needs to happen:** Walk the candidate map. Place forward-reference notes inline at each cross-phase coupling site in the Build Guide files. Place build-space placeholders in the appropriate phase for each deferred item. After CT lock on Decisions 2-10, this becomes mechanical placement.
+
+**Why deferred:** Mechanical placement gated on CT lock of Decisions 2-10 (otherwise placeholders may need revision). Build Guide is FROZEN until finalization pass.
+
+---
+
+## Pending Item 15 — Check-Ins Schedule Design
+
+**What it is:** The full vitality-important Check-Ins list spread across Build Guide phases. Per the locked feedback memory `feedback_checkins_construct.md`, recurring reviews aggregate into the Build-Guide-wide Check-Ins list (not standalone triggers). Candidate entries surfaced in `Jiang2.BuildGuideUpdateSpec.Apr26.md` Section 4. Jiang2 designs and places.
+
+**What needs to happen:** Take the candidate Check-Ins entries from BuildGuideUpdateSpec Section 4. Design the unified schedule (when each entry fires, what triggers it, what review subject, what action protocol). Place in the Build Guide as an explicit Check-Ins section per phase or as a single Build-Guide-wide schedule document.
+
+**Why deferred:** Substantive design work coupled to Build Guide structure. Finalization pass scope.
+
+---
+
+## Pending Item 16 — Edge Ontology Finalization (`contradicts` Dual-Function Question)
+
+**What it is:** In the edge ontology, `contradicts` currently serves two functions: (a) semantic label (informational, bidirectional, indicating intellectual tension), (b) `belief_state` trigger (fires the conflict resolution mechanism, indicating factual incompatibility). Jiang2's recommendation: add `conflict_class` sub-attribute to `contradicts` pointers — `contradicts {semantic}` vs `contradicts {factual}`. Distinguishes "these concepts are in tension intellectually" from "these neurons are factually incompatible." CT has not confirmed or rejected this.
+
+**What needs to happen:** **Decision needed from CT first.** Then finalize the Pre-Stage 0 Edge Ontology Unification specification in `06_BuildSequence.md`. If CT accepts Jiang2's `conflict_class` proposal: add the sub-attribute schema, update the conflict resolution mechanism to filter on `conflict_class=factual` only. If CT rejects: maintain current dual-function `contradicts` and document the convention explicitly.
+
+**Why deferred:** Blocked on CT decision. Build Guide edit follows.
+
+---
+
+## Pending Item 17 — Approved Retirements Reflected Throughout Build Guide
+
+**What it is:** The v1 archive execution pass (2026-04-26) operationally retired: MarcusAurelius (folder archived), Bot.Theresa (already archived), Bot.Scribe (folder archived), Bot.Gatekeeper (folder archived — see Pending Item 6), the Level 1/2/3/4 agent hierarchy (Bot.Agent.Level2/3/4 folders archived; Level 4 General Rules cardinal sections extracted to STARTUP.md), GLOBAL_SPAWNER_REGISTRY, GLOBAL_TIMER_REGISTRY (Pending FW-012 replacement), Agent Teams / tmux teammate pattern, AppsScript Communication Bus design. The Build Guide files in `New Build/` were written before these retirements happened and may still reference these systems.
+
+**What needs to happen:** Sweep every Build Guide file for references to retired systems. Update language to either remove the references (if the function isn't replaced) or describe the v2 replacement (if there is one — e.g., Cowork replaces Agent Teams; multi-vendor MCP topology replaces Gatekeeper; rolling handoff per bot replaces sub-bot taxonomy). Specifically:
+- Replace "MarcusAurelius does X" with neutral role-based phrasing or specific v2 binding
+- Replace "Level [1-4] agent" references with "Programs / Program-managers / Operational AI" per `Velorin.Principles.md` Principle 3
+- Replace Gatekeeper references with "evaluated and retired in v1→v2 transition; per-vendor MCP topology replaces"
+- Replace Agent Teams / tmux references with "Cowork-based multi-vendor coordination"
+- Replace Scribe references with the v2 ingestion-pipeline design (whatever replaces Scribe's automated session logging — design TBD or already in the Build Guide under a different name)
+
+**Why deferred:** Build Guide is FROZEN. Mandatory cleanup during finalization pass.
+
+---
+
+## Updated Sequencing Recommendation
+
+**Decisions that must land FIRST (CT calls):**
+- Decisions 2-10 from the Re-Eval form (lock the architecture before edits begin)
+- Item 16 (`contradicts` dual-function — `conflict_class` sub-attribute or not)
+- Intake test authorization (OQ-9, blocked since Session 013 — first Brain neurons depend on it)
+- H_E measurement protocol (OQ-5, Trey research returned, decision pending)
+
+**Build Guide edits that happen as one finalization pass (after decisions land):**
+- Items 7, 8, 9, 10, 11, 12, 14, 15, 16, 17 — all touch Build Guide files
+- Items 1, 2, 6 — also Build Guide coupled, handle in same pass
+- Item 13 (Velorin Startup Manifest) — write during this pass
+
+**Items handled separately:**
+- Item 3 (desktop-verification.md) — STARTUP.md-coupled, separate review
+- Item 4 (GDrive.Port.Tool) — operational tool maintenance
+- Item 5 (Research Library Index) — large independent build, sequenced with NotebookLM integration
+
+**Dependencies:**
+- Items 8, 9, 10, 11, 12 are Erdős-proven and ready to integrate — minimal additional design needed
+- Items 7, 13, 17 are Jiang2-architectural and require synthesis judgment
+- Items 14, 15 are mechanical placement once their inputs land
 
 [VELORIN.EOF]
