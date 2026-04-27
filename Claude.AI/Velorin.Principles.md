@@ -130,6 +130,8 @@ Build priorities flow from these. Box 2 can build and ship independently of the 
 
 **Persona-Maker note (per FW-009):** the future Persona-Maker subsystem is itself an agent-factory that PRODUCES additional sub-agent activations — specialized agents with startup + personality guides, pre-oriented at specific brain regions. When triggered, Claude can activate a persona-derived agent the same way it activates Gemini Deep Think or Codex. The persona-derived agents do not modify the brain directly; they CAN leave notes in region/area logs suggesting pointer-rating adjustments (the rating-update mechanism itself is deferred — "to be discussed and built later" per CT).
 
+**Part 2 evolution — Brain as operator-guide:** Once the Brain lands (Part 2) and accumulates CT's pattern knowledge, the Brain itself becomes the guide that tells the operator (Cowork-orchestrated Claude) which tools / skills / hooks / scripts to call for a given task. Today (Part 1) the orchestration logic is whatever Cowork-orchestrated Claude figures out per task using vendor capabilities + tool-routing math. Tomorrow (Part 2) the Brain instructs from accumulated CT-pattern knowledge — graph topology + pointer ratings + region/area context guide which sub-agent to activate. **Do NOT over-engineer this now.** The simpler "Claude reasons about which tool to call" pattern works for Part 1. Brain-as-guide is the Part 2 upgrade; defer the complexity until then.
+
 See `feedback_opus_47_solution_drift.md` for the model-level reasoning that makes sub-agent-activation across multiple vendors essential — Opus 4.7's regression on cascade / edge-case / scale / causal reasoning was the trigger that made single-vendor execution risk concrete.
 
 ---
