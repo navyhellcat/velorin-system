@@ -245,7 +245,31 @@ Write `infrastructure/embed_neuron.py` and `infrastructure/ppr_retrieve.py` (wit
 
 Create `skills/skill_dependencies.yaml` with 4-type edge schema. Create first 2-3 pilot skills with typed artifact schemas and prerequisite edges.
 
-✅ **Stage 1 complete when:** Cowork-Claude can activate each specialist system and get work back; ATV enforcing IES on tagged analytical outputs; tool-routing program logging decisions; first Brain PPR query returning correct neurons; post-commit hook firing correctly.
+### Step 14 — Quick-Capture Layer (Brain Dead Reckoning fix)
+
+The Brain updates during Claude sessions. CT's understanding evolves continuously between sessions. Three lightweight async capture programs close the gap:
+
+**Voice capture:** `infrastructure/capture/voice_watcher.py` — watches `~/Desktop/voice_capture/` for new audio files; runs MacWhisper transcription; sends transcript to ingestion queue. CT drops a voice memo; the Brain gets it automatically.
+
+**URL/article capture:** `infrastructure/capture/url_capture.sh` — bookmarklet or CLI script that accepts a URL, fetches article content via OpenDataLoader or readability, sends to ingestion queue.
+
+**Email capture:** `infrastructure/capture/email_capture.py` — watches a dedicated mailto alias or Gmail label; forwards email body to ingestion queue.
+
+None of these are AI agents. Each is a folder watcher or simple script, <50 lines. AI watches the ingestion pipeline that processes their output. The post-commit hook handles the Brain-side processing. These are Day 1 programs — build them alongside the ingestion pipeline.
+
+*→ Forward note: Quick-Capture programs feed the same ingestion pipeline as document ingestion (Stage 3). The distinction is trigger: document ingestion is session-triggered; quick-capture is asynchronous.*
+
+### Step 15 — IES-as-Commutator-Proxy Bridge
+
+Add `topic_domain: string` field to the ATV per-message log artifact (see ATV spec in 05_InfrastructureAndTools.md). Estimate the topic domain from task content at routing time using the Tool-Routing Program's intent vector. Log this field alongside `IES_enforced`, `T_V_seconds`, etc.
+
+**Why this matters:** IES fire rate per topic domain is a passive estimator of commutator norm magnitude for that domain. High IES fire rate on topic X → CT is still building understanding of X (Frontier Manifold). Low fire rate → CT has deeply internalized X (Persona Manifold candidate). ATV logs from Stage 1 forward become training data for Stage 3's Persona Manifold estimation — eliminating the bootstrapping problem where the Persona Manifold can't be formally estimated until the Brain is populated, but the LoRa training benefit requires it before then.
+
+One field addition. Everything else already exists.
+
+*→ Forward note (Stage 4): `infrastructure/h_e/ies_domain_proxy.py` reads ATV domain-log and produces Persona Manifold candidate list as a pre-seed for Stage 4's commutator monitor. The IES proxy estimate may disagree with the formal commutator computation — the formal computation takes precedence; the proxy is the early signal.*
+
+✅ **Stage 1 complete when:** Cowork-Claude can activate each specialist system and get work back; ATV enforcing IES on tagged analytical outputs with `topic_domain` logged; tool-routing program logging decisions; first Brain PPR query returning correct neurons; post-commit hook firing correctly; Quick-Capture folder watchers running.
 
 **"Brain not required to function at this point."** Part 1 is fully operational.
 
@@ -317,6 +341,12 @@ H_E neurons (grief events): do NOT write yet. H_E passive-inference measurement 
 Full sequence: OpenDataLoader parse → RDoLT decomposition → NPMI + LLM-judge (forced distribution, 9-class required) → belief_state + authority_tier + source_coords + contradiction_class YAML → post-commit hook fires → Qdrant upsert.
 
 **9-class relation labels REQUIRED** from day 1. Binary routing (P_tax vs P_them) derived from the 9-class label. Not optional.
+
+**Two-pass classification (better accuracy, lower LLM load):**
+- Pass 1: binary tax/them (single prompt, ~95-97% accurate — matches Multiplex Tensor routing precision requirements)
+- Pass 2 (thematic labels only): classify specific thematic sub-type from 7 options (focused few-shot prompt for thematic vocabulary — causes/activates/precedes/implements/depends-on/supports/contradicts, ~85-90% accurate with few-shot examples)
+
+The Multiplex Tensor only needs the binary split for routing mass. The full 9-class label is for conflict_routing.yaml and the contradiction resolution system — different uses, different precision requirements. Cascading classification difficulty improves overall accuracy and reduces the chance of the LLM conflating e.g. "causes" and "activates." Single-pass 9-class classification bundles easy (taxonomic) and hard (thematic fine-grained) in one call — suboptimal.
 
 **Conflict routing config** (`Claude.AI/conflict_routing.yaml`) created alongside ingestion pipeline.
 
