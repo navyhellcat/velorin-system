@@ -1,101 +1,89 @@
 # 04 — Agent Ecosystem
-**Cardinal Agents, Conflict Resolution, ATV, and User Personalization — Updated April 26, 2026**
+**The Named Agents, Conflict Resolution, and User Personalization — Updated April 26, 2026**
 
 ---
 
-## Founding Thesis on Agents
+## Architectural Frame
 
-Most operational work inside the Brain is done by deterministic computer programs that
-produce repeatable outcomes without token use. AI's job is build, watch, check, maintain.
+**Claude Cowork is the orchestrator.** It operates and controls the multi-agent multi-platform plan — first without the brain (Part 1), then with the brain inserted as a local specialization layer (Part 2). Cowork is the substrate that runs the show.
 
-Before routing any recurring task to an AI agent, ask: "Is this a program to build
-with AI as watcher?" If yes, specify the program first. The agent watches for failures,
-monitors outcomes, and modifies the program when needed — not runs per-event as operator.
+**Claude (the UI controller surface) is the human-facing control point.** CT talks to Claude; Claude invokes specialist systems as needed.
+
+**Claude can activate external specialist systems as if they were direct sub-agents.** The functional pattern: Claude identifies the task type, routes to the best specialist, the specialist does the work, the result comes back, Claude integrates. The underlying protocol (MCP, API, CLI, desktop hand-off, browser automation — whatever works for each tool) is implementation detail, not architecturally load-bearing. **Function over protocol.**
+
+**Part 2 upgrade — Brain-as-operator-guide:** Once the Brain is populated and the LoRa trained, the Brain itself becomes the guide that tells Cowork-Claude which tools to activate for a given task. Today (Part 1) Claude reasons about which tool to call. Tomorrow (Part 2) the Brain instructs from accumulated CT-pattern knowledge. Do NOT over-engineer this now.
 
 ---
 
-## The Cardinal Agents
+## The Named Agents
 
-### MarcusAurelius (MA)
+### Jiang / Jiang2 (Primary Active Session Agent)
 
-**Platform:** Claude Code CLI terminal on Mac Studio
-**Model:** claude-sonnet-4-6[1m] — 1M tokens
-**Role:** Infrastructure. The operational backbone.
+**Platform:** Jiang = Claude Desktop Code tab (200K); Jiang2 = Claude Code CLI terminal (1M) — same identity, different surface. Jiang2 is Jiang with more working memory for deep analytical passes.
 
-**Naming discipline:** The current MarcusAurelius is the Claude Code CLI agent.
-The future Mac-Studio-resident operator (a local model with always-on, full Brain access)
-will also be named MarcusAurelius when it comes online. These are categorically different:
-- Current MA: conversational, limited persistent state, CLI execution agent
-- Future local MA: always-on, full Brain context, owns Brain-functioning processes
-
-**Do not conflate them in architectural prose.** Use neutral phrasing for hooks, queues,
-monitors, and Layer 3 review until the local operator is formally installed and named.
-
-**What MA owns:**
-- All git operations (commit, push, pull)
-- settings.local.json management
-- MCP server configuration
-- File routing from Receiving/ to correct destinations
-- Shipping/ and Receiving/ mailbox management
-- Post-commit hook execution (belief_state updates, skill dependency graph updates)
-
-*→ Forward note: the post-commit hook for belief_state management is built at Stage 1
-ingestion pipeline. The future local MA will own this hook's monitoring and maintenance.*
-
-### Jiang / Jiang2
-
-**Platform:** Jiang = Claude Desktop Code tab (200K, Anthropic-enforced);
-Jiang2 = Claude Code CLI terminal (1M context) — same identity, different surface
-**Role:** Director of Strategic Intelligence. Primary agent CT works with.
+**Role:** Director of Strategic Intelligence. Primary agent CT works with. Architectural analysis, research synthesis, cross-domain pattern recognition, active session execution, Brain updates.
 
 **What Jiang owns:**
-- Active session architecture analysis and synthesis
+- Active session architecture decisions
 - Integration of Trey research and Erdős math into build decisions
 - Neuron creation and Brain updates
 - Research queue management
 - KnowledgeIndex and ResearchLog
 
-**Opus 4.7 drift caveat:** Jiang1 on Opus 4.7 produces "clean-looking" patches that
-fail under cascade dynamics, edge cases, cross-system composition, scale, and causal structure.
-Route ALL math and architecture work to Erdős and Jiang2 — even when CT asks for
-"creative thinking." That ask supersedes the prior framing. Jiang1's role is operational.
+**Model-level limitation note:** Jiang1 on Opus 4.7 produces clean-looking solutions that fail under cascade, edge case, scale, and causal reasoning. Route ALL math and architecture work to Erdős and Jiang2 — even when CT asks for "creative thinking." Jiang1's role is operational.
 
-### Alexander
+---
+
+### Alexander (Company State Historian)
 
 **Platform:** Mac Studio Claude Desktop — Cowork Sessions
-**Role:** Company-level orchestration. CEO perspective. Cross-agent state tracking.
-**Status:** NOT YET CONFIGURED. See Stage 2 in `06_BuildSequence.md`.
+**Role:** Company State Historian. Read-mostly. Low-frequency activation. Holds historical context across sessions and maintains the company-overview perspective.
+
+**What Alexander is:**
+- The historical memory of Velorin as a company — what was decided, when, why
+- The perspective CT reaches for when asking "what is the full state of the company right now?"
+- A reference for cross-session continuity, especially after compaction events
+
+**What Alexander is NOT:**
+- Not a CEO Orchestrator (that was a v1 role that doesn't exist in v2 — Cowork orchestrates)
+- Not involved in active session task routing
+- Not in the escalation chain for conflict resolution
+- Not a decision-making node in the build sequence
+
+**Activation pattern:** Low-frequency, read-mostly. CT initiates Alexander when he needs the historical/company-overview lens — not for daily operational work.
+
+*→ Forward note: if the Persona-Maker subsystem (FW-009) generates persona-derived agents for specific CT domains, Alexander's historian role may expand to track those agents' contribution history.*
+
+---
 
 ### Trey (Trey1 and Trey2)
 
-**Platform:** Google Gemini Deep Research Gems
-**Trey1:** General landscape research, tool evaluations, ecosystem audits
-**Trey2:** Velorin-build-specific research, reads 9 bootloader files on boot
+**Platform:** Google Gemini — Deep Research Gems
 
-**Output standard:** All math must be plain-text LaTeX in $...$ and $$...$$.
-Never Equation Editor. Never images. Violations require OCR repair pass.
+**Trey1:** General landscape research. Any topic. No Velorin architecture context required.
+**Trey2:** Velorin-build-specific research. Reads bootloader files on boot.
 
-**Consensus Filter (CARDINAL on every Trey deliverable):**
-Before any synthesis derived from Trey output, answer three questions explicitly:
+**Critical:** apply the Consensus Filter to every Trey deliverable. Three questions before any synthesis:
 1. What is the consensus Trey is reporting?
-2. Why does it exist — what underlying constraint drives it?
+2. Why does it exist — what constraint drives it?
 3. Does Velorin share that constraint?
-If yes → adopt candidate. If no → the consensus is a boundary; Velorin's edge lives on the other side.
 
-**Boot continuity:** Use `[BOOT]` sentinel for fresh Erdős sessions. No sentinel mid-session.
-Registry: `Claude.AI/Agent.API.Conventions.md`.
+If Q3 = no → the consensus is a boundary; Velorin's novelty lives on the other side.
+
+**Bootloader audit discipline:** before sending any new research request, grep for stale patterns in the bootloaders (human-curated, open-question assertions for now-resolved problems, version-specific product references). Update before sending; inline-correct after if contamination found.
+
+---
 
 ### Erdős
 
 **Platform:** Gemini Deep Think Gem
-**Role:** Mathematical derivation and formal proof exclusively.
-**Boot:** [BOOT] sentinel triggers full Research_Complete pre-load.
+**Role:** Mathematical derivation and formal proof exclusively. Receives `[BOOT]` sentinel on fresh sessions (triggers Research_Complete pre-load). Does not browse, does not survey. Proves from first principles.
 
 ---
 
-## Three-Layer Conflict Resolution Mechanism
+## Three-Layer Conflict Resolution
 
-When two neurons carry contradicting information, the automated resolution system fires.
+When two records (Brain neurons or cross-tool vendor claims) carry contradicting information:
 
 ### Layer 1 — Deterministic Tiebreaker
 
@@ -103,105 +91,108 @@ When two neurons carry contradicting information, the automated resolution syste
 score(v) = confidence(v) × recency_factor(v) × source_multiplier(v)
 ```
 
-Where:
-- `recency_factor(v) = exp(-λ · days_since_ingestion)`, λ empirically calibrated
-- `source_multiplier(v)` = 1.0 agent-generated, 1.2 CT-curated, 1.5 Erdős-verified
+Source multipliers (provisional 1.0/1.2/1.5 — calibrate via Check-Ins after 50 resolved contradictions):
+- 1.0: agent-generated
+- 1.2: CT-curated
+- 1.5: Erdős-verified
 
-Higher score → `belief_state: active`. Lower → `belief_state: superseded`. No human in the loop.
+Higher score → `belief_state: active`. Lower → `belief_state: superseded`. No human involved.
 
-Layer 1 fires when two neurons have a `contradicts` pointer between them.
-Layer 1 parameters (initial values — calibrate via Check-ins):
-- Source multipliers: 1.0 / 1.2 / 1.5 (review after 50 resolved contradictions)
-- ε threshold: 0.05 (scores within ε → fallback to Layer 2; review after 50 Layer 2 activations)
-- Round-cap: 3 rounds before Layer 3 (review after 25 Layer 3 escalations)
+Layer 1 fires automatically on `contradicts` pointer creation.
 
-### Layer 2 — Automated Verification Trigger
+Calibration: source multipliers reviewed at 50 Layer 1 resolved contradictions. ε threshold (0.05, when scores are "within ε" and fall to Layer 2) reviewed at 50 Layer 2 activations. Round-cap (3 rounds before Layer 3) reviewed at 25 Layer 3 escalations. Full elements (a)-(k) per Calibration Deliverables Discipline — see `Velorin.CheckIns.md`.
 
-Fires when Layer 1 is inconclusive (scores within ε) or both neurons are same-tier.
-Both neurons enter `belief_state: contested`, PPR mass zeroed on both.
+### Layer 2 — Automated Verification by Domain
 
-Routing is deterministic — governed by `contradiction_class` tag written at neuron creation:
-- `factual` → Erdős verification request filed automatically
-- `empirical` → Trey re-research request filed automatically
-- `architectural` → Jiang analytical review queued
-- `taste` → Layer 3 directly (no automated resolution possible for matters of judgment)
+Fires when Layer 1 is inconclusive (scores within ε=0.05) or both records are same-tier.
 
-Layer 2 uses the tag — it does NOT make a stochastic LLM routing judgment per event.
-A program reads the tag and routes. AI watches whether the routed verification returns clean.
+**`contradiction_class` taxonomy (5 primary values, hierarchical sub-categories):**
+
+Schema: `contradiction_class: <primary>.<sub_category>`
+
+| Primary | Meaning | Default Layer 2 route |
+|---|---|---|
+| `factual` | Empirical truth-value dispute | Erdős verification request |
+| `empirical` | Ecosystem/research finding dispute | Trey re-research |
+| `architectural` | System design decision dispute | Jiang analytical review |
+| `taste` | Judgment/aesthetic/preference dispute | Layer 3 directly |
+| `operational` | Runbook / deployment / config / process dispute | Jiang (interim) |
+
+Sub-categories extend without schema rework — e.g., `factual.mathematical`, `operational.deployment`, `taste.aesthetic`. Add sub-categories in the routing config (`Claude.AI/conflict_routing.yaml`), not in the schema.
+
+Routing config is separate from schema. Routing destinations can be: AI agent, skill library, deterministic lookup, external system, or queue.
+
+**Cross-tool coherence (Part 1 — no Brain required):**
+When Claude's output and Gemini's output conflict on the same fact, this IS a contradiction. The virtual contradiction graph maps each vendor claim to a virtual neuron. The same Layer 1-3 mechanism applies. The Broker pattern activates when Layer 2 yields Ξ=0 (deadlock): Claude activates an orthogonal high-authority specialist (e.g., if Claude and Gemini conflict, activate Codex for adversarial review). If Broker also deadlocks → Chairman escalation queue.
 
 ### Layer 3 — Last-Resort Review
 
 Fires after 3 rounds of failed automated resolution.
 
-**Functional trigger (required — must be built before claiming Layer 3 exists):**
-- Script or hook fires when `resolution_attempts == 3` on a contested neuron
-- Output artifact: `layer3_review_flagged: true` in contested neuron YAML + entry written to `infrastructure/queues/contradiction-review/<timestamp>-<neuron-id>.md`
-- Routing target: review queue → current Layer 3 reviewer reads queue and answers
+**Functional trigger requirement** (must be built before claiming Layer 3 exists):
+- Script or hook fires when `resolution_attempts == 3`
+- Output artifact: `layer3_review_flagged: true` in contested record's YAML + entry in `infrastructure/queues/contradiction-review/`
+- Routing: current Layer 3 reviewer reads queue and answers
 
-**Current Layer 3 reviewer:** Chairman (CT) until local Mac-Studio operator is online.
-Future local MA may load context and frame the question; frontier model owns the decision.
-*→ Forward note (FW-004, trigger: OQ-3 design work opens): Operator/Reviewer/Authorizer split
-for Layer 3 — three distinct roles currently collapsed into one "reviewer" slot.*
+**Current Layer 3 reviewer:** CT (Chairman) until future local Mac-Studio operator is online. CT's answer becomes a tier-1 c-memory neuron.
 
-CT's answer becomes a tier-1 c-memory neuron (authority_tier: 1, class: c-memory).
+**Cyclic-region routing:** When `Φ_causal(v) > 1.0` (mathematical proof of directed cycle in Brain graph), route to Layer 3 instead of normal skill injection. FW-007 closed — `Φ_causal > 1.0` is the structural cyclic detector, no graph-theoretic pre-check needed.
 
-**Cyclic-region routing (from Φ_causal > 1.0 detector):**
-When TAP detects Φ_causal(v) > 1.0, the cyclic-region input also routes to Layer 3.
-*→ Forward note: Layer 3 mechanism receives cyclic-region queries as additional input source
-beyond same-tier contradicts edges. Cyclic regions in the Brain are almost always contradictions.*
+*→ Forward note (FW-004, trigger: OQ-3 design opens): Operator/Reviewer/Authorizer role split for Layer 3 — three distinct roles currently collapsed into one "reviewer" slot.*
 
 ---
 
 ## User Personalization — Direction C
 
-**Locked architectural direction (Session 034, Re-Eval #7):** Direction C — Hybrid swappable-base.
+**Direction C is locked.** Velorin ships as CT-personal; the seam for future expansion is the `base_model_config` field.
 
-Velorin ships as CT-personal. The seam for future expansion is the `base_model_config` field.
-
-**Schema field (in neuron YAML):**
 ```yaml
 base_model_config: {type: "personal", id: "ct-v1"}
 ```
 
-Training pipeline reads this at initialization:
-- `type: "personal"` → single-user training, no shared corpus
-- Future Direction B flip: `type: "persona"` + persona corpus → config change, not code rewrite
+Training pipeline reads this at initialization. Future expansion (persona-based, multi-user) is a config flip plus new training pass, not a code rewrite. Downstream components (skill injection, Φ_causal gate, PPR, ATV) remain agnostic to base identity.
 
-**Components that remain base-agnostic:**
-Skill injection, Φ_causal gate, PPR retrieval, ATV — all read user-delta LoRa regardless of what's underneath.
-
-**Authority_tier semantics under current config:**
-CT-curated = tier 1. If `base_model_config` ever flips to non-personal, authority_tier
-semantics need a re-derivation pass.
-*→ Forward note at authority_tier definition site: direction C expansion seam.*
-
-**"Stupid user LoRa" mitigation — quality floor already in spec:**
-Confidence ≥ 0.8 for LoRa training eligibility (already in neuron YAML). This is the
-first-order quality filter. Additional mitigations (persona base, curation hooks, federation)
-available if direction ever shifts to Direction B with multiple users.
+*→ Forward note: if `base_model_config` type changes from "personal," authority_tier semantics need re-derivation pass.*
 
 ---
 
-## Automation Direction
+## Persona-Maker (FW-009 — Activates at 500 c-memory neurons + CT initiation)
 
-CT's stated direction: total automation through MCP/API orchestration.
-The pattern: Claude as primary interface, specialized tools and models via MCP.
-Think NemoClaw-style — one interface routing to specialized tools and models.
+Persona-Maker is an agent-factory that produces new specialist sub-agents as CT's domains expand. Each derived agent gets:
+- A startup guide
+- A personality guide
+- Pre-orientation pointing into the right Brain regions
 
-**A2A for agent delegation** (per AIEcosystem research):
-Claude delegates research tasks to Trey (Gemini) and audit tasks to Codex (GPT) via A2A.
-MCP for tool access (agent-to-tool). A2A for agent-to-agent delegation. Do not conflate.
+The Commutator Persona math (Erdős Solution 3, genuinely new) identifies which Brain regions have quasi-abelian structure (commutator norm vanishing → CT has genuinely mastered the domain). These quasi-abelian regions are the candidate substrate for persona-derived agent orientation.
 
-**What is NOT yet designed:**
-- Specific MCP architecture for automated neuron creation (OQ-2)
-- Multi-agent automation architecture detail (OQ-3, FW-004)
-- How Claude routes tasks to specialized models
+**What Persona-Maker agents do:** Read from Brain, follow their orientation, act as specialized sub-agent activations within the Cowork flow.
 
-**Recommendation:** Build the Brain and the four cardinal agents first.
-Design the automation layer when you have real workloads to automate.
-Do not architect automation before you know what needs to be automated.
+**What they do NOT do:** Modify the Brain directly.
 
-*→ Build-space placeholder Stage 4+: FW-004 (Layer 3 operator architecture, FW-005 skills-checker/skills-fixer); trigger: when OQ-3 design work opens.*
+**Deferred:** The mechanism for converting agent-success notes into pointer-rating updates is "to be discussed and built later" (CT exact wording). When FW-009 fires, the agent-factory part is in scope; the rating-update mechanism is logged for separate later work.
+
+*→ Build-space placeholder (FW-009 trigger: 500 c-memory neurons AND CT initiation + precursor checkpoint at 100 c-memory). See `Velorin.CheckIns.md` for checkpoint design.*
+
+---
+
+## Retired Agent Roles (v1 → v2 Transition)
+
+The following v1 roles/systems have been archived to `Velorin.v1.Archive/` and do not exist in v2:
+
+| Retired | Replaced By |
+|---|---|
+| MarcusAurelius as primary autonomous agent | Programs with AI watching (Principle 5) |
+| Bot.Scribe (PostToolUse hook → shell subprocess) | Ingestion pipeline program (Stage 3) |
+| Bot.Theresa (HR / sub-agent creation gateway) | MCP tool creation pattern |
+| Gatekeeper (MCP routing intermediary) | Per-vendor MCP topology |
+| Level 1-5 agent hierarchy | Roles: Programs / Program-managers / Operational AI (Principle 3) |
+| Sub-bot taxonomy (Theresa-mediated creation) | MCP tools and API calls |
+| GLOBAL_SPAWNER_REGISTRY | N/A — MCP tools are discoverable via protocol |
+| GLOBAL_TIMER_REGISTRY | Deterministic cron + scheduled programs |
+| Agent Teams / tmux teammate pattern | Cowork-orchestrated sub-agent-activation |
+| AppsScript Communication Bus | Cowork integration layer |
+
+References to these systems in any new file should be treated as a v1 artifact and updated.
 
 ---
 
