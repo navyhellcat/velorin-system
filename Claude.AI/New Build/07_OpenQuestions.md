@@ -1,276 +1,204 @@
 # 07 — Open Questions
-**Current status on every OQ. Updated April 26, 2026 to reflect Sessions 033-036 outcomes.**
+**Current status on every OQ. Updated April 26, 2026 — Day 30.**
+
+Closed items are kept for record. Status explicitly noted.
 
 ---
 
 ## OQ-1: Ingestion Pipeline Design — SUBSTANTIALLY RESOLVED
 
-**Original question:** How does raw input automatically become neurons with rated pointers?
+Resolved: NPMI + LLM-judge hybrid, forced distribution, 9-class labels required, OpenDataLoader for parsing, independent row-normalization, Holographic Cold-Start, Continuous Affinity Clutch, belief_state + authority_tier + source_coords from day 1. Phase 1 = text documents. Multimodal = Phase 2.
 
-**Resolved (confirmed locked):**
-- Rating metric: NPMI + LLM-judge hybrid (cosine similarity formally rejected — symmetric, cannot model directed logical dependency)
-- LLM-judge calibration: forced distribution output (guarantees ρ* = 0.78 density constraint)
-- Initial affinity: Holographic Cold-Start (geometric projection residual from W_global)
-- Updates: Continuous Affinity Clutch + A_base SDE (Hebbian reinforcement + Ebbinghaus decay)
-- Relation-type classification: 9-class labels REQUIRED for all auto-ingested neurons (binary routing derived from label; LLMs can reliably do tax/them binary classification zero-shot; 9-class has ~70-80% accuracy with few-shot examples — acceptable for initial build, fine-tuned classifier is the long-term plan)
-- Deduplication: NPMI filter → LLM-judge with ADD/UPDATE/DELETE/NOOP gate (cosine similarity alone causes fatal corruption)
-- Region/area assignment: community detection via connectivity (not static taxonomy)
-- Contradiction handling: provenance weighting (recency + source authority)
-- PDF parsing: OpenDataLoader PDF v2.0 (replaces Docling — 1GB footprint, times out on >1MB)
-- Source provenance: bbox coordinates from OpenDataLoader → `source_coords` YAML field
-
-**Still pending — execution (not design):**
-- Full ingestion pipeline not yet built or tested (Stage 3 in 06_BuildSequence.md)
-- Multimodal input handling (photos, audio, video beyond AffectNet approach) — deferred to Phase 2
-
-**Status:** DESIGN COMPLETE. Start building text-only Phase 1. Multimodal deferred.
+**Status:** DESIGN COMPLETE. Build in Stage 3.
 
 ---
 
-## OQ-2: Automated Neuron Creation Mechanism — OPEN
+## OQ-2: Automated Neuron Creation — OPEN
 
-**Question:** What creates neurons automatically? How does the system detect what's worth ingesting?
+Direction: MCP/API-based, not shell scripts. Specific design pending. FW-005 surfaces skills-checker/skills-fixer as related thread.
 
-**Known:**
-- The old Scribe approach (PostToolUse hook → shell script → Claude subprocess) is legacy
-- Direction confirmed: MCP/API-based automation
-- Any automation should be an MCP tool call, not a standalone subprocess
-
-**Pending:**
-- Specific MCP architecture for automated neuron creation
-- Whether this happens in the ingestion pipeline or separately
-- What triggers it (session close? file write? API call from Claude?)
-
-*→ Build-space placeholder Stage 4+: FW-005 skills-checker/skills-fixer thread surfaces here
-(trigger: OQ-2 or OQ-3 design work opens).*
-
-**Status:** OPEN. Build manually first. Automate when you understand the pattern.
+**Status:** Build manually first. Automate when patterns are clear.
 
 ---
 
 ## OQ-3: Multi-Agent Automation Architecture — OPEN
 
-**Question:** How does NemoClaw-style orchestration work for Velorin? Claude as primary interface, specialized tools and models via MCP/API.
+Direction: Cowork-orchestrated sub-agent-activation (Principle 8). A2A where appropriate per tool. Design pending.
 
-**Known:**
-- Direction confirmed: A2A protocol for agent-to-agent delegation; MCP for agent-to-tool
-- PAL MCP worth evaluating as orchestration layer once Brain operational
-- A2A: Gemini subagents for research via A2A delegation from Claude
-
-**Pending:**
-- Specific MCP orchestration design
-- How task routing decisions are made (which model gets which task)
-- Alexander's role in this architecture
-
-*→ Build-space placeholder Stage 4+: FW-004 Layer 3 operator architecture lives here
-(trigger: this OQ opens). Cannot design OQ-3 correctly without FW-004's decisions.*
-
-**Status:** OPEN. Build Brain first.
+**Status:** OPEN. Build Brain first. FW-004 trigger: when this design work opens.
 
 ---
 
-## OQ-4: Brain Region Taxonomy — PARTIALLY ANSWERED
+## OQ-4: Brain Region Taxonomy — PARTIALLY RESOLVED
 
-**Question:** How should Brain regions and areas be organized? Neuroscience-derived or emergent?
+Edge ontology unification (Brain 9-class + GoS 4-type) is Pre-Stage 0 task. Region boundaries should emerge from commutator dynamics (Simon-Ando + JSD), not from folder names. Folder names are navigation scaffolding.
 
-**Resolved:**
-- Edge ontology unification (9-class Brain + 4-type GoS) is a BUILD NOW pre-pipeline task (see Pre-Stage 0 in 06_BuildSequence.md)
-- Unified mapping established: instance-of/derived-from → dependency; operational thematic → workflow; supports/contradicts → semantic; alternative is skills-specific
-- The Brain's folder-level region structure (Operations, Connectivity, Agents, Principles, Company, Intelligence) is navigation scaffolding — it stays as-is
-- Semantic organization happens in E₈ crystal layer via Pointer Gravity and PPR traversal
-- Five Boxes are life domains (administrative overlay) — NOT Brain regions
-
-**Remaining open:**
-- How the Brain's folder structure evolves as Simon-Ando clustering reveals natural regions from data
-- Whether Community/ and Intelligence/ regions are the right two additions beyond the original four
-
-**Status:** ACTIVE — edge ontology unification in progress (Pre-Stage 0).
+**Status:** ACTIVE — edge ontology in Pre-Stage 0.
 
 ---
 
-## OQ-5: H_E (Emotional Charge) Measurement — OPEN
+## OQ-5: H_E (Emotional Charge) Measurement — DESIGN LOCKED, BUILD PENDING
 
-**Question:** How does the system assign emotional charge (H_E) to a neuron?
+Option B locked (CT decision 2026-04-26): passive inference, never prompted directly.
 
-**Known:**
-- H_E mathematically defined: δ*(u→v) = (1+H_E(u))·δ(u→v) — high H_E prevents demotion
-- Research returned: Trey.Research.EmotionalMemorySalience.Measurement.md
-  - Self-report (CES-7, IES-R) measures narrative anchoring, not raw arousal — inadequate alone
-  - GSR/EDA tracks sympathetic nervous system activation — proxy for H_E
-  - Observer effect: asking CT to rate a memory's emotional charge alters the trace
-  - Passive inference (involuntary intrusion frequency, response latency) is the correct measurement approach
-  - fNIRS + EEG headband: viable non-invasive hardware for future H_E inference
-- CT recommendation from Session 028: Option B — passive tracking + qualitative prior (high/medium/low) at neuron creation, never prompted directly
+H_E NOT added to neuron YAML schema yet — computed on-demand from observable signals, stored in separate H_E computation log, not in neuron until measurement procedure validated.
 
-**Pending decision (CT):**
-- Exact YAML field format (float? categorical scale?)
-- Whether H_E is set at neuron creation or updated over time
-- Hardware acquisition (fNIRS + EEG — optional, not blocking the build)
+Calibration Deliverables Discipline (elements a-k) governs multi-point distribution:
+- Checkpoint at 100 c-memory neurons
+- Checkpoint at 500 neurons
+- Full re-evaluation at 1,000 neurons
+- Quarterly thereafter
 
-**Do NOT add H_E to neuron YAML until this is resolved.** C-memory neurons without H_E are
-still protected (class: c-memory is the protection mechanism).
+See `Velorin.CheckIns.md` for full calibration spec.
 
-**Status:** RESEARCH COMPLETE. Protocol decision pending from CT.
+**Status:** DESIGN LOCKED. Build in Stage 4 after Brain has 100+ neurons.
 
 ---
 
 ## OQ-6: Compression Event Detector — STRUCTURALLY DEFINED
 
-**Original question:** How does the system detect that a pattern has become load-bearing enough to encode in the LoRa?
+Criterion: Brockett gradient flow drives commutator norm β → 0; JSD fires when β ≤ β_abelian.
 
-**Resolved (Sessions 034-035):**
-- Criterion: Brockett double-bracket gradient flow drives commutator norm β → 0
-- JSD fires when β ≤ β_abelian where:
+$$\beta_{abelian} = \frac{\alpha\delta}{2C(1-\alpha)} \cdot \theta_{work} \cdot \|\pi\|_\infty$$
 
-$$\beta_{abelian} = \frac{\alpha \delta}{2C(1-\alpha)} \cdot \theta_{work} \cdot \|\pi\|_\infty$$
+κ analytic formula ($\kappa = 2C(1-\alpha)/(\alpha\delta)$) is structural prior only — operationally too loose. Empirical calibration required via Check-Ins measurement program (see `Velorin.CheckIns.md`).
 
-- Commutator norm β = ‖[P_tax, P_them]‖_F is the structural friction operator
-- As CT applies a framework consistently across diverse contexts, P_tax and P_them commute more closely
-- κ: analytic formula $\kappa = 2C(1-\alpha)/(\alpha\delta)$ is a structural prior only — empirical calibration required
-
-*→ Build-space placeholder Stage 4+: κ empirical calibration. Check-ins entry: after 10 test compression events.*
-
-**Pending — implementation (not math):**
-- Compression event detector program that monitors β per region
-- JSD algorithm implementation on region copies
-- Connection to LoRa training pipeline (Stage 5)
-
-**Status:** MATH COMPLETE. Implementation deferred to Stage 4+.
+**Status:** MATH COMPLETE. Build in Stage 4.
 
 ---
 
 ## OQ-7: Session Close Protocol — OPEN
 
-**Question:** At the end of each session, what exactly happens automatically?
+Current: fully manual 10-step process. This should be a program. Jiang design task.
 
-**Known:**
-- Current close protocol is fully manual
-- The optimization is a design task — Jiang should do it directly
-- Eats ~12,000 tokens in current form
-
-**Status:** JIANG TASK. Design this before automation work begins.
+**Status:** OPEN. Design before automation work begins.
 
 ---
 
 ## OQ-8: Compaction Hooks — OPEN
 
-**Question:** How do PreCompact/PostCompact hooks save/restore state during context compaction?
+PreCompact/PostCompact hooks designed but not wired (CT deleted the script as too risky without testing). Write, test standalone, then wire.
 
-**Known:**
-- pre-compact-task-gate.sh was written, then deleted by CT (too risky without testing)
-- exit code 2 blocks compaction; exit code 1 does not
-- TEAM_STATE.md with 2-hour recency window is the correct pattern
-- autoCompactEnabled and autoCompactWindow are real settings
-
-**Process (required before wiring):**
-1. Write the script
-2. Test standalone several times
-3. Add to settings.local.json with short timeout
-4. Monitor for one session before relying on it
-
-**Status:** DESIGN ONLY. Build and test standalone before wiring.
+**Status:** OPEN.
 
 ---
 
-## OQ-9: Intake Test Design — BLOCKED
+## OQ-9: Intake Test — REPOSITIONED TO PHASE 4 LAST ITEM
 
-**Question:** The structured decision-scenario experience that reveals CT's reasoning patterns and produces Layer 1-3 material for a new user.
+CT decision 2026-04-26: removed from active outstanding decisions. Placed as Phase 4 final step — the last item before Build complete.
 
-**Status:** BLOCKED ON CT AUTHORIZATION since Session 013.
+By Phase 4, c-memory neurons have accumulated organically through Phases 1-3. The formalized intake test is final-stage validation/tidying.
+
+**Status:** REPOSITIONED. Not blocking any Phase 1-3 work.
 
 ---
 
 ## OQ-10: Velorin.Welcome Rename — RESOLVED
 
-The new build uses Velorin.Welcome/ as the name from the start. No rename needed.
+New build uses Velorin.Welcome from scratch.
 
 ---
 
 ## OQ-11: RTX 4090 Windows Build — DEFERRED
 
-**Spec:** RTX 4090, AMD Ryzen 9 X3D, 64GB DDR5-6000 CL30, AM5
-**Blocked on:** ARM64 Claude Code crash (GitHub issue #12160)
-**Action:** Buy 2×32GB DDR5-6000 CL30 RAM kit now while prices low.
-
-**Status:** DEFERRED. Buy RAM. Build when bug resolved.
+ARM64 Claude Code crash (GitHub #12160). Buy RAM now. Build when bug resolved.
 
 ---
 
 ## OQ-12: θ_work Empirical Calibration — PENDING BUILD DATA
 
-**Question:** What is the exact optimal θ_work within the spectral band (0.375, 0.585]?
+Spectral band analytically proven: (0.375, 0.585]. Provisional value 0.5.
+Minimum calibration dataset: 738 labeled queries (PAC bound).
+Config: `skill_injection_threshold: float` — NOT hardcoded.
 
-**Known:**
-- Spectral band analytically derived: (0.375, 0.585]
-- Provisional value 0.5 is within the band
-- Minimum dataset: 738 labeled queries (PAC bound, ε=0.05, δ=0.05)
+Check-Ins entry: θ_work calibration review after 738 labeled queries. See `Velorin.CheckIns.md`.
 
-**Pending:** Brain populated with 738+ labeled queries from actual use.
-
-*→ Build-space placeholder Stage 3: θ_work calibration. Check-ins entry: after 738 labeled queries exist. Config: skill_injection_threshold: float — NOT hardcoded.*
-
-**Status:** SPECTRAL BAND LOCKED. Empirical calibration pending Stage 3 data.
+**Status:** SPECTRAL BAND LOCKED. Calibration pending Stage 3 data.
 
 ---
 
-## OQ-13: Skills Library N Threshold (Sparse vs Dense Validation) — PENDING
+## OQ-13: Skills Library N Threshold — PENDING
 
-**Question:** At what skill count does GoS sparse validation become worth building?
+At what skill count does GoS sparse validation become worth building?
 
-*→ Build-space placeholder Stage 3: GoS sparse validation mode (trigger: N skills, defined at Stage 3 design). Check-ins entry: 90 days of dense validation — review skill count and cost.*
+*→ Build-space Stage 3: GoS sparse validation mode (trigger: N skills, defined at Stage 3 design). Check-Ins: 90 days dense validation — review skill count and cost.*
 
-**Status:** PENDING. Decide N when Stage 3 is operational.
+**Status:** PENDING. Decide N when Stage 3 operational.
 
 ---
 
 ## OQ-14: ATV Verifier Model Selection — PENDING BENCHMARK
 
-**Question:** Which 1-3B parameter model achieves highest VTPS on IES grammar on Mac Studio M4 Max?
+Benchmark program (JSONSchemaBench + XGrammar + vllm-mlx + VTPS + 100-item Golden Dataset Phase 1) selects the model. Stage 1 engineering output.
 
-**Candidates:** Qwen2.5-0.5B, SmolLM2-1.7B
-**Benchmark:** JSONSchemaBench + XGrammar + vllm-mlx + VTPS metric + 100-item Golden Dataset Phase 1
-**Primary metric:** VTPS = (N_total × C) / T_total (schema-invalid outputs are zero-throughput events)
-**Secondary metric:** FRR (false-reject rate) — prioritized over FAR per anti-drift discipline
+*→ Build-space Stage 1: ATV verifier model selection. Check-Ins: re-benchmark every 90 days or when better model available.*
 
-*→ Build-space placeholder Stage 1: ATV verifier model selection is Stage 1 engineering output.*
-
-**Status:** PENDING benchmark program execution.
+**Status:** PENDING benchmark execution at Stage 1.
 
 ---
 
 ## OQ-15: Layer 3 Operator Architecture — PARKED (FW-004)
 
-**Question:** Who performs Layer 3 contradiction review; who authorizes; what is the escalation protocol when local model cannot resolve?
+Current: CT until local Mac-Studio operator online. Future: Operator/Reviewer/Authorizer split needs design.
 
-*→ Build-space placeholder Stage 4+: FW-004 (trigger: OQ-3 design work opens). Operator/Reviewer/Authorizer role split for future local Mac-Studio MA.*
+*→ Build-space Stage 4+ (trigger: OQ-3 design opens): Layer 3 operator architecture.*
 
-**Status:** PARKED per CT at Stage 0. Trigger: OQ-3 design work opens.
-
----
-
-## OQ-16: GDrive Service Account Migration — STAGE 0 OPERATIONAL FIX
-
-This is not an architectural question but it blocks the porting workflow.
-
-**Problem:** OAuth tokens expire every 7 days (recurred Session 027 and Session 035).
-**Fix:** Google Service Account with JSON key file (permanent credentials).
-**Priority:** HIGH — must ship before next 7-day window expires.
-
-**Status:** STAGE 0 REQUIRED. See FW-003.
+**Status:** PARKED. FW-004.
 
 ---
 
-## Research Still Queued
+## OQ-16: GDrive Service Account Migration — STAGE 0 REQUIRED
 
-**All Trey and Erdős queues are currently empty** (as of Session 036).
+OAuth expires every 7 days; broken twice. Fix before Mac Studio transition. See Stage 0 Step 1.
 
-Deferred-novelty list (for end-of-cycle batched pass when architecture is locked and publication begins):
-- "VEGP generalizes Wald's SPRT" claim (steel-man from Re-Eval #4)
-- Revised Theorem 3 (Cognitive Langevin Dynamics / Brockett flow) vs arXiv 2602.13759
+**Status:** STAGE 0 REQUIRED.
+
+---
+
+## OQ-17: Tool Capability Matrix Initial Values — STAGE 1 ENGINEERING
+
+Column-normalized V initial values for the Tool-Routing Program. Start from domain knowledge; calibrate empirically.
+
+Check-Ins: routing accuracy review after 90 days operational. See `Velorin.CheckIns.md`.
+
+**Status:** STAGE 1 engineering output.
+
+---
+
+## Research Queues
+
+**Erdős Research_Needed:** EMPTY (as of April 26, 2026). All solutions from Sessions 033-036 delivered.
+
+**Trey Research_Needed:** EMPTY (as of April 26, 2026).
+
+**Deferred-novelty list** (end-of-cycle batched Trey audit when architecture locked and publication work begins):
+- "VEGP generalizes Wald's SPRT" claim
+- Revised Theorem 3 (Cognitive Langevin Dynamics) vs arXiv 2602.13759
 - Causal Action Potential as triggerless gate + cyclic detector
-- JSD as compression algorithm vs Double-Bracket Flows literature
+- JSD as compression algorithm
 
-No pure-novelty Trey audits until end-of-cycle batched pass per `feedback_no_pure_novelty_audits.md`.
+---
+
+## FW Registry State (as of April 26, 2026)
+
+| FW | Status | Trigger |
+|---|---|---|
+| FW-001: First Principles Process Documentation | Open | When architecture locked + publication begins |
+| FW-002: KVM bridge | Parked | CT does not currently recognize use case; revisit if cross-Mac need surfaces at Mac Studio |
+| FW-003: GDrive Service Account migration | HIGH PRIORITY — Stage 0 | Mac Studio port |
+| FW-004: Layer 3 Operator Architecture | Parked | OQ-3 design opens |
+| FW-005: Skills-Checker / Skills-Fixer thread | Parked | OQ-2 or OQ-3 design opens |
+| FW-006: Build Guide back-application | IN PROGRESS this pass | FW-013 trigger (this pass) |
+| FW-007: Cyclic-topology routing | CLOSED | Resolved by Φ_causal > 1.0 structural detector |
+| FW-008: Empirical κ Check-Ins | CLOSED | Resolved — full spec in `Velorin.CheckIns.md` |
+| FW-009: Persona-Maker | Open | 500 c-memory neurons + CT initiation; precursor checkpoint at 100 |
+| FW-010: Deep Think corpus folder | Open | When Deep Think integration wired |
+| FW-011: Velorin Code/ separate triage | Open | Separate dedicated session |
+| FW-012: Live timer dashboard | Open | When GLOBAL_TIMER_REGISTRY replacement designed |
+| FW-013: v2 Build Plan finalization | IN PROGRESS — this pass | Triggered today |
+| FW-014: KVM bridge implementation | Parked | CT does not currently recognize the use case |
+| FW-015: Multi-vendor cost economics | Open — Stage 1 build discussion | When tool-routing program is being designed |
+| FW-016: Mac Studio multi-vendor security | Open — Stage 1 build discussion | When specialist system integrations are being wired |
 
 ---
 

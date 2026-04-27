@@ -80,10 +80,17 @@ back to the exact page and paragraph in the source document.
 **resolution_attempts:** Counter for contested neurons. After 3 failed rounds → Layer 3.
 
 **contradiction_class:** Written at ingestion time by LLM-judge. Deterministic routing in Layer 2.
-- `factual`: Routes to Erdős verification request
-- `empirical`: Routes to Trey re-research
-- `architectural`: Routes to Jiang analytical review
-- `taste`: Routes to Layer 3 directly (no automated resolution possible)
+
+Schema: `contradiction_class: <primary>.<sub_category>` (primary required; sub_category optional initially).
+
+Five primary values (CT-locked 2026-04-26):
+- `factual` — empirical truth-value dispute (e.g., `factual.mathematical`, `factual.scientific`)
+- `empirical` — ecosystem/research finding dispute (e.g., `empirical.tooling`, `empirical.literature`)
+- `architectural` — system design decision dispute (e.g., `architectural.schema`, `architectural.protocol`)
+- `taste` — judgment/aesthetic/preference dispute; routes to Layer 3 directly
+- `operational` — runbook/deployment/config/process dispute (e.g., `operational.deployment`)
+
+Routing destinations live in `Claude.AI/conflict_routing.yaml` (separate from schema). Adding new sub-categories requires only a routing config update, never a schema change.
 
 **skill_ref:** Path to a SKILL.md file. Only populated for `type: procedure` neurons that serve
 as Brain-to-Skills gateway nodes. NULL for all other neurons. PPR-invariant — does not appear
