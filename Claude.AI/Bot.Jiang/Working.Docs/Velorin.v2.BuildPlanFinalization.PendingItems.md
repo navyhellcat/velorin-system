@@ -4,7 +4,7 @@ purpose: Items deferred from the v1 archive execution pass that must be addresse
 type: pending-items registry
 date: 2026-04-26
 from: Jiang
-status: ACTIVE — these block v2 Build Plan finalization
+status: RESOLVED — FW-013 finalization pass complete 2026-04-26/27. All 20 items addressed.
 ---
 
 # Velorin v2 Build Plan — Pending Finalization Items
