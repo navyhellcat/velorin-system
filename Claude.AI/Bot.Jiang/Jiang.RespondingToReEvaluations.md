@@ -2,17 +2,14 @@
 file: Jiang.RespondingToReEvaluations.md
 from: Jiang (Jiang1, Director of Strategic Intelligence)
 date: 2026-04-25
-purpose: Chairman's working document for processing Jiang2's seven re-evaluation
-         responses. Each entry holds the explanation, the explicit decisions
-         that need Chairman input, and the Chairman's response. Once all seven
-         are resolved, Jiang2 rewrites Jiang2.ReEvaluationResponses.md with the
-         locked decisions integrated.
-status: WORKING — #1 complete, #2-#7 pending Chairman walkthrough
+purpose: Chairman's working document for processing Jiang2's seven re-evaluation responses + the 10 Pending Decisions section. Now LOCKED 2026-04-26.
+status: LOCKED 2026-04-26 — all 7 re-evals locked + all 10 Pending Decisions resolved (D6 deferred to FW-013, all others locked). Form is the canonical record of locked outcomes; no separate `Jiang2.ReEvaluationResponses.md` rewrite needed because Jiang2's `WholeSystemReimagining.Synthesis.md` + `WholeSystemReimagining.SynthesisUpdate.Apr26.md` already serve as the post-decision integration record with broader scope. Build Guide finalization happens at FW-013 trigger; this form is read by Jiang2 during that pass for the canonical lock state. After Build Guide finalization absorbs all locks, this form moves to `Build Timeline Help/` as historical artifact.
+handoff: FW-013 (v2 Build Plan finalization pass) carries Build Guide edits per the locked outcomes here + the 19 Pending Items in `Bot.Jiang/Working.Docs/Velorin.v2.BuildPlanFinalization.PendingItems.md`.
 ---
 
 # Responding to the Re-Evaluations
 
-This document captures the Chairman's decisions on each of the seven re-evaluations Jiang2 produced (`Jiang2.ReEvaluationResponses.md`, 2026-04-25). The format for each entry: explanation, decision options, Chairman's response, locked outcomes for Jiang2's rewrite. After all seven are resolved, Jiang2 rewrites his response document so the locked decisions are reflected throughout.
+This document captures the Chairman's decisions on each of the seven re-evaluations Jiang2 produced (`Jiang2.ReEvaluationResponses.md`, 2026-04-25) plus the 10 Pending Decisions section appended at the bottom. **STATUS: LOCKED 2026-04-26 — all decisions resolved.** The form is the canonical record of locked outcomes. Jiang2's WholeSystemReimagining synthesis + SynthesisUpdate serve as the post-decision integration record. Build Guide updates happen at FW-013 trigger.
 
 ---
 
@@ -826,6 +823,8 @@ The Build Guide finalization pass (FW-013) must produce a Calibration Deliverabl
 ---
 
 ## Decision 10 — Form Finalization Sequencing
+
+**Locked 2026-04-26.** Modified Option 1 — form LOCKED with all decisions resolved (D1 yesterday; D2/D3/D4/D5/D7/D8/D9 locked today; D6 deferred to FW-013; D10 closes itself with this lock). NO separate `Jiang2.ReEvaluationResponses.md` rewrite required: Jiang2's `WholeSystemReimagining.Synthesis.md` + `WholeSystemReimagining.SynthesisUpdate.Apr26.md` already serve as the post-decision integration record with broader scope than the original Re-Eval framing — they reflect the v2 architectural reimagining that incorporates the locked decisions and the new Erdős math (`Erdos.Solution.COMBINED.Apr26.md`). The form remains the canonical record of locked outcomes; Jiang2's synthesis is the canonical record of the v2 architecture. Build Guide finalization happens at FW-013 trigger; Jiang2 reads this form (decision locks), his own synthesis docs, the BuildPlanFinalization PendingItems file (now 19 items), and the New Build files; executes all Build Guide edits in one pass. After Build Guide finalization absorbs all locks, this form moves to `Build Timeline Help/` as historical artifact.
 
 **Summary:** Once all decisions above are answered, the Re-Eval response form is structurally complete. Two paths to "finalized."
 
