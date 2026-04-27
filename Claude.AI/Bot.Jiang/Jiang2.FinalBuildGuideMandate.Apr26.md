@@ -108,6 +108,7 @@ The personalities **do NOT directly affect the brain.** They read from the brain
 - **OQ-9 Intake Test:** Removed from active outstanding decisions; placed as Phase 4 last standing item in the Build Guide. See Pending Item 20.
 - **FW-003 GDrive service account migration:** Trigger = Mac Studio port; apply to both machines simultaneously.
 - **FW-014 KVM bridge:** Parked; CT does not currently recognize the use case; defer to Mac Studio scoping if cross-Mac need surfaces.
+- **Alexander disposition (CT-locked 2026-04-26 at session close):** Alexander is **narrowed to "Company State Historian."** No longer the CEO Orchestrator (that role does not exist; Cowork orchestrates). Alexander tracks company-level state, holds historical context across sessions, maintains the company-overview perspective for when CT wants a historical reading. Read-mostly, low-frequency activation, NOT involved in active session orchestration or escalation. Bot.Alexander/ folder STAYS; you may edit its contents during this finalization pass to reflect the narrowed role (update `Bot.Alexander/Alexander.ReadMe.First.md` or equivalent identity file if it exists, archive any explicitly orchestrator-role content to `Velorin.v1.Archive/`, keep historian-relevant material). The Build Guide's `04_AgentEcosystem.md` should describe Alexander in this narrowed role; the Trey AgentRoster bootloader should be updated to match (small edit — replace "CEO Orchestrator" with "Company State Historian"). CT will primarily use Jiang and Jiang2 for active build-out; Alexander activates when CT wants the historical / company-overview lens.
 
 ### 8. v1 Archive complete
 
@@ -202,13 +203,23 @@ These are FROZEN from your prior mandate. **At this trigger, Hard Constraint 1 i
 
 ### Primary deliverable: Vision / Process / Where Headed / Why master document
 
-A new file at `Claude.AI/New Build/00_Vision.md` (or you may rename the existing `00_Index.md`, your call). This document is the FIRST READ for anyone (CT, future agents) trying to understand what Velorin IS. Sections:
+A new file at `Claude.AI/New Build/00_Vision.md` (or you may rename the existing `00_Index.md`, your call). This document is the FIRST READ for anyone (CT, future agents) trying to understand what Velorin IS.
 
-1. **The Vision** — What Velorin IS in plain terms. Personal operating system layer. Single-user (CT), accumulated CT-pattern knowledge, brain-substrate, multi-vendor sub-agent activation, eventual self-extension into new domains. Don't bury the lede; the Chairman has been frustrated that this hasn't landed cleanly. Lead with what it IS, not the math.
+**Jiang1's framing recommendation for the Vision section (think about it; write it how you want):**
 
-2. **The Process** — How Velorin gets built. Two parts: Part 1 (Cowork-orchestrated multi-vendor without brain) → Part 2 (brain insertion as local specialization layer; brain becomes operator-guide). Stage progression. Where the math comes in (Erdős's locked theorems). Where the engineering iteration comes in (Calibration Deliverables Discipline). Where the human-only steps come in (CT curation, Layer 3 review, persona-maker initiation).
+The most novel architectural claim Velorin makes is NOT the math (though the math is rigorous). It's that **a personal knowledge graph — the Brain — eventually becomes the thing that tells the orchestrator (Cowork-orchestrated Claude) which tools, skills, hooks, and scripts to call for any given task.** Production AI systems don't do this. They have models trained on fixed data plus retrieval over user history. They do not have a personal-pattern-knowledge graph that INSTRUCTS the orchestrator. CT's framing today (2026-04-26): "the brain will eventually be the thing that tells the operator what tools to call, possibly skills and tools, and hooks and scripts as well, but the brain will be the guide."
 
-3. **Where We Are Headed** — Current state (Day 30, Velorin v1 archived, multi-vendor cowork plan locked for Mac Studio transition, brain design substantively complete with COMBINED math). Next milestones (Mac Studio port, Part 1 build start, intake test as Phase 4 last item). Long-term arc (self-extension into new domains using same GPS/Brain/skill registry/patterns; persona-maker subsystem; brain-as-guide).
+That IS the Vision. The brain-as-operator-guide is the soul of what makes Velorin not-a-chatbot. The Cowork-orchestration layer is the Part 1 vehicle that makes Part 2 (brain insertion) possible. The math is the substrate that makes the brain mathematically sound. The five-boxes framing tells you why this matters operationally for CT's life.
+
+Consider leading the Vision section with the brain-as-operator-guide claim — present it as the differentiator, not as a Part 2 footnote. Today Principle 8 has it as a brief paragraph; the Vision document is the place to give it the weight it deserves (CT explicitly said "we don't want to get overly complex right now" — so don't over-engineer the framing; just position it as central, then explain Part 1 / Part 2 sequence as how we get there). Use your own judgment on structure and emphasis; this is a recommendation, not a directive.
+
+**Required sections:**
+
+1. **The Vision** — What Velorin IS in plain terms. Personal operating system layer. Single-user (CT), accumulated CT-pattern knowledge, brain-substrate, multi-vendor sub-agent activation, eventual self-extension into new domains. Don't bury the lede; the Chairman has been frustrated that this hasn't landed cleanly. Lead with what it IS, not the math. (See Jiang1's framing recommendation above re: brain-as-operator-guide.)
+
+2. **The Process** — How Velorin gets built. Two parts: Part 1 (Cowork-orchestrated multi-vendor sub-agent activation without brain) → Part 2 (brain insertion as local specialization layer; brain becomes operator-guide). Stage progression. Where the math comes in (Erdős's locked theorems). Where the engineering iteration comes in (Calibration Deliverables Discipline). Where the human-only steps come in (CT curation, Layer 3 review, persona-maker initiation).
+
+3. **Where We Are Headed** — Current state (Day 30, Velorin v1 archived, multi-vendor cowork plan locked for Mac Studio transition, brain design substantively complete with COMBINED math). Next milestones (Mac Studio port, Part 1 build start, intake test as Phase 4 last item). Long-term arc (self-extension into new domains using same GPS/Brain/skill registry/patterns; persona-maker subsystem; brain-as-operator-guide as the Part 2 evolution).
 
 4. **The Why** — Why this approach over alternatives. The single-vendor risk Opus 4.7 made concrete. The mathematical reasons production RAG/LoRa patterns don't fit Velorin's air-gapped single-user constraints. The founding thesis (programs do operational work, AI watches). The Five Boxes integration logic. Why a personal OS instead of a chatbot. Don't be defensive; explain the decisions, owning them.
 

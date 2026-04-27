@@ -409,4 +409,72 @@ FW-002 (KVM cross-Mac transfer research) was marked COMPLETE Session 027 (April 
 
 ---
 
+## [FW-015] Multi-Vendor Cost Economics + Budget Monitoring
+**Logged:** Session 037, April 26, 2026 (CT direction at session close: "discussion for stage 1 of the build")
+**Priority:** Medium — operational reality; not blocking Mac Studio port itself, but blocking sustainable daily operation post-port
+**Status:** Surfaced; deferred to Stage 1 build discussion
+
+**What this is:**
+With multi-vendor sub-agent activation as the Part 1 architecture (Cowork-orchestrated Claude calling Gemini Deep Research / Deep Think, Codex desktop, ChatGPT 5.5 desktop, Google photo/video tools, etc.), costs compound fast. Concrete numbers from `Bot.Trey/Research_Complete/Trey.Research.GPT55AndCodexIntegrationSurface.md`:
+- GPT 5.5 hits a **2x input multiplier above 272K tokens** for the entire session
+- Codex Pro: $1.75/$0.175/$14 per 1M input/cached/output tokens
+- Cowork is bundled in Anthropic Pro/Max/Enterprise (no per-token billing for that surface, but the underlying Anthropic plan has its own ceiling)
+- Gemini Deep Think: 10 prompts per 24 hours per user (rate constraint, not pure dollar cost)
+- NotebookLM Enterprise: $9-$40+/user/month (NOT in Velorin scope per the scope correction; noted for completeness)
+
+There is currently no budget-monitoring mechanism, no per-day caps, no "you're approaching 80% of monthly budget" guardrail.
+
+**What needs to be done (Stage 1 build discussion):**
+1. Decide budget envelope per vendor (monthly $ caps)
+2. Build a cost-tracking program that observes daily/weekly/monthly spend per vendor and surfaces alerts
+3. Decide alert thresholds (50% budget = informational, 80% = warning, 100% = halt or fall back to lower-cost alternative)
+4. Wire fallback behavior when a vendor is over-budget (e.g., if GPT 5.5 is over budget for the month, route GPT-5.5-class tasks to Claude or Gemini instead)
+5. Track cost-per-task patterns over time so CT can see which task types are expensive vs cheap
+
+**Trigger to revisit:** Stage 1 build planning. Concrete trigger: when Mac Studio integration begins and the multi-vendor activation pattern starts running real workloads.
+
+**Cross-references:**
+- `Bot.Trey/Research_Complete/Trey.Research.GPT55AndCodexIntegrationSurface.md` (cost details)
+- Velorin.Principles.md Principle 8 (sub-agent-activation pattern)
+- FW-012 (live timer dashboard — similar passive-observer pattern; cost dashboard is adjacent)
+
+**Assigned to:** CT (budget envelope decisions) + Jiang2 (architectural design at Stage 1) + Jiang (build execution)
+
+---
+
+## [FW-016] Mac Studio Multi-Vendor Security Model
+**Logged:** Session 037, April 26, 2026 (CT direction at session close: "discussion for stage 1 of the build")
+**Priority:** Medium — security architecture; not blocking initial Mac Studio port, but must land before sustained multi-vendor operation
+**Status:** Surfaced; deferred to Stage 1 build discussion
+
+**What this is:**
+On the current Mac, there's primarily one Claude Code session with `Bash(*)` permission per `Claude.AI/Bash_Access_Rules.md`. On Mac Studio, the architecture multiplies the surface: Claude desktop + Codex desktop + ChatGPT 5.5 desktop + Gemini CLI + various MCP servers, each with its own auth, permission scope, and file access. `Velorin Code/` is currently security-isolated for adversarial-resistance reasons (FW-011 covers its separate triage). With Cowork orchestrating across vendors, the boundary question becomes load-bearing.
+
+Open security questions:
+1. **What does each vendor see?** When Cowork-Claude activates Codex desktop for code audit on a Velorin file, what part of the filesystem does Codex have access to? Is Velorin Code/ visible to Codex? Should it be? (Default: no, per current security-isolation rule.)
+2. **What can each vendor modify?** Codex's cloud-sandbox model means it returns diffs. ChatGPT 5.5 desktop's permission model is less clear. Per-vendor write authorization matters.
+3. **Where does each vendor's MCP topology live?** Each vendor has its own MCP config. Multi-vendor sessions risk MCP conflicts (two vendors, same MCP, race conditions on local state).
+4. **Cross-vendor data leakage.** If Claude desktop hands a CT-curated Brain region to Gemini Deep Think, that data crosses to Google's cloud. Privacy implications for personal-OS use case.
+5. **OAuth and credential management.** Each vendor's auth lives somewhere (keychain, dotfile, environment variable). Single point of compromise = multi-vendor compromise.
+
+**What needs to be done (Stage 1 build discussion):**
+1. Per-vendor permission matrix — what each vendor can read, write, execute on the local filesystem
+2. Velorin Code/ access policy under multi-vendor — confirm hands-off remains the default; specify exceptions if any
+3. MCP topology design — which MCPs are per-vendor exclusive, which are shared, which are sandboxed
+4. Credential storage standard — keychain-only, no plaintext credentials in dotfiles or repo
+5. Cross-vendor data-flow rules — what kinds of data are allowed to cross to which vendor (Brain regions to Gemini? Code to Codex cloud? Photos to Google visual tools?)
+6. Audit log for cross-vendor activations — who activated what when, useful for incident response
+
+**Trigger to revisit:** Stage 1 build planning, specifically when Mac Studio multi-vendor setup begins.
+
+**Cross-references:**
+- `Claude.AI/Bash_Access_Rules.md` (current local permission baseline)
+- `Bot.Trey/Research_Complete/Trey.Research.GPT55AndCodexIntegrationSurface.md` (OAuth 2.1 + DCR constraints for ChatGPT MCP, Codex sandbox model)
+- FW-011 (Velorin Code/ separate triage — overlaps with the security boundary question)
+- `project_mac_studio_multivendor_cowork.md` (overall transition plan)
+
+**Assigned to:** CT (security policy decisions) + Jiang2 (architectural design at Stage 1) + Jiang (build execution)
+
+---
+
 [VELORIN.EOF]
