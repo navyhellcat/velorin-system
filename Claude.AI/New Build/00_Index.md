@@ -4,6 +4,8 @@
 
 **→ Start with `00_Vision.md`.** That is the front door — what Velorin IS, the two-part build process, where we are headed, and why. Read it before anything else.
 
+**→ Before starting any build work: read the "DECISIONS TO BE MADE" section at the bottom of `06_BuildSequence.md`.** 5 ideas that need CT's decision before Stage 0 begins. Use community consensus, math, and research to evaluate. Lock them, then build.
+
 This index lists all Build Guide files. Everything else is navigable from `00_Vision.md`.
 
 ---

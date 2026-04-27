@@ -1,6 +1,14 @@
 # 06 — Build Sequence
 **Executable step-by-step. Stage 0 through Stage 5. — Updated April 26, 2026**
 
+---
+
+## ⚠️ DO THIS FIRST — Before Stage 0
+
+**Before any build work begins, scroll to the bottom of this document and review the 5 ideas in the "DECISIONS TO BE MADE" section.** Use community consensus, Erdős math, and Trey research to decide whether each idea should be adopted, modified, or dropped. Lock the decisions, then start Stage 0. These ideas affect Stage 1 (Quick-Capture Layer, IES proxy field, two-pass classification) and later stages. If they're in, they need to be built alongside those stages from day one — not retrofitted later.
+
+---
+
 The build sequence follows the two-part architecture:
 - **Part 1 (Stages 0-2):** Cowork-orchestrated multi-vendor system. Brain not required. Fully functional on Day 1 of Mac Studio.
 - **Part 2 (Stages 3-5):** Brain insertion as local specialization layer. Brain-as-operator-guide is the Part 2 destination.
