@@ -199,7 +199,7 @@ After receiving Erdős's COMBINED solution to his 5 math gap theories, Jiang2 pr
 - (j) Per target point: **logged deliverable for the future** — concrete artifact name + storage location, so it's findable not lost across sessions
 - (k) Per target point: **hard date OR target** — either a calendar date or a measurable event-target. Vague "later" or "as needed" FAILS the standing requirement.
 
-This requirement applies to every calibration measurement without exception, including: 4a source multipliers, 4b ε threshold, 4c round-cap, 4d contradiction_class taxonomy + per-path routing accuracy, 7 κ measurement program, and every future calibration parameter introduced by Build Guide additions.
+This requirement applies to every calibration measurement without exception, including: 4a source multipliers, 4b ε threshold, 4c round-cap, 4d contradiction_class taxonomy + per-path routing accuracy, 7 κ measurement program, **OQ-5 H_E passive-inference measurement (Pending Item 18)**, and every future calibration parameter introduced by Build Guide additions.
 
 **Calibration Deliverables Registry** — the Build Guide finalization pass (FW-013) must produce this as a section within the Check-Ins schedule. Lists every calibration measurement with its full multi-point distribution, deliverable artifacts, and hard dates/targets. One canonical view of all in-flight calibration work, indexed by parameter and by target date.
 
@@ -258,6 +258,25 @@ Vague Check-Ins entries fail the standing rule and must be redesigned with concr
 
 ---
 
+## Pending Item 18 — OQ-5 H_E Measurement Protocol (CT-locked 2026-04-26)
+
+**What it is:** OQ-5 (the Affective Hamiltonian H_E measurement procedure) was an Open Question in the v2 Build Guide. Trey research returned in Session 028 with the recommendation **Option B — passive inference, never prompted directly** (the system infers H_E from observable signals during normal operation; never asks CT to label H_E directly). CT lock 2026-04-26: **Adopt Option B (the consensus from Trey's Session 028 recommendation) AND apply the full Calibration Deliverables Discipline (elements (a)-(k) from Decision 4 + Decision 7 standing requirement)** — multiple Check-Ins / engineering test moments / re-evaluations distributed throughout the build, not a single Check-Ins entry.
+
+**What needs to happen:** Build Guide finalization pass (FW-013) lands the H_E measurement design with:
+- The passive-inference algorithm (never prompts CT directly; infers from observable signals: query patterns, dwell time on neurons, retrieval-then-edit cycles, post-retrieval action sequences, cross-domain reference patterns, neuron creation cadence, etc. — exact signal set defined during finalization based on Trey research recommendations)
+- Multiple target points across the Build Guide: initial-calibration checkpoint after first 100 c-memory neurons, follow-up at 500 neurons, full re-evaluation at 1000 neurons, plus any phase-boundary checkpoints introduced by Build Guide stage progression
+- Per checkpoint: measurement program / data points captured / threshold or criterion / verification path / reminder / decision-when-needed / timing / test specification / logged deliverable / hard date or target — full element (a)-(k) compliance
+- Engineering test moments at each checkpoint: synthetic neuron with known H_E ground truth (CT spot-curates a small validation set), measure inferred H_E vs ground truth, recalibrate if drift exceeds threshold
+
+**Why deferred:** Build Guide is FROZEN until FW-013. Lock recorded here; concrete checkpoint placement happens during finalization pass.
+
+**Cross-references:**
+- `Bot.Trey/Research_Complete/Trey.Research.EmotionalMemorySalience.Measurement.md` (the source research for Option B)
+- Decision 4 + Decision 7 standing requirement (Calibration Deliverables Discipline)
+- New Build/02_Architecture.md (Layer 3 section, where H_E neuron YAML field sits) — note: H_E should NOT be added to neuron YAML schema until measurement procedure is built; until then, H_E is computed-on-demand from observable signals, not stored
+
+---
+
 ## Pending Item 19 — Post-Velorin-Startup Bootloader Audit (CT-locked 2026-04-26 with Decision 9 caveat)
 
 **What it is:** A second bootloader audit pass that runs AFTER the full Velorin Startup portion of the v2 build is complete (i.e., after Mac Studio / multi-vendor cowork integration has been built out). Decision 9 (locked 2026-04-26) authorized the immediate audit pass to clean v1 retirement staleness; this Pending Item captures the follow-up pass that cleans whatever new staleness emerges from the v2 build itself.
@@ -284,6 +303,21 @@ Vague Check-Ins entries fail the standing rule and must be redesigned with concr
 - The Calibration Deliverables Registry (this audit's deliverable lands there)
 
 **Assigned to:** Jiang (audit execution) + CT (trigger signal + final approval of corrected bootloaders)
+
+---
+
+---
+
+## Pending Item 20 — OQ-9 Intake Test (CT-locked 2026-04-26: Deferred to Phase 4 Last Standing Item)
+
+**What it is:** OQ-9 (Intake Test Design) had been blocked since Session 013 — originally scoped as a deliverable that generates the Brain's first 50-100 c-memory neurons (the boot state). Jiang2's WholeSystemReimagining synthesis identified it as a Part 1 deliverable. CT lock 2026-04-26: **Remove from current outstanding decision list. Place as Phase 4 last standing item in the Build Guide.** Rationale: not needed for the v2 architecture as it's been reframed; it becomes the final tidying-up step at the end of the Build, not a gating Part 1 / Part 2 component.
+
+**What needs to happen:** Build Guide finalization pass (FW-013) places OQ-9 explicitly as the **last item in Phase 4**. Specifically:
+- Remove OQ-9 from the active "Open Questions" list in `New Build/07_OpenQuestions.md`
+- Add OQ-9 as a Phase 4 final-step entry in `New Build/06_BuildSequence.md` — explicit position: last build item before Build complete
+- Note: the c-memory neurons that the intake test was originally designed to generate will accumulate organically through normal CT-Brain interaction during Phases 1-3; the formalized intake test is no longer the boot mechanism, just a final-stage validation/tidying step
+
+**Why deferred:** Build Guide is FROZEN until FW-013. Repositioning OQ-9 happens during the finalization pass, not now.
 
 ---
 

@@ -53,6 +53,7 @@ Archive this FW item. KVM build is now queued as an engineering task.
 **Logged:** Session 027, April 17, 2026
 **Priority:** HIGH — operational reliability (escalated April 24, 2026 after recurrence)
 **Re-auth occurrences (manual flows required):** Session 027 (Apr 17), Session 035 (Apr 24)
+**TRIGGER LOCKED 2026-04-26:** Execute at Mac Studio port. **Apply on both machines** (current Mac + Mac Studio) at the porting moment so both have the same service-account credentials and never need OAuth refresh again. Treats the migration + the cross-machine deployment as one operational task.
 
 **Problem:**
 Current GDrive MCP uses OAuth with a user refresh token. Google revokes these after 7 days
@@ -369,8 +370,8 @@ The v1 archive execution pass surfaced 6 items that require Build-Guide-coupled 
 
 ## [FW-014] KVM Bridge Build Decision (Authorize or Defer)
 **Logged:** Session 037, April 26, 2026
-**Priority:** Medium — gates multi-Mac operational pattern; not blocking Mac Studio v2 transition itself
-**Status:** Surfaced. CT decision required: authorize build or explicitly defer.
+**Priority:** Low — CT does not currently recognize the use case; not blocking
+**STATUS LOCKED 2026-04-26:** CT signal — "I don't know what this is, and to be honest it sounds like a stage in the build guide not something we need now." Interpretation: not an active item. Defer to Mac Studio integration scoping. If a real cross-Mac operational need emerges during Mac Studio setup (keyboard/clipboard sharing, file-transfer ergonomics across the two machines), this entry surfaces for re-evaluation. Until then: parked, not pursued. The full prior research (FW-002 deliverables: Barrier KVM analysis, CrossPlatformAppMesh, VelorinKVMBridge Swift design, KVMBridge plan) remains in `Bot.Trey/Research_Complete/` as reference if it's ever needed; nothing is built.
 
 **What happened:**
 FW-002 (KVM cross-Mac transfer research) was marked COMPLETE Session 027 (April 17, 2026). Trey delivered the full research package: `Trey.Research.BarrierKVM.CrossMacTransfer.md`, `Trey.Research.CrossPlatformAppMesh.md`, `Trey.Research.VelorinKVMBridge.md` (52KB Swift/build research), and the implementation plan at `Bot.Jiang/Working.Docs/Jiang.Plan.VelorinKVMBridge.md`. The Swift daemon was designed. The bridge was never built. Jiang2 surfaced this as a parked operational item in his SynthesisUpdate gap map.

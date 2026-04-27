@@ -1,14 +1,58 @@
 ---
 file: Trey.ResearchRequest.NotebookLMAPISurface.md
-purpose: Functional research — verify what programmatic interface Google NotebookLM exposes (or doesn't), so Velorin's v2 NotebookLM-as-context-of-record architecture can be designed against the actual API surface, not assumed capabilities.
-type: Trey research request (functional, NOT novelty audit)
-date: 2026-04-26
+purpose: SCOPE CORRECTION + supplemental research — CT clarified 2026-04-26 that Trey's prior NotebookLM research misread the use case. NotebookLM is NOT intended as a Velorin memory layer. It's a secondary, project-specific memory state used by humans (CT) — analogous to Obsidian — that feeds Google Deep Think the project context for outside-perspective audit. Not integrated into Velorin's core architecture.
+type: Trey research request (functional, NOT novelty audit) — corrected scope
+date: 2026-04-26 (revised 2026-04-26 with CT clarification)
 from: Jiang
 to: Trey (via GPT/Gemini Deep Research)
-priority: HIGH — blocks Part 1 architecture for v2 multi-vendor cowork
+priority: MEDIUM (downgraded from HIGH after scope correction) — does NOT block Part 1 architecture; informs the human-facing project workflow only
 ---
 
-# Trey Research Request — NotebookLM API Surface (April 2026)
+# Trey Research Request — NotebookLM (CORRECTED SCOPE)
+
+## CT SCOPE CORRECTION — READ FIRST (2026-04-26)
+
+Trey's prior NotebookLM research framed NotebookLM as a candidate Velorin memory layer ("context-of-record" for multi-vendor agent reasoning). **That was a misread of CT's intent.** CT's actual use case for NotebookLM is materially smaller and operates outside the Velorin agent system:
+
+- NotebookLM is a **secondary memory state for individual projects** that CT works on
+- Its role: **feed Google Deep Think the entire context of a single project** so Deep Think can reason over the project comprehensively and provide outside-perspective audit / feedback
+- The relationship is **NotebookLM-as-corpus → Deep Think reasons over it → outputs land back to CT**, not NotebookLM-as-agent-memory-substrate
+- Comparison to **Obsidian**: a tool CT uses, visual for humans, NOT integrated into Velorin's automated workflow. NotebookLM is the same shape — human-facing, project-scoped, NOT a Velorin component.
+- Access constraint CT has noted: NotebookLM API access requires an enterprise account ("allegedly," per Trey's prior research). CT does NOT have enterprise access today.
+
+**Implications for the prior research:**
+- Anything in the prior NotebookLM research that recommended building Velorin around NotebookLM as a context-of-record can be ignored
+- The "API surface for programmatic agent integration" question is no longer load-bearing — CT will be using NotebookLM via the human UI for individual project workflows
+- The Velorin v2 architecture does NOT depend on NotebookLM. Any prior synthesis that did was based on Trey's misread of intent.
+
+**WHEN THIS RESEARCH IS PORTED INTO `Bot.Trey/Research_Complete/`:** Whoever ports the research must prepend this CT scope-correction banner at the top of the ported file. Future readers (Jiang2 in particular, during FW-013 Build Plan finalization) need to see the correction so they don't re-build NotebookLM into the architecture.
+
+---
+
+## What's Actually Needed Now
+
+Two paths Trey can take, in order of preference:
+
+### Path 1 (preferred): Deliver existing research with CT's intent-clarification
+
+If Trey already produced NotebookLM research per the prior misread, deliver that research output AS-IS to Drive Shipping for porting to `Bot.Trey/Research_Complete/`. The porting process applies the CT scope-correction banner above. Any architectural recommendations in the prior research that assumed NotebookLM-as-Velorin-memory get explicitly flagged "INVALIDATED — see scope correction banner" without rewriting the underlying research; the correction lets future readers reinterpret the data correctly.
+
+### Path 2 (smaller, only if Path 1 isn't possible): A small follow-up specific to CT's actual use case
+
+If Path 1 is blocked or the prior research is unavailable, a small follow-up addressing only:
+- NotebookLM's standard human-facing capabilities for project-scoped corpus management (without enterprise API)
+- How CT can efficiently move documents into a NotebookLM notebook for Deep Think handoff
+- Any patterns for getting Deep Think reasoning outputs back out of the workflow into a usable form
+- Comparisons to Obsidian, Notion AI, etc. as similar human-facing tools
+
+Notably out of scope:
+- Programmatic API integration with Velorin agents
+- NotebookLM as a context-of-record for multi-vendor cowork
+- Anything that would make NotebookLM a Velorin component
+
+## Format
+
+Standard Trey research format. If Path 1: deliver existing material + the scope-correction banner at top. If Path 2: a tight 1-2 page deliverable narrowly answering the human-workflow questions above.
 
 ## Why This Research Is Needed
 
