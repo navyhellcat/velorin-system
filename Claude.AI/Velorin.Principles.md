@@ -108,11 +108,19 @@ Build priorities flow from these. Box 2 can build and ship independently of the 
 
 ---
 
-## Principle 8: Multi-Vendor Cowork at Frontier (NEW for v2)
+## Principle 8: Cowork-Orchestrated, Tool-Centric Multi-Vendor Architecture (NEW for v2)
 
-Claude is the foundation. Claude is not the ceiling. The v2 system runs Claude + GPT 5.5 + Codex + Gemini + Google Suite + NotebookLM + open-source tools as integrated cowork on Mac Studio. The UI controller (probably Claude) accesses every aspect of the system; vendor selection per task is a routing decision, not a loyalty decision.
+**Claude Cowork is the orchestrator.** It operates and controls the multi-agent multi-platform plan — first without the brain (Part 1), then with the brain inserted as a local specialization layer (Part 2). Cowork runs the show.
 
-Architectural test: any recommendation that assumes a single-vendor execution model is now stale. The forward operating model is multi-vendor cowork at frontier. See `feedback_opus_47_solution_drift.md` for the model-level reasoning behind this principle (Opus 4.7 regression on cascade / edge-case / scale / causal reasoning made the single-vendor risk concrete).
+**Claude (the UI controller surface) accesses every aspect of the brain and the system.** This is the human-facing control point.
+
+**Everything else is a TOOL Claude calls and uses.** GPT 5.5 (desktop + API), Codex (desktop + CLI), Gemini, NotebookLM (human-facing project-context-feeder for Deep Think — NOT a Velorin component), Google Suite, GitHub skill repos, OpenDataLoader, Gemma 4 visual capabilities, 3D processing tools, and the broader open-source corpus — all are TOOLS in the toolbox, invoked by Cowork-orchestrated Claude when the task warrants. They are NOT delegation peers, NOT a decentralized agent swarm, NOT a hub-and-spoke of A2A-coordinated workers. The pattern is `Claude Cowork orchestrates → Claude (UI) holds the user-facing thread → Claude calls Tool X for task Y → Tool X returns to Claude → Claude integrates → Cowork proceeds.`
+
+**Architectural test:** any recommendation that frames vendors as "Supervisor" / "Worker peers" / "delegation targets" / "decentralized agents" is using the wrong abstraction. Vendors are tools. The orchestrator is Cowork. The user-facing controller is Claude. Tools have invocation surfaces (CLI, MCP, API, desktop hand-off); they do not have peer status.
+
+**Persona-Maker note (per FW-009):** the future Persona-Maker subsystem is itself an agent-factory that PRODUCES tools (specialized agents with startup + personality guides, oriented at specific brain regions). The output of that factory becomes additional tools in Claude's toolbox; the agents do not modify the brain directly. They CAN leave notes in region/area logs suggesting pointer-rating adjustments (the rating-update mechanism itself is deferred). Persona-derived agents are tools, not peers.
+
+See `feedback_opus_47_solution_drift.md` for the model-level reasoning that makes multi-vendor at the tool layer essential — Opus 4.7's regression on cascade / edge-case / scale / causal reasoning was the trigger that made single-vendor execution risk concrete.
 
 ---
 

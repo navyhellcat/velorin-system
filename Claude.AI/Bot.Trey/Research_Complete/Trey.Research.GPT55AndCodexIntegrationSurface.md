@@ -5,6 +5,30 @@
 
 ---
 
+## ⚠️ CT ARCHITECTURAL REFRAMING (applied at port — 2026-04-26)
+
+**Trey's framing throughout this research uses "Alexander as Supervisor" + A2A delegation peers + Hub-and-Spoke pattern. That framing is SUPERSEDED by CT's clarification.** Read this banner before reading the research below.
+
+**The actual Velorin architecture (CT-locked 2026-04-26):**
+
+- **Claude Cowork is the orchestrator.** It operates and controls the multi-agent multi-platform plan — first without the brain (Part 1), then with the brain inserted (Part 2). Cowork is the substrate that runs the show, not Alexander.
+- **Claude (the UI controller surface) accesses every aspect of the brain and the system.** This is the human-facing control point.
+- **Everything else is a TOOL Claude calls and uses** — Codex (desktop now), ChatGPT desktop (yes, GPT 5.5 also lives on desktop now alongside Codex), Gemini, NotebookLM (human-facing project-context-feeder per the NotebookLM scope-correction banner — NOT a Velorin component), Google Suite, GitHub skill repos, OpenDataLoader, Gemma 4 visual capabilities, 3D processing tools, et al.
+- **Tools are NOT A2A delegation peers.** They are invoked by Cowork-orchestrated Claude. The "delegate to Agent X via A2A" pattern Trey describes is the standard industry pattern; Velorin's actual pattern is "Claude calls Tool X via the appropriate invocation surface" (CLI, MCP, API, browser handoff, etc.).
+- **There is no "Alexander as absolute Supervisor."** That framing was an earlier iteration that has been superseded; Cowork plays that role at the orchestration layer.
+
+**What Trey's research IS still useful for:** the technical findings about GPT 5.5 (1.05M context, 272K cost cliff with 2x multiplier, Responses API mandatory for agentic use, computer-use stabilization), Codex (cloud-sandbox model, 400K context, CLI invocation pattern, ~$1.75/$14 per 1M input/output tokens), MCP vs A2A protocol distinction (MCP for tools, A2A for agent peers — Velorin uses MCP for tool invocation, not A2A for peer delegation), Cowork being Anthropic-only (NOT a cross-vendor open standard — confirmed correctly by Trey), the OAuth 2.1 + DCR security barrier for remote MCP from local Mac Studio, and the compatibility matrix in Section 6.
+
+**What Trey's research IS NOT useful for:** the Section 8 "Final Build Recommendation" architectural prescription. Specifically:
+- Reject the "Alexander as Supervisor" framing
+- Reject the "A2A delegation peer" pattern
+- Reject the "Hub-and-Spoke with workers as A2A peers" pattern
+- The actual Velorin pattern is Cowork-orchestrated tool-calling, where vendors are tools (not peers)
+
+Read the research below with the architectural reframing in mind. Use the technical findings; ignore the orchestration-architecture prescriptions.
+
+---
+
 ## Executive Summary
 
 The integration surface for GPT 5.5 and ChatGPT Codex diverges fundamentally from the local-first execution architecture mandated by the Velorin System. While the Model Context Protocol (MCP) and the Agent-to-Agent (A2A) protocol provide standardized bridges for multi-vendor orchestration, OpenAI's product reality strictly enforces a cloud-centric, sandboxed execution model for its agentic operations. GPT 5.5 establishes a new paradigm for long-context reasoning through the Responses API, but Codex relies on synchronized cloud environments that directly conflict with Velorin's local Mac Studio execution strategy. Constructing a multi-vendor Cowork architecture is technically viable, but it requires a strict hub-and-spoke topology where a centralized orchestrator maintains epistemic provenance while delegating isolated computational tasks to external vendor silos via A2A.

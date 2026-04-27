@@ -98,13 +98,15 @@ After receiving Erdős's COMBINED solution to his 5 math gap theories, Jiang2 pr
 
 ---
 
-## Pending Item 7 — Part 1 / Part 2 Build-Sequence Restructuring
+## Pending Item 7 — Part 1 / Part 2 Build-Sequence Restructuring (CT-clarified 2026-04-26: Cowork-orchestrated tool-centric pattern)
 
-**What it is:** The current Build Guide stages (00-07) do not explicitly reflect the two-part build sequence locked in Jiang2's WholeSystemReimagining synthesis: Part 1 = Velorin without the Brain (multi-vendor Cowork integration); Part 2 = Brain insertion into already-functional integrated system.
+**What it is:** The current Build Guide stages (00-07) do not explicitly reflect the two-part build sequence locked in Jiang2's WholeSystemReimagining synthesis: Part 1 = Velorin without the Brain; Part 2 = Brain insertion into already-functional integrated system.
 
-**What needs to happen:** Reframe Stage 0-1 explicitly as Part 1 deliverables (vendor routing, Cowork integration, no Brain dependency). Reframe Stages 3-5 as Part 2 (Brain insertion). Update `06_BuildSequence.md` to make the part-boundary visible. Add explicit "Brain not required to function at this point" markers through Part 1 stages.
+**Architectural framing (CT-locked 2026-04-26):** Part 1 architecture is **Claude Cowork as the orchestrator + Claude (UI controller) accessing every aspect of the system + vendors and platforms (GPT 5.5 desktop, Codex desktop, Gemini, Google Suite, NotebookLM as human-facing project-context-feeder, GitHub skill repos, OpenDataLoader, Gemma 4 visual, 3D tools, etc.) as TOOLS Claude calls.** NOT "Alexander as Supervisor with A2A delegation peers" (Trey's framing in the GPT5.5/Codex research is superseded by this clarification — see banner on that file). NOT a decentralized agent swarm.
 
-**Why deferred:** Build Guide is FROZEN per Jiang2's mandate Hard Constraint 1. Restructuring the build sequence is a substantive Build Guide edit that requires the finalization pass.
+**What needs to happen:** Reframe Stage 0-1 explicitly as Part 1 deliverables (Cowork orchestrator setup, Claude UI controller wiring, tool-invocation surfaces for each external vendor — MCP for tools that support it, CLI for Codex/Gemini, API for GPT 5.5, desktop hand-off for NotebookLM). Reframe Stages 3-5 as Part 2 (Brain insertion as local specialization layer). Update `06_BuildSequence.md` to make the part-boundary visible. Add explicit "Brain not required to function at this point" markers through Part 1 stages. Replace any "Alexander as Supervisor" / "A2A delegation peer" framing with Cowork-orchestrator + tool-call pattern.
+
+**Why deferred:** Build Guide is FROZEN per Jiang2's mandate Hard Constraint 1.
 
 ---
 
@@ -118,11 +120,13 @@ After receiving Erdős's COMBINED solution to his 5 math gap theories, Jiang2 pr
 
 ---
 
-## Pending Item 9 — ARC-2 Vendor Routing Program Spec
+## Pending Item 9 — ARC-2 Tool-Routing Program Spec (CT-clarified 2026-04-26: Cowork calls tools, not delegates to peers)
 
-**What it is:** Vendor routing program proven by Erdős (Solution 1) as a strict, finite instance of the Velorin Epistemic Gating Primitive (VEGP). The vendor routing map is an affine bipartite projection (NOT an endomorphism — the original Multiplex Tensor isomorphism claim is REFUTED). Optimal routing evaluates `Ξ(v_(1), μ, μ_base, θ) = H(μ(v_(1))/μ(v_(2)) - (1+ε_gap))`.
+**What it is:** Tool-routing program proven by Erdős (Solution 1) as a strict, finite instance of the Velorin Epistemic Gating Primitive (VEGP). The routing map is an affine bipartite projection (NOT an endomorphism — the original Multiplex Tensor isomorphism claim is REFUTED). Optimal routing evaluates `Ξ(v_(1), μ, μ_base, θ) = H(μ(v_(1))/μ(v_(2)) - (1+ε_gap))`.
 
-**What needs to happen:** Add ARC-2 (Vendor Routing Program) as a Stage 1 Part 1 build component. Specify: (a) the vendor capability matrix V (rectangular, bipartite — see Pending Item 10 for normalization correction), (b) the task-alignment scoring `μ(v_i) = (V·ω_task)_i`, (c) the VEGP gate evaluation against capability margin ε_gap, (d) fallback logic when Ξ=0 (capability gap topologically ambiguous → ensemble polling).
+**Architectural framing (CT-locked 2026-04-26):** This is a TOOL-routing program, not a vendor-delegation-peer program. When Cowork-orchestrated Claude faces a task, the program scores which TOOL in the toolbox (GPT 5.5 desktop, Codex desktop, Gemini, NotebookLM hand-off, etc.) best matches the task. Output: "Claude calls Tool X." NOT "Claude delegates to Agent X via A2A." The math is the same; the framing shifts from peer-delegation to tool-invocation.
+
+**What needs to happen:** Add ARC-2 (Tool-Routing Program) as a Stage 1 Part 1 build component. Specify: (a) the tool capability matrix V (rectangular, bipartite — see Pending Item 10 for normalization correction), (b) the task-alignment scoring `μ(v_i) = (V·ω_task)_i`, (c) the VEGP gate evaluation against capability margin ε_gap, (d) fallback logic when Ξ=0 (capability gap topologically ambiguous → ensemble polling across multiple tools, with Cowork-Claude integrating responses), (e) per-tool invocation surface mapping (which tool gets called via MCP, which via CLI, which via API, which via desktop hand-off).
 
 **Why deferred:** New architectural primitive. Ready to integrate during finalization pass.
 
@@ -148,11 +152,13 @@ After receiving Erdős's COMBINED solution to his 5 math gap theories, Jiang2 pr
 
 ---
 
-## Pending Item 12 — Broker Pattern for Layer 3 Cross-Vendor Coherence
+## Pending Item 12 — Broker Tool-Call Pattern for Layer 3 Cross-Tool Coherence (CT-clarified 2026-04-26)
 
-**What it is:** New architectural primitive from Erdős's Derivation 2B. When Layer 2 verification yields Ξ=0 (composite scores within ε), the conflict is routed to an orthogonal, high-authority vendor (the Broker) for evaluation. If the Broker also returns Ξ=0 (epistemic deadlock), it escapes to the Chairman.
+**What it is:** New architectural primitive from Erdős's Derivation 2B. When Layer 2 verification yields Ξ=0 (composite scores within ε), the conflict is resolved by Cowork-Claude calling an orthogonal, high-authority TOOL (the Broker call) for evaluation. If the Broker call also returns Ξ=0 (epistemic deadlock), it escapes to the Chairman.
 
-**What needs to happen:** Add the Broker pattern to the Layer 3 conflict resolution mechanism specification (currently in `04_AgentEcosystem.md`). Specify: (a) what makes a vendor a valid Broker (orthogonal to the conflicting vendors, higher authority_tier), (b) Broker selection logic (deterministic from contradiction_class tag + vendor capability matrix), (c) the deadlock-to-Chairman escalation artifact + queue.
+**Architectural framing (CT-locked 2026-04-26):** "Broker" is a tool-invocation pattern, not an A2A-delegation pattern. Cowork-Claude makes a Broker call to a high-authority external tool (typically a different vendor than the two whose outputs conflict — e.g., if GPT 5.5 and Gemini disagree, Claude calls a Codex run for adversarial-review on the disputed output). The math (Ξ gate, orthogonality, authority_tier) is unchanged from Erdős's derivation; the framing is tool-call rather than peer-delegation.
+
+**What needs to happen:** Add the Broker tool-call pattern to the Layer 3 conflict resolution mechanism specification. Specify: (a) what makes a tool a valid Broker for a given conflict (orthogonal to the conflicting tools' lineage, higher authority_tier), (b) Broker selection logic (deterministic from `contradiction_class` tag + tool capability matrix), (c) the deadlock-to-Chairman escalation artifact + queue, (d) which tools are in the Broker eligibility set per phase of the build (Stage 1 may have only Codex available for Broker calls; Stage 2+ adds others).
 
 **Why deferred:** New primitive. Ready to integrate during finalization pass.
 
@@ -249,8 +255,10 @@ Vague Check-Ins entries fail the standing rule and must be redesigned with concr
 - Replace "MarcusAurelius does X" with neutral role-based phrasing or specific v2 binding
 - Replace "Level [1-4] agent" references with "Programs / Program-managers / Operational AI" per `Velorin.Principles.md` Principle 3
 - Replace Gatekeeper references with "evaluated and retired in v1→v2 transition; per-vendor MCP topology replaces"
-- Replace Agent Teams / tmux references with "Cowork-based multi-vendor coordination"
-- Replace Scribe references with the v2 ingestion-pipeline design (whatever replaces Scribe's automated session logging — design TBD or already in the Build Guide under a different name)
+- Replace Agent Teams / tmux references with "Cowork-orchestrated tool-call pattern"
+- Replace Scribe references with the v2 ingestion-pipeline design
+- **Replace "Alexander as Supervisor / Operator / orchestrator" framing throughout the Build Guide with "Claude Cowork as orchestrator + Claude (UI controller) accessing every aspect of the system" (CT-clarified 2026-04-26)** — per Velorin.Principles.md Principle 8. Alexander remains as a named agent (Bot.Alexander/ folder exists, Jiang2 owns its review), but the Supervisor/orchestrator role is Cowork itself, not Alexander.
+- Replace "A2A delegation peers" / "hub-and-spoke worker pattern" / "decentralized agent swarm" framing with **TOOL-CALL pattern** — vendors and external systems are TOOLS Claude calls and uses, not peers. Per Velorin.Principles.md Principle 8.
 
 **Why deferred:** Build Guide is FROZEN. Mandatory cleanup during finalization pass.
 

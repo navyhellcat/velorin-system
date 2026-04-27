@@ -227,36 +227,52 @@ The CONCRETE design of the Check-ins entry — measurement frequency, ground-tru
 
 ---
 
-## [FW-009] Persona-Maker Exploration (Brain-Generates-Persona Hypothesis)
-**Logged:** Session 037, April 26, 2026 (Re-Eval #7 carryover; locked via Decision 8)
+## [FW-009] Persona-Maker (Agent-Factory That Spawns Brain-Oriented Tools)
+**Logged:** Session 037, April 26, 2026 (Re-Eval #7 carryover; locked via Decision 8; **rescoped 2026-04-26 per CT clarification**)
 **Priority:** Low — exploratory; not blocking active build
-**Status:** PARKED with composite trigger + precursor checkpoint + reference research in flight
+**Status:** PARKED with composite trigger + precursor checkpoint + reference research returned
 
-**What this is:**
-CT surfaced during the Re-Eval #7 lock that the Brain pointer graph + pointer-rating dynamics may organically generate a persona representation analogous to how Jiang/Trey/Erdős personas form from bootloaders + accumulated outputs. The hypothesis: the Brain ITSELF is the persona substrate; persona emerges from graph topology + accumulated CT-curation patterns + LoRa fine-tuning over time, NOT from a separate persona model bolted on top. This aligns with Erdős's "Commutator Persona" theory (`Erdos.Solution.COMBINED.Apr26.md` Solution 3) — Persona Manifold defined by vanishing commutator norm regions of the multiplex memory graph; Lie bracket norm weights the LoRa training distribution.
+**What this actually is (CT clarification 2026-04-26):**
+Persona-Maker is a **learned process that produces NEW AGENTS as TOOLS** for Claude Cowork to call. Output of the Persona-Maker is not a "persona representation" or a LoRa weighting — it is a set of derived agents, each with:
+- Their own startup guide
+- Their own personality guide
+- Pre-orientation pointing into the right brain regions from the start (so the agent knows where to look without re-deriving brain topology)
+
+The personalities **do NOT directly affect the brain.** They read from the brain, follow their orientation, and act as specialized tools for specific kinds of reasoning tasks. They CAN leave notes in region-and-area logs that suggest different pointer rating adjustments based on the agent's success patterns — but the **actual mechanism for converting agent suggestions into pointer-rating updates is deferred** ("to be discussed and built later" — CT exact wording 2026-04-26).
+
+Erdős's Commutator Persona math (`Erdos.Solution.COMBINED.Apr26.md` Solution 3) likely plays a role on the back end — vanishing-commutator regions of the multiplex memory graph are good candidates for distilling into agent-orientations because they represent coherent, path-independent cognitive zones. But the FRONT-END output is a tool, not a persona-vector or LoRa weight.
+
+**This is NOT what production persona systems do.** Trey's `Trey.Research.PersonaMakerLandscape.md` (delivered 2026-04-26) confirms industry consensus is explicit text-block-injection (Letta-style) or RAG-retrieval — both of which Velorin doesn't share constraints with. Velorin's persona-maker-as-agent-factory is genuinely novel in concept; Trey's research provides reference for the related signal classes (especially stylometric markers as the highest signal density per byte under sparse data) that the agent-derivation process can use.
 
 **Composite revisit trigger:**
-**(Brain reaches 500 c-memory neurons) AND (CT signals readiness to explore).** The AND gate prevents premature firing — both conditions required. Brain maturity at 500 neurons = enough pointer dynamics for the hypothesis to be testable; CT initiation = explicit gating against speculative work.
+**(Brain reaches 500 c-memory neurons) AND (CT signals readiness to explore).** The AND gate prevents premature firing.
 
 **Precursor checkpoint:**
-**At Brain reaches 100 c-memory neurons** — soft watch entry surfaces the question to CT: "Should persona-maker observation be elevated to active exploration ahead of the 500-neuron trigger?" If CT says yes → FW-009 main work activates early. If no → continue waiting on composite trigger. Precursor logged in the Calibration Deliverables Registry / Check-Ins schedule (per Decision 7 standing requirement) as an event-target watch entry.
+**At Brain reaches 100 c-memory neurons** — soft watch surfaces "Should persona-maker exploration elevate ahead of the 500-neuron trigger?"
 
-**Reference research in flight:**
-Trey research request `Bot.Trey/Research_Needed/Trey.ResearchRequest.PersonaMakerLandscape.md` — functional research on production-system persona generation patterns (architectures, signals, failure modes, consensus position, where Velorin's brain-substrate hypothesis diverges from chatbot-persona patterns). Returns will land in `Bot.Trey/Research_Complete/` as reference material the future exploration uses. NOT an architectural commitment — reference only.
+**Reference research IN HAND:**
+- `Bot.Trey/Research_Complete/Trey.Research.PersonaMakerLandscape.md` (delivered 2026-04-26) — production patterns, signals, failure modes, observability concerns. Key takeaways relevant for agent-factory design:
+  - **Identity drift / echoing failure mode:** explicit-text personas drift at 70% rate after 7 conversational turns. Agent-orientation guides must include structural anchoring beyond text.
+  - **Stylometric markers carry highest signal density per byte under sparse data** — best signal class for the agent-derivation process to start with.
+  - **Observability risk:** if agents are derived from emergent topological invariants, they can't be manually audited. The Layer 1 E8 Crystal Router becomes the load-bearing translation layer between graph topology and agent-orientation specifics.
+- `Erdos.Solution.COMBINED.Apr26.md` Solution 3 (Commutator Persona theory) — back-end math for which regions are candidates for agent-derivation
 
 **What needs to be done when triggered:**
-1. CT-initiated review of (a) accumulated Brain pointer graph topology, (b) pointer rating dynamics over the prior period, (c) any LoRa training data signals, (d) Trey's PersonaMakerLandscape research return
-2. Test the brain-substrate-as-persona hypothesis: do regions of the graph with vanishing commutator norm (Persona Manifold) actually correspond to coherent CT-thinking-style domains?
-3. If yes → propose architectural mechanisms for surfacing/using the persona representation (LoRa training cadence per Persona Manifold change-trigger, persona-aware retrieval, etc.)
-4. If no → archive FW-009 as hypothesis-disproved with notes on what was tested
+1. CT-initiated review of accumulated Brain pointer graph topology + Trey's PersonaMakerLandscape returns + any LoRa signals
+2. Identify candidate Brain regions that meet the "coherent cognitive zone" criterion (vanishing commutator norm or equivalent topological-coherence signal)
+3. Design the agent-derivation process — for each candidate region, generate: startup guide, personality guide, brain-orientation pointers
+4. Spec the agent-as-tool invocation mechanism — how Claude Cowork calls the derived agent, what context it passes, what comes back
+5. Spec the region-and-area-log note mechanism — how agents leave success-based pointer-rating suggestion notes (separate downstream work; the rating-update mechanism itself is **deferred, "to be discussed and built later"** per CT)
 
 **Cross-references:**
-- `Erdos.Solution.COMBINED.Apr26.md` Solution 3 (Commutator Persona theory + LoRa cadence implication)
-- `Jiang2.WholeSystemReimagining.SynthesisUpdate.Apr26.md` (reframes the architectural direction post-Erdős returns)
-- Re-Eval #7 Direction C lock (`base_model_config: {type: "personal", id: "ct-v1"}`) — persona-maker would inform what gets fed into the personalized LoRa
-- `Bot.Trey/Research_Needed/Trey.ResearchRequest.PersonaMakerLandscape.md` (in flight)
+- `Bot.Trey/Research_Complete/Trey.Research.PersonaMakerLandscape.md` (delivered 2026-04-26)
+- `Erdos.Solution.COMBINED.Apr26.md` Solution 3
+- Re-Eval #7 Direction C lock (`base_model_config: {type: "personal", id: "ct-v1"}`)
+- The agent-factory output integrates with the Cowork-orchestrator pattern — agents are invoked as tools, not as A2A peers
 
-**Assigned to:** CT (gating) + Jiang2 (architectural synthesis when triggered) + Erdős (math derivation if novel mechanisms emerge) + Trey (reference research, in flight)
+**Deferred sub-item:** The mechanism for converting agent-success-based pointer-rating-suggestion notes into actual pointer-rating updates is explicitly deferred ("to be discussed and built later" — CT 2026-04-26). When FW-009 main work fires, the agent-factory part is in scope; the rating-update mechanism is logged for later separate work.
+
+**Assigned to:** CT (gating + agent-factory architectural decisions) + Jiang2 (synthesis when triggered) + Erdős (math derivation for candidate-region detection if novel mechanisms emerge) + Trey (reference research — already returned)
 
 ---
 
