@@ -252,4 +252,82 @@ CT also previously named NotebookLM (mixed with a research-Gem Gemini) as the sy
 
 ---
 
+## [FW-011] Velorin Code/ Separate Triage Pass
+**Logged:** Session 037, April 26, 2026
+**Priority:** Medium-High — gates Mac Studio transition
+**Status:** Surfaced and parked. Must complete before Mac Studio integration begins.
+
+**What happened:**
+The v1 archive execution pass intentionally did NOT touch `/Users/lbhunt/Desktop/Velorin/Velorin Code/` per CT direction (security-isolated repo, never merged with `velorin-system/`, never imported by agents). That folder contains MCP server source (velorin-gatekeeper, velorin-gdrive, possibly others), shell scripts, and other operational code. A parallel triage pass on it is required.
+
+**What needs to be done:**
+1. Spawn a separate triage agent narrowly scoped to `/Users/lbhunt/Desktop/Velorin/Velorin Code/` (mirror the pattern used for the v1 archive — produce a per-item manifest with HIGH-CONFIDENCE-ARCHIVE / HIGH-CONFIDENCE-KEEP / NEEDS-CT-DECISION classifications)
+2. Specifically determine: which MCP servers move forward to Mac Studio (gdrive yes; gatekeeper NO — already decided as retired); which scripts get rebuilt vs ported; which experimental code archives
+3. Uninstall `velorin-gatekeeper` MCP server as part of this pass (downstream of Pending Item 6 in `Velorin.v2.BuildPlanFinalization.PendingItems.md`)
+4. Walk dispositions with CT (similar to the v1 archive pass)
+5. Execute moves; commit + push to whatever repo Velorin Code/ uses (separate from velorin-system)
+
+**Trigger to revisit:** when CT signals readiness to begin Mac Studio integration prep work, OR when Build Plan finalization completes (whichever first). The Velorin Code/ triage is an integration prerequisite.
+
+**Cross-references:**
+- `project_mac_studio_multivendor_cowork.md` (overall transition plan)
+- Pending Item 6 in `Velorin.v2.BuildPlanFinalization.PendingItems.md` (Gatekeeper Build Guide update — depends on this triage to operationally remove the MCP)
+
+**Assigned to:** Jiang (triage agent spawn + manifest review with CT) + CT (final dispositions)
+
+---
+
+## [FW-012] v2 Live Timer / Scheduled-Tasks Dashboard
+**Logged:** Session 037, April 26, 2026
+**Priority:** Low — replacement for retired GLOBAL_TIMER_REGISTRY governance pattern
+**Status:** Surfaced. Replaces the manually-maintained registry that was archived in v1.
+
+**What happened:**
+The `GLOBAL_TIMER_REGISTRY.md` was retired (archived to `Velorin.v1.Archive/`) along with the broader Level 1/2/3/4 governance pattern. The IDEA behind it — single source of truth for "what scheduled tasks are active in the system" — is genuinely useful for ops visibility. v2 will have meaningful scheduled tasks: NotebookLM context refresh passes, Deep Think audit cadences, Trey-as-NotebookLM-controller runs, periodic Cowork orchestrations, Erdős re-poll cycles.
+
+**What needs to be done:**
+1. Build a live-generated dashboard ("what timers are active right now") rather than a manually-maintained markdown file
+2. Source: `crontab -l` for cron jobs + the scheduled-tasks MCP API for managed scheduled tasks + any per-vendor scheduling surfaces (Cowork, Gemini scheduler, etc.)
+3. Output: on-demand HTML or markdown report; possibly auto-emailed weekly summary
+4. Locate at `Possibly Useful Scripts/timer-dashboard.sh` (or similar)
+5. NOT a registry that requires pre-registration before activation — that was the v1 friction. Instead, a passive observer that reports current state.
+
+**Trigger to revisit:** when v2 Cowork has its first set of scheduled multi-vendor tasks running (NotebookLM passes, Deep Think audits) and ops visibility becomes a real need.
+
+**Cross-references:**
+- Velorin.v1.Archive/GLOBAL_TIMER_REGISTRY.md (the retired manual-registry version)
+- `project_mac_studio_multivendor_cowork.md`
+
+**Assigned to:** Jiang (script design + build) + CT (approval of dashboard format)
+
+---
+
+## [FW-013] v2 Build Plan Finalization Pass
+**Logged:** Session 037, April 26, 2026
+**Priority:** HIGH — gates Mac Studio integration; Build Plan must be locked before integration begins
+**Status:** Surfaced. Pending items document exists; Jiang2 + Deep Think pass to execute.
+
+**What happened:**
+The v1 archive execution pass surfaced 6 items that require Build-Guide-coupled or substantial-build work, deferred from immediate execution because (a) Build Guide files are FROZEN per Jiang2's WholeSystemReimagining mandate Hard Constraint 1, or (b) the work is substantial enough to warrant focused review with CT, or (c) the work depends on architectural decisions that haven't been made yet (e.g., NotebookLM integration timing). All 6 items are tracked in `Claude.AI/Bot.Jiang/Working.Docs/Velorin.v2.BuildPlanFinalization.PendingItems.md`.
+
+**What needs to be done:**
+1. Walk all 6 Pending Items per the sequencing recommendation in the file
+2. Build Guide edits during this pass are authorized (Hard Constraint 1 lifted at finalization)
+3. Items 1, 2, 6 (Build-Guide-coupled) handle together in a single Build Guide edit cycle
+4. Items 3, 4 handle individually with focused review
+5. Item 5 (Research Library Index) handle alongside NotebookLM context layer architecture
+6. Lock Build Plan after all 6 items are resolved
+
+**Trigger to revisit:** when CT signals the Build Plan is ready for finalization, OR when Mac Studio integration prep begins (triggers Build Plan lock as prerequisite). Concrete trigger: CT writes "ready to finalize Build Plan" or initiates v2 Cowork integration setup.
+
+**Cross-references:**
+- `Claude.AI/Bot.Jiang/Working.Docs/Velorin.v2.BuildPlanFinalization.PendingItems.md` (the active items list)
+- FW-010 (Deep Think curated corpus — overlaps with Item 5)
+- FW-011 (Velorin Code/ triage — overlaps with Item 6 / Gatekeeper operational removal)
+- `Jiang2.WholeSystemReimagining.Mandate.md` (the mandate whose Hard Constraint 1 lifts at finalization)
+
+**Assigned to:** Jiang2 (architectural synthesis) + Deep Think (audit pass) + Jiang (mechanical execution of moves and edits) + CT (final approval per item)
+
+---
+
 [VELORIN.EOF]

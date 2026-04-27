@@ -16,8 +16,10 @@ You are operating on the Chairman's Mac (LOCAL environment).
 Velorin is in transition between v1 (current iterative build) and v2 (fully integrated multi-vendor Cowork system on Mac Studio).
 
 - **v1 Archive** at `/Users/lbhunt/Desktop/velorin-system/Velorin.v1.Archive/` — reference-only. Bots do NOT read this during normal operation. Human-accessible historical record.
-- **New Build** at `Claude.AI/New Build/` — FROZEN. Read for current locked architectural decisions; do NOT edit.
+- **New Build** at `Claude.AI/New Build/` — FROZEN. Read for current locked architectural decisions; do NOT edit. Build Plan finalization (final updates before lock) is tracked in `Bot.Jiang/Working.Docs/Velorin.v2.BuildPlanFinalization.PendingItems.md`.
 - **Build Timeline Help** at `/Users/lbhunt/Desktop/velorin-system/Build Timeline Help/` — historical Corner entries and session handoffs. Reference-only; bots do NOT read on boot.
+
+**Retired in v1→v2 transition (do not reference):** MarcusAurelius (agent), Bot.Theresa (HR-mediated sub-bot creation), Bot.Scribe (memory pipeline), Bot.Gatekeeper (MCP tool registry), the Level 1/2/3/4 agent hierarchy, the GLOBAL_SPAWNER_REGISTRY / GLOBAL_TIMER_REGISTRY governance pattern, Agent Teams / tmux teammate pattern, AppsScript Communication Bus design.
 
 ## Permissions
 
@@ -30,8 +32,12 @@ All tools and bash commands are permanently allowed via `Bash(*)`. Only `rm`, `r
 - Memory layer: `~/.claude/projects/-Users-lbhunt/memory/MEMORY.md`
 - Brain entry: `Claude.AI/Velorin_Brain/_index.md`
 - Brain schema: `Claude.AI/Velorin_Brain/_BRAIN_SCHEMA.md`
+- Architectural principles: `Claude.AI/Velorin.Principles.md`
+- Bash access governance: `Claude.AI/Bash_Access_Rules.md`
+- Environment detection sentinel: `Claude.AI/ENVIRONMENT_DETECTION.md`
 - Locked Build Guide: `Claude.AI/New Build/`
 - Future Work registry: `Claude.AI/Bot.Jiang/Working.Docs/Jiang.FutureWork.md`
+- v2 Build Plan finalization items: `Claude.AI/Bot.Jiang/Working.Docs/Velorin.v2.BuildPlanFinalization.PendingItems.md`
 
 ## Confirmation Discipline
 

@@ -1,13 +1,15 @@
 # ENVIRONMENT DETECTION PROTOCOL
-**Velorin System | Layer 0 | CARDINAL — All agents, all levels, every session**
+**Velorin System | Sentinel File | CARDINAL — All agents, every session**
 
 Every agent MUST run this check on boot BEFORE any other operation. No exceptions.
+
+This file's *existence* at the canonical path below is the test mechanism. Do not delete or move this file.
 
 ---
 
 ## The Test
 
-**Code tab agents (Alexander, Jiang) skip this test — Code tab is always LOCAL.** Declare `[ENV: LOCAL]` and proceed.
+**Code tab agents (Alexander, Jiang, Jiang2) skip this test — Code tab is always LOCAL.** Declare `[ENV: LOCAL]` and proceed.
 
 **All other agents:** Attempt to read the following file using the `filesystem` MCP tool (`read_text_file`):
 
@@ -28,8 +30,8 @@ Every agent MUST run this check on boot BEFORE any other operation. No exception
 
 | Environment | Filesystem | How to read files | How to write files |
 |-------------|-----------|-------------------|-------------------|
-| **LOCAL (Code tab)** | Yes — native tools | `Read` tool directly | `Write`/`Edit` tools directly. MarcusAurelius handles git push. |
-| **LOCAL (filesystem MCP)** | Yes — filesystem MCP works | `read_text_file` via filesystem MCP | Write via filesystem MCP. MarcusAurelius handles git push. |
+| **LOCAL (Code tab)** | Yes — native tools | `Read` tool directly | `Write`/`Edit` tools directly. Agent handles its own git ops. |
+| **LOCAL (filesystem MCP)** | Yes — filesystem MCP works | `read_text_file` via filesystem MCP | Write via filesystem MCP. Agent handles its own git ops. |
 | **WEB** | No — filesystem MCP fails | GitHub API via github MCP: `navyhellcat/velorin-system` | Deliver to Christian Taylor. Ask for GitHub confirmation. Track as UNSYNCED until confirmed. |
 
 ---
@@ -46,10 +48,12 @@ This table is a reference only — it does NOT override the test result. If the 
 
 | Agent | Platform | Typical Environment |
 |-------|----------|-------------------|
-| MarcusAurelius | Claude Code CLI | Always LOCAL — uses native Read tool, not filesystem MCP |
 | Alexander | Claude Desktop Code tab | Always LOCAL — Code tab has native tools, skip filesystem test |
 | Jiang | Claude Desktop Code tab | Always LOCAL — Code tab has native tools, skip filesystem test |
+| Jiang2 | Claude Desktop Code tab | Always LOCAL — Code tab has native tools, skip filesystem test |
 | Trey | GPT | Always WEB — no local access |
+| Erdős | Gemini Gem | Always WEB — no local access |
+| Future Cowork agents | Multi-vendor on Mac Studio | Run test regardless; environment varies per session |
 | All sub-agents | Inherits parent | Run test regardless |
 
 ---
