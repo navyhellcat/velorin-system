@@ -477,4 +477,44 @@ Open security questions:
 
 ---
 
+## [FW-017] GPS Principle Violation in Agent Boot Sequences (Known Architectural Debt)
+**Logged:** Session 037, April 27, 2026 — surfaced after Jiang2's archive consolidation revealed multiple stale path references
+**Priority:** Medium — known architectural debt; will fail at scale
+**Status:** Logged as known issue per CT direction Apr 27, 2026: "do not fix now"
+
+**What this is:**
+Velorin's GPS principle (`Velorin.Principles.md` Principle 1) states: *"Navigation uses stable pointers, not hard-coded destinations."* The test: *"if renaming a file requires editing more than ONE pointer, the system is using a map, not GPS."*
+
+The current agent boot sequences violate this principle. `CLAUDE.md`, `Jiang.ReadMe.First.md`, `STARTUP.md`, the Trey bootloaders, and other operating files all contain hard-coded file path references — agents are directed to specific paths at boot ("read X at `/path/to/X`"), not to discover-by-name through a stable registry.
+
+**Concrete evidence:** When Jiang2 archived `Build Timeline Help/` to `Velorin.v1.Archive/Build Timeline Help/` (commit 1e4e0b4), THREE files required manual path updates to remain consistent — `STARTUP.md`, `Jiang.ReadMe.First.md`, `Trey.Bootloader.AgentRoster.md` — and additional descriptive references in working docs went stale. This explicitly fails the Principle 1 test (more than ONE pointer needed editing).
+
+**Why this matters at scale:**
+- Every file move triggers N path updates across the boot/operating files
+- Renames eventually break before all pointers get updated, leading to silent boot failures or inconsistent agent state
+- Multi-vendor sub-agent activation (Cowork pattern) compounds the problem — each vendor's boot context has its own path references
+- The principle was locked precisely BECAUSE this failure mode was anticipated; today's evidence confirms the prediction
+
+**What needs to be done (deferred):**
+1. Replace hard-coded paths in boot sequences with GPS-style pointers — folder-by-name discovery, agent-folder registry resolved at boot, named-anchors instead of paths
+2. Centralize the "what files agents read at boot" registry so renames update one place (the registry)
+3. Apply the Principle 1 test to every operating-file edit pre-merge — if the edit creates a new hard-coded path reference, redesign
+
+**Why deferred:** CT direction April 27, 2026 — "I don't want to fix it now." The cost of fixing is moderate (touch every bootloader, add a path-resolution layer, migrate references). The cost of NOT fixing is continued accumulation of map-style references and inevitable scale-failure later. Logged here to prevent ghosting; the next file-rename incident is the natural retrigger.
+
+**Trigger to revisit:**
+- The next file-rename incident that causes broken boot or stale references at scale, OR
+- When CT signals readiness for boot-sequence GPS-ification, OR
+- When v2 build adds a new agent and the boot-context proliferation becomes painful
+
+**Cross-references:**
+- `Velorin.Principles.md` Principle 1 (the rule being violated)
+- Commit 1e4e0b4 (Jiang2's archive consolidation that surfaced this)
+- Commit 884091b (the manual three-file path-update fix that should not have been needed in a GPS-correct system)
+- `Bot.Jiang/Jiang.SessionHandoff.md` — addendum documenting the incident
+
+**Assigned to:** CT (decide when to fix) + future Jiang/Jiang2 (execute the GPS-ification when triggered)
+
+---
+
 [VELORIN.EOF]
