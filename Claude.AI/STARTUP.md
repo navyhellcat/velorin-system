@@ -17,7 +17,7 @@ Velorin is in transition between v1 (current iterative build) and v2 (fully inte
 
 - **v1 Archive** at `/Users/lbhunt/Desktop/velorin-system/Velorin.v1.Archive/` — reference-only. Bots do NOT read this during normal operation. Human-accessible historical record.
 - **New Build** at `Claude.AI/New Build/` — FROZEN. Read for current locked architectural decisions; do NOT edit. Build Plan finalization (final updates before lock) is tracked in `Bot.Jiang/Working.Docs/Velorin.v2.BuildPlanFinalization.PendingItems.md`.
-- **Build Timeline Help** at `/Users/lbhunt/Desktop/velorin-system/Build Timeline Help/` — historical Corner entries and session handoffs. Reference-only; bots do NOT read on boot.
+- **Build Timeline Help** at `/Users/lbhunt/Desktop/velorin-system/Velorin.v1.Archive/Build Timeline Help/` — historical Corner entries and session handoffs (rolling-archive destination). Lives inside `Velorin.v1.Archive/` per the unified-silo archive structure. Reference-only; bots do NOT read on boot. The active rolling files (`Bot.Jiang/Jiang.SessionHandoff.md`, `Claude.AI/Jiang.Corner.md`) overwrite-and-roll into this archive when new content lands.
 
 **Retired in v1→v2 transition (do not reference):** MarcusAurelius (agent), Bot.Theresa (HR-mediated sub-bot creation), Bot.Scribe (memory pipeline), Bot.Gatekeeper (MCP tool registry), the Level 1/2/3/4 agent hierarchy, the GLOBAL_SPAWNER_REGISTRY / GLOBAL_TIMER_REGISTRY governance pattern, Agent Teams / tmux teammate pattern, AppsScript Communication Bus design.
 

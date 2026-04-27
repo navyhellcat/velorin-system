@@ -123,7 +123,7 @@ The MarcusAurelius infrastructure-manager role has been retired. Functions previ
 - **MCP server configuration and maintenance**: per-vendor in v2 (each vendor owns its own MCP topology); will be folded into the Cowork integration substrate at Mac Studio
 - **Startup procedures**: now in `Claude.AI/STARTUP.md` (system-wide, agent-agnostic)
 - **Permission management**: governed by `Claude.AI/Bash_Access_Rules.md` + `~/.claude/settings.local.json`
-- **Session-level operational logistics**: handled per-bot by each agent's own session-end protocol; standing rule is one rolling handoff file per named bot, oldest content moves to `Build Timeline Help/` archive
+- **Session-level operational logistics**: handled per-bot by each agent's own session-end protocol; standing rule is one rolling handoff file per named bot, oldest content moves to `Velorin.v1.Archive/Build Timeline Help/` archive (the unified-silo location)
 
 Bot.MarcusAurelius/ folder archived to `Velorin.v1.Archive/Bot.MarcusAurelius/`. Do not reference MA as an active agent in any research output.
 
