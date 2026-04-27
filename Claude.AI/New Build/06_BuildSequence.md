@@ -1,150 +1,103 @@
 # 06 — Build Sequence
 **Executable step-by-step. Stage 0 through Stage 5. — Updated April 26, 2026**
 
+The build sequence follows the two-part architecture:
+- **Part 1 (Stages 0-2):** Cowork-orchestrated multi-vendor system. Brain not required. Fully functional on Day 1 of Mac Studio.
+- **Part 2 (Stages 3-5):** Brain insertion as local specialization layer. Brain-as-operator-guide is the Part 2 destination.
+
+Every step is executable or clearly marked PENDING/BLOCKED. Each stage depends on the previous.
+
 ---
 
 ## Build Philosophy
 
-Every step here is either confirmed ready to execute or clearly marked PENDING/BLOCKED.
-Follow in sequence. Each stage depends on the previous.
+Programs do operational work. AI watches. Before writing any AI-agent behavior, ask: is this a program to build with AI as watcher?
 
-**Founding thesis on every build decision:** Most operational work is done by deterministic
-programs. AI builds the program, watches it run, modifies it when it breaks. Before writing
-any new AI-agent behavior, ask: is this a program to build?
+Every calibration parameter has a measurement program, specific data points captured, threshold, verification path, multi-point distribution across build phases, cadence, test specification, logged deliverable, and a hard date or target. Full Calibration Deliverables Discipline (elements a-k) governs every measurement. See `Velorin.CheckIns.md`.
 
 ---
 
-## Check-Ins Schedule
+## Check-Ins Schedule Reference
 
-Recurring reviews distributed throughout the build. These aggregate here — not as standalone triggers.
-Each entry has a phase, trigger, review subject, and action protocol.
-
-| Check-In | Phase | Trigger | Review Subject | Action |
-|---|---|---|---|---|
-| IES threshold θ review | Stage 1 ATV operational | 500 enforced messages OR 30 days | Is θ=0.7 causing over/under-rejection? | Tune within (0.375, 0.585] band |
-| ATV verifier VTPS re-benchmark | Stage 1 → ongoing | Every 90 days OR model update | Is selected verifier still Pareto-optimal? | Re-run benchmark program |
-| Source multiplier calibration | Stage 2 | 50 resolved Layer 1 contradictions | Are 1.0/1.2/1.5 multipliers producing correct hierarchy? | Adjust from override accuracy data |
-| ε threshold calibration | Stage 2 | 50 Layer 2 activations | Is Layer 1 calling Layer 2 too often or too rarely? | Adjust ε from 0.05 |
-| Round-cap review | Stage 2 | 25 Layer 3 escalations | Is 3 rounds the right balance? | Adjust if pattern shows |
-| Golden Dataset expansion | Stage 2 | 500 ATV-processed real messages | Expand from 100 to 300 items | CT curates using confirmed-valid production messages |
-| Skill injection θ_work calibration | Stage 3 | 738 labeled queries | Is θ_work=0.5 optimal within (0.375, 0.585]? | Calibrate from data; update config |
-| GoS sparse validation threshold review | Stage 3 | 90 days of dense validation | What skill count makes sparse validation worth building? | Decide N; activate build-space |
-| κ empirical calibration | Stage 4+ | After 10 test compression events | Is 10% degradation threshold correct? | Adjust; analytic formula scales proportionally |
+The full vitality-important Check-Ins list is in `Velorin.CheckIns.md`. Build sequence stages reference Check-Ins entries by name where they belong in the progression.
 
 ---
 
-## Pre-Stage 0 — Edge Ontology Unification (BUILD BEFORE ANY PIPELINE)
+## PRE-STAGE 0 — Edge Ontology Unification (BUILD BEFORE ANY PIPELINE)
 
-**Must complete before the Brain ingestion pipeline or Skills dependency graph is built.**
-Building both with divergent edge schemas creates retrofit cost the Standing Principle prevents.
+Must complete before Brain ingestion pipeline or Skills dependency graph is built. Building both with divergent schemas creates retrofit cost the Standing Principle prevents.
 
 **Unified edge ontology — Brain 9-class labels ↔ GoS 4-type categories:**
 
-| Brain Relation Type | GoS Category | Direction |
-|---|---|---|
-| `instance-of`, `derived-from` | dependency | Structural hierarchy/prerequisite |
-| `causes`, `activates`, `precedes`, `implements`, `depends-on` | workflow | Operational sequences |
-| `supports`, `contradicts` | semantic | Evidential relationships (bidirectional) |
-| `supersedes`, `same_as` | (Brain-specific) | Knowledge lifecycle — no GoS analog |
-| (none in Brain) | alternative | Skills-specific: mutually exclusive execution paths |
+| Brain Relation Type | GoS Category |
+|---|---|
+| `instance-of`, `derived-from` | dependency (structural hierarchy/prerequisite) |
+| `causes`, `activates`, `precedes`, `implements`, `depends-on` | workflow (operational sequences) |
+| `supports`, `contradicts` | semantic (evidential, bidirectional) |
+| `supersedes`, `same_as` | Brain-specific knowledge lifecycle (no GoS analog) |
+| (none) | alternative (skills-specific: mutually exclusive execution paths) |
 
-**`contradicts` dual function:** In Brain pointer graph, `contradicts` both is a semantic label
-AND a belief_state trigger (post-commit hook fires on this pointer type). The edge carries
-both meanings. No sub-attribute needed — the behavior is deterministic from the label.
-
-**Deliverable:** Update `03_BrainAndMath.md` pointer notation section with this unified mapping.
-Update `05_InfrastructureAndTools.md` Skills Registry section with the 4-type schema.
-Update `07_OpenQuestions.md` OQ-4 status.
+**`contradicts` dual function:** serves as both a semantic label AND a belief_state trigger (post-commit hook fires on this pointer type). The pointer carries both meanings — no sub-attribute needed; the behavior is deterministic from the label.
 
 ---
 
-## Stage 0 — Mac Studio Environment (Day 0 — a few hours)
+## PART 1 — Multi-Vendor Cowork System (Brain Not Required)
 
-**Goal:** Mac Studio configured, repo exists, agents can operate.
+---
 
-### Step 1 — System Dependencies
+## Stage 0 — Mac Studio Environment (Day 0)
+
+**Goal:** Mac Studio configured. Cowork integration substrate ready. All specialist systems reachable.
+
+### Step 1 — GDrive Service Account Migration (FW-003 — DO FIRST)
+
+OAuth tokens expire every 7 days, has already broken twice. Fix before anything else.
 
 ```bash
-# Homebrew (if not present)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Core tools
-brew install git node python3 jq gh
-
-# Verify
-git --version && node --version && python3 --version && jq --version
+# In Google Cloud Console:
+# 1. Create service account under Velorin project
+# 2. Share Claude.AI folder with service account email
+# 3. Download JSON key → ~/.velorin-gdrive-key.json (never commit)
+# 4. Update velorin-gdrive-mcp/auth.js to use GoogleAuth with keyFile
+# 5. Test: verify gdrive_list_folder works without tokens.json
 ```
 
-### Step 2 — Claude Code CLI
+Apply to both Mac Studio and MacBook simultaneously at Mac Studio port.
+
+### Step 2 — System Dependencies
 
 ```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install git node python3 jq gh
 npm install -g @anthropic-ai/claude-code
 claude login
-claude --version
-```
-
-### Step 3 — Git Configuration
-
-```bash
 git config --global user.name "Christian Taylor"
-git config --global user.email "[CT email]"
 git config --global credential.helper osxkeychain
 gh auth login
 ```
 
-### Step 4 — Create or Clone Repo
+### Step 3 — Clone Repo
 
 ```bash
-# Option A (working on existing repo):
-git clone https://github.com/navyhellcat/velorin-system.git
-cd velorin-system
-
-# Option B (new V2 repo):
-gh repo create velorin-v2 --private --clone
-cd velorin-v2
+git clone https://github.com/navyhellcat/velorin-system.git /Users/lbhunt/Desktop/velorin-system
+cd /Users/lbhunt/Desktop/velorin-system
 ```
 
-### Step 5 — Folder Structure
+### Step 4 — Folder Structure
 
 ```bash
 mkdir -p Velorin.Welcome
 mkdir -p brain/{Operations/{Architecture,Startup,Tools},Connectivity/{MCP,Auth},Agents/{Roster,Protocols},Principles/{RewardAlignment,CoreDrives},Company,Intelligence}
 mkdir -p skills
-mkdir -p agents/claude/{jiang/{handoffs,research-needed,research-complete,working-docs,protocols},marcus/{handoffs},alexander/{handoffs}}
+mkdir -p agents/claude/{jiang/{handoffs,research-needed,research-complete,working-docs,protocols},alexander/{handoffs}}
 mkdir -p agents/gemini/{trey/{Gems,Bootloader,handoffs,research-needed,research-complete},erdos/{research-needed,research-complete,Archived_Research_Requests}}
 mkdir -p tools-and-research/{architecture,math/{locked,future-theory},research-complete,brainstorming}
 mkdir -p infrastructure/{hooks,mcp,mailboxes/{Shipping,Receiving},queues/{atv-review,atv-overflow,contradiction-review}}
 mkdir -p sessions/{handoffs,daily-logs}
-mkdir -p system/level-rules
 find . -type d -empty -exec touch {}/.gitkeep \;
 ```
 
-### Step 6 — GDrive Service Account Migration (FW-003 — HIGH PRIORITY)
-
-OAuth tokens expire every 7 days. Already recurred twice. Ship this before proceeding.
-
-```bash
-# In Google Cloud Console:
-# 1. Create service account under Velorin project
-# 2. Grant Drive access: share Claude.AI folder with service account email
-# 3. Download JSON key → store at local non-committed path (e.g., ~/.velorin-gdrive-key.json)
-
-# Update velorin-gdrive-mcp/auth.js:
-# Replace OAuth flow with:
-# const auth = new google.auth.GoogleAuth({
-#   keyFile: process.env.GOOGLE_SERVICE_ACCOUNT_KEY,
-#   scopes: ['https://www.googleapis.com/auth/drive']
-# });
-
-# Test:
-# restart MCP, verify gdrive_list_folder works without tokens.json present
-```
-
-### Step 7 — Write CLAUDE.md and Velorin.Welcome/_index.md
-
-Copy content from `01_RepoAndEnvironment.md`. These files must exist before any agent boots.
-
-### Step 8 — settings.local.json
+### Step 5 — settings.local.json
 
 ```json
 {
@@ -156,657 +109,315 @@ Copy content from `01_RepoAndEnvironment.md`. These files must exist before any 
     "deny": ["Bash(rm)", "Bash(rmdir)", "Bash(sudo)", "Bash(trash)"]
   },
   "hooks": {
-    "SessionStart": [{
-      "matcher": "startup",
-      "hooks": [{
-        "type": "command",
-        "command": "cd /Users/lbhunt/Desktop/velorin-system && git pull origin main --quiet 2>&1 | tail -1",
-        "timeout": 15
-      }]
-    }]
+    "SessionStart": [{"matcher": "startup", "hooks": [{"type": "command",
+      "command": "cd /Users/lbhunt/Desktop/velorin-system && git pull origin main --quiet 2>&1 | tail -1",
+      "timeout": 15}]}]
   }
 }
 ```
 
-### Step 9 — MCP Servers
+### Step 6 — MCP Servers
 
-Wire GitHub MCP and Filesystem MCP in Claude Desktop config. (See `05_InfrastructureAndTools.md`)
+Wire GitHub MCP, Filesystem MCP in Claude Desktop config. Add Qdrant MCP after Step 8.
 
-### Step 10 — Initial Commit
+*→ Forward note: Qdrant MCP added at Stage 1 (after Qdrant is running); ATV MCP added at Stage 1 (after ATV build).*
 
-```bash
-git add -A
-git commit -m "Stage 0: repo structure, environment setup, CLAUDE.md, Velorin.Welcome"
-git push origin main
-```
+### Step 7 — Pre-Stage 0 Edge Ontology Unification
 
-✅ **Stage 0 complete when:** `claude` runs in terminal, GitHub connection works, folder structure exists.
+Execute the mapping above. Confirm `skill_dependencies.yaml` will use 4-type edge schema from day 1 of Stage 1 Skills build.
 
-*→ Forward note: the infrastructure/queues/ folders built here will be read by the ATV (Stage 1)
-and the conflict resolution mechanism (Stage 2). infrastructure/hooks/ will house the post-commit
-edge handler built in Stage 1.*
+✅ **Stage 0 complete when:** Claude Code boots, GitHub connected, folder structure exists, GDrive service account works without OAuth prompts.
+
+*→ Forward note (Stage 1): the infrastructure/queues/ folders built here will be read by ATV (contradiction-review, atv-review, atv-overflow) and the conflict resolution mechanism.*
 
 ---
 
-## Stage 1 — Brain Infrastructure + ATV + Tools (Week 1)
+## Stage 1 — Core Cowork Infrastructure + First Brain Endpoint (Week 1)
 
-**Goal:** One neuron in Qdrant + one PPR query returning a result + ATV enforcing IES + tools installed.
+**Goal:** All specialist systems reachable from Cowork-Claude. ATV enforcing IES. Tool-routing program operational. First Brain PPR query working. Part 1 functional.
 
-### Step 1 — Python Dependencies
+### Step 1 — Python Stack
 
 ```bash
-pip3 install requests pyyaml qdrant-client opendataloader-pdf hypothesis
-
-# Surya (equation OCR fallback) — requires specific env vars when running
-pip3 install surya-ocr
-# Run with: PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 PYTORCH_DEVICE=mps python3 ...
+pip3 install requests pyyaml qdrant-client opendataloader-pdf hypothesis jsonschema
+pip3 install surya-ocr   # fallback OCR; run with PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
 ```
 
 ### Step 2 — Docker and Qdrant
 
 ```bash
-# Install Docker Desktop for Mac (download from docker.com)
-# Start Docker Desktop, then:
+# Install Docker Desktop; then:
 docker pull qdrant/qdrant
-docker run -p 6333:6333 -v $(pwd)/qdrant_storage:/qdrant/storage qdrant/qdrant
-# Qdrant running at http://localhost:6333
+docker run -d --name qdrant --restart unless-stopped \
+  -p 6333:6333 \
+  -v /Users/lbhunt/Desktop/velorin-system/qdrant_storage:/qdrant/storage \
+  qdrant/qdrant
 ```
 
 ### Step 3 — Ollama and Models
 
 ```bash
-# Install Ollama
 curl -fsSL https://ollama.com/install.sh | sh
-
-# Embedding model (required for Brain)
-ollama pull nomic-embed-text-v2-moe
-
-# Image/diagram extraction
-ollama pull qwen2.5-vl:7b
-
-# Fast agentic loops / local LLM-judge for ingestion
-ollama pull qwen3.5:35b-a3b-q4_K_M   # MoE: 3B active params, full 35B loaded
-
-# Verify
-ollama list
+ollama pull nomic-embed-text-v2-moe   # required: embedding model
+ollama pull qwen2.5-vl:7b             # required: vision extraction
+ollama pull qwen3.5:35b-a3b-q4_K_M   # required: fast agentic loops + LLM-judge
+# ATV verifier model: after benchmark (Step 7 below)
 ```
 
-### Step 4 — ATV Verifier Model (Engineering Choice — requires benchmark)
+### Step 4 — vllm-mlx (ATV serving backend)
 
-**Do not install before running the benchmark program.**
-
-Install the benchmark first:
 ```bash
-git clone https://github.com/json-schema-bench/JSONSchemaBench.git
-cd JSONSchemaBench
-pip3 install -r requirements.txt
-
-# Install vllm-mlx (Apple Silicon inference backend)
 uv tool install git+https://github.com/waybarrios/vllm-mlx.git
 ```
-
-**Run benchmark against candidates:**
-```bash
-# Benchmark Qwen2.5-0.5B and SmolLM2-1.7B
-# Measure VTPS (Valid Tokens Per Second = N_total × C / T_total)
-# Select model with highest VTPS on IES grammar specifically
-# Pull winner: ollama pull [winner]
-```
-
-*→ Build-space: ATV verifier model selection is Stage 1 engineering. Selection feeds into OQ-14.
-Review model periodically (Check-in: every 90 days or if better model available).*
 
 ### Step 5 — OpenDataLoader Fork
 
 ```bash
-# Fork opendataloader-pdf to Velorin repo for local customization
-git clone https://github.com/opendataloader-project/opendataloader-pdf.git tools-and-research/opendataloader
-cd tools-and-research/opendataloader
+git clone https://github.com/opendataloader-project/opendataloader-pdf.git \
+  /Users/lbhunt/Desktop/velorin-system/tools-and-research/opendataloader
+cd /Users/lbhunt/Desktop/velorin-system/tools-and-research/opendataloader
 pip3 install -e .
-# Customize: pipe JSON bbox outputs → source_coords neuron YAML field
+# Customize: pipe JSON bbox outputs → neuron source_coords YAML field
 ```
 
-### Step 6 — Write First Neuron (c-memory seed)
+### Step 6 — Specialist System Integrations
 
-Create `brain/Principles/CoreDrives/neurons.md`:
+Wire per-tool invocation surfaces:
+- Gemini: Google API key + API library (google-generativeai)
+- Codex: OpenAI API key + CLI (`pip install openai`; test `codex --help`)
+- GPT 5.5: OpenAI Responses API client (stateless — Velorin Brain is the memory; disable native GPT memory via API config)
+- Google visual tools: Google API key + appropriate library
+- GitHub skill repos: standard git clone patterns
 
-```yaml
----
-id: second-law-of-epistemodynamics
-type: fact
-region: Principles
-area: CoreDrives
-created: 2026-04-26
-last-touched: 2026-04-26
-class: c-memory
-confidence: 1.0
-open: []
-read_only: true
-source: Erdos.Initial.Synthesis.Stage1.md
-source_coords: {}
-belief_state: active
-authority_tier: 2
-resolution_attempts: 0
-contradiction_class: factual
-skill_ref: null
-base_model_config: {type: "personal", id: "ct-v1"}
----
+*→ FW-015: multi-vendor cost economics — model before heavy use, especially GPT 5.5's 272K input-token cost cliff.*
+*→ FW-016: Mac Studio multi-vendor security model — OAuth 2.1 constraints for remote MCP from local Mac Studio.*
 
-The semantic distillation of discrete episodic graphs into continuous neural weights
-is a strictly irreversible process. Information loss Δ = I(X;Y) - I(Z;Y) > 0 always
-(Data Processing Inequality + Eckart-Young theorem). Markdown pointer records are never
-deleted — only demoted. The LoRa is model-specific and will be retrained on model upgrade.
-The Markdown archive is model-agnostic and permanent.
-
-## Pointers
-- [[Principles/CoreDrives/causal-action-potential]] 0.9 — depends-on: gate definition
-- [[Principles/CoreDrives/ppr-density-floor]] 0.8 — depends-on: retrieval precision
-- [[Principles/CoreDrives/independent-row-normalization]] 0.8 — implements: density preservation
-```
-
-### Step 7 — Embed Script
-
-Create `infrastructure/embed_neuron.py`:
-
-```python
-#!/usr/bin/env python3
-"""
-Embed a neuron markdown file and upsert to Qdrant.
-Usage: python3 embed_neuron.py path/to/neurons.md
-"""
-import sys, json, requests, re, yaml
-
-QDRANT_URL = "http://localhost:6333"
-COLLECTION = "velorin_brain"
-EMBED_MODEL = "nomic-embed-text-v2-moe"
-
-def ensure_collection():
-    r = requests.put(f"{QDRANT_URL}/collections/{COLLECTION}", json={
-        "vectors": {"size": 768, "distance": "Cosine"}
-    })
-    return r.status_code in (200, 409)
-
-def extract_neurons(filepath):
-    with open(filepath) as f:
-        content = f.read()
-    parts = re.split(r'^---\s*$', content, flags=re.MULTILINE)
-    neurons = []
-    i = 1
-    while i < len(parts) - 1:
-        try:
-            meta = yaml.safe_load(parts[i])
-            body = parts[i+1].strip()
-            if meta and 'id' in meta:
-                neurons.append((meta, body))
-            i += 2
-        except:
-            i += 1
-    return neurons
-
-def embed_text(text):
-    r = requests.post("http://localhost:11434/api/embeddings",
-                      json={"model": EMBED_MODEL, "prompt": text})
-    return r.json()["embedding"]
-
-def upsert(neuron_id, vector, payload):
-    r = requests.put(f"{QDRANT_URL}/collections/{COLLECTION}/points", json={
-        "points": [{"id": abs(hash(neuron_id)) % (2**63), "vector": vector, "payload": payload}]
-    })
-    return r.status_code
-
-if __name__ == "__main__":
-    ensure_collection()
-    for filepath in sys.argv[1:]:
-        neurons = extract_neurons(filepath)
-        for meta, body in neurons:
-            text = f"{meta['id']}: {body}"
-            vector = embed_text(text)
-            payload = {**meta, "content": body, "filepath": filepath}
-            status = upsert(meta['id'], vector, payload)
-            print(f"  {status} {meta['id']}")
-```
-
-### Step 8 — PPR Retrieval Script
-
-Create `infrastructure/ppr_retrieve.py`:
-
-```python
-#!/usr/bin/env python3
-"""
-Query the Qdrant Brain with Causal Action Potential gate.
-Usage: python3 ppr_retrieve.py "your query here"
-"""
-import sys, requests, re
-
-QDRANT_URL = "http://localhost:6333"
-COLLECTION = "velorin_brain"
-EMBED_MODEL = "nomic-embed-text-v2-moe"
-ALPHA = 0.25
-TOP_K = 5
-MAX_HOPS = 3
-THETA_WORK = 0.5   # provisional — calibrate empirically
-
-def embed_text(text):
-    r = requests.post("http://localhost:11434/api/embeddings",
-                      json={"model": EMBED_MODEL, "prompt": text})
-    return r.json()["embedding"]
-
-def vector_search(vector, limit=3):
-    r = requests.post(f"{QDRANT_URL}/collections/{COLLECTION}/points/search",
-                      json={"vector": vector, "limit": limit, "with_payload": True})
-    return r.json().get("result", [])
-
-def causal_action_potential(pi_v, alpha=ALPHA):
-    """Φ_causal = π_v / α — E[N_v], expected visits before teleportation."""
-    return pi_v / alpha
-
-def ppr_walk(seed_neurons):
-    visited = {}
-    queue = [(n['payload'], n['score']) for n in seed_neurons]
-    for hop in range(MAX_HOPS):
-        next_queue = []
-        for neuron, mass in queue:
-            nid = neuron.get('id', '')
-            if nid in visited:
-                visited[nid] = max(visited[nid], mass)
-                continue
-            visited[nid] = mass
-            content = neuron.get('content', '')
-            pointers = re.findall(r'\[\[([^\]]+)\]\]', content)
-            child_mass = mass * (1 - ALPHA) / max(len(pointers), 1)
-            for slug in pointers[:7]:
-                r = requests.post(f"{QDRANT_URL}/collections/{COLLECTION}/points/scroll",
-                    json={"filter": {"must": [{"key": "id", "match": {"value": slug.split('/')[-1]}}]},
-                          "with_payload": True, "limit": 1})
-                pts = r.json().get("result", {}).get("points", [])
-                if pts:
-                    next_queue.append((pts[0]['payload'], child_mass))
-        queue = next_queue
-    return sorted(visited.items(), key=lambda x: x[1], reverse=True)[:TOP_K]
-
-if __name__ == "__main__":
-    query = " ".join(sys.argv[1:])
-    print(f"Query: {query}\n")
-    qvec = embed_text(query)
-    seeds = vector_search(qvec)
-    print("Seed neurons:")
-    for s in seeds:
-        phi = causal_action_potential(s['score'])
-        cyclic = " [CYCLIC — route to Layer 3]" if phi > 1.0 else ""
-        inject = " [SKILL GATEWAY]" if phi > THETA_WORK and not cyclic else ""
-        print(f"  Φ_causal={phi:.3f} {s['payload'].get('id')}{cyclic}{inject}")
-    ranked = ppr_walk(seeds)
-    print("\nPPR results:")
-    for nid, mass in ranked:
-        print(f"  [{mass:.3f}] {nid}")
-```
-
-### Step 9 — Post-Commit Edge Handler
-
-Create `infrastructure/hooks/post-commit-edge-handler.sh`:
+### Step 7 — ATV Verifier Benchmark + Model Selection
 
 ```bash
-#!/usr/bin/env bash
-# Post-commit hook: updates belief_state on target neurons when supersedes/contradicts edges
-# are committed. Also handles skill dependency graph updates.
-# Install: cp this file .git/hooks/post-commit && chmod +x .git/hooks/post-commit
-
-REPO_ROOT=$(git rev-parse --show-toplevel)
-CHANGED_FILES=$(git diff-tree --no-commit-id -r --name-only HEAD)
-
-for file in $CHANGED_FILES; do
-    # Only process neuron files
-    [[ "$file" != *"neurons.md"* ]] && continue
-    
-    # Parse supersedes pointers → set target belief_state: superseded
-    python3 "$REPO_ROOT/infrastructure/update_belief_state.py" \
-        --action superseded \
-        --source "$REPO_ROOT/$file"
-    
-    # Parse contradicts pointers → set both parties to belief_state: contested
-    python3 "$REPO_ROOT/infrastructure/update_belief_state.py" \
-        --action contested \
-        --source "$REPO_ROOT/$file"
-done
-
-# If any skill files changed, validate skill_dependencies.yaml is also updated
-for file in $CHANGED_FILES; do
-    [[ "$file" != "skills/"* ]] && continue
-    python3 "$REPO_ROOT/infrastructure/validate_skill_graph.py" --check-consistency
-done
+# Run JSONSchemaBench against candidates (Qwen2.5-0.5B, SmolLM2-1.7B)
+# Primary metric: VTPS = (N_total × C) / T_total
+# Select winner; pull: ollama pull [winner]
 ```
 
-*→ Forward note: Future local Mac-Studio operator will monitor this hook's execution for failures,
-not run it. The hook runs as a git hook. The operator's role is to watch the audit log
-in infrastructure/queues/contradiction-review/ and surface persistent failures to CT.*
+Check-Ins entry: ATV verifier re-benchmark every 90 days or when model update available. See `Velorin.CheckIns.md`.
+
+### Step 8 — ARC-2 Tool-Routing Program
+
+Build at `infrastructure/tool_router.py` (or as MCP server `infrastructure/mcp/tool_router/`):
+- Column-normalized capability matrix V (initial values from domain knowledge)
+- Task intent vector ω_task estimation from task content
+- VEGP gate with configurable ε_gap
+- Fallback (Ξ=0): ensemble activation of top 2-3 tools; Cowork-Claude integrates
+- Per-routing-decision log to `infrastructure/logs/routing/`
+
+### Step 9 — ARC-1 Virtual Contradiction Graph
+
+Build at `infrastructure/contradiction_detector.py`:
+- Asymmetric NLI surrogate for detecting cross-tool output conflicts
+- Virtual neuron encoding (vendor claim → virtual neuron with source metadata)
+- Layer 1 composite score tiebreaker
+- Broker activation pattern (Layer 2 deadlock → high-authority orthogonal tool)
+- Chairman escalation queue at `infrastructure/queues/contradiction-review/`
 
 ### Step 10 — ATV Build (MCP Server)
 
-Build the ATV as a Node.js MCP server at `infrastructure/atv/server.js`:
+Build `infrastructure/atv/server.js`:
+- Agent wrapper (inspects content blocks; tags analytical_reasoning)
+- FSM verifier using XGrammar + vllm-mlx
+- Per-message log artifact
+- Queue management (bounded queue N=5; overflow → atv-overflow/)
+- Schema Registry (git-backed, hash-addressed, SQLite lookup)
 
-```javascript
-// Asymmetric Transport Verifier — MCP endpoint
-// Enforces IES structure on tagged analytical inter-agent messages
-// header tag: content_type: analytical_reasoning → enforce IES
-// missing tag at this endpoint → fail-secure (apply IES)
+### Step 11 — Post-Commit Edge Handler
 
-const MCP_PORT = process.env.ATV_PORT || 8080;
-const QUEUE_LIMIT = parseInt(process.env.ATV_QUEUE_LIMIT || "5");
-const IES_GRAMMAR_HASH = process.env.IES_GRAMMAR_HASH; // from Schema Registry
+`infrastructure/hooks/post-commit-edge-handler.sh`:
+- Reads `supersedes` and `contradicts` edges in newly committed neurons
+- Updates belief_state on target neurons
+- Validates skill dependency graph consistency
+Install: `cp post-commit-edge-handler.sh .git/hooks/post-commit && chmod +x .git/hooks/post-commit`
 
-// [Full implementation: queue management, vllm-mlx client, XGrammar grammar loading,
-// per-message log artifacts, overflow routing to atv-overflow queue]
-// See infrastructure/atv/README.md for full implementation spec.
-```
+### Step 12 — First Brain Endpoint
 
-**Schema Registry setup:**
-```bash
-mkdir -p infrastructure/schema-registry
-# Store IES grammar source at infrastructure/schema-registry/ies_grammar.lark
-# Post-commit hook compiles to XGrammar artifact and generates SHA-256 hash
-# SQLite database: infrastructure/schema-registry/registry.db
-```
+Write `infrastructure/embed_neuron.py` and `infrastructure/ppr_retrieve.py` (with Φ_causal gate). Create first c-memory seed neuron. Embed. Query. Verify.
 
-**Golden Dataset (100-item Phase 1 — CT personal curation required):**
-```bash
-mkdir -p infrastructure/atv/golden_dataset
-# CT personally curates 100 examples:
-# - 40 clean analytical conclusions from prior sessions
-# - 40 high-complexity multi-domain outputs (Erdős evaluations, cross-domain synthesis)
-# - 20 edge cases (very short analytical statements, technical notation, embedded structured data)
-# Store as infrastructure/atv/golden_dataset/v1.json
-# AI-generated or AI-curated Ground Truth invalidates FRR measurement — CT curation required
-```
+### Step 13 — Skills Registry Initialization
 
-*→ Build-space placeholder Stage 2 (trigger: 500 real ATV-processed messages):
-CT expands Golden Dataset from 100 to 300 items using confirmed-valid production messages.
-Seam: infrastructure/atv/golden_dataset/v{version}.json — benchmark reruns automatically against v2.*
+Create `skills/skill_dependencies.yaml` with 4-type edge schema. Create first 2-3 pilot skills with typed artifact schemas and prerequisite edges.
 
-### Step 11 — Conflict Resolution Layer 3 Queue Infrastructure
+✅ **Stage 1 complete when:** Cowork-Claude can activate each specialist system and get work back; ATV enforcing IES on tagged analytical outputs; tool-routing program logging decisions; first Brain PPR query returning correct neurons; post-commit hook firing correctly.
 
-```bash
-# Layer 3 review queue
-mkdir -p infrastructure/queues/contradiction-review
-touch infrastructure/queues/contradiction-review/.gitkeep
-
-# Queue entries written by update_belief_state.py when resolution_attempts hits 3
-# Format: YYYY-MM-DD-HH-MM-<neuron-id>.md
-# Contents: both contested neurons + their composite scores + contradiction_class + actionable question
-```
-
-*→ Forward note: FW-004 (trigger: OQ-3 design work opens) will specify how the future local
-Mac-Studio operator monitors this queue and routes to the appropriate reviewer.*
-
-### Step 12 — Test End-to-End
-
-```bash
-# 1. Embed first neuron
-python3 infrastructure/embed_neuron.py brain/Principles/CoreDrives/neurons.md
-
-# 2. Run retrieval
-python3 infrastructure/ppr_retrieve.py "what happens when you delete a markdown file"
-
-# 3. Verify you get back the Second Law neuron with expected Φ_causal value
-# 4. Verify ATV MCP server starts and accepts test message
-# 5. Verify post-commit hook fires on a test commit
-```
-
-✅ **Stage 1 complete when:** Query returns relevant neurons; ATV enforces IES on tagged messages;
-post-commit hook updates belief_state correctly.
+**"Brain not required to function at this point."** Part 1 is fully operational.
 
 ---
 
 ## Stage 2 — Agent Configuration (Week 1-2)
 
-**Goal:** All cardinal agents have folders and ReadMe.First files. Trey Gems operational. Alexander configured.
+**Goal:** All named agents configured and operational. All specialist systems fully integrated.
 
-### Step 1 — Agent ReadMe.First Files
-
-Write ReadMe.First for each agent. Required contents:
-- Identity (contrast negation — what they are NOT before what they ARE)
-- Mandate (what they own, what they never touch)
-- Confidence threshold (Jiang: 67%; Trey: 75%; Erdős: 80%)
-- Failure mode (name it explicitly)
-- Session end protocol
-- Boot sequence
-
-### Step 2 — Trey Bootloader Audit (before any new research is sent)
-
-Per `feedback_audit_external_agent_context.md`: stale bootloaders contaminate every deliverable.
-Audit before sending any new research request:
+### Step 1 — Trey Bootloader Audit (BEFORE creating Gems)
 
 ```bash
-# Grep for known stale patterns
 grep -ri "human-curated" Claude.AI/Bot.Trey/Bootloader/
-grep -ri "not yet received" Claude.AI/Bot.Trey/Bootloader/
-grep -ri "open question" Claude.AI/Bot.Trey/Bootloader/
-# Update any matches to reflect current locked state
+grep -ri "Gatekeeper" Claude.AI/Bot.Trey/Bootloader/
+grep -ri "Level [1-4]" Claude.AI/Bot.Trey/Bootloader/
 ```
+Update MathInventory to include Sessions 033-036 Erdős solutions. Confirm AgentRoster reflects Alexander as "Company State Historian," not "CEO Orchestrator."
 
-Specific items known to need updating:
-- Trey.Bootloader.MathInventory.md: add all Erdős sessions 033-036 solutions
-- Trey.Bootloader.VelorinBrain.md: confirm human-curated framing is removed
-- Any "open question" references to problems now structurally resolved (OQ-6)
+### Step 2 — Create Trey Gems
 
-### Step 3 — Create Trey Gems
+Trey1 (general deep research) and Trey2 (Velorin-build-specific). See `04_AgentEcosystem.md`.
 
-1. gemini.google.com → Gems → Create Trey1 Gem
-   - Paste Trey1.GemInstruction.md content
-   - Attach 4 universal connectors: Velorin.Welcome/_index.md, Operating Standards, Company DNA, CT Context Profile
-2. Create Trey2 Gem
-   - Paste Trey2.GemInstruction.md content
-   - Attach 9 bootloader files (after Step 2 audit above)
+### Step 3 — Erdős Gem Verification
 
-### Step 4 — Erdős Gem Verification
+Verify [BOOT] sentinel triggers Research_Complete pre-load. Verify CARDINAL math output rule (LaTeX only, no Equation Editor).
 
-Confirm Erdős Gem is configured with:
-- Erdos.Gem.Instructions.md (including [BOOT] sentinel and CARDINAL math output rule)
-- All Research_Complete solutions from sessions 033-036 are accessible via the [BOOT] pre-load
-- CARDINAL math output rule: all formulas in $...$ or $$...$$. Never Equation Editor.
+### Step 4 — Alexander Configuration
 
-### Step 5 — Alexander Cowork
+Configure Alexander in Mac Studio Claude Desktop Cowork Sessions as Company State Historian. Update Alexander.ReadMe.First.md to reflect narrowed role.
 
-Configure Alexander's session in Mac Studio Claude Desktop.
-Alexander's ReadMe.First must clearly state: company-level CEO view, not micro-level build.
+### Step 5 — Purchase Audio Tools (CT authorization required)
 
-### Step 6 — Purchase Audio Tools (CT authorization required)
+Voibe ($99 lifetime) + MacWhisper Pro (~€59 lifetime).
 
-- Voibe: $99 lifetime — live dictation, <300ms, 100% offline
-- MacWhisper Pro: ~€59 — batch audio transcription, speaker diarization
-
-*→ Forward note: Voibe pipes to terminal interfaces; MacWhisper Pro processes pre-recorded audio.
-Both feed the audio ingestion pipeline built at Stage 3.*
-
-✅ **Stage 2 complete when:** Each agent can boot, read their folder, and know their role.
+✅ **Stage 2 complete when:** Each agent can boot and know their role. All specialist systems reachable from Cowork-Claude. Part 1 is fully operational and tested.
 
 ---
 
-## Stage 3 — Brain Population + Ingestion Pipeline (Month 1 — ongoing)
-
-**Goal:** The Brain knows Velorin and knows CT. Ingestion pipeline handles text documents automatically.
-
-### Step 1 — Priority Neurons (Write by Hand — c-memory seeds)
-
-```markdown
-# Required c-memory neurons — every one is c-memory, confidence=1.0, read_only=true
-second-law-of-epistemodynamics (already written in Stage 1)
-causal-action-potential (Φ_causal = π_v / α)
-ppr-density-floor (ρ* = 0.78, 7-pointer cap)
-independent-row-normalization (locked math, Session 033)
-window-gravity-definition (what it is, mechanism, three disciplines)
-velorin-founding-thesis (programs with AI as watcher)
-consensus-filter (three questions, Q3 is load-bearing)
-jsd-compression-algorithm (replaces Oblique JBD)
-build-vs-adopt-rule (community validation signals viability)
-five-boxes-framework (Professional, Financial, Health, Personal, Commons)
-four-layer-architecture (L3/L2/L1/L0, what's built, what's future)
-second-law-model-agnosticism (why Markdown archive survives model upgrades)
-dark-matter-ingestion-principle (bulk data + zero pointers → safe)
-ignition-protocol-definition (emotional engagement + edge creation → crystallization)
-
-# CT profile neurons (c-memory, written by hand, confidence=1.0)
-ct-cognitive-profile (WAIS-IV FSIQ 133, VCI 151, ENTP-A, DISC Di/Id)
-ct-five-boxes-stakes (the personal stakes in each box — not just definitions)
-ct-camfil-runway (4-year managed exit, 12% commission, target: June 2026)
-ct-cardiac-event-2004 (Takotsubo, stress-induced — load-bearing health history)
-```
-
-Do NOT write grief-specific neurons yet. H_E (emotional charge) field not yet in YAML schema.
-
-### Step 2 — Text Ingestion Pipeline v1 (NPMI + LLM-judge)
-
-**For text documents and PDFs — Phase 1. Multimodal Phase 2 deferred.**
-
-Pipeline sequence:
-
-```
-Input: PDF or text document dropped in infrastructure/mailboxes/Receiving/
-    │
-    ▼
-Step A — Routing (Alexander or MA watches Receiving/ via filesystem MCP)
-    │
-    ▼
-Step B — Parsing (OpenDataLoader PDF v2.0, local fork)
-  XY-Cut++ reading order → structured Markdown + JSON sidecar with bbox per element
-  Formula Extraction AI → LaTeX for equations (output: plain-text $...$)
-  Fallback: Surya with PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0
-  Fails closed: both fail → human review queue
-    │
-    ▼
-Step C — Image/diagram extraction (Qwen2.5-VL 7B, Ollama local)
-  Image elements → structured JSON description
-  Fails closed: [IMAGE_UNEXTRACTED] placeholder, flagged for review
-    │
-    ▼
-Step D — Atomic decomposition (LLM call — Qwen 3.6-35B-A3B local)
-  RDoLT recursive decomposition → candidate neuron list
-  4 atomicity criteria: atomic (one proposition), durable, contextually independent, actionable
-  Fails closed: batch retry queue; never proceed to Step E without this
-    │
-    ▼
-Step E — Deduplication (NPMI + LLM-judge)
-  Embed candidate → Qdrant search → top-K NPMI neighbors
-  LLM-judge: ADD / UPDATE / DELETE / NOOP
-  Contradiction: provenance weighting (recency × source authority)
-  Fails closed: ambiguous judge → human review queue
-    │
-    ▼
-Step F — Pointer rating (LLM-judge, forced distribution)
-  NPMI candidate pool → top-7 semantically related existing neurons
-  LLM-judge with FORCED DISTRIBUTION — e.g.:
-    "Assign exactly 1×rating-1, 2×rating-3, 4×rating-8 among these 7 candidates"
-  9-class relation label: REQUIRED (not optional) — the label determines which matrix (P_tax/P_them)
-  ρ* = 0.78 density check: verify 5 of 7 pointers are rating 1-3
-  Cold-start affinity: Holographic Cold-Start A_init = max(2, ⌈11 - λ||W_global·x_new - y_port||²⌉)
-  Fails closed: density violation → drop lowest-rated pointer until constraint satisfied
-    │
-    ▼
-Step G — Schema assembly (automated)
-  Neuron YAML: all fields populated including source_coords (from bbox), belief_state: active,
-  authority_tier (from source), contradiction_class (from LLM-judge), skill_ref: null
-  Fails closed: schema validation error → human review
-    │
-    ▼
-Step H — Brain commit (git add + commit + push)
-  Post-commit hook fires: belief_state updates, skill dependency graph updates
-  Qdrant upsert: embed_neuron.py run on new neurons
-  Fails closed: git error → retry queue
-```
-
-**Cosine similarity is not used for pointer rating.** It is symmetric — cannot model asymmetric
-logical dependency. NPMI + LLM-judge with forced distribution is the correct hybrid.
-
-### Step 3 — Skills Registry Initialization
-
-```bash
-# Create first skills
-mkdir -p skills/velorin-verify-writes skills/velorin-commit-session
-
-# Create skill_dependencies.yaml with proper 4-type edge schema
-# Minimum two pilot skills:
-# - velorin-verify-writes (no dependencies)
-# - velorin-commit-session (dependency: velorin-verify-writes)
-```
-
-Every new skill file must be committed alongside an update to skill_dependencies.yaml.
-The post-commit hook validates this consistency constraint.
-
-*→ Build-space placeholder Stage 3 (trigger: N skills, set at Stage 3 design):
-GoS sparse validation mode. Seam: validate_skill_edges(..., validation_mode="dense").
-Dense → sparse is a one-param config change. State handover: no persistent state.*
-
-### Step 4 — Embed All New Neurons
-
-```bash
-for f in $(find brain/ -name "neurons.md"); do
-    python3 infrastructure/embed_neuron.py "$f"
-done
-```
-
-✅ **Stage 3 complete when:** Brain can answer CT-specific queries from Qdrant + PPR traversal.
-Ingestion pipeline runs automatically on new text documents.
+## PART 2 — Brain Insertion (Local Specialization Layer)
 
 ---
 
-## Stage 4 — Research Migration + Compression Event Detector (Month 1 — parallel)
+## Stage 3 — Brain Population (Month 1 — ongoing)
 
-**Goal:** All existing research accessible and organized. Compression event detector operational.
+**Goal:** Brain begins accumulating CT-specific knowledge. Ingestion pipeline handles text documents automatically.
 
-### Step 1 — Research Migration
+**"Brain not required to function at this point" marker ends here.** Part 2 begins.
 
-Move all research from Claude.AI/Bot.Trey/Research_Complete/ and Claude.AI/Bot.Erdos/Research_Complete/
-to tools-and-research/. See `07_OpenQuestions.md` OQ-4 for taxonomy.
+### Step 1 — Priority c-memory Seeds (Write by Hand)
 
-### Step 2 — Compression Event Detector
+Required neurons (c-memory, confidence=1.0, read_only=true):
+- `second-law-of-epistemodynamics` (already written in Stage 1)
+- `causal-action-potential` (Φ_causal = π_v/α)
+- `ppr-density-floor` (ρ*=0.78, 7-pointer cap)
+- `independent-row-normalization`
+- `window-gravity-definition`
+- `velorin-founding-thesis`
+- `consensus-filter`
+- `jsd-compression-algorithm`
+- `build-vs-adopt-rule`
+- `five-boxes-framework`
+- `four-layer-architecture`
+- CT profile neurons: cognitive profile, five boxes stakes, Camfil runway, cardiac event 2004
 
-**OQ-6 is structurally defined.** The criterion is now principled:
-- Brockett gradient flow drives commutator norm β toward 0
-- JSD fires when β ≤ β_abelian
+H_E neurons (grief events): do NOT write yet. H_E passive-inference measurement program must be operational first. See Stage 4.
 
-Build the monitoring program:
-```python
-# infrastructure/compression_monitor.py
-# Watches commutator norm β = ||[P_tax, P_them]||_F per region
-# When β ≤ β_abelian: triggers JSD algorithm on a COPY of the region
-# Measures Φ_causal degradation against ground-truth targets before and after
-# Alert threshold: >10% mean Φ_causal reduction → flag for Jiang review
-```
+### Step 2 — Text Ingestion Pipeline v1
 
-*→ Build-space placeholder Stage 4: κ empirical calibration. Check-ins entry: after 10 test compression events.*
+Full sequence: OpenDataLoader parse → RDoLT decomposition → NPMI + LLM-judge (forced distribution, 9-class required) → belief_state + authority_tier + source_coords + contradiction_class YAML → post-commit hook fires → Qdrant upsert.
 
-✅ **Stage 4 complete when:** Compression event detector monitors commutator norms; JSD fires on copies; measurement program tracks Φ_causal degradation.
+**9-class relation labels REQUIRED** from day 1. Binary routing (P_tax vs P_them) derived from the 9-class label. Not optional.
+
+**Conflict routing config** (`Claude.AI/conflict_routing.yaml`) created alongside ingestion pipeline.
+
+Check-Ins entries (see `Velorin.CheckIns.md`):
+- Source multiplier calibration (after 50 resolved Layer 1 contradictions)
+- ε threshold calibration (after 50 Layer 2 activations)
+- Round-cap review (after 25 Layer 3 escalations)
+- contradiction_class routing accuracy per path (after 50 contested cases per path)
+
+### Step 3 — Skills Registry Population
+
+Create pilot skills, wire dependency edges, test reverse-PPR skill injection via Φ_causal gate.
+
+Check-Ins: tool capability matrix recalibration (after 90 days operational or significant tool capability change). See `Velorin.CheckIns.md`.
+
+✅ **Stage 3 complete when:** Brain can answer CT-specific queries from PPR traversal; ingestion pipeline runs automatically on text documents.
+
+*→ Build-space Stage 3 (trigger: N skills in registry, N defined at Stage 3 design): GoS sparse validation mode swap. Seam: `validate_skill_edges(..., validation_mode="dense")`. One-param config change.*
+*→ Build-space Stage 3 (trigger: Canary when Cowork routing real production traffic across multiple vendors): Canary grammar rollout. Load balancer config only.*
 
 ---
 
-## Stage 5 — Local AI Model (After Stages 1-4 Are Proven)
+## Stage 4 — Compression Event Detector + H_E Measurement (Month 1+)
 
-**Goal:** Local AI model integrated for inference, classification, and LoRa training pipeline.
+**Goal:** Commutator norm monitoring operational. H_E passive inference wired. Brockett flow → JSD compression pipeline functional.
 
-**Deliberately deferred.** Cannot choose correctly until Brain operational with real workloads.
+### Step 1 — Commutator-Norm Region Monitor
 
-**Constraint from Erdős VEGPStressTest Proof 2 (HARD CRITERION for model selection):**
-The chosen model MUST use Softmax-style global attention aggregation. Pure RNN architectures
-with tanh saturation cannot be used — vanishing gradients prevent IES gate from firing.
+`infrastructure/commutator_monitor.py`:
+- Computes ‖[P_tax|U, P_them|U]‖_F per Brain region
+- Tracks Persona Manifold change (symmetric difference over time)
+- Triggers LoRa retraining when μ(P(t_now) △ P(t_prev)) > ε_LoRa (Erdős Solution 3 — genuinely new math)
+- Suppresses LoRa training on in-flux regions (high commutator spike = CT's transient confusion state)
 
-**Current hardware reality (Mac Studio M4 Max, 36GB):**
-- Qwen 3.6-35B-A3B (MoE, 3B active params): fast agentic loops — CONFIRMED (already installed)
-- Gemma 4-31B: long-context reasoning with TurboQuant — viable with ~3GB KV cache at 128K context
-- TurboQuant: compresses KV cache 3.8-4.9× (not model weights). Status: TheTom's llama.cpp fork has Apple Silicon Metal kernels working. Stable integration: Q2-Q3 2026.
-- For LoRa training: will require the RTX 4090 Windows build (blocked on ARM64 Claude Code bug #12160)
+*→ Build-space Stage 5: RoMem Semantic Speed Gate (trigger: Layer 0 LoRa operational). Seam: `compute_edge_transition_weight(..., mode="ebbinghaus_sde", mode_config={})`. State handover at mode swap: A_base YAML values carry forward; per-session Ã cache discarded.*
 
-**Direction C seam:**
-Training pipeline reads `base_model_config: {type: "personal", id: "ct-v1"}` at initialization.
-Downstream components remain agnostic to what's underneath the user-delta LoRa.
+### Step 2 — H_E Passive Inference Program
 
-*→ Build-space placeholder Stage 5: RoMem Semantic Speed Gate (trigger: Layer 0 LoRa operational
-and local base model selected). Seam: compute_edge_transition_weight(..., mode="ebbinghaus_sde",
-mode_config={}). State handover at mode swap: A_base YAML values carry forward; per-session
-Ã cache discarded (rebuilt on next session).*
+**Option B locked (CT decision).** Never prompts CT directly. Infers from observable signals.
 
-*→ Build-space placeholder Stage 5: FW-004 Layer 3 operator architecture
-(trigger: OQ-3 design work opens). Operator/Reviewer/Authorizer role split for local Mac-Studio MA.*
+Observable signals (from Trey.Research.EmotionalMemorySalience.Measurement.md):
+- Query frequency to neuron relative to its information density
+- Dwell time and post-retrieval action sequences
+- Involuntary retrieval patterns (neuron surface rate in unrelated queries)
+- Cross-domain reference frequency (high-H_E neurons appear across context boundaries)
+- Neuron creation cadence for related memories
 
-✅ **Stage 5 complete when:** Local model hosts the LoRa, handles routing/classification, Brockett flow → JSD compression pipeline runs end-to-end.
+H_E NOT added to neuron YAML schema yet. H_E is computed on-demand from observable signals; stored in a separate H_E computation log, not in the neuron itself, until the measurement procedure is validated.
+
+Check-Ins design — multi-point distribution across Build Guide phases (full elements a-k, see `Velorin.CheckIns.md`):
+- Checkpoint at 100 c-memory neurons
+- Checkpoint at 500 neurons
+- Full re-evaluation at 1,000 neurons
+- Quarterly thereafter
+
+### Step 3 — JSD Compression (κ empirical calibration)
+
+κ analytic formula ($κ = 2C(1-\alpha)/(\alpha\delta)$) is a structural prior only — operationally too loose (Davis-Kahan looseness, spectral-gap volatility). Empirical calibration required.
+
+κ measurement program:
+- Runs test compressions on Brain region COPIES (never live Brain)
+- Triggers when Brockett flow β < 0.15 in a region
+- Tracks Φ_causal degradation on 50-neuron ground truth set
+- Alert at >10% mean Φ_causal reduction → halt compression in that region, flag for Jiang review
+- Fortnight cadence
+
+Check-Ins: κ calibration review after first 10 test compression events. See `Velorin.CheckIns.md`.
+
+✅ **Stage 4 complete when:** Compression event detector monitors commutator norms; H_E passive inference collecting signal; JSD algorithm firing on region copies.
+
+---
+
+## Stage 5 — Local AI Model + LoRa (After Brain Operational)
+
+**Goal:** Local AI model integrated. LoRa training pipeline operational. Brain-as-operator-guide activation — the Part 2 destination.
+
+**Deliberately deferred.** Cannot choose the right model until Brain is operational with real workloads.
+
+**Hard requirement from Erdős VEGPStressTest Proof 2 (non-negotiable for model selection):**
+The chosen model MUST use Softmax-style global attention aggregation. Pure RNN architectures with tanh saturation cannot be used — vanishing gradients prevent IES gate from firing.
+
+*→ Forward note (Stage 5): `base_model_config: {type: "personal", id: "ct-v1"}` governs LoRa training pipeline. Training weights according to Persona Manifold (Commutator Persona result — genuinely new, Erdős Solution 3). Quasi-abelian regions get higher training weight; in-flux regions (high commutator spike) are excluded until commutator stabilizes.*
+
+*→ Build-space Stage 5: FW-004 Layer 3 operator architecture (trigger: OQ-3 design opens). Operator/Reviewer/Authorizer role split for future Mac-Studio local operator.*
+
+**Hardware reality:**
+- Qwen 3.6-35B-A3B MoE: for fast agentic loops (3B active params compute per token)
+- Gemma 4-31B: for long-context reasoning with TurboQuant (KV cache 3.8-4.9× compression, viable on 36GB)
+- 70B+ models: RTX 4090 Windows build (blocked on ARM64 Claude Code bug #12160 — buy RAM now)
+
+✅ **Stage 5 complete when:** Local model hosts LoRa; Brain-as-operator-guide influences Cowork routing (Part 2 destination reached).
+
+---
+
+## Phase 4 — Intake Test (LAST ITEM BEFORE BUILD COMPLETE)
+
+The structured decision-scenario experience that reveals CT's reasoning patterns and generates the first structured batch of cross-domain Brain neurons. Originally scoped as Part 1 trigger; CT decision (2026-04-26): placed as Phase 4 final step.
+
+By the time this fires, c-memory neurons have accumulated organically through normal CT-Brain interaction during Phases 1-3. The formalized intake test is a final-stage validation/tidying step, not the boot mechanism.
+
+See `07_OpenQuestions.md` for formal OQ-9 status.
 
 ---
 
