@@ -66,83 +66,22 @@ Markdown document. Each idea structured as:
 
 Generate at least five ideas. Push beyond the obvious — Velorin's architecture is unusually well-developed already, so genuinely novel additions need to come from outside the consensus AI agent landscape. Consider: differential geometry of cognitive states, non-equilibrium thermodynamics of memory, category-theoretic models of agent composition, biological correspondences (entorhinal-hippocampal-neocortical analog), mathematical structures Velorin hasn't touched (topological data analysis, persistent homology, spectral graph theory beyond Perron-Frobenius), unexpected cross-domain analogs (compiler theory, control theory, quantum measurement, cryptography).
 
-### Output 3 — 3D-Presentation Graph Data
+### Output 3 — 3D-Presentation Vision (Function, Not the Render)
 
-A single JSON object that describes the Velorin build as a navigable 3D scene. CT will feed this into Google's 3D / Veo / Genie / Antigravity tooling to render a really cool 3D presentation. Schema:
+You are NOT building the 3D presentation. Someone else will, later, using your output as the foundation. What you produce here is the **vision and functional foundation** for the 3D presentation:
 
-```json
-{
-  "title": "Velorin v2 — The Personal Operating System Build",
-  "subtitle": "Claude Cowork orchestrates → Brain becomes operator-guide",
-  "layers": [
-    {
-      "id": "layer_0_lora",
-      "name": "Layer 0 — LoRa Weights (Compressed Persona)",
-      "depth": 4,
-      "color_hint": "deep blue",
-      "description": "..."
-    },
-    { "id": "layer_1_ppr", "name": "Layer 1 — PPR Retrieval / CAP Gate", "depth": 3, "...": "..." },
-    { "id": "layer_2_brain", "name": "Layer 2 — Brain (Neuron Pointer Graph)", "depth": 2, "...": "..." },
-    { "id": "layer_3_orchestration", "name": "Layer 3 — Cowork Orchestration + Tool Activation", "depth": 1, "...": "..." }
-  ],
-  "nodes": [
-    { "id": "claude_ui", "type": "agent", "layer": "layer_3_orchestration", "label": "Claude (UI Controller)", "description": "..." },
-    { "id": "cowork_orchestrator", "type": "system", "layer": "layer_3_orchestration", "label": "Claude Cowork (Orchestrator)", "description": "..." },
-    { "id": "brain_neuron_example", "type": "neuron", "layer": "layer_2_brain", "label": "(example c-memory neuron)", "description": "..." },
-    { "id": "tool_codex", "type": "sub_agent_tool", "layer": "layer_3_orchestration", "label": "Codex (Desktop)", "description": "Activated as if sub-agent for code audit" },
-    { "id": "tool_gemini_deep_think", "type": "sub_agent_tool", "layer": "layer_3_orchestration", "label": "Gemini Deep Think", "description": "Activated for heavy reasoning" },
-    { "id": "tool_gpt55", "type": "sub_agent_tool", "layer": "layer_3_orchestration", "label": "ChatGPT 5.5 Desktop", "description": "Activated for ChatGPT-strength tasks" },
-    { "id": "math_cap", "type": "math_concept", "layer": "layer_1_ppr", "label": "Causal Action Potential (Φ_causal = π_v / α)", "description": "..." },
-    { "id": "math_commutator_persona", "type": "math_concept", "layer": "layer_2_brain", "label": "Commutator Persona Manifold", "description": "Genuinely novel per Erdős novelty self-check" },
-    { "id": "agent_jiang", "type": "internal_agent", "layer": "layer_3_orchestration", "label": "Jiang (Director of Strategic Intelligence)", "...": "..." },
-    { "id": "agent_alexander", "type": "internal_agent", "layer": "layer_3_orchestration", "label": "Alexander (Company State Historian)", "...": "..." },
-    { "id": "agent_erdos", "type": "internal_agent", "layer": "external", "label": "Erdős (Mathematical Agent)", "...": "..." },
-    { "id": "agent_trey", "type": "internal_agent", "layer": "external", "label": "Trey (External Research Advisor)", "...": "..." },
-    { "id": "five_box_1_professional", "type": "life_domain", "layer": "outer", "label": "Box 1 — Professional/Income", "...": "..." },
-    "...etc — populate all major architectural elements"
-  ],
-  "edges": [
-    { "source": "cowork_orchestrator", "target": "tool_codex", "type": "activates_as_sub_agent", "label": "code audit tasks" },
-    { "source": "cowork_orchestrator", "target": "tool_gemini_deep_think", "type": "activates_as_sub_agent", "label": "heavy reasoning tasks" },
-    { "source": "layer_2_brain", "target": "cowork_orchestrator", "type": "guides_part_2", "label": "Brain instructs orchestrator (Part 2 evolution)" },
-    { "source": "layer_3_orchestration", "target": "layer_2_brain", "type": "compresses_to", "label": "PPR walks generate Layer 1 geodesics" },
-    "...etc"
-  ],
-  "annotations": [
-    {
-      "id": "vision_central_claim",
-      "anchor_node": "layer_2_brain",
-      "label": "The Vision",
-      "text": "A personal knowledge graph that TELLS the orchestrator what tools to call. No production AI system does this. This is what makes Velorin not-a-chatbot.",
-      "render_hint": "spotlight"
-    },
-    {
-      "id": "novel_idea_X",
-      "anchor_node": "...",
-      "label": "Novel Idea: ...",
-      "text": "...",
-      "render_hint": "highlight"
-    }
-  ],
-  "narrative_arcs": [
-    {
-      "id": "part_1_to_part_2",
-      "name": "Build Sequence: Part 1 → Part 2",
-      "sequence": ["mac_studio_port", "cowork_orchestration_active", "brain_insertion", "brain_as_operator_guide_activates"],
-      "description": "The two-part build — first multi-vendor cowork without brain, then brain insertion as local specialization layer that becomes the operator-guide"
-    },
-    {
-      "id": "math_to_operational",
-      "name": "Math → Operational Architecture",
-      "sequence": ["epistemodynamics_second_law", "ppr_density_constraint", "cap_gate", "commutator_persona", "operational_calibration"],
-      "description": "How Erdős's locked theorems translate into operational constraints"
-    }
-  ]
-}
-```
+- **Build summary** — a tight, structured summary of what Velorin v2 IS as of this moment, written so it could be read aloud over the eventual 3D scene
+- **Your vision of the build** — when you see the architecture as a navigable 3D space, what dimensions matter, what layers are visually distinct, what relationships should be visible, where the eye should land first
+- **Recommendation for how the 3D presentation should work** — which traversal arcs make the strongest narrative, what should be spotlighted, what's better in the background, how to communicate the central claim (brain-as-operator-guide; personal-knowledge-graph-instructing-the-orchestrator) visually
+- **Suggested elements to render** — yes, list the major architectural components, agents, math concepts, and relationships that should appear; but as a description / inventory, not as a fully-specified JSON scene graph
 
-The schema above is illustrative. Adapt it as needed but maintain: layers (depth-ranked), nodes (typed, layered, described), edges (typed, directional), annotations (anchored to nodes for spotlight/highlight rendering), narrative arcs (sequenced traversals through the scene). Aim for between 40 and 80 nodes — enough to be informative, not so many that 3D rendering becomes noise.
+Whoever builds the actual 3D scene later (CT, or a future agent, or Google tooling itself) will use your build summary, vision, and recommendations as their input. Don't pre-design what you can leave open for the renderer to interpret.
+
+If a structured representation flows naturally from your reasoning (a few node lists, a relationship table, a layered schematic in markdown) — include it as supporting material, not as the primary deliverable. The PRIMARY deliverable here is your seeing of the build as a 3D scene and your recommendation for how to render it.
+
+## Open-Ended Permission
+
+This prompt is a starting point, not a cage. **Think outside the box and outside this prompt.** If you see something the prompt doesn't ask about — an angle Velorin's internal agents haven't considered, a connection between Velorin's math and an unrelated field, a failure mode that doesn't fit the four categories above, an opportunity hiding in the gap between what the docs say and what the world looks like — surface it. Treat the listed outputs as the floor, not the ceiling. Add sections, propose entirely different ways to look at the build, challenge the framing of the prompt itself if you think it's missing something. The Chairman values pattern-chained thinking that goes beyond the assigned target. Use that license.
 
 ## Constraints
 
@@ -150,8 +89,7 @@ The schema above is illustrative. Adapt it as needed but maintain: layers (depth
 - Be honest about confidence — if you don't have basis for an 80%+ novel-claim confidence, downgrade
 - Don't conflate elegance with truth — clean-looking solutions can be wrong; if a claim sounds too tidy, stress-test it
 - Do not include Velorin.v1.Archive/ content in your reasoning; it is historical and may contradict current locked decisions
-- The 3D-presentation graph data must be valid JSON parseable by standard tools; verify before submitting
-- Output all three deliverables in the same response, clearly separated by section headers
+- Output all three deliverables in the same response, clearly separated by section headers, and include any additional sections you generate from the open-ended permission above
 
 ## Tone
 

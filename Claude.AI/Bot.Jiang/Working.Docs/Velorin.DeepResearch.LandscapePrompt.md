@@ -83,89 +83,22 @@ What changed in the AI ecosystem since the start of April 2026 that affects Velo
 
 For each shift: what is the change, how mature is it, what specifically does it affect in Velorin's architecture, what's CT's response action.
 
-### Output 3 — 3D-Presentation Graph Data (Landscape Positioning Edition)
+### Output 3 — 3D-Presentation Vision (Function, Not the Render)
 
-A single JSON object positioning Velorin within the broader AI ecosystem as a navigable 3D scene. Schema:
+You are NOT building the 3D presentation. Someone else will, later, using your output as the foundation. What you produce here is the **landscape vision and functional foundation** for the 3D presentation:
 
-```json
-{
-  "title": "Velorin in the AI Ecosystem — April 2026",
-  "subtitle": "Where the personal AI OS sits relative to consensus",
-  "axes": [
-    { "id": "axis_personalization", "label": "Multi-tenant SaaS  ←→  Single-User Personal", "endpoints": ["consensus", "velorin"] },
-    { "id": "axis_memory_substrate", "label": "Stateless RAG  ←→  Topological Brain", "endpoints": ["consensus", "velorin"] },
-    { "id": "axis_orchestration", "label": "Stateless Swarm  ←→  Cowork-Orchestrated", "endpoints": ["consensus", "velorin"] },
-    { "id": "axis_persona_model", "label": "Explicit Text Block  ←→  Emergent Topological", "endpoints": ["consensus", "velorin"] }
-  ],
-  "regions": [
-    {
-      "id": "region_consensus_chatbot",
-      "name": "Consensus Chatbot Region",
-      "description": "Where mainstream AI assistants live — stateless, multi-tenant, RAG-based",
-      "examples": ["ChatGPT", "Claude.ai web", "Gemini app"],
-      "...": "..."
-    },
-    {
-      "id": "region_agent_frameworks",
-      "name": "Multi-Agent Framework Region",
-      "examples": ["LangGraph", "CrewAI", "OpenAI Agents SDK", "Microsoft Copilot Studio"],
-      "...": "..."
-    },
-    {
-      "id": "region_memory_systems",
-      "name": "Memory-Augmented Agent Region",
-      "examples": ["Letta", "Zep", "Graphiti", "MemGen"],
-      "...": "..."
-    },
-    {
-      "id": "region_velorin",
-      "name": "Velorin (Personal AI OS)",
-      "description": "Single-user personal operating system; Cowork-orchestrated sub-agent activation; brain-as-operator-guide; topological persona; air-gapped local sovereignty",
-      "...": "..."
-    }
-  ],
-  "nodes": [
-    { "id": "claude_cowork", "type": "vendor_capability", "vendor": "Anthropic", "label": "Claude Cowork", "...": "..." },
-    { "id": "gpt55_desktop", "type": "vendor_capability", "vendor": "OpenAI", "label": "GPT 5.5 Desktop", "...": "..." },
-    { "id": "gemini_deep_think", "type": "vendor_capability", "vendor": "Google", "label": "Gemini Deep Think", "...": "..." },
-    { "id": "codex_desktop", "type": "vendor_capability", "vendor": "OpenAI", "label": "Codex Desktop", "...": "..." },
-    { "id": "notebook_lm", "type": "vendor_capability", "vendor": "Google", "label": "NotebookLM (human-facing only)", "...": "..." },
-    { "id": "velorin_brain", "type": "velorin_component", "label": "Velorin Brain (Layer 2)", "novel_claim": "Personal knowledge graph instructing orchestrator", "...": "..." },
-    { "id": "velorin_cowork_orch", "type": "velorin_component", "label": "Cowork Orchestration", "...": "..." },
-    { "id": "letta_block_persona", "type": "competitive_pattern", "label": "Letta — Explicit Persona Block", "consensus_position": "dominant_persona_pattern", "...": "..." },
-    { "id": "second_law_epistemodynamics", "type": "velorin_math", "label": "Erdős — Second Law of Epistemodynamics", "novelty_status": "Velorin-original", "...": "..." },
-    { "id": "commutator_persona", "type": "velorin_math", "label": "Erdős — Commutator Persona", "novelty_status": "genuinely novel per Erdős's own audit", "...": "..." },
-    "...etc — populate Velorin components, vendor capabilities, competitive patterns, math frameworks"
-  ],
-  "edges": [
-    { "source": "velorin_cowork_orch", "target": "claude_cowork", "type": "uses_as_substrate", "label": "Cowork is the orchestration layer Velorin builds on" },
-    { "source": "velorin_cowork_orch", "target": "gpt55_desktop", "type": "activates_as_sub_agent", "label": "GPT 5.5 activated for ChatGPT-strength tasks" },
-    { "source": "velorin_brain", "target": "letta_block_persona", "type": "fundamentally_diverges_from", "label": "Velorin uses topological emergence, not text-block injection" },
-    "...etc"
-  ],
-  "annotations": [
-    { "id": "moat_locality", "anchor_node": "velorin_brain", "label": "The Moat", "text": "Air-gapped, single-user, locally sovereign — Velorin can pursue computationally dense, mathematically grounded patterns commercial systems can't afford to deploy at scale", "render_hint": "spotlight" },
-    { "id": "convergence_point_x", "anchor_edge": "...", "label": "Where Velorin Converges with Consensus", "text": "...", "render_hint": "highlight_convergent" },
-    { "id": "ecosystem_shift_x", "anchor_node": "...", "label": "April-May 2026 Shift", "text": "...", "render_hint": "highlight_recent" }
-  ],
-  "narrative_arcs": [
-    {
-      "id": "consensus_to_velorin_traversal",
-      "name": "From Consensus to Velorin",
-      "sequence": ["region_consensus_chatbot", "region_agent_frameworks", "region_memory_systems", "region_velorin"],
-      "description": "Walk the viewer from mainstream AI assistance to the Velorin position; show what each region solves and what each leaves unsolved that Velorin addresses"
-    },
-    {
-      "id": "ecosystem_shift_arc",
-      "name": "April-May 2026 Ecosystem Shifts",
-      "sequence": ["...key shifts in chronological order..."],
-      "description": "Recent capability landings that affect Velorin's bets"
-    }
-  ]
-}
-```
+- **Landscape summary** — a tight, structured summary of where Velorin sits in the AI ecosystem as of this moment, written so it could be read aloud over the eventual 3D scene
+- **Your vision of the landscape as a 3D space** — when you see the AI ecosystem as a navigable 3D scene with Velorin positioned within it, what dimensions matter most (personalization axis? memory substrate axis? orchestration pattern axis? something else you'd prefer?), what regions are visually distinct, where the eye should land first to communicate the moat
+- **Recommendation for how the 3D presentation should work** — which traversal arcs make the strongest narrative (consensus → Velorin? historical evolution? ecosystem-shift overlays?), what should be spotlighted, where the convergence-vs-divergence story lives, how the April-May 2026 shifts overlay onto the static positioning
+- **Suggested elements to feature** — yes, list the major vendor capabilities, ecosystem regions, Velorin components, and competitive patterns that should appear; but as a description / inventory, not as a fully-specified JSON scene graph
 
-The schema is illustrative; adapt as needed. Maintain: axes (positioning dimensions), regions (areas of the ecosystem), nodes (typed, sourced, described), edges (positioning relationships), annotations (anchored callouts), narrative arcs (guided traversals). Aim for 50 to 100 nodes total.
+Whoever builds the actual 3D scene later (CT, or a future agent, or Google tooling itself) will use your landscape summary, vision, and recommendations as their input. Don't pre-design what you can leave open for the renderer to interpret.
+
+If a structured representation flows naturally from your reasoning (a few region lists, a positioning matrix, a layered comparison in markdown) — include it as supporting material, not as the primary deliverable. The PRIMARY deliverable here is your seeing of the landscape as a 3D scene and your recommendation for how to render it.
+
+## Open-Ended Permission
+
+This prompt is a starting point, not a cage. **Think outside the box and outside this prompt.** If you see something the prompt doesn't ask about — an ecosystem player Velorin should be paying attention to but isn't, a non-AI domain whose architecture Velorin could borrow from, a recent paper or product launch that the existing internal docs haven't accounted for, a failure mode in the multi-vendor strategy that doesn't fit the framing — surface it. Treat the listed outputs as the floor, not the ceiling. Add sections, propose entirely different ways to look at the landscape, challenge the framing of the prompt itself if you think it's missing something. The Chairman values cross-domain pattern-matching that goes beyond the assigned target. Use that license.
 
 ## Constraints
 
@@ -173,8 +106,7 @@ The schema is illustrative; adapt as needed. Maintain: axes (positioning dimensi
 - Apply the Velorin Consensus Filter explicitly (Q1/Q2/Q3 spelled out, not implied)
 - Be honest about what Velorin's architecture cannot do (single-user; doesn't scale; depends on CT's pattern accumulation; observability concerns Trey's PersonaMaker research surfaced)
 - Do not include Velorin.v1.Archive/ content in the landscape comparison; it is historical
-- The 3D-presentation graph data must be valid JSON parseable by standard tools
-- Output all three deliverables in the same response, clearly separated by section headers
+- Output all three deliverables in the same response, clearly separated by section headers, and include any additional sections you generate from the open-ended permission above
 
 ## Tone
 
