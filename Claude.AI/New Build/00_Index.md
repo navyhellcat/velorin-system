@@ -1,9 +1,10 @@
 # Velorin V2 — Final Build Guide
-**Produced by: Jiang2 | Updated April 26, 2026**
-**Status: Authoritative. Reflects all locked decisions through Session 036.**
+**Produced by: Jiang2 | Finalized April 26, 2026 — FW-013 trigger**
+**Status: Authoritative. Reflects all locked decisions through Session 037.**
 
-This guide is what you hand to any agent when you're ready to build.
-Follow it in sequence. Every step is executable or clearly marked PENDING.
+**→ Start with `00_Vision.md`.** That is the front door — what Velorin IS, the two-part build process, where we are headed, and why. Read it before anything else.
+
+This index lists all Build Guide files. Everything else is navigable from `00_Vision.md`.
 
 ---
 
@@ -11,11 +12,12 @@ Follow it in sequence. Every step is executable or clearly marked PENDING.
 
 | File | Contents |
 |---|---|
+| `00_Vision.md` | **START HERE** — Vision, Process, Where Headed, Why |
 | `01_RepoAndEnvironment.md` | Day 0: Mac Studio setup, new repo, folder structure, MCP configuration |
-| `02_Architecture.md` | The 4-layer memory system — what goes where and why |
-| `03_BrainAndMath.md` | Neuron format, all locked Erdős math, PPR, E₈ crystals, CAP gate |
-| `04_AgentEcosystem.md` | Cardinal agents, conflict resolution, ATV, user personalization |
-| `05_InfrastructureAndTools.md` | MCPs, hooks, GPS system, ATV, Skills Registry, grammar management |
+| `02_Architecture.md` | The 4-layer memory system, CAP gate, JSD compression, skills architecture |
+| `03_BrainAndMath.md` | Neuron format, all locked Erdős math, PPR, E₈, contradiction_class taxonomy |
+| `04_AgentEcosystem.md` | Jiang, Alexander (Historian), Trey, Erdős, conflict resolution, Persona-Maker |
+| `05_InfrastructureAndTools.md` | Cowork integration, ARC-1/ARC-2, ATV, tool-routing, skills, grammar management |
 | `06_BuildSequence.md` | Executable step-by-step — Stage 0 through Stage 5 |
 | `07_OpenQuestions.md` | What still needs research, math, or a decision |
 
