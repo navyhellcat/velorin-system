@@ -677,6 +677,8 @@ All seven re-evals are locked. Three Re-Eval #6 research deliverables returned 2
 
 ## Decision 2 — Trey Verifier Benchmark Methodology Adoption Package
 
+**Locked 2026-04-26.** Option 1 (full stack adoption) + Phased Golden Dataset per Jiang2's Section B option. Adopt: JSONSchemaBench evaluation framework, XGrammar decoding engine, vllm-mlx Apple Silicon backend, VTPS as primary metric. Golden Dataset ships in two phases — Phase 1 = 100 items CT-curated (40 clean analytical / 40 high-complexity multi-domain / 20 edge cases), sufficient for verifier model selection. Phase 2 expands to 300 items at trigger of 500 real ATV-processed messages, using confirmed-valid production messages + newly-discovered edge cases. Seam: `golden_dataset_v{version}.json`. AI-assisted curation explicitly rejected per Trey's ISO/IEC 19795-1:2021 methodology constraint (would invalidate FRR measurement).
+
 **Summary:** Trey returned with concrete ecosystem-validated answers. The recommendation is to adopt JSONSchemaBench evaluation framework + XGrammar decoding engine + vllm-mlx Apple Silicon backend + VTPS as primary metric + 300-item Golden Dataset hand-curated by you. Each component is a separate decision but they form a coherent stack.
 
 **Options:**
@@ -689,6 +691,8 @@ All seven re-evals are locked. Three Re-Eval #6 research deliverables returned 2
 
 ## Decision 3 — Trey FSM Grammar Version Management Adoption Package
 
+**Locked 2026-04-26.** Option 4 (Minimum Viable) per Jiang2's recommendation, with Canary trigger reframed. Adopt now (Stage 1): Schema Registry (Git repository for IES grammar source; post-commit hook compiles to XGrammar artifact; SHA-256 hash = immutable identifier; agents reference grammar by hash, not by text), Property-Based Testing (Hypothesis library generates synthetic valid strings, runs through ATV verifier, confirms json.loads parses cleanly; runs on every grammar commit), Compiler-in-the-Loop AI review (deterministic XGrammar compilation feedback drives review; AI-as-watcher, not AI-judging-FSM-syntax). Build the seam interface at Stage 1: `apply_grammar(message, grammar_hash, shadow_hash=None)` — shadow_hash always None at Stage 1, populated at Stage 2 when Shadow Mode activates. Build-space placeholders deferred: (a) Differential Equivalence Checking + Shadow Mode at Stage 2, trigger = 500 historical ATV messages exist as comparison corpus; (b) Canary rollout REFRAMED — activates when Cowork begins routing real production traffic across multiple vendors (NOT a Stage-3 message-volume threshold; activates naturally with Mac Studio multi-vendor cowork operational state). The Cowork-operational-state reframing supersedes Jiang2's original "concurrent multi-agent session volume threshold TBD" trigger — eliminates the fuzzy-trigger discipline gap.
+
 **Summary:** Trey returned with a coherent multi-layer workflow: Schema Registry (Git + hash-addressed compiled artifacts) + Property-Based Testing (Hypothesis library) + Differential Equivalence Checking (against historical analytical-message corpus) + Compiler-in-the-Loop AI review (deterministic compilation feedback drives Jiang's approval) + Shadow Mode deployment + Canary rollout.
 
 **Options:**
@@ -700,6 +704,15 @@ All seven re-evals are locked. Three Re-Eval #6 research deliverables returned 2
 ---
 
 ## Decision 4 — Re-Eval #1 Parked Calibration Items
+
+**Locked 2026-04-26.** All four sub-decisions locked per Jiang2's recommendation, with one substantive expansion to 4d.
+
+- **4a:** Option (i) — accept provisional **1.0 agent / 1.2 CT-curated / 1.5 Erdős-verified**. Check-ins review after first 50 resolved Layer 1 contradictions.
+- **4b:** Option (ii) — runtime-configurable from day one with initial **ε = 0.05**. Check-ins review after first 50 Layer 2 activations.
+- **4c:** Option (i) — accept **round-cap of 3**, non-configurable at launch. Check-ins review after 25 Layer 3 escalations.
+- **4d:** Option (i) — adopt immediately, **expanded to 5 primary values**: `factual / empirical / architectural / taste / operational` (CT added "operational" for runbook-style / deployment / configuration / process contradictions). **Sub-categorization required — every primary value must support hierarchical sub-categories** so Layer 2 can route to separate AI agents, skill libraries, deterministic lookup tables, or external systems at a later time without schema rework. Schema: `contradiction_class: <primary>.<sub_category>` (e.g., `factual.scientific`, `operational.deployment`, `taste.aesthetic`); routing config separate from schema, mapping path-prefixes to destinations. Initial routing destinations: factual → Erdős, empirical → Trey, architectural → Jiang, taste → Layer 3 directly, operational → Jiang interim until a dedicated operational agent or skill-library router is wired.
+
+**STANDING REQUIREMENT (CT-locked, applies to all four sub-decisions):** Constant Check-ins on all four parameters with **provable data-driven calibration** must be built into the Build Guide. Not just FW entries — actual Check-ins schedule with: (a) the measurement program collecting the data, (b) the specific data points captured per event (override outcome for 4a, Layer 1/2 fire patterns for 4b, escalation timing for 4c, routing accuracy per contradiction_class path for 4d), (c) explicit threshold or criterion that fires recalibration, (d) verification path — how do we know calibration succeeded vs failed. This requirement extends to 4d's sub-category routing: routing accuracy per path is a measured Check-ins entry, not a one-time configuration.
 
 **Summary:** Four items from Re-Eval #1 were parked by you for revisit after all seven re-evals walked. That trigger is now satisfied. These are calibration decisions inside the three-layer conflict resolution mechanism.
 
@@ -727,6 +740,8 @@ All seven re-evals are locked. Three Re-Eval #6 research deliverables returned 2
 
 ## Decision 5 — FW-007 Formal Closure
 
+**Locked 2026-04-26.** Option 1 — formally close FW-007 (status: COMPLETE). Cyclic-region routing uses Causal Action Potential gate value (`Φ_causal > 1.0`) as the mathematically absolute trigger, routes to Re-Eval #1's Layer 3 mechanism. Build Guide cyclic-detection routing layer build-space placeholder (TAP build phase) marked RESOLVED with CAP gate as the mechanism — finalization pass picks up the inline language update.
+
 **Summary:** FW-007 (cyclic-topology routing decision revisit) was logged with the trigger "when Trey Non-Abelian audit returns or Erdős Theorem 3 proof returns." Both have returned. Re-Eval #5's Causal Action Potential delivery provides a structural answer (`Φ_causal > 1.0` is a mathematically absolute trigger-free cyclic detector). FW-007's status is currently "STRUCTURALLY RESOLVED 2026-04-25 — formal closure pending Chairman confirmation."
 
 **Options:**
@@ -736,6 +751,8 @@ All seven re-evals are locked. Three Re-Eval #6 research deliverables returned 2
 ---
 
 ## Decision 6 — FW-006 Back-Application Authorization
+
+**MOVED TO FW-013 finalization pass 2026-04-26.** CT directed that this decision is deferred to resolution during the v2 Build Plan finalization pass (FW-013) rather than locked now. Rationale: the Build Guide is FROZEN until FW-013 fires (per Jiang2's WholeSystemReimagining mandate Hard Constraint 1), so placement work cannot start earlier regardless of which option is chosen. The candidate map already exists in `Jiang2.BuildGuideUpdateSpec.Apr26.md` Section 3; placement happens during the finalization pass when Build Guide edits are authorized. Pending Item 14 in `Velorin.v2.BuildPlanFinalization.PendingItems.md` carries this work.
 
 **Summary:** FW-006 covers back-applying the Build Guide standing orders (forward references + build-space placeholders) to Re-Eval #1 + #2 Locked Outcomes, existing FW entries, prior synthesis docs, and the V2 Build Guide files. Trigger ("all 7 re-evals walked") is now satisfied.
 
@@ -748,6 +765,26 @@ All seven re-evals are locked. Three Re-Eval #6 research deliverables returned 2
 
 ## Decision 7 — FW-008 κ Check-ins Concrete Design
 
+**Locked 2026-04-26.** Option 3 (iterative engineering pattern) per Jiang2's recommendation, with the full κ_measurement_program spec adopted as initial design. FW-008 closes (status COMPLETE); spec lands in Build Guide compression event detector phase during finalization pass. Initial values: ground-truth target set 50 neurons (CT-curated, expansion to 200 at trigger Brain reaches 200 c-memory neurons OR 90 days); test compression mode synthetic-on-region-COPY (never live Brain), trigger β < 0.15 in any region, frequency at most once per fortnight per region; alert threshold > 10% mean Φ_causal reduction; action protocol halt-region-compression + flag-for-Jiang-architecture-review + recalibrate-analytic-prior-scaling; analytic formula role = structural prior only, geometric re-scale of empirical threshold when α changes; Check-ins review of 10% threshold and fortnight cadence after first 10 test compression events.
+
+**EXTENDED STANDING REQUIREMENT (CT-locked 2026-04-26 with Decision 7, applies retroactively to all Decision 4 calibration parameters AND Decision 7 κ measurement AND every future calibration measurement built into the system):** Each individual measurement that needs to be engineered must be designed with **target points distributed across multiple Build Guide phases**, NOT a single Check-Ins entry. Each target point must include:
+- **Reminder** that the measurement/calibration needs to be re-run (recurrence, not one-time)
+- **Decision-when-needed** — concrete trigger condition that forces an answer (event count, date, threshold crossing, or composite)
+- **Timing** — the cadence of recurrence (e.g., "every 50 contradictions resolved," "after 10 compression events," "quarterly")
+- **Test specification** — the specific calibration test to run at this point
+- **Logged deliverable for the future** — concrete artifact name + storage location (so it's findable, not lost across sessions)
+- **Hard date OR target** — either a calendar date or a measurable event-target (vague "later" or "as needed" fails the standing requirement)
+
+This extends the Decision 4 standing requirement (measurement program / data points captured / threshold criterion / verification path). Together they form the full Calibration Deliverables Discipline. Applies to:
+- 4a Source multipliers (1.0/1.2/1.5)
+- 4b Layer 1 ε threshold (0.05)
+- 4c Round-cap (3)
+- 4d contradiction_class taxonomy + sub-categories + per-path routing accuracy
+- 7 κ measurement program (10% threshold, fortnight cadence, β trigger, ground-truth target set sizing)
+- Any future calibration parameter introduced by Build Guide additions
+
+The Build Guide finalization pass (FW-013) must produce a Calibration Deliverables Registry — a section within the Check-Ins schedule that lists every calibration measurement with its full multi-point distribution, deliverable artifacts, and hard dates/targets. Vague Check-Ins entries fail the standing requirement and must be redesigned with concrete deliverables before they can land in the Build Guide.
+
 **Summary:** Erdős's KappaOperationalTightness delivery (Answer C) confirmed empirical κ Check-ins entry must be retained. Direction locked: measure actual retrieval-precision degradation by tracking how often `Φ_causal` drops below threshold for known ground-truth targets after test compression events. The CONCRETE entry design (measurement frequency, ground-truth target set construction, alert threshold, action protocol) is unfilled.
 
 **Options:**
@@ -758,6 +795,11 @@ All seven re-evals are locked. Three Re-Eval #6 research deliverables returned 2
 ---
 
 ## Decision 8 — Persona-Maker Observation (from #7)
+
+**Locked 2026-04-26.** Hybrid lock — Option 2 (FW-009 with composite trigger) PLUS precursor checkpoint PLUS Option 3 (Trey research request now, framed as landscape research not architectural commitment):
+- **FW-009 created** with composite revisit trigger: **500 c-memory neurons AND CT initiation** (AND gate prevents premature firing on either condition alone).
+- **Precursor checkpoint at 100 c-memory neurons** — soft watch entry surfacing the question "should persona-maker observation be elevated to active exploration?" for CT review. If CT says yes at the precursor, FW-009 work begins early; if no, continue waiting until the main composite trigger.
+- **Trey research request written** at `Bot.Trey/Research_Needed/Trey.ResearchRequest.PersonaMakerLandscape.md` — functional research on production-system persona generation patterns. Frames the landscape so the eventual exploration has reference material when FW-009 fires. NOT a commitment to architectural adoption; reference research only.
 
 **Summary:** During #7's lock you surfaced an observation that the Brain build itself may organically generate a persona representation (similar to how Jiang/Trey/Erdős personas are built from bootloaders + accumulated outputs). Currently noted in #7's Locked Outcomes as "future exploration, not active."
 

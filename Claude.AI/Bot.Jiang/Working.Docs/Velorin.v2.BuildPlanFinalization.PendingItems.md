@@ -178,13 +178,56 @@ After receiving Erdős's COMBINED solution to his 5 math gap theories, Jiang2 pr
 
 ---
 
-## Pending Item 15 — Check-Ins Schedule Design
+## Pending Item 15 — Check-Ins Schedule Design (with Provable Data-Driven Calibration — CT STANDING REQUIREMENT)
 
 **What it is:** The full vitality-important Check-Ins list spread across Build Guide phases. Per the locked feedback memory `feedback_checkins_construct.md`, recurring reviews aggregate into the Build-Guide-wide Check-Ins list (not standalone triggers). Candidate entries surfaced in `Jiang2.BuildGuideUpdateSpec.Apr26.md` Section 4. Jiang2 designs and places.
 
-**What needs to happen:** Take the candidate Check-Ins entries from BuildGuideUpdateSpec Section 4. Design the unified schedule (when each entry fires, what triggers it, what review subject, what action protocol). Place in the Build Guide as an explicit Check-Ins section per phase or as a single Build-Guide-wide schedule document.
+**STANDING REQUIREMENT (CT-locked 2026-04-26 with Decision 4 + EXTENDED with Decision 7):** Every Check-Ins entry must specify, in concrete and buildable form:
+
+**Decision 4 four-element specification** — what each entry contains:
+- (a) **Measurement program** — what process collects the data (program name, where it lives, what it observes)
+- (b) **Specific data points captured** — exact fields recorded per event, sufficient to reconstruct the calibration question
+- (c) **Threshold or criterion that fires recalibration** — measurable, not vague (e.g., "override accuracy drops below 70% across 50 contested cases" — not "if it seems off")
+- (d) **Verification path** — how we know recalibration succeeded vs failed; before/after metric comparison protocol
+
+**Decision 7 multi-point distribution extension** — how each measurement is structured across the Build Guide:
+- (e) **Target points distributed across multiple Build Guide phases**, NOT a single Check-Ins entry. Each calibration parameter has multiple checkpoint events along the build timeline (e.g., post-50-contradictions review, post-100-contradictions review, quarterly review thereafter), not just one.
+- (f) Per target point: a **reminder** that the measurement/calibration needs to be re-run (recurrence, not one-time)
+- (g) Per target point: **decision-when-needed** — concrete trigger forcing an answer (event count, date, threshold crossing, or composite)
+- (h) Per target point: **timing** — cadence of recurrence
+- (i) Per target point: **test specification** — the specific calibration test to run at this point
+- (j) Per target point: **logged deliverable for the future** — concrete artifact name + storage location, so it's findable not lost across sessions
+- (k) Per target point: **hard date OR target** — either a calendar date or a measurable event-target. Vague "later" or "as needed" FAILS the standing requirement.
+
+This requirement applies to every calibration measurement without exception, including: 4a source multipliers, 4b ε threshold, 4c round-cap, 4d contradiction_class taxonomy + per-path routing accuracy, 7 κ measurement program, and every future calibration parameter introduced by Build Guide additions.
+
+**Calibration Deliverables Registry** — the Build Guide finalization pass (FW-013) must produce this as a section within the Check-Ins schedule. Lists every calibration measurement with its full multi-point distribution, deliverable artifacts, and hard dates/targets. One canonical view of all in-flight calibration work, indexed by parameter and by target date.
+
+Vague Check-Ins entries fail the standing rule and must be redesigned with concrete elements (a) through (k) before they can land in the Build Guide.
+
+**What needs to happen:** Take the candidate Check-Ins entries from BuildGuideUpdateSpec Section 4 PLUS the four entries locked from Decision 4 (source multiplier review at 50 contradictions; ε threshold review at 50 Layer 2 activations; round-cap review at 25 Layer 3 escalations; contradiction_class routing accuracy per path) PLUS any others surfaced during finalization. Design the unified schedule with the four-element specification above for each entry. Place in the Build Guide as an explicit Check-Ins section per phase or as a single Build-Guide-wide schedule document.
 
 **Why deferred:** Substantive design work coupled to Build Guide structure. Finalization pass scope.
+
+---
+
+## Pending Item 16a — `contradiction_class` Taxonomy + Sub-Category Routing Architecture (CT-locked 2026-04-26)
+
+**What it is:** Decision 4d locked the `contradiction_class` tag with **five primary values** (`factual / empirical / architectural / taste / operational`) and a CT requirement that every primary value support **hierarchical sub-categories** for routing to separate AI agents, skill libraries, deterministic lookup tables, or external systems at a later time without schema rework.
+
+**What needs to happen:**
+1. **Schema specification** — Build Guide neuron YAML schema updated to: `contradiction_class: <primary>.<sub_category>` (e.g., `factual.scientific`, `operational.deployment`, `taste.aesthetic`). Primary value required at neuron creation; sub_category optional initially, populated as the routing taxonomy fills out.
+2. **Routing config — separate file** — routing destinations live in a separate config file (e.g., `Claude.AI/conflict_routing.yaml`), NOT hardcoded in Layer 2 code. Maps path-prefixes to destinations. Destinations can be: AI agent (Erdős, Trey, Jiang, future Cowork agents), skill library (deterministic table lookup), external system (specific MCP, NotebookLM corpus query), or queue (Layer 3 / Chairman review).
+3. **Initial routing config (Stage 1):**
+   - `factual.*` → Erdős
+   - `empirical.*` → Trey
+   - `architectural.*` → Jiang (analytical review)
+   - `taste.*` → Layer 3 directly (no LLM mediation; CT or named reviewer decides)
+   - `operational.*` → Jiang (interim) until a dedicated operational agent or skill-library router is wired
+4. **Extensibility test** — adding a new sub-category (e.g., `operational.deployment.kubernetes`) must NOT require schema rework. Only routing config addition.
+5. **Check-Ins entry — routing accuracy per path** (locked under Pending Item 15 standing requirement): measurement program collects routing outcomes per `<primary>.<sub_category>` path. Captures: routing decision, downstream resolution outcome, agent/skill that produced the resolution, time-to-resolve. Threshold: if routing-accuracy on any path drops below 70% over 50 contested cases, fires recalibration (taxonomy split, routing reconfiguration, or new destination wired). Verification path: before/after accuracy measurement on the same path.
+
+**Why deferred:** Build Guide is FROZEN. Schema + routing config + Check-Ins entry land together during the finalization pass.
 
 ---
 

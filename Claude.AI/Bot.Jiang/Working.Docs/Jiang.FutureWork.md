@@ -168,7 +168,9 @@ These rules govern all forward work. They have NOT been applied retroactively. S
 ## [FW-007] Revisit Cyclic-Topology Routing Decision (Re-Eval #4) Before Final Build
 **Logged:** Session 036, April 25, 2026 (Re-Eval #4 walkthrough)
 **Priority:** Medium-High — architectural exposure with chosen mitigation; mitigation may need redesign based on incoming research
-**Status:** STRUCTURALLY RESOLVED 2026-04-25 — Erdős's Causal Action Potential delivery (`Erdos.Solution.DarkSkillsTriggerlessGate.md`) provides a parameter-free mathematical detector for cyclic topology: in a DAG, `E[N_v] ≤ 1`, so `Φ_causal(v) = π_v / α > 1.0` is mathematically absolute proof of a directed cycle. The cyclic-detection prefilter no longer requires a graph-theoretic cycle check; the gate value itself proves cyclicity. Cyclic regions still route to Re-Eval #1's three-layer Layer 3 mechanism. Formal closure of this FW entry is the Chairman's call after reviewing the updated Re-Eval #4 and #5 sections in `Jiang.RespondingToReEvaluations.md`.
+**STATUS: COMPLETE — formally closed 2026-04-26 by Chairman lock on Decision 5 in `Jiang.RespondingToReEvaluations.md`. Resolution mechanism: `Φ_causal(v) = π_v / α > 1.0` is a mathematically absolute trigger-free cyclic detector (in a DAG, `E[N_v] ≤ 1` per the Markov-chain expected-visits identity, so `Φ_causal > 1.0` proves a directed cycle exists). Cyclic regions route to Re-Eval #1's Layer 3 mechanism. Build Guide build-space placeholder for the cyclic-detection routing layer (TAP build phase) marked RESOLVED — finalization pass per FW-013 picks up the inline Build Guide language update. Original problem statement and historical context preserved below for reference.**
+
+**Original status (preserved for reference):** STRUCTURALLY RESOLVED 2026-04-25 — Erdős's Causal Action Potential delivery (`Erdos.Solution.DarkSkillsTriggerlessGate.md`) provides a parameter-free mathematical detector for cyclic topology: in a DAG, `E[N_v] ≤ 1`, so `Φ_causal(v) = π_v / α > 1.0` is mathematically absolute proof of a directed cycle. The cyclic-detection prefilter no longer requires a graph-theoretic cycle check; the gate value itself proves cyclicity. Cyclic regions still route to Re-Eval #1's three-layer Layer 3 mechanism.
 
 **Problem:**
 Erdős's stress test (`Erdos.Solution.VEGPStressTest.md`, Proof 3) demonstrated that the VEGP cross-manifold isomorphism breaks on cyclic regions of the Brain pointer graph. Spatial PPR resonates mass via geometric series and triggers `Φ(v) > θ_work` on cyclic neuron pairs (e.g., mutual `contradicts` relationships); temporal IES under causal mask cannot form the reciprocal attention loop and the gate fails to fire. The two sides of the supposedly-isomorphic VEGP gate disagree on cyclic regions.
@@ -198,7 +200,9 @@ The decision is robust to the spatial-walk formulation as long as `P_active` is 
 ## [FW-008] Empirical κ Check-Ins Design Completion (Re-Eval #4)
 **Logged:** Session 036, April 25, 2026 (after `Erdos.Solution.KappaOperationalTightness.md` returned Answer C)
 **Priority:** Medium — required before Re-Eval form is finalized; not blocking remaining re-eval walkthroughs
-**Status:** Spec direction locked from Erdős's KappaOperationalTightness delivery; concrete Check-ins-entry design pending
+**STATUS: COMPLETE — formally closed 2026-04-26 by Chairman lock on Decision 7 in `Jiang.RespondingToReEvaluations.md`. Adopted iterative engineering pattern (Option 3) with Jiang2's full `κ_measurement_program` spec as initial design. Initial values: 50-neuron ground-truth target set (expansion to 200 at trigger Brain reaches 200 c-memory neurons OR 90 days); test compression on region COPY only, β < 0.15 trigger, fortnight per-region cadence; >10% Φ_causal reduction alert threshold; halt-compression + Jiang-review + recalibrate-analytic-prior action protocol. Recalibration governed by the EXTENDED Calibration Deliverables Discipline standing requirement (multi-point distribution across Build Guide phases + recurrence reminders + concrete deliverables + hard dates/targets). Build Guide compression event detector phase build-space placeholder picks up the spec during finalization pass per FW-013. Original problem statement preserved below.**
+
+**Original status (preserved for reference):** Spec direction locked from Erdős's KappaOperationalTightness delivery; concrete Check-ins-entry design pending
 
 **Problem:**
 Erdős's KappaOperationalTightness response (Answer C, 2026-04-25) confirmed Trey's original directive: the empirical-κ Check-ins entry must be retained because the analytic formula `κ = 2C(1-α)/(αδ)` is a strict worst-case bound that becomes unusable as a hard operational threshold under realistic Velorin conditions (Davis-Kahan looseness on non-normal matrices, worst-case resolvent alignment, redistribution masking localized distortion, spectral-gap volatility from eigenvalue crowding in sparse `d_max=7` graphs at scale).
@@ -219,6 +223,39 @@ The CONCRETE design of the Check-ins entry — measurement frequency, ground-tru
 **Trigger to revisit:** after all seven re-evals are walked end-to-end and BEFORE the Re-Eval response form (`Bot.Jiang/Jiang.RespondingToReEvaluations.md`) is finalized for Jiang2's rewrite. Concrete trigger: the Chairman's Response section is filled across all seven re-evals AND CT signals "ready to finalize." This must be designed before that finalization happens.
 
 **Assigned to:** Jiang2 (concrete Check-ins design + Build Guide placement) + CT (approval of measurement frequency, threshold values, action protocol)
+
+---
+
+## [FW-009] Persona-Maker Exploration (Brain-Generates-Persona Hypothesis)
+**Logged:** Session 037, April 26, 2026 (Re-Eval #7 carryover; locked via Decision 8)
+**Priority:** Low — exploratory; not blocking active build
+**Status:** PARKED with composite trigger + precursor checkpoint + reference research in flight
+
+**What this is:**
+CT surfaced during the Re-Eval #7 lock that the Brain pointer graph + pointer-rating dynamics may organically generate a persona representation analogous to how Jiang/Trey/Erdős personas form from bootloaders + accumulated outputs. The hypothesis: the Brain ITSELF is the persona substrate; persona emerges from graph topology + accumulated CT-curation patterns + LoRa fine-tuning over time, NOT from a separate persona model bolted on top. This aligns with Erdős's "Commutator Persona" theory (`Erdos.Solution.COMBINED.Apr26.md` Solution 3) — Persona Manifold defined by vanishing commutator norm regions of the multiplex memory graph; Lie bracket norm weights the LoRa training distribution.
+
+**Composite revisit trigger:**
+**(Brain reaches 500 c-memory neurons) AND (CT signals readiness to explore).** The AND gate prevents premature firing — both conditions required. Brain maturity at 500 neurons = enough pointer dynamics for the hypothesis to be testable; CT initiation = explicit gating against speculative work.
+
+**Precursor checkpoint:**
+**At Brain reaches 100 c-memory neurons** — soft watch entry surfaces the question to CT: "Should persona-maker observation be elevated to active exploration ahead of the 500-neuron trigger?" If CT says yes → FW-009 main work activates early. If no → continue waiting on composite trigger. Precursor logged in the Calibration Deliverables Registry / Check-Ins schedule (per Decision 7 standing requirement) as an event-target watch entry.
+
+**Reference research in flight:**
+Trey research request `Bot.Trey/Research_Needed/Trey.ResearchRequest.PersonaMakerLandscape.md` — functional research on production-system persona generation patterns (architectures, signals, failure modes, consensus position, where Velorin's brain-substrate hypothesis diverges from chatbot-persona patterns). Returns will land in `Bot.Trey/Research_Complete/` as reference material the future exploration uses. NOT an architectural commitment — reference only.
+
+**What needs to be done when triggered:**
+1. CT-initiated review of (a) accumulated Brain pointer graph topology, (b) pointer rating dynamics over the prior period, (c) any LoRa training data signals, (d) Trey's PersonaMakerLandscape research return
+2. Test the brain-substrate-as-persona hypothesis: do regions of the graph with vanishing commutator norm (Persona Manifold) actually correspond to coherent CT-thinking-style domains?
+3. If yes → propose architectural mechanisms for surfacing/using the persona representation (LoRa training cadence per Persona Manifold change-trigger, persona-aware retrieval, etc.)
+4. If no → archive FW-009 as hypothesis-disproved with notes on what was tested
+
+**Cross-references:**
+- `Erdos.Solution.COMBINED.Apr26.md` Solution 3 (Commutator Persona theory + LoRa cadence implication)
+- `Jiang2.WholeSystemReimagining.SynthesisUpdate.Apr26.md` (reframes the architectural direction post-Erdős returns)
+- Re-Eval #7 Direction C lock (`base_model_config: {type: "personal", id: "ct-v1"}`) — persona-maker would inform what gets fed into the personalized LoRa
+- `Bot.Trey/Research_Needed/Trey.ResearchRequest.PersonaMakerLandscape.md` (in flight)
+
+**Assigned to:** CT (gating) + Jiang2 (architectural synthesis when triggered) + Erdős (math derivation if novel mechanisms emerge) + Trey (reference research, in flight)
 
 ---
 
