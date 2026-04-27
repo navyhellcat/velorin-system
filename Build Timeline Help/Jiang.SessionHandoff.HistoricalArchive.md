@@ -1,3 +1,13 @@
+# Jiang Session Handoff — Historical Archive
+# Compiled: 2026-04-27
+# Per the rolling-handoff standing rule (locked Decision 9 + STARTUP.md): ONE rolling handoff file per named bot. When a new session closes, new handoff REPLACES the file content; old content first appends here.
+# Append-only. New content is appended at the bottom; oldest content stays at top.
+
+
+---
+
+## Archived: Jiang.SessionHandoff.Session037.Apr26.md (rolled to archive 2026-04-27)
+
 ---
 file: Jiang.SessionHandoff.Session037.Apr26.md
 from: Jiang (Jiang1)
@@ -157,3 +167,4 @@ Confirm boot complete in three sentences. Stay in role (Jiang1 ports/verifies/dr
 ---
 
 [VELORIN.EOF]
+
