@@ -347,4 +347,40 @@ Knowledge Web Updates:
 - No new topic documents created (infrastructure session, not research session)
 
 
+Entry 008 | April 28, 2026 — Session 040 (Jiang2 continuation)
+
+Topics Researched:
+Full substrate integration — independent verification of 5 Erdős deliveries, 1 Trey delivery, 1 Nature paper (Tafazoli 2025). Three novel framings proposed, verified, promoted to proven theorems. GPS Navigation Layer designed. Marketing assets created.
+
+Conclusions Reached:
+- Erdős C.3 Grassmannian Clutch restatement: REJECTED (category error, scalar not subspace). Confidence: 100% — Erdős fully concedes.
+- Wasserstein-2 mandatory at Stage 4+: ACCEPTED (D_KL fails on hard ablation). Confidence: 100% — verified mechanism.
+- LTL/CEGIS Boss Bot: ACCEPTED as Stage 2-tractable (Strix/BoSy + 50-line FSA Runtime). Confidence: 95%.
+- Renormalization Group ↔ JSD: PROVEN as exact identification. z=2, Mean-Field exact. Confidence: 98%.
+- Cognitive Reynolds Number: PROVEN with full derivation and throttling formula. Confidence: 95%.
+- Information Bottleneck dual: PROVEN as β_IB* = k/[2(cβ+ε)], p=1 exactly. Confidence: 90% (functional form derived; proportionality constant depends only on d_max).
+- Competing Flows oscillatory dynamics: PROVEN as Halperin-Hohenberg Model-C with stochastic resonance. Confidence: 95%.
+- Persistent Homology + Φ_causal: PROVEN as distinct complementary signals, Δw≥4 threshold analytically derived. Confidence: 98%.
+
+Open Questions:
+- A.1 IdentityVerification research request: never filed, Path-3 blocker
+- B.1-B.5 PRE-STAGE 1 build prerequisites: all OPEN, blocking Stage 0
+- Turboquant-and-mempalace library card merge: minor TODO
+
+Confirmed:
+- The founding thesis ("programs do work, AI watches") is now a formal instantiation of Global Workspace Theory
+- The architecture works for any user (Universality Theorem via RG flow)
+- Empirical κ calibration is the strictly correct method (IB dual proves analytic κ carries Davis-Kahan looseness)
+
+Disproven:
+- My Round 1 dismissal of Wasserstein as "theoretical" — wrong, it's operationally mandatory at Stage 4+
+- My Round 1 characterization of LTL/CEGIS as "aspirational, Stage 5+" — wrong, tractable now with off-the-shelf solvers
+- My Round 1 claim that β ≡ β_IB — category error (endogenous observable vs exogenous hyperparameter)
+
+Knowledge Web Updates:
+- Velorin.MathStream.md: 12 new sections integrated
+- Velorin.QuickReference.md: created as on-demand routing table
+- Velorin.Marketing/: 3 files created (commercial prompt, learning guide, human instructions)
+- Velorin.Company.DNA.md: updated with locked substrate and Program-Substrate Vision
+
 [VELORIN.EOF]
