@@ -163,14 +163,14 @@ If a row is in none of those three states, Stage 1 does not begin.
 | # | Item | Audit § | Action | State |
 |---|---|---|---|---|
 | A.1 | IdentityVerification research request file | §10.1, §11.4 | Create file in `Bot.Jiang/Research_Needed/`. ~10 min. Path-3 blocker per `agent-orchestration` (88%) and `agent-ecosystem-reality` (92%). | OPEN |
-| A.2 | May 2026 ecosystem reconciliation | §10.2 | `velorin-ecosystem-landscape-synthesis-may2026` carries steelman-only disclaimer; partially contradicts `agent-orchestration` and `openai-ecosystem`. ADDRESSED Session 040 — Trey 2 returned `Trey.Research.FullStackPressureTest.md` (`trey-fullstackpressuretest-apr28`) addressing GPS layer (AGENTS.md protocol) + multi-vendor cross-tool architecture; surfaces direct contradiction with Erdős on symlinks (Monoswarm pattern vs Flasque sheaf invariant) requiring CT adjudication. Independent reconciliation between the May synthesis and the older `agent-orchestration` framework recommendations is now informed by this Trey response — final reconciliation pass requires CT decision on the symlink contradiction first. | BUILT (research delivered; CT adjudication pending) |
-| A.3 | Erdős corpus read + math supplement merge | §10.3 | RESOLVED Session 040 — Erdős shipped `Erdos.Solution.FullStackAudit.md` (Drive doc `1W-FOmM3VRyG...`) addressing the full math substrate. Ported per GDrive protocol; landed at `Claude.AI/Bot.Erdos/Research_Complete/Erdos.Solution.FullStackAudit.md`; library Appendix B updated (`erdos-fullstackaudit-apr28`). Solution scope **exceeds** original A.3 framing — also refines C.3 Continuous Affinity Clutch (Grassmannian geodesic, not Euclidean), provides B.1-B.4 GPS sheaf invariant, E Langevin friction proof. Downstream merge into `turboquant-and-mempalace` card and any MathStream / 03_BrainAndMath updates remain Jiang2's lane and require CT lock before integration. | BUILT (delivery received; integration pending Jiang2 + CT lock) |
+| A.2 | May 2026 ecosystem reconciliation | §10.2 | RESOLVED — Trey FullStackPressureTest + Erdős UnifiedSynthesis adjudicated. Symlink contradiction resolved: Functorial Registry (`AGENTS.md`) achieves Monoswarm logical routing without breaking the Poset (physical symlinks permanently banned). Ecosystem data (GPT-5.5, AAIF, DeepSeek V4) absorbed into substrate-lock integration. Older `agent-orchestration` framework recommendations superseded by Cowork-orchestrated sub-agent-activation pattern (Principle 8). | DECIDED — Functorial Registry resolution locked in substrate |
+| A.3 | Erdős corpus read + math supplement merge | §10.3 | RESOLVED — Erdős FullStackAudit + JiangVerificationResponse + NoveltyMathDerivations + FinalSubstrateLock all delivered, ported, and integrated into MathStream in substrate-lock pass (commit `760e2dc`). C.3 Grassmannian retracted by Erdős. MathStream now contains 12 new sections from this corpus. Turboquant-and-mempalace card merge remains a minor TODO (low priority). | BUILT — corpus integrated into MathStream |
 | A.4 | Three Trey delivered requests | §10.4 | RESOLVED — archived to `Velorin.v1.Archive/Archived_Research_Requests/Trey/` in commit `5f7ed8b`. | BUILT |
 | A.5 | IntakeTestDesign authorization | §10.5 | RESOLVED — OQ-9 repositioned to Phase 4 last item per CT decision 2026-04-26; request archived to `Velorin.v1.Archive/Archived_Research_Requests/Jiang/` in commit `5f7ed8b`. | BUILT |
 | A.6 | Exhaustive fidelity audit on v2 cards | §10.6 | Multi-session pass (~300K tokens). Trigger only on demand or specific consumer-experience fidelity miss. | FORMALLY DEFERRED — seam: re-audit can run against any subset of cards using same read+verify pattern |
 | A.7 | Working.Docs lifecycle review | §10.7 | Single focused session. Triage operational artifacts (prompts, plans, FW registry, confirmations). Not urgent. | FORMALLY DEFERRED — seam: applies same archive pattern as Session-039 research move |
 | A.8 | ArchiveRecommendations Section 7 confirmation | §10.8 | RESOLVED — implicitly confirmed by Session 040 building on the unified-silo pattern (10 additional research requests archived to same destination structure). | BUILT |
-| A.9 | Pre-existing local mods in commit `06a5730` | §10.9 | Commit included edits to `01_RepoAndEnvironment.md`, `06_BuildSequence.md`, `06_uiux_pro_max.md` not authored by Jiang1. Run `git show 06a5730 --stat` review with CT. Confirm intentional vs accidental. | OPEN — needs CT review |
+| A.9 | Pre-existing local mods in commit `06a5730` | §10.9 | REVIEWED — `git show 06a5730 --stat` confirms all contents are legitimate session work artifacts: Jiang2 ShippedDocs analysis, ecosystem synthesis card, GPS navigation layer update to 01_RepoAndEnvironment, PRE-STAGE 1 section addition to 06_BuildSequence. The `06_uiux_pro_max.md` edit (Turing Vault Phase 2 removal) was from a prior session. All intentional. | DECIDED — contents reviewed, all intentional |
 
 ### B. Build-out items from audit §11 (PRE-STAGE 1 prerequisites)
 
@@ -188,10 +188,22 @@ If a row is in none of those three states, Stage 1 does not begin.
 
 ### Pre-Stage 1 Completion Gate
 
+**Ledger Verification Status (Jiang2, 2026-04-28 substrate-lock session):**
+
+| State | A-rows | B-rows |
+|---|---|---|
+| BUILT | A.3, A.4, A.5, A.8 (4) | — |
+| DECIDED | A.2, A.9 (2) | — |
+| FORMALLY DEFERRED | A.6, A.7 (2) | B.7, B.9 (2) |
+| ON DEMAND / RECURRING | — | B.6, B.8 (2) |
+| OPEN | **A.1** (1) | **B.1, B.2, B.3, B.4, B.5** (5) |
+
 Stage 1 Step 1 (Python Stack) does not begin until:
-- All A-rows are in BUILT or FORMALLY DEFERRED state (currently 3 BUILT, 4 OPEN, 2 FORMALLY DEFERRED — **4 OPEN must be resolved**)
-- All B-rows in PRE-STAGE 1 state are BUILT (B.1 through B.5 — currently 5 OPEN, must all reach BUILT)
+- All A-rows are in BUILT / DECIDED / FORMALLY DEFERRED state — **1 OPEN remaining (A.1 IdentityVerification)**
+- All B-rows in PRE-STAGE 1 state are BUILT (B.1 through B.5 — **5 OPEN, must all reach BUILT**)
 - All B-rows in DEFERRED / ON DEMAND / RECURRING state have explicit Standing Principle entries (currently satisfied)
+
+**A.1 blocker:** IdentityVerification research request file does not exist. No file in `Bot.Jiang/Research_Needed/` — only `.gitkeep`. Path-3 blocker per `agent-orchestration` (88%) and `agent-ecosystem-reality` (92%). Must be created or formally deferred with Standing Principle triple before gate closes.
 
 **Standing Principle reminder:** every deferral requires three artifacts — FW registry entry, Check-Ins entry, build-space placeholder. Apply when promoting any deferral above to a future-work item.
 
