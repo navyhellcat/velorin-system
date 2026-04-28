@@ -144,6 +144,59 @@ Execute the mapping above. Confirm `skill_dependencies.yaml` will use 4-type edg
 
 ---
 
+## PRE-STAGE 1 — Library Audit Resolution (BUILD/DECIDE BEFORE STAGE 1 BEGINS)
+
+The Research Library v2 build (Sessions 038-039) was followed by a top-to-bottom audit documenting what got built, what's outstanding, and what should be addressed before Stage 1 infrastructure work begins. **Read the audit doc in full and resolve every item in the tables below before starting Stage 1 Step 1.**
+
+**Audit reference (mandatory pre-read):** `Claude.AI/New Build/Library.Built.Research.Tools.OutsideTools.Explanation.Audit.md`
+
+Each row below maps to a section in the audit. Each row must reach one of three terminal states before Stage 1 Step 1 fires:
+
+- **BUILT** — implementation committed, verified, operational
+- **DECIDED** — explicit "skip / defer / drop" with documented rationale on the row
+- **FORMALLY DEFERRED** — Standing Principle deferral discipline applied (legitimate technical advantage AND specified architectural seam, both required)
+
+If a row is in none of those three states, Stage 1 does not begin.
+
+### A. Outstanding items from audit §10
+
+| # | Item | Audit § | Action | State |
+|---|---|---|---|---|
+| A.1 | IdentityVerification research request file | §10.1, §11.4 | Create file in `Bot.Jiang/Research_Needed/`. ~10 min. Path-3 blocker per `agent-orchestration` (88%) and `agent-ecosystem-reality` (92%). | OPEN |
+| A.2 | May 2026 ecosystem reconciliation | §10.2 | `velorin-ecosystem-landscape-synthesis-may2026` carries steelman-only disclaimer; partially contradicts `agent-orchestration` and `openai-ecosystem`. FullStackPressureTest (Trey 2) will surface this in Part C. Reconciliation pass after Trey returns. | DEFERRED — pending Trey return |
+| A.3 | Erdős corpus read + math supplement merge | §10.3 | Jiang2 task. Read Erdős corpus in chunks; merge any expander-graph / probabilistic-method / persistent-homology / Brockett-flow material into `turboquant-and-mempalace` card; complete `Jiang.TurboQuant.MemPalace.MathSupplement.md`. | OPEN — Jiang2 |
+| A.4 | Three Trey delivered requests | §10.4 | RESOLVED — archived to `Velorin.v1.Archive/Archived_Research_Requests/Trey/` in commit `5f7ed8b`. | BUILT |
+| A.5 | IntakeTestDesign authorization | §10.5 | RESOLVED — OQ-9 repositioned to Phase 4 last item per CT decision 2026-04-26; request archived to `Velorin.v1.Archive/Archived_Research_Requests/Jiang/` in commit `5f7ed8b`. | BUILT |
+| A.6 | Exhaustive fidelity audit on v2 cards | §10.6 | Multi-session pass (~300K tokens). Trigger only on demand or specific consumer-experience fidelity miss. | FORMALLY DEFERRED — seam: re-audit can run against any subset of cards using same read+verify pattern |
+| A.7 | Working.Docs lifecycle review | §10.7 | Single focused session. Triage operational artifacts (prompts, plans, FW registry, confirmations). Not urgent. | FORMALLY DEFERRED — seam: applies same archive pattern as Session-039 research move |
+| A.8 | ArchiveRecommendations Section 7 confirmation | §10.8 | RESOLVED — implicitly confirmed by Session 040 building on the unified-silo pattern (10 additional research requests archived to same destination structure). | BUILT |
+| A.9 | Pre-existing local mods in commit `06a5730` | §10.9 | Commit included edits to `01_RepoAndEnvironment.md`, `06_BuildSequence.md`, `06_uiux_pro_max.md` not authored by Jiang1. Run `git show 06a5730 --stat` review with CT. Confirm intentional vs accidental. | OPEN — needs CT review |
+
+### B. Build-out items from audit §11 (PRE-STAGE 1 prerequisites)
+
+| # | Item | Audit § | Action | Stage assignment |
+|---|---|---|---|---|
+| B.1 | Boot/close/handoff skill+hook pair | §11.3 | "Single most important Velorin recommendation" per `claude-code-skills-full-landscape` research card. Components: `/close-session` skill (`disable-model-invocation: true`) writing structured handoff to known path; `SessionEnd` hook commits + notifies; `SessionStart` (matcher: "startup") hook reads last handoff + injects to context; `SessionStart` (matcher: "compact") hook re-injects after compaction. Eliminates manual session coordination; every bot wakes up with full context. 1-2 sessions. | PRE-STAGE 1 |
+| B.2 | GPS lookup MCP tool | §11.1 | `library_lookup(topic_id) → card` MCP server (or Python script + Bash wrapper). Bots stop reading the 1,529-line library file and start querying by topic_id at point-of-need. Boot-token savings + lower context pressure. Few hours. Already implicit in `05_InfrastructureAndTools.md` MCP stack vision. | PRE-STAGE 1 |
+| B.3 | Library consumer instruction snippet | §11.8 | ~30-line block in each agent ReadMe / boot sequence: "To find research conclusions, retrieve by `topic_id` from `Velorin.ResearchLibrary.v2.md`. Read the card; follow `source` pointer only if insufficient." Plus example invocations. Without this, agents default to grep-for-keyword instead of GPS retrieval. ~30 min. | PRE-STAGE 1 |
+| B.4 | `fidelity:` field in card schema | §11.9 | Three values: `direct-read` (source read in full at card authoring) / `secondhand-vetted` (CT-vetted prior summary brought forward) / `inherited` (taken from upstream library without re-verification). Schema change + one-time backfill. Makes §9.1 limitation explicit per-card. | PRE-STAGE 1 |
+| B.5 | `decay-rate:` field in card schema | §11.10 | Four values: `slow` / `medium` / `fast` / `none`. Distinguishes durable Velorin-architecture cards from rapidly-aging-ecosystem cards. Same `date:` field, very different consumer trust. Schema change + one-time backfill. | PRE-STAGE 1 |
+| B.6 | Promote roster entries to full cards | §11.6 | Per-card ~20-30 min (read source + write card + update roster). | ON DEMAND — no PRE-STAGE 1 action |
+| B.7 | Convert each card to its own file (YAML frontmatter, one file per topic_id) | §11.2 | Per `brain-activation-architecture` Option D — would give Obsidian native backlinks + machine-parseable indexing. Medium effort. | FORMALLY DEFERRED — seam: B.2 GPS lookup tool first; conversion mechanical after that. Defer until GPS lookup proves the access pattern. |
+| B.8 | Quarterly fresh-signal check on May-2026 ecosystem card | §11.5 | Trey assignment, every 90 days. AI ecosystem moves fast. | RECURRING — first cycle starts after Stage 1 |
+| B.9 | Working.Docs audit | §11.7 | See A.7 above. | FORMALLY DEFERRED |
+
+### Pre-Stage 1 Completion Gate
+
+Stage 1 Step 1 (Python Stack) does not begin until:
+- All A-rows are in BUILT or FORMALLY DEFERRED state (currently 3 BUILT, 4 OPEN, 2 FORMALLY DEFERRED — **4 OPEN must be resolved**)
+- All B-rows in PRE-STAGE 1 state are BUILT (B.1 through B.5 — currently 5 OPEN, must all reach BUILT)
+- All B-rows in DEFERRED / ON DEMAND / RECURRING state have explicit Standing Principle entries (currently satisfied)
+
+**Standing Principle reminder:** every deferral requires three artifacts — FW registry entry, Check-Ins entry, build-space placeholder. Apply when promoting any deferral above to a future-work item.
+
+---
+
 ## Stage 1 — Core Cowork Infrastructure + First Brain Endpoint (Week 1)
 
 **Goal:** All specialist systems reachable from Cowork-Claude. ATV enforcing IES. Tool-routing program operational. First Brain PPR query working. Part 1 functional.

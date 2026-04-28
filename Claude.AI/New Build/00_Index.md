@@ -6,6 +6,8 @@
 
 **→ Before starting any build work: read the "DECISIONS TO BE MADE" section at the bottom of `06_BuildSequence.md`.** 5 ideas that need CT's decision before Stage 0 begins. Use community consensus, math, and research to evaluate. Lock them, then build.
 
+**→ Before Stage 1 begins: read `Library.Built.Research.Tools.OutsideTools.Explanation.Audit.md` in full and resolve every item in the PRE-STAGE 1 tables in `06_BuildSequence.md`.** Each item must reach BUILT, DECIDED, or FORMALLY DEFERRED state before Stage 1 Step 1 (Python Stack) fires. Stage 1 does not begin while any audit item is OPEN.
+
 This index lists all Build Guide files. Everything else is navigable from `00_Vision.md`.
 
 ---
@@ -20,8 +22,9 @@ This index lists all Build Guide files. Everything else is navigable from `00_Vi
 | `03_BrainAndMath.md` | Neuron format, all locked Erdős math, PPR, E₈, contradiction_class taxonomy |
 | `04_AgentEcosystem.md` | Jiang, Alexander (Historian), Trey, Erdős, conflict resolution, Persona-Maker |
 | `05_InfrastructureAndTools.md` | Cowork integration, ARC-1/ARC-2, ATV, tool-routing, skills, grammar management |
-| `06_BuildSequence.md` | Executable step-by-step — Stage 0 through Stage 5 |
+| `06_BuildSequence.md` | Executable step-by-step — Stage 0 → PRE-STAGE 1 → Stage 1 → Stage 5 |
 | `07_OpenQuestions.md` | What still needs research, math, or a decision |
+| `Library.Built.Research.Tools.OutsideTools.Explanation.Audit.md` | **PRE-STAGE 1 mandatory pre-read** — Audit of Research Library v2 build (Sessions 038-039); every §10/§11 item must be resolved per the PRE-STAGE 1 tables in `06_BuildSequence.md` before Stage 1 begins. |
 
 ---
 
