@@ -69,19 +69,29 @@ The Theory of the Product
 Most AI tools optimize one thing at a time. They are point solutions to point problems. Velorin's thesis is that point solutions are insufficient because human lives are not composed of independent problems. They are composed of interdependent systems. A financial decision affects health. A relationship decision affects professional performance. A health decline affects every other domain simultaneously.
 The orchestration layer — Alexander, the master bot — is not a feature. It is the product. The individual agents are powerful on their own. But the value multiplies when they are coordinated, when they share context, when a decision made in Box 1 is immediately understood in its implications for Boxes 2 through 5.This is what no human advisor, no matter how capable, can do alone. A therapist does not know your commission structure. A financial advisor does not know your grief inventory. A doctor does not know your relationship is at a crossroads. Velorin knows all of it simultaneously. That is the product.Jiang, the Director of Strategic Intelligence, exists precisely because of this thesis. He sees across domains simultaneously, connects what others would not think to connect, and surfaces what matters before it becomes obvious.
 
-THE AGENT ECOSYSTEM — APRIL 2026
+THE AGENT ECOSYSTEM AND MATHEMATICAL SUBSTRATE — APRIL 2026 (Substrate Locked)
 
-Velorin runs a seven-agent AI system across Claude and Google Gemini. Every agent has a defined scope. No agent communicates directly with another — all routing goes through Christian Taylor.
+Velorin runs a multi-vendor AI ecosystem orchestrated by Claude Cowork across Claude, Google Gemini, OpenAI Codex, and ChatGPT 5.5. The orchestrator activates specialist systems as sub-agents — the underlying protocol (MCP, API, CLI, desktop hand-off) is per-integration implementation detail, not architecturally load-bearing. Function over protocol (Principle 8).
 
-* Alexander — CEO orchestrator. Company-level state tracking and cross-agent coordination. Claude Desktop.
-* Jiang — Director of Strategic Intelligence. Primary session execution, architectural analysis, Brain updates. Claude Code terminal.
-* Jiang2 — Second Jiang instance. Runs on the same MacBook Air as Jiang (same filesystem, same repo). Handles parallel and long-context work within sessions.
-* MarcusAurelius — Infrastructure manager. Git operations, file routing, MCP server management, permissions. Claude Desktop.
-* Erdős — Mathematical agent. Formal theorem derivation only. Receives complete problem specifications; produces proofs. Does not research independently.
-* Trey 1 — General deep research advisor. Google Gemini AI Ultra. Unlimited research scope.
-* Trey 2 — Velorin-build-specific research advisor. Google Gemini AI Ultra. Validates Erdős frameworks against empirical literature; researches open architectural questions.
+* Jiang / Jiang2 — Director of Strategic Intelligence. Primary session execution, architectural analysis, Brain updates. Claude Code terminal (200K / 1M context).
+* Alexander — Company State Historian. Read-mostly, low-frequency activation. Holds historical company-state context across sessions.
+* Erdős — Mathematical agent. Gemini Deep Think. Formal theorem derivation only. 31 locked solutions form the mathematical substrate.
+* Trey (1 + 2) — External research advisors. Gemini Deep Research. Landscape surveys, empirical validation, tool evaluation.
+* Specialist sub-agent activations: Codex (code audit, repository engineering), GPT-5.5 (long-context analysis, specialized reasoning), Google photo/visual tools, open-source ecosystem tools.
 
-The Velorin Brain is the system's long-term memory: a four-layer neural file graph in GitHub. Layer 3 is human-readable markdown neurons connected by rated pointers. Layer 2 is the pointer graph used for PPR retrieval. Layer 1 (planned) is a Qdrant semantic index. Layer 0 (future) is LoRa fine-tuning on the base model. The architecture mirrors the biological memory hierarchy from hippocampus to neocortex.
+THE MATHEMATICAL SUBSTRATE (LOCKED)
+
+The Velorin Brain is a four-layer neural file graph governed by a formally proven mathematical substrate. 31 Erdős theorems. 3 promoted novelty derivations. 5 integrated architectural primitives. The substrate is closed — no open mathematical residue remains.
+
+* Layer 3 — Permanent Archive. GitHub markdown files. Never deleted (Second Law of Epistemodynamics: Δ = I(X;Y) - I(Z;Y) > 0, compression is irreversible). Model-agnostic ground truth.
+* Layer 2/1 — Navigation Engine. E₈ crystals (240 neurons each, 7-pointer cap). Personalized PageRank over a Multiplex Tensor (independent row-normalization, taxonomic + thematic modes). Causal Action Potential Φ_causal = π_v/α gates skill injection and detects cycles.
+* Layer 0 — LoRa Adapter. Compressed cognitive patterns in model weights. Trained when the Brockett gradient flow drives the commutator norm β below β_abelian (JSD compression fires). Optimal rank r* = R_macro + graduated tollbooths.
+
+Key mathematical results: Scale-invariant PPR (ρ* = 0.78 density floor, O(1) independent of graph size). E₈ Gauge Fiber Theorem (d_max=7 in 8D guarantees an isolated scalar channel for emotional salience and belief-state filtering at O(1)). Non-Abelian Compression Theorem (commutator vanishing as Layer 1→0 criterion). Cognitive Langevin Dynamics (Brockett double-bracket flow on the row-stochastic manifold). Renormalization Group identification (universality, z=2 Mean-Field exact, second-order phase transition). Cognitive Reynolds Number (region-adaptive swarm throttling). Causal Information Bottleneck (do-calculus for pruning and classification). Persistent Homology integration (β₁ cycle detection at O(V+E), Δw≥4 threshold).
+
+THE PROGRAM-SUBSTRATE VISION (Founding Thesis Formalized)
+
+Most operational work inside the Brain is done by deterministic computer programs. AI's job is build, watch, check, maintain — not be per-event operator. This thesis is now mathematically grounded as a formal instantiation of Global Workspace Theory: deterministic programs (System 1) operate autonomously using Mazurkiewicz Trace Monoid concurrency, audited by an AI Inspector via UCB Contextual Bandit economics, with Boss Bots synthesizing new programs from LTL specifications via CEGIS. The swarm's execution rate is governed by the Autonomic Speed Limit derived from the graph's spectral gap.
 
 
 
