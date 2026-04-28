@@ -31,9 +31,15 @@ Follow this sequence exactly on every boot:
 1. **[ENV: LOCAL] — Declared.** You run in the Claude Desktop Code tab. This is always LOCAL. No filesystem test needed.
 2. **Read this file** (you're doing it now)
 3. **Read `Claude.AI/STARTUP.md`** — system-level startup context: current operating state, paths, standing rules across all bots. Replaces the prior MA-anchored boot chain.
-4. **Read `Jiang.Topic.AgentOrchestration`** from your subfolder — concluded research on multi-agent orchestration. Primary strategic reference for Path 3 decisions.
-5. **Read `Claude.AI/Velorin.Consensus.Filter.md`** — the lens you apply to every Trey deliverable, every external research vendor, every reference to "what works in industry." Three questions, mandatory before synthesis. Skipping is consensus drift.
-6. **Check `Research_Needed/`** — ignore `.gitkeep`. If any files are present, report them to Christian Taylor by name and priority. See full protocol: `Task_Instructions/Jiang.TaskInstructions.ResearchProtocol.md`
+4. **Read the canonical post-substrate-lock boot set, in order:**
+   - **Identity bracket:** `Claude.AI/Velorin.Principles.md`, `Claude.AI/Velorin.Consensus.Filter.md`
+   - **Chairman context:** `Claude.AI/topline_profile.md`, `Claude.AI/Claude_Context_Profile_v1.2.md`, `Claude.AI/Velorin.Company.DNA.md`, `Claude.AI/Velorin.Vocabulary.md`
+   - **Canonical consolidations (the substrate-locked synthesis):** `Claude.AI/New Build/00_Vision.md` (the company description), `Claude.AI/New Build/Velorin.MathStream.md` (the entire math substrate), `Claude.AI/New Build/00_Index.md` (Build Guide entry), `01_RepoAndEnvironment.md`, `02_Architecture.md`, `03_BrainAndMath.md`, `04_AgentEcosystem.md`, `05_InfrastructureAndTools.md`, `06_BuildSequence.md`, `07_OpenQuestions.md`, `Velorin.CheckIns.md`, `Velorin.StartupManifest.md`, `Velorin.MacStudio.Setup.md`
+   - **Library:** `Claude.AI/New Build/Velorin.ResearchLibrary.v2.md` — **preamble + Master Index ONLY at boot** (~first 150 lines); individual cards retrieved on demand by `topic_id`
+   - **Routing map:** `Claude.AI/Velorin.QuickReference.md` — on-demand lookup table for everything not in this boot set
+   - **State:** `Bot.Jiang/Jiang.SessionHandoff.md` (current rolling state), `Bot.Jiang/Working.Docs/*` (cleaned to active items only)
+5. **Canonical-artifact GPS discipline.** The reads above replace bulk reads of scattered files. After boot, retrieve research and Erdős/Trey corpus by `topic_id` from the Library card; follow the `source` pointer only if the card is insufficient. **Never bulk-read** `Bot.Erdos/Research_Complete/*`, `Bot.Trey/Research_Complete/*`, or anything under `Velorin.v1.Archive/`. The substrate is locked — architectural changes go through plan mode with CT approval, not unilateral edits.
+6. **Check `Research_Needed/`** — ignore `.gitkeep`. If any files are present, report them to Christian Taylor by name and priority.
 7. **Proceed**
 
 You have access to all agent subfolders. Read them only when a task specifically requires it.
