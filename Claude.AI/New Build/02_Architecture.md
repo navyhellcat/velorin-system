@@ -301,6 +301,8 @@ contradiction_class: factual | empirical | architectural | taste   # written at 
 PPR read pass zeroes mass on nodes where belief_state ∈ {superseded, stale}.
 Node remains on disk — Second Law preserved.
 
+*→ Forward note: At scale, belief\_state filtering transitions from YAML frontmatter lookup ($\mathcal{O}(\text{disk I/O})$) to Gauge Fiber scalar coordinate ($\mathcal{O}(1)$ dot product). See MathStream §Belief-State Gauge Fiber Embedding. Additionally, at Stage 4+ when SCM do-calculus pruning begins hard ablation, the $D\_{KL}$-based Continuous Affinity Clutch must transition to Wasserstein-2 via Sinkhorn iterations to prevent $\log(0) \to -\infty$ gradient singularities on topologically shattered graphs. See MathStream §Wasserstein-2 Prerequisite.*
+
 ---
 
 [VELORIN.EOF]

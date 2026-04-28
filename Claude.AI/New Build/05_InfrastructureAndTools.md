@@ -268,6 +268,16 @@ Velorin also maintains a registry of pointers to external community skills (GitH
 
 ---
 
+## Causal Information Bottleneck and Autonomic Governance
+
+**CIB — Pruning and Classification:** The 2-pass relation classifier and all pruning programs MUST use the CIB Lagrangian: $\mathcal{L}\_{CIB} = I(X;T) - \beta\_{IB} \cdot I(T; do(Y))$. Counterfactual ablations (Pearl do-calculus) replace observational associations. $d\_{max}=7$ bounds local cost to ~2,400 ops per edge.
+
+**Region-Adaptive Reynolds Throttling:** Inspector Bandit caps swarm execution via $\nu\_{max}(U) = \gamma\_{actual} \cdot |V| / A$. Evaluate inside dense k-cores only. See MathStream §Cognitive Reynolds Number.
+
+**Persistent Homology $\beta\_1$ Telemetry (Stage 2):** $\mathcal{O}(V+E)$ spanning-forest filtration. Threshold $\Delta w \ge 4$ = load-bearing cycle → Layer 3 escalation.
+
+---
+
 ## Prompting Principles
 
 **Window Gravity (CARDINAL):** Context window is not the world. Continuous question: "Am I confident because I verified, or because the window felt full?" Match verification cost to stakes.

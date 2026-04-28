@@ -27,6 +27,7 @@ resolution_attempts: 0
 contradiction_class: factual
 skill_ref: null
 base_model_config: {type: "personal", id: "ct-v1"}
+lamport_ts: 0
 ---
 
 [One atomic self-contained claim. 10–15 lines max.]
@@ -64,6 +65,7 @@ base_model_config: {type: "personal", id: "ct-v1"}
 back to the exact page and paragraph in the source document.
 
 **belief_state:** Managed by post-commit hook — never by per-event LLM.
+*→ Forward note: At scale, belief\_state may be encoded as a Gauge Fiber scalar coordinate ($\mathcal{O}(1)$ filtering via dot product with $\mathbf{e}\_8$) rather than YAML frontmatter ($\mathcal{O}(\text{disk I/O})$). See MathStream §Belief-State Gauge Fiber Embedding.*
 - `active`: Current, well-evidenced, PPR-accessible
 - `contested`: Contradiction detected; PPR mass zeroed; Layer 1 tiebreaker or Layer 2 verification in progress
 - `resolved`: Contradiction addressed; prior versions preserved in version chain
@@ -95,6 +97,8 @@ Routing destinations live in `Claude.AI/conflict_routing.yaml` (separate from sc
 **skill_ref:** Path to a SKILL.md file. Only populated for `type: procedure` neurons that serve
 as Brain-to-Skills gateway nodes. NULL for all other neurons. PPR-invariant — does not appear
 in the linear system that determines π.
+
+**lamport_ts:** Logical vector clock. Incrementing integer at Stage 1 (simple write counter). At Stage 3+, the concurrent OS scheduler uses this field to construct sheaf restriction maps and enforce the Abelian Buffer Invariant for multi-writer consistency. Installing this field at Stage 1 costs nothing; omitting it makes the Stage 3 multi-writer retrofit prohibitively expensive ($\mathcal{O}(V^2)$ instead of $\mathcal{O}(V \log V)$).
 
 **base_model_config:** Deployment configuration. Training pipeline reads this at initialization.
 Direction C (Session 034 lock): `{type: "personal", id: "ct-v1"}`. Future expansion is a

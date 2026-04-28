@@ -310,7 +310,19 @@ Write `infrastructure/embed_neuron.py` and `infrastructure/ppr_retrieve.py` (wit
 
 Create `skills/skill_dependencies.yaml` with 4-type edge schema. Create first 2-3 pilot skills with typed artifact schemas and prerequisite edges.
 
-✅ **Stage 1 complete when:** Cowork-Claude can activate each specialist system and get work back; ATV enforcing IES on tagged analytical outputs; tool-routing program logging decisions; first Brain PPR query returning correct neurons; post-commit hook firing correctly.
+### Step 14 — Lamport Timestamp in Neuron YAML (Substrate Lock prerequisite)
+
+Every neuron written from Stage 1 onward MUST include `lamport_ts: 0` in its YAML frontmatter. At Stage 1, this is a simple incrementing integer (write counter). At Stage 3+, the concurrent scheduler uses it for sheaf restriction maps. Installing now prevents prohibitively expensive Stage 3 retrofit.
+
+### Step 15 — Bourgain Bootstrap Rule (Ingestion Pipeline Constraint)
+
+Zero-shot taxonomic pointer generation MUST use LLM logical classification (AST parsing, ontology lookup). Strictly avoid Euclidean cosine-similarity retrieval for hierarchical edges. Bourgain's Embedding Theorem guarantees exponential distortion when embedding hyperbolic hierarchies into flat Euclidean space — the nearest neighbors in Euclidean space systematically misrepresent deep taxonomic ancestry.
+
+### Step 16 — Persistent Homology Spanning-Forest Telemetry
+
+Deploy $\beta\_1$ (Betti-1) computation via spanning-forest filtration at $\mathcal{O}(V+E)$. Persistence threshold $\Delta w \ge 4$ pointer ratings = load-bearing semantic cycle → Layer 3 escalation. Combined with $\Phi\_{causal} > 1.0$: spectral instability warning + topological void isolation. Stage 2 telemetry — does not require the full Brain to be populated.
+
+✅ **Stage 1 complete when:** Cowork-Claude can activate each specialist system and get work back; ATV enforcing IES on tagged analytical outputs; tool-routing program logging decisions; first Brain PPR query returning correct neurons; post-commit hook firing correctly; Lamport timestamps in all neurons; Bourgain bootstrap rule enforced in ingestion.
 
 **"Brain not required to function at this point."** Part 1 is fully operational.
 
@@ -490,22 +502,22 @@ See `07_OpenQuestions.md` for formal OQ-9 status.
 
 ---
 
-## ⚠️ DECISIONS TO BE MADE (Jiang2 Novel Ideas — Not Yet Approved)
+## DECISIONS LOCKED (Jiang2 Novel Ideas — Resolved 2026-04-28, Substrate Lock)
 
-CT asked Jiang2 for further ideas. These were surfaced but NOT approved. Review and decide.
+All five ideas reviewed via Erdős FullStackAudit + Trey FullStackPressureTest + Erdős FinalSubstrateLock. Verdicts below.
 
-**IDEA 1 — Quick-Capture Layer (addresses Brain Dead Reckoning)**
-Brain only updates during Claude sessions. Between sessions CT reads, thinks, experiences — Brain stays behind. Three simple programs (<50 lines each) would close the gap: (a) voice folder watcher → MacWhisper → ingestion pipeline (CT drops voice memo, Brain gets it); (b) URL bookmarklet → ingestion queue; (c) email forward alias → ingestion pipeline. All use the existing ingestion pipeline — they're just new async intake channels. Would add alongside Stage 1 ingestion build. **CT decision needed: build yes/no.**
+**IDEA 1 — Quick-Capture Layer: ADOPTED with quarantine gate + Abelian Buffer Invariant.**
+Three async intake channels (voice watcher, URL bookmarklet, email forward) feed into a Quarantine/ directory. A scheduled parser converts raw input to the 15-line neuron format. Manual approval before Layer 3 entry. The Abelian Buffer Invariant (concurrent async channels must be orthogonalized via Gram-Schmidt before synchronous integration) prevents density violations. Build alongside Stage 1 ingestion pipeline.
 
-**IDEA 2 — IES Fire Rate as Commutator-Norm Proxy (Stage 1→3 bridge)**
-IES fire rate per topic domain is a passive signal for commutator norm magnitude. High IES firing on topic X = CT is still at the frontier of X (Frontier Manifold). Low firing = quasi-abelian for CT (Persona Manifold candidate). Adding `topic_domain: string` to the ATV per-message log turns Stage 1 ATV logs into early training data for Stage 3's Persona Manifold estimation — before the Brain has enough neurons for formal commutator computation. One field addition. **CT decision needed: add the field yes/no.**
+**IDEA 2 — IES Fire Rate as Commutator-Norm Proxy: ADOPTED with bias caveat.**
+Add `topic_domain: string` to ATV per-message log at Stage 1. The proxy $\hat{\beta} = c\sqrt{f\_{IES}}$ is negatively biased (Jensen's inequality) but asymptotically consistent at $\mathcal{O}(N^{-1/2})$. Usable when the structural commutator signal dominates noise: $\alpha\beta^2 \gg \text{Var}(\sigma^2)$. Seeds Stage 3 Persona Manifold estimation before formal commutator computation is feasible.
 
-**IDEA 3 — Two-Pass Relation Classification (ingestion pipeline improvement)**
-Current 9-class classification asks the LLM to handle easy (taxonomic) and hard (thematic sub-types) in one call. Better: Pass 1 = binary tax/them (~95-97% accurate, satisfies Multiplex Tensor routing); Pass 2 = thematic sub-type from 6 options (~85-90% accurate with few-shot). Cascading difficulty improves accuracy. **CT decision needed: adopt two-pass yes/no.**
+**IDEA 3 — Two-Pass Relation Classification: ADOPTED.**
+Crossover condition proven: two-pass dominates when $p\_2 > p\_{single}/p\_1$. Because the binary tax/them margin is highly separable, $p\_1 \to 1$, and the conditional 6-way entropy is lower than flat 9-way. Additionally, the CIB Lagrangian mandates that both passes use counterfactual ablations (Pearl do-calculus) rather than observational associations for pruning decisions. **Bourgain bootstrap rule:** zero-shot taxonomic pointer generation must use LLM logical classification (AST/ontology), strictly avoiding Euclidean cosine-similarity for hierarchical edges.
 
-**IDEA 4 (THEORY) — Gauge Fiber as belief_state geometry**
-Erdős proved d_max=7 in 8D creates a Gauge Fiber isolated from semantic topology (where H_E lives). Conjecture: belief_state could map to a scalar coordinate in this fiber (active=+1, contested=0, superseded=-1), making PPR routing filter O(1) per walk step vs O(disk I/O). At millions of neurons, significant. Erdős request filed at `Claude.AI/Bot.Erdos/Research_Needed/Erdos.ResearchRequest.GaugeFiberBeliefState.md`. **CT decision needed: keep the Erdős request in queue yes/no.**
+**IDEA 4 — Gauge Fiber as belief\_state geometry: ADOPTED — dual-verified.**
+The mapping $\phi(b) = b \cdot \mathbf{e}\_8$ preserves PPR invariance ($\mathbf{e}\_8 \perp \mathcal{M}\_{sem}$, so the projection commutes with the graph Laplacian). Belief-state filtering becomes $\mathcal{O}(1)$ per walk step via dot product. Precondition: $H\_E$ must map to the zero-section. Proven independently by Erdős (FullStackAudit A.4) and validated by Trey (FullStackPressureTest §2.4).
 
-**IDEA 5 (THEORY) — Persona-Maker personality guides from Brain statistics**
-Instead of manually authoring personality guides for Persona-Maker sub-agents, derive them from the quasi-abelian sub-graph pointer statistics for the target domain. High-affinity neurons = key concepts to emphasize; most-traversed edges = reasoning sequences to favor; boundary neurons = frontier concepts to treat carefully. Mathematically grounds personality in CT's actual cognitive structure. Erdős request filed at `Claude.AI/Bot.Erdos/Research_Needed/Erdos.ResearchRequest.PersonaMakerFromBrainStatistics.md`. **CT decision needed: keep the Erdős request in queue yes/no.**
+**IDEA 5 — Persona-Maker from Brain Statistics: ADOPTED — Dirichlet prior dominance proven.**
+Graph invariant statistics (boundary density, traversal weights) map to a Dirichlet prior $\pi\_G(\theta)$ on the Persona Manifold. Statistically derived prior dominates hand-authored heuristics when the empirical Fisher Information of the subgraph exceeds the precision matrix of human-authored guides: $\text{Tr}(\mathcal{I}(G)) > \text{Tr}(\text{Var}(\pi\_{hand})^{-1})$. Activates at FW-009 composite trigger (500 c-memory neurons + CT initiation).
 

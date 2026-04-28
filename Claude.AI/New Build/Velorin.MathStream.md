@@ -47,6 +47,14 @@ The calibration constant $\lambda$ starts at $1/\sigma^2$ where $\sigma^2$ is th
 
 Source: Erdos.ScaleAndIngestion.ViscoelasticResolution.md
 
+### Abelian Buffer Invariant (Async Ingestion)
+
+Asynchronous multi-channel ingestion (voice memos, URL bookmarklets, email forwarding) introduces temporal stochastic phase-noise to the Cognitive Langevin Dynamics. If concurrent writes $W\_i$ and $W\_j$ have overlapping semantic domains ($[W\_i, W\_j] \neq 0$), the interference drives a sub-martingale decay in graph density, perturbing $\rho^\ast$ downward.
+
+**Required invariant:** Concurrent async channels must be buffered into strictly orthogonal sub-manifolds $\langle W\_i, W\_j \rangle = 0$ (e.g., via Gram-Schmidt whitening) prior to the synchronous CT-driven integration tick. Engineering implementation: a Quarantine/ directory + scheduled parser + manual approval before Layer 3 entry.
+
+Source: Erdos.Solution.FullStackAudit.md (A.1)
+
 ---
 
 ## The Navigation Layer — Layer 2 and Layer 1
@@ -169,6 +177,12 @@ $$\delta(u \to v) = -\pi\_u \cdot \log(1 - \mathcal{A}(u \to v) \cdot R\_{eff}(u
 
 where $R\_{eff}$ is the directed effective resistance, computable in $\mathcal{O}(1)$ local time due to exponential decay in the 7-pointer bounded neighborhood.
 
+**C.3 EVALUATED AND REJECTED:** Erdős proposed restating the Clutch as a Grassmannian geodesic flow ($\exp(t[P\_{tax}, P\_{them}])$ via `scipy.linalg.expm`) under Tafazoli orthogonality. This was a category error — the Tafazoli orthogonality requirement applies to subspace-level interpolation (handled by the Multiplex Tensor's $\omega\_{tax}/\omega\_{them}$ convex combination), not to the Clutch's scalar edge-weight decay. The Clutch operates on a 1D axis; standard scalar interpolation is geometrically valid. Erdős formally concedes and retracts (Erdos.Solution.JiangVerificationResponse.md, R1).
+
+**[MATH FLAG] Wasserstein-2 Prerequisite at Stage 4+:** $D\_{KL}$ is safe for Stages 1-3 (soft decay, edges approach but never reach zero). At Stage 4+ when SCM do-calculus pruning begins, hard ablation can topologically shatter the graph, setting $P\_{PPR}(v|u) = 0$ for disconnected components. The $\mathcal{L}\_{LoRa\text{-}MSE}$ target evaluates to $\log(0) = -\infty$, the squared error evaluates to $\infty$, and backpropagation gradients register as `NaN`, permanently poisoning LoRa weights. **Hard ablation induces a $\log(0) \to -\infty$ singularity in point-wise MSE targets when graphs topologically shatter; Wasserstein-2 optimal transport strictly prevents gradient explosion by evaluating global mass flow, safely allocating zero mass to disconnected voids.** Transition to $W\_2$ via entropy-regularized Sinkhorn iterations is operationally mandatory before Stage 4 pruning activates.
+
+Source: Erdos.Solution.JiangVerificationResponse.md (R3), Erdos.Solution.FinalSubstrateLock.md (D4)
+
 Source: Erdos.ScaleAndIngestion.ViscoelasticResolution.md, Erdos.Unification.Stage3.md
 
 ### Monster Node Mitigation (Fisher Information Semantic Mirror)
@@ -257,6 +271,18 @@ By Rank-Nullity: 7 neighbor vectors span a subspace $S$ with $\dim(S) \le 7$. Th
 
 Source: Erdos.Solution.NonAbelianBrainDynamics.md (Proof 1)
 
+### Belief-State Gauge Fiber Embedding
+
+The E₈ Gauge Fiber guarantees at least one orthogonal scalar channel. The discrete belief state $b \in \{+1, 0, -1\}$ (active, contested, superseded) can be embedded isometrically by mapping $\phi(b) = b \cdot \mathbf{e}\_8$.
+
+**PPR Invariance:** Because $\mathbf{e}\_8 \perp \mathcal{M}\_{sem}$, the inner product evaluates as $\langle x + b\_x \mathbf{e}\_8, y + b\_y \mathbf{e}\_8 \rangle = \langle x, y \rangle\_{sem} + b\_x b\_y$. The projection operator onto the semantic space commutes with the graph Laplacian $\Delta\_G$. PPR random walks are absolutely invariant to this embedding.
+
+**Cost:** Belief-state filtering via fiber projection requires $\mathcal{O}(1)$ ALU operations (a single dot product) per walk step, decisively dominating the $\mathcal{O}(\text{latency})$ penalty of a disk-I/O metadata check.
+
+**Precondition:** The $H\_E$ field must map strictly to the zero-section of the bundle — its projection onto $\mathbf{e}\_8$ must be exactly $0$, ensuring $\mathcal{L}\_{\mathbf{e}\_8} H\_E = 0$. If both $H\_E$ and belief\_state require the fiber, the fiber's single dimension must be partitioned or the embedding dimension increased — this is an open design question for Stage 5.
+
+Source: Erdos.Solution.FullStackAudit.md (A.4), dual-verified by Trey.Research.FullStackPressureTest.md (§2.4)
+
 ### Non-Abelian Compression Theorem
 
 The optimal condition for Layer 1 → Layer 0 compression is commutator vanishing. A sub-region $\mathcal{U}$ can be coarse-grained with zero structural loss if and only if $P\_{tax}$ and $P\_{them}$ commute on $\mathcal{U}$.
@@ -307,6 +333,63 @@ The Brockett fixed points are commuting matrices. The flow drives $\beta \to 0$ 
 **Mastery can be un-mastered.** When CT learns a paradigm-breaking fact, new non-commuting edges spike the commutator norm and eject the region from the Persona Manifold. The trajectory is an open spiral, not a closed cycle.
 
 Source: Erdos.Solution.ThermodynamicCycleProof.md
+
+### Renormalization Group Flow on JSD Compression
+
+The Brockett flow → JSD compression pipeline is a Real-Space Renormalization Group flow. The explicit RG transformation $\mathcal{R} = \mathcal{D} \circ \mathcal{S}$ consists of: (1) **Decimation $\mathcal{D}$** — Kron Reduction (Schur complement) integrating out high-frequency episodic nodes; (2) **Rescaling $\mathcal{S}$** — JSD re-normalization projecting back onto the valid probability simplex to maintain $\rho^\ast = 0.78$.
+
+The running coupling constant is $\beta = \lVert [P\_{tax}, P\_{them}] \rVert\_F$. The flow drives $\beta \to \beta\_{abelian}$ (the infrared fixed point).
+
+**Operator categorization near the fixed point:**
+- *Irrelevant ($\lambda\_i < 0$):* M-flag metadata, microscopic textual embeddings, transient episodic edges. The LoRa forgets them.
+- *Relevant ($\lambda\_i > 0$):* Pearl SCM causal conflicts, authority\_tier, $H\_E$. These resist compression and define directed macro-structure.
+- *Marginal ($\lambda\_i = 0$):* 9-class relation structure, $d\_{max}=7$ cap, $\mathbf{e}\_8$ Gauge Fiber. Scale-invariant.
+
+**Universality Theorem:** In the deep compression limit, the macroscopic topology of the LoRa latent space depends strictly on the marginal and relevant symmetries and is rigorously independent of irrelevant microscopic content. Any two knowledge domains collapse into identical universality classes. **This is the productization prediction:** the architecture works identically for any user, not just CT.
+
+**Critical slowing down:** $\tau \sim |\beta - \beta\_{abelian}|^{-z}$ with $z = 2$. **Mean-Field Theory is exact** — Velorin's $d\_{max}=7$ cap creates an expander graph with effective spectral dimension $d\_{eff} \to \infty \gg d\_c = 4$, so no anomalous corrections exist ($\alpha\_c = 0$). The $\kappa$ telemetry monitor should use $d\tau/dt$ as a leading indicator of imminent Stage 5 compressibility.
+
+**Phase transition:** Second-order continuous. Order parameter $\Phi = \beta - \beta\_{abelian}$. No latent heat — the graph smoothly freezes into the LoRa representation without catastrophic memory loss at the boundary.
+
+Source: Erdos.Solution.NoveltyMathDerivations.md (Derivation 1), Erdos.Solution.FinalSubstrateLock.md (D1, D3)
+
+### Competing Flows and Oscillatory Dynamics (Halperin-Hohenberg Model-C)
+
+The Brain is subject to two competing flows: the dissipative Brockett flow ($\beta \to 0$) and the anti-dissipative Ignition Protocol (ingesting new non-commuting edges, driving $\beta$ up). The coupled SDEs:
+
+$$d\beta\_t = [-\gamma(\beta\_t - \beta\_{abelian}) + g S\_t] dt + \sigma\_\beta dW\_{1,t}$$
+
+$$dS\_t = [I(t) - \alpha S\_t \beta\_t] dt + \sigma\_S dW\_{2,t}$$
+
+where $S(t)$ is the density of unassimilated edges, $I(t)$ is the ingestion rate, $g$ is the non-commutative injection coefficient.
+
+Coupling a non-conserved order parameter ($\beta$) to a slow field ($S$) defines **Halperin-Hohenberg Model-C** universality. However, the expander dimension $d\_{eff} \to \infty$ makes Mean-Field Theory exact ($\alpha\_c = 0$), so $z\_{eff} = 2$ holds strictly.
+
+**Oscillatory steady states exist.** The Jacobian at steady state $(\beta^{st}, S^{st})$ has complex eigenvalues when $4g\alpha S^{st} > (\gamma - \alpha\beta^{st})^2$. Under continuous ingestion, the system undergoes an underdamped oscillatory approach (stable spiral) with stochastic resonance. Amplitude $\sim \sigma\_I\sqrt{g/\gamma}$, period $T = 4\pi/\sqrt{4g\alpha S^{st} - (\gamma - \alpha\beta^{st})^2}$.
+
+**$\kappa$ telemetry regime classification:** If $\beta(t)$ auto-correlation decays monotonically — compress immediately. If $\beta(t)$ exhibits damped sinusoidal zero-crossings — region is actively churning; $\kappa$ trigger must apply a low-pass filter over the derived period $T$ to avoid premature compression during transient oscillatory troughs.
+
+Source: Erdos.Solution.FinalSubstrateLock.md (D1)
+
+### Cognitive Reynolds Number
+
+The Autonomic Speed Limit (spectral gap throttle on program swarm rate) has a formal fluid dynamics derivation.
+
+**Relaxation time:** $\tau\_{relax} = 1/\gamma$ (inverse spectral gap $\gamma = \lambda\_2$ of Laplacian $\Delta\_U$).
+
+**Mutation time:** $\tau\_{mutation} = |V|/(\nu\_{swarm} \cdot A)$ where $\nu\_{swarm}$ = program execution rate, $A$ = average topological footprint.
+
+$$Re = \frac{\nu\_{swarm} \cdot A}{\gamma \cdot |V|}$$
+
+Below $Re\_{critical}$: laminar flow, programs commute (Mazurkiewicz Trace Monoid). Above: turbulence, cascading write conflicts.
+
+**Throttling formula (using $\gamma\_{actual}$ directly):** $\nu\_{max}(U) = \gamma\_{actual} \cdot |V| / A$. Using the actually computed spectral gap rather than the conservative Cheeger lower bound $h\_U^2/2$ gives a tighter throttle without losing safety. $\gamma$ is already computed for the commutator monitor.
+
+**Mazurkiewicz Trace Non-Interference Theorem:** For $Re < Re\_{critical}$, concurrent swarm execution forms a commutative Trace Monoid. Programs $p\_i, p\_j$ commute if and only if their topological supports are disjoint. Below the threshold, the shockwave of $p\_i$ completely dissipates across the Cheeger bottleneck before $p\_j$ executes.
+
+**Scale-free failure mode:** Super-hubs drive $\gamma \to 0$, $Re \to \infty$, over-throttling to zero. Constraint: evaluate Re inside dense $k$-cores only.
+
+Source: Erdos.Solution.NoveltyMathDerivations.md (Derivation 2)
 
 ---
 
@@ -462,19 +545,79 @@ Source: Erdos.Solution.COMBINED.Apr26.md (Solution 2)
 
 ---
 
+## The Program-Substrate
+
+CT's founding thesis — "programs do operational work, AI watches" — maps to a formal instantiation of **Global Workspace Theory** (Baars). The mathematical substrate consists of four interlocking systems:
+
+**Mazurkiewicz Trace Monoid (Concurrency):** The swarm's execution is modeled as a Trace Monoid. Programs $p\_i, p\_j$ commute ($p\_i p\_j = p\_j p\_i$) if and only if their topological supports are disjoint: $U\_i \cap U\_j = \emptyset$. The scheduler ensures concurrent writes belong to orthogonal partitions. Programs are deterministic morphisms executing in the dark.
+
+**UCB Contextual Bandit (Inspector Economics):** AI tokens are expensive; deterministic cycles are cheap. Programs emit cheap scalar telemetry (density variance, orphan count, Betti numbers). The AI Inspector uses an Upper Confidence Bound (UCB) policy, expending tokens to audit ONLY when epistemic surprise (Variational Free Energy $F$) breaches $\theta\_{audit}$. 99% of the graph remains dark and efficient.
+
+**LTL Reactive Synthesis (Boss Bots):** CT writes mathematical invariants (e.g., $\square(\rho \ge 0.78) \land \square\lozenge(\text{orphans} = 0)$). Off-the-shelf solvers (Strix, BoSy, Spectra) generate deterministic Finite State Automata (FSA) — transition function $\delta: S \times \Sigma\_{in} \to S$. A static ~50-line Python FSA Runtime wrapper executes them. Because the output is a bounded automaton, it is safe, verifiable, and deterministic. Tractable with existing tooling; deploy when failure-event volume justifies the runtime (Stage 3+ recommended; FSA Runtime infrastructure built at Stage 2).
+
+**Autonomic Speed Limit:** The total swarm mutation rate must be bounded by the spectral gap to maintain semantic coherence. See §Cognitive Reynolds Number above for the formal derivation. The Inspector Bandit functions as a Thermodynamic Governor, throttling execution frequency to guarantee $\dot{S}\_{total} \le 0$.
+
+**The GWT Analog:** System 1 (Autonomic) = the Swarm. Millions of deterministic programs operating locally on isolated open sets $U\_i$. System 2 (Conscious) = the AI Inspector/Boss Bot, possessing limited bandwidth but total global connectivity. A program "broadcasts" to the Global Workspace only when it encounters an unresolvable invariant violation. The AI focuses attention, synthesizes an LTL fix, and pushes the new program back into the swarm.
+
+Source: Erdos.Solution.UnifiedSynthesis.md (§5), Erdos.Solution.JiangVerificationResponse.md (R4)
+
+### Pearl SCM and the Causal Information Bottleneck (CIB)
+
+Current relation classification and pruning use observational probability $P(Y \mid X)$. Both taxonomic links (A is parent of B) and thematic links (A correlates with B) can exhibit high joint probability. If pruning relies on association, it risks catastrophic deletion: if $X$ and $Y$ merely co-occur via confounder $Z$, pruning $X$ is safe; if $X$ causes $Y$, pruning $X$ orphans $Y$.
+
+**The do-calculus upgrade:** Differentiate $P(Y \mid X)$ from $P(Y \mid do(X))$. A thematic/causal edge is identifiable when the Average Causal Effect is non-zero: $\text{ACE} = \mathbb{E}[Y \mid do(X=1)] - \mathbb{E}[Y \mid do(X=0)] > 0$.
+
+**Computational tractability:** With $d\_{max}=7$, local counterfactual ablation is $\mathcal{O}(7^k)$ per edge where $k \sim 4$, so ~2,400 operations per edge — microseconds on M4 Max. A full 5,000-neuron × 7-edge pruning pass completes under a second.
+
+**The Causal Information Bottleneck (CIB):** The standard IB Lagrangian $\mathcal{L}\_{IB} = I(X;T) - \beta\_{IB} \cdot I(T;Y)$ fails because Velorin's graph is non-stationary and non-Markovian under the autonomic swarm. The CIB replaces observational $Y$ with interventional $do(Y)$:
+
+$$\mathcal{L}\_{CIB} = I(X;T) - \beta\_{IB} \cdot I(T; do(Y))$$
+
+This formally mandates that the 2-pass classifier and Boss Bots use counterfactual ablations to maintain IB bounds.
+
+Source: Erdos.Solution.UnifiedSynthesis.md (§4), Erdos.Solution.NoveltyMathDerivations.md (§3.5)
+
+### IES Fire Rate as Commutator-Norm Proxy
+
+The IES fire rate $f\_{IES}$ is the discrete frequency of state-space jumps caused by non-commutative projections. The proxy estimator $\hat{\beta} = c\sqrt{f\_{IES}}$ relates fire rate to the commutator norm.
+
+**Bias:** By Jensen's Inequality, $\mathbb{E}[\sqrt{f\_{IES}}] < \sqrt{\mathbb{E}[f\_{IES}]}$. The proxy is strictly negatively biased for finite samples.
+
+**Consistency:** By the Strong Law of Large Numbers, $\hat{\beta}$ converges to the true $\beta$ at rate $\mathcal{O}(N^{-1/2})$.
+
+**Sufficient condition:** Operationally usable when the structural commutator signal dominates noise: $\alpha\beta^2 \gg \text{Var}(\sigma^2)$.
+
+Source: Erdos.Solution.FullStackAudit.md (A.2)
+
+### Information Bottleneck Dual
+
+The JSD compression pipeline is the Information Bottleneck in dual form. However, the commutator norm $\beta$ is NOT the Lagrange multiplier $\beta\_{IB}$ — $\beta$ is an endogenous observable; $\beta\_{IB}$ is an exogenous control hyperparameter. They are inversely dual:
+
+$$\beta\_{IB}^\ast = \frac{k}{2(c\beta + \epsilon)}$$
+
+**Power $p = 1$ exactly.** Derived from Rate-Distortion Theory + Robertson-Schrödinger Uncertainty + AM-GM bound. The constant $k/2c$ depends only on $d\_{max}=7$. The regularizer $\epsilon \sim 1/\sqrt{N}$ is the irreducible finite-size quantization floor — a real physical scale, not a numerical hack.
+
+The Davis-Kahan gap between the analytic $\kappa$ and the true IB optimum $\beta\_{IB}^\ast$ scales with the matrix departure from normality: $|\kappa - \beta\_{IB}^\ast| \le \mathcal{O}(\lVert PP^T - P^T P \rVert / \delta)$. **Empirical $\kappa$ calibration is the strictly correct method** — it natively finds the true IB Pareto frontier, bypassing the non-normal analytic gap.
+
+Source: Erdos.Solution.NoveltyMathDerivations.md (Derivation 3), Erdos.Solution.FinalSubstrateLock.md (D2)
+
+### $\Phi\_{causal}$ + Persistent Homology Integration
+
+$\Phi\_{causal} > 1.0$ (spectral radius / directed path amplification) and Betti-1 $\beta\_1 > 0$ (chordless topological holes) are DISTINCT signals. Counter-example: a dense 3-node causal clique has $\Phi\_{causal} > 1.0$ but $\beta\_1 = 0$ (filled triangle). Conversely, an undirected thematic ring can have $\beta\_1 > 0$ with $\Phi\_{causal} < 1.0$. Combined: $\Phi\_{causal}$ warns of instability; $\beta\_1$ isolates the exact logical void.
+
+**Persistence threshold:** $\Delta w \ge 4$ pointer ratings guarantees a load-bearing semantic contradiction requiring Layer 3 escalation. Analytically derived from the Erdős-Rényi background density — no empirical calibration needed.
+
+**Tractability:** $\mathcal{O}(V+E)$ via spanning-forest filtration on the 1-skeleton. **Stage 2 telemetry.**
+
+Source: Erdos.Solution.FinalSubstrateLock.md (D5)
+
+---
+
 ## Jiang2 Additions — For Discussion
 
-The following items are NOT locked architecture. They are observations, novel connections, and ideas that emerged from holding the full math corpus in context. Each requires Chairman review before any action.
+The following items remain under discussion and are NOT locked architecture. They are observations, novel connections, and ideas that emerged from holding the full math corpus in context. Each requires Chairman review before any action.
 
-### 1. Persistent Homology as Compression Detection Trigger
-
-From the shipped Erdős v2 audit doc. The existing architecture uses the commutator norm $\beta$ as the compression trigger (Brockett flow drives $\beta \to \beta\_{abelian}$, then JSD fires). Persistent homology offers a complementary detection mechanism: compute Betti numbers ($\beta\_0$ = connected components, $\beta\_1$ = cycles) across a filtration of the pointer graph. A sudden spike in $\beta\_1$ that dies quickly is topological noise. A persistent $\beta\_1$ feature is a load-bearing semantic cycle that should route to Layer 3 conflict resolution.
-
-The connection to existing architecture: this could sharpen the distinction between "noise the JSD should compress away" and "genuine structural cycles that $\Phi\_{causal} > 1.0$ detects." Currently both are handled post-hoc. Persistent homology could provide an earlier, continuous signal.
-
-**Recommendation:** Worth an Erdős problem spec IF CT wants to explore. Not blocking anything. The Brockett flow + $\Phi\_{causal}$ detector handles the operational case. This would be a refinement, not a replacement.
-
-### 2. Langevin Friction for Vendor API Reliability
+### 1. Langevin Friction for Vendor API Reliability
 
 From the shipped Erdős v2 audit doc. The ARC-2 tool-routing capability matrix $V$ is currently static (column-normalized at initialization, recalibrated via Check-Ins). A dynamic friction term could modulate $V$ column values based on observed API reliability: when a vendor's API fails or returns degraded results, its column values temporarily decrease via an exponential decay function, naturally routing tasks away from unreliable tools without removing them from the matrix.
 
@@ -482,7 +625,7 @@ The connection to existing architecture: this extends the Continuous Affinity Cl
 
 **Recommendation:** Worth incorporating into the ARC-2 design at Stage 1. The math is straightforward — multiply each $V\_{ij}$ by a reliability factor $r\_j(t) = 1 - \exp(-\text{success\_rate}\_j / \tau\_{rel})$. Does not require Erdős; this is engineering, not theorem-level work.
 
-### 3. The Surrender Protocol Question
+### 2. The Surrender Protocol Question
 
 The shipped Erdős doc raises a legitimate design question wrapped in a wrong framing. The question: when Part 2 activates (Brain-as-operator-guide), how does Claude's inference yield to the Brain's routing instructions? The doc frames this as a "prompt-level" problem, but the actual mechanism is simpler: the Brain's routing output becomes a structured input to the Cowork orchestration layer. Claude doesn't need to "surrender" — it receives the Brain's recommendation as context, the same way it currently receives any tool output. The Brain is a tool that returns routing recommendations. Claude integrates them.
 
@@ -490,7 +633,7 @@ The deeper question is: at what point does the Brain's recommendation override C
 
 **Recommendation:** Log as a Stage 5 design question. Not worth specifying now — the Part 1 "Claude reasons about which tool to call" pattern works until the Brain has enough accumulated knowledge to outperform per-session reasoning. The crossover point is empirical.
 
-### 4. The Graph Fourier Connection to H\_E Measurement
+### 3. The Graph Fourier Connection to H\_E Measurement
 
 Erdős's Future Theory doc (Thermodynamics of Epistemological Time, Q4) derives that high-frequency Graph Fourier components (episodic details) decay exponentially faster than low-frequency components (emotional valence) under the Graph Heat Equation. This has a direct operational implication for the H\_E passive inference measurement program (Stage 4): if a neuron is being queried frequently but the queries are reconstructing the same emotional signature without recovering episodic details, that pattern IS the H\_E signal. The neuron has lost its high-frequency content but retained its fundamental eigenvector — the raw affective signature.
 
@@ -498,7 +641,7 @@ This connects H\_E measurement to observable query patterns: when CT queries a t
 
 **Recommendation:** Worth noting for the H\_E measurement program design at Stage 4. Not currently actionable.
 
-### 5. The Column-Normalization Principle Generalizes
+### 4. The Column-Normalization Principle Generalizes
 
 Erdős proved that the tool-routing matrix $V$ requires column-normalization (not row) because row-normalizing enforces a zero-sum capability budget. This principle generalizes: any bipartite scoring matrix where entities (rows) are rated across capabilities (columns) should be column-normalized if capabilities are independent dimensions. Row-normalization is correct only for transition matrices where probability mass must be conserved (Markov chains). This distinction is load-bearing for any future scoring matrix the architecture introduces — the contradiction\_class routing config, the H\_E signal weight matrix, any calibration parameter matrix.
 
