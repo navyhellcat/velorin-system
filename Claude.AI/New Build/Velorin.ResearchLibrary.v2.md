@@ -130,6 +130,7 @@ A single consolidated reference of every standing research finding in the Velori
 | claude-code-skills-full-landscape | tooling | STANDING | 0.88 | 2026-04-05 | STANDING |
 | velorin-ecosystem-landscape-synthesis-may2026 | ecosystem-industry | STANDING | 0.85 | 2026-05 | STANDING |
 | brain-analysis-mar30-folder-index | n/a | ARCHIVE | n/a | 2026-03-30 | ARCHIVE |
+| trey-fullstackpressuretest-apr28 | agent-architecture | STANDING | 0.88 | 2026-04-28 | STANDING |
 | (Erdős math 27 entries — was 26; +Erdos.Solution.FullStackAudit Session 040) | math-foundations | INDEX-ONLY | locked | 2026 (sessions 022-040) | see Appendix B |
 <!-- INDEX_ROWS_ABOVE -->
 
@@ -212,6 +213,37 @@ Source: `Velorin.v1.Archive/Research/Bot.Jiang.Working.Docs.Assessments/Jiang.Br
 
 ### 3.3 agent-architecture
 <!-- DOMAIN_agent-architecture -->
+
+#### topic_id: trey-fullstackpressuretest-apr28
+status: STANDING
+confidence: 0.88
+date: 2026-04-28
+primary_domain: agent-architecture
+secondary_domains: [tooling, math-foundations, brain-architecture, cognitive-behavioral, infrastructure]
+source: `Claude.AI/Bot.Trey/Research_Complete/Trey.Research.FullStackPressureTest.md`
+related: [erdos-fullstackaudit-apr28, agent-orchestration, agent-ecosystem-reality, openclaw-deep-dive, claude-code-skills-full-landscape, velorin-ecosystem-landscape-synthesis-may2026, window-gravity]
+build_guide_refs: [PRE-STAGE 1 audit gate (06_BuildSequence.md), GPS Navigation Layer (01_RepoAndEnvironment.md Step 5), Multiplex Tensor (02_Architecture.md), Persona-Maker (FW-009)]
+recommendation: STANDING — pair with `erdos-fullstackaudit-apr28` for the full pressure-test pair (empirical + formal)
+fidelity: direct-read
+
+##### Summary
+Trey 2 Discovery-Mode response to FullStackPressureTest prompt. Five Decisions all reach verdicts with confidence labels (Quick-Capture: Adopt-with-modification 92%; IES Proxy: Partially-Supported 78%; Two-Pass: Adopt 94%; Gauge Fiber: Adopt 96%; Persona-Maker: Adopt 85%). GPS Layer resolved via **AGENTS.md protocol** as the cross-vendor industry standard, with concrete resolutions to all 5 open naming decisions (platform-grouped agent folders, bare names, root-level Brain, split Layer 0 docs, by-topic research). Tafazoli 2025 integration produces 3 concrete recommendations including the strong **Halt Domain-Specific Embedding Models** call (95% — eliminate redundant embeddings, single shared embedding space). Part D surfaces 12 lateral disciplines (sheaf theory, non-equilibrium statistical mechanics, information geometry, algebraic statistics, tropical geometry, optimal transport, tensor networks, differential privacy, causal inference / SCM, free energy / active inference, persistent homology, quantum-inspired computing) each with smallest-test + production-maturity assessment. Three new Erdős problem specs filed: (1) Sheaf-Theoretic Memory Synchronization for parallel agent commits, (2) Thermodynamic Cost of Synaptic Pruning, (3) Wasserstein Geodesic Shift for Model Migration.
+
+##### Key Findings
+- **AGENTS.md as universal cross-vendor manifest** — replaces CLAUDE.md as the GPS contract; survives vendor churn (Llama-5, GPT-5.5, DeepSeek). Without it, future-vendor introduction triggers immediate Window Gravity hallucination of repo state.
+- **Quarantine + Custodian gate** required before Layer 3 promotion — direct auto-ingestion violates ρ* = 0.78 density floor. Stateless cloud worker listener → physically isolated `Quarantine/` directory → scheduled Custodian agent parses to atomic neuron format → manual approval (Jiang or MA) for Layer 3 promotion.
+- **Dynamic Suppression Masks for E₈ + PPR** (Tafazoli 2025 implication) — binary orthogonal masks zero out irrelevant crystals during retrieval; querying "Professional" must suppress "Relationships" crystal unless explicit bridge pointer is invoked. Refines current uniform-traversal PPR.
+- **Single shared embedding space (Tafazoli)** — strongest architectural call in the doc (95%). Halt domain-specific embedding models entirely; rely on a single Layer-3 shared embedding space matching the shared neural subspaces observed in macaques; extract context via linear task matrices applied to the shared space.
+- **Persona-Maker via topology** — derive temperature, top-p, system prompt parameters from Brain region's Betti numbers and quasi-abelian densities. Quasi-abelian region → procedural persona (low temp/top-p); non-abelian region → exploratory persona.
+- **Symlinks tension with Erdős** — Trey cites "Monoswarm" pattern (.ai submodule + symlinks for vendor configs) as proven-in-practice. Erdős's `erdos-fullstackaudit-apr28` proves symlinks break the Flasque sheaf invariant (Poset violation). **Cross-tool architectural contradiction — CT adjudication required.**
+- **Three new Erdős problem specs** — Sheaf sync, Thermodynamic pruning, Wasserstein migration. All filed in §5.3 of the source document.
+- 12 lateral disciplines surveyed with smallest-test + production-maturity. New ones not in Erdős's response: Causal Inference (Pearl/SCM with do-calculus), Differential Privacy, Quantum-Inspired Computing, Algebraic Statistics, Tensor Networks.
+
+##### Why It Matters Now
+This is the empirical/landscape companion to Erdős's formal `erdos-fullstackaudit-apr28`. Together they constitute the full pressure-test pair on the v2 architecture before Stage 1 begins. Several findings either confirm Erdős's results (A.4 Gauge Fiber, A.5 Persona-Maker, Multiplex Tensor extension) or surface contradictions that need adjudication (symlinks). Build-Guide-impacting recommendations: AGENTS.md protocol replaces CLAUDE.md as primary GPS contract; Quarantine layer required before Stage 1 ingestion pipeline; Dynamic Suppression Masks must be designed into PPR retrieval; embedding model strategy needs single-shared-space lock before Stage 5 LoRa work. Carries 1 lossy artifact: img008 marked `[MANUAL_REVIEW: img008]` due to OCR producing malformed `\lVert\lVert\lVert` (context: scalar proxy for the commutator norm — likely $\lVert [P_{tax}, P_{them}] \rVert_F$).
+
+##### Pointer
+Source: `Claude.AI/Bot.Trey/Research_Complete/Trey.Research.FullStackPressureTest.md`. Read source for the full 5-decision verdict tables with confidence labels, the GPS naming-decision resolution table, the full 12-discipline lateral mathematics survey with smallest-tests, the 3 Erdős problem specs in formal form, and the 3 cross-cutting flags. 1 figure preserved as image at `images/Trey.Research.FullStackPressureTest/img019.png`.
 
 #### topic_id: trey-multi-model-orchestration
 status: STANDING
