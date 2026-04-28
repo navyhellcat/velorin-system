@@ -91,7 +91,11 @@ git clone https://github.com/navyhellcat/velorin-system.git /Users/lbhunt/Deskto
 cd /Users/lbhunt/Desktop/velorin-system
 ```
 
-### Step 4 — Folder Structure
+### Step 4 — GPS Navigation Layer + Folder Structure
+
+**Design the GPS Navigation Layer BEFORE creating folders.** The full spec is in `01_RepoAndEnvironment.md` Step 5. The folder structure must implement the three GPS properties: discoverable by convention, layered progressive disclosure (Layer 0 universal → Layer 1 agent home → Layer 2 agent workspace), and portable without editing. Open naming decisions (platform-grouped vs flat agents, dot vs bare names, Layer 0 doc set, research organization) are resolved here. Commission Trey research on multi-agent repo navigation patterns if needed — apply Consensus Filter before adopting any pattern.
+
+Create the folder structure only after the naming conventions are locked.
 
 ```bash
 mkdir -p Velorin.Welcome

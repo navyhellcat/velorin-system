@@ -108,15 +108,6 @@ The Tier 0 adoption items that have been deferred are not all deferrable for the
 
 ---
 
-### G7 — Turing Vault Phase 2 architecture has been designed but not built
-**Source:** `Bot.Replit/Turing_Vault.Phase2.Architecture.md`
-
-The Phase 2 architecture (all difficulty levels free, IQ Vault as the single paywall) was designed in March but marked "NOT STARTED." The design is complete. The YouTube strategy document (April 1) adds a content channel monetization path. Affiliate marketing setup is in progress (Session 016). None of the Phase 2 build work has started.
-
-**Current Turing Vault state:** Live product with working game engine, corpus, scoring, admin panel. Revenue infrastructure (Stripe webhooks, GA4, email capture) not yet installed. Phase 2 redesign not started. YouTube channel not created.
-
----
-
 ## SECTION 2 — WHAT CONFLICTS WITH OR REVISES PREVIOUS CONCLUSIONS
 
 ### Revision 1 — The Jiang vs Trey architecture discrepancy is not a conflict. It's three layers of the same stack.
@@ -283,25 +274,14 @@ This is separate from the FollowBench ceiling problem (too many constraints, pro
 
 ---
 
-### F6 — The Turing Vault's verbal fluency thesis is genuinely novel and underused
-**Source:** `Bot.Replit/TuringVault_ResultsSystem_v2.md`
-
-Jiang produced the verbal fluency theoretical backbone for the results page in March. It establishes that the Turing Vault score is a proxy for a cluster of cognitive capabilities that determine AI-era effectiveness. The connection: verbal discrimination → abstract reasoning → creative recombination → non-linear thinking → AI tool effectiveness.
-
-This thesis has never been prominently placed in the product. The current results page has score bands and risk labels but doesn't explain WHY the score predicts AI outcomes. The thesis is the product's intellectual defensibility.
-
-**Separate from Velorin strategy:** The Turing Vault as a product has a clear hypothesis about the user problem (verbal fluency gap as AI displacement risk factor) and a clear measurement mechanism (the test). The monetization plan (adversarial paywall, data sales, API) follows from this. Phase 2 architecture (free difficulty tiers, IQ Vault paywall) implements the thesis correctly.
-
----
-
 ### F7 — The Camfil AI Platform is not just an idea — it has a v0.1 architecture
 **Source:** `Bot.Alexander/Camfil_AI_Platform_Architecture_v0.1.md`
 
-The Camfil AI Platform has a complete five-layer architecture (from Session 001 or 002 based on file location in Alexander's folder). This is a third product alongside Velorin and Turing Vault. The architecture covers: pricing agents, customer intelligence, follow-up management, quote generation, pre-call briefs, meeting/call review, operations visibility.
+The Camfil AI Platform has a complete five-layer architecture (from Session 001 or 002 based on file location in Alexander's folder). This is a second product alongside Velorin. The architecture covers: pricing agents, customer intelligence, follow-up management, quote generation, pre-call briefs, meeting/call review, operations visibility.
 
 CT is currently building this for his own Camfil sales work. The scope is clear. It maps to Box 1 (Professional/Income). It is distinct from Velorin.
 
-**CT is managing three products (Velorin, Turing Vault, Camfil AI Platform) plus a full-time sales job.** The Session 016 Camfil Agents idea would add a fourth stream. This is load-bearing context for why adoption memos gather dust and timelines slip.
+**CT is managing two products (Velorin, Camfil AI Platform) plus a full-time sales job.** The Session 016 Camfil Agents idea would add a third stream. This is load-bearing context for why adoption memos gather dust and timelines slip.
 
 ---
 

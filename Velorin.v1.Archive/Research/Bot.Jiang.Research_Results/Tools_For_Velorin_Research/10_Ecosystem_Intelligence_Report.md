@@ -19,7 +19,7 @@ Every Velorin bot operates inside a closed loop. When faced with a build decisio
 | Cowork Scheduled Tasks | Available since Feb 24. EndOfDay protocol automation. Morning briefs. Weekly pipeline reviews. No custom build required. Jiang flagged it at 78% confidence. No bot followed up. |
 | Agent Teams | Feb 2026. Multiple Claude Code instances collaborate on shared task lists with direct inter-agent communication. This is Path 3. It already exists. Anthropic built a 100k-line C compiler with 16 agents using it. |
 | Connectors | One-click integrations: Google Drive, Gmail, Slack, Salesforce, Asana, Box, Figma, Canva. Custom MCP connectors addable via URL. The Drive connector should have been evaluated before the custom MCP build. |
-| UI/UX Pro Max | 49.7k stars. Auto-generates design systems. 50+ styles, 161 palettes, 57 font pairings. Turing Vault UI was built without it. |
+| UI/UX Pro Max | 49.7k stars. Auto-generates design systems. 50+ styles, 161 palettes, 57 font pairings. |
 | Obsidian Skills | Official agent skills by Obsidian CEO. Teaches Claude Code to read/write Obsidian formats natively. MCP server available. The knowledge base infrastructure Velorin needs. |
 | Obsidian Vault | Local-first .md knowledge base. No boot protocol needed. No Drive fetch failures. No token cost on reads. Claude Code reads files directly. Thousands of builders using this exact pattern for what Velorin is trying to do. |
 

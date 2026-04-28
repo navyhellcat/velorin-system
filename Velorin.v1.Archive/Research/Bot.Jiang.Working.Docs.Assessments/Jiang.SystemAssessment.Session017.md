@@ -17,17 +17,15 @@ The extended read added approximately 150 files beyond the INDEX.md path. The pi
 
 ## PART 1 — WHAT THIS SYSTEM ACTUALLY IS
 
-**Three companies, not one, running on one person.**
+**Two companies, not one, running on one person.**
 
 **Company 1 — Velorin:** Day 15. Stealth. No LLC. No domains. Architecture-heavy, product-light. One user (CT). Five agents operational. Brain with 45 operational neurons.
 
-**Company 2 — Turing Vault:** Live product. React + Node.js + PostgreSQL on Replit. 540 human + 508 AI passages. Working game engine, leaderboard, admin panel, bot detection. Revenue roadmap documented. Affiliate marketing setup in progress (Session 016). Session 016 was partially a Turing Vault session.
+**Company 2 — Camfil AI Platform (Box 1 tool):** Five-layer architecture documented at `Bot.Alexander/Camfil_AI_Platform_Architecture_v0.1.md`. Not yet built. Scope: pricing agent, customer intelligence, follow-up management, quote generation, pre-call brief, operations visibility. CT works commission-only at Camfil while building all of this.
 
-**Company 3 — Camfil AI Platform (Box 1 tool):** Five-layer architecture documented at `Bot.Alexander/Camfil_AI_Platform_Architecture_v0.1.md`. Not yet built. Scope: pricing agent, customer intelligence, follow-up management, quote generation, pre-call brief, operations visibility. CT works commission-only at Camfil while building all of this.
+**Session 016 also surfaced a third initiative:** Camfil Agents — using Computer Use (browser session riding) and Microsoft Graph API to access Camfil's corporate systems. Documented in `Bot.Jiang/Working.Docs/Jiang.FutureInitiative.CamfilAgents.md`. Idea-stage.
 
-**Session 016 also surfaced a fourth initiative:** Camfil Agents — using Computer Use (browser session riding) and Microsoft Graph API to access Camfil's corporate systems. Documented in `Bot.Jiang/Working.Docs/Jiang.FutureInitiative.CamfilAgents.md`. Idea-stage.
-
-These four projects are running on one person who is also working a full-time commission sales job (currently in a managed emotional exit from Camfil), navigating a relationship at a six-month decision point, and has three unresolved grief items that have never been spoken to completion.
+These three projects are running on one person who is also working a full-time commission sales job (currently in a managed emotional exit from Camfil), navigating a relationship at a six-month decision point, and has three unresolved grief items that have never been spoken to completion.
 
 ---
 
@@ -110,7 +108,6 @@ The Mac Studio (arriving April 7) is an Apple Silicon machine. Apple Silicon can
 - The Third Cycle Problem Protocol — solid escalation design
 - Trey's research outputs — ZepCloud, Graphiti, VoiceIOParity, Multi_Model_Orchestration, OpenClaw/NemoClaw — all high quality and directly useful
 - De-AI_Writing_Voice research + style directive — production-ready, immediately usable
-- Turing Vault — live product with real data collection
 
 ---
 

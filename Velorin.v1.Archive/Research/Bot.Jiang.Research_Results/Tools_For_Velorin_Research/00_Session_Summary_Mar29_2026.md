@@ -157,7 +157,7 @@ Four layers all live March 2026: MCP (97M monthly downloads, 5,800+ servers), Co
 
 ### Zone 6 — UI/UX Pro Max
 
-49.7k stars. Auto-generates design systems. 50+ styles, 161 palettes. Install: `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill`. Not used for Turing Vault v1 — omission cost.
+49.7k stars. Auto-generates design systems. 50+ styles, 161 palettes. Install: `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill`.
 
 ### Zone 7 — Obsidian Skills (kepano/obsidian-skills)
 
@@ -190,10 +190,6 @@ See `10_Ecosystem_Intelligence_Report.md`. Impact estimates: coding build time -
 See `11_Adoption_Memo.md`. Tier 0 (Day 1, $0): Cowork, Connectors, Superpowers, GSD, OS update. Tier 1 (Week 1): Obsidian, Agent Teams eval, UI/UX Pro Max. Tier 2 (Month 1): Knowledge web migration. Tier 3 (Month 2-3): Boot protocol retirement.
 
 Decision points: Agent Teams eval (2-hour test) and Obsidian commit (Month 1).
-
-### Zone 12 — Turing Vault Scoring Math
-
-Separate project — `Turing_Vault_Scoring_Math.md`. Relevant to Susan/Phase 2 build, not general tools research.
 
 ---
 
@@ -336,7 +332,7 @@ Read Once Only rule applies — use LOCAL path, do not re-verify on GitHub.
 LOCAL: `/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Research_Results/Tools_For_Velorin_Research/`
 GITHUB: `navyhellcat/velorin-system` → `Claude.AI/Bot.Jiang/Research_Results/Tools_For_Velorin_Research/`
 
-Files: `00_Session_Summary_Mar29_2026.md` (this document), `01_superpowers.md`, `02_gsd.md`, `03_cowork.md`, `04_claude_connectivity.md`, `05_awesome_claude_code.md`, `06_uiux_pro_max.md`, `07_obsidian_skills.md`, `08_obsidian_storage.md`, `09_diagnosis.md`, `10_Ecosystem_Intelligence_Report.md`, `11_Adoption_Memo.md` (includes pointer registry), `Turing_Vault_Scoring_Math.md` (Turing Vault only).
+Files: `00_Session_Summary_Mar29_2026.md` (this document), `01_superpowers.md`, `02_gsd.md`, `03_cowork.md`, `04_claude_connectivity.md`, `05_awesome_claude_code.md`, `06_uiux_pro_max.md`, `07_obsidian_skills.md`, `08_obsidian_storage.md`, `09_diagnosis.md`, `10_Ecosystem_Intelligence_Report.md`, `11_Adoption_Memo.md` (includes pointer registry).
 
 ### Jiang's Window Gravity Research
 

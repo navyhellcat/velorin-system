@@ -82,7 +82,6 @@ The 45 neurons cover exclusively:
 
 ### 2.3 What the Brain Does NOT Cover
 - Anything about Velorin as a company (no business region)
-- Turing Vault (exists nowhere in the brain)
 - The five-box framework (nowhere in the brain)
 - Christian Taylor's profile (flat files only, no brain pointers to them from company context)
 - Jiang's concluded research (AgentOrchestration, AgentEcosystemReality, WindowGravity, AnthropicEcosystem — 4 major concluded research topics, zero neurons)
@@ -120,7 +119,7 @@ At 14 sessions with typical session activity, Scribe should have created signifi
 (c) Unable to classify memories into regions that don't exist (the escalation path)
 (d) Not firing on certain write types
 
-The most likely cause is (c): Scribe reaches memories about Turing Vault, the five boxes, or Jiang's research conclusions and finds no matching region. It writes an escalation. The escalation is not reviewed and processed. The neuron never gets created. The knowledge is lost in the flat escalation file.
+The most likely cause is (c): Scribe reaches memories about the five boxes or Jiang's research conclusions and finds no matching region. It writes an escalation. The escalation is not reviewed and processed. The neuron never gets created. The knowledge is lost in the flat escalation file.
 
 **This is the primary mechanism by which the brain is failing to grow.**
 
@@ -161,7 +160,7 @@ The old schema was not superseded — it was simplified. The productization arch
 
 ### 3.5 The Brain Has No Company/Product Region
 
-The most important knowledge Velorin agents need — what the company is building, the five-box architecture, Turing Vault strategy, revenue situation, build timeline — exists in flat files (CLAUDE.md, handoffs, Alexander's profile files) but has no brain representation.
+The most important knowledge Velorin agents need — what the company is building, the five-box architecture, revenue situation, build timeline — exists in flat files (CLAUDE.md, handoffs, Alexander's profile files) but has no brain representation.
 
 This is not a Scribe failure. It is a region gap. There is no Company region. Scribe cannot create a region. Scribe can only write to existing areas. Company-knowledge memories accumulate as escalations indefinitely.
 

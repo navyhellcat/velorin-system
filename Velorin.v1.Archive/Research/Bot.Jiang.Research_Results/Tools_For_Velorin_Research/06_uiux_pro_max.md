@@ -4,4 +4,4 @@
 
 Install: `/plugin marketplace add nextlevelbuilder/ui-ux-pro-max-skill` then `/plugin install ui-ux-pro-max@ui-ux-pro-max-skill`
 
-Velorin application: Install on Claude Code for all future front-end work including Turing Vault Phase 2 and Velorin marketing site.
+Velorin application: Install on Claude Code for all future front-end work including the Velorin marketing site.

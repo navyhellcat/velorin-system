@@ -24,7 +24,7 @@ ports:
   - SDXC card slot x1
   - 3.5mm headphone jack x1
 power: 45W MagSafe 2 adapter (REQUIRED for clamshell — must stay plugged in or machine sleeps)
-role: Clamshell SSH node — Claude Code / Velorin / Turing Vault terminal work
+role: Clamshell SSH node — Claude Code / Velorin terminal work
 lid_state: CLOSED (clamshell)
 display_out: Thunderbolt 2 → HDMI → Monitor 3 (HP)
 network: USB-A → Amazon Basics USB-A to Gigabit Ethernet adapter → Cat6a → TRENDnet switch

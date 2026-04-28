@@ -35,7 +35,7 @@ Before spawning any research agents, Jiang must read and fully internalize the f
 4. Jiang.Topic.AgentOrchestration — the profile is the seed data for agent config
 5. Jiang.Topic.OASIS — the profile translates into OASIS agent config; the field mapping matters
 6. The Velorin Brain — what does it currently store about CT? What is missing?
-7. The original MA + Alexander IntakeTestDesign request (preserved below) — specific questions already identified, including the Turing Vault component and Layer 1-3 population spec
+7. The original MA + Alexander IntakeTestDesign request (preserved below) — specific questions already identified, including the Layer 1-3 population spec
 
 **Research question from this review:** What does a complete Velorin profile need to contain to make the agent system work the way CT intends? Work backward from the output spec, not forward from available instruments.
 
@@ -61,7 +61,7 @@ Before asking "how do we collect data," ask "what data do we actually need?"
 
 1.8 What are exit patterns? CT has specifically referenced this as a critical profile element — how does ADHD manifest as a specific failure mode, and how would exit patterns be captured in intake for other users?
 
-1.9 What can the system learn from the original MA + Alexander spec (Layer 1-3, Turing Vault, five-box mapping, decision scenario series)? These are specific design proposals — research must validate, expand, or challenge each one.
+1.9 What can the system learn from the original MA + Alexander spec (Layer 1-3, five-box mapping, decision scenario series)? These are specific design proposals — research must validate, expand, or challenge each one.
 
 ---
 
@@ -268,10 +268,9 @@ Given scope, this cannot be completed in one session. Proposed structure — CT 
 **Central question (original):** Can we design an intake experience that fills Layers 1-3 in 60-90 minutes and produces first-session cross-domain output — for a user with NO prior psychometric history?
 
 **Draft intake components (from brainstorm — now subsumed into research threads above):**
-- Component 1: Turing Vault (IQ calibration) — already partially designed, populates Layer 1
-- Component 2: Behavioral Profile (DISC-equivalent) — minimum structure for reliable behavioral profile without formal DISC administration
-- Component 3: Five-Box Mapping Exercise — structured scenarios that reveal how the user naturally partitions their world, populates Layer 2
-- Component 4: Decision Scenario Series — active choices made during intake revealing reasoning patterns, box defaults under pressure, ambiguity response
+- Component 1: Behavioral Profile (DISC-equivalent) — minimum structure for reliable behavioral profile without formal DISC administration
+- Component 2: Five-Box Mapping Exercise — structured scenarios that reveal how the user naturally partitions their world, populates Layer 2
+- Component 3: Decision Scenario Series — active choices made during intake revealing reasoning patterns, box defaults under pressure, ambiguity response
 
 **Original research questions (now mapped to threads above):**
 1. Precedent search: has any product successfully compressed clinical-equivalent intake into 60-90 min? → Thread 6

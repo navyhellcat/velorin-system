@@ -84,38 +84,52 @@ Either way, the structure below is what you're building toward.
 
 ---
 
-## Step 5 — Folder Structure
+## Step 5 — GPS Navigation Layer and Folder Structure
 
-Create this structure. This is the final V2 layout.
-Layer 0 stays clean — only universal files at the top level.
+### The GPS Principle (Velorin.Principles.md Principle 1)
 
-```bash
-mkdir -p Velorin.Welcome
-mkdir -p brain/{Operations,Connectivity,Agents,Principles,Company,Intelligence}
-mkdir -p agents/claude/{jiang,marcus,alexander}
-mkdir -p agents/gemini/{trey,erdos}
-mkdir -p tools-and-research/{architecture,math,research-complete,brainstorming,external-tools}
-mkdir -p infrastructure/{hooks,mcp,mailboxes/{Shipping,Receiving}}
-mkdir -p sessions/{handoffs,daily-logs}
-mkdir -p system/level-rules
-```
+The entire folder structure above the Brain is a self-describing convention. Any agent — Claude, Codex, GPT 5.5, Gemini, a future vendor, a persona-derived sub-agent from FW-009 — can boot by following the convention without being told file paths. The structure IS the routing mechanism. No config file maps paths. No bootloader lists locations. The folders have semantic names; the agent discovers its context by name-based lookup through a registry at the top level.
 
-**Top level of the repo should look like this:**
+**Three load-bearing properties:**
+
+1. **Discoverable by convention, not by instruction.** An agent named "Jiang" finds the folder matching its name without being told the path. An agent with no name reads the top-level entry document and asks CT who it is. The folder naming convention is the only routing mechanism.
+
+2. **Layered progressive disclosure with clean physical boundaries.**
+   - **Layer 0 (universal):** Top-level documents every agent reads. Company identity, operating standards, principles, vocabulary. Zero agent-specific content. Small. This is "where am I and what does this system believe."
+   - **Layer 1 (agent home):** The agent's own folder. Everything needed to be fully operational lives here, flat — ReadMe, handoff, operating rules. This is "who am I and what's my current state." The agent reads everything in this folder at boot.
+   - **Layer 2 (agent workspace):** Subfolders inside the agent's home — research archives, working docs, protocols. The agent does NOT read these at boot. It builds a directory map on first entry and calls back into specific subfolders when a task requires it. This is "where do I go when I need to go deeper."
+
+3. **Portable without editing.** If the repo moves to Mac Studio, gets cloned by Codex, gets accessed via GitHub raw URLs by a Gemini Gem, or gets handed to a new vendor — zero files need editing. The convention works because folders have semantic names and the progressive disclosure pattern is physical (different folders, not different sections of the same file).
+
+**The Brain is NOT part of the navigation layer.** The Brain is a separate system (Principle 2) accessed on demand when a task requires deep knowledge retrieval. Its physical location in the repo is a navigation concern; its internal structure is governed by the Brain math (02_Architecture.md, 03_BrainAndMath.md). The GPS layer routes agents TO the Brain entry point; it does not govern what happens inside the Brain.
+
+### Folder Structure — PENDING STAGE 0 DESIGN
+
+The specific folder names, nesting conventions, and file naming patterns are not locked. They will be designed at Stage 0 build start, potentially informed by Trey research on multi-agent repo navigation patterns at that time.
+
+**Open naming decisions (resolve at Stage 0):**
+- Agent folders organized by platform (`agents/claude/jiang/`) vs flat by name (`agents/jiang/`). Trade-off: platform grouping breaks GPS if an agent moves platforms; flat by name loses the platform signal.
+- Dot-separated names (`Bot.Jiang/`) vs bare names (`jiang/`). Trade-off: dots carry v1 identity but are distinctive; bare names are cleaner for cross-vendor consumption.
+- Brain location: `brain/` at root vs nested. The Brain is separate from navigation (Principle 2) but its location matters for the convention.
+- Layer 0 document set: Company DNA, Operating Standards, Principles, Vocabulary, Consensus Filter, Welcome/entry-point — confirm complete list.
+- Research and tools location: grouped by topic vs grouped by source agent. Trade-off: by-topic is more navigable; by-agent preserves provenance.
+
+**Preliminary top-level layout (subject to Stage 0 design):**
 ```
 velorin-system/
-├── CLAUDE.md                   ← GPS pointer only
-├── Velorin.Welcome/            ← Layer 0: universal entry point
-├── brain/                      ← The neural file graph
-├── agents/                     ← Agent home folders
-├── tools-and-research/         ← All research, organized by topic
-├── infrastructure/             ← Programs, hooks, MCP configs
-├── sessions/                   ← Handoffs and logs
-└── system/                     ← Claude Code integration layer
+├── [entry-point doc]           ← GPS pointer only (zero paths, zero instructions)
+├── [Layer 0 folder]            ← Universal docs all agents read
+├── [agents folder]             ← Agent home folders (Layer 1 + Layer 2 per agent)
+├── brain/                      ← The neural file graph (separate system, on-demand access)
+├── [research folder]           ← All research, organized by [topic or agent — TBD]
+├── infrastructure/             ← Programs, hooks, MCP configs, queues
+├── skills/                     ← Skills registry (skill_dependencies.yaml + SKILL.md files)
+└── [sessions/logs folder]      ← Handoffs, daily logs, session records
 ```
 
-**Note:** The old `Claude.AI/` folder structure is legacy. All new work goes
-in the structure above. The existing Research_Complete files move to
-`tools-and-research/research-complete/` during the migration pass.
+**Note:** The current `Claude.AI/` folder structure is v1 legacy. The v2 structure will be created at Stage 0. Existing files migrate during that transition.
+
+*→ Forward note: Trey research on multi-agent repo navigation conventions may be commissioned at Stage 0 build start. Apply Consensus Filter (Q3: does Velorin share the constraint driving the consensus pattern?). GPS principle governs — convention over configuration, even if consensus favors explicit config files.*
 
 ---
 

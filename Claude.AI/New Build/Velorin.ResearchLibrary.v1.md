@@ -2,6 +2,8 @@
 **April 26, 2026 — Pending Item 5 from FW-013 finalization pass.**
 **Status: v1 manual maintenance. Frontmatter standardization and automatic indexing in future pass.**
 
+> **SUPERSEDED 2026-04-27 by `Velorin.ResearchLibrary.v2.md` in this same folder.** v2 is the GPS-keyed, topic_id-primary library; v1 is retained for historical reference only. Do not consume v1 in agent boot paths.
+
 Navigation guide to all research in `Claude.AI/Bot.Erdos/Research_Complete/` and `Claude.AI/Bot.Trey/Research_Complete/`. For full metadata, see `Velorin.ResearchCorpus.md`.
 
 ---
