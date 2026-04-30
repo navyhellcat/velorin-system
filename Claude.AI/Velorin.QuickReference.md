@@ -47,7 +47,7 @@ note: NOT a boot substitute. Jiang.ReadMe.First names the boot files. This is wh
 ### Library (preamble + Master Index ONLY at boot)
 | Order | File | Boot scope |
 |---|---|---|
-| 22 | `Claude.AI/New Build/Velorin.ResearchLibrary.v2.md` | First ~150 lines (preamble + Master Index). Individual cards on demand by `topic_id`. |
+| 22 | `Claude.AI/New Build/Velorin.ResearchLibrary.v2.md` | First ~150 lines (preamble + Master Index). Individual cards on demand by `topic_id`. **GPS EXCEPTION (transitional):** this boot read is duplicated pointer logic that should be an MCP tool query. Removes itself when PRE-STAGE 1 item B.2 (`library_lookup(topic_id)`) ships — agents will then query by topic_id and skip the file read. |
 
 ### State
 | Order | File |

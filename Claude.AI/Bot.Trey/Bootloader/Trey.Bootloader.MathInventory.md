@@ -7,7 +7,19 @@ updated: April 29, 2026
 
 # Trey Bootloader — Erdős Math Inventory
 
-Version 3.0 | Updated 2026-04-29 (Session 040 FinalSubstrateLock additions)
+Version 3.1 | Updated 2026-04-30
+
+═══════════════════════════════════════════════════════════════════
+GPS-OVER-MAP NOTE (Velorin Principle 1)
+═══════════════════════════════════════════════════════════════════
+This file is the LOCKED-THEOREM INDEX — theorem names, status codes,
+and pointers to canonical derivations. It is NOT a substitute for
+`Claude.AI/New Build/Velorin.MathStream.md` (canonical derivations
+in dependency order) or `Bot.Erdos/Research_Complete/` (full proofs).
+If a formula here disagrees with MathStream, MathStream wins.
+This index updates when a theorem locks, supersedes, or retires.
+═══════════════════════════════════════════════════════════════════
+
 Bootloader summary of mathematical work produced by Erdős (Velorin mathematical agent). For complete current inventory of solutions, read `Bot.Erdos/Research_Complete/` directly — this bootloader summarizes load-bearing pieces only and may lag the live folder.
 
 Status codes: LOCKED (proven, architecture depends on it) | FUTURE THEORY (derived but not yet empirically validated) | OPEN (problem defined, not yet solved)
