@@ -354,27 +354,30 @@ Source: `Velorin.v1.Archive/Research/Bot.Trey.Assessments/Velorin_Deep_Research_
 #### topic_id: velorin-market-research-trey
 status: STANDING
 confidence: 0.80
-date: 2026-03 (early)
+date: 2026-03
 primary_domain: ecosystem-industry
-secondary_domains: [vendor-specific]
+secondary_domains: [strategy]
 source: `Velorin.v1.Archive/Research/Bot.Trey.Assessments/Trey_Market_Research.md`
-related: [velorin-deep-research-report-mar25, agent-ecosystem-reality]
-build_guide_refs: [wedge-product framing, anti-philosophy-brand cautions]
+related: [ecosystem-intelligence-report, velorin-adoption-memo]
+build_guide_refs: [Phase 1 wedge product, Phase 2 founder proof loop]
 recommendation: STANDING
 
 ##### Summary
-Trey's blunt strategic assessment of Velorin's near-term execution risk. **Vision quality high; near-term execution mixed; the company can work AND the current mode can absolutely bury it.** Behind in execution, NOT in concept. Culturally + strategically unique; externally not yet market-ready (high internal meaning density, weaker external compression). Biggest risk: company becomes most elegant at describing why it should exist instead of most effective at proving it should exist.
+Trey independent market assessment. Confirms Velorin as a genuine orchestration-layer company. Finds the concept commercially dangerous in a good way. Identifies structural execution gap: company exists more in architecture documents than shipped product. Core thesis: ahead in concept, near-zero in proven product, vulnerable to simpler companies with faster wedge execution.
 
 ##### Key Findings
-- Initial market = niche elite penetration with strong proof (operators / founders / executives / high-agency professionals with fragmented advisory stacks). Mass-market early = unlikely; expansion path operator OS → executive OS → family-office OS → advisory OS.
-- Avoid: universal-product language too early; bot sprawl; document accumulation without conversion to operating leverage; Box 4 becoming decorative; confusing founder complexity with product complexity; philosophy brand without repeatable installation process.
-- Most-needed external connections: calendar/email; banking/portfolio/debt; CRM/sales/commission; health data/wearables; legal/tax/compliance docs; document/knowledge storage. Plus event-driven architecture between boxes, durable identity layer, real cross-box priority scoring, Chairman dashboard, recommendations-vs-outcomes audit trail.
+- Founding thesis is differentiated: interdependence of life domains requiring coordinated orchestration intelligence is not how any other AI product is framed.
+- Stage mismatch: LLC not filed, BOT.REGISTRY not built, logo not locked, Box 1/2 largely unproven. Architecture and doctrine ahead of execution.
+- Initial market is narrow elite tier: operators, founders, executives with fragmented advisory stacks. Broad framing too early destroys credibility.
+- Internal meaning density ahead of external compression. Outsiders will not understand what Velorin is fast enough to buy it.
+- Most critical missing infrastructure: event-driven architecture between boxes, durable identity layer, real priority scoring across boxes, Chairman dashboard showing tradeoffs, audit trails of recommendations vs outcomes.
+- Biggest strategic risk: Velorin becomes most elegant at describing why it should exist rather than proving that it does.
 
 ##### Why It Matters Now
-Standing strategic counterweight to architecture-heavy session patterns. The "ahead in concept / behind in proof" framing remains accurate; 90-day priority order should be re-checked against this card.
+Validates Build Guide emphasis on wedge-first execution. The gap between architectural sophistication and shipped proof is the single highest-priority risk.
 
 ##### Pointer
-Source: `Velorin.v1.Archive/Research/Bot.Trey.Assessments/Trey_Market_Research.md`.
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Assessments/Trey_Market_Research.md`
 
 #### topic_id: velorin-mirofish-adoption-memo
 status: STANDING
@@ -671,18 +674,21 @@ build_guide_refs: [scheduled tasks for EndOfDay/morning-brief/weekly-review]
 recommendation: STANDING
 
 ##### Summary
-Anthropic Cowork — desktop agentic AI for knowledge work (Pro/Max/Team/Enterprise). Launched Jan 2026; major updates through Mar 2026. Capabilities: scheduled tasks (sessions per task with full tool access), Computer Use (launched 2026-03-23, macOS+Windows), Dispatch (phone↔desktop persistent conversation), Projects, Plugins marketplace (Feb 2026), Connectors (Drive/Gmail/Slack/DocuSign/FactSet/Microsoft 365/custom MCP), Memory (free since 2026-03-02), Claude in Chrome.
+Claude Cowork — Anthropic's agentic desktop AI for autonomous multi-step knowledge work (Pro/Max/Team/Enterprise, launched Jan 2026). Not a chat interface — a task delegation engine where the operator describes an outcome and steps away. Capabilities: scheduled tasks, Computer Use (macOS+Windows, launched 2026-03-23), Dispatch (phone-to-desktop persistent conversation), Projects, Plugins marketplace (Feb 2026), Connectors (Drive/Gmail/Slack/DocuSign/FactSet/Microsoft 365/custom MCP), Memory (free since 2026-03-02), Claude in Chrome.
 
 ##### Key Findings
-- Scheduled tasks automate 30+ min/day of CT manual bot management (EndOfDay protocol, morning brief, weekly pipeline review).
-- Plugins marketplace has role-specific toolkits (sales/marketing/legal/finance/data/PM).
-- Cannot run on current MacBook Air — install when Mac Studio is online (achieved Apr 7).
+- Scheduled tasks (daily, weekly, hourly, on-demand) have been live since February 24, 2026 — each task spins up its own session with full tool access, directly automating EndOfDay protocol, morning brief, and weekly pipeline review.
+- Computer Use enables Claude to open apps, navigate browser, fill spreadsheets, and click buttons — functions as a cross-session agent coordination bridge until Path 3 API is built.
+- Dispatch provides persistent phone-to-desktop conversation — CT can delegate from phone while Claude works on desktop.
+- Connectors provide one-click integrations with Drive, Gmail, Slack, DocuSign, FactSet, Microsoft 365, and custom MCP URLs — should have been evaluated before custom MCP builds.
+- Memory is free since March 2 and Cowork Memory operates at project scope — combined with CLAUDE.md eliminates manual session handoff overhead.
+- Plugins marketplace (Feb 2026) has pre-built role-specific toolkits across sales, marketing, legal, finance, data, PM — install relevant plugins per Box rather than building equivalent from scratch.
 
 ##### Why It Matters Now
-Tier-0 day-1 install per Adoption Memo. Computer Use enables cross-session agent coordination until Path 3 API is built.
+Tier-0 day-1 install per Adoption Memo. Scheduled Tasks were available two months before this research was filed and never surfaced by any Velorin bot — clearest documented instance of scope blindness costing operational time.
 
 ##### Pointer
-Source: `03_cowork.md`. Set scheduled tasks via `/schedule` or sidebar.
+Source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/03_cowork.md`
 
 #### topic_id: claude-connectivity-stack
 status: STANDING
@@ -696,18 +702,21 @@ build_guide_refs: [tool-surface inventory, evaluation-gate input]
 recommendation: STANDING
 
 ##### Summary
-Four-layer Claude interoperability map (live as of Mar 2026): Layer 1 MCP (97M monthly downloads, 5,800+ servers, MCP Apps in Jan 2026 returns interactive UI, Tool Search Mar 2026 cuts context ~95%); Layer 2 Connectors (one-click Drive/Gmail/Calendar/Slack/Salesforce/Asana/Box/monday/Figma/Canva/Hex/DocuSign + custom MCP URLs); Layer 3 Skills/Hooks/Plugins/Agent Teams (Feb 2026 — multiple instances on shared task lists); Layer 4 Memory (Claude Memory free Mar 2, Cowork project-scoped, CLAUDE.md file-based, Superpowers SQLite vector).
+Four-layer Claude interoperability map (live as of Mar 2026): Layer 1 MCP (97M monthly downloads, 5,800+ servers), Layer 2 Connectors (one-click integrations), Layer 3 Skills/Hooks/Plugins/Agent Teams, Layer 4 Memory (four distinct forms). Core observation: no Velorin bot had mapped this stack as a unified picture before this research.
 
 ##### Key Findings
-- No Velorin bot has previously surfaced this stack as a unified picture — mapped here for the first time.
-- Tool Search (Mar 2026) is the structural answer to deferred-tool context bloat.
-- Memory has 4 distinct forms with different scopes — selection matters.
+- MCP (Layer 1): 97M monthly downloads, 5,800+ servers. MCP Apps (Jan 2026) return interactive UI inside Claude. Tool Search (Mar 2026) reduces context by ~95%.
+- Connectors (Layer 2): one-click Drive/Gmail/Calendar/Slack/Salesforce/Asana/Box/monday/Figma/Canva/Hex/DocuSign + custom MCP URLs. Should have been evaluated before custom MCP builds.
+- Skills/Hooks/Plugins (Layer 3): SKILL.md auto-activates at 30-50 tokens. Hooks guarantee execution at specific moments. Agent Teams (Feb 2026) enables multi-instance collaboration on shared task lists.
+- Memory (Layer 4): four forms — Claude Memory (free Mar 2), Cowork Memory (project-scoped), CLAUDE.md (file-based, zero token cost), Superpowers SQLite vector search. Selection decision, not build problem.
+- The four layers compose: MCP → connectivity, Connectors → common integrations, Skills/Hooks → execution logic, Memory → persistence. Complete operational architecture assemblable without custom infrastructure for most functions.
+- Unified map had never been produced — every prior build decision made without complete picture of what existed.
 
 ##### Why It Matters Now
-Foundation for the live tool-inventory pattern (input to the Window Gravity evaluation gate). Tool blindness is Window Gravity at the infrastructure layer.
+Foundation for the live tool-inventory pattern. Layer 2 Connectors represent zero-cost one-click integrations replacing custom MCP development. Any agent proposing connectivity without mapping to this four-layer picture violates the ecosystem check mandate.
 
 ##### Pointer
-Source: `04_claude_connectivity.md`.
+Source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/04_claude_connectivity.md`
 
 #### topic_id: claude-code-tools-roundup-mar29
 status: COMBINE
@@ -738,25 +747,28 @@ status: STANDING
 confidence: 0.82
 date: 2026-03-28
 primary_domain: tooling
-secondary_domains: [knowledge-systems, instruction-boot]
+secondary_domains: [knowledge-systems, infrastructure]
 source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/08_obsidian_storage.md`
-related: [claude-code-tools-roundup-mar29, ecosystem-intelligence-report, velorin-adoption-memo, openclaw-deep-dive, brain-full-analysis-mar30]
-build_guide_refs: [knowledge substrate selection, boot-protocol retirement]
+related: [claude-connectivity-stack, ecosystem-intelligence-report, velorin-adoption-memo]
+build_guide_refs: [Month 1 knowledge web migration]
 recommendation: STANDING
 
 ##### Summary
-Thesis: Obsidian vaults are the correct substrate for personal AI knowledge bases — local-first, plaintext, graph-structured, user-controlled, near-zero boot token cost. Architecture: Obsidian Vault ↔ MCP Server ↔ Claude Code/Desktop. Migration path: install Obsidian → mirror Drive structure → install obsidian-skills + MCP → Claude reads natively → Drive demoted to backup → CLAUDE.md replaces boot protocol.
+Obsidian vaults as the superior substrate for Velorin's knowledge base, replacing Drive boot protocol. Local-first, plaintext, graph-structured, user-controlled storage read directly by Claude Code via MCP. Eliminates Drive fetch failures, boot protocol token cost, and manual session handoff overhead.
 
 ##### Key Findings
-- Replaces Drive boot protocol, [VELORIN.EOF] checking, manual uploads, session handoffs, Google Docs knowledge web.
-- Direct structural answer to reboot-token-cost problem.
-- Pairs with the Brain (graph-structured knowledge in markdown is exactly what neurons are).
+- Architecture: Obsidian Vault ↔ MCP Server ↔ Claude Code/Desktop. No boot protocol, no Drive fetch, no token cost on reads.
+- Migration is additive: install Obsidian, mirror Drive structure, install obsidian-skills + MCP server, Drive becomes backup only. No cutover required.
+- Graph structure (wikilinks, backlinks, graph view) maps directly to Brain neuron-and-pointer architecture — automatic graph visualization of the same cross-linked model.
+- obsidian-skills published by Obsidian CEO specifically for Claude Code integration — native format support for the agent to read/write Obsidian-formatted markdown.
+- Current Drive boot protocol consumes session tokens on every boot with no architectural justification — local .md reads cost near-zero, are faster and more reliable.
+- Thousands of builders using Obsidian+Claude Code for exactly what Velorin is building — validated community pattern, lowest-risk knowledge infrastructure choice.
 
 ##### Why It Matters Now
-Tier-1 / Month-1 commit per Adoption Memo. Architectural decision still pending CT lock; brain-architecture and the Velorin Brain repo currently fulfill this role on GitHub.
+The Month 1 migration in the Adoption Memo is the correct sequencing. Any session continuing on Drive boot protocol without evaluating this migration is adding technical debt against a known better pattern.
 
 ##### Pointer
-Source: `08_obsidian_storage.md`.
+Source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/08_obsidian_storage.md`
 
 #### topic_id: ecosystem-check-diagnosis
 status: STANDING
@@ -765,71 +777,82 @@ date: 2026-03-28
 primary_domain: tooling
 secondary_domains: [failure-modes]
 source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/09_diagnosis.md`
-related: [window-gravity, ecosystem-intelligence-report, velorin-adoption-memo]
-build_guide_refs: [Operating Standards Section 7 — Mandatory Ecosystem Check]
+related: [ecosystem-intelligence-report, velorin-adoption-memo, window-gravity]
+build_guide_refs: [Operating Standards Section 7]
 recommendation: STANDING
 
 ##### Summary
-Velorin bots default to "solve with what is known or already built" — no bot independently surfaces tools/plugins/skills/connectors/community solutions. Operating Standards Section 2 is abstract and names no discovery sources. Proposed fix: new Section 7 — mandatory ecosystem check before any build decision (awesome-claude-code, plugin marketplace, Connectors, Cowork plugins, GitHub). Surface findings or state "ecosystem check completed."
+Root cause diagnosis: scope blindness. Bots default to solving with known tools rather than searching for what exists. Operating Standards Section 2 was abstract and unenforceable. Eight specific tools were missed as direct consequence.
 
 ##### Key Findings
-- Diagnosis confidence 88%; proposal 82%; estimated impact 30-40% build acceleration, 70%+ ops reduction.
-- Direct precursor to Window Gravity research — same root cause, different angle.
+- Core failure: every bot operates in closed loop, never independently surfacing existing community solutions.
+- Eight missed tools: Cowork scheduled tasks (live since Feb 24), Superpowers, GSD, Connectors (one-click vs custom MCP), Agent Teams, UI/UX Pro Max (49.7K stars), Obsidian, multiple memory systems.
+- Proposed fix: new Section 7 — mandatory pre-build check of awesome-claude-code, plugin marketplace, Connectors, Cowork plugins, GitHub. Surface findings with install command, star count, tradeoff.
+- Estimated impact: 30-40% reduction in coding build time, 70%+ reduction in operational overhead, 30+ min/day Chairman time recovered.
+- Operational savings (70%+) exceed build-phase savings (30-40%) because missed tools directly replace manual Chairman workflows.
+- Scope blindness is structural, not a one-time oversight — without mandatory verifiable gate, every future build decision faces the same risk.
 
 ##### Why It Matters Now
-Ecosystem-check protocol remains pending Operating Standards lock by CT. Couples directly with the Window Gravity evaluation gate and live tool inventory.
+Any session since March 28 that proceeded to build without executing the Section 7 checklist repeated the exact failure mode this document identified.
 
 ##### Pointer
-Source: `09_diagnosis.md`.
+Source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/09_diagnosis.md`
 
 #### topic_id: ecosystem-intelligence-report
 status: STANDING
 confidence: 0.85
 date: 2026-03-28
 primary_domain: tooling
-secondary_domains: [agent-architecture, knowledge-systems, infrastructure]
+secondary_domains: [agent-architecture]
 source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/10_Ecosystem_Intelligence_Report.md`
-related: [ecosystem-check-diagnosis, velorin-adoption-memo, claude-cowork, obsidian-as-knowledge-infra, agent-orchestration]
-build_guide_refs: [Operating Standards Section 7, Tier-0/Tier-1/Tier-2 install plan]
+related: [ecosystem-check-diagnosis, velorin-adoption-memo, claude-cowork]
+build_guide_refs: [Phase 1 Section 7, Week 1 and Month 1 tiers]
 recommendation: STANDING
 
 ##### Summary
-Master synthesis of the Mar-29 tools research. Documents what was missed (Superpowers, GSD, Cowork scheduled tasks, Agent Teams, Connectors, UI/UX Pro Max, Obsidian, memory systems), what it cost (2-3 sessions of rework, 30+ min/day Chairman bot management, possibly entire Path-3 build), the proposed fix (Section 7 mandatory ecosystem check), and an implementation timeline (Week 1 / Month 1 / Month 2-3) with impact estimates.
+Full intelligence report: what the bot ecosystem missed, what it cost, how to fix it. Complete tool inventory with capabilities, quantified cost of gap, seven-step mandatory pre-build checklist, three-phase implementation timeline (Week 1, Month 1, Month 2-3).
 
 ##### Key Findings
-- Path 3 may already exist as Anthropic Agent Teams (100K-line C compiler with 16 agents).
-- Drive connector should have been evaluated before custom MCP build — Velorin built what was already one click.
-- Boot protocol token cost → near-zero with Obsidian + CLAUDE.md.
+- Superpowers (20+ auto-activating skills) enforces brainstorm-plan-implement with subagent-driven development and Git worktree isolation — would have prevented multiple rebuild sessions.
+- Agent Teams (Feb 2026): 16 agents built a 100,000-line C compiler — entire Path 3 mandate may have been answerable by evaluating this live product.
+- Quantified cost: 2-3 full sessions of rework, 30+ min/day Chairman time, knowledge web maintenance manual when should be automatic, boot protocol consuming tokens when local reads cost zero.
+- Seven-step checklist: (1) awesome-claude-code, (2) plugin marketplace, (3) Connectors, (4) Cowork plugins, (5) GitHub search, (6) surface with install/stars/tradeoffs, (7) state "ecosystem check completed" if nothing found.
+- Three-phase timeline: Week 1 (Superpowers + GSD + 3 Cowork tasks + obsidian-skills + Connectors), Month 1 (Obsidian vault + knowledge web migration), Month 2-3 (Obsidian primary, Agent Teams replaces manual orchestration).
+- Impact: coding 30-40% reduction, operations 70%+ reduction, Path 3 timeline potentially eliminated, boot cost near-zero, Chairman 30+ min/day recovered.
 
 ##### Why It Matters Now
-Operational roadmap that unifies the zone files into one prioritized plan. Many items are now project-state-tracked elsewhere (Mac Studio cowork plan in feedback memory).
+Single most comprehensive diagnosis of the structural gap between what Velorin was building and what the ecosystem already provided.
 
 ##### Pointer
-Source: `10_Ecosystem_Intelligence_Report.md`.
+Source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/10_Ecosystem_Intelligence_Report.md`
 
 #### topic_id: velorin-adoption-memo
 status: STANDING
 confidence: 0.85
 date: 2026-03-28
 primary_domain: tooling
-secondary_domains: [agent-architecture, knowledge-systems]
+secondary_domains: [infrastructure, agent-architecture]
 source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/11_Adoption_Memo.md`
-related: [ecosystem-intelligence-report, superpowers-skills-framework, gsd-spec-driven-development, claude-cowork, obsidian-as-knowledge-infra]
-build_guide_refs: [phased install matrix Tier-0..3, Operating-Standards Section-7]
+related: [ecosystem-intelligence-report, ecosystem-check-diagnosis, claude-cowork]
+build_guide_refs: [Phase 1 Tier 0+1, Phase 2 Tier 2, Phase 3 Tier 3]
 recommendation: STANDING
 
 ##### Summary
-Tiered roadmap for adopting the Mar-29 tools findings. Tier 0 (Day 1, $0): Cowork scheduled tasks + Connectors + Superpowers + GSD + Operating Standards Section 7. Tier 1 (Week 1): Obsidian vault + obsidian-skills + Obsidian MCP + Agent Teams evaluation + UI/UX Pro Max + Ralph eval (substrate-only). Tier 2 (Month 1): knowledge-web migration + bot instructions migration + Cowork projects + Agent Teams deployment + Drive demote. Tier 3 (Month 2-3): boot-protocol retirement + Claude.ai consolidation + n8n-MCP + memory-system selection.
+Actionable adoption memo translating the Ecosystem Intelligence Report into a sequenced implementation plan across four tiers (Day 1 through Month 2-3) and a platform routing architecture. Establishes which platform owns each function. Includes "What Not to Adopt" list with explicit rejections.
 
 ##### Key Findings
-- What NOT to adopt: Ralph at orchestrator level (removes CT from cross-domain decisions); CrewAI/LangGraph (Agent SDK is correct runtime); Simone (GSD fills slot); Obsidian Sync (git-vault sync correct); migrating Trey to Claude (different model = adversarial check, keep on GPT).
-- Decision points: Agent Teams 2-hour test (Tier 1.4), Obsidian Month-1 commit, Claude.ai consolidation deliberately variable.
+- Tier 0 (Day 1, <1 hour, $0): Cowork Scheduled Tasks (recovers 30+ min/day), Drive/Gmail/Slack Connectors, Superpowers plugin, GSD plugin, Operating Standards Section 7 update.
+- Platform routing: Claude Code = build engine; Cowork = operations engine; Claude.ai Projects = legacy bridge; ChatGPT/Trey = external advisory; Obsidian = substrate.
+- Three explicit rejections: Ralph at orchestrator level (approved only at substrate/task-bot), CrewAI/LangGraph (defer to Agent SDK), Obsidian Sync (Git-based vault sync is correct pattern).
+- Agent Teams evaluation (Tier 1.4) is highest-leverage single test — 2-hour structured test could eliminate entire Path 3 custom build mandate.
+- Three decision points before proceeding: Agent Teams vs custom Path 3 (2-hour test), Obsidian commit (recommend Month 1), Claude.ai consolidation (let tools earn migration).
+- Pointer Registry cross-links every related research document with dual LOCAL/GITHUB paths — canonical navigation index for the full March 28 research session.
 
 ##### Why It Matters Now
-Operational adoption plan. Tier-0 items still mostly pending CT lock; Mac Studio is online (Apr 7) so Cowork installation is unblocked.
+Tier 0 was executable on Day 1 at zero cost. Any session since March 28 without executing Tier 0 left 30+ minutes/day of Chairman time unrecovered and built without plan-first methodology gates.
 
 ##### Pointer
-Source: `11_Adoption_Memo.md`. Includes pointer registry to all related research with dual LOCAL/GITHUB paths.
+Source: `Velorin.v1.Archive/Research/Bot.Jiang.Research_Results/Tools_For_Velorin_Research/11_Adoption_Memo.md`
 
 #### topic_id: mcp-browser-tabs
 status: STANDING
