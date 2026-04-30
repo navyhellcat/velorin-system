@@ -1,131 +1,215 @@
 ---
 file: Trey.ResearchRequest.ToolSuiteOperationalGuide.md
-priority: HIGH — CT is paying $200+/month for tools he cannot use effectively
-date: 2026-04-29
-from: Jiang2 (reviewed and updated by Jiang2, April 29, 2026)
-to: Trey 1 (Deep Research — general scope, Discovery Mode)
-mode: DISCOVERY — assume the frame is incomplete
-context: Mac Studio Stage 0 transition is the immediate operational context. CT is about
-         to set up Mac Studio as his primary Velorin build machine. Understanding which
-         tools have CLI/MCP/API surface matters for Stage 0 configuration decisions.
-         Research deliverable should be actionable for someone setting up a new Mac Studio
-         environment and wiring multi-vendor integrations.
+priority: HIGH — CT pays $200+/month across vendors and uses a fraction of the surface area
+date: 2026-04-30
+from: Jiang1 (rewrite of Jiang2's prior version, 2026-04-29)
+to: Trey 2 (Velorin-specific Deep Research, Discovery Mode)
+mode: DISCOVERY — assume CT's frame of reference is INCOMPLETE
+context: Mac Studio Stage 0 transition is the operational frame. CT is configuring his
+         primary Velorin build machine. Anything with a CLI, MCP server, API, or
+         protocol Claude Code can reach is Stage 0 relevant.
 ---
 
-# Research Request: Complete Operational Guide for CT's Paid Tool Suites
+═══════════════════════════════════════════════════════════════════
+GPS-OVER-MAP — READ FIRST (Velorin Principle 1)
+═══════════════════════════════════════════════════════════════════
+This file is a POINTER. The Velorin Consensus Filter and your
+Research Philosophy live in their canonical files (read at boot).
+The Library and prior Research_Complete files contain knowledge
+already produced — your job here is to delta against them, not
+duplicate them.
+═══════════════════════════════════════════════════════════════════
 
-## THE PROBLEM
 
-CT pays for Google AI Ultra ($200/month), OpenAI ChatGPT Pro, and Anthropic Claude Max.
-He uses Deep Think, Deep Research, and Claude Code actively. The rest of the tooling in
-each suite sits unused because interfaces have changed, products have been renamed or moved
-since he last explored them, and no consolidated "here is what you have and how to use it"
-document exists.
+# Multi-Vendor Tooling — Operational Landscape, Delta Pass, Discovery
 
-Specific pain points CT has named:
-- Veo moved into something called "Flow" — the interface is not intuitive, each short video
-  clip is expensive to generate, and connecting segments into a longer video is unclear
-- Google AI Studio / AI Lab interface is confusing and defaults to producing things he
-  does not need
-- Antigravity IDE — where it lives, how to install it, what it actually does now vs what
-  he has heard
-- NotebookLM — never used it, does not know its current capabilities or how it could serve
-  his workflow
-- Codex desktop app + CLI — heard these are powerful together, no idea how to access or use
-- Sora — knows it exists, never used it, does not know the current state
-- Claude Cowork — uses Claude Code in terminal, unclear what Mac Studio Cowork sessions add
-  and how they differ from terminal usage
-- Claude Computer Use — knows it exists, unclear how it works in practice
-- No understanding of which tools can be invoked from the Mac terminal (CLI) or reached by
-  Claude Code via MCP or API
-- No understanding of which tools connect to each other via MCP, A2A, or other protocols
+## THE PROBLEM (one paragraph, no enumeration)
 
-## WHAT I NEED FROM TREY
+CT pays for Google AI Ultra ($200/mo), OpenAI ChatGPT Pro, and Anthropic
+Claude Max. He uses Deep Research, Deep Think, and Claude Code daily.
+The rest of what those subscriptions cover is invisible to him —
+interfaces have changed, products have been renamed, capabilities have
+been added or moved since his last exploration, and partnerships and
+integrations exist that he has never been told about. He cannot ask
+about what he does not know exists. **The frame of this request is
+deliberately wide. The deliverable's value is proportional to how
+much it surfaces that the prompt could not name.**
 
-For EACH of the following tools, provide AS OF TODAY (April 29, 2026):
+The named pain-point list (Veo/Flow, AI Studio confusion, Antigravity,
+NotebookLM, Codex desktop+CLI, Sora, Cowork, Computer Use) is a
+floor — not a ceiling. Treat them as confirming context for what CT
+already partially knows. The deliverable's primary value is everything
+else.
 
-1. **What it is** — one paragraph, plain English, no jargon
-2. **Where to access it** — exact URL, or install command for CLI tools
-3. **What subscription covers it** — is it in Ultra / Pro / Max or does it cost extra
-4. **Current interface** — what the user actually sees when they open it; if it moved or
-   was renamed since early 2026, say where it went and what changed
-5. **One concrete task** — something CT can do in under 10 minutes to prove the tool works
-6. **CLI access** — can it be called from the Mac terminal? If yes: exact install command,
-   exact invocation syntax, any auth setup required
-7. **MCP server** — is there an official or widely-used community MCP server for this tool?
-   If yes: repo URL, install command, config format for claude_desktop_config.json
-8. **API access** — does it have an API? If yes: base URL, auth method, SDK if one exists
-9. **Connects to what** — what other tools in CT's suite can this tool receive from or send to?
-   Name the protocol (MCP, A2A, webhook, API call) and the direction
-10. **Known limitations and costs per use** — what breaks, what has per-generation cost
-    (name the cost if known), what is in beta/preview
 
-### Tools to cover:
+## WHAT THIS REQUEST IS
 
-**Google AI Ultra suite:**
-- Google AI Studio (aistudio.google.com) — current model picker, what you can build there,
-  how it differs from the Gemini app
-- Gemini app (gemini.google.com) — Deep Think, Deep Research, Deep Research Max, model
-  picker, Gems interface
-- Google Veo / Flow — current state as of April 2026, how to generate video segments, how
-  to connect them into longer sequences, cost per generation
-- Google Antigravity IDE — current name, where to get it, install process, what it does
-  vs standard code editors, how it connects to Gemini models
-- NotebookLM — current capabilities, how to load a project corpus, what you can query and
-  produce with it, how it differs from a Gem
-- Google Imagen / image generation — where it lives in the Ultra suite, how to access it
-- Jules (Google's coding agent) — current state, how to trigger, what tasks it handles well
-- Project Genie or equivalent — any Google agentic coding tool beyond Jules
+A **functional operational landscape** of every reachable surface in
+CT's three paid AI subscriptions plus directly-adjacent tooling that
+integrates with them on a Mac Studio M4 Max.
 
-**OpenAI (ChatGPT Pro):**
-- Codex desktop app — current version, where to download, what it does vs ChatGPT in browser
-- Codex CLI — install command, what it does that the desktop app does not
-- Sora — current state, how to access within Pro, how to create video segments, how to
-  extend or concatenate them, cost per generation
-- ChatGPT canvas / artifacts — current state of this feature in Pro
-- GPT-5.5 — is it in the Pro plan, how to select it, API access and model ID
-- Operator / Agent mode — current state in Pro, how to invoke
+Three passes, in order:
 
-**Anthropic (Claude Max):**
-- Claude Cowork — what Cowork sessions add beyond terminal Claude Code usage; scheduled
-  tasks capability; Computer Use integration; how to access from Mac Studio
-- Computer Use — what it is, how to invoke it from terminal or Cowork, what it can and
-  cannot do in April 2026
-- Claude Code new features — any capabilities added since March 2026 that CT may not know:
-  hooks updates, skills updates, new MCP servers in the official ecosystem, subagent changes
-- Claude MCP ecosystem — what new official or high-quality community MCP servers are worth
-  knowing about as of April 2026 (focus on ones with Mac Studio relevance)
+  1. **Delta pass** against existing Velorin research (mandatory pre-step).
+  2. **Discovery pass** for surfaces CT does not know exist.
+  3. **Operational guide** for everything in scope — uniform format
+     so CT can read a section and use the tool within an hour.
 
-**Cross-cutting (answer for ALL tools above):**
-- Which of these tools have a CLI that runs from the Mac terminal? List them with install commands.
-- Which have an official MCP server Claude Code can connect to? List with repo URLs.
-- Which have APIs that a Python or Node.js program can call? List with base URLs.
-- What can connect to what? Name any direct integration paths between tools in CT's suite.
 
-## OUTPUT FORMAT
+## STEP 1 — MANDATORY PRE-RESEARCH READ
 
-One section per tool. Operational — CT needs to read a section and USE the tool within the
-hour, not understand its architecture.
+Before any new research, retrieve and read each of these Library
+cards by `topic_id`. Follow the `source` pointer if the card is
+insufficient. This is your "what's already known" baseline. Without
+this step you will duplicate prior work and miss what has changed.
 
-End with a summary table:
-| Tool | Access URL or CLI | CLI? | MCP? | API? | Cost model | Covered by CT's subscription? |
+Mandatory topic_id pre-load:
 
-Flag anything with per-use cost with the price explicitly.
+  - `claude-code-skills-full-landscape`
+  - `velorin-ecosystem-landscape-synthesis-may2026`
+  - `claude-cowork`
+  - `claude-connectivity-stack`
+  - `claude-code-tools-roundup-mar29`
+  - `trey-gpt55-codex-integration`
+  - `trey-google-ai-ultra-pass1`
+  - `trey-google-ai-ultra-pass2`
+  - `trey-gemini-ai-ultra-breakdown`
+  - `gemini-model-selection`
+  - `openai-ecosystem`
+  - `google-antigravity-ide`
+  - `mcp-browser-tabs`
+  - `trey-notebooklm-api-surface`
+  - `trey-flashmoe-tools`
 
-Flag anything that is in preview, beta, or waitlisted.
+State after reading:
+  - For each card, one line: **STILL CURRENT / PARTIALLY STALE / SUPERSEDED — [why, with date evidence]**.
+  - Then a "delta surface" — the union of what those cards do NOT cover that this request must.
+
+Do not paste the cards back into your output. Cite them by topic_id.
+
+
+## STEP 2 — DISCOVERY PASS (the question CT cannot ask)
+
+For each vendor below, the question is the same:
+
+> **What surfaces, agents, integrations, partnerships, SDK extensions,
+> CLIs, MCP servers, A2A endpoints, browser-automation hooks,
+> developer tools, and adjacent products exist within or alongside
+> this vendor's ecosystem that a power user on a Mac Studio M4 Max
+> could reach today, and that the user has likely never been told
+> about?**
+
+The vendors:
+
+  - **Anthropic** — beyond Claude Code, Cowork, Computer Use. Look for
+    Managed Agents, the Agent SDK and its extensions, partnership
+    surfaces (e.g., the Claude×Adobe integration), enterprise/team
+    surfaces, anything related to "Claude Design" or design-tool
+    integrations, the broader official + community MCP ecosystem,
+    skills and hooks ecosystem, sub-agent patterns, whatever shipped
+    in the last 90 days that a Pro/Max subscriber can use.
+
+  - **Google / Gemini** — beyond Deep Research, Deep Think, AI Studio,
+    Veo/Flow, NotebookLM, Antigravity, Jules. Look for Project Genie or
+    successors, Gemini-powered IDE integrations, Workspace AI surfaces
+    that overlap with build work, Project IDX or its replacement, any
+    agentic-coding tool beyond Jules, image/video/3D tools beyond
+    Imagen/Veo, model-tuning surfaces (AI Studio fine-tuning, LoRA
+    training), Vertex AI features touchable from Mac Studio without
+    enterprise GCP setup.
+
+  - **OpenAI** — beyond ChatGPT Pro browser, Codex desktop, Codex CLI,
+    Sora. Look for Operator/Agent mode current state, Responses API
+    capabilities a power user can wire, custom GPTs as integrations
+    rather than chat targets, the broader OpenAI tool ecosystem, image
+    generation surfaces (DALL·E successors), voice surfaces, anything
+    new in the SDK that maps to multi-vendor Cowork orchestration.
+
+  - **Apple Intelligence on Mac Studio M4 Max** — what surfaces does
+    macOS Sequoia (or current major version April 2026) expose that
+    integrate with Claude/Gemini/OpenAI tooling? Apple Shortcuts +
+    AI integration. Local-model APIs. Spotlight AI. Anything reachable
+    from Claude Code via subprocess that adds capability.
+
+  - **Adjacent dev / automation tooling that integrates with the
+    above** — IDEs (Cursor, Windsurf, Zed) and their MCP/agent
+    integrations; automation frameworks (Hammerspoon, Apple
+    Shortcuts, Keyboard Maestro) that can be invoked from Claude
+    Code; the broader open-source MCP server ecosystem; agent
+    frameworks (LangChain, LlamaIndex, CrewAI) only insofar as they
+    plug into one of CT's paid surfaces.
+
+For each surface you find, note:
+  - **Discovery confidence:** CONFIRMED (you found official docs) /
+    HIGH (multiple credible sources) / MODERATE (community signal,
+    not vendor-confirmed) / RUMOR (single source, treat with caution).
+  - **Recency stamp:** when was this announced, when was the last
+    update, has it changed since the corresponding Library card was
+    written.
+
+
+## STEP 3 — OPERATIONAL GUIDE FORMAT (per tool / surface)
+
+After Steps 1 and 2 produce the in-scope set, write one section per
+tool. Operational tone — CT must be able to read a section and USE
+the surface within an hour. No architectural digressions.
+
+For each, ten fields:
+
+  1. **What it is** — one paragraph, plain English, no jargon.
+  2. **Where to access it** — exact URL, install command, or invocation path.
+  3. **What subscription covers it** — Ultra / Pro / Max / extra cost / free.
+  4. **Current interface** — what the user sees on first open. Note any rename or relocation since Q1 2026.
+  5. **One concrete task** — something CT can do in <10 minutes to prove the surface works.
+  6. **CLI surface** — can it be called from Mac terminal? Install command, invocation syntax, auth setup if any.
+  7. **MCP surface** — official or community MCP server? Repo URL, install, claude_desktop_config.json snippet.
+  8. **API surface** — base URL, auth method, SDK availability.
+  9. **Connects to** — which other tools in CT's suite can this send to or receive from? Name the protocol (MCP / A2A / webhook / API call / subprocess) and direction.
+  10. **Limitations and per-use cost** — what breaks, what costs per generation/call (name the price), what is in beta/preview/waitlist.
+
+
+## STEP 4 — CROSS-CUTTING INTEGRATION MAP
+
+After per-tool sections, two cross-cutting tables:
+
+**Table A — Reachability matrix:**
+
+| Tool | CLI? | MCP? | API? | A2A? | Browser-automation only? | Mac Studio Stage 0 relevance |
+|---|---|---|---|---|---|---|
+
+**Table B — Direct integration paths:**
+
+| Source tool | Target tool | Protocol | What flows | Stability (stable / preview / fragile) |
+|---|---|---|---|---|
+
+
+## STEP 5 — STALENESS REPORT
+
+End with a short list of Library cards from the Step 1 pre-load that
+are now stale or superseded by your new findings. Format:
+
+| topic_id | Status | What changed | Action recommended |
+|---|---|---|---|
+
+Recommended actions: KEEP / UPDATE / SUPERSEDE / RETIRE. CT and Jiang
+will execute the actions — your job is to flag.
+
 
 ## CONSENSUS FILTER NOTE
 
-This is a FUNCTIONAL research request. We are mapping what CT is paying for and how to use
-it operationally. The Consensus Filter applies only if Trey starts recommending architectural
-patterns or tool adoptions; for this how-to-use guide, report what exists and how it works.
+This is functional landscape research, not architectural recommendation.
+The Consensus Filter applies if you start advocating tool adoption at
+the foundational level. For per-tool how-to-use sections, report what
+exists and how it works.
 
-## MAC STUDIO CONTEXT (apply this lens throughout)
 
-CT is configuring a Mac Studio M4 Max as his primary Velorin build machine. Stage 0 of the
-build requires wiring Claude Code to all specialist systems that will run in the multi-vendor
-Cowork architecture. Any tool that has a CLI, MCP server, or API that Claude Code can call
-is directly relevant to Stage 0 configuration. Flag these with special note: "Mac Studio
-Stage 0 relevant: [yes/no] — [brief reason]."
+## OUTPUT
+
+  - Format: markdown, plain-text LaTeX for any math, no equation images.
+  - Delivery: Google Drive Claude.AI Shipping folder with destination header.
+  - Last line: `[VELORIN.EOF]`.
+  - Confidence labels on all empirical claims.
+  - Discovery-pass items get explicit confidence + recency stamp.
+  - State assumptions you made about CT's environment (macOS version, hardware, network) so anything wrong is easy to correct.
 
 [VELORIN.EOF]
