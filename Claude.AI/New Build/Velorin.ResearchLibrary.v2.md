@@ -1281,62 +1281,10 @@ Future-state Brain automation reference. Companion to `zep-cloud-evaluation` —
 Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Jiang.Topic.Graphiti.md`. Read source for the deployment-tier matrix, the four-layer mapping, and the Custodian gap analysis.
 
 #### topic_id: trey-research-complete-roundup
-status: STANDING (compact roster — see source files for individual research)
-confidence: per-source — see roster
-date: 2026-02 to 2026-04
-primary_domain: knowledge-systems
-secondary_domains: [agent-architecture, brain-architecture, ecosystem-industry]
-source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/` (directory)
-related: [brain-full-analysis-mar30, agent-orchestration, openclaw-nemoclaw-architecture]
-build_guide_refs: various — per source
-recommendation: STANDING (roster); each entry below is its own logical card. Consolidated here for index efficiency.
-
-##### Roster (Trey Research_Complete) — load-bearing topics already covered by v1 metadata
-
-This roster carries the v1 "Key Finding" lines as one-line summaries. Promote to full cards on demand. Source path: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/<file>`.
-
-| topic_id | source file | session | primary_domain | one-line key finding |
-|---|---|---|---|---|
-| trey-semantic-memory-organization | Trey.Research.SemanticMemoryOrganization.Neuroscience.md | 027 | brain-architecture | ATL hub-and-spoke, dual routing, ACT-R; continuous gradients; folder structure is scaffolding not semantics |
-| trey-skills-taxonomy-emergence | Trey.Research.SkillsTaxonomyEmergence.md | 031 | skills-system | Hub-and-Spoke + ACT-R production rules + autonomic/somatic; declarative/procedural separation; "Use when" syntax |
-| trey-emotional-memory-salience | Trey.Research.EmotionalMemorySalience.Measurement.md | 031 | cognitive-behavioral | H_E measurement: CES-7, IES-R, GSR, passive inference (Option B) — never prompted directly |
-| trey-epistemodynamics-novelty-check | Trey.Research.Epistemodynamics.NoveltyCheck.md | 031 | math-foundations | Prior art: Kochen 1974, Vopson 2022; topology synthesis is novel; primitives established |
-| knowledge-staleness | Trey.Research.KnowledgeStaleness.md | 035 | knowledge-systems | write-time edge programs (WorldDB) + belief_state lifecycle (Pith) + bi-temporal modeling (Graphiti) + RoMem |
-| trey-viscoelastic-brain | Trey.Research.ViscoelasticBrainArchitecture.md | 030 | brain-architecture | Background research underpinning Erdős's viscoelastic resolution |
-| trey-brain-ingestion-pipeline | Trey.Research.BrainIngestionPipeline.md | 030 | knowledge-systems | RDoLT atomic decomposition + Mem0 two-phase dedup + community detection + EdgePush; deduplication needs LLM gate |
-| trey-automated-pointer-rating | Trey.Research.AutomatedPointerRating.md | 033 | knowledge-systems | NPMI + LLM-judge hybrid; cosine rejected; forced distribution for ρ* compliance; 9-class relation classification |
-| trey-brain-to-skills-interface | Trey.Research.BrainToSkillsInterface.md | 033 | skills-system | GoS reverse-PPR + ACT-R threshold τ + thalamic disinhibition; Letta/Mem0/HippoRAG fail to bridge |
-| trey-skills-schema-validation | Trey.Research.SkillsSchemaValidation.md | 035 | skills-system | Flat prerequisites structurally deficient; 4-type edge schema mandatory; typed I/O schemas required |
-| ies-rule-activation-gap | Trey.Research.RuleActivationGap.md | 035 | failure-modes | Two-layer failure model (Layer 0 not in load path; Layer 1 not intercepting mid-reasoning); Inverted Extraction Schema |
-| ies-implementation-architecture | Trey.Research.IESImplementationArchitecture.md | 036 | instruction-boot | Asymmetric Transport Verifier (5 axes); ATV as transport-layer enforcement via local constrained-decoding verifier |
-| trey-verifier-benchmark-methodology | Trey.Research.VerifierBenchmarkMethodology.md | 036 | tooling | JSONSchemaBench + XGrammar (replaces Outlines) + vllm-mlx (replaces llama.cpp); VTPS primary metric |
-| trey-fsm-grammar-version-management | Trey.Research.FSMGrammarVersionManagement.md | 036 | tooling | Schema Registry + PBT + Compiler-in-Loop minimum viable; Shadow Mode + Canary rollout + dual-support migration window |
-| trey-vegp-novelty-validation | Trey.Research.VEGPNoveltyValidation.md | 035 | math-foundations | Cross-manifold iso NOT novel (Millidge 2025); applied architecture novel; gate primitive ubiquitous (Wald SPRT, DDM, etc.) |
-| trey-non-abelian-dynamics-audit | Trey.Research.NonAbelianBrainDynamicsAudit.md | 035 | math-foundations | Theorem 2 partially novel (JBD synthesis novel, commutator bounds derivative); Theorem 3 retracted before audit |
-| trey-ai-ecosystem-state-of-play | Trey.Research.AIEcosystemStateOfPlay.Apr2026.md | 033 | ecosystem-industry | Desktop-app landscape; Qwen 3.6 MoE for Mac Studio; A2A vs MCP bifurcation; self-healing RAG; CRAG; Hermes-Agent loop |
-| trey-media-extraction-tools | Trey.Research.MediaExtractionToolsLandscape.md | 035 | tooling | OpenDataLoader (adopt) + Surya (fallback); Docling/Marker/MarkItDown rejected; Qwen2.5-VL for images; Voibe for dictation |
-| trey-gpt55-codex-integration | Trey.Research.GPT55AndCodexIntegrationSurface.md | 036 | vendor-specific | Technical findings useful; architectural prescription superseded by Cowork framing |
-| trey-notebooklm-api-surface | Trey.Research.NotebookLMAPISurface.md | 036 | vendor-specific | NotebookLM is NOT a Velorin component — Enterprise-locked, brittle unofficial wrappers |
-| trey-persona-maker-landscape | Trey.Research.PersonaMakerLandscape.md | 036 | cognitive-behavioral | Stylometric markers + identity drift + production patterns; reference for FW-009 agent-factory |
-| trey-synaptic-pruning-v2 | Trey.Research.SynapticPruning.v2.md | 022 | brain-architecture | Initiated the Erdős math pipeline; superseded by `erdos-synaptic-pruning` (Appendix B) |
-| trey-synaptic-pruning-research-report | Trey.Topic.SynapticPruning_ResearchReport.md | n/a | brain-architecture | Extended report on synaptic pruning research |
-| trey-mcp-a2a-architecture | Trey.Topic.MCP_A2A_Architecture_Consolidated.md | 021 | agent-architecture | MCP/A2A consolidated; multi-model bridge findings — foundation for trey-multi-model-orchestration |
-| trey-bootloader-framing-fix | Trey_Bootloader_Framing_Fix.md | n/a | instruction-boot | Origin of the fail-closed BOOT_PENDING state-machine pattern; informs `instruction-language-architecture` Velorin rebuild |
-| trey-barrier-kvm-cross-mac | Trey.Research.BarrierKVM.CrossMacTransfer.md | 027 | infrastructure | Barrier KVM cross-Mac transfer research |
-| trey-velorin-kvm-bridge | Trey.Research.VelorinKVMBridge.md | 027 | infrastructure | Velorin KVM bridge plan |
-| trey-cross-platform-app-mesh | Trey.Research.CrossPlatformAppMesh.md | 027 | infrastructure | Tauri 2.0 + libp2p + WebRTC Data Channels + CRDT |
-| trey-smb-vs-tcp-event-propagation | Trey.Research.SMBvsTCP.EventPropagation.md | 027 | infrastructure | SMB vs TCP event propagation research |
-| trey-tool-barrier-kvm-network | Tool.BarrierKVM.NetworkCrossScreen.md | n/a | infrastructure | Barrier KVM network cross-screen tool reference |
-| trey-turboquant-deep-dive | TurboQuant_DeepDive_Math_Tool.md | 007 | math-applied | KV cache compression 4.9× (PolarQuant + QJL); Apple Silicon validated; community QJL failure finding |
-| trey-hard-memory-pipeline | Hard_Memory_Pipeline_Inversion_Compression.md | 004 | knowledge-systems | Hard memory pipeline inversion and compression |
-| trey-flashmoe-tools | FlashMoe_Report_Tools.md | 020 | models | FlashMoE research |
-| trey-perplexity-computer-framework | Perplexity_Computer_Framework.md | n/a | tooling | Perplexity Computer framework analysis |
-| trey-google-ai-ultra-pass1 | Google_AI_Ultra_Full_Suite_Connectivity_Research-1775402355055134993.md | n/a | vendor-specific | Google AI Ultra suite connectivity (pass 1) |
-| trey-google-ai-ultra-pass2 | Google_AI_Ultra_Suite_Pass_2.md | n/a | vendor-specific | Google AI Ultra suite (pass 2) |
-| trey-gemini-ai-ultra-breakdown | Gemini_AI_Ultra_Breakdown.md | n/a | vendor-specific | Gemini AI Ultra plan breakdown — see `gemini-model-selection` for current picker mapping |
-| trey-voice-input-local | "Voice Input_Local Inter Communication windows.md" | n/a | voice-input | Local voice input + inter-communication on Windows |
-
-Also COMBINE-grouped below for compactness:
+status: SUPERSEDED — all roster entries promoted to full cards in their respective domain sections
+confidence: n/a
+date: 2026-04-29
+note: The 30 roster entries that previously lived here as one-line stubs have been promoted to full cards and placed in their correct domain sections throughout this library. Each card now has a proper Summary, Key Findings, Why It Matters Now, and Pointer — matching the format of all other STANDING cards. This roundup entry is retained only as a historical marker.
 
 #### topic_id: trey-operating-papers-q1-2026
 status: COMBINE
