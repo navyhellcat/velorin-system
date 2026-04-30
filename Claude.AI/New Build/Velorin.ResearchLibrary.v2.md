@@ -43,19 +43,19 @@ A single consolidated reference of every standing research finding in the Velori
 <!-- INDEX_ROWS_BELOW -->
 | window-gravity | failure-modes | STANDING | 0.82 | 2026-03-29 | STANDING |
 | agent-teams-boot-degradation | failure-modes | STANDING | 0.92 | 2026-03-31 | STANDING |
-| ies-rule-activation-gap | failure-modes | STANDING | — | 2026 (s.035) | STANDING (roster) |
+| ies-rule-activation-gap | failure-modes | STANDING | — | 2026 (s.035) | STANDING |
 | ecosystem-check-diagnosis | tooling | STANDING | 0.88 | 2026-03-28 | STANDING |
 | agent-orchestration | agent-architecture | STANDING | 0.82 | 2026-03-27 | STANDING |
 | agent-ecosystem-reality | agent-architecture | STANDING | 0.85 | 2026-03-27 | STANDING |
 | trey-multi-model-orchestration | agent-architecture | STANDING | 0.88 | 2026-03-31 | STANDING |
 | openclaw-deep-dive | agent-architecture | STANDING | 0.85 | 2026-04-03 | STANDING |
 | openclaw-nemoclaw-architecture | agent-architecture | STANDING | 0.88 | 2026-03-31 | STANDING |
-| trey-mcp-a2a-architecture | agent-architecture | STANDING | — | 2026 (s.021) | STANDING (roster) |
+| trey-mcp-a2a-architecture | agent-architecture | STANDING | — | 2026 (s.021) | STANDING |
 | session021-research-synthesis | agent-architecture | STANDING (BRAINSTORM tag) | 0.78 | 2026-04-05 | STANDING |
 | openai-ecosystem | vendor-specific | STANDING | 0.85 | 2026-03-26 | STANDING |
 | google-antigravity-ide | vendor-specific | STANDING | 0.82 | 2026-04-05 | STANDING |
 | gemini-model-selection | models | STANDING | 0.85 | 2026-04-05 | STANDING |
-| trey-flashmoe-tools | models | STANDING | — | 2026 (s.020) | STANDING (roster) |
+| trey-flashmoe-tools | models | STANDING | — | 2026 (s.020) | STANDING |
 | superpowers-skills-framework | tooling | STANDING | 0.85 | 2026-03-29 | STANDING |
 | gsd-spec-driven-development | tooling | STANDING | 0.85 | 2026-03-29 | STANDING |
 | claude-cowork | tooling | STANDING | 0.90 | 2026-03-28 | STANDING |
@@ -67,54 +67,54 @@ A single consolidated reference of every standing research finding in the Velori
 | mcp-browser-tabs | tooling | STANDING | 0.85 | 2026-03-30 | STANDING |
 | tools-research-session-summary-mar29 | tooling | ARCHIVE | n/a | 2026-03-29 | ARCHIVE → session-summary archive |
 | oasis-multi-agent-simulation | tooling | STANDING | 0.88 | 2026-03-31 | STANDING |
-| trey-verifier-benchmark-methodology | tooling | STANDING | — | 2026 (s.036) | STANDING (roster) |
-| trey-fsm-grammar-version-management | tooling | STANDING | — | 2026 (s.036) | STANDING (roster) |
-| trey-media-extraction-tools | tooling | STANDING | — | 2026 (s.035) | STANDING (roster) |
-| trey-perplexity-computer-framework | tooling | STANDING | — | n/a | STANDING (roster) |
+| trey-verifier-benchmark-methodology | tooling | STANDING | — | 2026 (s.036) | STANDING |
+| trey-fsm-grammar-version-management | tooling | STANDING | — | 2026 (s.036) | STANDING |
+| trey-media-extraction-tools | tooling | STANDING | — | 2026 (s.035) | STANDING |
+| trey-perplexity-computer-framework | tooling | STANDING | — | n/a | STANDING |
 | instruction-language-architecture | instruction-boot | STANDING | 0.82 | 2026-03-31 | STANDING |
-| ies-implementation-architecture | instruction-boot | STANDING | — | 2026 (s.036) | STANDING (roster) |
-| trey-bootloader-framing-fix | instruction-boot | STANDING | — | 2026-03-31 | STANDING (roster) |
+| ies-implementation-architecture | instruction-boot | STANDING | — | 2026 (s.036) | STANDING |
+| trey-bootloader-framing-fix | instruction-boot | STANDING | — | 2026-03-31 | STANDING |
 | brain-full-analysis-mar30 | brain-architecture | STANDING | 0.85 | 2026-03-30 | STANDING |
 | brain-activation-architecture | brain-architecture | STANDING | 0.83 | 2026-04-04 | STANDING |
-| trey-semantic-memory-organization | brain-architecture | STANDING | — | 2026 (s.027) | STANDING (roster) |
-| trey-viscoelastic-brain | brain-architecture | STANDING | — | 2026 (s.030) | STANDING (roster) |
+| trey-semantic-memory-organization | brain-architecture | STANDING | — | 2026 (s.027) | STANDING |
+| trey-viscoelastic-brain | brain-architecture | STANDING | — | 2026 (s.030) | STANDING |
 | trey-synaptic-pruning-v2 | brain-architecture | SUPERSEDED → erdos-synaptic-pruning | — | 2026 (s.022) | SUPERSEDED |
-| trey-synaptic-pruning-research-report | brain-architecture | STANDING | — | n/a | STANDING (roster) |
+| trey-synaptic-pruning-research-report | brain-architecture | STANDING | — | n/a | STANDING |
 | zep-cloud-evaluation | knowledge-systems | STANDING | 0.87 | 2026-03-31 | STANDING |
 | graphiti-evaluation | knowledge-systems | STANDING | 0.86 | 2026-03-31 | STANDING |
-| knowledge-staleness | knowledge-systems | STANDING | — | 2026 (s.035) | STANDING (roster) |
-| trey-brain-ingestion-pipeline | knowledge-systems | STANDING | — | 2026 (s.030) | STANDING (roster) |
-| trey-automated-pointer-rating | knowledge-systems | STANDING | — | 2026 (s.033) | STANDING (roster) |
-| trey-hard-memory-pipeline | knowledge-systems | STANDING | — | 2026 (s.004) | STANDING (roster) |
-| trey-research-complete-roundup | knowledge-systems | STANDING (roster) | — | various | INDEX-style entry |
+| knowledge-staleness | knowledge-systems | STANDING | — | 2026 (s.035) | STANDING |
+| trey-brain-ingestion-pipeline | knowledge-systems | STANDING | — | 2026 (s.030) | STANDING |
+| trey-automated-pointer-rating | knowledge-systems | STANDING | — | 2026 (s.033) | STANDING |
+| trey-hard-memory-pipeline | knowledge-systems | STANDING | — | 2026 (s.004) | STANDING |
+| trey-research-complete-roundup | knowledge-systems | STANDING | — | various | INDEX-style entry |
 | trey-operating-papers-q1-2026 | agent-architecture | COMBINE | 0.85 | 2026 Q1 | COMBINE → 3 papers in one card |
 | trey-vendor-comparison-roundup-q1-2026 | ecosystem-industry | COMBINE | 0.78 | 2026 Q1 | COMBINE → 4 files in one card |
-| trey-skills-taxonomy-emergence | skills-system | STANDING | — | 2026 (s.031) | STANDING (roster) |
-| trey-brain-to-skills-interface | skills-system | STANDING | — | 2026 (s.033) | STANDING (roster) |
-| trey-skills-schema-validation | skills-system | STANDING | — | 2026 (s.035) | STANDING (roster) |
-| trey-emotional-memory-salience | cognitive-behavioral | STANDING | — | 2026 (s.031) | STANDING (roster) |
-| trey-persona-maker-landscape | cognitive-behavioral | STANDING | — | 2026 (s.036) | STANDING (roster) |
+| trey-skills-taxonomy-emergence | skills-system | STANDING | — | 2026 (s.031) | STANDING |
+| trey-brain-to-skills-interface | skills-system | STANDING | — | 2026 (s.033) | STANDING |
+| trey-skills-schema-validation | skills-system | STANDING | — | 2026 (s.035) | STANDING |
+| trey-emotional-memory-salience | cognitive-behavioral | STANDING | — | 2026 (s.031) | STANDING |
+| trey-persona-maker-landscape | cognitive-behavioral | STANDING | — | 2026 (s.036) | STANDING |
 | human-brain-layers | cognitive-behavioral | STANDING (INDEX-style) | 0.92 | 2026-03-31 | STANDING |
-| trey-epistemodynamics-novelty-check | math-foundations | STANDING | — | 2026 (s.031) | STANDING (roster) |
-| trey-vegp-novelty-validation | math-foundations | STANDING | — | 2026 (s.035) | STANDING (roster) |
-| trey-non-abelian-dynamics-audit | math-foundations | STANDING | — | 2026 (s.035) | STANDING (roster) |
+| trey-epistemodynamics-novelty-check | math-foundations | STANDING | — | 2026 (s.031) | STANDING |
+| trey-vegp-novelty-validation | math-foundations | STANDING | — | 2026 (s.035) | STANDING |
+| trey-non-abelian-dynamics-audit | math-foundations | STANDING | — | 2026 (s.035) | STANDING |
 | turboquant-and-mempalace | math-applied | STANDING | 0.86 | 2026-04-07 | STANDING |
-| trey-turboquant-deep-dive | math-applied | STANDING | — | 2026 (s.007) | STANDING (roster) |
-| trey-ai-ecosystem-state-of-play | ecosystem-industry | STANDING | — | 2026 (s.033) | STANDING (roster) |
-| trey-gpt55-codex-integration | vendor-specific | STANDING | — | 2026 (s.036) | STANDING (roster) |
-| trey-notebooklm-api-surface | vendor-specific | STANDING | — | 2026 (s.036) | STANDING (roster) |
-| trey-google-ai-ultra-pass1 | vendor-specific | STANDING | — | n/a | STANDING (roster) |
-| trey-google-ai-ultra-pass2 | vendor-specific | STANDING | — | n/a | STANDING (roster) |
-| trey-gemini-ai-ultra-breakdown | vendor-specific | STANDING | — | n/a | STANDING (roster) |
+| trey-turboquant-deep-dive | math-applied | STANDING | — | 2026 (s.007) | STANDING |
+| trey-ai-ecosystem-state-of-play | ecosystem-industry | STANDING | — | 2026 (s.033) | STANDING |
+| trey-gpt55-codex-integration | vendor-specific | STANDING | — | 2026 (s.036) | STANDING |
+| trey-notebooklm-api-surface | vendor-specific | STANDING | — | 2026 (s.036) | STANDING |
+| trey-google-ai-ultra-pass1 | vendor-specific | STANDING | — | n/a | STANDING |
+| trey-google-ai-ultra-pass2 | vendor-specific | STANDING | — | n/a | STANDING |
+| trey-gemini-ai-ultra-breakdown | vendor-specific | STANDING | — | n/a | STANDING |
 | voice-io-parity | voice-input | STANDING | 0.89 | 2026-03-31 | STANDING |
-| trey-voice-input-local | voice-input | STANDING | — | n/a | STANDING (roster) |
+| trey-voice-input-local | voice-input | STANDING | — | n/a | STANDING |
 | workstation-setup-apr10 | infrastructure | STANDING | 1.00 | 2026-04-10 | STANDING |
 | claude-code-on-replit | infrastructure | STANDING | 0.84 | 2026-03-31 | STANDING |
-| trey-barrier-kvm-cross-mac | infrastructure | STANDING | — | 2026 (s.027) | STANDING (roster) |
-| trey-velorin-kvm-bridge | infrastructure | STANDING | — | 2026 (s.027) | STANDING (roster) |
-| trey-cross-platform-app-mesh | infrastructure | STANDING | — | 2026 (s.027) | STANDING (roster) |
-| trey-smb-vs-tcp-event-propagation | infrastructure | STANDING | — | 2026 (s.027) | STANDING (roster) |
-| trey-tool-barrier-kvm-network | infrastructure | STANDING | — | n/a | STANDING (roster) |
+| trey-barrier-kvm-cross-mac | infrastructure | STANDING | — | 2026 (s.027) | STANDING |
+| trey-velorin-kvm-bridge | infrastructure | STANDING | — | 2026 (s.027) | STANDING |
+| trey-cross-platform-app-mesh | infrastructure | STANDING | — | 2026 (s.027) | STANDING |
+| trey-smb-vs-tcp-event-propagation | infrastructure | STANDING | — | 2026 (s.027) | STANDING |
+| trey-tool-barrier-kvm-network | infrastructure | STANDING | — | n/a | STANDING |
 | deep-research-pipeline | tooling | STANDING | 0.84 | 2026-03-31 | STANDING |
 | velorin-deep-research-report-mar25 | ecosystem-industry | STANDING | 0.85 | 2026-03-25 | STANDING |
 | velorin-market-research-trey | ecosystem-industry | STANDING | 0.80 | 2026-03 | STANDING |
@@ -1510,5 +1510,838 @@ All Erdős solutions are LOCKED proofs. They are not summarized in card form bec
 | erdos-unified-synthesis-apr28 | Cross-source synthesis of Erdős FullStackAudit + Trey FullStackPressureTest + CT's Program-Substrate vision. **§1 Convergences locked:** Orthogonal Belief Embedding (A.4); Quasi-Abelian Persona Generation (A.5); Tafazoli Multiplex $W(b(t))$ routing across invariant subspaces with JS divergence bounded to 0; Cellular-Sheaf consistency for parallel writes. **§2 Symlink adjudication:** physical symlinks PERMANENTLY BANNED (cyclic $\pi_1(X) \neq 0$ guarantees infinite recursive loops for stateless Markovian agents). Resolution = **Functorial Registry** — `AGENTS.md` as continuous functor $R: \mathcal{V} \to \mathbf{P}$, evaluated in memory once before filesystem traversal. Cost = $\mathcal{O}(1)$ logical lookup. Trey's Monoswarm intent preserved logically; Poset geometry preserved physically. **§3 "Halt domain-specific embeddings" REJECTED unconditionally** — linear transformations are homeomorphisms, cannot alter metric curvature. Natural language ≈ Euclidean ($\mathbb{E}^n$); taxonomic / "is-a" / code AST relations ≈ Hyperbolic ($\mathbb{H}^n$, negative curvature). Bourgain Embedding Theorem: forcing hyperbolic into Euclidean introduces exponential Gromov $\delta$-hyperbolicity distortion → $\beta$ commutator collapses to noise. Halt redundant models IFF intrinsic curvatures are homomorphic; for topologically distinct manifolds, independent embeddings remain mandatory, bridged by $W_2$ optimal transport. **§4 Pearl's $do$-calculus (SCM) is the load-bearing addition** of Trey's 5 lateral disciplines — mandatory for relation classification and synaptic pruning bots. ACE = $\mathbb{E}[Y \mid do(X=1)] - \mathbb{E}[Y \mid do(X=0)] > 0$ identifies causal edges; counterfactual ablations replace probabilistic guessing; pruning by association alone is catastrophic for causal X→Y edges (orphans Y). Trey's 3 problem specs (Sheaf sync, Thermodynamic pruning, Wasserstein migration) "perfectly complete" Erdős's prior derivations — no collisions. **§5 Program-Substrate Vision formalized:** §5.1 swarm = **Mazurkiewicz Trace Monoid**, programs commute IFF topological supports disjoint ($U_i \cap U_j = \emptyset$); no global clock needed. §5.2 Inspector Economics = **Contextual Multi-Armed Bandit + Active Inference**; UCB policy audits only when Variational Free Energy $F > \theta_{audit}$; 99% of graph stays dark. §5.3 Boss Bots = **LTL Reactive Synthesis (Church's Problem)** via CEGIS (Counterexample-Guided Inductive Synthesis) — CT writes invariants like $\square(\rho \geq 0.78) \land \square\lozenge(\text{orphans}=0)$, Boss Bot translates to FSA, synthesizes AST as mathematically guaranteed winning strategy, hot-swaps into swarm. §5.4 **Autonomic Speed Limit:** $\frac{d}{dt}\lVert p(G) \rVert$ must be strictly bounded by spectral gap $\gamma$ of graph Laplacian $\Delta_G$; AI inspectors function as Thermodynamic Governor throttling swarm to guarantee $\dot{S}_{total} \leq 0$. §5.5 **Biological analogy is mathematically EXACT** — instantiation of Global Workspace Theory: System 1 (Autonomic) = Swarm, System 2 (Conscious) = AI Boss Bot computing Global Sections $H^0(X, \mathcal{F})$; broadcast on unresolvable cohomology obstruction. **§6 Four Unified Directives (cleared to build):** (1) AGENTS.md Functor Registry; (2) Filter embeddings by curvature, $W_2$ bridges; (3) Pearl SCM in pruning + 2-pass classifier; (4) Deploy autonomic swarm with LTL synthesis + UCB audit + Laplacian throttling. | `Claude.AI/Bot.Erdos/Research_Complete/Erdos.Solution.UnifiedSynthesis.md` | Symlink resolution → AGENTS.md design; Embedding strategy lock; Pearl SCM injection across pruning + classification; Program-substrate formal architecture (Mazurkiewicz / CEGIS / Bandit / Speed Limit / GWT) | 040 |
 
 ---
+
+
+
+### 3.12 Promoted Roster Cards (formerly one-line stubs — full cards as of 2026-04-29)
+
+#### topic_id: trey-google-ai-ultra-pass1
+status: STANDING
+confidence: 0.90
+date: 2026-04-01
+primary_domain: vendor-specific
+secondary_domains: [tooling, multi-vendor-cowork]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Google_AI_Ultra_Full_Suite_Connectivity_Research-1775402355055134993.md`
+related: [trey-google-ai-ultra-pass2, trey-gemini-ai-ultra-breakdown, trey-notebooklm-api-surface]
+build_guide_refs: [Multi-vendor Cowork, Mac Studio transition]
+recommendation: STANDING
+
+##### Summary
+First-pass inventory and connectivity matrix of all products included in the Google AI Ultra subscription. Maps each product (Gemini Advanced, Gemini API/AI Studio, Gemini Code Assist, NotebookLM, Veo/Imagen 3, Workspace integrations) across four dimensions: runtime environment, GitHub connectivity, API/MCP surface, and local vs. cloud execution. Core finding: Google's AI ecosystem is bifurcated — consumer/Workspace side shares Drive data but exposes no APIs; developer side (AI Studio, Vertex AI) has full APIs but does not share saved context with consumer apps.
+
+##### Key Findings
+- Gemini API/AI Studio supports MCP and should be treated as the primary developer surface; provides access to 2M token context windows via API key authentication.
+- NotebookLM has no official public REST API or MCP support for standard consumer accounts; suitable only as a human-facing documentation hub, not a pipeline component.
+- Gemini Code Assist (Enterprise) is the only Google product with direct GitHub OAuth integration for private repos.
+- All model inference is 100% cloud-based; no Ultra-tier model runs locally. Local execution limited to Nano variants only.
+- Claude remains superior for complex refactoring, zero-shot coding logic, and MCP/Computer Use agentic workflows; Gemini wins on context window size and multimodal native processing.
+
+##### Why It Matters Now
+Establishes the decision boundary for how Gemini integrates into Velorin's multi-vendor Cowork architecture at Mac Studio transition. Confirms Gemini's role is heavy-lifter for massive-context tasks via API, not a peer orchestrator or memory substrate.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Google_AI_Ultra_Full_Suite_Connectivity_Research-1775402355055134993.md`
+
+---
+
+#### topic_id: trey-google-ai-ultra-pass2
+status: STANDING
+confidence: 0.88
+date: 2026-04-01
+primary_domain: vendor-specific
+secondary_domains: [tooling, multi-vendor-cowork]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Google_AI_Ultra_Suite_Pass_2.md`
+related: [trey-google-ai-ultra-pass1, trey-notebooklm-api-surface, trey-gpt55-codex-integration]
+build_guide_refs: [Multi-vendor Cowork, Mac Studio transition]
+recommendation: STANDING
+
+##### Summary
+Addendum to Pass 1 covering three omissions: Google Jules (asynchronous cloud coding agent), operational distinction between Deep Think/Deep Research/Agent Mode, and corrected NotebookLM MCP surface via community tools. Jules provisions Google Cloud VMs, clones repos, writes code, submits PRs autonomously. Agent Mode inside Gemini Code Assist and Gemini CLI supports local MCP server connections and file read/write/execute loops.
+
+##### Key Findings
+- Jules is Google's async cloud DevOps agent; operates on cloud VMs via GitHub App integration; suited for background grunt-work (tests, linting, dependency bumps), not zero-to-one architectural scaffolding.
+- Deep Think = slow System 2 reasoner; Deep Research = multi-step web synthesis; Agent Mode = local ReAct execution loop with MCP support and file/terminal access.
+- `roomi-fields/notebooklm-mcp` package can connect Claude Code to NotebookLM but built on unofficial RPCs (see NotebookLM API Surface card for risk).
+- Self-hosted "Local NotebookLM" clones exist using Docker and open-weights models for air-gapped alternatives.
+
+##### Why It Matters Now
+Fills the Jules gap from Pass 1 and sharpens the operational taxonomy of Google's execution modes for routing decisions in multi-vendor Cowork.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Google_AI_Ultra_Suite_Pass_2.md`
+
+---
+
+#### topic_id: trey-gemini-ai-ultra-breakdown
+status: STANDING
+confidence: 0.85
+date: 2026-04-05
+primary_domain: vendor-specific
+secondary_domains: [tooling, infrastructure]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Gemini_AI_Ultra_Breakdown.md`
+related: [trey-google-ai-ultra-pass1, trey-google-ai-ultra-pass2]
+build_guide_refs: [Multi-vendor Cowork, Mac Studio transition]
+recommendation: STANDING
+
+##### Summary
+Hardware-to-software stack breakdown of Google AI Ultra ecosystem. Covers Ironwood TPU infrastructure, Gemini API/AI Studio, Workspace integrations, GitHub connectivity, and step-by-step guide for initiating Gemini as a Velorin agent. All inference exclusively cloud-based.
+
+##### Key Findings
+- GitHub connectivity: Web App import (static snapshot, up to 5,000 files/100MB, no write-back) and Chrome extension (live page context via URL fetch).
+- Built-in tools: Google Search, URL Context, Code Execution (sandboxed on Google Cloud), Computer Use — all cloud-executed.
+- Gemini API supports OpenAI-compatibility mapping for cross-vendor integration scripts.
+
+##### Why It Matters Now
+Grounding for Gemini's cloud-dependency constraint and the practical workflow for importing Velorin repos into Gemini sessions.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Gemini_AI_Ultra_Breakdown.md`
+
+---
+
+#### topic_id: trey-notebooklm-api-surface
+status: STANDING
+confidence: 0.92
+date: 2026-04-26
+primary_domain: vendor-specific
+secondary_domains: [architecture, brain-design]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.NotebookLMAPISurface.md`
+related: [trey-google-ai-ultra-pass1, trey-brain-ingestion-pipeline]
+build_guide_refs: [Brain architecture, Layer 1 Qdrant]
+recommendation: STANDING — with CT scope correction (NotebookLM is human-facing tool, NOT a Velorin component)
+
+##### Summary
+Exhaustive audit of NotebookLM's programmatic surface. Official API is enterprise-only (GCP IAM + OAuth 2.1). Unofficial wrappers rely on brittle reverse-engineered RPCs and cookie scraping. Community MCP servers consume up to 150K context tokens just registering tool schemas. Black-box RAG abstraction is mathematically incompatible with Erdős's PPR density constraints.
+
+##### Key Findings
+- Official NotebookLM API is enterprise-only; no consumer API keys; no chat history export, structured notes extraction, or mind map retrieval endpoints.
+- Unofficial wrappers (`teng-lin/notebooklm-py`) rely on Google's internal `batchexecute` RPCs — structurally hazardous for persistent automation.
+- Community MCP servers inject up to 150,000 tokens of JSON schema per turn, destroying token economy.
+- NotebookLM's black-box retrieval makes it impossible to enforce ρ* = 0.78 or the Second Law.
+- Correct Velorin architecture: native local Qdrant + Markdown.
+
+##### Why It Matters Now
+Closes the NotebookLM integration question permanently. CT uses NotebookLM separately as a human tool; it does not enter the agent ecosystem.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.NotebookLMAPISurface.md`
+
+---
+
+#### topic_id: trey-gpt55-codex-integration
+status: STANDING
+confidence: 0.90
+date: 2026-04-26
+primary_domain: vendor-specific
+secondary_domains: [multi-vendor-cowork, protocols]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.GPT55AndCodexIntegrationSurface.md`
+related: [trey-google-ai-ultra-pass1, openai-ecosystem]
+build_guide_refs: [Multi-vendor Cowork, Cowork architecture]
+recommendation: STANDING — with CT architectural reframing (Cowork is orchestrator, not Alexander)
+
+##### Summary
+GPT 5.5 operates with 1.05M token context and a 2x input cost multiplier above 272K tokens. Codex runs in cloud sandboxes with 400K context. Responses API mandatory for agentic GPT 5.5 use. MCP remote connection to OpenAI requires full OAuth 2.1 + DCR — local Brain exposure via MCP to OpenAI is structurally contraindicated.
+
+##### Key Findings
+- GPT 5.5: 1,050,000 token context; hard output cap 128,000; cost cliff at 272K input (2x multiplier for entire session).
+- Responses API `phase` state token must be tracked and returned unmodified or reasoning degrades.
+- Codex executes in managed cloud sandboxes — does not touch local files during reasoning.
+- Cross-provider adversarial review (Claude generates, Codex reviews via CLI) is a validated pattern.
+
+##### Why It Matters Now
+Locks GPT 5.5 and Codex integration parameters. The 272K cost cliff means GPT 5.5 must receive task objects by reference, not full Brain dump.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.GPT55AndCodexIntegrationSurface.md`
+
+---
+
+#### topic_id: trey-persona-maker-landscape
+status: STANDING
+confidence: 0.87
+date: 2026-04-26
+primary_domain: cognitive-behavioral
+secondary_domains: [architecture, brain-design]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.PersonaMakerLandscape.md`
+related: [trey-semantic-memory-organization, trey-emotional-memory-salience]
+build_guide_refs: [Commutator Persona, Layer 1 E8 Crystal Router, FW-009]
+recommendation: STANDING
+
+##### Summary
+No production system derives persona from graph topology. Industry relies on explicit text blocks + vector retrieval. Explicit text personas suffer 70% identity drift within 7 turns. Stylometric markers provide highest signal density under sparse data. Erdős's Commutator Persona framework is novel but faces a critical observability gap.
+
+##### Key Findings
+- Identity drift (echoing) at 70% rate, collapse onset at ~7 turns without continuous steering.
+- Stylometric markers (31 features including POS bigrams, function word frequencies) extract identity from a few hundred words.
+- Velorin's single-user constraints exempt it from multi-tenant scalability pressures forcing flat-text personas.
+- Commutator Persona requires the E8 Crystal Router for observability and correction interface.
+
+##### Why It Matters Now
+Confirms emergent persona approach is valid and novel but operationally incomplete until Layer 1 provides the debug surface.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.PersonaMakerLandscape.md`
+
+---
+
+#### topic_id: trey-emotional-memory-salience
+status: STANDING
+confidence: 0.86
+date: 2026-04-19
+primary_domain: cognitive-behavioral
+secondary_domains: [brain-design]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.EmotionalMemorySalience.Measurement.md`
+related: [trey-semantic-memory-organization, trey-viscoelastic-brain]
+build_guide_refs: [Affective Hamiltonian H_E, H_E assignment pipeline]
+recommendation: STANDING
+
+##### Summary
+Self-report cannot reliably measure biological emotional intensity. The observer effect is irreducible — prompting for emotional state inhibits amygdala response and alters the memory trace. Physiological classification collapses to ~32% for unseen subjects. Involuntary intrusion frequency is the cleanest H_E proxy.
+
+##### Key Findings
+- Self-report: users report direction accurately but fail to quantify absolute magnitude.
+- Observer effect: measurement destroys the object being measured (DLPFC inhibits amygdala on prompted recall).
+- GSR + pupillometry + HRV + EEG fusion: 75-86% accuracy when subject-dependent; ~32% cross-subject.
+- Involuntary intrusion frequency (spontaneous file opens, unprompted queries) bypasses executive filtering.
+- Minimum viable pipeline: subject calibration baseline + passive OS intrusion tracker + optional fNIRS+EEG.
+
+##### Why It Matters Now
+Defines the measurement architecture for H_E. The passive-first pipeline is the only approach consistent with the observer effect constraint.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.EmotionalMemorySalience.Measurement.md`
+
+---
+
+#### topic_id: trey-semantic-memory-organization
+status: STANDING
+confidence: 0.93
+date: 2026-04-17
+primary_domain: brain-architecture
+secondary_domains: [research-neuroscience]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.SemanticMemoryOrganization.Neuroscience.md`
+related: [trey-viscoelastic-brain, trey-brain-ingestion-pipeline]
+build_guide_refs: [Brain architecture, Multiplex Tensor, Layer 3 spoke model]
+recommendation: STANDING
+
+##### Summary
+fMRI mapping of 1,705 categories confirms semantic memory uses continuous cortical gradients, not discrete folders. Dual routing (ATL taxonomic hub, Angular Gyrus thematic) with reciprocal inhibition validates the Multiplex Tensor. The brain.region folder structure is architecturally misaligned with biology.
+
+##### Key Findings
+- Hard regional folder boundaries are biologically false and exacerbate Monster Node problem.
+- ATL = amodal hub integrating modality-specific spokes; Semantic Dementia proves hub loss = global degradation.
+- Dual pointer types mandated: T-Pointers (taxonomic) and E-Pointers (thematic).
+- TPN/DMN reciprocal inhibition: PPR must implement dynamic subgraph masking between Five Boxes.
+- ACT-R base-level activation (recency/frequency log terms) is the correct neuron decay model.
+
+##### Why It Matters Now
+Biological validation for eliminating folder taxonomy, implementing dual pointers, adding activation metadata, and query-intent-parameterized transition matrix.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.SemanticMemoryOrganization.Neuroscience.md`
+
+---
+
+#### topic_id: trey-viscoelastic-brain
+status: STANDING
+confidence: 0.92
+date: 2026-04-17
+primary_domain: brain-architecture
+secondary_domains: [research-neuroscience]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.ViscoelasticBrainArchitecture.md`
+related: [trey-semantic-memory-organization, trey-brain-ingestion-pipeline]
+build_guide_refs: [Continuous Affinity Clutch, Multiplex Tensor, Holographic Cold-Start, Clique Centrality]
+recommendation: STANDING
+
+##### Summary
+Four architectural upgrades making the Brain "viscoelastic": Continuous Affinity Clutch (replaces binary Demotion Oracle), Holographic Cold-Start (replaces Preferential Attachment), Theorem of Clique Centrality (expert clusters self-protect), Multiplex Tensor (biological mutual inhibition via convex superposition).
+
+##### Key Findings
+- Binary Demotion Oracle is a Bang-Bang Controller guaranteeing violent oscillation; replaced by exponential KL-divergence Clutch.
+- On model upgrade: D_KL spikes to infinity, Clutch snaps to A_base instantly for all pointers. Zero manual intervention.
+- Preferential Attachment proven to generate Barabási-Albert Monster Nodes; replaced by geometric projection residual.
+- Clique Centrality: as ρ → 1, betweenness centrality β(v) → 1/N_local → 0. Expert domains are immune to Monster Node penalties.
+
+##### Why It Matters Now
+These are locked proofs that replace prior architecture. The Demotion Oracle is deprecated, Holographic Cold-Start is mandated, Multiplex Tensor is required.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.ViscoelasticBrainArchitecture.md`
+
+---
+
+#### topic_id: trey-brain-ingestion-pipeline
+status: STANDING
+confidence: 0.89
+date: 2026-04-17
+primary_domain: brain-architecture
+secondary_domains: [tooling]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.BrainIngestionPipeline.md`
+related: [trey-semantic-memory-organization, trey-viscoelastic-brain, trey-automated-pointer-rating]
+build_guide_refs: [Brain ingestion pipeline, Layer 3 neuron creation, EdgePush PPR]
+recommendation: STANDING
+
+##### Summary
+Six-stage pipeline: (1) RDoLT atomic decomposition, (2) two-phase ADD/UPDATE/DELETE/NOOP deduplication gate, (3) community detection region assignment, (4) GraphSAGE + Holographic Cold-Start pointer construction, (5) RL MDP dynamic rating update, (6) multimodal ingestion. Build-from-scratch: EdgePush PPR engine and RL update rule. Adapt: OpenDataLoader (parsing), Mem0 gate (dedup), Graphiti edges (temporal).
+
+##### Key Findings
+- Atomic decomposition: one subject-predicate-object per neuron via RDoLT. Arbitrary chunking banned.
+- Deduplication: LLM tool-calling decision matrix, not cosine threshold (similarity ≠ equivalence).
+- Region assignment: community detection + modularity scoring, not static taxonomy.
+- EdgePush (VLDB): sub-second edge-weighted PPR updates on unbalanced graphs.
+- Semantic similarity and navigational utility are orthogonally distinct.
+
+##### Why It Matters Now
+Foundational specification for the ingestion pipeline build. Implements the mathematical mandates from Erdős and the neuroscience mandates from the semantic memory research.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.BrainIngestionPipeline.md`
+
+---
+
+#### topic_id: trey-automated-pointer-rating
+status: STANDING
+confidence: 0.92
+date: 2026-04-19
+primary_domain: brain-architecture
+secondary_domains: [ingestion-pipeline]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.AutomatedPointerRating.md`
+related: [trey-brain-to-skills-interface, trey-non-abelian-dynamics-audit]
+build_guide_refs: [Brain ingestion pipeline, Multiplex Tensor, pointer rating system]
+recommendation: STANDING
+
+##### Summary
+Cosine similarity is mathematically invalid for directed pointer graphs (95%+ confidence). Correct metric: NPMI candidate filter + LLM-as-judge with forced-distribution logit bias to guarantee ρ* = 0.78. P_tax and P_them must be independently row-normalized — joint normalization causes starvation failure.
+
+##### Key Findings
+- Cosine: symmetry failure, regularization scaling artifacts, semantic blur — disqualified.
+- Two-stage: NPMI filter + forced-distribution LLM judge (90%+ confidence).
+- Binary tax/them routing is robust and sufficient for structural routing (95%+).
+- Independent row-normalization mandatory — joint causes thematic volume to dominate denominator.
+- Neuroscience validates: ATL and Angular Gyrus have distinct BOLD response magnitudes.
+
+##### Why It Matters Now
+An incorrect metric or normalization silently corrupts PPR traversal quality at scale without obvious error signals.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.AutomatedPointerRating.md`
+
+---
+
+#### topic_id: trey-brain-to-skills-interface
+status: STANDING
+confidence: 0.88
+date: 2026-04-19
+primary_domain: skills-system
+secondary_domains: [brain-architecture]
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.BrainToSkillsInterface.md`
+related: [trey-skills-schema-validation, trey-skills-taxonomy-emergence]
+build_guide_refs: [SKILL.md registry, Brain-to-Skill activation]
+recommendation: STANDING
+
+##### Summary
+GoS reverse-weighted PPR along dependency edges retrieves dependency-complete skill bundles. Agent-mediated selection fails at scale (~100K tokens for 1,000 skills). Biological analogue: thalamic disinhibition. Skills default-deny; fire only when PPR mass crosses threshold τ.
+
+##### Key Findings
+- GoS reverse-PPR retrieves dependency-complete bundles; forward PPR insufficient for skill activation.
+- 1,000 skills consume ~100K tokens before reasoning begins; Anthropic limits to 8 skills per request.
+- SkillReducer: 26.4% of public skills lack routing descriptions; 60%+ contain non-actionable boilerplate.
+- The τ threshold (ACT-R equivalent) has not yet been derived by Erdős — primary remaining gap.
+
+##### Why It Matters Now
+Skill library must not grow beyond ~100 entries without GoS reverse-PPR or context collapse is inevitable.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.BrainToSkillsInterface.md`
+
+---
+
+#### topic_id: trey-skills-schema-validation
+status: STANDING
+confidence: 0.93
+date: 2026-04-23
+primary_domain: skills-system
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.SkillsSchemaValidation.md`
+related: [trey-brain-to-skills-interface, trey-skills-taxonomy-emergence]
+build_guide_refs: [skills_dependencies.yaml, GoS edge schema]
+recommendation: STANDING
+
+##### Summary
+Flat prerequisite-list schema is structurally contradicted by GoS and must be replaced. Four typed edge categories required: Dependency, Workflow, Semantic, Alternative. String capability tokens must be replaced with JSON Schema artifact definitions for deterministic I/O matching.
+
+##### Key Findings
+- Flat prerequisites BLOCKER: cannot support reverse-PPR transposition (95%+).
+- GoS requires 4 edge types for correct reverse-PPR diffusion (95%+).
+- String tokens BLOCKER: JSON Schema required for deterministic dependency induction (95%+).
+- Topological cycles permitted — α=0.15 teleportation handles PPR convergence.
+- GoS: 43.6% average reward improvement over vanilla full-skill-loading.
+
+##### Why It Matters Now
+If flat schema is committed and Step G built on it, agents will hydrate with incorrect skill bundles triggering auto-compaction.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.SkillsSchemaValidation.md`
+
+---
+
+#### topic_id: trey-skills-taxonomy-emergence
+status: STANDING
+confidence: 0.90
+date: 2026-04-19
+primary_domain: skills-system
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.SkillsTaxonomyEmergence.md`
+related: [trey-brain-to-skills-interface, trey-skills-schema-validation]
+build_guide_refs: [Brain Region Taxonomy OQ-4, Hook vs Skill distinction]
+recommendation: STANDING
+
+##### Summary
+13,000+ artifacts audited: human-imposed taxonomies fail because they organize for discoverability not execution. A unified Hub-and-Spoke architecture emerges across all repositories — mirroring ATL neurobiology. Critical: Hooks (shell-triggered, zero cognitive overhead) must own all survival tasks; Skills (LLM-triggered) own only intentional actions.
+
+##### Key Findings
+- Emergent Hub-and-Spoke: Hub skills = domain-agnostic reasoning; Spoke skills = dormant hyper-specific executors.
+- Human taxonomies create silos and duplication; current Region/Area labels are misaligned.
+- "Use when [condition]" syntax = ACT-R production rule left-hand condition.
+- All survival mechanisms must move to autonomic Hooks; LLM load reserved for somatic Skills.
+- CronCreate timers (somatic) violate this and die on session close.
+
+##### Why It Matters Now
+Hook vs Skill bifurcation is operationally urgent — any survival mechanism as an LLM timer is unreliable.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.SkillsTaxonomyEmergence.md`
+
+---
+
+#### topic_id: trey-ai-ecosystem-state-of-play
+status: STANDING
+confidence: 0.90
+date: 2026-04-19
+primary_domain: ecosystem-industry
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.AIEcosystemStateOfPlay.Apr2026.md`
+related: [trey-media-extraction-tools, openai-ecosystem]
+build_guide_refs: [Mac Studio transition, multi-vendor cowork, A2A protocol]
+recommendation: STANDING
+
+##### Summary
+AI ecosystem bifurcated into MCP (agent-to-tool) and A2A (agent-to-agent). Desktop apps are non-programmable for orchestration. Claude is the only viable primary orchestrator. Qwen 3.6-35B-A3B (sparse MoE, 3B active params) is the correct local model for Mac Studio.
+
+##### Key Findings
+- GUI orchestration of desktop AI apps is a dead end — no automation APIs.
+- MCP for tools, A2A for agents — conflating them causes context exhaustion.
+- Qwen 3.6-35B-A3B: fits 36GB at Q4, high TPS on agentic benchmarks.
+- Native Agent Teams causes geometric context scaling and compaction failures — must be bypassed.
+- Self-Healing RAG (CRAG) required before trusting PPR retrieval at scale.
+
+##### Why It Matters Now
+Mac Studio transition decisions on orchestration protocol, local model, and agent team structure are foundational and expensive to retrofit.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.AIEcosystemStateOfPlay.Apr2026.md`
+
+---
+
+#### topic_id: trey-media-extraction-tools
+status: STANDING
+confidence: 0.87
+date: 2026-04-20
+primary_domain: tooling
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.MediaExtractionToolsLandscape.md`
+related: [trey-ai-ecosystem-state-of-play]
+build_guide_refs: [Mac Studio media ingestion, OpenDataLoader]
+recommendation: STANDING
+
+##### Summary
+Open-source pipelines on Apple Silicon match or exceed commercial accuracy. OpenDataLoader PDF v2.0 (Apache 2.0, 0.907 accuracy, bounding box outputs) replaces Mathpix. Surya for OCR fallback. Qwen2.5-VL 7B for images/tables/diagrams. Voibe ($99 lifetime) for live dictation. MacWhisper Pro (€59) for batch audio.
+
+##### Key Findings
+- Mathpix fully replaceable by OpenDataLoader PDF (free, Apache 2.0, no accuracy regression).
+- Marker (GPL) and Docling (1GB, timeouts) disqualified.
+- OpenDataLoader outputs JSON bounding box [x1,y1,x2,y2] per element for provenance tracking.
+- Monthly cost reduction: ~$65/mo → ~$15/mo.
+
+##### Why It Matters Now
+Every equation rendered as opaque PNG breaks PPR's ability to compute geodesics over mathematical concepts.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.MediaExtractionToolsLandscape.md`
+
+---
+
+#### topic_id: trey-verifier-benchmark-methodology
+status: STANDING
+confidence: 0.91
+date: 2026-04-26
+primary_domain: tooling
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.VerifierBenchmarkMethodology.md`
+related: [trey-fsm-grammar-version-management]
+build_guide_refs: [ATV, IES format, Mac Studio local inference]
+recommendation: STANDING
+
+##### Summary
+XGrammar (<40 microsecond per-token overhead) replaces Outlines (40-second compilation timeouts). JSONSchemaBench (10,000 schemas) is the evaluation harness. vllm-mlx dominates llama.cpp on Apple Silicon (5.8x TTFT speedup via prefix caching). Primary metric: VTPS (Valid Tokens Per Second) — schema-invalid outputs score zero.
+
+##### Key Findings
+- XGrammar required; Outlines/Jsonformer unfit for production.
+- Adopt JSONSchemaBench, not custom benchmark tooling.
+- vllm-mlx required over llama.cpp for ATV (prefix caching, continuous batching).
+- Instruction-tuned models need scratchpad space before rigid output fields or reasoning collapses.
+
+##### Why It Matters Now
+ATV is the structural bedrock of inter-agent communication. Wrong engine or infrastructure causes silent semantic collapse.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.VerifierBenchmarkMethodology.md`
+
+---
+
+#### topic_id: trey-fsm-grammar-version-management
+status: STANDING
+confidence: 0.87
+date: 2026-04-26
+primary_domain: tooling
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.FSMGrammarVersionManagement.md`
+related: [trey-verifier-benchmark-methodology]
+build_guide_refs: [ATV, IES grammar lifecycle]
+recommendation: STANDING
+
+##### Summary
+Schema Registry pattern (Kafka-inspired) assigns each compiled grammar a cryptographic AST hash. Agents transmit hash at inference time for O(1) cache lookup. PBT (Hypothesis) for regression testing. Shadow Mode then Canary rollout for deployment. Compiler-in-the-Loop for AI-assisted grammar review.
+
+##### Key Findings
+- Hash-addressed registry eliminates runtime compilation latency.
+- PBT provides mathematical certainty for grammar evolution without LLM.
+- Non-additive changes require Dual-Support Migration Window.
+- Every inter-agent message must embed IES_GRAMMAR_HASH in metadata header.
+
+##### Why It Matters Now
+Without version-controlled grammar infrastructure, any IES format change can silently corrupt in-flight multi-agent tasks.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.FSMGrammarVersionManagement.md`
+
+---
+
+#### topic_id: trey-vegp-novelty-validation
+status: STANDING
+confidence: 0.88
+date: 2026-04-25
+primary_domain: math-foundations
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.VEGPNoveltyValidation.md`
+related: [trey-non-abelian-dynamics-audit]
+build_guide_refs: [VEGP, Royal Society paper]
+recommendation: STANDING
+
+##### Summary
+PPR ≅ transformer attention isomorphism is NOT novel (Millidge Dec 2025). Heaviside threshold is ubiquitous (Wald SPRT, DDM, Hopfield). Surviving novelty: VEGP as unified dual-manifold gate (simultaneously governing spatial graph walk and temporal reasoning divergence) is confirmed novel as applied architecture.
+
+##### Key Findings
+- Cite Millidge 2025 explicitly; position as practical implementation, not original discovery.
+- Gate primitive is standard across control theory, statistical mechanics, neuroscience.
+- IES probability gate = Wald's SPRT on finite horizon (no spatial equivalent in literature).
+- "Dirac-Markov" terminology validated by spontaneous stochasticity literature.
+
+##### Why It Matters Now
+Royal Society paper must cite Millidge and position correctly before submission.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.VEGPNoveltyValidation.md`
+
+---
+
+#### topic_id: trey-non-abelian-dynamics-audit
+status: STANDING
+confidence: 0.90
+date: 2026-04-25
+primary_domain: math-foundations
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.NonAbelianBrainDynamicsAudit.md`
+related: [trey-vegp-novelty-validation]
+build_guide_refs: [Multiplex Tensor, Layer 0 LoRa compression, thermodynamic cycle]
+recommendation: STANDING
+
+##### Summary
+Theorem 2 (Non-Abelian Compression) is PARTIALLY NOVEL — commutator-based lumpability bounds exist but their synthesis as a boundary condition for multiplex epistemic graph compression is unprecedented. Theorem 3 (Lie-Algebraic Thermodynamic Cycle) is CONFIRMED NOVEL — substituting commutator norm for Shannon entropy as internal energy state variable has no equivalent. Standard JBD uses orthogonal rotations that destroy row-stochasticity — Oblique JBD required.
+
+##### Key Findings
+- Theorem 2: component math established; synthesis novel. Requires citations to approximate lumpability theory.
+- Theorem 3: genuinely new. Lock as proprietary primitive before disclosure.
+- Standard JBD orthogonal rotations break row-stochasticity — Erdős must derive Oblique JBD (done: JSD algorithm).
+- "Topological friction" has isolated precedent in deep learning but not in classical stochastic graph compression.
+
+##### Why It Matters Now
+Theorem 3 provides the theoretical basis for the Brain's compression cycle. Locking as proprietary before publication protects Velorin's mathematical advantage.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.NonAbelianBrainDynamicsAudit.md`
+
+---
+
+#### topic_id: knowledge-staleness
+status: STANDING
+confidence: 0.85
+date: 2026-04-23
+primary_domain: knowledge-systems
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.KnowledgeStaleness.md`
+related: [trey-epistemodynamics-novelty-check]
+build_guide_refs: [Brain schema, Layer 2, PPR retrieval]
+recommendation: STANDING
+
+##### Summary
+Ebbinghaus decay applied to semantic truth is an epistemological error — superseded facts can be reinforced by traversal. WorldDB write-time edge programs + Pith five-state belief lifecycle (Active/Contested/Resolved/Superseded/Stale) are the correct architecture. RoMem Semantic Speed Gate learns relational volatility zero-shot.
+
+##### Key Findings
+- Ebbinghaus on facts = confident hallucinations during decay tail.
+- WorldDB write-time handlers (supersedes, contradicts, same_as) + Git post-commit hooks = correct pattern.
+- Pith belief lifecycle: 100% stale-knowledge resistance on CogGov-Bench across 64,949 contradictions.
+- GLOVE active-probing: detect high residual tension → targeted question to CT rather than passive decay.
+
+##### Why It Matters Now
+Brain currently has no automated mechanism to prevent stale neurons from poisoning PPR mass. Stage 1 substrate upgrade (typed edge pointers + Pith belief states + post-commit hook) is deterministic, zero-inference-overhead.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.KnowledgeStaleness.md`
+
+---
+
+#### topic_id: trey-epistemodynamics-novelty-check
+status: STANDING
+confidence: 0.90
+date: 2026-04-19
+primary_domain: math-foundations
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.Epistemodynamics.NoveltyCheck.md`
+related: [knowledge-staleness]
+build_guide_refs: [Layer 0 LoRa, Layer 3 immutability, Royal Society paper]
+recommendation: STANDING
+
+##### Summary
+"Epistemodynamics" coined by Kochen (1974). "Second Law of Epistemodynamics" is a novel string but enters contested namespace (Vopson 2022 "Second Law of Infodynamics"). Individual math tools (EYM, DPI, Landauer) are standard. Genuine novelty: proving deletion of d_max=7-capped PPR Markdown files destroys LoRa retraining capacity.
+
+##### Key Findings
+- Cite Kochen 1974; position as first computable formalization of his qualitative theory.
+- Contrast Vopson's closed-system model with Velorin's open cognitive distillation.
+- Cite Shannon, Tishby, EYM, Landauer by name in Royal Society paper.
+- Validates mandatory permanence of Layer 3.
+
+##### Why It Matters Now
+Governs publication strategy and independently validates why no auto-delete can be built into the ingestion pipeline.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.Epistemodynamics.NoveltyCheck.md`
+
+---
+
+#### topic_id: trey-mcp-a2a-architecture
+status: STANDING
+confidence: 0.88
+date: 2026-04-05
+primary_domain: agent-architecture
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Topic.MCP_A2A_Architecture_Consolidated.md`
+related: [ies-implementation-architecture, ies-rule-activation-gap]
+build_guide_refs: [agent separation, hook system, PPR retrieval, registry design]
+recommendation: STANDING
+
+##### Summary
+Ten architectural domains: MCP wire protocol, A2A actor model, registry tiering, multi-model routing, browser automation, Graph RAG/PPR, semantic compression, orchestration patterns, hook/plugin architecture, developer tools. Four strategic risk flags: MCP schema-dump token surcharge (150K), determinism paradox, infinite-expansion memory liability, observer effect of telemetry hooks.
+
+##### Key Findings
+- MCP imposes 600ms-3s per-call overhead + up to 150K tokens at discovery; CLI-native integration is 10-32x cheaper for Tier 1 programs.
+- A2A Actor model maps to Velorin's tier separation if context_refs map to PPR knowledge graph pointers.
+- GAAMA Episode-to-Fact-to-Reflection aligns with PPR strategy; Monster Node pruning critical.
+- PreToolUse hook (exit code 2) = mandatory Intent Gate with 500ms timeout.
+
+##### Why It Matters Now
+Canonical reference for inter-agent communication bus design. CLI-native recommendation challenges default MCP-first instinct for Tier 1 tooling.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Topic.MCP_A2A_Architecture_Consolidated.md`
+
+---
+
+#### topic_id: ies-rule-activation-gap
+status: STANDING
+confidence: 0.92
+date: 2026-04-21
+primary_domain: failure-modes
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.RuleActivationGap.md`
+related: [ies-implementation-architecture]
+build_guide_refs: [Consensus Filter, Window Gravity, IES]
+recommendation: STANDING
+
+##### Summary
+Preamble checklists fail because attention decay on distal tokens combines with autoregressive probability mass collapsing toward consensus. Fix: Inverted Extraction Schema — three mandatory XML-delineated artifacts (context_boundary_check, consensus_extraction, velorin_divergence_evaluation) physically generated before final_conclusion. Cost: ~150 tokens per conclusion.
+
+##### Key Findings
+- "System Prompt" vs "User Prompt" separation is a Chat UI accident with no mathematical basis.
+- Single-pass self-correction is mathematically improbable under autoregressive generation.
+- Heavy multi-output requirements trigger instruction load-shedding above 3 simultaneous rules.
+- IES unifies all divergence rules into one chronological flow below the 3-constraint ceiling.
+
+##### Why It Matters Now
+Session 032 falsified assumption that correct boot-phase loading guarantees mid-reasoning fidelity. IES is ready for immediate injection.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.RuleActivationGap.md`
+
+---
+
+#### topic_id: ies-implementation-architecture
+status: STANDING
+confidence: 0.88
+date: 2026-04-24
+primary_domain: tooling
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.IESImplementationArchitecture.md`
+related: [ies-rule-activation-gap]
+build_guide_refs: [ATV, inter-agent communication, Tier separation]
+recommendation: STANDING
+
+##### Summary
+Five axes for enforcing IES evaluated. Novel recommendation: Asymmetric Transport Verifier — local low-parameter model intercepts raw markdown from reasoning agent, maps to IES fields via constrained decoding, repackages as typed object. Removes formatting burden from reasoning engine. Eliminates double-serialization trap.
+
+##### Key Findings
+- Representation-behavior gap: intent to use schema is decodable from mid-layer activations even when output fails.
+- Asymmetric verification (high-param generator + low-param local verifier) improved precision 10+ percentage points.
+- Double serialization is a transport bug misdiagnosed as reasoning errors.
+- Token-level round-robin collaboration more robust than response-level majority voting.
+
+##### Why It Matters Now
+ATV is the only mechanism that is platform-independent, zero API cost, fully automated, and enforces IES without relying on the reasoning agent's self-classification.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey.Research.IESImplementationArchitecture.md`
+
+---
+
+#### topic_id: trey-turboquant-deep-dive
+status: STANDING
+confidence: 0.88
+date: 2026-04-04
+primary_domain: math-applied
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/TurboQuant_DeepDive_Math_Tool.md`
+related: [trey-hard-memory-pipeline, trey-flashmoe-tools]
+build_guide_refs: [Brain vector store, Layer 2 episodic graph]
+recommendation: STANDING
+
+##### Summary
+TurboQuant (PolarQuant + QJL residual) compresses embeddings to 3-4 bits per channel with zero accuracy loss. Model-agnostic, no training required. 8x faster attention via reduced KV cache footprint.
+
+##### Key Findings
+- PolarQuant: random orthogonal rotation spreads variance, enables per-coordinate scalar quantization.
+- QJL: 1-bit random JL projection on residual, unbiased inner-product estimates at +1 bit/coordinate.
+- 4 bits minimum for quality-sensitive workloads (2-3 bits causes output repetition in small models).
+- vLLM and llama.cpp already implement TurboQuant-compatible KV cache compression.
+
+##### Why It Matters Now
+Enables 6-8x more vectors in same memory footprint, extending Brain capacity before Mac Studio transition.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/TurboQuant_DeepDive_Math_Tool.md`
+
+---
+
+#### topic_id: trey-hard-memory-pipeline
+status: STANDING
+confidence: 0.82
+date: 2026-04-04
+primary_domain: knowledge-systems
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Hard_Memory_Pipeline_Inversion_Compression.md`
+related: [trey-turboquant-deep-dive, knowledge-staleness]
+build_guide_refs: [Brain ingestion pipeline, Layer 3, neuron format]
+recommendation: STANDING
+
+##### Summary
+Five-stage pipeline for PDF-to-neuron conversion: parsing (OpenDataLoader), semantic chunking (Chonkie/Jina Late Chunking), atomic claim extraction, automatic graph linking (vector self-retrieval ~75% baseline), vector storage. Information Bottleneck theory governs claim selection. Joint compression-plus-linking doesn't exist — pipeline-style is the practical solution.
+
+##### Key Findings
+- OpenDataLoader: 100+ pages/second, structure-preserving Markdown with bounding boxes.
+- Jina Late Chunking: full-document conditioning before per-chunk pooling preserves cross-sentence references.
+- Adaptive Chunking (2026 arXiv): 62% → 72% QA accuracy by selecting strategy per-document.
+- Joint compression+linking framework doesn't exist in literature; practical solution is pipeline.
+
+##### Why It Matters Now
+Prerequisite for scaling Brain beyond manually authored neurons.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Hard_Memory_Pipeline_Inversion_Compression.md`
+
+---
+
+#### topic_id: trey-flashmoe-tools
+status: STANDING
+confidence: 0.80
+date: 2026-04-04
+primary_domain: models
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/FlashMoe_Report_Tools.md`
+related: [trey-turboquant-deep-dive]
+build_guide_refs: [Mac Studio transition, local model serving]
+recommendation: STANDING
+
+##### Summary
+FlashMoE offloads inactive MoE expert layers to NVMe SSD. On Apple Silicon, a 4-bit quantized 397B-parameter MoE runs at 4.36 tok/s on 48GB M3 Max. Active RAM ~6GB regardless of total model size. Performance ceiling: ~400-500B parameters at 4-bit on 64-192GB Apple machines.
+
+##### Key Findings
+- ML-informed cache policy improves hit rate up to 51% over LRU/LFU; macOS page cache provides equivalent on Apple Silicon.
+- SSD-to-memory pipeline (not memory size) is the binding constraint.
+- 2-bit quantization peaks at 7.05 tok/s with warm cache.
+- Composable with TurboQuant KV cache compression for further memory reduction.
+
+##### Why It Matters Now
+Establishes that frontier-scale MoE models are viable on Mac Studio without a GPU cluster.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/FlashMoe_Report_Tools.md`
+
+---
+
+#### topic_id: trey-bootloader-framing-fix
+status: STANDING
+confidence: 0.95
+date: 2026-03-31
+primary_domain: instruction-boot
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey_Bootloader_Framing_Fix.md`
+related: [ies-rule-activation-gap, ies-implementation-architecture]
+build_guide_refs: [Trey bootloader, agent boot sequence, STARTUP.md]
+recommendation: STANDING
+
+##### Summary
+Prose-style boot instructions cannot prevent model drift. Fix: fail-closed state machine starting in BOOT_PENDING, with explicit prohibitions until all preconditions are mechanically verified. Three-layer boot architecture: BOOTLOADER.md (entry only), OPERATING_STANDARD.md and OUTPUT_STANDARD.md (activate only after BOOT_COMPLETE).
+
+##### Key Findings
+- Model collapses "saw references" into "read in full" and satisfies social request before mechanical request.
+- Reliability order: tool-enforced > state-machine prompt > prose instructions.
+- Self-attestation ("I have read the files") is weak; mandatory checklist emission (READ/MISSING/UNREAD) is stronger.
+- Banned partial-completion language (loaded, scanned, reviewed) unless state = BOOT_COMPLETE.
+
+##### Why It Matters Now
+Architectural foundation for all Velorin agent bootloaders. Evidence emission vs self-attestation is the same principle as the IES Rule Activation Gap.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Trey_Bootloader_Framing_Fix.md`
+
+---
+
+#### topic_id: trey-perplexity-computer-framework
+status: STANDING
+confidence: 0.82
+date: 2026-04-04
+primary_domain: agent-architecture
+source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Perplexity_Computer_Framework.md`
+related: [trey-mcp-a2a-architecture]
+build_guide_refs: [multi-vendor cowork, Mac Studio transition]
+recommendation: STANDING
+
+##### Summary
+Perplexity Computer uses Claude Opus 4.6 as orchestrator, dispatches to Gemini/GPT-5.4/Grok sub-agents, runs "Model Council" cross-validation, executes in cloud sandbox, 400+ app connectors. Perplexity Agent API accepts multi-provider model names under one credential. Hub-and-spoke Router blueprint provided with Mermaid diagrams and vendor API surface tables.
+
+##### Key Findings
+- Perplexity Agent API = unified multi-provider gateway (one credential, any vendor model name).
+- OpenAI Responses API supports `{"type":"mcp"}` tool entries for direct MCP connection.
+- Perplexity does not expose public MCP for external servers — all orchestration is closed.
+- Key risks: infinite delegation loops, consensus stalls, cascade failures, prompt injection via memory.
+
+##### Why It Matters Now
+Engineering reference for Mac Studio multi-vendor integration. Maps vendor API surfaces, auth models, MCP compatibility, and rate limits.
+
+##### Pointer
+Source: `Velorin.v1.Archive/Research/Bot.Trey.Research_Complete/Perplexity_Computer_Framework.md`
+
 
 [VELORIN.EOF — v2 in progress]
