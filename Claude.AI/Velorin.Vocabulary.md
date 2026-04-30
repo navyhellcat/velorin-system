@@ -51,3 +51,5 @@ A programmatic connection to a system that has no official API, built by simulat
 
 ---
 [END — next entry: A14]
+
+[VELORIN.EOF]

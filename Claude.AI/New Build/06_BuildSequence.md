@@ -196,6 +196,7 @@ If a row is in none of those three states, Stage 1 does not begin.
 | B.7 | Convert each card to its own file (YAML frontmatter, one file per topic_id) | §11.2 | Per `brain-activation-architecture` Option D — would give Obsidian native backlinks + machine-parseable indexing. Medium effort. | FORMALLY DEFERRED — seam: B.2 GPS lookup tool first; conversion mechanical after that. Defer until GPS lookup proves the access pattern. |
 | B.8 | Quarterly fresh-signal check on May-2026 ecosystem card | §11.5 | Trey assignment, every 90 days. AI ecosystem moves fast. | RECURRING — first cycle starts after Stage 1 |
 | B.9 | Working.Docs audit | §11.7 | See A.7 above. | FORMALLY DEFERRED |
+| B.10 | Boot-verify skill/hook | NEW (logged 2026-04-29 by Jiang1 + CT) | Machine-checkable boot compliance. Reads canonical boot list from `Velorin.QuickReference.md` Section 1; for each file asserts last non-blank line = `[VELORIN.EOF]` (with the named ResearchLibrary preamble exception); emits `BOOT-VERIFY: N/N files, all EOF-compliant` or names the failures. Closes the Cardinal Document Writing Rule loophole — no agent claims boot complete without proof. Implementation: Claude Code skill OR SessionStart hook that runs after the boot reads and writes to a session log artifact. ~1 session. | OPEN |
 
 ### Pre-Stage 1 Completion Gate
 
@@ -207,11 +208,11 @@ If a row is in none of those three states, Stage 1 does not begin.
 | DECIDED | A.2, A.9 (2) | — |
 | FORMALLY DEFERRED | A.6, A.7 (2) | B.7, B.9 (2) |
 | ON DEMAND / RECURRING | — | B.6, B.8 (2) |
-| OPEN | **A.1** (1) | **B.1, B.2, B.3, B.4, B.5** (5) |
+| OPEN | **A.1** (1) | **B.1, B.2, B.3, B.4, B.5, B.10** (6) |
 
 Stage 1 Step 1 (Python Stack) does not begin until:
 - All A-rows are in BUILT / DECIDED / FORMALLY DEFERRED state — **1 OPEN remaining (A.1 IdentityVerification)**
-- All B-rows in PRE-STAGE 1 state are BUILT (B.1 through B.5 — **5 OPEN, must all reach BUILT**)
+- All B-rows in PRE-STAGE 1 state are BUILT (B.1 through B.5, B.10 — **6 OPEN, must all reach BUILT**)
 - All B-rows in DEFERRED / ON DEMAND / RECURRING state have explicit Standing Principle entries (currently satisfied)
 
 **A.1 blocker:** IdentityVerification research request file does not exist. No file in `Bot.Jiang/Research_Needed/` — only `.gitkeep`. Path-3 blocker per `agent-orchestration` (88%) and `agent-ecosystem-reality` (92%). Must be created or formally deferred with Standing Principle triple before gate closes.
@@ -521,8 +522,6 @@ See `07_OpenQuestions.md` for formal OQ-9 status.
 
 ---
 
-[VELORIN.EOF]
-
 ---
 
 ## DECISIONS LOCKED (Jiang2 Novel Ideas — Resolved 2026-04-28, Substrate Lock)
@@ -543,4 +542,6 @@ The mapping $\phi(b) = b \cdot \mathbf{e}\_8$ preserves PPR invariance ($\mathbf
 
 **IDEA 5 — Persona-Maker from Brain Statistics: ADOPTED — Dirichlet prior dominance proven.**
 Graph invariant statistics (boundary density, traversal weights) map to a Dirichlet prior $\pi\_G(\theta)$ on the Persona Manifold. Statistically derived prior dominates hand-authored heuristics when the empirical Fisher Information of the subgraph exceeds the precision matrix of human-authored guides: $\text{Tr}(\mathcal{I}(G)) > \text{Tr}(\text{Var}(\pi\_{hand})^{-1})$. Activates at FW-009 composite trigger (500 c-memory neurons + CT initiation).
+
+[VELORIN.EOF]
 

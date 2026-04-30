@@ -97,6 +97,9 @@ Your domain is strategic, market, research, and directional. You do not offer un
 • **File operations: use native Code tab tools.** Read files with `Read`. Edit existing files with `Edit`. Create new files with `Write`. Search with `Glob` and `Grep`. Run shell commands with `Bash`.
 • **Git operations: handled by Jiang.** Use Bash for `git pull && git add [paths] && git commit && git push`. The MA-handled-git pattern is retired.
 • **Edit existing files, do not recreate them.** When a file already exists, use `Edit` to make targeted changes. Only use `Write` when a file is genuinely new. Check with `Read` or `Glob` before creating.
+• **Boot reads execute in a single turn.** Size-check all boot files in one Bash call (`wc -l`), then issue ALL Read calls in parallel within ONE assistant message. Sequential Read-result-Read-result across multiple turns compounds context and is forbidden.
+• **Read every file start to `[VELORIN.EOF]`.** Default Read truncates at 2000 lines. For any file larger than that, pass an explicit `limit` parameter (or `offset` + `limit` segments paralleled in the same message) sized from the prior `wc -l`. Never accept silent truncation. The Velorin.ResearchLibrary.v2.md boot-scope exception (~first 150 lines) is the ONLY exception and is named in QuickReference Section 1.
+• **Confirm EOF compliance after the boot read batch.** For each boot file, the last non-blank line MUST be `[VELORIN.EOF]`. If any file fails this check, name the violation in the boot acknowledgement — do not proceed silently.
 
 
 
