@@ -2,17 +2,19 @@
 destination: Claude.AI/Bot.Trey/Bootloader/
 file: Trey.Bootloader.MathInventory.md
 type: bootloader
-updated: April 13, 2026
+updated: April 29, 2026
 ---
 
 # Trey Bootloader — Erdős Math Inventory
 
-Version 2.0 | Audited 2026-04-26
+Version 3.0 | Updated 2026-04-29 (Session 040 FinalSubstrateLock additions)
 Bootloader summary of mathematical work produced by Erdős (Velorin mathematical agent). For complete current inventory of solutions, read `Bot.Erdos/Research_Complete/` directly — this bootloader summarizes load-bearing pieces only and may lag the live folder.
 
 Status codes: LOCKED (proven, architecture depends on it) | FUTURE THEORY (derived but not yet empirically validated) | OPEN (problem defined, not yet solved)
 
-**Recent locked solutions added since the original April 13 inventory** (see Research_Complete for full content):
+**THE SUBSTRATE IS LOCKED (April 28, 2026).** All theorems listed below are finalized. No open mathematical residue remains. Do not treat any locked theorem as an open question in research output. Do not commission Erdős to re-derive what is already settled.
+
+**Locked solutions Sessions 033-036** (see Research_Complete for full content):
 - `Erdos.Solution.UnifiedGatingPrimitive.md` — VEGP / Dirac-Markov Threshold
 - `Erdos.Solution.ATVMathProperties.md`
 - `Erdos.Solution.DarkSkillsScale.md`, `Erdos.Solution.DarkSkillsTriggerlessGate.md` — Causal Action Potential `Φ_causal = π_v / α` REPLACES the original infinity-norm gate; mathematically absolute trigger-free cyclic detector when `Φ_causal > 1.0`
@@ -26,7 +28,29 @@ Status codes: LOCKED (proven, architecture depends on it) | FUTURE THEORY (deriv
 - `Erdos.Solution.IndependentMultiplexNormalization.md`
 - `Erdos.Solution.SynapticPruning.md` — global pruning algorithm derived (closes prior Open Question 1)
 - `Erdos.Solution.BridgingDeclarativeProceduralMemory.md`
-- `Erdos.Solution.COMBINED.Apr26.md` — five solutions for v2 multi-vendor architecture: Vendor Routing (VEGP-instance), Cross-Vendor Coherence (Virtual Contradiction Graph), Commutator Persona (Lie bracket norm weights LoRa training distribution — flagged "genuinely new" by Erdős's novelty self-check), Ghost-Connection Priority (Sherman-Morrison-updated Smith's-Rule scheduling), NotebookLM-Brain Sync (Conditional Entropy + Asymmetric NLI replacing the symmetric mutual-information formulation)
+- `Erdos.Solution.COMBINED.Apr26.md` — five solutions for v2 multi-vendor architecture: Vendor Routing (VEGP-instance), Cross-Vendor Coherence (Virtual Contradiction Graph), Commutator Persona (Lie bracket norm weights LoRa training distribution — flagged "genuinely new" by Erdős's novelty self-check), Ghost-Connection Priority (Sherman-Morrison-updated Smith's-Rule scheduling), NotebookLM-Brain Sync (Conditional Entropy + Asymmetric NLI)
+
+**Session 040 — Final Substrate Lock (April 28, 2026):**
+- `Erdos.Solution.FinalSubstrateLock.md` — five closing derivations:
+  1. **Renormalization Group ↔ JSD Identification — LOCKED, GENUINELY NOVEL.** The JSD compression algorithm is a strict finite-temperature instantiation of Wilson RG flow. $z=2$, Mean-Field exact, second-order phase transition at the compression threshold. **Universality Theorem:** the architecture works identically for ANY user — microscopic content washes out, symmetries persist.
+  2. **Cognitive Reynolds Number — LOCKED.** $\nu_{max}(U) = \gamma_{actual} \cdot |V| / A$. Inspector Bandit throttle for swarm execution. Region-adaptive Autonomic Speed Limit derived from the graph's spectral gap.
+  3. **Information Bottleneck Dual — LOCKED.** $\beta_{IB}^* = k/[2(c\beta + \varepsilon)]$, $p=1$ exactly. CIB Lagrangian mandates do-calculus counterfactual ablations (Pearl do-calculus) for both classification passes. **Proves the analytic $\kappa$ formula carries Davis-Kahan looseness — empirical calibration is the strictly correct method.**
+  4. **Competing Flows / Halperin-Hohenberg Model-C — LOCKED.** The Brockett gradient flow and the Affinity Clutch SDE are competing stochastic differential flows at the critical point. Stochastic resonance at the compression threshold.
+  5. **Persistent Homology $\beta_1$ Telemetry — LOCKED.** $\Delta w \geq 4$ threshold analytically derived. $\mathcal{O}(V+E)$ spanning-forest filtration. Load-bearing semantic cycles → Layer 3 escalation.
+
+**Session 040 — Unified Review verified additions:**
+- **Abelian Buffer Invariant — LOCKED.** Concurrent async ingestion channels (voice, URL, email) must be orthogonalized via Gram-Schmidt before the synchronous CT-driven integration tick. Quarantine/ directory + scheduled parser + manual approval before Layer 3 entry.
+- **Belief-State Gauge Fiber O(1) filtering — LOCKED, DUAL-VERIFIED** (Erdős FullStackAudit + Trey FullStackPressureTest). $\phi(b) = b \cdot \mathbf{e}_8$ preserves PPR invariance. H_E maps to zero-section. Belief-state changes are $\mathcal{O}(1)$ dot products, not $\mathcal{O}(\text{disk I/O})$ YAML lookups.
+- **Wasserstein-2 mandatory at Stage 4+ — LOCKED.** $D_{KL}$ fails under hard ablation ($\log 0 \to -\infty$ gradient singularity in LoRa MSE objective). Sinkhorn iterations required when pruning program begins ablating edges.
+- **Bourgain Bootstrap Rule — LOCKED.** Zero-shot taxonomic pointer generation MUST use LLM logical classification (AST parsing, ontology lookup). Euclidean cosine-similarity for hierarchical edges is banned — Bourgain's Embedding Theorem guarantees exponential distortion of taxonomic ancestry in flat space.
+- **Lamport Timestamp seam — ARCHITECTURAL REQUIREMENT.** Every neuron written from Stage 1 onward MUST include `lamport_ts` in YAML frontmatter. Cost: O(1) per write at Stage 1. Retrofit cost if omitted: $\mathcal{O}(V^2)$ vs $\mathcal{O}(V \log V)$.
+- **LTL/CEGIS Boss Bot — STAGE 2 TRACTABLE.** Off-the-shelf solvers (Strix, BoSy) output deterministic FSA. 50-line Python wrapper executes them. Not aspirational — buildable now.
+- **Program-Substrate Vision as GWT — FORMALIZED.** The founding thesis (programs do work, AI watches) is a formal instantiation of Global Workspace Theory: deterministic programs (System 1), AI Inspector via UCB Contextual Bandit (System 2), Boss Bots via LTL/CEGIS synthesizing provably correct FSA.
+
+**Three promoted novelty derivations (Jiang2 verification, confirmed by Erdős):**
+- Renormalization Group ↔ JSD Universality — genuinely novel
+- Cognitive Reynolds Number — partially novel
+- Information Bottleneck Dual — partially novel
 
 ---
 
