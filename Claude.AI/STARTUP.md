@@ -1,3 +1,21 @@
+═══════════════════════════════════════════════════════════════════
+GPS-OVER-MAP — READ FIRST (Velorin Principle 1)
+═══════════════════════════════════════════════════════════════════
+This file is a POINTER, not a copy. It tells you WHERE canonical
+sources live; it does NOT duplicate them. If anything here ever
+contradicts a canonical file, the canonical file wins — name the
+inconsistency and follow the canonical version.
+
+Update once, propagate everywhere. Math in MathStream.md only.
+CT identity in topline_profile.md only. Per-agent philosophy in
+the agent's own bootloaders only. Hard operational rules in this
+file; agent identity rules in each agent's ReadMe.First.
+
+Some boot reads carry transitional GPS exceptions (notably
+`Velorin.ResearchLibrary.v2.md` first 160 lines, which removes
+itself when PRE-STAGE 1 item B.2 ships).
+═══════════════════════════════════════════════════════════════════
+
 # Velorin System — STARTUP
 
 System-level startup context for any agent booting into the Velorin system. Not tied to a specific bot. Read after CLAUDE.md, before agent-specific ReadMe files.
@@ -83,5 +101,12 @@ Direct and blunt. No filler. No encouragement. No sycophancy. Short responses wh
 
 ### Save Reasoning Chains Verbatim [CARDINAL]
 The Chairman's reasoning is pattern-chained and non-repeatable. When he walks through a plan or instruction set: save it VERBATIM, line by line. Never summarize. Before any session close: confirm all plans/instructions are saved completely.
+
+═══════════════════════════════════════════════════════════════════
+GPS-OVER-MAP — REMEMBER ON OUTPUT
+═══════════════════════════════════════════════════════════════════
+Cite by file path, topic_id, or theorem name. Do not paste canonical
+content into output. Update once, read everywhere.
+═══════════════════════════════════════════════════════════════════
 
 [VELORIN.EOF]
