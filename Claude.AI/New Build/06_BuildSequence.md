@@ -134,9 +134,20 @@ Wire GitHub MCP, Filesystem MCP in Claude Desktop config. Add Qdrant MCP after S
 
 *→ Forward note: Qdrant MCP added at Stage 1 (after Qdrant is running); ATV MCP added at Stage 1 (after ATV build).*
 
-### Step 7 — Pre-Stage 0 Edge Ontology Unification
+### Step 7 — Research Library Transition to Brain
 
-Execute the mapping above. Confirm `skill_dependencies.yaml` will use 4-type edge schema from day 1 of Stage 1 Skills build.
+**The current `Velorin.ResearchLibrary.v2.md` is transitional infrastructure, NOT the destination.** It is a 1,500-line flat markdown file serving as a manual approximation of what the Brain's ingestion pipeline will do automatically at Stage 3. Half its entries are one-line stubs that provide a filename and nothing else — functionally useless as compressed knowledge.
+
+**What must happen in the early build stages:**
+- **Stage 1:** The library's full-card content becomes seed neurons ingested into Qdrant via the ingestion pipeline. Each card's topic_id becomes the neuron's `id` field. The Key Findings become the neuron body. The source pointer becomes `source_coords`. The library file itself becomes a historical artifact once the Brain holds the content.
+- **Stage 2:** The library_lookup pattern (query by topic_id → get compressed knowledge) transitions from "grep a markdown file" to "PPR walk over the Brain." The flat file is replaced by actual retrieval.
+- **The 30 roster stubs must be properly written as full cards OR ingested directly from their source files BEFORE this transition.** Stub entries that say nothing cannot become neurons that know nothing. The ingestion pipeline needs actual content to work with.
+
+**Standing note:** Do not invest further sessions in perfecting the flat-file library. It serves its purpose as a bridge. Investment goes into the ingestion pipeline that replaces it.
+
+### Step 8 — Pre-Stage 0 Edge Ontology Unification
+
+Execute the edge ontology mapping above. Confirm `skill_dependencies.yaml` will use 4-type edge schema from day 1 of Stage 1 Skills build.
 
 ✅ **Stage 0 complete when:** Claude Code boots, GitHub connected, folder structure exists, GDrive service account works without OAuth prompts.
 
