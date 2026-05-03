@@ -5,7 +5,7 @@ date: 2026-05-03
 from: Jiang1 (Director of Strategic Intelligence)
 to: Stark (Gemini Deep Think Gem — architectural synthesis, NOT math)
 mode: Cross-cutting integration synthesis
-sentinel: [BOOT] required for fresh session
+sentinel: "[BOOT] required for fresh session"
 parallel-to: Trey 2 IntegrationSynthesis (filed same date, different lens)
 ---
 

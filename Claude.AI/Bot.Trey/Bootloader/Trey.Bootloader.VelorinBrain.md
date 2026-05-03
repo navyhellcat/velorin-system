@@ -3,7 +3,15 @@ destination: Claude.AI/Bot.Trey/Bootloader/
 file: Trey.Bootloader.VelorinBrain.md
 type: bootloader
 updated: April 25, 2026
-changelog: 2026-04-25 — removed stale "hand-curated" assertions (lines 103, 132 in prior version); pointer ratings are auto-assigned by the ingestion pipeline per architectural commitment, not hand-rated. Region/Area structure is currently pragmatic, with the architectural direction being community-detection (Simon-Ando aggregation). Ingestion pipeline status: partially resolved per V2 Build Guide OQ-1, ready for Phase 1 build. "Human-readable" descriptions of the markdown file format are accurate and preserved.
+changelog: >
+  2026-04-25 - removed stale "hand-curated" assertions (lines 103, 132 in
+  prior version); pointer ratings are auto-assigned by the ingestion
+  pipeline per architectural commitment, not hand-rated. Region/Area
+  structure is currently pragmatic, with the architectural direction being
+  community-detection (Simon-Ando aggregation). Ingestion pipeline status -
+  partially resolved per V2 Build Guide OQ-1, ready for Phase 1 build.
+  "Human-readable" descriptions of the markdown file format are accurate
+  and preserved.
 ---
 
 # Trey Bootloader — The Velorin Brain Architecture

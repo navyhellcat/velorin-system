@@ -1,8 +1,17 @@
 ---
 file: Velorin.LearningGuide.md
-purpose: Machine-readable learning guide covering every mathematical concept, formula, and architectural component in the Velorin system. Designed so any AI agent can read this and understand the entire system from zero.
-aesthetic: Same I-Robot × Pre-War Fallout framing as the commercial — each concept gets a "Radio Broadcast" explanation (plain English, 1950s announcer voice) followed by the formal math.
-format: Section per architectural layer, subsection per concept. Each subsection has: RADIO BROADCAST (plain English), THE MATH (formal), WHY IT MATTERS (operational), WHERE IT LIVES (Build Guide reference).
+purpose: >
+  Machine-readable learning guide covering every mathematical concept,
+  formula, and architectural component in the Velorin system. Designed so
+  any AI agent can read this and understand the entire system from zero.
+aesthetic: >
+  Same I-Robot x Pre-War Fallout framing as the commercial. Each concept
+  gets a Radio Broadcast explanation (plain English, 1950s announcer voice)
+  followed by the formal math.
+format: >
+  Section per architectural layer, subsection per concept. Each subsection
+  contains - RADIO BROADCAST (plain English), THE MATH (formal),
+  WHY IT MATTERS (operational), WHERE IT LIVES (Build Guide reference).
 ---
 
 # VELORIN — The Complete Learning Guide

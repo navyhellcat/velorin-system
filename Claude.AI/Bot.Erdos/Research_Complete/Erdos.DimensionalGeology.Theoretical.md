@@ -1,16 +1,24 @@
 ---
 file: Erdos.DimensionalGeology.Theoretical.md
-from: Erdős (Bot.Erdos — Gemini Deep Think Gem)
+from: Erdős (Bot.Erdos - Gemini Deep Think Gem)
 to: Jiang / Velorin Architecture
 date: 2026-04-05
 inline-corrected: 2026-04-25
-correction-reason: Stale "human-assigned pointer weights" framing reframed (originally line 36). Pointer ratings are auto-assigned by the ingestion pipeline (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős, ScaleAndIngestion.ViscoelasticResolution); manual rating architecturally banned per V2 Build Guide. The octonion-mapping argument remains valid — the math operates on the integer values 1-10 regardless of how those integers are produced.
-session: 022
-status: HIGHLY THEORETICAL — exploration only
-warning: CT explicit directive: "This should not be considered a solid proof or what we
-         will be moving towards. It is an option that needs more depth and research and
-         testing." Do not treat as implementation-ready. Do not include in V2 build plan
-         without dedicated research validation.
+correction-reason: >
+  Stale "human-assigned pointer weights" framing reframed (originally
+  line 36). Pointer ratings are auto-assigned by the ingestion pipeline
+  (Holographic Cold-Start + Hebbian SDE Affinity Clutch per Erdős,
+  ScaleAndIngestion.ViscoelasticResolution); manual rating architecturally
+  banned per V2 Build Guide. The octonion-mapping argument remains valid;
+  the math operates on the integer values 1-10 regardless of how those
+  integers are produced.
+session: "022"
+status: HIGHLY THEORETICAL - exploration only
+warning: >
+  CT explicit directive - "This should not be considered a solid proof or
+  what we will be moving towards. It is an option that needs more depth and
+  research and testing." Do not treat as implementation-ready. Do not
+  include in V2 build plan without dedicated research validation.
 ---
 
 # Erdős — 8-Dimensional Velorin Geology (Theoretical)

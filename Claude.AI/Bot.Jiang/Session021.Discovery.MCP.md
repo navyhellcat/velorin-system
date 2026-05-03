@@ -1,10 +1,11 @@
 ---
-document: Session 021 — MCP Ecosystem Discovery
-session: 021
+document: Session 021 - MCP Ecosystem Discovery
+session: "021"
 date: 2026-04-05
-status: DISCOVERY ONLY — research findings, not build decisions
+status: DISCOVERY ONLY - research findings, not build decisions
 author: Jiang (post-compact, five parallel Discovery Mode agents)
-framing: CRITICAL — Read this before reading anything else in this file.
+framing: |
+  CRITICAL - Read this before reading anything else in this file.
 
   Everything in this file was found by five research agents running in
   Discovery Mode. None of it is a build decision. None of it is an
@@ -15,8 +16,8 @@ framing: CRITICAL — Read this before reading anything else in this file.
    Now we decide what Velorin builds, in Velorin's way, using Velorin's
    unique architecture."
 
-  DO NOT read this file as: "things to onboard."
-  DO read this file as: "things to understand deeply before designing."
+  DO NOT read this file as "things to onboard."
+  DO read this file as "things to understand deeply before designing."
 
   Velorin builds at the foundational level. Outside code is not adopted
   at the foundational level. Frameworks and architectural patterns can
