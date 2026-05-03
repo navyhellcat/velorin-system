@@ -473,6 +473,28 @@ Check-Ins design — multi-point distribution across Build Guide phases (full el
 - Full re-evaluation at 1,000 neurons
 - Quarterly thereafter
 
+### Step 2b — Vetted Substrate Maintenance Program (Principle 9 Mode B activation)
+
+Builds and runs the background program that maintains the Vetted Substrate. Watches the ecosystem on cadence. Re-fires the Goal-Over-Method loop when triggers detect drift, deprecation, or new tool availability. Archives superseded entries.
+
+**Program location:** `infrastructure/programs/vetted_substrate_maintainer.py` (path subject to synthesis output).
+
+**Inputs:** active workflows registry (from Skills + Brain procedure-type neurons), Trey 2 cadence reports (scheduled ecosystem deltas), MCP server registry diffs, vendor release feeds where APIs exist.
+
+**Outputs:** updates to the Vetted Substrate (write into chosen storage location, schema per synthesis); surfaced architectural-decision queue when substrate changes require CT lock.
+
+**Cadence / triggers — initial defaults pending synthesis output:**
+- Quarterly vendor-feed sweep (each vendor's changelog, deprecation notices)
+- MCP registry monthly diff
+- Per-workflow validation cadence (default 90 days, override per entry)
+- Real-time triggers: workflow execution failure, explicit `velorin re-evaluate <workflow_id>` command
+
+**Build status:** spec pending Trey 2 + Stark integration synthesis (May 2026). Build target: end of Stage 4 (after H_E and JSD-compression-detector are wired). Until built, Mode A (live per-task loop in Cowork-Claude) handles all maintenance manually.
+
+*→ Forward note: this program is the operational realization of Principle 9 Mode B. Until it lands, Velorin operates in Principle 9 Mode A by default. Build-order constraint: requires Skills registry (Stage 1), ingestion pipeline (Stage 3), and ARC-2 tool router (Stage 1) operational.*
+
+---
+
 ### Step 3 — JSD Compression (κ empirical calibration)
 
 κ analytic formula ($κ = 2C(1-\alpha)/(\alpha\delta)$) is a structural prior only — operationally too loose (Davis-Kahan looseness, spectral-gap volatility). Empirical calibration required.

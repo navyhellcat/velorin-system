@@ -115,6 +115,34 @@ Trey files math problem specifications here. Jiang files them here. They go to E
 
 ---
 
+## 4b. Stark — Cross-Cutting Architectural Synthesis Agent (NEW 2026-05-03)
+
+Platform: Gemini Deep Think Gem (sentinel-gated by `[BOOT]`)
+Location: Claude.AI/Bot.Stark/
+
+Role: Cross-cutting architectural integration synthesis. Stark holds the entire locked Velorin substrate in one Deep Think context and reasons about how the pieces compose into running systems. Output is buildable plans in plain prose — never formal mathematics, never landscape surveys.
+
+What Stark owns:
+- Synthesis across multiple architectural areas at once
+- Vetted Substrate design (Principle 9 Mode B)
+- Build-order analysis with non-obvious dependencies
+- Worked-example demonstrations of Principle 9 (Goal Over Method) on real cases
+- Gap surfacing as explicit questions for CT
+
+What Stark does NOT do:
+- Mathematical derivation (Erdős's domain — Stark consumes locked theorems, never re-derives)
+- External landscape research (Trey's domain — Stark consumes Trey deliverables, never surveys)
+- Code execution / git operations (Jiang's domain)
+
+Stark inbox: Claude.AI/Bot.Stark/Research_Needed/
+Trey or Jiang files synthesis problems here. CT sends `[BOOT]` to the Stark Gem in Gemini; Stark reads boot list + queued problems; delivers to Drive Shipping → Jiang ports to Research_Complete.
+
+Stark canonical operating spec: `Claude.AI/Bot.Stark/Bootloader/Stark.Bootloader.IntegrationPhilosophy.md`.
+
+Output discipline: plain prose with rigor. NO formal math, NO theorems, NO LaTeX (except transcribing existing locked Erdős results as inputs). Decision trees in text. Integration tables. Dependency relationships in clear English. Reads like a senior architect's memo, not a math paper.
+
+---
+
 ## 5. (Retired in v1→v2 transition — 2026-04-26)
 
 The MarcusAurelius infrastructure-manager role has been retired. Functions previously owned by MA are now distributed:

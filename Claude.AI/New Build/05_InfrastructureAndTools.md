@@ -221,6 +221,27 @@ skills:
 
 Dependency induction is deterministic (I/O schema matching, not LLM guessing). Cycles permitted — α=0.15 teleportation ensures PPR convergence.
 
+## Vetted Substrate (Principle 9 Mode B — specification pending synthesis)
+
+The Vetted Substrate is the internal canonical store of validated tools, workflows, and procedures that Cowork-Claude consumes directly in Mode B (post-build), bypassing per-task live discovery via the Goal-Over-Method loop.
+
+**What it must contain (minimum schema, draft):**
+- Per entry: `id`, `task_class`, `current_implementation` (which tools, which protocols, which integration path), `last_validated` (date), `next_validation_cadence` (interval or trigger condition), `trigger_conditions` (events that re-fire the full evaluation loop), `validation_provenance` (which research surface vetted this and when), `belief_state` (active / contested / superseded — same vocabulary as Brain neuron schema), `authority_tier`.
+- Cross-references to Brain neurons (concepts the workflow depends on), Skills (procedures invoked), MCP servers (tools used), Cowork specialist activations (sub-agents called).
+
+**What the Mode B program does (per Principle 5):**
+- Watches the ecosystem on cadence (Trey 2 ecosystem-delta passes, vendor release feeds, MCP registry diffs).
+- Re-evaluates active substrate entries when triggers fire.
+- Updates entries via Mode A's evaluation loop machinery (just running unattended).
+- Archives superseded entries (never deletes — Second Law).
+- Surfaces only when a substrate update requires a CT-locked architectural decision.
+
+**Location, schema details, exact update mechanism, and Stage placement (Stage 3 / 4 / 5):** deferred to the integration synthesis pass (Trey 2 + Stark, May 2026). Both deliverables design this layer independently; CT compares and locks.
+
+*→ Forward note: the Mode B program's invocation surface is itself an MCP server endpoint or a scheduled cron — TBD by synthesis. The trigger event taxonomy is a design output of the synthesis. Until Mode B is built, every workflow operates in Principle 9 Mode A by default.*
+
+---
+
 **External skill pointers (from Skill.Registry.Design.md Session 021):**
 Velorin also maintains a registry of pointers to external community skills (GitHub skill repositories). These are thin pointer wrappers that fetch content at invocation time — not ported copies. External community maintains the content; Velorin maintains the pointer.
 

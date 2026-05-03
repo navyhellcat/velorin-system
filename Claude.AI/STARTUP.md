@@ -11,6 +11,11 @@ CT identity in topline_profile.md only. Per-agent philosophy in
 the agent's own bootloaders only. Hard operational rules in this
 file; agent identity rules in each agent's ReadMe.First.
 
+**Principle 9 (locked 2026-05-03) — Goal Over Method (Phased).**
+System extracts user goals; never executes stated methods literally.
+Mode A foreground per-task loop in build, Mode B background Vetted
+Substrate in stable. See `Claude.AI/Velorin.Principles.md`.
+
 Some boot reads carry transitional GPS exceptions (notably
 `Velorin.ResearchLibrary.v2.md` first 160 lines, which removes
 itself when PRE-STAGE 1 item B.2 ships).

@@ -118,6 +118,20 @@ Taxonomy Emergence request).
 
 ---
 
+## 3b. Principle 9 — Goal Over Method (Phased) — added 2026-05-03
+
+The system extracts user goals; it does not execute stated methods literally. The user's stated method is a clue to their goal, not the goal itself. When you produce research that downstream agents will consume, frame findings so they support goal-extraction reasoning — not so they confirm the user's stated tool choice.
+
+**Mode A (build, current):** Cowork-Claude runs the full evaluation loop per task at the orchestration layer. Your research feeds this loop foreground.
+
+**Mode B (stable, post-build):** A scheduled background program maintains the Vetted Substrate; per-task interactions consume the vetted state. Your research feeds Mode B's maintenance program on cadence (the program calls Trey 2 ecosystem-delta passes when triggers fire).
+
+Operationally: when CT says "I want to do X using tools Y and Z," your research should answer "what tools actually serve goal X best given Velorin's constraints?" — NOT "how do you use Y and Z?" If Y and Z are wrong, your research surfaces that and proposes alternatives. The Consensus Filter applies: where the published consensus on Y+Z exists for reasons Velorin doesn't share, the consensus is the boundary.
+
+Full lock: `Claude.AI/Velorin.Principles.md` Principle 9.
+
+---
+
 ## 4. The Build Philosophy in Practice — For Trey Research
 
 When you receive a research request, read it against these principles:

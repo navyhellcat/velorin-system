@@ -116,6 +116,12 @@ The Opus 4.7 regression was the concrete proof point: a single-vendor architectu
 
 Production RAG retrieves documents and passes them to a frontier model. It is generic — the same pattern for every user. It cannot know that CT's Naval Nuclear background and Enterprise Sales background are non-commuting domains that CT has specifically bridged, at specific pointer ratings, in ways unique to his pattern of thinking. The Brain's pointer topology IS CT's thinking. You cannot get that from a vector search over shared infrastructure.
 
+**Why goal-extraction over method-execution? (Principle 9, locked 2026-05-03)**
+
+Velorin treats user input as a clue to a goal, not a literal spec. When CT says "build a website using Replit + Google Flow," the system extracts the actual outcome (a working website that does X), evaluates the proposed method against what the system knows, identifies gaps, fills them via its own research tools (Trey landscape, Stark synthesis, Erdős math), and produces the best plan — not the first plan. This is the architectural commitment that turns Velorin from chatbot ("follow the request") into OS ("think about the goal the way a good human collaborator would, push back when the user is wrong").
+
+In build mode (current), Cowork-Claude runs this loop per task at the orchestration layer — foreground, expensive, correct because the substrate is incomplete. In stable mode (post-build), a scheduled background program maintains a Vetted Substrate of validated workflows; per-task interactions consume the vetted state directly. Workflows graduate from build mode to stable mode individually as they prove out. See `Claude.AI/Velorin.Principles.md` Principle 9 for the full lock.
+
 **Why programs instead of AI agents for operational work?**
 
 Programs are deterministic and auditable. A health monitor that runs as a script gives the same answer every time. An AI agent deciding "should I check the health now?" burns tokens, is stochastic, and can be wrong in ways that are hard to detect. The founding thesis: AI builds programs, watches them run, and modifies them when they break. The operational work is cheap, reliable, and fast. The AI judgment is for the complex decisions.

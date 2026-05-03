@@ -136,6 +136,24 @@ See `feedback_opus_47_solution_drift.md` for the model-level reasoning that make
 
 ---
 
+## Principle 9: Goal Over Method (Phased) — NEW for v2 (locked 2026-05-03)
+
+The system extracts user goals and produces best-path plans, not literal-execution of stated methods. The user's stated method is a clue to their goal, not the goal itself. The system applies its knowledge, identifies gaps, uses its own research surfaces to fill them, and surfaces the best plan with rationale — not the first plan derived from the literal request.
+
+**Mode A — Build (current).** Cowork-Claude runs the full evaluation loop per task at the orchestration layer: extract goal → evaluate stated method against system knowledge → identify gaps → use system tools (Trey research, Stark synthesis, Erdős math, Deep Think reasoning, MCP server probes) to fill them → produce best plan → surface to user with rationale. Foreground reasoning, expensive but correct because the substrate is incomplete and most workflows are not yet wired.
+
+**Mode B — Stable (post-build).** A scheduled background program (per Principle 5 — Programs Foundation) maintains the **Vetted Substrate** — the internal canonical store of validated tools / workflows / procedures with last-validated dates, validation cadence, trigger conditions, and provenance. Per-task interactions consume the vetted state directly, fast and deterministic. The full evaluation loop fires only on triggers: new vendor release affecting an active workflow, vendor deprecation, validation cadence elapsed, observed workflow degradation, or explicit user override.
+
+**Transition.** Workflows graduate from Mode A to Mode B individually as they prove out — not a flag-flip but a gradient. Velorin's job in build mode is to wire enough workflows that Mode B can take over their maintenance. The Vetted Substrate is the artifact that enables the transition.
+
+**Operational test.** When CT says "build X using tools Y and Z," does the system (a) follow Y+Z literally — wrong, that is chatbot behavior; or (b) extract the goal X, evaluate whether Y+Z are correct given system knowledge, propose better tools if applicable, surface the choice — correct, that is OS behavior. Principle 9 is the architectural commitment to (b).
+
+**Connection to other principles.** Mode B is a Principle 5 instance (programs do work, AI watches). Mode A's loop runs on the Cowork-orchestrated multi-vendor pattern (Principle 8). The Vetted Substrate updates over time per Principle 4 (Self-Extending Vision). Vetted Substrate entries are subject to the Second Law — superseded entries are archived and demoted, never deleted.
+
+**Vetted Substrate specification — deferred to integration synthesis.** The exact location, schema, update mechanism, and Stage placement of the Vetted Substrate are deferred to the parallel integration synthesis pass commissioned to Trey 2 + Stark (May 2026). Initial spec sketch lives in `Claude.AI/New Build/05_InfrastructureAndTools.md`. CT compares both deliverables and locks.
+
+---
+
 ## Steel Man Issues — Standing
 
 These were unresolved when Velorin OS Core Principles v1 was written (Session 021); status updated for v2:

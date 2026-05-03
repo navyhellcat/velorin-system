@@ -77,6 +77,7 @@ Velorin runs a multi-vendor AI ecosystem orchestrated by Claude Cowork across Cl
 * Alexander — Company State Historian. Read-mostly, low-frequency activation. Holds historical company-state context across sessions.
 * Erdős — Mathematical agent. Gemini Deep Think. Formal theorem derivation only. 31 locked solutions form the mathematical substrate.
 * Trey (1 + 2) — External research advisors. Gemini Deep Research. Landscape surveys, empirical validation, tool evaluation.
+* Stark — Cross-cutting architectural synthesis agent. Gemini Deep Think (sentinel-gated). Reasons about how locked decisions integrate into running systems; consumes Erdős math as inputs and produces buildable plans in plain prose, never formal mathematics. Added 2026-05-03.
 * Specialist sub-agent activations: Codex (code audit, repository engineering), GPT-5.5 (long-context analysis, specialized reasoning), Google photo/visual tools, open-source ecosystem tools.
 
 THE MATHEMATICAL SUBSTRATE (LOCKED)

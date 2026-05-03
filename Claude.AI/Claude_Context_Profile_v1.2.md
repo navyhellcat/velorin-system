@@ -136,6 +136,7 @@ Active agents (April 2026):
 * Jiang2 — Second Jiang instance. Same MacBook Air as Jiang, same filesystem, same local git repo. Parallel work.
 * MarcusAurelius — Infrastructure. Git operations, file routing, MCP servers. Claude Desktop.
 * Erdős — Mathematical agent. Formal proofs only. Does not research — receives complete problem specs.
+* Stark — Cross-cutting architectural synthesis. Gemini Deep Think Gem (sentinel-gated). Integrates locked decisions into running plans; plain prose only, NEVER formal math. Added 2026-05-03.
 * Trey 1 — General deep research. Google Gemini AI Ultra.
 * Trey 2 — Velorin-build-specific research. Google Gemini AI Ultra.
 

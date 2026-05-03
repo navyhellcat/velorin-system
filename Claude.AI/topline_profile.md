@@ -264,6 +264,7 @@ Active agents:
 * Erdős — Mathematical agent. Formal theorem derivation. Does not browse or research — receives complete problem specs and produces proofs.
 * Trey 1 — General deep research advisor. Google Gemini AI Ultra. Unlimited research scope.
 * Trey 2 — Velorin-build-specific research advisor. Google Gemini AI Ultra. Reads bootloader files; validates Erdős frameworks against empirical literature.
+* Stark — Cross-cutting architectural synthesis agent. Google Gemini Deep Think Gem (sentinel-gated). Reasons about how locked decisions integrate into running systems; produces buildable plans in plain prose, NOT formal mathematics. Added 2026-05-03.
 
 Agents do not communicate with each other directly. All routing goes through Christian Taylor.
 

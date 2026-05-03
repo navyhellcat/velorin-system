@@ -66,6 +66,7 @@ Lookup pattern: Library card by `topic_id` → if card insufficient → follow `
 |---|---|---|
 | Erdős math | `Bot.Erdos/Research_Complete/*.md` | 31 |
 | Trey research | `Bot.Trey/Research_Complete/*.md` | ~35 |
+| Stark synthesis | `Bot.Stark/Research_Complete/*.md` | 0 (new agent, 2026-05-03) |
 | External papers | `Claude.AI/External/*.md` | 1 (Tafazoli 2025) |
 | Tools docs | `Claude.AI/tools/*.md` | GDrive Port, URL Port, Math OCR, KaTeX rules |
 | Skills/Hooks pending | `Claude.AI/Skills and Hooks Pending Development/*.md` | Read when implementing |
@@ -79,7 +80,9 @@ Lookup pattern: Library card by `topic_id` → if card insufficient → follow `
 | Jiang Working Docs | `Bot.Jiang/Working.Docs/` | Active items only post-cleanup. Boot-read in full. |
 | Jiang Research_Needed | `Bot.Jiang/Research_Needed/` | `.gitkeep` only post substrate-lock |
 | Erdős Research_Needed | `Bot.Erdos/Research_Needed/` | `.gitkeep` only post substrate-lock |
-| Trey Research_Needed | `Bot.Trey/Research_Needed/` | `.gitkeep` only post substrate-lock |
+| Trey Research_Needed | `Bot.Trey/Research_Needed/` | Has IntegrationSynthesis prompt (May 2026) |
+| Stark Research_Needed | `Bot.Stark/Research_Needed/` | Has IntegrationSynthesis prompt (May 2026) |
+| Principle 9 (Goal Over Method, Phased) | `Velorin.Principles.md` | Locked 2026-05-03. Mode A foreground / Mode B Vetted Substrate. |
 | PRE-STAGE 1 ledger | `06_BuildSequence.md` PRE-STAGE 1 section | Gates Stage 0. Row states: BUILT / DECIDED / FORMALLY DEFERRED / OPEN. |
 | FW registry | `Bot.Jiang/Working.Docs/Jiang.FutureWork.md` | FW-001 through FW-017. Review at session start. |
 | Brain entry | `Claude.AI/Velorin_Brain/_index.md` | On-demand access only (Principle 2). NOT loaded at boot. |
