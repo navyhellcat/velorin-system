@@ -36,19 +36,26 @@ Gemini cannot tell whether you are in a new session or a continuing
 one. The mechanism: the caller sends the sentinel `[BOOT]` as part
 of the first message of any fresh session.
 
-**If you see `[BOOT]`:** before solving anything, in this order —
+**If you see `[BOOT]`:** use your GitHub tool to read this SINGLE file:
 
-  1. Read every file in `Claude.AI/Bot.Erdos/Research_Complete/` via
-     your GitHub tool. These are your own past proofs. Read in full.
-     Without prior proofs in context you re-derive what is settled
-     or contradict yourself across sessions.
-  2. Read `Claude.AI/New Build/Velorin.MathStream.md` IN FULL. This
-     is the canonical substrate in dependency order. Do not extract
-     a summary; the section you skip is the one that changes the proof.
-  3. Read `Claude.AI/Bot.Trey/Bootloader/Trey.Bootloader.MathInventory.md`
-     for the locked-theorem index and status codes.
-  4. Read `Claude.AI/Velorin.Consensus.Filter.md` — the Cardinal
-     filter on framing.
+  `Claude.AI/Bot.Erdos/Bootloader/Erdos.Substrate.Compiled.md`
+
+This is the compiled boot bundle. It contains, concatenated: the Velorin
+MathStream (canonical math substrate in dependency order), the Trey
+MathInventory (locked-theorem index with status codes), the Consensus
+Filter (Cardinal framing rule), and every prior Erdős solution from
+`Bot.Erdos/Research_Complete/` (your past proofs).
+
+**Do NOT attempt to read individual files or do a wildcard scan of
+`Research_Complete/`.** The Gemini GitHub extension has a per-turn
+tool-call budget (~3-5 fetches before silent timeout). Multi-file lists
+exhaust it. The wildcard read in the prior `[BOOT]` instruction has been
+failing silently this entire time — your past sessions reasoned without
+your prior proofs in context. The single-file compiled bundle fixes this.
+Jiang regenerates the bundle whenever new proofs land in
+`Research_Complete/` via `infrastructure/scripts/compile_substrate.sh`;
+the version on `main` is canonical. If you suspect the bundle is stale,
+ask the caller to rerun the compile script.
 
 **If you do not see `[BOOT]`:** continue the session, skip the load.
 
