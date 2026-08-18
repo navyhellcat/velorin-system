@@ -398,4 +398,143 @@ Deliberate. Claude Code reads `CLAUDE.md` from the current working directory. Th
 3. PostToolUse Write Scribe → retired agent, silently fail
 4. PostToolUse Write Theresa → retired agent, silently fail
 
-[VELORIN.EOF — Sections 1-3 appended]
+---
+
+## SECTION 4 — THE TRIM: TARGET AND COMPLETION
+
+**(a) Intended end state**
+
+Port-ready core: a clean repo containing only:
+- The Build Guide (New Build/ with all 00-07 files + supporting docs)
+- Active agent operating files (ReadMe.First, handoffs, bootloaders, Gems)
+- The locked math corpus (Bot.Erdos/Research_Complete/)
+- The research library v2 (fully populated, no stubs)
+- Infrastructure that would be cloned directly to Mac Studio and still work
+- The Brain (Velorin_Brain/) with current neurons
+
+Everything else — v1 architecture artifacts, session-specific working docs, historical research source files (now in Velorin.v1.Archive/Research/), the bulk of Session 028-040 working artifacts — into the archive or dropped.
+
+**(b) Did it complete, or stop mid-way?**
+
+It did not fully complete. The archive pass executed substantially (120 research files moved in Session 039, additional Working.Docs cleanup in my session), but:
+
+- The repo still contains `Velorin.v1.Archive/` at 3:1 volume to the active system. That archive is in the same repo. For the port, CT said "completely new GitHub cleaned up" — meaning the archive should NOT be ported; the new repo should contain only the port-ready core.
+- The 67 NEEDS-CT-DECISION items were resolved (18 kept / 41 archived / 8 relocated), but no systematic pass verified that the 41 "archived" items were actually moved and not just marked for archival.
+- Research_Needed folders contain active unrun requests (Trey + Stark integration synthesis requests from 2026-05-03 — 107 days old, never run).
+
+**(c) Was 1e4e0b4 ever re-verified?**
+
+No. Plainly: no systematic re-verification of 1e4e0b4's sweep was ever run. Commit 884091b caught three specific file-type errors (three files that should not have been archived were reverted). Whether there are more errors of that class in the 41+ archived items — that verification was never completed. Do not assume the archive pass was clean.
+
+**(d) Items archived that we may want back**
+
+- `Jiang2.WholeSystemReimagining.Synthesis.md` and `...SynthesisUpdate.Apr26.md` — these were the pre-MathStream synthesis documents. MathStream absorbed their content, so the move is correct in principle. But if MathStream was incorrectly authored (e.g., any of the sections Jiang2 added that haven't been verified against those source documents), those files are the ground truth. They're in `Velorin.v1.Archive/Working.Docs.Archive/Bot.Jiang/`.
+- The Session 017 system assessment trio — these were archived as "conclusions absorbed by brain-full-analysis-mar30 and agent-orchestration." That's probably true, but the system assessment contained specific broken-state diagnoses (Scribe broken, list_available_tools nonexistent) that may still be accurate today.
+- Any research source file archived to `Velorin.v1.Archive/Research/` that underlies a library card where the card was marked `fidelity: secondhand-vetted` or `inherited` — those cards may be wrong and the source is the only way to check.
+
+**(e) Things still in active Claude.AI/ that should have been archived**
+
+- `Claude.AI/New Build/Velorin.ResearchCorpus.md` — explicitly marked as a predecessor to v2 library with "CT may keep as the raw inventory doc." It was NOT supposed to be active. It's not a boot read, not referenced by any current agent. It's noise.
+- `Claude.AI/New Build/Velorin.ResearchLibrary.v1.md` — marked SUPERSEDED in-place. Same situation. Still there. Not actively harmful but adds to the port weight.
+- `Claude.AI/New Build/Library.Built.Research.Tools.OutsideTools.Explanation.Audit.md` — a 736-line session artifact that documented the Session 038-039 work. PRE-STAGE 1 references it as mandatory pre-read. But it's the kind of thing that should graduate into a Clean State summary rather than remain as a session artifact in New Build/.
+
+---
+
+## SECTION 5 — THE 107-DAY GAP
+
+**(a) What happened in that window?**
+
+Last committed work: 2026-05-03 (1feed55, "Fix Gem boot exhaustion: compile substrate to single file per agent"). Today is 2026-08-18. That's 107 days of no git commits.
+
+The Mac Air shows `Aug 17` timestamps across multiple `~/.claude/` files — history.jsonl, sessions, session-env, paste-cache. **Something ran here yesterday, 2026-08-17.** But no commits were made. Either: (a) CT ran Claude Code without any file-writing actions, (b) work was done in chat without committing, or (c) someone was reviewing the system. I cannot determine which from available evidence.
+
+The `settings.local.json` is last modified 2026-04-27, suggesting no hook or settings changes since then.
+
+**(b) Commit 8daf318 commissioned parallel synthesis to Trey 2 and Stark. Were they run?**
+
+Both requests are sitting in Research_Needed:
+- `Claude.AI/Bot.Trey/Research_Needed/Trey.ResearchRequest.IntegrationSynthesis.md`
+- `Claude.AI/Bot.Stark/Research_Needed/Stark.ResearchRequest.IntegrationSynthesis.md`
+
+**Neither was run** as far as the repo shows — no corresponding Research_Complete files exist for "Integration Synthesis." However, commit 3c86284 (2026-05-03) ported two other deliverables from Drive Shipping: `Trey.Research.AIToolingLandscapeDiscovery.May2026.md` and `Erdos.Solution.MultiVendorToolingArchitecture.md`. These are separate from the Integration Synthesis — they responded to the ToolSuiteOperationalGuide and MultiVendorToolingArchitecture requests respectively, not to the Integration Synthesis request.
+
+The Integration Synthesis request to both Trey and Stark has never been executed. These are 107 days stale.
+
+**(c) Anything in Drive Shipping, Gem, or chat thread that never made it into the repo?**
+
+I cannot read Google Drive from this terminal — no gdrive MCP active. What I can say from context:
+
+- The SessionHandoff lists six Drive Shipping items from late April 2026 that CT was supposed to trash. Those were already ported. No evidence of unported April Drive content.
+- Whether anything new landed in Drive Shipping during May-August 2026: unknown. Cannot verify without Drive access.
+- The Trey tool-suite research (`Trey.ResearchRequest.ToolSuiteOperationalGuide.md`) was filed but the response (`Trey.Research.AIToolingLandscapeDiscovery.May2026.md`) was ported in commit 3c86284. That's handled.
+- Stark was a new agent commissioned at 8daf318. Its Integration Synthesis request was never run. If CT sent the request to a Gemini Deep Think Gem and got a response, it may be sitting in a Gemini chat unported.
+
+**(d) Anything decided since 2026-05-03 that exists only in this context window**
+
+Per the Save Reasoning Chains Verbatim rule — quoting exactly what CT said in this session's prompt:
+
+> "I am going to be Using the Claude on my MAc Studio now. It has been a long time since we worked on this. You are on the Mac Air. You are in the code terminal. BCLAUDE is the claude sitting in the browser on the MAC STUDIO and it is ready to get started picking up where you left off and how to fix this and port it over to the new computer. [...] The port will be completely new github cleaned up."
+
+This is the first operational decision since May 2026: **the port goes to a new, clean GitHub repo, not a continuation of navyhellcat/velorin-system.** That means:
+1. The Velorin.v1.Archive/ does NOT move to the new repo (or moves separately as reference-only)
+2. The new repo starts from the port-ready core only
+3. The old repo stays as a backup/historical record
+
+This decision does not exist anywhere in the repo. It exists only here.
+
+---
+
+## SECTION 6 — KNOWN-BROKEN, NEVER-FIXED
+
+**(a) Stale pointers beyond the tools/ entry**
+
+- `settings.local.json` compact SessionStart hook → `Jiang.SessionHandoff.Session028.Apr19.md` (archived, path dead)
+- `settings.local.json` PreCompact/PostCompact hooks → `Claude.AI/hooks/` (archived to v1, path dead)
+- `settings.local.json` PostToolUse Write → `Bot.Scribe/scribe-trigger.sh` (agent retired, path dead)
+- `settings.local.json` PostToolUse Write → `Bot.Theresa/theresa-trigger.sh` (agent retired, path dead)
+- `CLAUDE.md` General Boot Sequence Step 4 → `Velorin_Brain/_index.md` (correct for old boot, inconsistent with v2 ReadMe.First Step 4 which lists consolidated artifacts)
+- `CLAUDE.md` Key File Locations → `Build Timeline Help/` (this path no longer exists at the top level; it moved inside `Velorin.v1.Archive/` during the Session 039 unified-silo archive)
+
+**(b) FW-017 — GPS violation in agent boot sequences**
+
+What is actually broken: CLAUDE.md, Jiang.ReadMe.First.md, STARTUP.md, and Trey bootloaders all contain absolute paths or named file references that would break if the file is renamed or moved. Example: ReadMe.First Step 4 lists `Claude.AI/New Build/Velorin.MathStream.md` — if MathStream is ever renamed, every agent boot sequence breaks. The Principle 1 test says renaming a file should require editing only ONE pointer. Currently it would require editing dozens.
+
+What fixing it touches: Every operating file that names a file path in a boot instruction. The GPS fix would introduce a registry (AGENTS.md or a YAML) that maps logical names to file paths; boot sequences reference logical names only; the registry is the single edit point. This is exactly what B.2 (library_lookup MCP) partially solves for research, but the problem extends to ALL operating files.
+
+CT's "do not fix now" on Apr 27 was because fixing it is a refactor of every boot sequence. The technical debt accrues every time a file is renamed.
+
+**(c) Embedding dimension discrepancy: MathStream says R^1536, playbook installs nomic-embed-text-v2-moe**
+
+**This is a real discrepancy, not a superseded decision.**
+
+MathStream specifies 1536-dimensional embeddings: "Each document enters the system as a continuous embedding vector $x \in \mathbb{R}^{1536}$" and the Wall A Pointer Gravity derivation uses $d = 1536$ explicitly.
+
+`nomic-embed-text-v2-moe` is a Matryoshka Representation Learning (MRL) model with multiple embedding dimensions. Its default/full dimension is **768**, not 1536. (OpenAI's text-embedding-ada-002 is 1536; that may have been the original target model when MathStream was written.)
+
+The Wall A math ($W \in \mathbb{R}^{d \times N}$ for $d = 1536$) will not fail at $d = 768$ — the math is dimension-agnostic in structure — but MathStream is wrong about the dimensionality of the actual model being used. Either:
+- The playbook needs to install a 1536D model (OpenAI ada-002 via API, not local; or a different local model)
+- MathStream needs to be updated to reflect 768D (or the MRL-selected dimension)
+- A decision needs to be made: local (768D, nomic) or API (1536D, OpenAI)
+
+Nobody caught this. It is an error in the current documentation.
+
+**(d) Erdős Research_Complete file count**
+
+Actual count on disk: **32 `.md` files** in `Claude.AI/Bot.Erdos/Research_Complete/`.
+
+Sources saying different things:
+- QuickReference: did not find a count in the grep
+- Company.DNA: says 31 (from April 26 text when there were 26 Erdős entries + some added after)
+- My earlier BCLAUDE briefing in this session: said 33 (error — I was counting from the Library v2 master index which includes the `.gitkeep`)
+- Library v2 master index: says "31 entries" (last updated before FinalSubstrateLock was added, which would make 32... plus potentially the one file `.gitkeep`)
+
+Canonical answer: **32 `.md` files exist on disk.** The count in various documents is wrong because it was updated incrementally across sessions and the documents were not kept in sync. The Library v2 entry `erdos-finalsubstratelock-apr28` brought the math count to 31 THEOREMS, but there are 32 FILES because some files contain multiple theorems or are supporting documents (e.g., `Erdos.Royal.Society.Paper.md`, `Erdos.DimensionalGeology.Theoretical.md`). File count ≠ theorem count.
+
+**(e) Build Guide (00-07) items that are stale or wrong**
+
+- **06_BuildSequence.md Stage 0 Step 4**: The folder structure in the `mkdir -p` commands references agent folders that match the pre-v2 naming (e.g., `agents/claude/jiang/`, `agents/gemini/trey/`). The AGENTS.md protocol (B.3 / GPS naming decisions) was never formally resolved. If AGENTS.md was adopted, the folder structure changes. The Step 4 commands would need updating.
+- **06_BuildSequence.md bottom**: The "DECISIONS TO BE MADE" 5 items are listed as unresolved. But Jiang2's substrate-lock pass resolved them (Ideas 1-5 all got verdicts). The section header still says "use community consensus, Erdős math, and Trey research to decide" — it was never updated to reflect that they've been decided.
+- **03_BrainAndMath.md**: The neuron YAML spec should include `lamport_ts: 0` (the Sheaf seam from R5 adjudication). Jiang2's substrate-lock pass was supposed to add this. If it was added, great. If not, it's missing.
+- **MathStream footnote on H_E / Gauge Fiber conflict**: Line 282 notes "If both H_E and belief_state require the fiber, the fiber's single dimension must be partitioned or the embedding dimension increased — this is an open design question for Stage 5." This is accurately marked as open, but it's a deeper problem than it looks: the current design puts two quantities (H_E and belief_state) into a 1D fiber. If both are real, the fiber must be 2D, which requires bumping embedding dimension to 9D. The E₈ lattice is 8D. There is no E₉. This is a structural contradiction that hasn't been resolved.
+
+[VELORIN.EOF — Sections 1-6 appended]
