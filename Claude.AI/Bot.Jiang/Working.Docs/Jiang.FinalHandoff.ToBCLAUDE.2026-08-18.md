@@ -537,4 +537,191 @@ Canonical answer: **32 `.md` files exist on disk.** The count in various documen
 - **03_BrainAndMath.md**: The neuron YAML spec should include `lamport_ts: 0` (the Sheaf seam from R5 adjudication). Jiang2's substrate-lock pass was supposed to add this. If it was added, great. If not, it's missing.
 - **MathStream footnote on H_E / Gauge Fiber conflict**: Line 282 notes "If both H_E and belief_state require the fiber, the fiber's single dimension must be partitioned or the embedding dimension increased — this is an open design question for Stage 5." This is accurately marked as open, but it's a deeper problem than it looks: the current design puts two quantities (H_E and belief_state) into a 1D fiber. If both are real, the fiber must be 2D, which requires bumping embedding dimension to 9D. The E₈ lattice is 8D. There is no E₉. This is a structural contradiction that hasn't been resolved.
 
-[VELORIN.EOF — Sections 1-6 appended]
+---
+
+## SECTION 7 — TRAPS
+
+Hard-won operational knowledge not written down anywhere in the repo.
+
+**1. Never add `claude-code` as an MCP server in claude_desktop_config.json.**
+Doing so causes every tool name to get prefixed with `mcp__claude-code__` in sub-agent contexts. Sub-agents trying to call `WebSearch` call `mcp__claude-code__WebSearch` which is blocked. The agent reports completion but all tool calls failed silently. Session has to be abandoned. This has burned real time.
+
+**2. The GDrive port pipeline has a Python `re.sub` backslash trap.**
+When patching OCR'd LaTeX back into markdown using `re.sub(pattern, replacement, text)`, Python's `re.sub` interprets backslash sequences in the replacement string BEFORE inserting it. So `\rho` in the replacement becomes `\n` + `ho` (newline + literal "ho"). The fix is always use a lambda: `re.sub(pattern, lambda m: replacement, text)`. Failure mode: math renders as garbage or corrupted text on GitHub. Discovered Session 032. Every math-OCR script must use the lambda form.
+
+**3. Trey uses Google Docs Equation Editor despite explicit prohibitions.**
+The instructions say "plain-text LaTeX only, no Equation Editor." Trey violates this repeatedly. Every Trey delivery with math requires: (a) run the image-math detection probe (`grep -oE '[a-z][^.\n]{0,30}!\[\]\(images/...'`) after porting, (b) count small images under 8KB (they're equations, not figures), (c) spawn Sonnet OCR sub-agents (never Haiku — Haiku hallucinates plausible-wrong LaTeX). Cost: ~$0.05-0.50 per delivery. Time: 5-10 minutes. This is the Session 032 failure mode.
+
+**4. The html2text Python code fence export bug.**
+When porting Google Docs to markdown via html2text, Python code blocks lose their closing fence AND their indentation. The port script produces an unclosed ``` block; everything after gets treated as code. Must manually fix every code block after porting. Every Erdős delivery with a Python code block (the FSA Runtime, the Reynolds throttle, the Betti persistence code) required manual repair. Fix: after running the port script, always grep for ``` and count — if the count is odd, there's an unclosed fence.
+
+**5. The `hub` detection on nomic-embed / Reynolds throttle.**
+The Reynolds Re formula breaks on scale-free graphs: if a region contains a super-hub with very low spectral gap (γ → 0), Re → ∞ and the throttle drops to zero — the entire swarm gets locked out of that region. The fix is to evaluate Re only inside dense k-cores, not across the full graph including the hub's long sparse tail. If this check isn't in the throttling implementation, the swarm will intermittently grind to a halt in regions with high-degree nodes.
+
+**6. The gdrive_trash_file permission is DENIED in settings.local.json.**
+The deny list includes `mcp__velorin-gdrive__gdrive_trash_file`. This means trashing Drive sources after delivery requires CT to do it manually via the Drive UI. Jiang cannot trash Drive files. This is intentional (irreversible action requires human) but it means the Drive Shipping folder accumulates untrashed sources. Currently: 6+ documents from April/May 2026 that CT may not have trashed.
+
+**7. Erdős code blocks must use 4-space indentation minimum.**
+The Google Docs → Drive → html2text pipeline strips indentation from code blocks. If Erdős writes a code block with 2-space or no indentation, the export produces unreadable code. Every code block Erdős has written has required manual indent-restoration after porting. Told Erdős explicitly in the NoveltyMathDerivations prompt. He used 4-space in the final delivery. Future Erdős sessions need the same instruction.
+
+**8. Context collapse silently corrupts git operations.**
+During the April 27 archive sweep (commit 1e4e0b4), Jiang ran under context collapse and made three incorrect file moves that commit 884091b had to revert. The failure mode: the agent is confident, the commit message is coherent, but the operations were wrong. After any large batch of git operations run under time pressure or context pressure, run `git status` and `git diff HEAD~1 --stat` and verify manually before declaring success.
+
+**9. Gemini Deep Think (Erdős/Stark) has a per-turn tool-call budget.**
+The memory in MEMORY.md records this: "Gemini Deep Think GitHub extension has a per-turn tool-call budget (~3-5 fetches). Multi-file boot lists or wildcard directory scans exhaust it and fail silently. Compile substrate into ONE file per Gem; have Gem fetch the single compiled bundle." This is why commit 1feed55 ("Fix Gem boot exhaustion: compile substrate to single file per agent") was the LAST commit. The Gem bootloaders were rewritten to point at a single compiled file rather than listing 10+ individual reads.
+
+**10. SessionStart hook runs git pull on session open.**
+`settings.local.json` SessionStart/startup hook: `git pull origin main --quiet 2>&1 | tail -1`. This means if git auth is broken (as it is right now — no keychain token, no SSH key), every new Claude Code session will throw a git pull failure at startup. The session continues but the failure message is in the hook output. Monitor for this after restoring git auth.
+
+**11. CLAUDE.md is outside the repo — Mac Studio needs its own.**
+CLAUDE.md lives at `/Users/lbhunt/CLAUDE.md`. When CT opens Claude Code on Mac Studio, the startup hook will look for CLAUDE.md in whatever directory it starts in, but the **agent routing** (the CARDINAL section) depends on detecting agent names in the opening prompt. The Mac Studio install needs its own CLAUDE.md pointing to the Mac Studio repo paths. The Mac Air CLAUDE.md has `/Users/lbhunt/Desktop/velorin-system/` hardcoded — those paths will be wrong on Mac Studio if the repo clones to a different location.
+
+**12. The FW-003 service account key is NOT in the repo.**
+`~/.velorin-gdrive-key.json` — the GDrive service account private key. It MUST exist on Mac Studio for the gdrive MCP to work. It's gitignored and not committed anywhere (correctly). CT must copy it from Mac Air to Mac Studio manually, or re-download from Google Cloud Console. No key = no Drive MCP = no research porting workflow.
+
+---
+
+## SECTION 8 — BUILDOUT WALKTHROUGH
+
+**(a) First physical action of the port**
+
+Not "install Homebrew." The first physical action is:
+
+**Create the Mac Studio CLAUDE.md with correct paths.** Without it, Claude Code on Mac Studio won't route agents correctly and every boot will be wrong. Template it from the Mac Air CLAUDE.md but replace `/Users/lbhunt/Desktop/velorin-system/` with the Mac Studio repo path. Do this before the first Claude Code session on Mac Studio.
+
+Second: **Copy ~/.velorin-gdrive-key.json from Mac Air to Mac Studio.** Without it, Drive porting is dead and Research_Needed requests cannot be received.
+
+Third: then proceed with Velorin.MacStudio.Setup.md in order.
+
+**(b) OPEN PRE-STAGE 1 items — blockers vs bookkeeping**
+
+Current OPEN items: A.1, B.1, B.2, B.3, B.4, B.5
+
+**Genuine blockers (cannot start Stage 1 without them or a formal deferral):**
+- **B.1 (boot/close/handoff skill+hook pair)** — The research card `claude-code-skills-full-landscape` calls this "the single most important Velorin recommendation" and "build the boot/close/handoff cycle as a skill+hook pair before anything else." Without it, session coordination remains manual forever. This is a hard blocker because the Stage 1 build will involve multiple agent sessions, and without automated handoffs, context loss is certain.
+- **B.2 (GPS lookup MCP tool / library_lookup)** — See (c) below.
+
+**Bookkeeping that is formally deferrable:**
+- **A.1 (IdentityVerification)** — filing a Research_Needed request is 10 minutes; the actual research and implementation is Stage 3+. The "blocker" status is because the REQUEST FILE was never created. Just create the file. Not a real Stage 1 blocker.
+- **B.3 (library consumer snippet in agent ReadMes)** — adding ~30 lines to each agent ReadMe saying "look up by topic_id." 30 minutes. Do it.
+- **B.4 (fidelity: field)** and **B.5 (decay-rate: field)** — schema additions to library cards. Nice-to-have. Not blocking any operational work. Can be formally deferred.
+
+**Re-ranking by actual leverage:**
+1. B.2 (library lookup) — structural
+2. B.1 (boot/close/handoff skill) — session safety
+3. A.1 (IdentityVerification request) — 10-minute file creation, unblocks the decision
+4. B.3 (library consumer snippet) — 30 minutes, genuinely improves every agent's behavior
+5. B.4, B.5 — defer
+
+The ledger's framing is: "Stage 1 blocked until 6 OPEN items reach BUILT/DECIDED/FORMALLY DEFERRED." This means formally deferring B.4 and B.5 with Standing Principle artifacts is just as good as building them. The gate can be cleared by decisions, not just builds.
+
+**(c) BCLAUDE's assessment that B.2 is the highest-leverage item — agree or disagree?**
+
+**Agree, with a qualification.**
+
+The current boot sequence for every agent lists 15-20 explicit file reads. That's 60-80K tokens of boot cost. B.2 (library_lookup MCP tool) would make Research Library retrieval on-demand instead of bulk, collapsing the library read to near-zero at boot. BCLAUDE is right that it "makes the stale-pointer class structurally impossible" — if agents retrieve by topic_id through a tool rather than reading a flat file, the topic_id is stable even when the source file moves.
+
+**The qualification:** B.2 solves research retrieval. It doesn't solve the other 14+ explicit file reads in the boot sequence (the Build Guide files, MathStream, operating docs). The "three files" collapse BCLAUDE describes would require GPS-compliant boot sequences — which is FW-017, a much bigger refactor. B.2 alone doesn't get you to three files; it gets you to "three files minus the library read." The FW-017 refactor is what closes it fully.
+
+So: B.2 is the highest-leverage item in the current OPEN ledger. FW-017 is the highest-leverage item in the FutureWork registry.
+
+**(d) Stage 0 → Stage 1 transition, honest framing**
+
+What 06_BuildSequence.md says Stage 0 involves: GDrive service account migration (done in commit 3c86284 — FW-003 COMPLETE), repo clone, folder structure, settings.local.json, MCP servers.
+
+What it doesn't say:
+- The folder structure in Stage 0 Step 4 may need revision based on the AGENTS.md naming decision (GPS naming decisions from Trey research — platform-grouped vs flat, dot-separated vs bare names). This was flagged as unresolved in the GPS naming decision table. The `mkdir -p` commands create `agents/claude/jiang/` style paths. If the naming decision goes the other way, those need redoing.
+- Stage 0 "complete when" says: "Claude Code boots, GitHub connected, folder structure exists, GDrive service account works without OAuth prompts." But the GDrive service account being "complete" requires the key file to exist on Mac Studio — which requires manual transfer. The Step 4 `mkdir` commands don't create the path for the key.
+- Stage 1 Step 1 immediately pulls Python packages that include `opendataloader-pdf`. That package requires a custom fork from the build guide: `git clone https://github.com/opendataloader-project/opendataloader-pdf.git`. As of 2026-05 that repo may have moved or changed. Verify before Stage 1 Step 5.
+- The ATV verifier benchmark (Stage 1 Step 7) requires a 100-item Golden Dataset Phase 1, described as "CT personally curated: 40 clean analytical, 40 high-complexity multi-domain, 20 edge cases." This dataset doesn't exist yet. Stage 1 Step 7 cannot complete until CT curates it. The Build Guide doesn't flag this as requiring CT input.
+
+Stage 0 undersells the GPS naming decision dependency. Stage 1 oversells the ATV benchmark completeness (it requires a CT-curated dataset that nobody has built yet).
+
+---
+
+## SECTION 9 — JUDGMENT
+
+**(a) What would I NOT build again if starting from scratch?**
+
+- **The dated session handoff file pattern.** Archiving `Session028.Apr19.md`, `Session037.Apr26.md` etc. created a mess. The rolling single-file pattern (`Jiang.SessionHandoff.md`) is the right answer. We arrived there but not before creating 30+ dated files that needed to be archived.
+- **Bot.Theresa and Bot.Scribe as architecture.** Both are retired. They were v1 concepts that added complexity without sufficient payoff. The hooks still try to call them. The v2 approach (programs with AI watching) is better than the v1 bot-spawning approach.
+- **The Gatekeeper MCP.** It was a routing intermediary that added a layer without adding value that per-vendor MCP topology doesn't provide. Retired in v1→v2. Not missed.
+- **Library v2 as a flat Markdown file.** 2,367 lines, all structure is in text. Searching it requires grep, not a query. The entire B.2 work exists because the library isn't queryable. If I started today, I'd build the MCP tool and the YAML index first, then populate cards. Not: build the flat file, then spend sessions wondering why agents always boot-read the whole thing.
+
+**(b) What am I least confident about in the current design?**
+
+The H_E / Gauge Fiber / belief_state conflict (Section 6e). MathStream says the single Gauge Fiber dimension can carry H_E. It also says belief_state can be embedded in the same fiber. Both can't fit in 1D without collision. The math is internally inconsistent and hasn't been resolved. The honest answer is: we don't know how to fit both in the E₈ structure. Stage 5 is where this gets resolved, but "defer to Stage 5" means building Stages 1-4 on a potentially-wrong foundation for the fiber structure.
+
+Also: the competing flows problem (Brockett dissipative vs Ignition anti-dissipative near β_abelian). Erdős derived that oscillatory steady states exist with a specific period formula. The κ telemetry was supposed to add regime classification. This was never actually built into the CheckIns calibration spec. It's on MathStream but not on the operational checklist.
+
+**(c) Agent-naming scheme — BCLAUDE's analysis vs my view**
+
+BCLAUDE's read: the naming scheme fuses five separate jobs (context budgeting, write partitioning, role priming, vendor routing, access control), context budgeting was the load-bearing one, and it no longer binds at the orchestration layer.
+
+My view: BCLAUDE is mostly right, but the framing understates how much role priming still matters operationally. The reason "You are Jiang" produces different behavior than the generic boot isn't purely context budgeting — it's that Jiang.ReadMe.First.md carries behavioral calibration (Window Gravity cardinal rule, output standards, when to conclude vs when to escalate) that the generic agent doesn't carry. That's role priming, and it's real value.
+
+Where BCLAUDE is fully right: write partitioning (who can edit which files) is not enforced by naming — it's convention only. Any agent can write any file. The naming gives it no actual access control. That was always a pretend guardrail.
+
+Where I'd reframe BCLAUDE's claim: it's not that context budgeting "no longer binds at the orchestration layer" — it's that context budgeting was never formalized. The sizing of boot reads was always informal judgment. The solution is B.2 (query interface) + FW-017 (GPS-compliant boot), not naming redesign.
+
+**(d) NEW STANDING RULE from CT — math documents are APPEND-ONLY. Is there any math that was edited in place, where the chain is already broken?**
+
+**Yes: Velorin.MathStream.md itself.**
+
+MathStream was created in Jiang2's substrate-lock pass (commit 760e2dc) and then committed with one follow-up commit (06a5730 added it earlier as part of Session 039). The git log shows only two commits touch MathStream:
+- `06a5730` — first creation (Session 039 archive pass — this was actually Jiang2 writing MathStream)
+- `760e2dc` — "Substrate locked: Velorin v2 theoretical math formally closed"
+
+If the substrate-lock execution (Jiang2's plan) involved editing MathStream to add sections (which it did — it added Belief-State Gauge Fiber, RG Flow, Reynolds, IB Dual, CIB, Program-Substrate, etc.), those additions overwrote the prior content of MathStream in a single commit. The derivation chain of what was in MathStream before 760e2dc vs after is only visible in the git diff. It's not lost — git preserves it — but the DOCUMENT doesn't show the history. The new APPEND-ONLY rule would require that those additions become a NEW document, not edits to MathStream.
+
+Similarly, any math document that was updated when a theorem was superseded (e.g., the original Thermodynamic Cycle theorem was retracted and the Cognitive Langevin Dynamics replaced it — was that an edit in place or a new section?) — I cannot verify without reading the git history line by line.
+
+The APPEND-ONLY rule is the right rule for the future. The existing MathStream is already edited-in-place and the chain is only in git. Apply APPEND-ONLY going forward: when new math lands (from Trey + Stark Integration Synthesis, once it's actually run), it goes in a new file, not as an edit to MathStream.
+
+---
+
+## SECTION 10 — WINDOW GRAVITY
+
+What has BCLAUDE not asked that it should have? What does it not know it doesn't know?
+
+**1. The Mac Air git auth is broken.** BCLAUDE received a briefing that assumed it could pull and read the repo. What it didn't know: this handoff file cannot be pushed by Jiang1. The commits (0a521f3, 586e252, 8784cc1, and whatever closes this section) are LOCAL ONLY on the Mac Air. They are not on origin/main. **BCLAUDE cannot pull them from GitHub.** CT must either: (a) restore Jiang1's git auth and have Jiang1 push, or (b) have BCLAUDE access the Mac Air file system directly, or (c) CT copies the file manually. The handoff BCLAUDE needs to read does not yet exist on GitHub.
+
+**2. BCLAUDE doesn't know what changed between April 26 and May 3.** Seven commits happened after the main body of work BCLAUDE has read about. The last three (1feed55, a81b34e, 8daf318 and several before) represent: YAML frontmatter fixes, Principle 9 lock, Stark agent commissioning, Gem bootloader rewrites, GPS-OVER-MAP bracket additions. BCLAUDE has a model of the repo that ends at Session 040 / April 29. The actual HEAD is at 1feed55 / May 3. Those six commits contain real architectural decisions (Principle 9, Stark, compiled Gem substrates). BCLAUDE should read the git log from 75a858a to 1feed55 and understand those commits before proceeding.
+
+**3. BCLAUDE may be assuming the repo IS the port destination.** CT said "completely new GitHub cleaned up." BCLAUDE's working assumption may be "clone navyhellcat/velorin-system to Mac Studio." That's not the plan. The plan is a fresh repo. navyhellcat/velorin-system is the SOURCE from which the port-ready core is extracted. The destination is a new, clean repo that does not contain Velorin.v1.Archive/ or the accumulated session artifacts.
+
+**4. The Stark agent exists.** BCLAUDE has been briefed on the agent roster as of April 2026: Jiang, Jiang2, Alexander, Trey 1, Trey 2, Erdős. There is now a seventh agent: **Stark** (commissioned at 8daf318). Stark is a Gemini Deep Think Gem, distinct from Erdős, focused on cross-cutting architectural synthesis in plain prose (no formal math output). Its Research_Needed folder contains an unrun Integration Synthesis request. BCLAUDE's roster is incomplete.
+
+**5. Principle 9 is locked and changes how Jiang operates.** "Goal Over Method (Phased)" — the system should extract CT's goals and find the best path, not literally execute stated methods. Mode A (current, build): foreground per-task evaluation loop. Mode B (post-build): background Vetted Substrate program maintains validated workflows. This changes how Jiang should interpret CT instructions going forward. It's in CLAUDE.md and Velorin.Principles.md but BCLAUDE's mental model of how agents operate may not reflect it.
+
+**6. BCLAUDE doesn't know about the Aug 17 activity.** `~/.claude/history.jsonl` and multiple session-env files are timestamped `Aug 17 23:20` — that is YESTERDAY, one day before today (Aug 18). Something ran. Was it CT using Claude Code to review? Was it a hook? Was it a test? BCLAUDE is operating on the assumption that nothing happened between May 3 and now. That's probably wrong.
+
+**7. The wrong assumption BCLAUDE is most likely operating under:** That the math substrate lock is the completion of the design phase, and Stage 0 begins from a clean starting point. It's not clean. The hooks are broken, git auth is broken, CLAUDE.md's General Boot Sequence is inconsistent with the v2 ReadMe.First, the embedding dimension is wrong in MathStream, the H_E/Gauge Fiber fiber conflict is unresolved, the Integration Synthesis from Trey + Stark has never been run, and the DECISIONS TO BE MADE section in 06_BuildSequence.md still reads as if the decisions haven't been made. The design phase is as complete as it's going to get without the Integration Synthesis. The transition to Stage 0 requires a cleanup pass before the first build session.
+
+---
+
+## CLOSE — PUSH STATUS
+
+The following commits are LOCAL ONLY on Mac Air. They are NOT on origin/main as of writing.
+
+Git auth on Mac Air is BROKEN:
+- SSH: no key pair at ~/.ssh/
+- HTTPS: no token in macOS Keychain
+- gh CLI: not installed
+
+BCLAUDE or CT must restore git auth and push these commits to origin:
+- `0a521f3` Handoff S1: machine state
+- `586e252` Handoff S2-S3: CLAUDE.md verbatim + analysis; local-only files; hooks broken state
+- `8784cc1` Handoff S4-S6: trim status, 107-day gap, known-broken items
+- (this commit — Sections 7-10 + close)
+
+Until pushed, this handoff exists only on the Mac Air at:
+`/Users/lbhunt/Desktop/velorin-system/Claude.AI/Bot.Jiang/Working.Docs/Jiang.FinalHandoff.ToBCLAUDE.2026-08-18.md`
+
+CT can read it by opening the file on Mac Air, or by having Jiang1 push after auth is restored.
+
+**To restore git auth on Mac Air (one of these):**
+1. `git remote set-url origin git@github.com:navyhellcat/velorin-system.git` + add SSH key to GitHub account (generate with `ssh-keygen -t ed25519`)
+2. Use a GitHub personal access token: `git remote set-url origin https://[TOKEN]@github.com/navyhellcat/velorin-system.git`
+
+[VELORIN.EOF — COMPLETE DOCUMENT — all 10 sections written]
